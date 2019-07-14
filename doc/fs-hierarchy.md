@@ -22,3 +22,12 @@
 `control` | 控制
 `common` | 通用文件
 `common/debug` | 调试相关代码
+
+### `doc` 目录
+
+目录 | 功能
+--- | ---
+`datapath` | 数据通路文档
+`control` | 控制文档
+`common` | 通用文档 / 通用文档片段
+
