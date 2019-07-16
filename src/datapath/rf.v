@@ -1,4 +1,5 @@
 `include "rf.h"
+`include "debug/debug.h"
 
 module rf(
 	input clk, 
@@ -20,15 +21,15 @@ initial begin
 end
 
 always @(posedge clk) begin
-	if ((write_enable == RF_WRITE_ENABLED) && (write_addr != RF_ADDR_ZERO)) begin
-		$display(RF_OUTPUT_FORMAT, $unsigned(write_addr), $unsigned(registers[write_addr], write_data));
+	if ((write_enable == `RF_WRITE_ENABLED) && (write_addr != `RF_ADDR_ZERO)) begin
+		$`normal_display(`RF_OUTPUT_FORMAT, $unsigned(write_addr), $unsigned(registers[write_addr], write_data));
 		registers[write_addr] <= write_data;
 	end
 end
 
-assign read_result1 = (read_addr1 != RF_ADDR_ZERO) ? registers[read_addr1] : 32'b0;
+assign read_result1 = (read_addr1 != `RF_ADDR_ZERO) ? registers[read_addr1] : 32'b0;
 
-assign read_result2 = (read_addr2 != RF_ADDR_ZERO) ? registers[read_addr2] : 32'b0;
+assign read_result2 = (read_addr2 != `RF_ADDR_ZERO) ? registers[read_addr2] : 32'b0;
 
 endmodule
 

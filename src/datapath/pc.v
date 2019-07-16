@@ -14,7 +14,7 @@ initial begin
 end
 
 always @(posedge clk) begin
-	if (enable == PC_ENABLED) begin
+	if (enable == `PC_ENABLED) begin
 		saved_pc <= curr_pc;
 	end
 end

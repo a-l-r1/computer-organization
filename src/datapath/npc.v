@@ -10,8 +10,8 @@ module npc(
 )
 
 assign next_pc = 
-	(jump_mode == NPC_JUMP_WHEN_EQUAL && alu_comp_result == ALU_EQUAL) ? $signed(curr_pc) + $signed({16{num[15]}, num}) : 
-	(jump_mode == NPC_JUMP_WHEN_NOT_EQUAL && alu_comp_result != ALU_EQUAL) ? $signed(curr_pc) + $signed({16{num[15]}, num}) : 
+	(jump_mode == `NPC_JUMP_WHEN_EQUAL && alu_comp_result == `ALU_EQUAL) ? $signed(curr_pc) + $signed({16{num[15]}, num}) : 
+	(jump_mode == `NPC_JUMP_WHEN_NOT_EQUAL && alu_comp_result != `ALU_EQUAL) ? $signed(curr_pc) + $signed({16{num[15]}, num}) : 
 	$unsigned(curr_pc) + $unsigned(4);
 
 endmodule
