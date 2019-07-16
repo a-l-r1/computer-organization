@@ -11,7 +11,7 @@ module rf(
 	output [31:0] read_result2
 )
 
-reg [31:1] registers [31:0];
+reg [31:0] registers [31:1];
 
 initial begin
 	/* TODO: for command? */
