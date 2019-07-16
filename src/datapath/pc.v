@@ -19,5 +19,7 @@ always @(posedge clk) begin
 	end
 end
 
+assign curr_pc = saved_pc;
+
 endmodule
 
