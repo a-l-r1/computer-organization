@@ -8,5 +8,7 @@
 `define RF_WRITE_DISABLED 1'b0
 `define RF_WRITE_DISABLE RF_WRITE_DISABLED
 
+`define RF_OUTPUT_FORMAT "%d: 0x%08x => 0x%08x"
+
 `endif
 

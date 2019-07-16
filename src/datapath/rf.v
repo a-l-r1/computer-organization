@@ -20,6 +20,7 @@ end
 
 always @(posedge clk) begin
 	if ((write_enable == RF_WRITE_ENABLED) && (write_addr != RF_ADDR_ZERO)) begin
+		$display(RF_OUTPUT_FORMAT, $unsigned(write_addr), $unsigned(registers[write_addr], write_data));
 		registers[write_addr] <= write_data;
 	end
 end
