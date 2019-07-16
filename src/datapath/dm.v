@@ -9,7 +9,7 @@ module dm(
 	output [DM_ADDR_WIDTH - 1:0] read_result
 )
 
-reg [DM_SIZE - 1:0] memory [31:0];
+reg [31:0] memory [DM_ADDR_WIDTH - 1:0];
 
 initial begin
 	/* TODO: is this correct? */
