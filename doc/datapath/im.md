@@ -20,11 +20,11 @@
 
 类别 | 定义 | 值 | 意义
 --- | --- | --- | ---
-`enable` | `IM_ENABLE` | 1'b1 | IM 使能
+`enable` | `IM_ENABLE` | `1'b1` | IM 使能
 `enable` | `IM_ENABLED` | `IM_ENABLE` | 
-`enable` | `IM_DISABLE` | 1'b0 | IM 非使能
+`enable` | `IM_DISABLE` | `1'b0` | IM 非使能
 `enable` | `IM_DISABLED` | `IM_DISABLE` | 
-`addr` | `IM_ADDR_WIDTH` | 6 | `addr` 的位宽
+`addr` | `IM_ADDR_WIDTH` | 8 | `addr` 的位宽
 指令存储器 | `IM_SIZE` | 64 | 能存储指令的个数
 
 ### 功能
