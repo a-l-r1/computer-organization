@@ -12,8 +12,9 @@ module dm(
 reg [31:0] memory [DM_ADDR_WIDTH - 1:0];
 
 initial begin
-	/* TODO: is this correct? */
-	memory = 0;
+	for (int i = 0; i < DM_ADDR_WIDTH; i++) begin
+		memory[i] = 32'b0;
+	end
 end
 
 always @(posedge clk) begin

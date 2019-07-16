@@ -14,8 +14,9 @@ module rf(
 reg [31:0] registers [31:1];
 
 initial begin
-	/* TODO: for command? */
-	registers = 0;
+	for (int i = 1; i < 31; i++) begin
+		registers[i] = 32'b0;
+	end
 end
 
 always @(posedge clk) begin
