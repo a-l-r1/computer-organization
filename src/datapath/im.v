@@ -6,7 +6,7 @@ module im(
 	output [31:0] result
 )
 
-reg [IM_SIZE - 1:0] memory [31:0];
+reg [31:0] memory [IM_SIZE - 1:0];
 
 /* TODO: load machine code */
 
