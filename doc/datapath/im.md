@@ -26,20 +26,16 @@
 `enable` | `IM_DISABLED` | `IM_DISABLE` | 
 `addr` | `IM_ADDR_WIDTH` | 8 | `addr` 的位宽
 指令存储器 | `IM_SIZE` | 64 | 能存储指令的个数
+指令存储器 | `IM_CODE_FILENAME` | `"code/code.hex"` | 要加载的机器码
 
 ### 功能
 
-有 `IM_SIZE` 个 32 位存储器，代表其中存储的指令。它们初值应该使用加载文件的系统任务加载。
+有 `IM_SIZE` 个 32 位存储器，代表其中存储的指令。它们初值应该使用加载文件的系统任务加载。加载文件名由 `IM_CODE_FILENAME` 指定。
 
 若 `enable == IM_ENABLED`，则 `result` 为 `addr[IM_ADDR_WIDTH - 1:1]` 对应的指令（从存储器中取得），否则 `result` 为 `32'b0`。
 
 ### 注意事项
 
-TODO
-
-1. 加载文件的系统任务还不会写……
-2. 向量分片可能写得不对
-3. 寄存器数组声明可能写得不对
-4. `IM_ADDR_WIDTH` 和 `IM_SIZE` 需要一块改，因为它们的大小有关系
-5. 以后可能会有 offset，注意一点
+1. `IM_ADDR_WIDTH` 和 `IM_SIZE` 需要一块改，因为它们的大小有关系
+2. 以后可能会有 offset，注意一点
 

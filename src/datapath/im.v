@@ -12,9 +12,9 @@ initial begin
 	for (int i = 0; i < IM_SIZE; i++) begin
 		memory[i] = 32'b0;
 	end
-end
 
-/* TODO: load machine code */
+	$readmemh(IM_CODE_FILENAME, memory, 0);
+end
 
 assign result = 
 	(enable == IM_ENABLE) ? memory[addr[IM_ADDR_WIDTH - 1:1]] : 
