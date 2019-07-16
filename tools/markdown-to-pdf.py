@@ -11,6 +11,9 @@ def main() -> None:
     if len(sys.argv) < 3:
         raise RuntimeError('this script needs at least 3 arguments, the last as output filename and the others as input filenames')
 
+    if os.path.exists(sys.argv[-1]):
+        print('%s: WARNING: result file %s exists' % (sys.argv[0], sys.argv[-1]))
+
     try:
         # TODO: more granularity and no more command concatenating and no hardcoded pandoc paths
         os.execve('/usr/bin/pandoc', ['pandoc', *sys.argv[1:-1], '--variable', 'mainfont=Noto Sans CJK SC', '--variable', 'sansfont=Noto Sans CJK SC', '--variable', 'monofont=Noto Sans Mono CJK SC', '--pdf-engine=xelatex', '-o', sys.argv[-1]], os.environ)
