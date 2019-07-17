@@ -28,19 +28,19 @@ p4 需要实现的 8 条指令为：
 `nop` | `pc.curr_pc` | | `npc.next_pc` | `pc.curr_pc` | | | | | | | | | | 
 
  | `addu` | `subu` | `lui` | `ori` | `lw` | `sw` | `beq` | `nop` 
-`npc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | 
-`npc.alu_comp_result` | | | | | 
-`npc.num` | | | | | 
-`pc.next_pc` | `npc.next_pc` | `npc.next_pc` | `npc.next_pc` | `npc.next_pc` | 
-`im.addr` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | 
-`rf.read_addr1` | `im.data[25:21]` | `im.data[25:21]` | `im.data[25:21]` | `im.data[25:21]` | 
-`rf.read_addr2` | `im.data[20:16]` | `im.data[20:16]` | | `im.data[20:16]` | 
-`rf.write_addr` | `im.data[15:11]` | `im.data[15:11]` | `im.data[20:16]` | `im.data[20:16]` | 
-`rf.write_data` | `alu.result` | `alu.result` | `alu.result`|  `alu.result` | 
-`alu.num1` | `rf.read_result1` | `rf.read_result1` | `rf.read_result1` | `rf.read_result1` | 
-`alu.num2` | `rf.read_result2` | `rf.read_result2` | `ext.result` | `ext.result` | 
-`ext.num` | | | `im.data[15:0]` | `im.data[15:0]` | 
-`dm.read_addr` | | | | | 
-`dm.write_addr` | | | | | 
-`dm.write_data` | | | | | 
+`npc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | 
+`npc.alu_comp_result` | | | | | | 
+`npc.num` | | | | | | 
+`pc.next_pc` | `npc.next_pc` | `npc.next_pc` | `npc.next_pc` | `npc.next_pc` | `npc.next_pc` | 
+`im.addr` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | 
+`rf.read_addr1` | `im.data[25:21]` | `im.data[25:21]` | `im.data[25:21]` | `im.data[25:21]` | `im.data[25:21]` | 
+`rf.read_addr2` | `im.data[20:16]` | `im.data[20:16]` | | `im.data[20:16]` | | 
+`rf.write_addr` | `im.data[15:11]` | `im.data[15:11]` | `im.data[20:16]` | `im.data[20:16]` | `im.data[20:16]` | 
+`rf.write_data` | `alu.result` | `alu.result` | `alu.result`|  `alu.result` | `dm.read_result` | 
+`alu.num1` | `rf.read_result1` | `rf.read_result1` | `rf.read_result1` | `rf.read_result1` | `rf.read_result1` | 
+`alu.num2` | `rf.read_result2` | `rf.read_result2` | `ext.result` | `ext.result` | `ext.result` | 
+`ext.num` | | | `im.data[15:0]` | `im.data[15:0]` | `im.data[15:0]` | 
+`dm.read_addr` | | | | | `alu.result` | 
+`dm.write_addr` | | | | | | 
+`dm.write_data` | | | | | | 
 
