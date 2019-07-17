@@ -35,7 +35,7 @@ NPC 是下个 PC 值的意思。它能做到根据当前的 PC 值，计算出�
 
 若 `jump_mode == NPC_JUMP_DISABLE`，则令 `next_pc = $unsigned(curr_pc) + $unsigned(4)`。
 
-若 `jump_mode == NPC_JUMP_WHEN_EQUAL`，则 `alu_comp_result == ALU_EQUAL` 时，首先把 `num` 扩展成 32 位有符号立即数，然后令 `next_pc = $signed(curr_pc) + $signed(num)`。否则做跟 `jump_mode == NPC_JUMP_DISABLE` 时相同的步骤。
+若 `jump_mode == NPC_JUMP_WHEN_EQUAL`，则 `alu_comp_result == ALU_EQUAL` 时，首先把 `num` 扩展成 32 位有符号立即数，扩展方式是首先把 `num` 后面加上 `2'b0`，然后把这 18 位二进制数扩展成 32 位有符号二进制数。然后令 `next_pc = $signed(curr_pc) + $signed(4) + $signed(num)`。否则做跟 `jump_mode == NPC_JUMP_DISABLE` 时相同的步骤。
 
 若 `jump_mode == NPC_JUMP_WHEN_NOT_EQUAL`，则 `alu_comp_result != ALU_EQUAL` 时，做跟上面相同的步骤。否则做跟 `jump_mode == NPC_JUMP_DISABLE` 时相同的步骤。
 
