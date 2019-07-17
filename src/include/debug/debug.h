@@ -8,7 +8,7 @@
 `define debug_display display
 `define normal_display normal_display_wrapped
 `else
-`define debug_display 
+`define debug_display do_nothing
 `define normal_display display
 `endif /* DEBUG */
 
