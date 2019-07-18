@@ -140,7 +140,7 @@ pc, npc, rf, alu, ext, im, dm, bridge, cp0
 
 #### 宏命名格式
 
-`X_TYPE, INSTR_XXX, INSTR_ID_XXX`
+`X_TYPE, INSTR_XXX, INSTR_ID_XXX, INSTR_MAGIC_XXX_OP, INSTR_MAGIC_XXX_FUNC`
 
 #### 输出端口命名格式
 
