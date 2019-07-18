@@ -36,15 +36,28 @@
 `ext.mode` | `EXT_MODE_SIGNED` | `EXT_MODE_SIGNED` | `#EXT_MODE_UNSIGNED` | `#EXT_MODE_UNSIGNED` 
 `dm.write_enable` | `DM_WRITE_DISABLED` | `DM_WRITE_ENABLED` | `DM_WRITE_DISABLED` | `DM_WRITE_DISABLED` 
 
+对于未知指令，各控制信号的值与 `nop` 指令的相应值相同。这样相当于直接忽略未知指令。
+
 
 ### 宏定义
 
 类别 | 定义 | 值 | 意义
 --- | --- | --- | ---
+宏函数 | `GET_OP(x)` | `x[31:26]` | 得到指令的 `op` 字段
+宏函数 | `GET_FUNCT(x)` | `x[25:11]` | 得到指令的 `funct` 字段
 指令类型 | `R_TYPE` | 2'b00 | R 型指令
 指令类型 | `I_TYPE` | 2'b01 | I 型指令
 指令类型 | `J_TYPE` | 2'b10 | J 型指令
 指令类型 | `C_TYPE` | 2'b11 | 协处理器指令
+指令魔数 | `INSTR_MAGIC_RTYPE_OP` | 6'b000000 | R 型指令 `op` 字段魔数
+指令魔数 | `INSTR_MAGIC_ADDU_FUNCT` | 6'b100001 | `addu` 指令 `funct` 字段魔数
+指令魔数 | `INSTR_MAGIC_SUBU_FUNCT` | 6'b100011 | `subu` 指令 `funct` 字段魔数
+指令魔数 | `INSTR_MAGIC_LUI_OP` | 6'b001111 | `lui` 指令 `op` 字段魔数
+指令魔数 | `INSTR_MAGIC_ORI_OP` | 6'b001101 | `ori` 指令 `op` 字段魔数
+指令魔数 | `INSTR_MAGIC_LW_OP` | 6'b100011 | `lw` 指令 `op` 字段魔数
+指令魔数 | `INSTR_MAGIC_SW_OP` | 6'b101011 | `sw` 指令 `op` 字段魔数
+指令魔数 | `INSTR_MAGIC_BEQ_OP` | 6'b000100 | `beq` 指令 `op` 字段魔数
+指令魔数 | `INSTR_MAGIC_NOP_FUNCT` | 6'b000000 | `nop` 指令 `funct` 字段魔数
 指令具体类型 | `INSTR_UNKNOWN` | 8'd0 | 未知指令
 指令具体类型 | `INSTR_ADDU` | 8'd1 | `addu` 指令
 指令具体类型 | `INSTR_SUBU` | 8'd2 | `subu` 指令
@@ -92,4 +105,5 @@
 1. 输入整个指令在电路设计中实际上没用，是为了方便 debug
 2. 控制信号和最终 CPU 实现中相应的连接数据通路和控制部分的 `wire` 有些名字是重复的，在 Verilog 中语法没错误，没有分开
 3. **关于各 MUX 选择哪个输入的宏的值是跟 MUX 接线有关的**
+4. **谨慎使用宏函数**
 
