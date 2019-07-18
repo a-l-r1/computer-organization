@@ -38,9 +38,9 @@ p4 需要实现的 8 条指令为：
 
 端口 | 所有的信号来源 | MUX 名称
 --- | ---
-`rf.write_addr` | `im.data[20:16], im.data[15:11]` | `dm_rf_write_addr` 
-`rf.write_data` | `alu.result, dm.read_result` | `dm_rf_write_data` 
-`alu.num2` | `rf.read_result2, ext.result` | `dm_alu_num2` 
+`rf.write_addr` | `im.data[20:16], im.data[15:11]` | `m_rf_write_addr` 
+`rf.write_data` | `alu.result, dm.read_result` | `m_rf_write_data` 
+`alu.num2` | `rf.read_result2, ext.result` | `m_alu_num2` 
 
 这些 MUX 最终还是让控制部件来识别。MUX 端口的连接顺序（其实也对应着当控制信号从 0 开始递增时会选择的端口）按照上表中的顺序给定。
 
