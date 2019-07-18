@@ -54,6 +54,12 @@
 指令具体类型 | `INSTR_SW` | 8'd6 | `sw` 指令
 指令具体类型 | `INSTR_BEQ` | 8'd7 | `beq` 指令
 指令具体类型 | `INSTR_NOP` | 8'd8 | `nop` 指令
+`cm_rf_write_addr` | `CM_RF_WRITE_ADDR_IM_DATA_20_16` | 1'b0 | `m_rf_write_addr` 输入来源为 `im.data[20:16]` 
+`cm_rf_write_addr` | `CM_RF_WRITE_ADDR_IM_DATA_15_11` | 1'b1 | `m_rf_write_addr` 输入来源为 `im.data[15:11]` 
+`cm_rf_write_data` | `CM_RF_WRITE_DATA_ALU_RESULT` | 1'b0 | `m_rf_write_data` 输入来源为 `alu.result` 
+`cm_rf_write_data` | `CM_RF_WRITE_DATA_DM_READ_RESULT` | 1'b1 | `m_rf_write_data` 输入来源为 `dm.read_result` 
+`cm_alu_num2` | `CM_ALU_NUM2_RF_READ_RESULT2` | 1'b0 | `m_alu_num2` 输入来源为 `rf.read_result2` 
+`cm_alu_num2` | `CM_ALU_NUM2_EXT_RESULT` | 1'b1 | `m_alu_num2` 输入来源为 `ext.result` 
 
 ### 端口定义
 
@@ -85,4 +91,5 @@
 
 1. 输入整个指令在电路设计中实际上没用，是为了方便 debug
 2. 控制信号和最终 CPU 实现中相应的连接数据通路和控制部分的 `wire` 有些名字是重复的，在 Verilog 中语法没错误，没有分开
+3. **关于各 MUX 选择哪个输入的宏的值是跟 MUX 接线有关的**
 
