@@ -57,15 +57,19 @@ pc, npc, rf, alu, ext, im, dm, bridge, cp0
 
 `w_part_port / w_m_part_port_srcpart_srcport`
 
-`w` 就是 wire 的意思，`srcpart` 和 `srcport` 指数据通路 MUX 中对应的源端口的部件名和端口名
+`w` 就是 wire 的意思，`srcpart` 和 `srcport` 指数据通路 MUX 中对应的源端口的部件名和端口名，`part` 和 `port` 也照着相应的输入端口命名
 
 不能用 `dw`，容易和 `dm` 混淆
 
 #### 控制 `wire` 命名格式
 
+##### 控制相应端口的 `wire`
+
+`cw_part_port`
+
 ##### 控制 MUX 的 `wire`
 
-`mc_part_port`
+`cm_part_port`
 
 ##### 表明指令类型的 `wire`
 
@@ -128,7 +132,17 @@ pc, npc, rf, alu, ext, im, dm, bridge, cp0
 
 ### EXT
 
-### 命名格式
+#### 命名格式
 
 宏：`EXT_MODE_MODE`
+
+### 控制器
+
+#### 宏命名格式
+
+`X_TYPE, INSTR_XXX, INSTR_ID_XXX`
+
+#### 输出端口命名格式
+
+可以跟控制的 `wire` 命名格式一样，到时候传同名的 `wire`
 
