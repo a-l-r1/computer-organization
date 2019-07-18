@@ -9,9 +9,9 @@
 通过对数据通路的分析，可以得到每条指令需要的控制信号如下。
 
 指令 | `addu` | `subu` | `lui` | `ori` 
-`dm_rf_write_addr` | `im.data[15:11]` | `im.data[15:11]` | `im.data[20:16]` | `im.data[20:16]` 
-`dm_rf_write_data` | `im.data[15:11]` | `im.data[15:11]` | `alu.result` | `alu.result` 
-`dm_alu_num2` | `rf.read_result2` | `rf.read_result2` | `ext.result` | `ext.result` 
+`m_rf_write_addr` | `im.data[15:11]` | `im.data[15:11]` | `im.data[20:16]` | `im.data[20:16]` 
+`m_rf_write_data` | `im.data[15:11]` | `im.data[15:11]` | `alu.result` | `alu.result` 
+`m_alu_num2` | `rf.read_result2` | `rf.read_result2` | `ext.result` | `ext.result` 
 `npc.jump_mode` | `NPC_JUMP_DISABLED` | `NPC_JUMP_DISABLED` | `NPC_JUMP_DISABLED` | `NPC_JUMP_DISABLED` 
 `pc.enable` | `PC_ENABLED` | `PC_ENABLED` | `PC_ENABLED` | `PC_ENABLED` 
 `im.enable` | `IM_ENABLED` | `IM_ENABLED` | `IM_ENABLED` | `IM_ENABLED` 
@@ -21,15 +21,14 @@
 `dm.write_enable` | `DM_WRITE_DISABLED` | `DM_WRITE_DISABLED` | `DM_WRITE_DISABLED` | `DM_WRITE_DISABLED` 
 
 指令 | `lw` | `sw` | `beq` | `nop` 
-`dm_rf_write_addr` | 
-`dm_rf_write_data` | 
-`dm_alu_num2` | 
-`npc.jump_mode` | 
-`pc.enable` | 
-`im.enable` | 
-`rf.write_enable` | 
-`alu.op` | 
-`ext.mode` | 
-`dm.write_enable` | 
-
+`m_rf_write_addr` | `im.data[20:16]` | 
+`m_rf_write_data` | `alu.result` | 
+`m_alu_num2` | `ext.result` | 
+`npc.jump_mode` | `NPC_JUMP_DISABLED` | 
+`pc.enable` | `PC_ENABLED` | 
+`im.enable` | `IM_ENABLED` | 
+`rf.write_enable` | `RF_WRITE_ENABLED` | 
+`alu.op` | `ALU_ADD` | 
+`ext.mode` | `EXT_MODE_SIGNED` | 
+`dm.write_enable` | `DM_WRITE_DISABLED` | 
 
