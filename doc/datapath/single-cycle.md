@@ -16,31 +16,31 @@ p4 需要实现的 8 条指令为：
 
 最后一行是把所有可能的连接综合起来以后，得到的结果。如果有多个可能的连接，就需要一个 MUX。
 
-指令 | `npc.curr_pc` | `npc.alu_comp_result` | `npc.num` | `pc.next_pc` | `im.addr` | `rf.read_addr1` | `rf.read_addr2` | `rf.write_addr` | `rf.write_data` | `alu.num1` | `alu.num2` | `ext.num` | `dm.read_addr` | `dm.write_addr` | `dm.write_data` 
---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---
-`addu` | `pc.curr_pc` | | | `npc.next_pc` | `pc.curr_pc` | `im.data[25:21]` | `im.data[20:16]` | `im.data[15:11]` | `alu.result` | `rf.read_result1` | `rf.read_result2` | | | |
-`subu` | `pc.curr_pc` | | | `npc.next_pc` | `pc.curr_pc` | `im.data[25:21]` | `im.data[20:16]` | `im.data[15:11]` | `alu.result` | `rf.read_result1` | `rf.read_result2` | | | |
-`lui` | `pc.curr_pc` | | | `npc.next_pc` | `pc.curr_pc` | `im.data[25:21]` | | `im.data[20:16]` | `alu.result` | `rf.read_result1` | `ext.result` | `im.data[15:0]` | | | |
-`ori` | `pc.curr_pc` | | | `npc.next_pc` | `pc.curr_pc` | `im.data[25:21]` | `im.data[20:16]` | `im.data[20:16]` | `alu.result` | `rf.read_result1` | `ext.result` | `im.data[15:0]` | | |
-`lw` | `pc.curr_pc` | | | `npc.next_pc` | `pc.curr_pc` | `im.data[25:21]` | | `im.data[20:16]` | `dm.read_result` | `rf.read_result1` | `ext.result` | `im.data[15:0]` | `alu.result` | | | 
-`sw` | `pc.curr_pc` | | | `npc.next_pc` | `pc.curr_pc` | `im.data[25:21]` | | `im.data[20:16]` | | `rf.read_result1` | `ext.result` | `im.data[15:0]` | | `alu.result` | `rf.read_result2` 
-`beq` | `pc.curr_pc` | `alu.comp_result` | `im.data[15:0]` | `npc.next_pc` | `pc.curr_pc` | `im.data[20:16]` | `im.data[15:11]` | | | `rf.read_result1` | `rf.read_result2` | | | | | 
-`nop` | `pc.curr_pc` | | `npc.next_pc` | `pc.curr_pc` | | | | | | | | | | 
+指令 | `addu` | `subu` | `lui` | `ori` | `lw` | `sw` | `beq` | `nop` | 综合 
+--- | --- | --- | --- | --- | --- | --- | --- | --- | --- 
+`npc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` 
+`npc.alu_comp_result` | | | | | | | `alu.comp_result` | | `alu.comp_result` 
+`npc.num` | | | | | | | `im.data[15:0]` | | `im.data[15:0]` 
+`pc.next_pc` | `npc.next_pc` | `npc.next_pc` | `npc.next_pc` | `npc.next_pc` | `npc.next_pc` | `npc.next_pc` | `npc.next_pc` | `npc.next_pc` | `npc.next_pc` 
+`im.addr` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` 
+`rf.read_addr1` | `im.data[25:21]` | `im.data[25:21]` | `im.data[25:21]` | `im.data[25:21]` | `im.data[25:21]` | `im.data[25:21]` | `im.data[25:21]` | | `im.data[25:21]` 
+`rf.read_addr2` | `im.data[20:16]` | `im.data[20:16]` | | `im.data[20:16]` | | `im.data[20:16]` | `im.data[20:16]` | | `im.data[20:16]` 
+`rf.write_addr` | `im.data[15:11]` | `im.data[15:11]` | `im.data[20:16]` | `im.data[20:16]` | `im.data[20:16]` | | | | `im.data[20:16], im.data[15:11]` 
+`rf.write_data` | `alu.result` | `alu.result` | `alu.result`|  `alu.result` | `dm.read_result` | | | | `alu.result, dm.read_result`
+`alu.num1` | `rf.read_result1` | `rf.read_result1` | `rf.read_result1` | `rf.read_result1` | `rf.read_result1` | `rf.read_result1` | `rf.read_result1` | | `rf.read_result1` 
+`alu.num2` | `rf.read_result2` | `rf.read_result2` | `ext.result` | `ext.result` | `ext.result` | `ext.result` | `rf.read_result2` | | `rf.read_result2, ext.result` 
+`ext.num` | | | `im.data[15:0]` | `im.data[15:0]` | `im.data[15:0]` | `im.data[15:0]` | | | `im.data[15:0]` 
+`dm.read_addr` | | | | | `alu.result` | | | | `alu.result` 
+`dm.write_addr` | | | | | | `alu.result` | | | `alu.result` 
+`dm.write_data` | | | | | | `rf.read_result2` | | | `rf.read_result2` 
 
- | `addu` | `subu` | `lui` | `ori` | `lw` | `sw` | `beq` | `nop` 
-`npc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | 
-`npc.alu_comp_result` | | | | | | 
-`npc.num` | | | | | | 
-`pc.next_pc` | `npc.next_pc` | `npc.next_pc` | `npc.next_pc` | `npc.next_pc` | `npc.next_pc` | 
-`im.addr` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | `pc.curr_pc` | 
-`rf.read_addr1` | `im.data[25:21]` | `im.data[25:21]` | `im.data[25:21]` | `im.data[25:21]` | `im.data[25:21]` | 
-`rf.read_addr2` | `im.data[20:16]` | `im.data[20:16]` | | `im.data[20:16]` | | 
-`rf.write_addr` | `im.data[15:11]` | `im.data[15:11]` | `im.data[20:16]` | `im.data[20:16]` | `im.data[20:16]` | 
-`rf.write_data` | `alu.result` | `alu.result` | `alu.result`|  `alu.result` | `dm.read_result` | 
-`alu.num1` | `rf.read_result1` | `rf.read_result1` | `rf.read_result1` | `rf.read_result1` | `rf.read_result1` | 
-`alu.num2` | `rf.read_result2` | `rf.read_result2` | `ext.result` | `ext.result` | `ext.result` | 
-`ext.num` | | | `im.data[15:0]` | `im.data[15:0]` | `im.data[15:0]` | 
-`dm.read_addr` | | | | | `alu.result` | 
-`dm.write_addr` | | | | | | 
-`dm.write_data` | | | | | | 
+这时可以看出如下的端口需要 MUX:
+
+端口 | 所有的信号来源 | MUX 名称
+--- | ---
+`rf.write_addr` | `im.data[20:16], im.data[15:11]` | `dm_rf_write_addr` 
+`rf.write_data` | `alu.result, dm.read_result` | `dm_rf_write_data` 
+`alu.num2` | `rf.read_result2, ext.result` | `dm_alu_num2` 
+
+这些 MUX 最终还是让控制部件来识别。
 
