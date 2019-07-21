@@ -61,6 +61,10 @@ pc, npc, rf, alu, ext, im, dm, bridge, cp0
 
 不能用 `dw`，容易和 `dm` 混淆
 
+##### 有多个输出怎么办
+
+用 `wo_part_port`，这一条可能与上面关于 MUX 的那一条冲突，以这一条优先
+
 #### 控制 `wire` 命名格式
 
 ##### 控制相应端口的 `wire`
