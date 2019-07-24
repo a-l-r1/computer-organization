@@ -31,7 +31,7 @@ assign intermediate_result =
 assign overflow = intermediate_result[32];
 
 assign comp_result = 
-      	($unsigned(num1) == $unsigned(num2)) ? `ALU_EQUAL : 
+   ($unsigned(num1) == $unsigned(num2)) ? `ALU_EQUAL : 
 	($unsigned(num1) < $unsigned(num2)) ? `ALU_SMALLER : 
 	`ALU_LARGER;
 
