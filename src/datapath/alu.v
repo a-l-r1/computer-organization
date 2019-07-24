@@ -15,12 +15,12 @@ assign {op_invalid, result} =
 	(op == `ALU_ADD) ? {1'b0, $unsigned(num1) + $unsigned(num2)} : 
 	(op == `ALU_SUB) ? {1'b0, $unsigned(num1) - $unsigned(num2)} : 
 	(op == `ALU_AND) ? {1'b0, $unsigned(num1) & $unsigned(num2)} : 
-	(op == `ALU_OR) ? (1'b0, $unsigned(num1) | $unsigned(num2)} : 
-	(op == `ALU_NOT) ? (1'b0, ~$unsigned(num1)) : 
-	(op == `ALU_XOR) ? (1'b0, $unsigned(num1) ^ $unsigned(num2)} : 
+	(op == `ALU_OR) ? {1'b0, $unsigned(num1) | $unsigned(num2)} : 
+	(op == `ALU_NOT) ? {1'b0, ~$unsigned(num1)} : 
+	(op == `ALU_XOR) ? {1'b0, $unsigned(num1) ^ $unsigned(num2)} : 
 	{1'b1, 32'b0};
 
-wire intermediate_result [32:0];
+wire [32:0] intermediate_result;
 
 /* TODO: is this correct? */
 assign intermediate_result = 
