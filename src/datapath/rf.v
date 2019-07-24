@@ -14,16 +14,20 @@ module rf(
 
 reg [31:0] registers [31:1];
 
+integer i;
+
 initial begin
-	for (int i = 1; i < 31; i++) begin
+	for (i = 1; i < 31; i = i + 1) begin
 		registers[i] = 32'b0;
 	end
 end
 
 always @(posedge clk) begin
-	if ((write_enable == `RF_WRITE_ENABLED) && (write_addr != `RF_ADDR_ZERO)) begin
-		$`normal_display(`RF_OUTPUT_FORMAT, $unsigned(write_addr), $unsigned(registers[write_addr], write_data));
-		registers[write_addr] <= write_data;
+	if (write_enable == `RF_WRITE_ENABLED) begin
+		if (write_addr != `RF_ADDR_ZERO) begin
+			//$`normal_display(`RF_OUTPUT_FORMAT, $unsigned(write_addr), $unsigned(registers[write_addr], write_data));
+			registers[write_addr] <= write_data;
+		end
 	end
 end
 
