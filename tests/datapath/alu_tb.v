@@ -62,11 +62,42 @@ module alu_tb;
 		// Add stimulus here
 		
 		/* 2 + 2 != 5 */
+		#10;
 		num1 = 32'h00000002;
 		num2 = 32'h00000002;
 		op = `ALU_ADD;
 		
+		/* add, overflow */
+		#10;
+		num1 = 32'hffffffff;
+		num2 = 32'h00000001;
+		op = `ALU_ADD;
 		
+		/* sub, underflow */
+		#10;
+		num1 = 32'h00000000;
+		num2 = 32'h00000001;
+		op = `ALU_SUB;
+		
+		/* comparison not tested */
+		
+		/* and */
+		#10;
+		num1 = 32'h89abcdef;
+		num2 = 32'h01234567;
+		op = `ALU_AND;
+		
+		/* or */
+		#10;
+		op = `ALU_OR;
+		
+		/* not */
+		#10;
+		op = `ALU_NOT;
+		
+		/* xor */
+		#10;
+		op = `ALU_XOR;
 	end
       
 endmodule
