@@ -9,5 +9,6 @@
 `define IM_ADDR_WIDTH 8
 `define IM_SIZE 64
 
-`endif
+`define IM_CODE_FILENAME "code.hex"
 
+`endif
