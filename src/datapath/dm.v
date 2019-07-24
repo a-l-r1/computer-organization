@@ -19,11 +19,11 @@ end
 
 always @(posedge clk) begin
 	if (write_enable == `DM_ENABLE) begin
-		memory[write_addr[`DM_ADDR_WIDTH - 1:1]] <= write_data;
+		memory[write_addr[`DM_ADDR_WIDTH - 1:2]] <= write_data;
 	end
 end
 
-assign read_result = memory[read_addr[`DM_ADDR_WIDTH - 1:1]];
+assign read_result = memory[read_addr[`DM_ADDR_WIDTH - 1:2]];
 
 endmodule
 
