@@ -46,7 +46,7 @@ LAB2:    xsi_set_current_line(43, ng0);
 LAB4:    xsi_set_current_line(45, ng0);
     t2 = ((char*)((ng1)));
     t3 = (t0 + 1448);
-    xsi_vlogvar_assign_value(t3, t2, 0, 0, 1);
+    xsi_vlogvar_assign_value(t3, t2, 0, 0, 8);
     xsi_set_current_line(46, ng0);
     t2 = ((char*)((ng1)));
     t3 = (t0 + 1608);
@@ -70,9 +70,9 @@ LAB6:    xsi_set_current_line(56, ng0);
     goto LAB1;
 
 LAB7:    xsi_set_current_line(57, ng0);
-    t2 = ((char*)((ng2)));
+    t2 = ((char*)((ng1)));
     t3 = (t0 + 1448);
-    xsi_vlogvar_assign_value(t3, t2, 0, 0, 1);
+    xsi_vlogvar_assign_value(t3, t2, 0, 0, 8);
     xsi_set_current_line(58, ng0);
     t2 = ((char*)((ng2)));
     t3 = (t0 + 1608);
@@ -84,9 +84,9 @@ LAB7:    xsi_set_current_line(57, ng0);
     goto LAB1;
 
 LAB8:    xsi_set_current_line(62, ng0);
-    t2 = ((char*)((ng2)));
+    t2 = ((char*)((ng1)));
     t3 = (t0 + 1448);
-    xsi_vlogvar_assign_value(t3, t2, 0, 0, 1);
+    xsi_vlogvar_assign_value(t3, t2, 0, 0, 8);
     xsi_set_current_line(63, ng0);
     t2 = ((char*)((ng3)));
     t3 = (t0 + 1608);
@@ -96,9 +96,9 @@ LAB8:    xsi_set_current_line(62, ng0);
 }
 
 
-extern void work_m_00000000002739540003_0444686489_init()
+extern void work_m_00000000003560795524_0444686489_init()
 {
 	static char *pe[] = {(void *)Initial_43_0};
-	xsi_register_didat("work_m_00000000002739540003_0444686489", "isim/im_tb_isim_beh.exe.sim/work/m_00000000002739540003_0444686489.didat");
+	xsi_register_didat("work_m_00000000003560795524_0444686489", "isim/im_tb_isim_beh.exe.sim/work/m_00000000003560795524_0444686489.didat");
 	xsi_register_executes(pe);
 }
