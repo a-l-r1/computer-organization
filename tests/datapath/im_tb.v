@@ -27,7 +27,7 @@
 module im_tb;
 
 	// Inputs
-	reg addr;
+	reg [`IM_ADDR_WIDTH - 1:0] addr;
 	reg enable;
 
 	// Outputs
@@ -52,11 +52,15 @@ module im_tb;
 		/* make sure the stimuli always take place before the posedge of clk */
 		#5;
 		
-
-	end
-	
-	always begin
-		#20 clk = ~clk;
+		/* disabled */
+		#20;
+		addr = 0;
+		enable = `IM_DISABLED;
+		
+		/* enabled */
+		#20;
+		addr = 0;
+		enable = `IM_ENABLED;
 	end
       
 endmodule
