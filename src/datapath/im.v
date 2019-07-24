@@ -8,8 +8,10 @@ module im(
 
 reg [31:0] memory [`IM_SIZE - 1:0];
 
+integer i;
+
 initial begin
-	for (int i = 0; i < `IM_SIZE; i++) begin
+	for (i = 0; i < `IM_SIZE; i = i + 1) begin
 		memory[i] = 32'b0;
 	end
 
