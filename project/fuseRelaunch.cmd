@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -i "Z:/home/a-l-r/co/src/src/include" -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "Z:/home/a-l-r/co/src/project/rf_tb_isim_beh.exe" -prj "Z:/home/a-l-r/co/src/project/rf_tb_beh.prj" "work.rf_tb" "work.glbl" 
+-intstyle "ise" -incremental -i "Z:/home/a-l-r/co/src/src/include" -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "Z:/home/a-l-r/co/src/project/npc_tb_isim_beh.exe" -prj "Z:/home/a-l-r/co/src/project/npc_tb_beh.prj" "work.npc_tb" "work.glbl" 
