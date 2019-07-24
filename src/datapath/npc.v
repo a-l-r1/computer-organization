@@ -7,7 +7,7 @@ module npc(
 	input [1:0] alu_comp_result, 
 	input [15:0] num, 
 	output [31:0] next_pc
-)
+);
 
 assign next_pc = 
 	(jump_mode == `NPC_JUMP_WHEN_EQUAL && alu_comp_result == `ALU_EQUAL) ? $signed(curr_pc) + $signed(4) + $signed({14{num[15]}, num, 2'b0}) : 

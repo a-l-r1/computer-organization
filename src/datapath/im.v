@@ -4,7 +4,7 @@ module im(
 	input [`IM_ADDR_WIDTH - 1:0] addr, 
 	input enable, 
 	output [31:0] result
-)
+);
 
 reg [31:0] memory [`IM_SIZE - 1:0];
 

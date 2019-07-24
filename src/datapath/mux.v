@@ -6,7 +6,7 @@ module mux2(
 	input [BIT_WIDTH - 1:0] input0, 
 	input [BIT_WIDTH - 1:0] input1, 
 	output [BIT_WIDTH - 1:0] result
-)
+);
 
 parameter BIT_WIDTH = 32;
 
@@ -23,7 +23,7 @@ module mux3(
 	input [BIT_WIDTH - 1:0] input1, 
 	input [BIT_WIDTH - 1:0] input2, 
 	output [BIT_WIDTH - 1:0] result
-)
+);
 
 parameter BIT_WIDTH = 32;
 
@@ -42,7 +42,7 @@ module mux4(
 	input [BIT_WIDTH - 1:0] input2, 
 	input [BIT_WIDTH - 1:0] input3, 
 	output [BIT_WIDDTH - 1:0] result
-)
+);
 
 parameter BIT_WIDTH = 32;
 

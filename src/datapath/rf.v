@@ -10,7 +10,7 @@ module rf(
 	input write_enable, 
 	output [31:0] read_result1, 
 	output [31:0] read_result2
-)
+);
 
 reg [31:0] registers [31:1];
 
