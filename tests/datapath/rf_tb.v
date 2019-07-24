@@ -92,6 +92,15 @@ module rf_tb;
 		
 		/* don't write */
 		write_enable = 0;
+		write_data = 32'hdeedbeef;
+		
+		#20;
+		/* read from the register written before again */
+		read_addr1 = 0;
+		read_addr2 = 2;
+		
+		/* don't write, either */
+		write_enable = 0;
 	end
 	
 	always begin
