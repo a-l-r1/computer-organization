@@ -11,8 +11,10 @@ module dm(
 
 reg [31:0] memory [`DM_ADDR_WIDTH - 1:0];
 
+integer i;
+
 initial begin
-	for (int i = 0; i < `DM_ADDR_WIDTH; i = i + 1) begin
+	for (i = 0; i < `DM_ADDR_WIDTH; i = i + 1) begin
 		memory[i] = 32'b0;
 	end
 end
