@@ -20,7 +20,7 @@ initial begin
 end
 
 always @(posedge clk) begin
-	if (write_enable == `DM_ENABLE) begin
+	if (write_enable == `DM_WRITE_ENABLE) begin
 		memory[write_addr[`DM_ADDR_WIDTH - 1:2]] <= write_data;
 	end
 end
