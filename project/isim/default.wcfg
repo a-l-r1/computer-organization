@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="Z:/home/a-l-r/co/src/project/alu_tb_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="alu_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="8" />
+   <wvobject fp_name="/alu_tb/result" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">result[31:0]</obj_property>
+      <obj_property name="ObjectShortName">result[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/alu_tb/comp_result" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">comp_result[1:0]</obj_property>
+      <obj_property name="ObjectShortName">comp_result[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/alu_tb/sig_comp_result" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">sig_comp_result[1:0]</obj_property>
+      <obj_property name="ObjectShortName">sig_comp_result[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/alu_tb/overflow" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">overflow</obj_property>
+      <obj_property name="ObjectShortName">overflow</obj_property>
+   </wvobject>
+   <wvobject fp_name="/alu_tb/op_invalid" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">op_invalid</obj_property>
+      <obj_property name="ObjectShortName">op_invalid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/alu_tb/num1" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">num1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">num1[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/alu_tb/num2" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">num2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">num2[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/alu_tb/op" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">op[4:0]</obj_property>
+      <obj_property name="ObjectShortName">op[4:0]</obj_property>
+   </wvobject>
+</wave_config>

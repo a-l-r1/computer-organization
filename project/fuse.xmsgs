@@ -5,26 +5,5 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="error" file="HDLCompiler" num="806" delta="unknown" >"Z:/home/a-l-r/co/src/project/../src/datapath/alu.v" Line 18: Syntax error near &quot;<arg fmt="%s" index="1">,</arg>&quot;.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="806" delta="unknown" >"Z:/home/a-l-r/co/src/project/../src/datapath/alu.v" Line 21: Syntax error near &quot;<arg fmt="%s" index="1">}</arg>&quot;.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="255" delta="unknown" >"Z:/home/a-l-r/co/src/project/../src/datapath/alu.v" Line 26: Cannot assign to memory <arg fmt="%s" index="1">intermediate_result</arg> directly
-</msg>
-
-<msg type="error" file="HDLCompiler" num="252" delta="unknown" >"Z:/home/a-l-r/co/src/project/../src/datapath/alu.v" Line 27: Cannot assign <arg fmt="%s" index="1">a packed</arg> type to <arg fmt="%s" index="2">an unpacked</arg> type
-</msg>
-
-<msg type="error" file="HDLCompiler" num="252" delta="unknown" >"Z:/home/a-l-r/co/src/project/../src/datapath/alu.v" Line 28: Cannot assign <arg fmt="%s" index="1">a packed</arg> type to <arg fmt="%s" index="2">an unpacked</arg> type
-</msg>
-
-<msg type="error" file="HDLCompiler" num="252" delta="unknown" >"Z:/home/a-l-r/co/src/project/../src/datapath/alu.v" Line 29: Cannot assign <arg fmt="%s" index="1">a packed</arg> type to <arg fmt="%s" index="2">an unpacked</arg> type
-</msg>
-
-<msg type="error" file="HDLCompiler" num="598" delta="unknown" >"Z:/home/a-l-r/co/src/project/../src/datapath/alu.v" Line 3: Module &lt;<arg fmt="%s" index="1">alu</arg>&gt; ignored due to previous errors.
-</msg>
-
 </messages>
 
