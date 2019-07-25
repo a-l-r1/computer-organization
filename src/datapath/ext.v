@@ -10,7 +10,7 @@ assign result =
 	(mode == `EXT_MODE_SIGNED) ? {{16{num[15]}}, num} : 
 	(mode == `EXT_MODE_UNSIGNED) ? {16'b0, num} : 
 	(mode == `EXT_MODE_PAD) ? {num, 16'b0} : 
-	(mode == `EXT_MODE_ONE) ? {16'b1, num} : 
+	(mode == `EXT_MODE_ONE) ? {16'hffff, num} : 
 	32'b0;
 
 endmodule
