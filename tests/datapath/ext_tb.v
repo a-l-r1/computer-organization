@@ -1,5 +1,7 @@
 `timescale 1ns / 1ps
 
+`include "ext.h"
+
 ////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer:
@@ -47,7 +49,30 @@ module ext_tb;
 		#100;
         
 		// Add stimulus here
-
+		/* signed extension, positive number */
+		#10;
+		mode = `EXT_MODE_SIGNED;
+		num = 16'h0002;
+		
+		/* signed extension, negative number */
+		#10;
+		mode = `EXT_MODE_SIGNED;
+		num = 16'hffff;
+		
+		/* unsigned extension, negative number */
+		#10;
+		mode = `EXT_MODE_UNSIGNED;
+		num = 16'h0002;
+		
+		/* padded extension (for lui) */
+		#10;
+		mode = `EXT_MODE_PAD;
+		num = 16'h1234;
+		
+		/* one extension */
+		#10;
+		mode = `EXT_MODE_ONE;
+		num = 16'h1234;
 	end
       
 endmodule
