@@ -2,8 +2,8 @@
 
 module dm(
 	input clk, 
-	input [`DM_ADDR_WIDTH - 1:0] read_addr, 
-	input [`DM_ADDR_WIDTH - 1:0] write_addr, 
+	input [31:0] read_addr, 
+	input [31:0] write_addr, 
 	input [31:0] write_data, 
 	input write_enable, 
 	output [31:0] read_result
