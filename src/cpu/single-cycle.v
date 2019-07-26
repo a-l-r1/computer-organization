@@ -12,7 +12,7 @@
 
 module cpu(
 	input clk
-)
+);
 
 /* Control */
 
