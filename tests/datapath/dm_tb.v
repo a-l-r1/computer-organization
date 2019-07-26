@@ -28,8 +28,8 @@ module dm_tb;
 
 	// Inputs
 	reg clk;
-	reg [`DM_ADDR_WIDTH - 1:0] read_addr;
-	reg [`DM_ADDR_WIDTH - 1:0] write_addr;
+	reg [31:0] read_addr;
+	reg [31:0] write_addr;
 	reg [31:0] write_data;
 	reg write_enable;
 
