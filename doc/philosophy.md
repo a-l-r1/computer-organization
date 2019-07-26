@@ -47,17 +47,23 @@ pc, npc, rf, alu, ext, im, dm, bridge, cp0
 
 #### 数据通路 MUX 命名格式
 
-`m_part_port`
+不用 `m_part_port`，用 `m_`_meaning_
 
-`m` 就是 muxer 的意思，`part` 和 `port` 指输出到哪个部件的哪个端口
+`m` 就是 muxer 的意思，原来 `part` 和 `port` 指输出到哪个部件的哪个端口
+
+由于数据通路 MUX 不会很多，采用指定意义的方式命名
 
 不能用 `dm`，`dm` 跟 data memory 重复了
 
 #### 数据通路 `wire` 命名格式
 
-`w_part_port / w_m_part_port_srcpart_srcport`
+`w_part_port`
 
-`w` 就是 wire 的意思，`srcpart` 和 `srcport` 指数据通路 MUX 中对应的源端口的部件名和端口名，`part` 和 `port` 也照着相应的输入端口命名
+不用 `w_m_part_port_srcpart_srcport`，用 `m_`_meaning_`_srcpart_srcport`
+
+`w` 就是 wire 的意思，`part` 和 `port` 也照着相应的输入端口命名
+
+`srcpart` 和 `srcport` 指数据通路 MUX 中对应的源端口的部件名和端口名
 
 不能用 `dw`，容易和 `dm` 混淆
 
@@ -71,9 +77,9 @@ pc, npc, rf, alu, ext, im, dm, bridge, cp0
 
 `cw_part_port`
 
-##### 控制 MUX 的 `wire`
+##### 控制数据通路 MUX 的 `wire`
 
-`cm_part_port`
+`cm_`_meaning_
 
 ##### 表明指令类型的 `wire`
 
