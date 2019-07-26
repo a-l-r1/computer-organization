@@ -76,20 +76,20 @@ npc npc(
 	.alu_comp_result(wo_alu_comp_result), 
 	.num(w_im_data[15:0]), 
 	.next_pc(w_pc_next_pc)
-)
+);
 
 pc pc(
 	.clk(clk), 
 	.next_pc(w_pc_next_pc), 
 	.enable(cw_pc_enable), 
 	.curr_pc(w_im_addr)
-)
+);
 
 im im(
 	.addr(w_im_addr), 
 	.enable(cw_im_enable), 
 	.result(w_control_curr_instr, w_im_result)
-)
+);
 
 /* ID / WB */
 
@@ -99,7 +99,7 @@ mux2 m_rf_write_addr(
 	.result(m_rf_write_addr), 
 	.input0(wo_im_result[20:16]), 
 	.input1(wo_im_result[15:11])
-)
+);
 
 mux2 m_rf_write_data(
 	.BIT_WIDTH(32), 
@@ -107,7 +107,7 @@ mux2 m_rf_write_data(
 	.result(m_rf_write_data), 
 	.input0(w_alu_result), 
 	.input1(w_dm_read_result)
-)
+);
 
 rf rf(
 	.clk(clk), 
@@ -118,13 +118,13 @@ rf rf(
 	.write_enable(cw_write_enable), 
 	.read_result1(w_alu_num1), 
 	.read_result2(wo_rf_read_result2) 
-)
+);
 
 ext ext(
 	.num(wo_im_result[15:0]), 
 	.mode(cw_ext_mode), 
 	.result(wo_ext_result)
-)
+);
 
 /* EX */
 
@@ -134,7 +134,7 @@ mux2 m_alu_num2(
 	.result(m_alu_num2), 
 	.input0(wo_rf_read_result2), 
 	.input1(wo_ext_result)
-)
+);
 
 alu alu(
 	.num1(w_alu_num1), 
@@ -148,7 +148,7 @@ alu alu(
 	.overflow(), 
 	/* unused */
 	.op_invalid()
-)
+);
 
 /* MEM */
 
@@ -159,7 +159,7 @@ dm dm(
 	.write_data(wo_rf_read_result2), 
 	.write_enable(cw_write_enable), 
 	.read_result(wo_dm_read_result), 
-)
+);
 
 endmodule
 
