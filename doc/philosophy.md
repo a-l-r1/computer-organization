@@ -47,7 +47,7 @@ pc, npc, rf, alu, ext, im, dm, bridge, cp0
 
 #### 数据通路 MUX 命名格式
 
-不用 `m_part_port`，用 `m_`_meaning_
+`m_part_port`
 
 `m` 就是 muxer 的意思，原来 `part` 和 `port` 指输出到哪个部件的哪个端口
 
@@ -57,9 +57,7 @@ pc, npc, rf, alu, ext, im, dm, bridge, cp0
 
 #### 数据通路 `wire` 命名格式
 
-`w_part_port`
-
-不用 `w_m_part_port_srcpart_srcport`，用 `m_`_meaning_`_srcpart_srcport`
+`w_part_port / w_m_part_port_srcpart_srcport`
 
 `w` 就是 wire 的意思，`part` 和 `port` 也照着相应的输入端口命名
 
