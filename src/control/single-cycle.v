@@ -20,7 +20,7 @@ module control(
 	output cw_alu_op, 
 	output cw_ext_mode, 
 	output cw_dm_write_enable
-)
+);
 
 /* TODO: debugging based on current instr */
 
