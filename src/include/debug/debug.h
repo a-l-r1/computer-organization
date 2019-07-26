@@ -5,11 +5,11 @@
 `define DEBUG
 
 `ifdef DEBUG
-`define debug_display display
-`define normal_display normal_display_wrapped
+`define debug_write(x) $write("%s", $sformatf A);
+`define normal_write(x) $write("[time %d] normal display: %s", $time, $sformatf A);
 `else
-`define debug_display do_nothing
-`define normal_display display
+`define debug_write(x) 
+`define normal_write(x) $write("%s", $sformatf A);
 `endif /* DEBUG */
 
 `endif /* DEBUG_H */
