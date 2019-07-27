@@ -26,12 +26,6 @@ module control(
 	output cw_dm_write_enable
 );
 
-/* TODO: what if curr_instr doesn't change between clock cycles? */
-always @(curr_instr) begin
-	`debug_write(("curr_instr = 0x%08x, op = 0b%6b, funct = 0b%6b, kind = %0d\n",
-		curr_instr, `GET_OP(curr_instr), `GET_FUNCT(curr_instr), curr_instr_kind));
-end
-
 /* actually unused */
 assign cw_pc_enable = `PC_ENABLED;
 assign cw_im_enable = `IM_ENABLED;
@@ -94,5 +88,11 @@ assign cw_ext_mode =
 assign cw_dm_write_enable = 
 	(curr_instr_kind == `INSTR_SW) ? `DM_WRITE_ENABLED : 
 	`DM_WRITE_DISABLED;
+
+/* TODO: what if curr_instr doesn't change between clock cycles? */
+always @(curr_instr) begin
+	`debug_write(("curr_instr = 0x%08x, op = 0b%6b, funct = 0b%6b, kind = %0d\n",
+		curr_instr, `GET_OP(curr_instr), `GET_FUNCT(curr_instr), curr_instr_kind));
+end
 
 endmodule
