@@ -25,8 +25,13 @@
 `define normal_write(A) $write A 
 `endif /* DEBUG */
 
+`ifdef DEBUG
 `define debug_display(A) `debug_write(A); $write("\n")
 `define normal_display(A) `normal_write(A); $write("\n")
+`else
+`define debug_display(A) 
+`define normal_display(A) `normal_write(A); $write("\n")
+`endif /* DEBUG */
 
 `endif /* DEBUG_H */
 
