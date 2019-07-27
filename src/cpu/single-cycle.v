@@ -116,7 +116,7 @@ rf rf(
 	.read_addr2(wo_im_result[20:16]), 
 	.write_addr(mo_rf_write_addr), 
 	.write_data(mo_rf_write_data), 
-	.write_enable(cw_write_enable), 
+	.write_enable(cw_rf_write_enable), 
 	.read_result1(w_alu_num1), 
 	.read_result2(wo_rf_read_result2) 
 );
@@ -157,7 +157,7 @@ dm dm(
 	.read_addr(wo_alu_result), 
 	.write_addr(wo_alu_result), 
 	.write_data(wo_rf_read_result2), 
-	.write_enable(cw_write_enable), 
+	.write_enable(cw_dm_write_enable), 
 	.read_result(wo_dm_read_result)
 );
 
