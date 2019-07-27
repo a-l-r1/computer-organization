@@ -53,15 +53,13 @@ assign w_control_curr_instr = wo_im_result;
 
 /* ID / WB */
 
-wire [4:0] m_rf_write_addr;
-wire [31:0] m_rf_write_data;
-wire [4:0] w_rf_write_addr;
-wire [31:0] w_rf_write_data;
+wire [4:0] mo_rf_write_addr;
+wire [31:0] mo_rf_write_data;
 wire [15:0] wo_ext_result;
 
 /* EX */
 
-wire [31:0] m_alu_num2; 
+wire [31:0] mo_alu_num2;
 wire [31:0] w_alu_num1;
 wire [31:0] wo_alu_result;
 wire [1:0] wo_alu_comp_result;
@@ -100,7 +98,7 @@ im im(
 mux2 m_rf_write_addr(
 	.BIT_WIDTH(5), 
 	.control(cm_rf_write_addr), 
-	.result(m_rf_write_addr), 
+	.result(mo_rf_write_addr), 
 	.input0(wo_im_result[20:16]), 
 	.input1(wo_im_result[15:11])
 );
@@ -108,17 +106,17 @@ mux2 m_rf_write_addr(
 mux2 m_rf_write_data(
 	.BIT_WIDTH(32), 
 	.control(cm_rf_write_data), 
-	.result(m_rf_write_data), 
+	.result(mo_rf_write_data), 
 	.input0(w_alu_result), 
-	.input1(w_dm_read_result)
+	.input1(wo_dm_read_result)
 );
 
 rf rf(
 	.clk(clk), 
 	.read_addr1(wo_im_result[25:21]), 
 	.read_addr2(wo_im_result[20:16]), 
-	.write_addr(m_rf_write_addr), 
-	.write_data(m_rf_write_data), 
+	.write_addr(mo_rf_write_addr), 
+	.write_data(mo_rf_write_data), 
 	.write_enable(cw_write_enable), 
 	.read_result1(w_alu_num1), 
 	.read_result2(wo_rf_read_result2) 
@@ -135,7 +133,7 @@ ext ext(
 mux2 m_alu_num2(
 	.BIT_WIDTH(32), 
 	.control(cm_alu_num2), 
-	.result(m_alu_num2), 
+	.result(mo_alu_num2), 
 	.input0(wo_rf_read_result2), 
 	.input1(wo_ext_result)
 );
