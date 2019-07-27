@@ -1,6 +1,10 @@
 `include "npc.h"
 `include "alu.h"
 
+`define PART_NAME "npc"
+
+`include "debug/debug.h"
+
 module npc(
 	input [31:0] curr_pc, 
 	input [2:0] jump_mode, 
