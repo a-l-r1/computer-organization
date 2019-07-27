@@ -2,14 +2,27 @@
 `define DEBUG_H
 
 /* The ultimate switch */
+/* WARNING: use `undef to turn off debugging properly */
+
 `define DEBUG
 
+/* Default PART_NAME */
+
+`ifndef PART_NAME
+`define PART_NAME "debug"
+`endif
+
+/* Mind the brackets! */
+
 `ifdef DEBUG
-`define debug_write(x) $write("%s", $sformatf A);
-`define normal_write(x) $write("[time %d] normal display: %s", $time, $sformatf A);
+/* PART_NAME will be defined by the using part */
+/* the default PART_NAME is defined above for safety */
+`define debug_write(A) $write("[time %0d] ", $time); $write(`PART_NAME); $write(": "); $write A 
+`define normal_write(A) $write("[time %0d] [normal display] ", $time); $write A 
 `else
-`define debug_write(x) 
-`define normal_write(x) $write("%s", $sformatf A);
+/* effectively no-op */
+`define debug_write(A) 
+`define normal_write(A) $write A 
 `endif /* DEBUG */
 
 `endif /* DEBUG_H */
