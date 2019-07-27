@@ -18,7 +18,7 @@ module alu(
 /* TODO: what if both num1 and num2 don't change? */
 
 always @(num1 or num2) begin
-	`debug_write("num1 = 0x%08x, num2 = 0x%08x, op = 0b%5b\n", num1, num2, op);
+	`debug_write(("num1 = 0x%08x, num2 = 0x%08x, op = 0b%5b\n", num1, num2, op));
 end
 
 assign {op_invalid, result} = 
