@@ -78,7 +78,7 @@ npc npc(
 	.curr_pc(w_npc_curr_pc), 
 	.jump_mode(cw_npc_jump_mode), 
 	.alu_comp_result(wo_alu_comp_result), 
-	.num(w_im_data[15:0]), 
+	.num(wo_im_result[15:0]), 
 	.next_pc(w_pc_next_pc)
 );
 
