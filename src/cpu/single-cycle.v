@@ -20,7 +20,8 @@ module cpu(
 
 wire [31:0] w_control_curr_instr;
 wire cm_rf_write_addr, cm_rf_write_data, cm_alu_num2;
-wire cw_npc_jump_mode, cw_pc_enable, cw_im_enable, cw_rf_write_enable, cw_dm_write_enable;
+wire cw_pc_enable, cw_im_enable, cw_rf_write_enable, cw_dm_write_enable;
+wire [2:0] cw_npc_jump_mode;
 wire [4:0] cw_alu_op;
 wire [2:0] cw_ext_mode;
 
@@ -105,7 +106,7 @@ mux2 #(.BIT_WIDTH(5)) m_rf_write_addr (
 mux2 #(.BIT_WIDTH(32)) m_rf_write_data (
 	.control(cm_rf_write_data), 
 	.result(mo_rf_write_data), 
-	.input0(w_alu_result), 
+	.input0(wo_alu_result), 
 	.input1(wo_dm_read_result)
 );
 
