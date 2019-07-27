@@ -38,5 +38,10 @@ assign read_result1 = (read_addr1 != `RF_ADDR_ZERO) ? registers[read_addr1] : 32
 
 assign read_result2 = (read_addr2 != `RF_ADDR_ZERO) ? registers[read_addr2] : 32'b0;
 
+always @(posedge clk) begin
+	`debug_write(("write_enable = %0d, read_addr1 = %0d, read_addr2 = %0d, write_addr = %0d\n", write_enable, read_addr1, read_addr2, write_addr));
+	`debug_write(("read_result1 = 0x%08x, read_result2 = 0x%08x, write_data = 0x%08x\n", read_result1, read_result2, write_data));
+end
+
 endmodule
 
