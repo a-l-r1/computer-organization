@@ -65,7 +65,7 @@ assign cw_npc_jump_mode =
 	`NPC_JUMP_DISABLED;
 
 assign cw_rf_write_enable =
-	(curr_instr_kind == `INSTR_ADDU || curr_instr_kind == `INSTR_SUBU || curr_instr_kind == `INSTR_LUI || curr_instr_kind == `INSTR_ORI || curr_instr_kind == `INSTR_SW) ? `RF_WRITE_ENABLED : 
+	(curr_instr_kind == `INSTR_ADDU || curr_instr_kind == `INSTR_SUBU || curr_instr_kind == `INSTR_LUI || curr_instr_kind == `INSTR_ORI || curr_instr_kind == `INSTR_LW) ? `RF_WRITE_ENABLED : 
 	`RF_WRITE_DISABLED;
 
 assign cw_alu_op =
