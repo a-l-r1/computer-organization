@@ -1,5 +1,9 @@
 `include "alu.h"
 
+`define PART_NAME "alu"
+
+`include "debug/debug.h"
+
 module alu(
 	input [31:0] num1, 
 	input [31:0] num2, 
@@ -10,6 +14,12 @@ module alu(
 	output overflow, 
 	output op_invalid
 );
+
+/* TODO: what if both num1 and num2 don't change? */
+
+always @(num1 or num2) begin
+	`debug_write("num1 = 0x%08x, num2 = 0x%08x, op = 0b%5b\n", num1, num2, op);
+end
 
 assign {op_invalid, result} = 
 	(op == `ALU_ADD) ? {1'b0, $unsigned(num1) + $unsigned(num2)} : 
