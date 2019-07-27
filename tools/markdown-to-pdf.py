@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Simple script to convert markdown to python, using pandoc on Linux.
-import sys
 import os
+import sys
 
 
 def main() -> None:
