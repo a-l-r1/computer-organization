@@ -36,7 +36,7 @@
 
 有 `DM_SIZE` 个 32 位存储器，代表其中存储的指令。它们初值都为 `32'b0`。
 
-在每个时钟上升沿，若 `write_enable == DM_ENABLED`，则 `write_addr[DM_ADDR_WIDTH - 1:1]` 这个地址对应的 32 位字写入 `write_data` 对应的值。
+在每个时钟上升沿，若 `write_enable == DM_ENABLED`，则 `write_addr[DM_ADDR_WIDTH - 1:1]` 这个地址对应的 32 位字写入 `write_data` 对应的值。同时，打印 `write_addr`、`write_addr` 这个地址对应的 32 位字原来的值、它的新值。
 
 任何时候，`read_result` 的值为 `read_addr[DM_ADDR_WIDTH - 1:1]` 对应的地址的值。
 
