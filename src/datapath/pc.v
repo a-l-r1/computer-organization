@@ -1,5 +1,9 @@
 `include "pc.h"
 
+`define PART_NAME "pc"
+
+`include "debug/debug.h"
+
 module pc(
 	input clk, 
 	input [31:0] next_pc, 
@@ -20,6 +24,10 @@ always @(posedge clk) begin
 end
 
 assign curr_pc = saved_pc;
+
+always @(posedge clk or curr_pc) begin
+	`debug_write(("enable = %0d, curr_pc = 0x%08d\n", enable, curr_pc));
+end
 
 endmodule
 
