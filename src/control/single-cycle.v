@@ -8,21 +8,28 @@
 `include "pc.h"
 `include "rf.h"
 
+`define PART_NAME "control"
+
+`include "debug/debug.h"
+
 module control(
 	input [31:0] curr_instr, 
 	output cm_rf_write_addr, 
 	output cm_rf_write_data, 
 	output cm_alu_num2, 
-	output cw_npc_jump_mode, 
+	output [2:0] cw_npc_jump_mode, 
 	output cw_pc_enable, 
 	output cw_im_enable, 
 	output cw_rf_write_enable, 
-	output cw_alu_op, 
-	output cw_ext_mode, 
+	output [4:0] cw_alu_op, 
+	output [2:0] cw_ext_mode, 
 	output cw_dm_write_enable
 );
 
-/* TODO: debugging based on current instr */
+/* TODO: what if curr_instr doesn't change between clock cycles? */
+always @(curr_instr) begin
+	`debug_write(("curr_instr = %0x\n", curr_instr));
+end
 
 /* actually unused */
 assign cw_pc_enable = `PC_ENABLED;
@@ -88,4 +95,3 @@ assign cw_dm_write_enable =
 	`DM_WRITE_DISABLED;
 
 endmodule
-
