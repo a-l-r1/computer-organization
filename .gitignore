@@ -1,1 +1,6 @@
+# temporary directory
 tmp/
+
+# vim swap files
+*.swp
+
