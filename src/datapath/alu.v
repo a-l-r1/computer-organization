@@ -15,12 +15,6 @@ module alu(
 	output op_invalid
 );
 
-/* TODO: what if both num1 and num2 don't change? */
-
-always @(num1 or num2) begin
-	`debug_write(("num1 = 0x%08x, num2 = 0x%08x, op = 0b%5b\n", num1, num2, op));
-end
-
 assign {op_invalid, result} = 
 	(op == `ALU_ADD) ? {1'b0, $unsigned(num1) + $unsigned(num2)} : 
 	(op == `ALU_SUB) ? {1'b0, $unsigned(num1) - $unsigned(num2)} : 
@@ -49,6 +43,11 @@ assign sig_comp_result =
 	($signed(num1) == $signed(num2)) ? `ALU_EQUAL : 
 	($signed(num1) < $signed(num2)) ? `ALU_SMALLER : 
 	`ALU_LARGER;
+
+/* TODO: what if both num1 and num2 don't change? */
+always @(num1 or num2) begin
+	`debug_write(("num1 = 0x%08x, num2 = 0x%08x, op = 0b%5b, result = 0x%08x\n", num1, num2, op, result));
+end
 
 endmodule
 
