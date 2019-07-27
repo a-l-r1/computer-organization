@@ -26,6 +26,12 @@ initial begin
 end
 
 always @(posedge clk) begin
+	`debug_write(("write_enable = %0d, read_addr1 = %0d, read_addr2 = %0d, write_addr = %0d\n", write_enable, read_addr1, read_addr2, write_addr));
+	`debug_write(("read_result1 = 0x%08x, read_result2 = 0x%08x, write_data = 0x%08x\n", read_result1, read_result2, write_data));
+end
+
+
+always @(posedge clk) begin
 	if (write_enable == `RF_WRITE_ENABLED) begin
 		if (write_addr != `RF_ADDR_ZERO) begin
 			`normal_display((`RF_OUTPUT_FORMAT, $unsigned(write_addr), $unsigned(registers[write_addr]), write_data));
@@ -37,11 +43,6 @@ end
 assign read_result1 = (read_addr1 != `RF_ADDR_ZERO) ? registers[read_addr1] : 32'b0;
 
 assign read_result2 = (read_addr2 != `RF_ADDR_ZERO) ? registers[read_addr2] : 32'b0;
-
-always @(posedge clk) begin
-	`debug_write(("write_enable = %0d, read_addr1 = %0d, read_addr2 = %0d, write_addr = %0d\n", write_enable, read_addr1, read_addr2, write_addr));
-	`debug_write(("read_result1 = 0x%08x, read_result2 = 0x%08x, write_data = 0x%08x\n", read_result1, read_result2, write_data));
-end
 
 endmodule
 
