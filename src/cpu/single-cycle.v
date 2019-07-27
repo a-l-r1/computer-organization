@@ -45,7 +45,6 @@ control control(
 
 /* IF */
 
-wire [31:0] w_npc_curr_pc;
 wire [31:0] w_pc_next_pc;
 wire [31:0] w_im_addr;
 wire [31:0] wo_im_result;
@@ -57,6 +56,7 @@ assign w_control_curr_instr = wo_im_result;
 wire [4:0] mo_rf_write_addr;
 wire [31:0] mo_rf_write_data;
 wire [31:0] wo_ext_result;
+wire [31:0] wo_rf_read_result2;
 
 /* EX */
 
@@ -74,7 +74,7 @@ wire [31:0] wo_dm_read_result;
 /* IF */
 
 npc npc(
-	.curr_pc(w_npc_curr_pc), 
+	.curr_pc(w_im_addr), 
 	.jump_mode(cw_npc_jump_mode), 
 	.alu_comp_result(wo_alu_comp_result), 
 	.num(wo_im_result[15:0]), 
