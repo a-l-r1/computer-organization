@@ -27,5 +27,10 @@ end
 
 assign read_result = memory[read_addr[`DM_ADDR_WIDTH - 1:2]];
 
+always @(posedge clk) begin
+	`debug_write(("write_enable = %0d, read_addr = 0x%08x, write_addr = 0x%08x\n", write_enable, read_addr, write_addr));
+	`debug_write(("read_result = 0x%08x, write_result = 0x%08x\n", read_result, write_result));
+end
+
 endmodule
 
