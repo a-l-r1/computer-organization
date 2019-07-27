@@ -1,5 +1,7 @@
 `include "debug/debug.h"
 
+`define PART_NAME "debug-print-test"
+
 module debug_print_test(
 );
 
@@ -19,7 +21,11 @@ initial begin
 	$write("\n");
 
 	/* three arguments */
-	`debug_write(("%d + %d = 5", 2, 2));
+	`debug_write(("%d + %d = 4", 2, 2));
+	$write("\n");
+	
+	/* normal printing */
+	`normal_write(("four legs good, two legs bad"));
 	$write("\n");
 end
 
