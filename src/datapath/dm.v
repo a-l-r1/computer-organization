@@ -24,6 +24,11 @@ initial begin
 end
 
 always @(posedge clk) begin
+	`debug_write(("write_enable = %0d, read_addr = 0x%08x, write_addr = 0x%08x\n", write_enable, read_addr, write_addr));
+	`debug_write(("read_result = 0x%08x, write_data = 0x%08x\n", read_result, write_data));
+end
+
+always @(posedge clk) begin
 	if (write_enable == `DM_WRITE_ENABLE) begin
 		memory[write_addr[`DM_ADDR_WIDTH - 1:2]] <= write_data;
 		`normal_display((`DM_OUTPUT_FORMAT, write_addr, memory[write_addr[`DM_ADDR_WIDTH - 1:2]], write_data));
@@ -31,11 +36,6 @@ always @(posedge clk) begin
 end
 
 assign read_result = memory[read_addr[`DM_ADDR_WIDTH - 1:2]];
-
-always @(posedge clk) begin
-	`debug_write(("write_enable = %0d, read_addr = 0x%08x, write_addr = 0x%08x\n", write_enable, read_addr, write_addr));
-	`debug_write(("read_result = 0x%08x, write_data = 0x%08x\n", read_result, write_data));
-end
 
 endmodule
 
