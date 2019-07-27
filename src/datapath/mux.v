@@ -1,5 +1,8 @@
 `include "mux.h"
 
+/* TODO: is this correct? */
+parameter BIT_WIDTH = 32;
+
 module mux2(
 	/* just one bit */
 	input control, 
@@ -7,8 +10,6 @@ module mux2(
 	input [BIT_WIDTH - 1:0] input1, 
 	output [BIT_WIDTH - 1:0] result
 );
-
-parameter BIT_WIDTH = 32;
 
 assign result = 
 	(control == 1'd0) ? input0 :
@@ -24,8 +25,6 @@ module mux3(
 	input [BIT_WIDTH - 1:0] input2, 
 	output [BIT_WIDTH - 1:0] result
 );
-
-parameter BIT_WIDTH = 32;
 
 assign result = 
 	(control == 2'd0) ? input0 : 
@@ -43,8 +42,6 @@ module mux4(
 	input [BIT_WIDTH - 1:0] input3, 
 	output [BIT_WIDTH - 1:0] result
 );
-
-parameter BIT_WIDTH = 32;
 
 assign result = 
 	(control == 2'd0) ? input0 :
@@ -64,8 +61,6 @@ module mux5(
 	input [BIT_WIDTH - 1:0] input4, 
 	output [BIT_WIDTH - 1:0] result
 )
-
-parameter BIT_WIDTH = 32;
 
 assign result = 
 	(control == 3'd0) ? input0 : 
