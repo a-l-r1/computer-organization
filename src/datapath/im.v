@@ -25,7 +25,7 @@ end
 /* TODO: what if the address doesn't change? */
 
 always @(addr) begin
-	`debug_write(("enable = %0d, addr = 0x%08x, result = 0x%08x", enable, addr, result));
+	`debug_write(("enable = %0d, addr = 0x%08x, result = 0x%08x\n", enable, addr, result));
 end
 
 assign result = 
