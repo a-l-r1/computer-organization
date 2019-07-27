@@ -1,5 +1,9 @@
 `include "dm.h"
 
+`define PART_NAME "dm"
+
+`include "debug/debug.h"
+
 module dm(
 	input clk, 
 	input [31:0] read_addr, 
