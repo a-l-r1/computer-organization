@@ -160,7 +160,7 @@ dm dm(
 	.write_addr(wo_alu_result), 
 	.write_data(wo_rf_read_result2), 
 	.write_enable(cw_write_enable), 
-	.read_result(wo_dm_read_result), 
+	.read_result(wo_dm_read_result)
 );
 
 endmodule
