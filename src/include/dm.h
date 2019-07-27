@@ -9,5 +9,7 @@
 `define DM_ADDR_WIDTH 8
 `define DM_SIZE 64
 
+`define DM_OUTPUT_FORMAT "0x%08x: 0x%08x => 0x%08x"
+
 `endif
 
