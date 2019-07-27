@@ -18,9 +18,11 @@ module cpu(
 
 /* wire declarations */
 
-wire w_control_curr_instr;
+wire [31:0] w_control_curr_instr;
 wire cm_rf_write_addr, cm_rf_write_data, cm_alu_num2;
-wire cw_npc_jump_mode, cw_pc_enable, cw_im_enable, cw_rf_write_enable, cw_alu_op, cw_ext_mode, cw_dm_write_enable;
+wire cw_npc_jump_mode, cw_pc_enable, cw_im_enable, cw_rf_write_enable, cw_dm_write_enable;
+wire [4:0] cw_alu_op;
+wire [2:0] cw_ext_mode;
 
 /* module references */
 
@@ -42,9 +44,9 @@ control control(
 
 /* IF */
 
-wire w_npc_curr_pc;
-wire w_pc_next_pc;
-wire w_im_addr;
+wire [31:0] w_npc_curr_pc;
+wire [31:0] w_pc_next_pc;
+wire [31:0] w_im_addr;
 wire [31:0] wo_im_result;
 /* break circular dependency of im and control */
 assign w_control_curr_instr = wo_im_result;
