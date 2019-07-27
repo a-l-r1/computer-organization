@@ -31,6 +31,8 @@ static unsigned int ng6[] = {885408322U, 0U};
 static unsigned int ng7[] = {2353070088U, 0U};
 static unsigned int ng8[] = {2889941008U, 0U};
 static unsigned int ng9[] = {290127865U, 0U};
+static unsigned int ng10[] = {2885877760U, 0U};
+static unsigned int ng11[] = {2885877768U, 0U};
 
 
 
@@ -139,14 +141,34 @@ LAB13:    xsi_set_current_line(95, ng0);
     t2 = ((char*)((ng9)));
     t3 = (t0 + 2888);
     xsi_vlogvar_assign_value(t3, t2, 0, 0, 32);
+    xsi_set_current_line(97, ng0);
+    t2 = (t0 + 3616);
+    xsi_process_wait(t2, 10000LL);
+    *((char **)t1) = &&LAB14;
+    goto LAB1;
+
+LAB14:    xsi_set_current_line(98, ng0);
+    t2 = ((char*)((ng10)));
+    t3 = (t0 + 2888);
+    xsi_vlogvar_assign_value(t3, t2, 0, 0, 32);
+    xsi_set_current_line(100, ng0);
+    t2 = (t0 + 3616);
+    xsi_process_wait(t2, 10000LL);
+    *((char **)t1) = &&LAB15;
+    goto LAB1;
+
+LAB15:    xsi_set_current_line(101, ng0);
+    t2 = ((char*)((ng11)));
+    t3 = (t0 + 2888);
+    xsi_vlogvar_assign_value(t3, t2, 0, 0, 32);
     goto LAB1;
 
 }
 
 
-extern void work_m_00000000002727938411_2144801286_init()
+extern void work_m_00000000002727938411_1063044526_init()
 {
 	static char *pe[] = {(void *)Initial_57_0};
-	xsi_register_didat("work_m_00000000002727938411_2144801286", "isim/single_cycle_tb_isim_beh.exe.sim/work/m_00000000002727938411_2144801286.didat");
+	xsi_register_didat("work_m_00000000002727938411_1063044526", "isim/control_single_cycle_tb_isim_beh.exe.sim/work/m_00000000002727938411_1063044526.didat");
 	xsi_register_executes(pe);
 }

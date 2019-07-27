@@ -1,3 +1,2 @@
-verilog isim_temp "../src/datapath/rf.v"
 verilog isim_temp "../tests/datapath/rf_tb.v"
 verilog isim_temp "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v"
