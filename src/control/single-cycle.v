@@ -52,7 +52,7 @@ assign cm_rf_write_addr =
 
 assign cm_rf_write_data = 
 	(curr_instr_kind == `INSTR_ADDU || curr_instr_kind == `INSTR_SUBU || curr_instr_kind == `INSTR_LUI || curr_instr_kind == `INSTR_ORI || curr_instr_kind == `INSTR_SW || curr_instr_kind == `INSTR_BEQ || curr_instr_kind == `INSTR_NOP) ? `CM_RF_WRITE_DATA_ALU_RESULT : 
-	(curr_instr_kind == `INSTR_SW) ? `CM_RF_WRITE_DATA_DM_READ_RESULT : 
+	(curr_instr_kind == `INSTR_LW) ? `CM_RF_WRITE_DATA_DM_READ_RESULT : 
 	`CM_RF_WRITE_DATA_ALU_RESULT;
 
 assign cm_alu_num2 = 
