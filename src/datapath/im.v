@@ -25,11 +25,12 @@ end
 /* TODO: what if the address doesn't change? */
 
 always @(addr) begin
-	`debug_write(("enable = %0d, addr = 0x%08x, result = 0x%08x\n", enable, addr, result));
+	`debug_write(("enable = %0d, addr = 0x%08x, real_addr = 0x%08x, result = 0x%08x\n",
+		enable, addr, addr[`IM_ADDR_WIDTH - 1:2], result));
 end
 
 assign result = 
-	(enable == `IM_ENABLE) ? memory[addr[`IM_ADDR_WIDTH - 1:1]] : 
+	(enable == `IM_ENABLE) ? memory[addr[`IM_ADDR_WIDTH - 1:2]] : 
 	32'b0;
 
 endmodule
