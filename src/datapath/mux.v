@@ -41,7 +41,7 @@ module mux4(
 	input [BIT_WIDTH - 1:0] input1, 
 	input [BIT_WIDTH - 1:0] input2, 
 	input [BIT_WIDTH - 1:0] input3, 
-	output [BIT_WIDDTH - 1:0] result
+	output [BIT_WIDTH - 1:0] result
 );
 
 parameter BIT_WIDTH = 32;
