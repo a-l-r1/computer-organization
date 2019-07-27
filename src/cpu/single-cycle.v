@@ -45,14 +45,16 @@ control control(
 wire w_npc_curr_pc;
 wire w_pc_next_pc;
 wire w_im_addr;
-wire wo_im_result;
+wire [31:0] wo_im_result;
 /* break circular dependency of im and control */
 assign w_control_curr_instr = wo_im_result;
 
 /* ID / WB */
 
-wire [4:0] m_rf_write_addr, [31:0] m_rf_write_data;
-wire [4:0] w_rf_write_addr, [31:0] w_rf_write_data;
+wire [4:0] m_rf_write_addr;
+wire [31:0] m_rf_write_data;
+wire [4:0] w_rf_write_addr;
+wire [31:0] w_rf_write_data;
 wire [15:0] wo_ext_result;
 
 /* EX */
@@ -88,7 +90,7 @@ pc pc(
 im im(
 	.addr(w_im_addr), 
 	.enable(cw_im_enable), 
-	.result(w_control_curr_instr, w_im_result)
+	.result(wo_im_result)
 );
 
 /* ID / WB */
