@@ -28,7 +28,8 @@ module control(
 
 /* TODO: what if curr_instr doesn't change between clock cycles? */
 always @(curr_instr) begin
-	`debug_write(("curr_instr = %0x\n", curr_instr));
+	`debug_write(("curr_instr = 0x%08x, op = 0b%06b, funct = 0b%06b, kind = %0d\n",
+		curr_instr, `GET_OP(curr_instr), `GET_FUNCT(curr_instr), curr_instr_kind));
 end
 
 /* actually unused */
@@ -70,7 +71,7 @@ assign cw_npc_jump_mode =
 	`NPC_JUMP_DISABLED;
 
 assign cw_rf_write_enable =
-	(curr_instr_kind == `INSTR_ADDU || curr_instr_kind == `INSTR_SUBU || curr_instr_kind == `INSTR_LUI || curr_instr_kind == `INSTR_ORI || curr_instr_kind == `INSTR_LW || curr_instr_kind == `INSTR_SW) ? `RF_WRITE_ENABLED : 
+	(curr_instr_kind == `INSTR_ADDU || curr_instr_kind == `INSTR_SUBU || curr_instr_kind == `INSTR_LUI || curr_instr_kind == `INSTR_ORI || curr_instr_kind == `INSTR_SW) ? `RF_WRITE_ENABLED : 
 	`RF_WRITE_DISABLED;
 
 assign cw_alu_op =
