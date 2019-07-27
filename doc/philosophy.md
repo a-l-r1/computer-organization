@@ -77,7 +77,11 @@ pc, npc, rf, alu, ext, im, dm, bridge, cp0
 
 ##### 控制数据通路 MUX 的 `wire`
 
-`cm_`_meaning_
+`cm_part_port`
+
+##### 数据通路 MUX 输出 `wire`
+
+`mo_part_port`
 
 ##### 表明指令类型的 `wire`
 
