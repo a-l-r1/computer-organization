@@ -13,6 +13,10 @@ module pc(
 
 reg [31:0] saved_pc;
 
+always @(posedge clk or curr_pc) begin
+	`debug_write(("enable = %0d, curr_pc = 0x%08d\n", enable, curr_pc));
+end
+
 initial begin
 	saved_pc = 32'b0;
 end
@@ -24,10 +28,6 @@ always @(posedge clk) begin
 end
 
 assign curr_pc = saved_pc;
-
-always @(posedge clk or curr_pc) begin
-	`debug_write(("enable = %0d, curr_pc = 0x%08d\n", enable, curr_pc));
-end
 
 endmodule
 
