@@ -1,5 +1,9 @@
 `include "im.h"
 
+`define PART_NAME "im"
+
+`include "debug/debug.h"
+
 module im(
 	input [31:0] addr, 
 	input enable, 
@@ -16,6 +20,12 @@ initial begin
 	end
 
 	$readmemh(`IM_CODE_FILENAME, memory, 0);
+end
+
+/* TODO: what if the address doesn't change? */
+
+always @(addr) begin
+	`debug_write(("enable = %0d, addr = 0x%08x, result = 0x%08x", enable, addr, result));
 end
 
 assign result = 
