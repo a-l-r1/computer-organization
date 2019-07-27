@@ -2,7 +2,7 @@
 `define SINGLE_CYCLE_H
 
 `define GET_OP(x) (x[31:26])
-`define GET_FUNCT(x) (x[25:11])
+`define GET_FUNCT(x) (x[5:0])
 
 `define R_TYPE 2'b00
 `define I_TYPE 2'b01
