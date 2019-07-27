@@ -1,4 +1,4 @@
-`include "control.h"
+`include "single-cycle.h"
 
 `include "npc.h"
 `include "pc.h"
