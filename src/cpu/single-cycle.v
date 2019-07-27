@@ -95,16 +95,14 @@ im im(
 
 /* ID / WB */
 
-mux2 m_rf_write_addr(
-	.BIT_WIDTH(5), 
+mux2 #(.BIT_WIDTH(5)) m_rf_write_addr (
 	.control(cm_rf_write_addr), 
 	.result(mo_rf_write_addr), 
 	.input0(wo_im_result[20:16]), 
 	.input1(wo_im_result[15:11])
 );
 
-mux2 m_rf_write_data(
-	.BIT_WIDTH(32), 
+mux2 #(.BIT_WIDTH(32)) m_rf_write_data (
 	.control(cm_rf_write_data), 
 	.result(mo_rf_write_data), 
 	.input0(w_alu_result), 
@@ -130,8 +128,7 @@ ext ext(
 
 /* EX */
 
-mux2 m_alu_num2(
-	.BIT_WIDTH(32), 
+mux2 #(.BIT_WIDTH(32)) m_alu_num2 (
 	.control(cm_alu_num2), 
 	.result(mo_alu_num2), 
 	.input0(wo_rf_read_result2), 
@@ -140,7 +137,7 @@ mux2 m_alu_num2(
 
 alu alu(
 	.num1(w_alu_num1), 
-	.num2(m_alu_num2), 
+	.num2(mo_alu_num2), 
 	.op(cw_alu_op), 
 	.result(wo_alu_result), 
 	.comp_result(wo_alu_comp_result), 
