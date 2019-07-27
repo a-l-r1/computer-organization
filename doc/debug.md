@@ -57,10 +57,10 @@ Verilog 不支持宏函数的变个数参数，不像 C 语言有相应的机制
 代码如下：
 
 ```verilog
-`define debug_print(A) $write("%s", $sformatf A );
+`define debug_print(A) $write A 
 ```
 
-注意 `$sformatf A` 的 `A` 周围没有括号。这样，调用宏函数 `debug_print` 时补上括号即可。在预处理时，会自动把括号当成 `$sformatf` 周围的括号。
+注意 `$write A ` 的 `A` 周围没有括号。这样，调用宏函数 `debug_print` 时补上括号即可。在预处理时，会自动把括号当成 `$write` 周围的括号。`$write A ` 后面也没有分号，这是为了编写程序方便，因为语句后面通常会加上分号。
 
 ```verilog
 `debug_print(("%d", 2 + 2));
@@ -70,7 +70,12 @@ Verilog 不支持宏函数的变个数参数，不像 C 语言有相应的机制
 
 同时，为了区别 debug 模式和正常模式，需要用到预处理时的对宏的条件判断。
 
+#### 打印部件名的实现
+
+能打印部件名，是在 Debug 相关宏函数的定义中打印出 `PART_NAME` 宏的内容实现的。但是，这种打印需要 `PART_NAME` 宏的内容，但是只要 `PART_NAME` 宏在使用它的文件处定义就行了。为了保险起见，在 `debug.h` 里检测到如果 `PART_NAME` 宏未定义，就会把它定义成默认值，避免调用 debug 相关宏函数时出错。
+
 ### 注意事项
 
 1. **调用 debug 打印相关宏时注意加两个括号！**
+2. 最好在相应的部件中加上对 `PART_NAME` 宏的定义
 
