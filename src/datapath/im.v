@@ -1,7 +1,7 @@
 `include "im.h"
 
 module im(
-	input [`IM_ADDR_WIDTH - 1:0] addr, 
+	input [31:0] addr, 
 	input enable, 
 	output [31:0] result
 );
