@@ -56,7 +56,7 @@ assign w_control_curr_instr = wo_im_result;
 
 wire [4:0] mo_rf_write_addr;
 wire [31:0] mo_rf_write_data;
-wire [15:0] wo_ext_result;
+wire [31:0] wo_ext_result;
 
 /* EX */
 
