@@ -28,7 +28,7 @@ always @(posedge clk) begin
 		memory[write_addr[`DM_ADDR_WIDTH - 1:2]] <= write_data;
 	end
 
-	`normal_display((`DM_OUTPUT_FORMAT, write_addr, memory[write_addr[`DM_ADDR_WIDTH - 1:2]], write_result));
+	`normal_display((`DM_OUTPUT_FORMAT, write_addr, memory[write_addr[`DM_ADDR_WIDTH - 1:2]], write_data));
 end
 
 assign read_result = memory[read_addr[`DM_ADDR_WIDTH - 1:2]];
