@@ -26,11 +26,12 @@ end
 
 always @(addr) begin
 	`debug_write(("enable = %0d, addr = 0x%08x, real_addr = 0x%08x, result = 0x%08x\n",
-		enable, addr, addr[`IM_ADDR_WIDTH - 1:2], result));
+		enable, addr, ($unsigned(addr) - $unsigned(`IM_START_ADDRESS))[`IM_ADDR_WIDTH - 1:2], result));
 end
 
 assign result = 
-	(enable == `IM_ENABLE) ? memory[addr[`IM_ADDR_WIDTH - 1:2]] : 
+	(enable == `IM_ENABLE && $unsigned(addr) < $unsigned(`IM_START_ADDRESS)) ? 32'b0: 
+	(enable == `IM_ENABLE && $unsigned(addr) >= $unsigned(`IM_START_ADDRESS)) ? memory[($unsigned(addr) - $unsigned(`IM_START_ADDRESS))[`IM_ADDR_WIDTH - 1:2]] : 
 	32'b0;
 
 endmodule
