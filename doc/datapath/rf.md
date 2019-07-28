@@ -42,7 +42,7 @@
 
 有 31 个 32 位寄存器，代表 `$1`~`$31`，它们初值都为 `32'b0`。`$0` 实际上不需要寄存器。
 
-在每个时钟上升沿，若 `write_enable == RF_WRITE_ENABLED` 且 `write_addr != RF_ADDR_ZERO`，则说明可以执行写操作，且写到的寄存器是可以保存数值的寄存器。此时把 `write_addr` 指代的寄存器的值更新为 `write_data`。更新时，以模版中的格式打印出数据变化，第一个参数是寄存器号，第二个参数是寄存器原来的值，第三个参数时更新后的值。
+在每个时钟上升沿，若 `write_enable == RF_WRITE_ENABLED` 且 `write_addr != RF_ADDR_ZERO`，则说明可以执行写操作，且写到的寄存器是可以保存数值的寄存器。此时把 `write_addr` 指代的寄存器的值更新为 `write_data`。更新时，以模版中的格式打印出数据变化，第一个参数是当前的模拟时钟的时间，第二个参数是当前 PC 的值，第三个参数是寄存器号，第四个参数是更新后的值。
 
 无论什么时候，若 `read_addr1 != RF_ADDR_ZERO`，则把 `read_addr1` 指代的寄存器的值输出到 `read_result1` 中，否则把 `32'b0` 输出到 `read_result1` 中。对 `read_addr2` 和 `read_result2` 的相应操作相同。
 
