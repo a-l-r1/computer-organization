@@ -5,6 +5,7 @@
 import os
 import pathlib
 import sys
+import shutil
 import tempfile
 
 from pathlib import Path
@@ -64,11 +65,14 @@ def main() -> None:
                 os.environ['PATH']
 
         # mips-as will do the necessary checks
-        os.system(' '.join(
+        ret = os.system(' '.join(
                 ['mips-as.py', 
                     sys.argv[2], 
                     temp_path + '/' + 'code.hex'
                     ]))
+        # mips-as encountered an error
+        if ret != 0:
+            sys.exit(ret)
 
         # TODO: use context managers for safer operations
         # change cwd, so the simulation program is able to find code.hex
@@ -77,8 +81,13 @@ def main() -> None:
 
         os.system('./' + target)
 
-        # change it back for potential future operations
+        # change it back for future operations
         os.chdir(old_cwd)
+
+        try:
+            shutil.rmtree(temp_path)
+        except:
+            raise
 
     except:
         raise
