@@ -6,6 +6,7 @@
 
 module dm(
 	input clk, 
+	input curr_pc, 
 	input [31:0] read_addr, 
 	input [31:0] write_addr, 
 	input [31:0] write_data, 
@@ -24,14 +25,14 @@ initial begin
 end
 
 always @(posedge clk) begin
-	`debug_write(("write_enable = %0d, read_addr = 0x%08x, write_addr = 0x%08x\n", write_enable, read_addr, write_addr));
+	`debug_write(("curr_pc = 0x%08x, write_enable = %0d, read_addr = 0x%08x, write_addr = 0x%08x\n", curr_pc, write_enable, read_addr, write_addr));
 	`debug_write(("read_result = 0x%08x, write_data = 0x%08x\n", read_result, write_data));
 end
 
 always @(posedge clk) begin
 	if (write_enable == `DM_WRITE_ENABLE) begin
 		memory[write_addr[`DM_ADDR_WIDTH - 1:2]] <= write_data;
-		`normal_display((`DM_OUTPUT_FORMAT, write_addr, memory[write_addr[`DM_ADDR_WIDTH - 1:2]], write_data));
+		`normal_display((`DM_OUTPUT_FORMAT, $time, curr_pc, write_addr, write_data));
 	end
 end
 
