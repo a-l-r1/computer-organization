@@ -6,6 +6,7 @@
 
 module rf(
 	input clk, 
+	input [31:0] curr_pc, 
 	input [4:0] read_addr1, 
 	input [4:0] read_addr2, 
 	input [4:0] write_addr, 
@@ -26,7 +27,7 @@ initial begin
 end
 
 always @(posedge clk) begin
-	`debug_write(("write_enable = %0d, read_addr1 = %0d, read_addr2 = %0d, write_addr = %0d\n", write_enable, read_addr1, read_addr2, write_addr));
+	`debug_write(("curr_pc = 0x%08x, write_enable = %0d, read_addr1 = %0d, read_addr2 = %0d, write_addr = %0d\n", curr_pc, write_enable, read_addr1, read_addr2, write_addr));
 	`debug_write(("read_result1 = 0x%08x, read_result2 = 0x%08x, write_data = 0x%08x\n", read_result1, read_result2, write_data));
 end
 
@@ -34,7 +35,7 @@ end
 always @(posedge clk) begin
 	if (write_enable == `RF_WRITE_ENABLED) begin
 		if (write_addr != `RF_ADDR_ZERO) begin
-			`normal_display((`RF_OUTPUT_FORMAT, $unsigned(write_addr), $unsigned(registers[write_addr]), write_data));
+			`normal_display((`RF_OUTPUT_FORMAT, $time, curr_pc, write_addr, write_data));
 			registers[write_addr] <= write_data;
 		end
 	end
