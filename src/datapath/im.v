@@ -22,18 +22,18 @@ initial begin
 	$readmemh(`IM_CODE_FILENAME, memory, 0);
 end
 
+wire [31:0] im_calculated_address;
+
+/* Don't worry about underflows, it's taken care of by the first check in 
+ * assign result */
+assign im_calculated_address = $unsigned(addr) - $unsigned(`IM_START_ADDRESS);
+
 /* TODO: what if the address doesn't change? */
 
 always @(addr) begin
 	`debug_write(("enable = %0d, addr = 0x%08x, real_addr = 0x%08x, result = 0x%08x\n",
 		enable, addr, ($unsigned(addr) - $unsigned(`IM_START_ADDRESS))[`IM_ADDR_WIDTH - 1:2], result));
 end
-
-wire [31:0] im_calculated_address;
-
-/* Don't worry about underflows, it's taken care of by the first check in 
- * assign result */
-assign im_calculated_address = $unsigned(addr) - $unsigned(`IM_START_ADDRESS);
 
 assign result = 
 	(enable == `IM_ENABLE && $unsigned(addr) < $unsigned(`IM_START_ADDRESS)) ? 32'b0 : 
