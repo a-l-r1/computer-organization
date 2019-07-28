@@ -25,6 +25,7 @@
 `enable` | `IM_DISABLE` | `1'b0` | IM 非使能
 `enable` | `IM_DISABLED` | `IM_DISABLE` | 
 `addr` | `IM_ADDR_WIDTH` | 8 | `addr` 的位宽
+`addr` | `IM_START_ADDRESS` | 32 | IM 对外表现的起始地址
 指令存储器 | `IM_SIZE` | 64 | 能存储指令的个数
 指令存储器 | `IM_CODE_FILENAME` | `"code/code.hex"` | 要加载的机器码
 
@@ -32,10 +33,14 @@
 
 有 `IM_SIZE` 个 32 位存储器，代表其中存储的指令。它们初值应该使用加载文件的系统任务加载。加载文件名由 `IM_CODE_FILENAME` 指定。
 
-若 `enable == IM_ENABLED`，则 `result` 为 `addr[IM_ADDR_WIDTH - 1:1]` 对应的指令（从存储器中取得），否则 `result` 为 `32'b0`。
+若 `enable == IM_ENABLED`，若 `addr` 作为无符号数小于 `IM_START_ADDRESS`，则也返回 `32'b0`。否则，`result` 为 `addr - IM_START_ADDRESS` 这个地址再取 `[IM_ADDR_WIDTH - 1:2]` 对应的指令（从存储器中取得，是两个无符号数相减）。若相减后的结果超出了已经加载的指令所占的地址空间，则 `result` 为 `32'b0`。
+
+若 `enable == IM_DISABLED`，则 `result` 为 `32'b0`。
 
 ### 注意事项
 
 1. `IM_ADDR_WIDTH` 和 `IM_SIZE` 需要一块改，因为它们的大小有关系
-2. 以后可能会有 offset，注意一点
+2. 有 offset 了，注意跟 offset 相减是无符号数相减
+3. offset 主要是为了和 MARS 兼容
+
 
