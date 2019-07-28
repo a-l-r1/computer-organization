@@ -27,7 +27,7 @@
 module im_tb;
 
 	// Inputs
-	reg [`IM_ADDR_WIDTH - 1:0] addr;
+	reg [31:0] addr;
 	reg enable;
 
 	// Outputs
