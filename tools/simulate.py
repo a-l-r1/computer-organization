@@ -14,9 +14,9 @@ from pathlib import Path
 _tmp_dir = 'tmp/'
 
 _datapath_dir = 'src/datapath'
-_datapath_srcs = list(map(str, Path(_datapath_dir).iterdir()))
+_datapath_srcs = list(filter(lambda x: x.endswith('.v'), map(str, Path(_datapath_dir).iterdir())))
 _debug_dir = 'src/debug'
-_debug_srcs = list(map(str, Path(_debug_dir).iterdir()))
+_debug_srcs = list(filter(lambda x: x.endswith('.v'), map(str, Path(_debug_dir).iterdir())))
 
 _include_dir = 'src/include'
 _include_options = ['-I' + _include_dir]
