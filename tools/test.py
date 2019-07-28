@@ -86,7 +86,7 @@ def main() -> None:
     # TODO: colordiff on Windows?
     diff_result = subprocess.run(['colordiff', '-u', ref_output_file.name, output_file.name])
     if diff_result.returncode == 0:
-        print('%s: test passed with target %s and asm file %s' % (sys.argv[0], sys.argv[1], sys.argv[2]))
+        print('%s: test passed: target %s, asmfile %s' % (sys.argv[0], sys.argv[1], sys.argv[2]))
 
     shutil.rmtree(temp_path)
 
