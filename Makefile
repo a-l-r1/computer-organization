@@ -16,8 +16,8 @@ code:
 	$(PYTHON) $(MIPS_AS) $(ASM_FILE) $(CODE_FILE)
 
 debug_on:
-	$(PYTHON) $(DEBUG_CONTROL) on
+	$(PYTHON) $(DEBUG_CONTROL) $(DEBUG_H_FILE) on
 
 debug_off:
-	$(PYTHON) $(DEBUG_CONTROL) off
+	$(PYTHON) $(DEBUG_CONTROL) $(DEBUG_H_FILE) off
 
