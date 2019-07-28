@@ -42,7 +42,7 @@ module im_tb;
 
 	initial begin
 		// Initialize Inputs
-		addr = 0;
+		addr = `IM_START_ADDRESS;
 		enable = 0;
 
 		// Wait 100 ns for global reset to finish
@@ -54,12 +54,17 @@ module im_tb;
 		
 		/* disabled */
 		#20;
-		addr = 0;
+		addr = $unsigned(`IM_START_ADDRESS) + $unsigned(0);
 		enable = `IM_DISABLED;
 		
 		/* enabled */
 		#20;
-		addr = 0;
+		addr = $unsigned(`IM_START_ADDRESS) + $unsigned(0);
+		enable = `IM_ENABLED;
+
+		/* underflow */
+		#20;
+		addr = $unsigned(`IM_START_ADDRESS) - $unsigned(4);
 		enable = `IM_ENABLED;
 	end
       
