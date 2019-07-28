@@ -88,6 +88,8 @@ def main() -> None:
     if diff_result.returncode == 0:
         print('%s: test passed with target %s and asm file %s' % (sys.argv[0], sys.argv[1], sys.argv[2]))
 
+    shutil.rmtree(temp_path)
+
 
 if __name__ == '__main__':
     main()
