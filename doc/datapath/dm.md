@@ -11,6 +11,7 @@
 端口 | 类型 | 位宽 | 功能
 --- | --- | --- | ---
 `clk` | 输入 | 1 | 时钟信号
+`curr_pc` | 输入 | 32 | 当前 PC 值
 `read_addr` | 输入 | 32 | 读地址
 `write_addr` | 输入 | 32 | 写地址
 `write_data` | 输入 | 32 | 写数据
@@ -36,7 +37,7 @@
 
 有 `DM_SIZE` 个 32 位存储器，代表其中存储的指令。它们初值都为 `32'b0`。
 
-在每个时钟上升沿，若 `write_enable == DM_ENABLED`，则 `write_addr[DM_ADDR_WIDTH - 1:1]` 这个地址对应的 32 位字写入 `write_data` 对应的值。同时，打印 `write_addr`、`write_addr` 这个地址对应的 32 位字原来的值、它的新值。
+在每个时钟上升沿，若 `write_enable == DM_ENABLED`，则 `write_addr[DM_ADDR_WIDTH - 1:1]` 这个地址对应的 32 位字写入 `write_data` 对应的值。同时，打印当前 PC 的值、`write_addr`、`write_addr` 这个地址对应的 32 位字原来的值、它的新值。
 
 任何时候，`read_result` 的值为 `read_addr[DM_ADDR_WIDTH - 1:1]` 对应的地址的值。
 
