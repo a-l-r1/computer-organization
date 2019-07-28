@@ -11,4 +11,7 @@
 
 `define IM_CODE_FILENAME "code.hex"
 
+`define IM_START_ADDRESS 32'h00003000
+
 `endif
+
