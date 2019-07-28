@@ -84,11 +84,7 @@ def main() -> None:
         # change it back for future operations
         os.chdir(old_cwd)
 
-        try:
-            shutil.rmtree(temp_path)
-        except:
-            raise
-
+        shutil.rmtree(temp_path)
     except:
         raise
 
