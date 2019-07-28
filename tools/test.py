@@ -12,6 +12,8 @@ from typing import List, Tuple
 
 
 def _get_command_result(args: List[str]) -> str:
+    # TODO: deal with stderr
+
     # os.system emulation
     result = subprocess.run(args, stdout=subprocess.PIPE)
     if result.returncode != 0:
