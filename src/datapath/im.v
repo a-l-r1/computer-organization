@@ -30,7 +30,7 @@ always @(addr) begin
 end
 
 assign result = 
-	(enable == `IM_ENABLE && $unsigned(addr) < $unsigned(`IM_START_ADDRESS)) ? 32'b0: 
+	(enable == `IM_ENABLE && $unsigned(addr) < $unsigned(`IM_START_ADDRESS)) ? 32'b0 : 
 	(enable == `IM_ENABLE && $unsigned(addr) >= $unsigned(`IM_START_ADDRESS)) ? memory[($unsigned(addr) - $unsigned(`IM_START_ADDRESS))[`IM_ADDR_WIDTH - 1:2]] : 
 	32'b0;
 
