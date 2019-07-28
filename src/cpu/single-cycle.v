@@ -112,6 +112,7 @@ mux2 #(.BIT_WIDTH(32)) m_rf_write_data (
 
 rf rf(
 	.clk(clk), 
+	.curr_pc(w_im_addr), 
 	.read_addr1(wo_im_result[25:21]), 
 	.read_addr2(wo_im_result[20:16]), 
 	.write_addr(mo_rf_write_addr), 
@@ -154,6 +155,7 @@ alu alu(
 
 dm dm(
 	.clk(clk), 
+	.curr_pc(w_im_addr), 
 	.read_addr(wo_alu_result), 
 	.write_addr(wo_alu_result), 
 	.write_data(wo_rf_read_result2), 
