@@ -51,12 +51,14 @@ def main() -> None:
         # tempfile.mkdtemp will actually create the directory by the most secure method possible
         temp_path = tempfile.mkdtemp(prefix='simulate-', dir='tmp/')
 
+        # It seems that iSim uses IEEE1364-2001 standard, so we have to downgrade to an older version of Verilog. 
         os.system(' '.join(
                 ['iverilog', 
+                    '-g2001', 
                     *_targets[target], 
                     '-o', temp_path + '/' + target
                     ]))
-        
+
         # modify $PATH for automatic mips-as inclusion
         # TODO: shell script-like hack
         os.environ['PATH'] = \
