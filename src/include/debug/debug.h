@@ -6,6 +6,12 @@
 
 `define DEBUG
 
+/* Force override debugging */
+`ifdef NODEBUG
+/* Add comments for preventing tools/debug-control.py from griefing */
+`undef /* */ DEBUG
+`endif
+
 /* Default PART_NAME */
 
 `ifndef PART_NAME
