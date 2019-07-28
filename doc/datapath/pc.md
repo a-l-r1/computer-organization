@@ -25,14 +25,19 @@ PC 只负责表示程序执行到哪里，而 PC 的更新由 NPC 模块负责�
 `enable` | `PC_ENABLE` | `PC_ENABLED` | 
 `enable` | `PC_DISABLED` | 1'b0 | PC 非使能
 `enable` | `PC_DISABLE` | `PC_DISABLED` | 
+`curr_pc` | `PC_START_ADDRESS` | 32'h00003000 | PC 的起始地址
 
 ### 功能
 
 该部件是时序部件。
 
-有一个 32 位的寄存器保存当前 PC 的值，初值为 32'b0。
+有一个 32 位的寄存器保存当前 PC 的值，初值为 `PC_START_ADDRESS`。
 
 在每个时钟上升沿，若 `enable == PC_ENABLED`，则把 PC 部件中保存的当前 PC 的值更新成 `next_pc` 的值。否则，保存的当前 PC 的值不变。
 
 无论什么时候，输出端口 `curr_pc` 的值都是 PC 部件中保存的当前 PC 的值。
+
+### 注意事项
+
+1. PC 和 IM 的起始地址是分开定义的，改的时候要注意。
 
