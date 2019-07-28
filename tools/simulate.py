@@ -37,6 +37,7 @@ def main() -> None:
     if len(sys.argv) != 3 or (len(sys.argv) == 4 and sys.argv[3] != 'nodebug'):
         print('usage: %s <target> <path/to/asm-file.asm> [nodebug]' % sys.argv[0])
         print('available targets: %s' % ', '.join([*_targets.keys(), *_target_aliases.keys()]))
+        sys.exit(1)
 
     if sys.argv[1] not in [*_targets.keys(), *_target_aliases.keys()]:
         raise RuntimeError('invalid target %s' % sys.argv[1])
