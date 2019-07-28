@@ -34,7 +34,7 @@ def main() -> None:
     if sys.platform not in ['linux']:
         raise RuntimeError('OS unsupported')
 
-    if len(sys.argv) != 3 or (len(sys.argv) == 4 and sys.argv[3] != 'nodebug'):
+    if len(sys.argv) not in [3, 4] or (len(sys.argv) == 4 and sys.argv[3] != 'nodebug'):
         print('usage: %s <target> <path/to/asm-file.asm> [nodebug]' % sys.argv[0])
         print('available targets: %s' % ', '.join([*_targets.keys(), *_target_aliases.keys()]))
         sys.exit(1)
@@ -49,7 +49,7 @@ def main() -> None:
 
     # Use an iterable to take advantage of the * operator
     # Remember short circuit evaluation
-    nodebug_options = ['-D', 'DEBUG='] if len(sys.argv) == 4 and sys.argv[3] == 'nodebug' else []
+    nodebug_options = ['-D', 'NODEBUG='] if len(sys.argv) == 4 and sys.argv[3] == 'nodebug' else []
     
     try:
         # tempfile.mkdtemp will actually create the directory by the most secure method possible
