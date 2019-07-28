@@ -9,7 +9,7 @@
 `define DM_ADDR_WIDTH 8
 `define DM_SIZE 64
 
-`define DM_OUTPUT_FORMAT "%0d@%h: *%h <= %h"
+`define DM_OUTPUT_FORMAT "%d@%h: *%h <= %h"
 
 `endif
 

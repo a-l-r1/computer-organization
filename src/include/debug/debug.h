@@ -1,10 +1,10 @@
 `ifndef DEBUG_H
-`define DEBUG_H
+`undef DEBUG_H
 
 /* The ultimate switch */
 /* WARNING: use `undef to turn off debugging properly */
 
-`define DEBUG
+`undef DEBUG
 
 /* Default PART_NAME */
 

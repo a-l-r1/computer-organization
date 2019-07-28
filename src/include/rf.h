@@ -8,7 +8,7 @@
 `define RF_WRITE_DISABLED 1'b0
 `define RF_WRITE_DISABLE `RF_WRITE_DISABLED
 
-`define RF_OUTPUT_FORMAT "%0d@%h: $%0d <= %h"
+`define RF_OUTPUT_FORMAT "%d@%h: $%d <= %h"
 
 `endif
 
