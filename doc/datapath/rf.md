@@ -34,7 +34,7 @@
 `write_enable` | `RF_WRITE_ENABLE` | `RF_WRITE_ENABLED` | 
 `write_enable` | `RF_WRITE_DISABLED` | 1'b0 | 寄存器堆非使能
 `write_enable` | `RF_WRITE_DISABLE` | `RF_WRITE_DISABLED` | 
-输出 | `RF_OUTPUT_FORMAT` | `"%d: 0x%08x => 0x%08x" | 输出模版
+输出 | `RF_OUTPUT_FORMAT` | `"%d: 0x%08x => 0x%08x"` | 输出模版
 
 ### 功能
 
