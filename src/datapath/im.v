@@ -29,9 +29,15 @@ always @(addr) begin
 		enable, addr, ($unsigned(addr) - $unsigned(`IM_START_ADDRESS))[`IM_ADDR_WIDTH - 1:2], result));
 end
 
+wire [31:0] im_calculated_address;
+
+/* Don't worry about underflows, it's taken care of by the first check in 
+ * assign result */
+assign im_calculated_address = $unsigned(addr) - $unsigned(`IM_START_ADDRESS);
+
 assign result = 
 	(enable == `IM_ENABLE && $unsigned(addr) < $unsigned(`IM_START_ADDRESS)) ? 32'b0 : 
-	(enable == `IM_ENABLE && $unsigned(addr) >= $unsigned(`IM_START_ADDRESS)) ? memory[($unsigned(addr) - $unsigned(`IM_START_ADDRESS))[`IM_ADDR_WIDTH - 1:2]] : 
+	(enable == `IM_ENABLE && $unsigned(addr) >= $unsigned(`IM_START_ADDRESS)) ? memory[im_calculated_address[`IM_ADDR_WIDTH - 1:2]] : 
 	32'b0;
 
 endmodule
