@@ -6,5 +6,7 @@
 `define PC_DISABLED 1'b0
 `define PC_DISABLE `PC_DISABLED
 
+`define PC_START_ADDRESS 32'h00003000
+
 `endif
 

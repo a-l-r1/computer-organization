@@ -18,7 +18,7 @@ always @(posedge clk or curr_pc) begin
 end
 
 initial begin
-	saved_pc = 32'b0;
+	saved_pc = `PC_START_ADDRESS;
 end
 
 always @(posedge clk) begin
