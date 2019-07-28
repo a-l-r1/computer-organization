@@ -41,7 +41,7 @@ module single_cycle_tb;
         
 		// Add stimulus here
 		/* No stimuli, but finishing the simulation is needed */
-		#200; $finish;
+		#1000; $finish;
 	end
 	
 	always begin
