@@ -32,7 +32,7 @@ assign im_calculated_address = $unsigned(addr) - $unsigned(`IM_START_ADDRESS);
 
 always @(addr) begin
 	`debug_write(("enable = %0d, addr = 0x%08x, real_addr = 0x%08x, result = 0x%08x\n",
-		enable, addr, ($unsigned(addr) - $unsigned(`IM_START_ADDRESS))[`IM_ADDR_WIDTH - 1:2], result));
+		enable, addr, im_calculated_address[`IM_ADDR_WIDTH - 1:2], result));
 end
 
 assign result = 
