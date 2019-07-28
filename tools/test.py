@@ -70,7 +70,7 @@ def main() -> None:
 
     try:
         ref_output = _get_command_result(['simulate-mars.py', sys.argv[2]])
-        output = _get_command_result(['simulate.py', sys.argv[1], sys.argv[2]])
+        output = _get_command_result(['simulate.py', sys.argv[1], sys.argv[2], 'nodebug'])
     except:
         raise
 
