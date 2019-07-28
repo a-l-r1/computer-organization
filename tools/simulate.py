@@ -34,10 +34,9 @@ def main() -> None:
     if sys.platform not in ['linux']:
         raise RuntimeError('OS unsupported')
 
-    if len(sys.argv) != 3:
-        print('usage: %s <target> <path/to/asm-file.asm>' % sys.argv[0])
+    if len(sys.argv) != 3 or (len(sys.argv) == 4 and sys.argv[3] != 'nodebug'):
+        print('usage: %s <target> <path/to/asm-file.asm> [nodebug]' % sys.argv[0])
         print('available targets: %s' % ', '.join([*_targets.keys(), *_target_aliases.keys()]))
-        sys.exit(1)
 
     if sys.argv[1] not in [*_targets.keys(), *_target_aliases.keys()]:
         raise RuntimeError('invalid target %s' % sys.argv[1])
@@ -46,6 +45,10 @@ def main() -> None:
 
     if target in _target_aliases.keys():
         target = _target_aliases[target]
+
+    # Use an iterable to take advantage of the * operator
+    # Remember short circuit evaluation
+    nodebug_options = ['-D', 'DEBUG='] if len(sys.argv) == 4 and sys.argv[3] == 'nodebug' else []
     
     try:
         # tempfile.mkdtemp will actually create the directory by the most secure method possible
@@ -55,6 +58,7 @@ def main() -> None:
         os.system(' '.join(
                 ['iverilog', 
                     '-g2001', 
+                    *nodebug_options, 
                     *_targets[target], 
                     '-o', temp_path + '/' + target
                     ]))
