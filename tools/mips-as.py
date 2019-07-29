@@ -13,13 +13,15 @@ def linux_main() -> int:
         raise RuntimeError('argv 1 %s doesn\'t end with .asm' % sys.argv[1])
 
     try:
+        # If this statement is successfully executed, the return code will be one of MARS
         # nc - Don't display copyright information
         # HexText - Dump hexadecimal text.
         os.execve(java_path, [java_path.split('/')[-1], '-jar', mars_path, 'nc', 'a', 'dump', '.text', 'HexText', sys.argv[2], sys.argv[1]], os.environ)
     except:
         raise
 
-    return 0
+    # os.execve won't return
+    return 1
 
 
 def main() -> None:
