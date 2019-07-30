@@ -26,11 +26,11 @@ end
 
 	case (datapath_type) begin
 		`UNKNOWN: get_read_reg1 = `REG_NULL;
-		`CAL_R: get_read_reg1 = instr[25:21];
-		`CAL_I: get_read_reg1 = instr[25:21];
-		`LOAD: get_read_reg1 = instr[25:21];
-		`STORE: get_read_reg1 = instr[25:21];
-		`BRANCH: get_read_reg1 = instr[25:21];
+		`CAL_R: get_read_reg1 = `GET_RS(instr);
+		`CAL_I: get_read_reg1 = `GET_RS(instr);
+		`LOAD: get_read_reg1 = `GET_RS(instr);
+		`STORE: get_read_reg1 = `GET_RS(instr);
+		`BRANCH: get_read_reg1 = `GET_RS(instr);
 		`NOP: get_read_reg1 = `REG_NULL;
 	endcase
 end
@@ -43,11 +43,11 @@ end
 
 	case (datapath_type) begin
 		`UNKNOWN: get_read_reg2 = `REG_NULL;
-		`CAL_R: get_read_reg2 = instr[20:16];
+		`CAL_R: get_read_reg2 = `GET_RT(instr);
 		`CAL_I: get_read_reg2 = `REG_NULL;
 		`LOAD: get_read_reg2 = `REG_NULL;
-		`STORE: get_read_reg2 = instr[20:16];
-		`BRANCH: get_read_reg2 = instr[20:16];
+		`STORE: get_read_reg2 = `GET_RT(instr);
+		`BRANCH: get_read_reg2 = `GET_RT(instr);
 		`NOP: get_read_reg2 = `REG_NULL;
 	endcase
 end
@@ -60,9 +60,9 @@ end
 
 	case (datapath_type) begin
 		`UNKNOWN: get_write_reg = `REG_NULL;
-		`CAL_R: get_write_reg = instr[15:11];
-		`CAL_I: get_write_reg = instr[20:16];
-		`LOAD: get_write_reg = instr[20:16];
+		`CAL_R: get_write_reg = `GET_RD(instr);
+		`CAL_I: get_write_reg = `GET_RT(instr);
+		`LOAD: get_write_reg = `GET_RT(instr);
 		`STORE: get_write_reg = `REG_NULL;
 		`BRANCH: get_write_reg = `REG_NULL;
 		`NOP: get_write_reg = `REG_NULL;
