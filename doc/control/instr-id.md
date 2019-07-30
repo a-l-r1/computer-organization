@@ -72,6 +72,41 @@ TODO: 函数需要的控制信号
 
 指令的意义在表示相应指令的情况下省略不写。但如果有相应备注，也会在这栏注明。
 
+##### 指令字段
+
+类别 | 定义 | 值 | 意义
+--- | --- | --- | ---
+指令字段 | `GET_OP(x)` | `(x[31:26])` | 指令的 `op` 字段
+指令字段 | `GET_RS(x)` | `(x[25:21])` | 指令的 `rs` 字段
+指令字段 | `GET_RT(x)` | `(x[20:16])` | 指令的 `rt` 字段
+指令字段 | `GET_RD(x)` | `(x[15:11])` | 指令的 `rd` 字段
+指令字段 | `GET_SHAMT(x)` | `(x[10:6])` | 指令的 `shamt` 字段
+指令字段 | `GET_FUNCT(x)` | `(x[5:0])` | 指令的 `funct` 字段
+指令字段 | `GET_IMM(x)` | `(x[15:0])` | 指令的 `imm` 字段
+指令字段 | `GET_IMM_J(x)` | `(x[25:0])` | `j` 指令的 `imm` 字段
+
+##### 指令魔数
+
+如果意义中没有写明，那么该宏都指的是哪个指令的什么字段。下划线前是字段名称，下划线后是指令名称。
+
+类别 | 定义 | 值 | 意义
+--- | --- | --- | ---
+指令魔数 | `RS_ZERO` | `5'b00000` | 全为 0 的 `rs` 字段
+指令魔数 | `RT_ZERO` | `5'b00000` | 全为 0 的 `rt` 字段
+指令魔数 | `SHAMT_ZERO` | `5'b00000` | 全为 0 的 `shamt` 字段
+指令魔数 | `OP_R` | `6'b000000` | R 型指令的 `op` 字段
+指令魔数 | `FUNCT_ADDU` | `6'b100001` | 
+指令魔数 | `FUNCT_SUBU` | `6'b100011` | 
+指令魔数 | `OP_LUI` | `6'b001111` | 
+指令魔数 | `OP_ORI` | `6'b001101` | 
+指令魔数 | `OP_LW` | `6'b100011` | 
+指令魔数 | `OP_SW` | `6'b101011` | 
+指令魔数 | `OP_BEQ` | `6'b000100` | 
+指令魔数 | `OP_NOP` | `6'b000000` | 
+指令魔数 | `FUNCT_ZERO` | `6'b000000` | 
+
+##### 指令类型
+
 类别 | 定义 | 值 | 意义
 --- | --- | --- | ---
 指令类型 | `UNKNOWN` | `9'b0000_00000` | 未知指令
@@ -125,11 +160,11 @@ TODO: 函数需要的控制信号
 数据通路类型 | `get_read_reg1` | `get_read_reg2` | `get_write_reg`
 --- | --- | --- | ---
 `UNKNOWN` | `REG_NULL` | `REG_NULL` | `REG_NULL` 
-`CAL_R` | `instr[25:21]` | `instr[20:16]` | `instr[15:11]` 
-`CAL_I` | `instr[25:21]` | `REG_NULL` | `instr[20:16]` 
-`LOAD` | `instr[25:21]` | `REG_NULL` | `instr[20:16]` 
-`STORE` | `instr[25:21]` | `instr[20:16]` | `REG_NULL` 
-`BRANCH` | `instr[25:21]` | `instr[20:16]` | `REG_NULL` 
+`CAL_R` | `GET_RS(instr)` | `GET_RT(instr)` | `GET_RD(instr)` 
+`CAL_I` | `GET_RS(instr)` | `REG_NULL` | `GET_RT(instr)` 
+`LOAD` | `GET_RS(instr)` | `REG_NULL` | `GET_RT(instr)` 
+`STORE` | `GET_RS(instr)` | `GET_RT(instr)` | `REG_NULL` 
+`BRANCH` | `GET_RS(instr)` | `GET_RT(instr)` | `REG_NULL` 
 `NOP` | `REG_NULL` | `REG_NULL` | `REG_NULL` 
 
 ### `can_fw_reg1` 和 `can_fw_reg2`
