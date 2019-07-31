@@ -7,6 +7,35 @@
 `ROBOST_FUNCTION [8:0] get_kind begin
 	input [31:0] instr;
 	
+	case `GET_OP(instr) begin
+		`OP_R : begin
+			case `GET_FUNCT(instr) begin
+				`FUNCT_ADDU: begin
+					`IF_OR_UNKNOWN(`GET_SHAMT(instr) == `SHAMT_ZERO, `ADDU);
+				end
+				`FUNCT_SUBU: begin
+					`IF_OR_UNKNOWN(`GET_SHAMT(instr) == `SHAMT_ZERO, `SUBU);
+				end
+				default: get_kind = `UNKNOWN;
+			end
+		end
+		`OP_LUI: begin
+			`IF_OR_UNKNOWN(`GET_RS(instr) == `REG_ZERO, `LUI);
+		end
+		`OP_ORI: get_kind = `ORI;
+		`OP_LW: get_kind = `LW;
+		`OP_SW: get_kind = `SW;
+		`OP_BEQ: get_kind = `BEQ;
+		`OP_NOP: begin
+			/* TODO: hack */
+			if (instr == 32'b0) begin
+				get_kind = `NOP;
+			end else begin
+				get_kind = `UNKNOWN;
+			end
+		end
+		default: get_kind = `UNKNOWN;
+	end
 end
 
 `ROBOST_FUNCTION [3:0] get_datapath_type begin
