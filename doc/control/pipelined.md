@@ -89,13 +89,15 @@
 
 #### W 级（WB）
 
-数据通路类型 | `W: rf.write_enable` | `m_rf.write_data`
+数据通路类型 | `W: rf.write_enable` | `m_rf_write_data`
 --- | --- | --- | ---
 `UNKNOWN` | `1'b0` | `#E: alu.result`
 `CAL_R` | `1'b1` | `E: alu.result`
 `CAL_I` | `1'b1` | `E: alu.result`
 `LOAD` | `1'b0` | `E: dm.read_result`
 `STORE` | `1'b1` | `#E: alu.result`
+`BRANCH` | `1'b0` | `#E: alu.result`
+`NOP` | `1'b0` | `#E: alu.result`
 
 ### 转发控制信号
 
@@ -158,7 +160,20 @@ MUX | 宏 | 值 | 意义
 
 由于已经有指令识别函数了，所以寄存器的地址控制可以简化。只需要在 D 级和 M 级的三个地址端口输入指令识别函数相应的结果即可。
 
-### 实现
+### 函数定义
 
 真正实现控制信号时，都是通过函数实现的。这样总体上能提高可维护性，而且不会引入时序代码。
+
+除了在指令识别函数系列中已经定义过的函数，各函数的输入输出定义如下。
+
+函数 | 输入 | 输出
+--- | --- | ---
+`get_ext_mode` | `input [31:0] instr` | `[2:0]`
+`get_m_alu_num2` | `input [31:0] instr` | 一位
+`get_alu_op` | `input [31:0] instr` | `[4:0]`
+`get_dm_write_enable` | `input [31:0] instr` | 一位
+`get_rf_write_enable` | `input [31:0] instr` | 一位
+`get_m_rf_write_data` | `input [31:0] instr` | 一位
+`get_fm_d[12]` | `input [31:0] instr` | `[1:0]`
+`get_fm_e[12]` | `input [31:0] instr` | `[1:0]`
 
