@@ -94,8 +94,8 @@
 `UNKNOWN` | `1'b0` | `#E: alu.result`
 `CAL_R` | `1'b1` | `E: alu.result`
 `CAL_I` | `1'b1` | `E: alu.result`
-`LOAD` | `1'b0` | `E: dm.read_result`
-`STORE` | `1'b1` | `#E: alu.result`
+`LOAD` | `1'b1` | `E: dm.read_result`
+`STORE` | `1'b0` | `#E: alu.result`
 `BRANCH` | `1'b0` | `#E: alu.result`
 `NOP` | `1'b0` | `#E: alu.result`
 
