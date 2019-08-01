@@ -37,7 +37,7 @@ p4 需要实现的 8 条指令为：
 这时可以看出如下的端口需要 MUX:
 
 端口 | 所有的信号来源 | MUX 名称
---- | ---
+--- | --- | ---
 `rf.write_addr` | `im.data[20:16], im.data[15:11]` | `m_rf_write_addr` 
 `rf.write_data` | `alu.result, dm.read_result` | `m_rf_write_data` 
 `alu.num2` | `rf.read_result2, ext.result` | `m_alu_num2` 
