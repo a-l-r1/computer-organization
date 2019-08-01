@@ -12,7 +12,9 @@
 --- | --- | --- | ---
 `clk` | 输入 | 1 | 时钟信号
 `curr_instr` | 输入 | 32 | 当前在 F 级（IF）的指令
-`cw_pc_enable` | 输出 | 1 | 控制 `pc` 使能
+`cw_f_pc_enable` | 输出 | 1 | 控制 `pc` 使能
+`cw_f_npc_jump_mode` | 输出 | 3 | 控制 `npc` 的跳转模式
+`cw_f_npc_num` | 输出 | 26 | `npc` 跳转需要的立即数
 `cw_d_pff_enable` | 输出 | 1 | 控制 D 级流水线寄存器使能
 `cw_d_ext_mode` | 输出 | 3 | 控制 `D: ext.mode`
 `cw_d_rf_read_addr1` | 输出 | 5 | 控制 `D: rf.read_addr1`
@@ -181,6 +183,16 @@ MUX | 宏 | 值 | 意义
 
 由于已经有指令识别函数了，所以寄存器的地址控制可以简化。只需要在 D 级和 M 级的三个地址端口输入指令识别函数相应的结果即可。
 
+### `npc` 控制信号
+
+由于需要支持多种地址长度的跳转指令，而且 `npc` 的数据需要由 E 级产生，所以需要有对 `npc.num` 和 `npc.jump_mode` 的控制信号。
+
+若输入的指令非跳转指令，则输出的 `npc.jump_mode` 为 `NPC_JUMP_DISABLED`，且 `num` 为 `26'b0`，否则按下表输出。输入的指令用 `instr` 表示。
+
+指令类型 | `npc.jump_mode` | `npc.num`
+--- | --- | ---
+`beq` | `NPC_JUMP_WHEN_EQUAL` | `instr[15:0]` 经符号扩展到 26 位后的结果
+
 ### 函数定义
 
 真正实现控制信号时，都是通过函数实现的。这样总体上能提高可维护性，而且不会引入时序代码。
@@ -189,6 +201,8 @@ MUX | 宏 | 值 | 意义
 
 函数 | 输入 | 输出
 --- | --- | ---
+`get_f_npc_num` | `input [31:0] instr` | `[25:0]`
+`get_f_npc_jump_mode` | `input [31:0] instr` | `[2:0]`
 `get_d_ext_mode` | `input [31:0] instr` | `[2:0]`
 `get_e_m_alu_num2` | `input [31:0] instr` | 一位
 `get_e_alu_op` | `input [31:0] instr` | `[4:0]`
