@@ -112,6 +112,8 @@ W | `dm.read_result` | `w_dm_read_result`
 `E: alu.num2` | `D: rf.read_result2, D: ext.result` | `m_alu_num2`
 `W: rf.write_data` | `E: alu.result, M: im.read_result` | `m_rf_write_data`
 
+注意：**都是把信号来源从 0 开始编号，对应 MUX 的 `input`_n_ 接第 _n_ 个信号源。**
+
 #### 转发
 
 需要转发是因为可能出现后面的指令需要使用前面的指令的结果，而前面的指令结果来不及写回（数据冒险）的情况。由于同一个时钟周期只有一条指令读写 `dm`，所以 `dm` 不需要转发。但是 `rf` 在同一个时钟周期内一般会有多条指令读写，所以 `rf` 需要转发。
