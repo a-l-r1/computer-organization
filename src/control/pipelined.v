@@ -120,7 +120,7 @@ endfunction
 	end
 endfunction
 
-`ROBOUST_FUNCTION get_ext_mode begin
+`ROBOUST_FUNCTION get_d_ext_mode begin
 	input [31:0] instr;
 	reg [8:0] kind;
 	reg [3:0] datapath_type;
@@ -144,7 +144,7 @@ endfunction
 	endcase
 endfunction
 
-`ROBUST_FUNCTION get_m_alu_num2 begin
+`ROBUST_FUNCTION get_e_m_alu_num2 begin
 	input [31:0] curr_instr;
 	reg [3:0] datapath_type;
 
@@ -161,7 +161,7 @@ endfunction
 	endcase
 endfunction
 
-`ROBUST_FUNCTION get_alu_op begin
+`ROBUST_FUNCTION get_e_alu_op begin
 	input [31:0] instr;
 	reg [8:0] kind;
 	reg [3:0] datapath_type;
@@ -189,7 +189,7 @@ endfunction
 	endcase
 endfunction
 
-`ROBUST_FUNCTION get_dm_write_enable begin
+`ROBUST_FUNCTION get_m_dm_write_enable begin
 	input [31:0] instr;
 	reg [3:0] datapath_type;
 
@@ -205,7 +205,7 @@ endfunction
 	endcase
 endfunction
 
-`ROBUST_FUNCTION get_rf_write_enable begin
+`ROBUST_FUNCTION get_w_rf_write_enable begin
 	input [31:0] instr;
 	reg [3:0] datapath_type;
 
@@ -220,7 +220,7 @@ endfunction
 	endcase
 endfunction
 
-`ROBUST_FUNCTION get_m_rf_write_data begin
+`ROBUST_FUNCTION get_w_m_rf_write_data begin
 	input [31:0] instr;
 	reg [3:0] datapath_type;
 

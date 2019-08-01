@@ -6,6 +6,15 @@
 
 在流水线 CPU 中，由于存在结构冒险和数据冒险，所以需要通过暂停和转发解决。暂停控制和转发控制可以放在单独的控制模块中，从而不影响原来单周期时的控制模块。但是，也可以通过改造控制模块的方式集成暂停和转发功能。通过指令识别系列函数（实际上综合时也会被综合成电路），可以分析指令，做到有效的暂停和转发。
 
+### 端口定义
+
+端口 | 类型 | 位宽 | 功能
+--- | --- | --- | ---
+`clk` | 输入 | 1 | 时钟信号
+`curr_instr` | 输入 | 32 | 当前在 F 级（IF）的指令
+`cw_d_ext_mode` | 输出 | 3 | 控制 `D: ext.mode`
+
+
 ### 总体结构
 
 控制模块是时序部件。不设置成组合逻辑部件的原因如下。
@@ -168,12 +177,12 @@ MUX | 宏 | 值 | 意义
 
 函数 | 输入 | 输出
 --- | --- | ---
-`get_ext_mode` | `input [31:0] instr` | `[2:0]`
-`get_m_alu_num2` | `input [31:0] instr` | 一位
-`get_alu_op` | `input [31:0] instr` | `[4:0]`
-`get_dm_write_enable` | `input [31:0] instr` | 一位
-`get_rf_write_enable` | `input [31:0] instr` | 一位
-`get_m_rf_write_data` | `input [31:0] instr` | 一位
+`get_d_ext_mode` | `input [31:0] instr` | `[2:0]`
+`get_e_m_alu_num2` | `input [31:0] instr` | 一位
+`get_e_alu_op` | `input [31:0] instr` | `[4:0]`
+`get_m_dm_write_enable` | `input [31:0] instr` | 一位
+`get_w_rf_write_enable` | `input [31:0] instr` | 一位
+`get_w_m_rf_write_data` | `input [31:0] instr` | 一位
 `get_fm_d[12]` | `input [31:0] d_instr; input [31:0] e_instr; input [31:0] m_instr; input [31:0] w_instr` | `[1:0]`
 `get_fm_e[12]` | `input [31:0] e_instr; input [31:0] m_instr; input [31:0] w_instr` | `[1:0]`
 
