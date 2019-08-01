@@ -9,7 +9,8 @@ wire control_curr_instr;
 control control(
 	.clk(clk), 
 	.curr_instr(control_curr_instr), 
-	.cw_pc_enable(cw_pc_enable), 
+	.cw_f_pc_enable(cw_f_pc_enable), 
+	.cw_f_npc_jump_mode(cw_f_npc_jump_mode), 
 	.cw_d_pff_enable(cw_d_pff_enable), 
 	.cw_d_ext_mode(cw_d_ext_mode), 
 	.cw_d_rf_read_addr1(cw_d_rf_read_addr1), 
@@ -30,9 +31,9 @@ control control(
 
 npc npc(
 	.curr_pc(wo_pc_curr_pc), 
-	.jump_mode(), /* TODO */ 
+	.jump_mode(cw_f_npc_jump_mode), 
 	.alu_comp_result(wo_alu_comp_result), 
-	.num(), /* TODO */
+	.num(cw_f_npc_num), 
 	.next_pc(wo_npc_next_pc)
 )
 
