@@ -174,6 +174,6 @@ MUX | 宏 | 值 | 意义
 `get_dm_write_enable` | `input [31:0] instr` | 一位
 `get_rf_write_enable` | `input [31:0] instr` | 一位
 `get_m_rf_write_data` | `input [31:0] instr` | 一位
-`get_fm_d` | `input [31:0] instr` | `[1:0]`
-`get_fm_e` | `input [31:0] instr` | `[1:0]`
+`get_fm_d[12]` | `input [31:0] d_instr; input [31:0] e_instr; input [31:0] m_instr; input [31:0] w_instr` | `[1:0]`
+`get_fm_e[12]` | `input [31:0] e_instr; input [31:0] m_instr; input [31:0] w_instr` | `[1:0]`
 
