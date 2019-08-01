@@ -28,6 +28,8 @@ p5 需要实现的指令为：
 
 有时部件名称可能和级不对应。这表示相应端口的值是经过流水后的结果。
 
+由于指令分析函数可以分析到指令读写的寄存器，因此把 D 级和 E 级的三个寄存器地址端口交给控制模块控制。这样也能避免在不该写寄存器的指令写寄存器，因为哪怕寄存器写入使能打开，要写入的寄存器也是 `REG_ZERO`。
+
 **注意：使用延迟槽来简化暂停和转发的分析。**
 
 #### IF
@@ -40,14 +42,14 @@ p5 需要实现的指令为：
 
 #### D 级（ID）
 
-数据通路类型 | `D: rf.read_addr1` | `D: rf.read_addr2` | `D: ext.num`
-`CAL_R` | `D: im.result[25:21]` | `D: im.result[20:16]`
-`CAL_I` | `D: im.result[25:21]` | | `D: im.result[15:0]`
-`LOAD` | `D: im.result[25:21]` | | `D: im.result[15:0]`
-`STORE` | `D: im.result[25:21]` | `D: im.result[20:16]`
-`BRANCH` | `D: im.result[25:21]` | `D: im.result[20:16]`
+数据通路类型 | `D: ext.num`
+`CAL_R` | 
+`CAL_I` | `D: im.result[15:0]`
+`LOAD` | `D: im.result[15:0]`
+`STORE` | 
+`BRANCH` | 
 `NOP` | | | | | 
-综合 | `D: im.result[25:21]` | `D: im.result[20:16]` | `D: im.result[15:0]`
+综合 | `D: im.result[15:0]`
 
 #### E 级（EX）
 
@@ -73,14 +75,14 @@ p5 需要实现的指令为：
 
 #### W 级（WB）
 
-数据通路类型 | `W: rf.write_addr` | `W: rf.write_data`
-`CAL_R` | `D: im.result[15:11]` | `E: alu.result`
-`CAL_I` | `D: im.result[20:16]` | `E: alu.result`
-`LOAD` | `D: im.result[20:16]` | `M: dm.read_result`
-`STORE` | | 
-`BRANCH` | | 
-`NOP` | | 
-综合 | `D: im.result[20:16], D: im.result[15:11]` | `E: alu.result, M: dm.read_result`
+数据通路类型 | `W: rf.write_data`
+`CAL_R` | `E: alu.result`
+`CAL_I` | `E: alu.result`
+`LOAD` | `M: dm.read_result`
+`STORE` | 
+`BRANCH` |  
+`NOP` | 
+综合 | `E: alu.result, M: dm.read_result`
 
 #### 流水线寄存器
 
@@ -94,16 +96,12 @@ E | `rf.read_result2` | `e_rf_read_result2`
 E | `ext.result` | `e_ext_result`
 M | `alu.result` | `m_alu_result`
 M | `rf.read_result2` | `m_rf_read_result2`
-W | `im.result` | `w_im_result`
 W | `alu.result` | `w_alu_result`
 W | `dm.read_result` | `w_dm_read_result`
 
-由于需要的流水线寄存器有些是跨级的（比如只有 D 级和 W 级），所以需要把漏掉的级补充上。
+由于需要的流水线寄存器没有跨级的（比如只有 D 级和 W 级），所以不需要把漏掉的级补充上。
 
-流水线级 | 信号 | 流水线寄存器名称
---- | --- | ---
-E | `im.result` | `e_im_result`
-M | `im.result` | `m_im_result`
+这里没有补充 E 级 `BRANCH` 类指令需要的 `alu.comp_result` 到 F 级的连接，因为为了正确控制 PC 的转换，它必须是实时的，不需要流水线寄存器。
 
 #### MUX
 
@@ -112,7 +110,6 @@ M | `im.result` | `m_im_result`
 端口 | 所有的信号来源 | MUX 名称
 --- | --- | ---
 `E: alu.num2` | `D: rf.read_result2, D: ext.result` | `m_alu_num2`
-`W: rf.write_addr` | `D: im.result[20:16], D: im.result[15:11]` | `m_rf_write_addr`
 `W: rf.write_data` | `E: alu.result, M: im.read_result` | `m_rf_write_data`
 
 #### 转发
@@ -153,5 +150,5 @@ M | `im.result` | `m_im_result`
 `STORE` | 1
 `BRANCH` | 1
 
-**注意：只有在发现数据冒险的时候才需要暂停，其余的情况下不需要。**
+注意：**只有在发现数据冒险的时候才需要暂停，其余的情况下不需要。**
 
