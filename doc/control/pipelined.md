@@ -12,8 +12,19 @@
 --- | --- | --- | ---
 `clk` | 输入 | 1 | 时钟信号
 `curr_instr` | 输入 | 32 | 当前在 F 级（IF）的指令
+`cw_pc_enable` | 输出 | 1 | 控制 `pc` 使能
+`cw_d_pff_enable` | 输出 | 1 | 控制 D 级流水线寄存器使能
 `cw_d_ext_mode` | 输出 | 3 | 控制 `D: ext.mode`
-
+`cw_d_rf_read_addr1` | 输出 | 5 | 控制 `D: rf.read_addr1`
+`cw_d_rf_read_addr2` | 输出 | 5 | 控制 `D: rf.read_addr2`
+`cw_e_m_alu_num2` | 输出 | 1 | 控制 `E: m_alu_num2`
+`cw_e_alu_op` | 输出 | 5 | 控制 `E: alu.op`
+`cw_m_dm_write_enable` | 输出 | 1 | 控制 `M: dm.write_enable`
+`cw_w_rf_write_enable` | 输出 | 1 | 控制 `W: rf.write_enable`
+`cw_w_m_rf_write_data` | 输出 | 1 | 控制 `W: m_rf_write_data`
+`cw_w_rf_write_addr` | 输出 | 5 | 控制 `W: rf.write_addr`
+`cw_fm_d[12]` | 输出 | 2 | 控制 `fm_d[12]`
+`cw_fm_e[12]` | 输出 | 2 | 控制 `fm_e[12]`
 
 ### 总体结构
 
@@ -150,8 +161,9 @@ MUX | 宏 | 值 | 意义
 `LOAD` | 1
 `STORE` | 1
 `BRANCH` | 1
+`NOP` | 0
 
-真正暂停时，是通过禁用使能 `d_im_result` 寄存器和冻结 `pc` 来插入气泡的。可以利用表示暂停的信号 `stall` 来简化控制，但是要记住两个禁用信号都是 `1'b0`。
+真正暂停时，是通过禁用使能 `d_im_result` 寄存器和冻结 `pc` 来插入气泡的。可以利用表示暂停的信号 `stall` 来简化控制，但是要记住两个禁用信号都是 `1'b0`。同时，在控制信号内部的流水也在开头加入一个 `nop`。
 
 注意：**只有在发现数据冒险的时候才需要暂停，其余的情况下不需要。**
 
@@ -185,4 +197,5 @@ MUX | 宏 | 值 | 意义
 `get_w_m_rf_write_data` | `input [31:0] instr` | 一位
 `get_fm_d[12]` | `input [31:0] d_instr; input [31:0] e_instr; input [31:0] m_instr; input [31:0] w_instr` | `[1:0]`
 `get_fm_e[12]` | `input [31:0] e_instr; input [31:0] m_instr; input [31:0] w_instr` | `[1:0]`
+`get_stall` | `input [31:0] d_instr; input [31:0] e_instr` | 一位
 
