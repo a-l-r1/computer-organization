@@ -122,8 +122,8 @@ W | `dm.read_result` | `w_dm_read_result`
 
 端口 | 所有的信号来源 | MUX 名称
 --- | --- | ---
-`D: rf.read_result1` | `E: alu.result, M: alu.result, W: rf.write_data` | `fm_d_rf_read_result1`
-`E: rf.read_result1` | `M: alu.result, W: rf.write_data` | `fm_e_rf_read_result1`
+`D: rf.read_result1` | `E: alu.result, M: alu.result, W: rf.write_data` | `fm_d1`
+`E: rf.read_result1` | `M: alu.result, W: rf.write_data` | `fm_e1`
 
 **注意：不能在 M 级设置 MUX 转发 `dm` 的数据，因为这样 D 级或 E 级会等待 M 级 `dm` 的数据，关键路径会变得非常长，极大地降低流水线性能。**
 
