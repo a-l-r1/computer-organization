@@ -12,7 +12,7 @@
 --- | --- | --- | ---
 `clk` | 输入 | 1 | 时钟信号
 `d_instr` | 输入 | 32 | 当前在 D 级（ID）的指令
-`rf_read_result1` | 输入 | 32 | `rf` 的 1 号读取结果
+`rf_read_result2` | 输入 | 32 | `rf` 的 2 号读取结果
 `cw_f_pc_enable` | 输出 | 1 | 控制 `pc` 使能
 `cw_d_pff_enable` | 输出 | 1 | 控制 D 级流水线寄存器使能
 `cw_f_npc_jump_mode` | 输出 | 3 | 控制 `npc` 的跳转模式
