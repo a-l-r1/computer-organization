@@ -9,7 +9,7 @@
 	reg r;
 
 	r = (`OP(instr) == 6'b000000);
-	
+
 	if (r && `FUNCT(instr) == 6'b100001 && `SHAMT(instr) == 5'b00000) kind = `ADDU;
 	if (r && `FUNCT(instr) == 6'b100011 && `SHAMT(instr) == 5'b00000) kind = `SUBU;
 	if (`OP(instr) == 6'b001111 && `RS(instr) == 5'b00000) kind = `LUI;
@@ -36,21 +36,23 @@ module control(
 	input clk, 
 	input [31:0] d_instr, 
 	input [31:0] rf_read_result1, 
-	output cw_pc_enable, 
+	output cw_f_pc_enable, 
 	output cw_d_pff_enable, 
+	output [2:0] cw_f_npc_jump_mode, 
 	output [2:0] cw_d_ext_mode, 
 	output [4:0] cw_d_rf_read_addr1, 
 	output [4:0] cw_d_rf_read_addr2, 
-	output cw_e_m_alu_num2, 
+	output cw_e_m_alusrc, 
 	output [4:0] cw_e_alu_op, 
 	output cw_m_dm_write_enable, 
 	output cw_w_rf_write_enable, 
-	output cw_w_m_rf_write_data, 
+	output cw_w_m_regdata, 
 	output [4:0] cw_w_rf_write_addr, 
-	output [1:0] cw_fm_d1, 
-	output [1:0] cw_fm_d2, 
-	output [1:0] cw_fm_e1, 
-	output [1:0] cw_fm_e2
+	output [2:0] cw_fm_d1, 
+	output [2:0] cw_fm_d2, 
+	output [2:0] cw_fm_e1, 
+	output [2:0] cw_fm_e2, 
+	output [2:0] cw_fm_m
 )
 
 /* Macro definitions */
@@ -158,6 +160,17 @@ end
 
 /* Normal control signals */
 
+/* npc.jump_mode is controlled by the instruction in level E */
+
+assign cw_f_npc_jump_mode = 
+	(`edptype(`BRANCH)) ? (
+		(`ekind(`BEQ)) ? `NPC_JUMP_WHEN_EQUAL : 
+		`NPC_JUMP_DISABLED
+	) : 
+	(`edptype(`JUMP_I)) ? `NPC_J : 
+	(`edptype(`JUMP_R)) ? `NPC_REG : 
+	`NPC_JUMP_DISABLED;
+
 assign cw_d_ext_mode = 
 	(`ddptype(`CAL_I)) ? (
 		(`dkind(`LUI)) ? `EXT_MODE_PAD : 
@@ -165,7 +178,11 @@ assign cw_d_ext_mode =
 		`EXT_MODE_UNSIGNED
 	) : 
 	(`ddptype(`LOAD) || `ddptype(`STORE)) ? `EXT_MODE_SIGNED :
-	`EXT_MODE_SIGNED
+	`EXT_MODE_SIGNED;
+
+assign cw_d_rf_read_addr1 = d_reg1;
+
+assign cw_d_rf_read_addr2 = d_reg2;
 
 assign cw_e_m_alusrc = 
 	(`edptype(`CAL_R`) || `edptype(`CMOV) || `edptype(`BRANCH)) ? 1'b0 : 
@@ -204,6 +221,8 @@ assign cw_w_m_regdata =
 	(`wdptype(`LOAD)) ? 2 : 
 	(`wdptype(`JUMP_I)) ? 3 : 
 	0;
+
+assign cw_w_rf_write_addr = d_regw;
 
 /* Register identification */
 
@@ -294,9 +313,11 @@ assign stall =
 	$unsigned(t_use_reg2) < $unsigned(t_new_e) || 
 	$unsigned(t_use_reg2) < $unsigned(t_new_m);
 
+/* TODO: more thorough stall control? */
+
 assign cw_f_pc_enable = ~stall;
 
-/* TODO: more thorough stall control */
+assign cw_d_pff_enable = ~stall;
 
 endmodule
 
