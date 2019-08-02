@@ -6,7 +6,21 @@
 
 `ROBOST_FUNCTION [8:0] kind begin
 	input [31:0] instr;
+	reg r;
+
+	r = (`OP(instr) == 6'b000000);
 	
+	if (r && `FUNCT(instr) == 6'b100001 && `SHAMT(instr) == 5'b00000) kind = `ADDU;
+	if (r && `FUNCT(instr) == 6'b100011 && `SHAMT(instr) == 5'b00000) kind = `SUBU;
+	if (`OP(instr) == 6'b001111 && `RS(instr) == 5'b00000) kind = `LUI;
+	if (`OP(instr) == 6'b001101) kind = `ORI;
+	if (`OP(instr) == 6'b100011) kind = `LW;
+	if (`OP(instr) == 6'b101011) kind = `SW;
+	if (`OP(instr) == 6'b000100) kind = `BEQ;
+	if (instr == 32'b0) kind = `NOP;
+
+	/* default */
+	kind = `UNKNOWN;
 endfunction
 
 `ROBOST_FUNCTION [3:0] dptype begin
