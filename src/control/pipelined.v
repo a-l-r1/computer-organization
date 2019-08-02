@@ -4,32 +4,36 @@
 
 `include "debug/debug.h"
 
-`ROBOST_FUNCTION [8:0] kind begin
+`ROBUST_FUNCTION [8:0] kind;
 	input [31:0] instr;
 	reg r;
+	
+	begin
+		r = (`OP(instr) == 6'b000000);
 
-	r = (`OP(instr) == 6'b000000);
+		if (r && `FUNCT(instr) == 6'b100001 && `SHAMT(instr) == 5'b00000) kind = `ADDU;
+		if (r && `FUNCT(instr) == 6'b100011 && `SHAMT(instr) == 5'b00000) kind = `SUBU;
+		if (`OP(instr) == 6'b001111 && `RS(instr) == 5'b00000) kind = `LUI;
+		if (`OP(instr) == 6'b001101) kind = `ORI;
+		if (`OP(instr) == 6'b100011) kind = `LW;
+		if (`OP(instr) == 6'b101011) kind = `SW;
+		if (`OP(instr) == 6'b000100) kind = `BEQ;
+		if (instr == 32'b0) kind = `NOP;
 
-	if (r && `FUNCT(instr) == 6'b100001 && `SHAMT(instr) == 5'b00000) kind = `ADDU;
-	if (r && `FUNCT(instr) == 6'b100011 && `SHAMT(instr) == 5'b00000) kind = `SUBU;
-	if (`OP(instr) == 6'b001111 && `RS(instr) == 5'b00000) kind = `LUI;
-	if (`OP(instr) == 6'b001101) kind = `ORI;
-	if (`OP(instr) == 6'b100011) kind = `LW;
-	if (`OP(instr) == 6'b101011) kind = `SW;
-	if (`OP(instr) == 6'b000100) kind = `BEQ;
-	if (instr == 32'b0) kind = `NOP;
-
-	/* default */
-	kind = `UNKNOWN;
+		/* default */
+		kind = `UNKNOWN;
+	end
 endfunction
 
-`ROBOST_FUNCTION [3:0] dptype begin
+`ROBUST_FUNCTION [3:0] dptype;
 	input [31:0] instr;
-
 	reg [8:0] kind1;
-	kind1 = kind(instr);
+	
+	begin
+		kind1 = kind(instr);
 
-	get_datapath_type = kind1[8:5];
+		dptype = kind1[8:5];
+	end
 endfunction
 
 module control(
@@ -53,7 +57,7 @@ module control(
 	output [2:0] cw_fm_e1, 
 	output [2:0] cw_fm_e2, 
 	output [2:0] cw_fm_m
-)
+);
 
 /* Macro definitions */
 
@@ -152,7 +156,7 @@ always @(posedge clk) begin
 	m_regw <= e_regw;
 	w_regw <= m_regw;
 
-	`debug_print(("instructions: D: 0x%08x, E: 0x%08x, M: 0x%08x, W: 0x%08x", d_instr, e_instr, m_instr, w_instr))
+	`debug_print(("instructions: D: 0x%08x, E: 0x%08x, M: 0x%08x, W: 0x%08x", d_instr, e_instr, m_instr, w_instr));
 	`debug_print(("reg1: D: %0d, E: %0d, M: %0d, W: %0d", d_reg1, e_reg1, m_reg1, w_reg1));
 	`debug_print(("reg2: D: %0d, E: %0d, M: %0d, W: %0d", d_reg2, e_reg2, m_reg2, w_reg2));
 	`debug_print(("regw: D: %0d, E: %0d, M: %0d, W: %0d", d_regw, e_regw, m_regw, w_regw));
