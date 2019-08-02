@@ -22,6 +22,7 @@ assign {op_invalid, result} =
 	(op == `ALU_OR) ? {1'b0, $unsigned(num1) | $unsigned(num2)} : 
 	(op == `ALU_NOT) ? {1'b0, ~$unsigned(num1)} : 
 	(op == `ALU_XOR) ? {1'b0, $unsigned(num1) ^ $unsigned(num2)} : 
+	(op == `ALU_MOVZ) ? {1'b0, $unsigned(num1)} : 
 	{1'b1, 32'b0};
 
 wire [32:0] intermediate_result;

@@ -38,6 +38,7 @@ ALU 是运算控制单元的意思，负责两个 32 位整数的运算。它可
 `op` | `ALU_NOT` | 5b'10010 | 按位非运算
 `op` | `ALU_BITWISE_NOT` | `ALU_NOT` | 同上
 `op` | `ALU_XOR` | 5b'10011 | 按位异或运算
+`op` | `ALU_MOVZ` | 5b'00010 | 数据转移运算（[1]）
 `.*comp_result` | `ALU_EQUAL` | 2b'00 | 等于
 `.*comp_result` | `ALU_EQUAL_TO` | `ALU_EQUAL` | 同上
 `.*comp_result` | `ALU_LARGER` | 2b'01 | 大于
@@ -50,6 +51,10 @@ ALU 是运算控制单元的意思，负责两个 32 位整数的运算。它可
 `op_invalid` | `ALU_INVALID` | `ALU_INVALID_OP` | 同上
 `op_invalid` | `ALU_VALID_OP` | 1'b0 | 操作符有效
 `op_invalid` | `ALU_VALID` | `ALU_VALID_OP` | 同上
+
+注：
+
+1. 数据转移运算只是简单地让结果等于第一个操作数，因为真正转不转移是控制模块判断写入哪个寄存器决定的。
 
 ### 功能
 

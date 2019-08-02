@@ -5,6 +5,7 @@
 `define ALU_UNSIGNED_ADD `ALU_ADD
 `define ALU_SUB 5'b00001
 `define ALU_UNSIGNED_SUB `ALU_SUB
+`define ALU_MOVZ 5'b00010
 
 `define ALU_AND 5'b10000
 `define ALU_BITWISE_AND `ALU_AND
