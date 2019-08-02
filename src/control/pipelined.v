@@ -83,28 +83,5 @@ always @(posedge clk) begin
 	`debug_print(("instructions: D: 0x%08x, E: 0x%08x, M: 0x%08x, W: 0x%08x", d_instr, e_instr, m_instr, w_instr))
 end
 
-assign cw_d_ext_mode = get_d_ext_mode(d_instr);
-assign cw_e_m_alu_num2 = get_e_m_alu_num2(e_instr);
-assign cw_e_alu_op = get_e_alu_op(e_instr);
-assign cw_m_dm_write_enable = get_m_dm_write_enable(m_instr);
-assign cw_w_rf_write_enable = get_w_rf_write_enable(w_instr);
-assign cw_w_m_rf_write_data = get_w_m_rf_write_data(w_instr);
-
-assign cw_d_rf_read_addr1 = get_read_reg1(d_instr);
-assign cw_d_rf_read_addr2 = get_read_reg2(d_instr);
-assign cw_w_rf_write_addr = get_write_reg(w_instr);
-
-assign fm_d1 = get_fm_d1(d_instr, e_instr, m_instr, w_instr);
-assign fm_d2 = get_fm_d2(d_instr, e_instr, m_instr, w_instr);
-
-assign fm_e1 = get_fm_e1(e_instr, m_instr, w_instr);
-assign fm_e2 = get_fm_e2(e_instr, m_instr, w_instr);
-
-assign stall = get_stall(d_instr, e_instr);
-
-assign cw_pc_enable = ~stall;
-assign cw_d_pff_enable = ~stall;
-
 endmodule
-
 
