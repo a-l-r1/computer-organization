@@ -14,6 +14,7 @@ NPC 是下个 PC 值的意思。它能做到根据当前的 PC 值，计算出�
 `jump_mode` | 输入 | 3 | 是否可以跳转
 `alu_comp_result` | 输入 | 2 | ALU 的比较结果
 `num` | 输入 | 16 | 输入的立即数
+`reg` | 输入 | 32 | 输入的寄存器值
 `next_pc` | 输出 | 32 | 下一个 PC
 
 ### 宏定义
@@ -28,6 +29,7 @@ NPC 是下个 PC 值的意思。它能做到根据当前的 PC 值，计算出�
 `jump_mode` | `NPC_JUMP_WHEN_EQUALS_TO` | `NPC_JUMP_WHEN_EQUAL` | 
 `jump_mode` | `NPC_JUMP_WHEN_NOT_EQUAL` | 3'b010 | 当 ALU 输入的比较结果不等时跳转
 `jump_mode` | `NPC_JUMP_WHEN_NOT_EQUALS_TO` | `NPC_JUMP_WHEN_NOT_EQUAL` | 
+`jump_mode` | `NPC_REG` | 3'b111 | 按照寄存器内地址跳转
 
 `alu_comp_result` 的相应数值代表的意义，与相应的宏有关，这些宏在 `alu.h` 中。
 
@@ -38,6 +40,8 @@ NPC 是下个 PC 值的意思。它能做到根据当前的 PC 值，计算出�
 若 `jump_mode == NPC_JUMP_WHEN_EQUAL`，则 `alu_comp_result == ALU_EQUAL` 时，首先把 `num` 扩展成 32 位有符号立即数，扩展方式是首先把 `num` 后面加上 `2'b0`，然后把这 18 位二进制数扩展成 32 位有符号二进制数。然后令 `next_pc = $signed(curr_pc) + $signed(4) + $signed(num)`。否则做跟 `jump_mode == NPC_JUMP_DISABLE` 时相同的步骤。
 
 若 `jump_mode == NPC_JUMP_WHEN_NOT_EQUAL`，则 `alu_comp_result != ALU_EQUAL` 时，做跟上面相同的步骤。否则做跟 `jump_mode == NPC_JUMP_DISABLE` 时相同的步骤。
+
+若 `jump_mode == NPC_REG`，则令 `nextpc = reg`。
 
 若 `jump_mode` 为其它值，则做跟 `jump_mode == NPC_JUMP_DISABLE` 时相同的步骤。
 
