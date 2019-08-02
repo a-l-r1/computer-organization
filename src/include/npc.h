@@ -8,6 +8,7 @@
 `define NPC_JUMP_WHEN_NOT_EQUAL 3'b010
 `define NPC_JUMP_WHEN_NOT_EQUALS_TO `NPC_JUMP_WHEN_NOT_EQUAL
 `define NPC_REG 3'b111
+`define NPC_J 3'b110
 
 `endif
 
