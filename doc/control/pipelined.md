@@ -14,20 +14,20 @@
 `d_instr` | 输入 | 32 | 当前在 D 级（ID）的指令
 `rf_read_result1` | 输入 | 32 | `rf` 的 1 号读取结果
 `cw_f_pc_enable` | 输出 | 1 | 控制 `pc` 使能
-`cw_f_npc_jump_mode` | 输出 | 3 | 控制 `npc` 的跳转模式
-`cw_f_npc_num` | 输出 | 26 | `npc` 跳转需要的立即数
 `cw_d_pff_enable` | 输出 | 1 | 控制 D 级流水线寄存器使能
+`cw_f_npc_jump_mode` | 输出 | 3 | 控制 `npc` 的跳转模式
 `cw_d_ext_mode` | 输出 | 3 | 控制 `D: ext.mode`
 `cw_d_rf_read_addr1` | 输出 | 5 | 控制 `D: rf.read_addr1`
 `cw_d_rf_read_addr2` | 输出 | 5 | 控制 `D: rf.read_addr2`
-`cw_e_m_alu_num2` | 输出 | 1 | 控制 `E: m_alu_num2`
+`cw_e_m_alusrc` | 输出 | 1 | 控制 `E: m_alu_num2`
 `cw_e_alu_op` | 输出 | 5 | 控制 `E: alu.op`
 `cw_m_dm_write_enable` | 输出 | 1 | 控制 `M: dm.write_enable`
 `cw_w_rf_write_enable` | 输出 | 1 | 控制 `W: rf.write_enable`
-`cw_w_m_rf_write_data` | 输出 | 1 | 控制 `W: m_rf_write_data`
+`cw_w_m_regdata` | 输出 | 1 | 控制 `W: m_rf_write_data`
 `cw_w_rf_write_addr` | 输出 | 5 | 控制 `W: rf.write_addr`
-`cw_fm_d[12]` | 输出 | 2 | 控制 `fm_d[12]`
-`cw_fm_e[12]` | 输出 | 2 | 控制 `fm_e[12]`
+`cw_fm_d[12]` | 输出 | 3 | 控制 `fm_d[12]`
+`cw_fm_e[12]` | 输出 | 3 | 控制 `fm_e[12]`
+`cw_fm_m` | 输出 | 3 | 控制 `fm_w`
 
 ### 总体结构
 
@@ -39,7 +39,7 @@
 
 控制模块在内部流水指令，从而做到比较有效的控制信号发射和数据冒险分析。负责控制信号发射的部分是纯组合逻辑，用函数实现。
 
-同时，控制模块也在内部流水
+同时，控制模块也在内部流水指令需要读取和写入的三个寄存器。因为流水线 CPU 和单周期 CPU 逻辑上应该一样，所以一条指令需要读取和写入的三个寄存器可以直接判断出来，并且流水。这样也可以更方便地处理数据冒险。
 
 ### 数据通路和功能控制信号
 
@@ -53,7 +53,20 @@
 
 #### F 级
 
-无相应的控制信号
+数据通路类型 | `F: npc.jump_mode`
+--- | ---
+`BRANCH` | 视具体指令而定
+`JUMP_I` | `NPC_J`
+`JUMP_R` | `NPC_REG`
+（其它）| `NPC_JUMP_DISABLED`
+
+`BRANCH` 类指令类型与 `F: npc.jump_mode` 的关系：
+
+指令类型 | `F: npc.jump_mode`
+--- | ---
+`BEQ` | `NPC_JUMP_WHEN_EQUAL`
+
+注意：**F 级的控制信号是由 E 级指令控制的。**
 
 #### D 级（ID）
 
