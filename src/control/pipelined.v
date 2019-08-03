@@ -8,6 +8,11 @@
 `include "ext.h"
 `include "npc.h"
 
+/* No more function definitions since ISE would crash seeing these functions
+* in modules, and iSim would refuse to simulate seeing these functions are out
+* of modules. Salute to ISE! */
+
+/*
 `ROBUST_FUNCTION [8:0] kind;
 	input [31:0] instr;
 	reg r;
@@ -24,7 +29,6 @@
 		if (`OP(instr) == 6'b000100) kind = `BEQ;
 		if (instr == 32'b0) kind = `NOP;
 
-		/* default */
 		kind = `UNKNOWN;
 	end
 endfunction
@@ -39,6 +43,28 @@ endfunction
 		dptype = kind1[8:5];
 	end
 endfunction
+*/
+
+module kind(
+	input [31:0] instr, 
+	output [8:0] result
+);
+
+assign r = (`OP(instr) == 6'b000000);
+
+/* TODO: j, jal, jr and movz */
+
+assign result = (r && `FUNCT(instr) == 6'b100001 && `SHAMT(instr) == 5'b00000) ? `ADDU : 
+	(r && `FUNCT(instr) == 6'b100011 && `SHAMT(instr) == 5'b00000) ? `SUBU : 
+	(`OP(instr) == 6'b001111 && `RS(instr) == 5'b00000) ? `LUI : 
+	(`OP(instr) == 6'b001101) ? `ORI : 
+	(`OP(instr) == 6'b100011) ? `LW : 
+	(`OP(instr) == 6'b101011) ? `SW : 
+	(`OP(instr) == 6'b000100) ? `BEQ : 
+	(instr == 32'b0) ? `NOP : 
+	`UNKNOWN;
+
+endmodule
 
 module control(
 	input clk, 
@@ -63,17 +89,44 @@ module control(
 	output [2:0] cw_fm_m
 );
 
+/* Module references */
+
+wire [8:0] dkind;
+wire [8:0] ekind;
+wire [8:0] mkind;
+wire [8:0] wkind;
+
+kind _dkind(
+	.instr(d_instr), 
+	.result(dkind)
+);
+
+kind _ekind(
+	.instr(e_instr), 
+	.result(ekind)
+);
+
+kind _mkind(
+	.instr(m_instr), 
+	.result(mkind)
+);
+
+kind _wkind(
+	.instr(w_instr), 
+	.result(wkind)
+);
+
+assign ddptype = dkind[8:5];
+assign edptype = ekind[8:5];
+assign mdptype = mkind[8:5];
+assign wdptype = wkind[8:5];
+
 /* Macro definitions */
 
-`define dkind(x) (kind(d_instr) == x)
-`define ekind(x) (kind(e_instr) == x)
-`define mkind(x) (kind(m_instr) == x)
-`define wkind(x) (kind(w_instr) == x)
+/* No, can't use `define dkind(x) (dkind_result == x). ISE would crash.
+* Salute to ISE. */
 
-`define ddptype(x) (dptype(d_instr) == x)
-`define edptype(x) (dptype(e_instr) == x)
-`define mdptype(x) (dptype(m_instr) == x)
-`define wdptype(x) (dptype(w_instr) == x)
+`define is(x, y) ((x) == (y))
 
 `define drs `RS(d_instr)
 `define drt `RT(d_instr)
@@ -171,21 +224,21 @@ end
 /* npc.jump_mode is controlled by the instruction in level E */
 
 assign cw_f_npc_jump_mode = 
-	(`edptype(`BRANCH)) ? (
-		(`ekind(`BEQ)) ? `NPC_JUMP_WHEN_EQUAL : 
+	(edptype == `BRANCH) ? (
+		(ekind == `BEQ) ? `NPC_JUMP_WHEN_EQUAL : 
 		`NPC_JUMP_DISABLED
 	) : 
-	(`edptype(`JUMP_I)) ? `NPC_J : 
-	(`edptype(`JUMP_R)) ? `NPC_REG : 
+	(edptype == `JUMP_I) ? `NPC_J : 
+	(edptype == `JUMP_R) ? `NPC_REG : 
 	`NPC_JUMP_DISABLED;
 
 assign cw_d_ext_mode = 
-	(`ddptype(`CAL_I)) ? (
-		(`dkind(`LUI)) ? `EXT_MODE_PAD : 
-		(`dkind(`ORI)) ? `EXT_MODE_UNSIGNED : 
+	(ddptype == `CAL_I) ? (
+		(dkind == `LUI) ? `EXT_MODE_PAD : 
+		(dkind == `ORI) ? `EXT_MODE_UNSIGNED : 
 		`EXT_MODE_UNSIGNED
 	) : 
-	(`ddptype(`LOAD) || `ddptype(`STORE)) ? `EXT_MODE_SIGNED :
+	(ddptype == `LOAD || ddptype == `STORE) ? `EXT_MODE_SIGNED :
 	`EXT_MODE_SIGNED;
 
 assign cw_d_rf_read_addr1 = d_reg1;
@@ -193,41 +246,42 @@ assign cw_d_rf_read_addr1 = d_reg1;
 assign cw_d_rf_read_addr2 = d_reg2;
 
 assign cw_e_m_alusrc = 
-	(`edptype(`CAL_R) || `edptype(`CMOV) || `edptype(`BRANCH)) ? 1'b0 : 
-	(`edptype(`LOAD) || `edptype(`STORE)) ? 1'b1 : 
+	(edptype == `CAL_R || edptype == `CMOV || edptype == `BRANCH) ? 1'b0 : 
+	(edptype == `LOAD || edptype == `STORE) ? 1'b1 : 
 	1'b0;
 
 assign cw_e_alu_op = 
-	(`edptype(`CAL_R)) ? (
-		(`ekind(`ADDU)) ? `ALU_ADD : 
-		(`ekind(`SUBU)) ? `ALU_SUB : 
+	(edptype == `CAL_R) ? (
+		(ekind == `ADDU) ? `ALU_ADD : 
+		(ekind == `SUBU) ? `ALU_SUB : 
 		`ALU_OR
 	) : 
-	(`edptype(`CAL_I)) ? (
-		(`ekind(`LUI)) ? `ALU_OR : 
-		(`ekind(`ORI)) ? `ALU_OR : 
+	(edptype == `CAL_I) ? (
+		(ekind == `LUI) ? `ALU_OR : 
+		(ekind == `ORI) ? `ALU_OR : 
 		`ALU_OR
 	) : 
-	(`edptype(`MOVZ)) ? (
-		(`ekind(`MOVZ)) ? `ALU_CMOV : 
+	(edptype == `CMOV) ? (
+		(ekind == `MOVZ) ? `ALU_MOVZ : 
 		`ALU_OR
 	) : 
-	(`edptype(`LOAD) || `edptype(`STORE)) ? `ALU_ADD : 
+	(edptype == `LOAD || edptype == `STORE) ? `ALU_ADD : 
 	`ALU_OR;
 
 assign cw_m_dm_write_enable = 
-	(`mdptype(`STORE)) ? 1'b1 : 
+	(mdptype == `STORE) ? 1'b1 : 
 	1'b0;
 
 assign cw_w_rf_write_enable = 
-	(`wdptype(`CAL_R) || `wdptype(`CAL_I) || `wdptype(`LOAD) || `wdptype(`JUMP_I) || `wdptype(`CMOV)) ? 1'b1 : 
+	(wdptype == `CAL_R || wdptype == `CAL_I || wdptype == `LOAD || wdptype == `JUMP_I || wdptype == `CMOV) ? 1'b1 : 
 	1'b0;
 
 /* See doc/datapath/pipelined.md */
+
 assign cw_w_m_regdata = 
-	(`wdptype(`CAL_R) || `wdptype(`CAL_I) || `wdptype(`CMOV)) ? 1 : 
-	(`wdptype(`LOAD)) ? 2 : 
-	(`wdptype(`JUMP_I)) ? 3 : 
+	(wdptype == `CAL_R || wdptype == `CAL_I || wdptype == `CMOV) ? 1 : 
+	(wdptype == `LOAD) ? 2 : 
+	(wdptype == `JUMP_I) ? 3 : 
 	0;
 
 assign cw_w_rf_write_addr = d_regw;
@@ -235,24 +289,24 @@ assign cw_w_rf_write_addr = d_regw;
 /* Register identification */
 
 assign d_reg1 = 
-	(`ddptype(`CAL_R) || `ddptype(`CAL_I) || `ddptype(`LOAD) || `ddptype(`STORE) || `ddptype(`BRANCH) || `ddptype(`JUMP_R) || `ddptype(`CMOV)) ? `drs : 
-	(`ddptype(`JUMP_I) || `ddptype(`NOP)) ? `ZERO : 
+	(ddptype == `CAL_R || ddptype == `CAL_I || ddptype == `LOAD || ddptype == `STORE || ddptype == `BRANCH || ddptype == `JUMP_R || ddptype == `CMOV) ? `drs : 
+	(ddptype == `JUMP_I || ddptype == `NOP) ? `ZERO : 
 	`ZERO;
 
 assign d_reg2 = 
-	(`ddptype(`CAL_R) || `ddptype(`STORE) || `ddptype(`BRANCH) || `ddptype(`CMOV)) ? `drt : 
+	(ddptype == `CAL_R || ddptype == `STORE || ddptype == `BRANCH || ddptype == `CMOV) ? `drt : 
 	`ZERO;
 
 assign d_regw = 
-	(`ddptype(`CAL_R)) ? `drd : 
-	(`ddptype(`CAL_I) || `ddptype(`LOAD)) ? `drt : 
-	(`ddptype(`JUMP_I)) ? (
-		(`dkind(`JAL)) ? `RA : 
-		(`dkind(`J)) ? `ZERO : 
+	(ddptype == `CAL_R) ? `drd : 
+	(ddptype == `CAL_I || ddptype == `LOAD) ? `drt : 
+	(ddptype == `JUMP_I) ? (
+		(dkind == `JAL) ? `RA : 
+		(dkind == `J) ? `ZERO : 
 		`ZERO
 	) : 
-	(`ddptype(`CMOV)) ? (
-		(`dkind(`MOVZ) && rf_read_result2 == 32'b0) ? `drd : 
+	(ddptype == `CMOV) ? (
+		(dkind == `MOVZ && rf_read_result2 == 32'b0) ? `drd : 
 		`ZERO
 	) : 
 	`ZERO;
@@ -260,59 +314,59 @@ assign d_regw =
 /* Forward control */
 
 assign cw_fm_d1 = 
-	(fwable(d_reg1, e_regw) && `edptype(`CMOV)) ? `E2D_rf : 
-	(fwable(d_reg1, e_regw) && `edptype(`JUMP_I)) ? `E2D_npc : 
-	(fwable(d_reg1, m_regw) && `mdptype(`JUMP_I)) ? `M2D_npc : 
-	(fwable(d_reg1, m_regw) && (`mdptype(`CAL_R) || `mdptype(`CAL_I) || `mdptype(`CMOV))) ? `M2D_alu : 
-	(fwable(d_reg1, w_regw)) ? `W2D_rf : 
+	(`fwable(d_reg1, e_regw) && edptype == `CMOV) ? `E2D_rf : 
+	(`fwable(d_reg1, e_regw) && edptype == `JUMP_I) ? `E2D_npc : 
+	(`fwable(d_reg1, m_regw) && mdptype == `JUMP_I) ? `M2D_npc : 
+	(`fwable(d_reg1, m_regw) && (mdptype == `CAL_R || mdptype == `CAL_I || mdptype == `CMOV)) ? `M2D_alu : 
+	(`fwable(d_reg1, w_regw)) ? `W2D_rf : 
 	`orig;
 
 assign cw_fm_e1 = 
-	(fwable(e_reg1, m_regw) && `mdptype(`JUMP_I)) ? `M2E_npc : 
-	(fwable(e_reg1, m_regw) && (`mdptype(`CAL_R) || `mdptype(`CAL_I) || `mdptype(`CMOV))) ? `M2E_alu : 
-	(fwable(e_reg1, w_regw)) ? `W2E_rf : 
+	(`fwable(e_reg1, m_regw) && mdptype == `JUMP_I) ? `M2E_npc : 
+	(`fwable(e_reg1, m_regw) && (mdptype == `CAL_R || mdptype == `CAL_I || mdptype == `CMOV)) ? `M2E_alu : 
+	(`fwable(e_reg1, w_regw)) ? `W2E_rf : 
 	`orig;
 
 /* Edit cw_fm_[de]1 instead */
 
 assign cw_fm_d2 = 
-	(fwable(d_reg2, e_regw) && `edptype(`CMOV)) ? `E2D_rf : 
-	(fwable(d_reg2, e_regw) && `edptype(`JUMP_I)) ? `E2D_npc : 
-	(fwable(d_reg2, m_regw) && `mdptype(`JUMP_I)) ? `M2D_npc : 
-	(fwable(d_reg2, m_regw) && (`mdptype(`CAL_R) || `mdptype(`CAL_I) || `mdptype(`CMOV))) ? `M2D_alu : 
-	(fwable(d_reg2, w_regw)) ? `W2D_rf : 
+	(`fwable(d_reg2, e_regw) && edptype == `CMOV) ? `E2D_rf : 
+	(`fwable(d_reg2, e_regw) && edptype == `JUMP_I) ? `E2D_npc : 
+	(`fwable(d_reg2, m_regw) && mdptype == `JUMP_I) ? `M2D_npc : 
+	(`fwable(d_reg2, m_regw) && (mdptype == `CAL_R || mdptype == `CAL_I || mdptype == `CMOV)) ? `M2D_alu : 
+	(`fwable(d_reg2, w_regw)) ? `W2D_rf : 
 	`orig;
 
 assign cw_fm_e2 = 
-	(fwable(e_reg2, m_regw) && `mdptype(`JUMP_I)) ? `M2E_npc : 
-	(fwable(e_reg2, m_regw) && (`mdptype(`CAL_R) || `mdptype(`CAL_I) || `mdptype(`CMOV))) ? `M2E_alu : 
-	(fwable(e_reg2, w_regw)) ? `W2E_rf : 
+	(`fwable(e_reg2, m_regw) && mdptype == `JUMP_I) ? `M2E_npc : 
+	(`fwable(e_reg2, m_regw) && (mdptype == `CAL_R || mdptype == `CAL_I || mdptype == `CMOV)) ? `M2E_alu : 
+	(`fwable(e_reg2, w_regw)) ? `W2E_rf : 
 	`orig;
 
 assign cw_fm_m = 
-	(fwable(m_reg2, w_regw)) ? `W2M_rf : 
+	(`fwable(m_reg2, w_regw)) ? `W2M_rf : 
 	`orig;
 
 /* Stall control */
 
 assign t_use_reg1 = 
-	(`ddptype(`CAL_R) || `ddptype(`CAL_I) || `ddptype(`LOAD) || `ddptype(`STORE) || `ddptype(`BRANCH)) ? 3'd1 : 
-	(`ddptype(`JUMP_R) || `ddptype(`CMOV)) ? 3'd0 : 
+	(ddptype == `CAL_R || ddptype == `CAL_I || ddptype == `LOAD || ddptype == `STORE || ddptype == `BRANCH) ? 3'd1 : 
+	(ddptype == `JUMP_R || ddptype == `CMOV) ? 3'd0 : 
 	`inf;
 
 assign t_use_reg2 = 
-	(`ddptype(`STORE)) ? 3'd2 : 
-	(`ddptype(`CAL_R) || `ddptype(`CAL_I) || `ddptype(`BRANCH)) ? 3'd1 : 
-	(`ddptype(`CMOV)) ? 3'd0 : 
+	(ddptype == `STORE) ? 3'd2 : 
+	(ddptype == `CAL_R || ddptype == `CAL_I || ddptype == `BRANCH) ? 3'd1 : 
+	(ddptype == `CMOV) ? 3'd0 : 
 	`inf;
 
 assign t_new_e = 
-	(`edptype(`LOAD) || `edptype(`STORE)) ? 3'd2 : 
-	(`edptype(`CAL_R) || `edptype(`CAL_I)) ? 3'd1 : 
+	(edptype == `LOAD || edptype == `STORE) ? 3'd2 : 
+	(edptype == `CAL_R || edptype == `CAL_I) ? 3'd1 : 
 	3'd0;
 
 assign t_new_m = 
-	(`edptype(`LOAD) || `edptype(`STORE)) ? 3'd1 : 
+	(edptype == `LOAD || edptype == `STORE) ? 3'd1 : 
 	3'd0;
 
 assign stall = 
