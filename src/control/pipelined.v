@@ -52,8 +52,6 @@ module kind(
 
 assign r = (`OP(instr) == 6'b000000);
 
-/* TODO: j, jal, jr and movz */
-
 assign result = (r && `FUNCT(instr) == 6'b100001 && `SHAMT(instr) == 5'b00000) ? `ADDU : 
 	(r && `FUNCT(instr) == 6'b100011 && `SHAMT(instr) == 5'b00000) ? `SUBU : 
 	(`OP(instr) == 6'b001111 && `RS(instr) == 5'b00000) ? `LUI : 
@@ -61,6 +59,10 @@ assign result = (r && `FUNCT(instr) == 6'b100001 && `SHAMT(instr) == 5'b00000) ?
 	(`OP(instr) == 6'b100011) ? `LW : 
 	(`OP(instr) == 6'b101011) ? `SW : 
 	(`OP(instr) == 6'b000100) ? `BEQ : 
+	(`OP(instr) == 6'b001010) ? `J : 
+	(`OP(instr) == 6'b001011) ? `JAL : 
+	(r && `FUNCT(instr) == 6'b001000 && `RT(instr) = 5'b00000 && `RD(instr) == 5'b00000 && `SHAMT(instr) == 5'b00000) ? `JR : 
+	(r && `FUNCT(instr) == 6'b001010 && `SHAMT(instr) == 5'b00000) ? `MOVZ : 
 	(instr == 32'b0) ? `NOP : 
 	`UNKNOWN;
 
@@ -80,7 +82,7 @@ module control(
 	output [4:0] cw_e_alu_op, 
 	output cw_m_dm_write_enable, 
 	output cw_w_rf_write_enable, 
-	output cw_w_m_regdata, 
+	output [2:0] cw_w_m_regdata, 
 	output [4:0] cw_w_rf_write_addr, 
 	output [2:0] cw_fm_d1, 
 	output [2:0] cw_fm_d2, 
@@ -88,38 +90,6 @@ module control(
 	output [2:0] cw_fm_e2, 
 	output [2:0] cw_fm_m
 );
-
-/* Module references */
-
-wire [8:0] dkind;
-wire [8:0] ekind;
-wire [8:0] mkind;
-wire [8:0] wkind;
-
-kind _dkind(
-	.instr(d_instr), 
-	.result(dkind)
-);
-
-kind _ekind(
-	.instr(e_instr), 
-	.result(ekind)
-);
-
-kind _mkind(
-	.instr(m_instr), 
-	.result(mkind)
-);
-
-kind _wkind(
-	.instr(w_instr), 
-	.result(wkind)
-);
-
-assign ddptype = dkind[8:5];
-assign edptype = ekind[8:5];
-assign mdptype = mkind[8:5];
-assign wdptype = wkind[8:5];
 
 /* Macro definitions */
 
@@ -154,6 +124,20 @@ assign wdptype = wkind[8:5];
 reg [31:0] e_instr;
 reg [31:0] m_instr;
 reg [31:0] w_instr;
+
+wire [8:0] dkind;
+wire [8:0] ekind;
+wire [8:0] mkind;
+wire [8:0] wkind;
+
+wire [3:0] ddptype;
+wire [3:0] edptype;
+wire [3:0] mdptype;
+wire [3:0] wdptype;
+
+wire [4:0] d_reg1;
+wire [4:0] d_reg2;
+wire [4:0] d_regw;
 
 reg [4:0] e_reg1;
 reg [4:0] e_reg2;
@@ -194,6 +178,33 @@ initial begin
 	w_regw = 5'b0;
 end
 
+/* Module references */
+
+kind _dkind(
+	.instr(d_instr), 
+	.result(dkind)
+);
+
+kind _ekind(
+	.instr(e_instr), 
+	.result(ekind)
+);
+
+kind _mkind(
+	.instr(m_instr), 
+	.result(mkind)
+);
+
+kind _wkind(
+	.instr(w_instr), 
+	.result(wkind)
+);
+
+assign ddptype = dkind[8:5];
+assign edptype = ekind[8:5];
+assign mdptype = mkind[8:5];
+assign wdptype = wkind[8:5];
+
 /* Internal pipeline */
 
 always @(posedge clk) begin
@@ -214,6 +225,7 @@ always @(posedge clk) begin
 	w_regw <= m_regw;
 
 	`debug_write(("instructions: D: 0x%08x, E: 0x%08x, M: 0x%08x, W: 0x%08x\n", d_instr, e_instr, m_instr, w_instr));
+	`debug_write(("kind: D: 0b%09b, E: 0b%09b, M: 0b%09b, W: 0b%09b\n", dkind, ekind, mkind, wkind));
 	`debug_write(("reg1: D: %0d, E: %0d, M: %0d, W: %0d\n", d_reg1, e_reg1, m_reg1, w_reg1));
 	`debug_write(("reg2: D: %0d, E: %0d, M: %0d, W: %0d\n", d_reg2, e_reg2, m_reg2, w_reg2));
 	`debug_write(("regw: D: %0d, E: %0d, M: %0d, W: %0d\n", d_regw, e_regw, m_regw, w_regw));
@@ -279,12 +291,12 @@ assign cw_w_rf_write_enable =
 /* See doc/datapath/pipelined.md */
 
 assign cw_w_m_regdata = 
-	(wdptype == `CAL_R || wdptype == `CAL_I || wdptype == `CMOV) ? 1 : 
-	(wdptype == `LOAD) ? 2 : 
-	(wdptype == `JUMP_I) ? 3 : 
-	0;
+	(wdptype == `CAL_R || wdptype == `CAL_I || wdptype == `CMOV) ? 3'd1 : 
+	(wdptype == `LOAD) ? 3'd2 : 
+	(wdptype == `JUMP_I) ? 3'd3 : 
+	3'd0;
 
-assign cw_w_rf_write_addr = d_regw;
+assign cw_w_rf_write_addr = w_regw;
 
 /* Register identification */
 
