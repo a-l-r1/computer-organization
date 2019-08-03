@@ -213,10 +213,10 @@ always @(posedge clk) begin
 	m_regw <= e_regw;
 	w_regw <= m_regw;
 
-	`debug_write(("instructions: D: 0x%08x, E: 0x%08x, M: 0x%08x, W: 0x%08x", d_instr, e_instr, m_instr, w_instr));
-	`debug_write(("reg1: D: %0d, E: %0d, M: %0d, W: %0d", d_reg1, e_reg1, m_reg1, w_reg1));
-	`debug_write(("reg2: D: %0d, E: %0d, M: %0d, W: %0d", d_reg2, e_reg2, m_reg2, w_reg2));
-	`debug_write(("regw: D: %0d, E: %0d, M: %0d, W: %0d", d_regw, e_regw, m_regw, w_regw));
+	`debug_write(("instructions: D: 0x%08x, E: 0x%08x, M: 0x%08x, W: 0x%08x\n", d_instr, e_instr, m_instr, w_instr));
+	`debug_write(("reg1: D: %0d, E: %0d, M: %0d, W: %0d\n", d_reg1, e_reg1, m_reg1, w_reg1));
+	`debug_write(("reg2: D: %0d, E: %0d, M: %0d, W: %0d\n", d_reg2, e_reg2, m_reg2, w_reg2));
+	`debug_write(("regw: D: %0d, E: %0d, M: %0d, W: %0d\n", d_regw, e_regw, m_regw, w_regw));
 end
 
 /* Normal control signals */
