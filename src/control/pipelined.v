@@ -1,4 +1,5 @@
 `include "instr-id.h"
+`include "pipelined.h"
 
 `define PART_NAME "instr-id"
 
@@ -59,9 +60,9 @@ assign result = (r && `FUNCT(instr) == 6'b100001 && `SHAMT(instr) == 5'b00000) ?
 	(`OP(instr) == 6'b100011) ? `LW : 
 	(`OP(instr) == 6'b101011) ? `SW : 
 	(`OP(instr) == 6'b000100) ? `BEQ : 
-	(`OP(instr) == 6'b001010) ? `J : 
+	(`OP(instr) == 6'b000010) ? `J : 
 	(`OP(instr) == 6'b001011) ? `JAL : 
-	(r && `FUNCT(instr) == 6'b001000 && `RT(instr) = 5'b00000 && `RD(instr) == 5'b00000 && `SHAMT(instr) == 5'b00000) ? `JR : 
+	(r && `FUNCT(instr) == 6'b001000 && `RT(instr) == 5'b00000 && `RD(instr) == 5'b00000 && `SHAMT(instr) == 5'b00000) ? `JR : 
 	(r && `FUNCT(instr) == 6'b001010 && `SHAMT(instr) == 5'b00000) ? `MOVZ : 
 	(instr == 32'b0) ? `NOP : 
 	`UNKNOWN;
@@ -103,19 +104,6 @@ module control(
 `define drd `RD(d_instr)
 
 `define fwable(old, new) (((old) == (new)) && ((old) != 0))
-
-`define orig 0
-`define E2D_rf 1
-`define E2D_npc 2
-`define M2D_npc 3
-`define M2D_alu 4
-`define W2D_rf 5
-
-`define M2E_npc 1
-`define M2E_alu 2
-`define W2E_rf 3
-
-`define W2M_rf 1
 
 `define inf 3'd7
 
@@ -236,12 +224,12 @@ end
 /* npc.jump_mode is controlled by the instruction in level E */
 
 assign cw_f_npc_jump_mode = 
-	(edptype == `BRANCH) ? (
-		(ekind == `BEQ) ? `NPC_JUMP_WHEN_EQUAL : 
+	(ddptype == `BRANCH) ? (
+		(dkind == `BEQ) ? `NPC_JUMP_WHEN_EQUAL : 
 		`NPC_JUMP_DISABLED
 	) : 
-	(edptype == `JUMP_I) ? `NPC_J : 
-	(edptype == `JUMP_R) ? `NPC_REG : 
+	(ddptype == `JUMP_I) ? `NPC_J : 
+	(ddptype == `JUMP_R) ? `NPC_REG : 
 	`NPC_JUMP_DISABLED;
 
 assign cw_d_ext_mode = 
@@ -259,7 +247,7 @@ assign cw_d_rf_read_addr2 = d_reg2;
 
 assign cw_e_m_alusrc = 
 	(edptype == `CAL_R || edptype == `CMOV || edptype == `BRANCH) ? 1'b0 : 
-	(edptype == `LOAD || edptype == `STORE) ? 1'b1 : 
+	(edptype == `CAL_I || edptype == `LOAD || edptype == `STORE) ? 1'b1 : 
 	1'b0;
 
 assign cw_e_alu_op = 
@@ -362,8 +350,8 @@ assign cw_fm_m =
 /* Stall control */
 
 assign t_use_reg1 = 
-	(ddptype == `CAL_R || ddptype == `CAL_I || ddptype == `LOAD || ddptype == `STORE || ddptype == `BRANCH) ? 3'd1 : 
-	(ddptype == `JUMP_R || ddptype == `CMOV) ? 3'd0 : 
+	(ddptype == `CAL_R || ddptype == `CAL_I || ddptype == `LOAD || ddptype == `STORE) ? 3'd1 : 
+	(ddptype == `BRANCH || ddptype == `JUMP_R || ddptype == `CMOV) ? 3'd0 : 
 	`inf;
 
 assign t_use_reg2 = 
@@ -373,19 +361,20 @@ assign t_use_reg2 =
 	`inf;
 
 assign t_new_e = 
-	(edptype == `LOAD || edptype == `STORE) ? 3'd2 : 
+	(edptype == `LOAD) ? 3'd2 : 
 	(edptype == `CAL_R || edptype == `CAL_I) ? 3'd1 : 
 	3'd0;
 
 assign t_new_m = 
-	(edptype == `LOAD || edptype == `STORE) ? 3'd1 : 
+	(mdptype == `LOAD || mdptype == `STORE) ? 3'd1 : 
 	3'd0;
 
-assign stall = 
-	$unsigned(t_use_reg1) < $unsigned(t_new_e) || 
-	$unsigned(t_use_reg1) < $unsigned(t_new_m) || 
-	$unsigned(t_use_reg2) < $unsigned(t_new_e) || 
-	$unsigned(t_use_reg2) < $unsigned(t_new_m);
+assign stall_e2d_reg1 = `fwable(d_reg1, e_regw) && $unsigned(t_use_reg1) < $unsigned(t_new_e);
+assign stall_m2d_reg1 = `fwable(d_reg1, m_regw) && $unsigned(t_use_reg1) < $unsigned(t_new_m);
+assign stall_e2d_reg2 = $unsigned(t_use_reg2) < $unsigned(t_new_e);
+assign stall_m2d_reg2 = $unsigned(t_use_reg2) < $unsigned(t_new_m);
+
+assign stall = stall_e2d_reg1 | stall_m2d_reg1 | stall_e2d_reg2 | stall_m2d_reg2;
 
 /* TODO: more thorough stall control? */
 

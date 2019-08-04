@@ -43,21 +43,21 @@ p5 需要实现的指令为：
 `JAL` | `F: pc.curr_pc` | | | `D: im.result[25:0]` | | `F: npc.next_pc`
 `JR` | `F: pc.curr_pc` | | | | `D: rf.read_result1` | `F: npc.next_pc`
 （其它）| `F: pc.curr_pc` | | | | | `F: npc.next_pc`
-综合 | `F: pc.curr_pc` | `E: alu.comp_result` | `D: im.result[15:0]` | `D: im.result[25:0]` | `D: rf.read_result1` | `F: npc.next_pc`
+综合 | `F: pc.curr_pc` | `D: cmp.cmp` | `D: im.result[15:0]` | `D: im.result[25:0]` | `D: rf.read_result1` | `F: npc.next_pc`
 
 #### D 级（ID）
 
-数据通路类型 | `D: ext.num`
-`CAL_R` | 
-`CAL_I` | `D: im.result[15:0]`
-`LOAD` | `D: im.result[15:0]`
-`STORE` | 
-`BRANCH` | 
-`NOP` | 
-`JAL` | 
-`JR` |
-`CMOV` | 
-综合 | `D: im.result[15:0]`
+数据通路类型 | `D: ext.num` | `D: cmp.reg1` | `D: cmp.reg2`
+`CAL_R` | | |
+`CAL_I` | `D: im.result[15:0]` | |
+`LOAD` | `D: im.result[15:0]` | |
+`STORE` | | |
+`BRANCH` | | `D: rf.read_result1` | `D: rf.read_result2`
+`NOP` | | |
+`JAL` | | |
+`JR` | | |
+`CMOV` | | `D: rf.read_result2`
+综合 | `D: im.result[15:0]` | `D: rf.read_result1` | `D: rf.read_result2`
 
 #### E 级（EX）
 
@@ -123,7 +123,7 @@ W | `npc.next_pc` | `w_npc_next_pc`
 E | `npc.next_pc` | `e_npc_next_pc`
 W | `npc.next_pc` | `w_npc_next_pc`
 
-这里没有补充 E 级 `BRANCH` 类指令需要的 `alu.comp_result` 到 F 级的连接以及 `JAL` 和 `JR` 类指令相应数据到 F 级的连接，因为为了正确控制 PC 的转换，它们必须是实时的，不需要流水线寄存器。
+这里没有补充 D 级 `BRANCH` 类指令需要的 `alu.comp_result` 到 F 级的连接以及 `JAL` 和 `JR` 类指令相应数据到 F 级的连接，因为为了正确控制 PC 的转换，它们必须是实时的，不需要流水线寄存器。
 
 #### 数据通路 MUX
 
@@ -132,9 +132,11 @@ W | `npc.next_pc` | `w_npc_next_pc`
 端口 | 所有的信号来源 | MUX 名称
 --- | --- | ---
 `E: alu.num2` | `D: rf.read_result2, D: ext.result` | `m_alusrc`
-`W: rf.write_data` | `E: alu.result, M: im.read_result, D: npc.next_pc` | `m_regdata`
+`W: rf.write_data` | `（无）, E: alu.result, M: dm.read_result, D: npc.next_pc` | `m_regdata`
 
 注意：**都是把信号来源从 0 开始编号，对应 MUX 的 `input`_n_ 接第 _n_ 个信号源。**
+
+注意：**如果写了（无），那么相应端口的数据为全 0，不过这时相应端口实际上也没有作用。**
 
 #### 转发
 
