@@ -26,7 +26,7 @@ assign next_pc =
 	(jump_mode == `NPC_JUMP_WHEN_NOT_EQUAL && alu_comp_result != `ALU_EQUAL) ? $signed(base) + $signed(extended_offset) : 
 	(jump_mode == `NPC_REG) ? reg_ : 
 	(jump_mode == `NPC_J) ? {base[31:28], jnum, 2'b0} : 
-	$(base) + $unsigned(4);
+	$unsigned(base) + $unsigned(4);
 
 /* TODO: what if all the signals don't change? */
 always @* begin
