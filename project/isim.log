@@ -1,11 +1,40 @@
 ISim log file
-Running: Z:\home\a-l-r\co\src\project\im_tb_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb Z:/home/a-l-r/co/src/project/im_tb_isim_beh.wdb 
+Running: C:\cygwin64\home\A-l-r\co\src\project\pipelined_tb_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/cygwin64/home/A-l-r/co/src/project/pipelined_tb_isim_beh.wdb 
 ISim P.20131013 (signature 0x7708f090)
 This is a Full version of ISim.
-WARNING: File "Z:/home/a-l-r/co/src/tests/datapath/im_tb.v" Line 30.  For instance im_tb/uut/, width 32 of formal port addr is not equal to width 33 of actual variable addr. 
 Time resolution is 1 ps
 # onerror resume
 # wave add /
 # run 1000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
+                  45@0000300c: $ 1 <= 002a0000
+                  95@00003020: $ 2 <= ffff0000
+                 145@00003034: $ 1 <= 002a002a
+                 195@00003048: $ 2 <= ffffffff
+                 245@0000305c: $ 3 <= 002a0029
+                 345@00003084: $ 4 <= 002a002b
+                 395@00003098: $ 5 <= 00000000
+                 435@000030a0: *00000000 <= 002a0029
+                 485@000030b4: *00000008 <= 002a0029
+                 545@000030d4: $ 6 <= 002a0029
+                 595@000030e8: $ 7 <= 002a0029
+                 645@000030fc: $ 8 <= 002a0029
+                 755@00003160: $ 9 <= 00004567
+# restart
+# run 1000ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+                  45@0000300c: $ 1 <= 002a0000
+                  95@00003020: $ 2 <= ffff0000
+                 145@00003034: $ 1 <= 002a002a
+                 195@00003048: $ 2 <= ffffffff
+                 245@0000305c: $ 3 <= 002a0029
+                 345@00003084: $ 4 <= 002a002b
+                 395@00003098: $ 5 <= 00000000
+                 435@000030a0: *00000000 <= 002a0029
+                 485@000030b4: *00000008 <= 002a0029
+                 545@000030d4: $ 6 <= 002a0029
+                 595@000030e8: $ 7 <= 002a0029
+                 645@000030fc: $ 8 <= 002a0029
+                 755@00003160: $ 9 <= 00004567
