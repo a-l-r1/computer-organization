@@ -1,6 +1,6 @@
 ## NPC
 
-### 功能
+### 原理
 
 NPC 是下个 PC 值的意思。它能做到根据当前的 PC 值，计算出下一个 32 位的 PC 值。
 
@@ -37,15 +37,17 @@ NPC 是下个 PC 值的意思。它能做到根据当前的 PC 值，计算出�
 
 ### 功能
 
-若 `jump_mode == NPC_JUMP_DISABLE`，则令 `next_pc = $unsigned(curr_pc) + $unsigned(4)`。
+令跳转基准地址 `base = $unsigned(curr_pc)`。
 
-若 `jump_mode == NPC_JUMP_WHEN_EQUAL`，则 `alu_comp_result == ALU_EQUAL` 时，首先把 `num` 扩展成 32 位有符号立即数，扩展方式是首先把 `num` 后面加上 `2'b0`，然后把这 18 位二进制数扩展成 32 位有符号二进制数。然后令 `next_pc = $signed(curr_pc) + $signed(4) + $signed(num)`。否则做跟 `jump_mode == NPC_JUMP_DISABLE` 时相同的步骤。
+若 `jump_mode == NPC_JUMP_DISABLE`，则令 `next_pc = $unsigned(base) + $unsigned(4)`。
+
+若 `jump_mode == NPC_JUMP_WHEN_EQUAL`，则 `alu_comp_result == ALU_EQUAL` 时，首先把 `num` 扩展成 32 位有符号立即数，扩展方式是首先把 `num` 后面加上 `2'b0`，然后把这 18 位二进制数扩展成 32 位有符号二进制数。然后令 `next_pc = $signed(base) + $signed(num)`。否则做跟 `jump_mode == NPC_JUMP_DISABLE` 时相同的步骤。
 
 若 `jump_mode == NPC_JUMP_WHEN_NOT_EQUAL`，则 `alu_comp_result != ALU_EQUAL` 时，做跟上面相同的步骤。否则做跟 `jump_mode == NPC_JUMP_DISABLE` 时相同的步骤。
 
 若 `jump_mode == NPC_REG`，则令 `next_pc = reg_`。
 
-若 `jump_mode == NPC_J`，则令 `next_pc = {curr_pc[31:28], jnum, 2'b0}`。
+若 `jump_mode == NPC_J`，则令 `next_pc = {base[31:28], jnum, 2'b0}`。
 
 若 `jump_mode` 为其它值，则做跟 `jump_mode == NPC_JUMP_DISABLE` 时相同的步骤。
 
@@ -53,4 +55,5 @@ NPC 是下个 PC 值的意思。它能做到根据当前的 PC 值，计算出�
 
 1. NPC 是在内部进行符号扩展，不用 ext。
 2. `reg_` 是为了避免和 `reg` 冲突。
+3. `base` 抽象出来是为了方便调试和维护，它是 `curr_pc` 是跟 MIPS 指令集手册相符的。
 
