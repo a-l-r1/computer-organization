@@ -2,14 +2,14 @@
 
 `define PART_NAME "pff"
 
-`include "debug.h"
+`include "debug/debug.h"
 
 module pff(
 	input clk, 
 	input enable, 
 	input [BIT_WIDTH - 1:0] i, 
 	output [BIT_WIDTH - 1:0] o
-)
+);
 
 parameter BIT_WIDTH = 32;
 
