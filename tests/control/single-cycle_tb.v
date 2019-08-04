@@ -90,7 +90,7 @@ module control_single_cycle_tb;
 		#10;
 		curr_instr = 32'hac410010;
 		
-		/* beq $4, $4, -7 */
+		/* beq $10, $10, -7 */
 		#10;
 		curr_instr = 32'h114afff9;
 	end
