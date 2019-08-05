@@ -7,7 +7,7 @@ import sys
 
 def linux_main() -> int:
     mars_path = 'tools/mars.jar'
-    java_path = '/usr/bin/java'
+    java_path = 'java'
 
     if not sys.argv[1].endswith('.asm'):
         raise RuntimeError('argv 1 %s doesn\'t end with .asm' % sys.argv[1])
@@ -16,16 +16,18 @@ def linux_main() -> int:
         # If this statement is successfully executed, the return code will be one of MARS
         # nc - Don't display copyright information
         # HexText - Dump hexadecimal text.
-        os.execve(java_path, [java_path.split('/')[-1], '-jar', mars_path, 'nc', 'a', 'dump', '.text', 'HexText', sys.argv[2], sys.argv[1]], os.environ)
+        os.system(' '.join([java_path, 
+            '-jar', mars_path, 
+            'nc', 'db', 'mc', 'CompactDataAtZero', 'a', 'dump', '.text', 'HexText', sys.argv[2], sys.argv[1]]))
     except:
         raise
 
     # os.execve won't return
-    return 1
+    return 0
 
 
 def main() -> None:
-    if sys.platform not in ['linux', 'win32']:
+    if sys.platform not in ['linux', 'win32', 'cygwin']:
         raise RuntimeError('OS unsupported')
 
     if sys.platform == 'win32':
@@ -36,6 +38,10 @@ def main() -> None:
         sys.exit(1)
 
     if sys.platform == 'linux':
+        sys.exit(linux_main())
+
+    # TODO: cygwin hack
+    if sys.platform == 'cygwin':
         sys.exit(linux_main())
 
 
