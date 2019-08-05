@@ -96,10 +96,10 @@ p5 需要实现的指令为：
 `STORE` | 
 `BRANCH` |  
 `NOP` | 
-`JAL` | `D: npc.next_pc`
+`JAL` | `F: $unsigned(pc.curr_pc) + $unsigned(8)`
 `JR` | 
 `CMOV` | `E: alu.result`
-综合 | `E: alu.result, M: dm.read_result, D: npc.next_pc`
+综合 | `E: alu.result, M: dm.read_result, F: $unsigned(pc.curr_pc) + $unsigned(8)`
 
 #### 流水线寄存器
 
@@ -107,23 +107,35 @@ p5 需要实现的指令为：
 
 流水线级 | 信号 | 流水线寄存器名称
 --- | --- | ---
-D | `im.result` | `d_im_result`
-E | `rf.read_result1` | `e_rf_read_result1`
-E | `rf.read_result2` | `e_rf_read_result2`
-E | `ext.result` | `e_ext_result`
-M | `alu.result` | `m_alu_result`
-M | `rf.read_result2` | `m_rf_read_result2`
-W | `alu.result` | `w_alu_result`
-W | `dm.read_result` | `w_dm_read_result`
-W | `npc.next_pc` | `w_npc_next_pc`
+D | `im.result` | `d_im`
+E | `rf.read_result1` | `e_reg1`
+E | `rf.read_result2` | `e_reg2`
+E | `ext.result` | `e_ext`
+M | `alu.result` | `m_alu`
+M | `rf.read_result2` | `m_reg2`
+W | `alu.result` | `w_alu`
+W | `dm.read_result` | `w_dm`
+W | `pc.curr_pc` | `w_pc`
 
 由于需要的流水线寄存器有跨级的（比如只有 D 级和 W 级），所以需要把漏掉的级补充上。
 
 流水线级 | 信号 | 流水线寄存器名称
-E | `npc.next_pc` | `e_npc_next_pc`
-W | `npc.next_pc` | `w_npc_next_pc`
+--- | --- | ---
+D | `pc.curr_pc` | `d_pc`
+E | `pc.curr_pc` | `e_pc`
+M | `pc.curr_pc` | `m_pc`
 
 这里没有补充 D 级 `BRANCH` 类指令需要的 `alu.comp_result` 到 F 级的连接以及 `JAL` 和 `JR` 类指令相应数据到 F 级的连接，因为为了正确控制 PC 的转换，它们必须是实时的，不需要流水线寄存器。
+
+注意：**返回 `PC + 8` 实际上是通过流水 `PC` 再加 8 实现的。**
+
+注意：**D 级流水线寄存器都要接使能信号，E 级流水线寄存器都要接复位信号，因为要插入气泡。**
+
+### 调试相关功能
+
+为了能够正确地打印出写入寄存器和 `dm` 时需要的 `pc` 值，需要流水 `pc.curr_pc`，一直到 W 级。因此，可能需要新增流水线寄存器，并把相应的 `pc` 值流水。
+
+注意：**写入寄存器是使用 `w` 级流水到的 `pc` 值。**
 
 #### 数据通路 MUX
 
@@ -160,5 +172,5 @@ W | `npc.next_pc` | `w_npc_next_pc`
 
 需要暂停是因为有些数据冒险靠转发解决不了，必须要让后面的指令暂停一个时钟周期。暂停的方式是在流水线中插入一个 NOP（这时候也叫气泡），从而让发生数据冒险的指令能够转发。
 
-流水线 CPU 数据通路中能提供的暂停机制有锁定 `pc` 和清空 D 级 `im.result` 寄存器。这样就可以在流水线 D 级插入气泡。清空 D 级 `im.result` 寄存器是通过流水线寄存器都有的复位功能实现的。
+流水线 CPU 数据通路中能提供的暂停机制有锁定 `pc` 和清空 E 级各个流水线寄存器。这样就可以在流水线 E 级插入气泡。清空 E 级各个寄存器是通过流水线寄存器的同步复位功能实现的。
 

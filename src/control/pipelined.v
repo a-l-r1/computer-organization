@@ -61,7 +61,7 @@ assign result = (r && `FUNCT(instr) == 6'b100001 && `SHAMT(instr) == 5'b00000) ?
 	(`OP(instr) == 6'b101011) ? `SW : 
 	(`OP(instr) == 6'b000100) ? `BEQ : 
 	(`OP(instr) == 6'b000010) ? `J : 
-	(`OP(instr) == 6'b001011) ? `JAL : 
+	(`OP(instr) == 6'b000011) ? `JAL : 
 	(r && `FUNCT(instr) == 6'b001000 && `RT(instr) == 5'b00000 && `RD(instr) == 5'b00000 && `SHAMT(instr) == 5'b00000) ? `JR : 
 	(r && `FUNCT(instr) == 6'b001010 && `SHAMT(instr) == 5'b00000) ? `MOVZ : 
 	(instr == 32'b0) ? `NOP : 
@@ -75,6 +75,7 @@ module control(
 	input [31:0] rf_read_result2, 
 	output cw_f_pc_enable, 
 	output cw_d_pff_enable, 
+	output cw_e_pff_rst, 
 	output [2:0] cw_f_npc_jump_mode, 
 	output [2:0] cw_d_ext_mode, 
 	output [4:0] cw_d_rf_read_addr1, 
@@ -196,21 +197,39 @@ assign wdptype = wkind[8:5];
 /* Internal pipeline */
 
 always @(posedge clk) begin
-	e_instr <= d_instr;
-	m_instr <= e_instr;
-	w_instr <= m_instr;
+	if (stall == 1'b1) begin
+		e_instr <= 32'b0;
+		m_instr <= e_instr;
+		w_instr <= m_instr;
 
-	e_reg1 <= d_reg1;
-	m_reg1 <= e_reg1;
-	w_reg1 <= m_reg1;
+		e_reg1 <= 5'b0;
+		m_reg1 <= e_reg1;
+		w_reg1 <= m_reg1;
 
-	e_reg2 <= d_reg2;
-	m_reg2 <= e_reg2;
-	w_reg2 <= m_reg2;
+		e_reg2 <= 5'b0;
+		m_reg2 <= e_reg2;
+		w_reg2 <= m_reg2;
 
-	e_regw <= d_regw;
-	m_regw <= e_regw;
-	w_regw <= m_regw;
+		e_regw <= 5'b0;
+		m_regw <= e_regw;
+		w_regw <= m_regw;
+	end else begin
+		e_instr <= d_instr;
+		m_instr <= e_instr;
+		w_instr <= m_instr;
+
+		e_reg1 <= d_reg1;
+		m_reg1 <= e_reg1;
+		w_reg1 <= m_reg1;
+
+		e_reg2 <= d_reg2;
+		m_reg2 <= e_reg2;
+		w_reg2 <= m_reg2;
+
+		e_regw <= d_regw;
+		m_regw <= e_regw;
+		w_regw <= m_regw;
+	end
 
 	`debug_write(("instructions: D: 0x%08x, E: 0x%08x, M: 0x%08x, W: 0x%08x\n", d_instr, e_instr, m_instr, w_instr));
 	`debug_write(("kind: D: 0b%09b, E: 0b%09b, M: 0b%09b, W: 0b%09b\n", dkind, ekind, mkind, wkind));
@@ -294,7 +313,7 @@ assign d_reg1 =
 	`ZERO;
 
 assign d_reg2 = 
-	(ddptype == `CAL_R || ddptype == `STORE || ddptype == `BRANCH || ddptype == `CMOV) ? `drt : 
+	(ddptype == `CAL_R || ddptype == `CAL_I || ddptype == `STORE || ddptype == `BRANCH || ddptype == `CMOV) ? `drt : 
 	`ZERO;
 
 assign d_regw = 
@@ -356,8 +375,8 @@ assign t_use_reg1 =
 
 assign t_use_reg2 = 
 	(ddptype == `STORE) ? 3'd2 : 
-	(ddptype == `CAL_R || ddptype == `CAL_I || ddptype == `BRANCH) ? 3'd1 : 
-	(ddptype == `CMOV) ? 3'd0 : 
+	(ddptype == `CAL_R || ddptype == `CAL_I) ? 3'd1 : 
+	(ddptype == `BRANCH || ddptype == `CMOV) ? 3'd0 : 
 	`inf;
 
 assign t_new_e = 
@@ -371,8 +390,8 @@ assign t_new_m =
 
 assign stall_e2d_reg1 = `fwable(d_reg1, e_regw) && $unsigned(t_use_reg1) < $unsigned(t_new_e);
 assign stall_m2d_reg1 = `fwable(d_reg1, m_regw) && $unsigned(t_use_reg1) < $unsigned(t_new_m);
-assign stall_e2d_reg2 = $unsigned(t_use_reg2) < $unsigned(t_new_e);
-assign stall_m2d_reg2 = $unsigned(t_use_reg2) < $unsigned(t_new_m);
+assign stall_e2d_reg2 = `fwable(d_reg2, e_regw) && $unsigned(t_use_reg2) < $unsigned(t_new_e);
+assign stall_m2d_reg2 = `fwable(d_reg2, m_regw) && $unsigned(t_use_reg2) < $unsigned(t_new_m);
 
 assign stall = stall_e2d_reg1 | stall_m2d_reg1 | stall_e2d_reg2 | stall_m2d_reg2;
 
@@ -381,6 +400,8 @@ assign stall = stall_e2d_reg1 | stall_m2d_reg1 | stall_e2d_reg2 | stall_m2d_reg2
 assign cw_f_pc_enable = ~stall;
 
 assign cw_d_pff_enable = ~stall;
+
+assign cw_e_pff_rst = ~stall;
 
 endmodule
 
