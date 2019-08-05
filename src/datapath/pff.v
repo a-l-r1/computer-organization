@@ -7,6 +7,7 @@
 module pff(
 	input clk, 
 	input enable, 
+	input rst, 
 	input [BIT_WIDTH - 1:0] i, 
 	output [BIT_WIDTH - 1:0] o
 );
@@ -20,13 +21,18 @@ initial begin
 end
 
 always @(posedge clk) begin
-	if (enable == `PFF_ENABLED) begin
-		data <= i;
+	if (rst == 1'b0) begin
+		data <= 0;
+	end else begin
+		if (enable == `PFF_ENABLED) begin
+			data <= i;
+		end else begin
+			data <= data;
+		end
 	end
 end
 
-assign o = (enable == `PFF_ENABLED) ? data : 
-	0;
+assign o = data;
 
 endmodule
 
