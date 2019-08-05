@@ -14,12 +14,12 @@ module dm(
 	output [31:0] read_result
 );
 
-reg [31:0] memory [`DM_ADDR_WIDTH - 1:0];
+reg [31:0] memory [`DM_SIZE - 1:0];
 
 integer i;
 
 initial begin
-	for (i = 0; i < `DM_ADDR_WIDTH; i = i + 1) begin
+	for (i = 0; i < `DM_SIZE; i = i + 1) begin
 		memory[i] = 32'b0;
 	end
 end
