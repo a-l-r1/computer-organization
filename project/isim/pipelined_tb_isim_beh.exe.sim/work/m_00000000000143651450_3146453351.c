@@ -24,11 +24,11 @@
 static const char *ng0 = "C:/cygwin64/home/A-l-r/co/src/src/datapath/npc.v";
 static unsigned int ng1[] = {0U, 0U};
 static int ng2[] = {14, 0};
-static int ng3[] = {4, 0};
-static unsigned int ng4[] = {1U, 0U};
-static unsigned int ng5[] = {2U, 0U};
-static unsigned int ng6[] = {7U, 0U};
-static unsigned int ng7[] = {6U, 0U};
+static unsigned int ng3[] = {1U, 0U};
+static unsigned int ng4[] = {2U, 0U};
+static unsigned int ng5[] = {7U, 0U};
+static unsigned int ng6[] = {6U, 0U};
+static int ng7[] = {4, 0};
 
 
 
@@ -99,16 +99,14 @@ LAB1:    return;
 
 static void Cont_22_1(char *t0)
 {
-    char t6[8];
     char *t1;
     char *t2;
     char *t4;
+    char *t5;
+    char *t6;
     char *t7;
     char *t8;
     char *t9;
-    char *t10;
-    char *t11;
-    char *t12;
 
 LAB0:    t1 = (t0 + 3736U);
     t2 = *((char **)t1);
@@ -120,18 +118,15 @@ LAB3:    goto *t2;
 LAB2:    xsi_set_current_line(22, ng0);
     t2 = (t0 + 1048U);
     t4 = *((char **)t2);
-    t2 = ((char*)((ng3)));
-    memset(t6, 0, 8);
-    xsi_vlog_unsigned_add(t6, 32, t4, 32, t2, 32);
-    t7 = (t0 + 4744);
-    t8 = (t7 + 56U);
-    t9 = *((char **)t8);
-    t10 = (t9 + 56U);
-    t11 = *((char **)t10);
-    memcpy(t11, t6, 8);
-    xsi_driver_vfirst_trans(t7, 0, 31);
-    t12 = (t0 + 4568);
-    *((int *)t12) = 1;
+    t2 = (t0 + 4744);
+    t5 = (t2 + 56U);
+    t6 = *((char **)t5);
+    t7 = (t6 + 56U);
+    t8 = *((char **)t7);
+    memcpy(t8, t4, 8);
+    xsi_driver_vfirst_trans(t2, 0, 31);
+    t9 = (t0 + 4568);
+    *((int *)t9) = 1;
 
 LAB1:    return;
 }
@@ -459,7 +454,7 @@ LAB3:    goto *t2;
 LAB2:    xsi_set_current_line(24, ng0);
     t2 = (t0 + 1208U);
     t5 = *((char **)t2);
-    t2 = ((char*)((ng4)));
+    t2 = ((char*)((ng3)));
     memset(t6, 0, 8);
     t7 = (t5 + 4);
     t8 = (t2 + 4);
@@ -680,7 +675,7 @@ LAB30:    t104 = (t0 + 2328U);
 
 LAB32:    t104 = (t0 + 1208U);
     t115 = *((char **)t104);
-    t104 = ((char*)((ng5)));
+    t104 = ((char*)((ng4)));
     memset(t116, 0, 8);
     t117 = (t115 + 4);
     t118 = (t104 + 4);
@@ -899,7 +894,7 @@ LAB65:    t214 = (t0 + 2328U);
 
 LAB67:    t214 = (t0 + 1208U);
     t225 = *((char **)t214);
-    t214 = ((char*)((ng6)));
+    t214 = ((char*)((ng5)));
     memset(t226, 0, 8);
     t227 = (t225 + 4);
     t228 = (t214 + 4);
@@ -985,7 +980,7 @@ LAB82:    t253 = (t0 + 1848U);
 
 LAB84:    t253 = (t0 + 1208U);
     t261 = *((char **)t253);
-    t253 = ((char*)((ng7)));
+    t253 = ((char*)((ng6)));
     memset(t262, 0, 8);
     t263 = (t261 + 4);
     t264 = (t253 + 4);
@@ -1086,9 +1081,9 @@ LAB99:    t290 = ((char*)((ng1)));
     xsi_vlogtype_concat(t289, 32, 32, 3U, t293, 4, t292, 26, t290, 2);
     goto LAB100;
 
-LAB101:    t307 = (t0 + 1048U);
+LAB101:    t307 = (t0 + 2328U);
     t308 = *((char **)t307);
-    t307 = ((char*)((ng3)));
+    t307 = ((char*)((ng7)));
     memset(t310, 0, 8);
     xsi_vlog_unsigned_add(t310, 32, t308, 32, t307, 32);
     goto LAB102;

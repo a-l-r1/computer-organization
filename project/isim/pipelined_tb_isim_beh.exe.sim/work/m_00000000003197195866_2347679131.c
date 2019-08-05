@@ -82,7 +82,7 @@ LAB3:    t1 = (t0 + 2888);
     t3 = *((char **)t2);
     t4 = ((char*)((ng2)));
     memset(t5, 0, 8);
-    xsi_vlog_signed_less(t5, 32, t3, 32, t4, 32);
+    xsi_vlog_signed_leq(t5, 32, t3, 32, t4, 32);
     t6 = (t5 + 4);
     t7 = *((unsigned int *)t6);
     t8 = (~(t7));

@@ -74,6 +74,21 @@
          <obj_property name="ElementShortName">wdptype[3:0]</obj_property>
          <obj_property name="ObjectShortName">wdptype[3:0]</obj_property>
       </wvobject>
+      <wvobject fp_name="/pipelined_tb/uut/control/d_reg1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">d_reg1[4:0]</obj_property>
+         <obj_property name="ObjectShortName">d_reg1[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined_tb/uut/control/d_reg2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">d_reg2[4:0]</obj_property>
+         <obj_property name="ObjectShortName">d_reg2[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined_tb/uut/control/d_regw" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">d_regw[4:0]</obj_property>
+         <obj_property name="ObjectShortName">d_regw[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
       <wvobject fp_name="/pipelined_tb/uut/control/e_reg1" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">e_reg1[4:0]</obj_property>
          <obj_property name="ObjectShortName">e_reg1[4:0]</obj_property>
@@ -155,6 +170,10 @@
          <obj_property name="ElementShortName">stall_m2d_reg2</obj_property>
          <obj_property name="ObjectShortName">stall_m2d_reg2</obj_property>
       </wvobject>
+      <wvobject fp_name="/pipelined_tb/uut/control/stall" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">stall</obj_property>
+         <obj_property name="ObjectShortName">stall</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject fp_name="group6" type="group">
       <obj_property name="label">F</obj_property>
@@ -174,15 +193,19 @@
          <obj_property name="UseCustomSignalColor">true</obj_property>
          <obj_property name="CustomSignalColor">#ffaa7f</obj_property>
       </wvobject>
-      <wvobject fp_name="/pipelined_tb/uut/f_npc_next_pc" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">f_npc_next_pc[31:0]</obj_property>
-         <obj_property name="ObjectShortName">f_npc_next_pc[31:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
       <wvobject fp_name="/pipelined_tb/uut/f_pc_curr_pc" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">f_pc_curr_pc[31:0]</obj_property>
          <obj_property name="ObjectShortName">f_pc_curr_pc[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#aaaaff</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined_tb/uut/f_npc_next_pc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">f_npc_next_pc[31:0]</obj_property>
+         <obj_property name="ObjectShortName">f_npc_next_pc[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#aaaaff</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group9" type="group">
@@ -225,11 +248,22 @@
          <obj_property name="ElementShortName">d_im_result[31:0]</obj_property>
          <obj_property name="ObjectShortName">d_im_result[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#ffaa7f</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined_tb/uut/d_pc_curr_pc" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">d_pc_curr_pc[31:0]</obj_property>
          <obj_property name="ObjectShortName">d_pc_curr_pc[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#aaaaff</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined_tb/uut/d_retaddr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">d_retaddr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">d_retaddr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#aaaaff</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined_tb/uut/d_rf_read_result1" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">d_rf_read_result1[31:0]</obj_property>
@@ -263,6 +297,10 @@
          <obj_property name="ElementShortName">cw_e_m_alusrc</obj_property>
          <obj_property name="ObjectShortName">cw_e_m_alusrc</obj_property>
       </wvobject>
+      <wvobject fp_name="/pipelined_tb/uut/control/cw_e_pff_rst" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_e_pff_rst</obj_property>
+         <obj_property name="ObjectShortName">cw_e_pff_rst</obj_property>
+      </wvobject>
       <wvobject fp_name="/pipelined_tb/uut/cw_fm_e1" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">cw_fm_e1[2:0]</obj_property>
          <obj_property name="ObjectShortName">cw_fm_e1[2:0]</obj_property>
@@ -292,15 +330,19 @@
          <obj_property name="ObjectShortName">e_ext_result[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/pipelined_tb/uut/e_npc_next_pc" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">e_npc_next_pc[31:0]</obj_property>
-         <obj_property name="ObjectShortName">e_npc_next_pc[31:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
       <wvobject fp_name="/pipelined_tb/uut/e_pc_curr_pc" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">e_pc_curr_pc[31:0]</obj_property>
          <obj_property name="ObjectShortName">e_pc_curr_pc[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#555500</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined_tb/uut/e_retaddr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">e_retaddr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">e_retaddr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#555500</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined_tb/uut/e_rf_read_result1" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">e_rf_read_result1[31:0]</obj_property>
@@ -333,6 +375,7 @@
       <wvobject fp_name="/pipelined_tb/uut/cw_fm_m" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">cw_fm_m[2:0]</obj_property>
          <obj_property name="ObjectShortName">cw_fm_m[2:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined_tb/uut/m_alu_result" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">m_alu_result[31:0]</obj_property>
@@ -349,14 +392,14 @@
          <obj_property name="ObjectShortName">m_dm_write_data[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/pipelined_tb/uut/m_npc_next_pc" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">m_npc_next_pc[31:0]</obj_property>
-         <obj_property name="ObjectShortName">m_npc_next_pc[31:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
       <wvobject fp_name="/pipelined_tb/uut/m_pc_curr_pc" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">m_pc_curr_pc[31:0]</obj_property>
          <obj_property name="ObjectShortName">m_pc_curr_pc[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined_tb/uut/m_retaddr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">m_retaddr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">m_retaddr[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined_tb/uut/m_rf_read_result2" type="array" db_ref_id="1">
@@ -373,14 +416,19 @@
          <obj_property name="ObjectShortName">cw_w_m_regdata[2:0]</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
+      <wvobject fp_name="/pipelined_tb/uut/cw_w_rf_write_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_w_rf_write_enable</obj_property>
+         <obj_property name="ObjectShortName">cw_w_rf_write_enable</obj_property>
+      </wvobject>
       <wvobject fp_name="/pipelined_tb/uut/cw_w_rf_write_addr" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">cw_w_rf_write_addr[4:0]</obj_property>
          <obj_property name="ObjectShortName">cw_w_rf_write_addr[4:0]</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/pipelined_tb/uut/cw_w_rf_write_enable" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">cw_w_rf_write_enable</obj_property>
-         <obj_property name="ObjectShortName">cw_w_rf_write_enable</obj_property>
+      <wvobject fp_name="/pipelined_tb/uut/w_rf_write_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">w_rf_write_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">w_rf_write_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined_tb/uut/w_alu_result" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">w_alu_result[31:0]</obj_property>
@@ -392,14 +440,14 @@
          <obj_property name="ObjectShortName">w_dm_read_result[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/pipelined_tb/uut/w_npc_next_pc" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">w_npc_next_pc[31:0]</obj_property>
-         <obj_property name="ObjectShortName">w_npc_next_pc[31:0]</obj_property>
+      <wvobject fp_name="/pipelined_tb/uut/w_pc_curr_pc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">w_pc_curr_pc[31:0]</obj_property>
+         <obj_property name="ObjectShortName">w_pc_curr_pc[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/pipelined_tb/uut/w_rf_write_data" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">w_rf_write_data[31:0]</obj_property>
-         <obj_property name="ObjectShortName">w_rf_write_data[31:0]</obj_property>
+      <wvobject fp_name="/pipelined_tb/uut/w_retaddr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">w_retaddr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">w_retaddr[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
    </wvobject>
@@ -434,9 +482,9 @@
          <obj_property name="ObjectShortName">reg_[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/pipelined_tb/uut/npc/next_pc" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">next_pc[31:0]</obj_property>
-         <obj_property name="ObjectShortName">next_pc[31:0]</obj_property>
+      <wvobject fp_name="/pipelined_tb/uut/npc/base" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">base[31:0]</obj_property>
+         <obj_property name="ObjectShortName">base[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined_tb/uut/npc/extended_offset" type="array" db_ref_id="1">
@@ -444,9 +492,9 @@
          <obj_property name="ObjectShortName">extended_offset[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/pipelined_tb/uut/npc/base" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">base[31:0]</obj_property>
-         <obj_property name="ObjectShortName">base[31:0]</obj_property>
+      <wvobject fp_name="/pipelined_tb/uut/npc/next_pc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">next_pc[31:0]</obj_property>
+         <obj_property name="ObjectShortName">next_pc[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
    </wvobject>

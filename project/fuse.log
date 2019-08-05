@@ -17,7 +17,6 @@ Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/cpu/pipelin
 Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../tests/cpu/pipelined/pipelined_tb.v" into library work
 Analyzing Verilog file "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
-WARNING:HDLCompiler:1016 - "C:/cygwin64/home/A-l-r/co/src/project/../src/cpu/pipelined.v" Line 63: Port rf_read_result2 is not connected to this instance
 Completed static elaboration
 Compiling module kind
 Compiling module control
@@ -38,5 +37,5 @@ Waiting for 1 sub-compilation(s) to finish...
 WARNING:Simulator - Unable to copy libPortabilityNOSH.dll to the simulation executable directory: boost::filesystem::copy_file: 系统找不到指定的路径。, "isim\pipelined_tb_isim_beh.exe.sim\libPortability.dll".
 Compiled 14 Verilog Units
 Built simulation executable C:/cygwin64/home/A-l-r/co/src/project/pipelined_tb_isim_beh.exe
-Fuse Memory Usage: 33156 KB
-Fuse CPU Usage: 546 ms
+Fuse Memory Usage: 32840 KB
+Fuse CPU Usage: 531 ms
