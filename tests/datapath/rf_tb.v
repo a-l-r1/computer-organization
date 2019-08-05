@@ -101,6 +101,14 @@ module rf_tb;
 		
 		/* don't write, either */
 		write_enable = 0;
+		
+		/* read $31 */
+		#20;
+		read_addr1 = 31;
+		read_addr2 = 31;
+		
+		/* don't write, either */
+		write_enable = 0;
 	end
 	
 	always begin

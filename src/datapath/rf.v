@@ -21,7 +21,7 @@ reg [31:0] registers [31:1];
 integer i;
 
 initial begin
-	for (i = 1; i < 31; i = i + 1) begin
+	for (i = 1; i <= 31; i = i + 1) begin
 		registers[i] = 32'b0;
 	end
 end
