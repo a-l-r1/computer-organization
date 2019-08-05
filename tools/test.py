@@ -23,8 +23,13 @@ def _get_command_result(args: List[str]) -> str:
 
 
 def _process_outputs(ref_result: str, result: str) -> Tuple[str, str]:
-    # Remove trailing extra '\n' in ref_result
-    ref_result = ref_result[:-1]
+    # Manual dos2unix
+    result = result.replace('\r\n', '\n')
+    ref_result = ref_result.replace('\r\n', '\n')
+
+    # Remove extra trailing '\n' in ref_result
+    if ref_result[-2] == '\n':
+        ref_result = ref_result[:-1]
 
     # TODO: cannot check timing info in result
     # Split result in lines and remove timing
@@ -49,11 +54,26 @@ def _process_outputs(ref_result: str, result: str) -> Tuple[str, str]:
         lambda x: not(x.startswith('WARNING: src/datapath/im.v:') and x.find(': $readmemh') != -1), 
         lines))
 
+    # NOTE: In (cyg)win iSim messages end with '\r'
+    isim_messages = [
+            'ISim P.20131013 (signature 0x7708f090)', 
+            'This is a Full version of ISim.', 
+            'Time resolution is 1 ps', 
+            'Simulator is doing circuit initialization process.', 
+            'Finished circuit initialization process.'
+    ]
+
+    lines = result.split('\n')
+    # TODO: use actual regexps
+    result = '\n'.join(filter(
+        lambda x: x not in isim_messages, 
+        lines))
+
     return ref_result, result
 
 
 def main() -> None:
-    if sys.platform not in ['linux']:
+    if sys.platform not in ['linux', 'cygwin']:
         raise RuntimeError('OS unsupported')
 
     # modify $PATH for automatic mips-as inclusion
