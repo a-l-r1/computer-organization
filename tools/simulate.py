@@ -22,17 +22,23 @@ _include_dir = 'src/include'
 _include_options = ['-I' + _include_dir]
 
 _targets = {
-        'single-cycle': [*_include_options, *_datapath_srcs, *_debug_srcs, 'src/control/single-cycle.v', 'src/cpu/single-cycle.v', 'tests/cpu/single-cycle/single-cycle_tb.v']
+        'single-cycle': [*_include_options, *_datapath_srcs, *_debug_srcs, 'src/control/single-cycle.v', 'src/cpu/single-cycle.v', 'tests/cpu/single-cycle/single-cycle_tb.v'], 
+        'pipelined': [*_include_options, *_datapath_srcs, *_debug_srcs, 'src/control/pipelined.v', 'src/cpu/pipelined.v', 'tests/cpu/single-cycle/pipelined_tb.v']
         }
 _target_aliases = {
         'p4': 'single-cycle', 
-        'single_cycle': 'single-cycle'
+        'single_cycle': 'single-cycle', 
+        'p5': 'pipelined', 
+        'pipeline': 'pipelined'
         }
 
 
 def main() -> None:
-    if sys.platform not in ['linux']:
+    if sys.platform not in ['linux', 'win32', 'cygwin']:
         raise RuntimeError('OS unsupported')
+
+    if sys.platform == 'win32':
+        raise RuntimeError('not implemented')
 
     if len(sys.argv) not in [3, 4] or (len(sys.argv) == 4 and sys.argv[3] != 'nodebug'):
         print('usage: %s <target> <path/to/asm-file.asm> [nodebug]' % sys.argv[0])
@@ -55,22 +61,32 @@ def main() -> None:
         # tempfile.mkdtemp will actually create the directory by the most secure method possible
         temp_path = tempfile.mkdtemp(prefix='simulate-', dir='tmp/')
 
-        # It seems that iSim uses IEEE1364-2001 standard, so we have to downgrade to an older version of Verilog. 
-        os.system(' '.join(
-                ['iverilog', 
-                    '-g2001', 
-                    *nodebug_options, 
-                    *_targets[target], 
-                    '-o', temp_path + '/' + target
-                    ]))
+        if sys.platform == 'linux':
+            # It seems that iSim uses IEEE1364-2001 standard, so we have to downgrade to an older version of Verilog. 
+            os.system(' '.join(
+                    ['iverilog', 
+                        '-g2001', 
+                        *nodebug_options, 
+                        *_targets[target], 
+                        '-o', temp_path + '/' + target
+                        ]))
 
-        # modify $PATH for automatic mips-as inclusion
-        # TODO: shell script-like hack
-        os.environ['PATH'] = \
-                os.path.dirname(os.path.realpath(__file__)) + \
-                ':' + \
-                os.environ['PATH']
+        if sys.platform == 'linux' or sys.platform == 'cygwin':
+            # modify $PATH for automatic mips-as inclusion
+            # TODO: shell script-like hack
+            os.environ['PATH'] = \
+                    os.path.dirname(os.path.realpath(__file__)) + \
+                    ':' + \
+                    os.environ['PATH']
 
+        if sys.platform == 'cygwin':
+            # TODO: environment hack
+            os.environ['Path'] = r'C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64;C:\Xilinx\14.7\ISE_DS\ISE\lib\nt64;C:\Xilinx\14.7\ISE_DS\ISE\..\..\..\DocNav;C:\Xilinx\14.7\ISE_DS\PlanAhead\bin;C:\Xilinx\14.7\ISE_DS\EDK\bin\nt64;C:\Xilinx\14.7\ISE_DS\EDK\lib\nt64;C:\Xilinx\14.7\ISE_DS\EDK\gnu\microblaze\nt\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnu\powerpc-eabi\nt\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnuwin\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnu\arm\nt\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_be\bin;C:\Xilinx\14.7\ISE_DS\EDK\gnu\microblaze\linux_toolchain\nt64_le\bin;C:\Xilinx\14.7\ISE_DS\common\bin\nt64;C:\Xilinx\14.7\ISE_DS\common\lib\nt64;C:\Program Files\Alacritty\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Java\jdk-12.0.2\bin;C:\Users\A-l-r\AppData\Local\Microsoft\WindowsApps'
+            os.environ['XILINX'] = r'C:\Xilinx\14.7\ISE_DS\ISE'
+            os.environ['XILINX_DSP'] = r'C:\Xilinx\14.7\ISE_DS\ISE'
+            os.environ['XILINX_EDK'] = r'C:\Xilinx\14.7\ISE_DS\EDK'
+            os.environ['XILINX_PLANAHEAD'] = r'C:\Xilinx\14.7\ISE_DS\PlanAhead'
+        # TODO: duplicate code
         # mips-as will do the necessary checks
         ret = os.system(' '.join(
                 ['mips-as.py', 
@@ -84,9 +100,27 @@ def main() -> None:
         # TODO: use context managers for safer operations
         # change cwd, so the simulation program is able to find code.hex
         old_cwd = os.getcwd()
-        os.chdir(temp_path)
+        if sys.platform == 'linux':
+            os.chdir(temp_path)
+        else:
+            os.chdir('project')
 
-        os.system('./' + target)
+        if sys.platform == 'linux':
+            os.system('./' + target)
+        elif sys.platform == 'cygwin':
+            # TODO: location hack
+            os.system(' '.join([
+                'cp', '../' + temp_path + '/code.hex', '.'
+            ]))
+
+            # TODO: path hack
+            os.system(' '.join([
+                './' + target + '_tb_isim_beh.exe', 
+                '-intstyle', 'ise', 
+                '-tclbatch', '../tools/share/isim.cmd', 
+                '-wdb', target + '_tb_isim_beh.wdb'
+                ]))
+
 
         # change it back for future operations
         os.chdir(old_cwd)
