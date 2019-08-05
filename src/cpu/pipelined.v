@@ -26,6 +26,7 @@ wire [31:0] f_im_result;
 /* D */
 
 wire [31:0] d_pc_curr_pc;
+wire [31:0] d_retaddr;
 wire [31:0] d_im_result;
 wire [31:0] d_rf_read_result1, d_rf_read_result2;
 wire [31:0] d_rf_read_result1_orig, d_rf_read_result2_orig;
@@ -35,6 +36,7 @@ wire [1:0] d_cmp_cmp;
 /* E */
 
 wire [31:0] e_pc_curr_pc, e_npc_next_pc;
+wire [31:0] e_retaddr;
 wire [31:0] e_im_result;
 wire [31:0] e_ext_result;
 wire [31:0] e_alu_result;
@@ -46,6 +48,7 @@ wire [1:0] e_alu_comp_result;
 /* M */
 
 wire [31:0] m_pc_curr_pc, m_npc_next_pc;
+wire [31:0] m_retaddr;
 wire [31:0] m_alu_result;
 wire [31:0] m_rf_read_result2;
 wire [31:0] m_dm_write_data;
@@ -53,7 +56,8 @@ wire [31:0] m_dm_read_result;
 
 /* W */
 
-wire [31:0] w_npc_next_pc;
+wire [31:0] w_pc_curr_pc;
+wire [31:0] w_retaddr;
 wire [31:0] w_alu_result;
 wire [31:0] w_dm_read_result;
 wire [31:0] w_rf_write_data;
@@ -63,9 +67,11 @@ wire [31:0] w_rf_write_data;
 control control(
 	.clk(clk), 
 	.d_instr(d_im_result), 
+	.rf_read_result2(d_rf_read_result2), 
 	.cw_f_pc_enable(cw_f_pc_enable), 
 	.cw_f_npc_jump_mode(cw_f_npc_jump_mode), 
 	.cw_d_pff_enable(cw_d_pff_enable), 
+	.cw_e_pff_rst(cw_e_pff_rst), 
 	.cw_d_ext_mode(cw_d_ext_mode), 
 	.cw_d_rf_read_addr1(cw_d_rf_read_addr1), 
 	.cw_d_rf_read_addr2(cw_d_rf_read_addr2), 
@@ -112,14 +118,18 @@ im im(
 
 pff #(.BIT_WIDTH(32)) d_pc(
 	.clk(clk), 
-	.enable(1'b1), 
+	.enable(cw_d_pff_enable), 
+	.rst(1'b1), 
 	.i(f_pc_curr_pc), 
 	.o(d_pc_curr_pc)
 );
 
+assign d_retaddr = $unsigned(d_pc_curr_pc) + $unsigned(8);
+
 pff #(.BIT_WIDTH(32)) d_im(
 	.clk(clk), 
 	.enable(cw_d_pff_enable), 
+	.rst(1'b1), 
 	.i(f_im_result), 
 	.o(d_im_result)
 );
@@ -127,7 +137,7 @@ pff #(.BIT_WIDTH(32)) d_im(
 rf rf(
 	.clk(clk), 
 	/* display the corresponding pc of the instruction in level D */
-	.curr_pc(d_pc_curr_pc), 
+	.curr_pc(w_pc_curr_pc), 
 	.read_addr1(cw_d_rf_read_addr1), 
 	.read_addr2(cw_d_rf_read_addr2), 
 	.write_addr(cw_w_rf_write_addr), 
@@ -146,8 +156,8 @@ ext ext(
 assign d_rf_read_result1 = 
 	(cw_fm_d1 == `orig) ? d_rf_read_result1_orig : 
 	(cw_fm_d1 == `E2D_rf) ? e_rf_read_result1 : 
-	(cw_fm_d1 == `E2D_npc) ? e_npc_next_pc : 
-	(cw_fm_d1 == `M2D_npc) ? m_npc_next_pc : 
+	(cw_fm_d1 == `E2D_npc) ? e_retaddr : 
+	(cw_fm_d1 == `M2D_npc) ? m_retaddr : 
 	(cw_fm_d1 == `M2D_alu) ? m_alu_result : 
 	(cw_fm_d1 == `W2D_rf) ? w_rf_write_data : 
 	d_rf_read_result1_orig;
@@ -157,8 +167,8 @@ assign d_rf_read_result1 =
 assign d_rf_read_result2 = 
 	(cw_fm_d2 == `orig) ? d_rf_read_result2_orig : 
 	(cw_fm_d2 == `E2D_rf) ? e_rf_read_result1 : 
-	(cw_fm_d2 == `E2D_npc) ? e_npc_next_pc : 
-	(cw_fm_d2 == `M2D_npc) ? m_npc_next_pc : 
+	(cw_fm_d2 == `E2D_npc) ? e_retaddr : 
+	(cw_fm_d2 == `M2D_npc) ? m_retaddr : 
 	(cw_fm_d2 == `M2D_alu) ? m_alu_result : 
 	(cw_fm_d2 == `W2D_rf) ? w_rf_write_data : 
 	d_rf_read_result2_orig;
@@ -178,28 +188,25 @@ cmp cmp(
 pff #(.BIT_WIDTH(32)) e_pc(
 	.clk(clk), 
 	.enable(1'b1), 
+	.rst(cw_e_pff_rst), 
 	.i(d_pc_curr_pc), 
 	.o(e_pc_curr_pc)
 );
 
-pff #(.BIT_WIDTH(32)) e_npc(
-	.clk(clk), 
-	.enable(1'b1), 
-	/* F -> E because that's how PC + 8 is saved */
-	.i(f_npc_next_pc), 
-	.o(e_npc_next_pc)
-);
+assign e_retaddr = $unsigned(e_pc_curr_pc) + $unsigned(8);
 
 pff #(.BIT_WIDTH(32)) e_im(
 	.clk(clk), 
 	.enable(1'b1), 
+	.rst(cw_e_pff_rst), 
 	.i(d_im_result), 
 	.o(e_im_result)
 );
 
-pff #(.BIT_WIDTH(32)) e_ext (
+pff #(.BIT_WIDTH(32)) e_ext(
 	.clk(clk), 
 	.enable(1'b1), 
+	.rst(cw_e_pff_rst), 
 	.i(d_ext_result), 
 	.o(e_ext_result)
 );
@@ -207,6 +214,7 @@ pff #(.BIT_WIDTH(32)) e_ext (
 pff #(.BIT_WIDTH(32)) e_reg1(
 	.clk(clk), 
 	.enable(1'b1), 
+	.rst(cw_e_pff_rst), 
 	.i(d_rf_read_result1), 
 	.o(e_rf_read_result1_orig)
 );
@@ -214,13 +222,14 @@ pff #(.BIT_WIDTH(32)) e_reg1(
 pff #(.BIT_WIDTH(32)) e_reg2(
 	.clk(clk), 
 	.enable(1'b1), 
+	.rst(cw_e_pff_rst), 
 	.i(d_rf_read_result2), 
 	.o(e_rf_read_result2_orig)
 );
 
 assign e_rf_read_result1 = 
 	(cw_fm_e1 == `orig) ? e_rf_read_result1_orig : 
-	(cw_fm_e1 == `M2E_npc) ? m_npc_next_pc : 
+	(cw_fm_e1 == `M2E_npc) ? m_retaddr : 
 	(cw_fm_e1 == `M2E_alu) ? m_alu_result : 
 	(cw_fm_e1 == `W2E_rf) ? w_rf_write_data : 
 	e_rf_read_result1_orig;
@@ -229,7 +238,7 @@ assign e_rf_read_result1 =
 
 assign e_rf_read_result2 = 
 	(cw_fm_e2 == `orig) ? e_rf_read_result2_orig : 
-	(cw_fm_e2 == `M2E_npc) ? m_npc_next_pc : 
+	(cw_fm_e2 == `M2E_npc) ? m_retaddr : 
 	(cw_fm_e2 == `M2E_alu) ? m_alu_result : 
 	(cw_fm_e2 == `W2E_rf) ? w_rf_write_data : 
 	e_rf_read_result2_orig;
@@ -258,20 +267,17 @@ alu alu(
 pff #(.BIT_WIDTH(32)) m_pc(
 	.clk(clk), 
 	.enable(1'b1), 
+	.rst(1'b1), 
 	.i(e_pc_curr_pc), 
 	.o(m_pc_curr_pc)
 );
 
-pff #(.BIT_WIDTH(32)) m_npc(
-	.clk(clk), 
-	.enable(1'b1), 
-	.i(e_npc_next_pc), 
-	.o(m_npc_next_pc)
-);
+assign m_retaddr = $unsigned(m_pc_curr_pc) + $unsigned(8);
 
 pff #(.BIT_WIDTH(32)) m_alu(
 	.clk(clk), 
 	.enable(1'b1), 
+	.rst(1'b1), 
 	.i(e_alu_result), 
 	.o(m_alu_result)
 );
@@ -279,6 +285,7 @@ pff #(.BIT_WIDTH(32)) m_alu(
 pff #(.BIT_WIDTH(32)) m_reg2(
 	.clk(clk), 
 	.enable(1'b1), 
+	.rst(1'b1), 
 	.i(e_rf_read_result2), 
 	.o(m_rf_read_result2)
 );
@@ -300,16 +307,20 @@ dm dm(
 
 /* W */
 
-pff #(.BIT_WIDTH(32)) w_npc(
+pff #(.BIT_WIDTH(32)) w_pc(
 	.clk(clk), 
 	.enable(1'b1), 
-	.i(m_npc_next_pc), 
-	.o(w_npc_next_pc)
+	.rst(1'b1), 
+	.i(m_pc_curr_pc), 
+	.o(w_pc_curr_pc)
 );
+
+assign w_retaddr = $unsigned(w_pc_curr_pc) + $unsigned(8);
 
 pff #(.BIT_WIDTH(32)) w_alu(
 	.clk(clk), 
 	.enable(1'b1), 
+	.rst(1'b1), 
 	.i(m_alu_result), 
 	.o(w_alu_result)
 );
@@ -317,6 +328,7 @@ pff #(.BIT_WIDTH(32)) w_alu(
 pff #(.BIT_WIDTH(32)) w_dm(
 	.clk(clk), 
 	.enable(1'b1), 
+	.rst(1'b1), 
 	.i(m_dm_read_result), 
 	.o(w_dm_read_result)
 );
@@ -325,7 +337,7 @@ assign w_rf_write_data =
 	(cw_w_m_regdata == 3'd0) ? 32'h0 : 
 	(cw_w_m_regdata == 3'd1) ? w_alu_result : 
 	(cw_w_m_regdata == 3'd2) ? w_dm_read_result : 
-	(cw_w_m_regdata == 3'd3) ? w_npc_next_pc : 
+	(cw_w_m_regdata == 3'd3) ? w_retaddr : 
 	32'h0;
 
 endmodule
