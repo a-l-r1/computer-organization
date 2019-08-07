@@ -12,10 +12,11 @@ ALU 是运算控制单元的意思，负责两个 32 位整数的运算。它可
 --- | --- | --- | ---
 `num1` | 输入 | 32 | 第一个操作数
 `num2` | 输入 | 32 | 第二个操作数
+`shamt` | 输入 | 5 | 移位运算的移位位数
 `op` | 输入 | 5 | 操作符
 `result` | 输出 | 32 | 结果
-`comp_result` | 输出 | 2 | 作为无符号数的比较结果
-`sig_comp_result` | 输出 | 2 | 作为有符号数的比较结果
+`cmp_result` | 输出 | 2 | 作为无符号数的比较结果
+`sig_cmp_result` | 输出 | 2 | 作为有符号数的比较结果
 `overflow` | 输出 | 1 | 计算过程中是否发生溢出
 `op_invalid` | 输出 | 1 | 操作符是否无效
 
@@ -27,24 +28,33 @@ ALU 是运算控制单元的意思，负责两个 32 位整数的运算。它可
 
 类别 | 定义 | 值 | 意义
 --- | --- | --- | ---
-`op` | `ALU_ADD` | 5b'00000 | 加法运算
+`op` | `ALU_ADD` | 5'b00000 | 加法运算
 `op` | `ALU_UNSIGNED_ADD` | `ALU_ADD` | 同上
-`op` | `ALU_SUB` | 5b'00001 | 减法运算
+`op` | `ALU_SUB` | 5'b00001 | 减法运算
 `op` | `ALU_UNSIGNED_SUB` | `ALU_SUB` | 同上
-`op` | `ALU_AND` | 5b'10000 | 按位与运算
+`op` | `ALU_AND` | 5'b10000 | 按位与运算
 `op` | `ALU_BITWISE_AND` | `ALU_AND` | 同上
-`op` | `ALU_OR` | 5b'10001 | 按位或运算
+`op` | `ALU_OR` | 5'b10001 | 按位或运算
 `op` | `ALU_BITWISE_OR` | `ALU_OR` | 同上
-`op` | `ALU_NOT` | 5b'10010 | 按位非运算
+`op` | `ALU_NOT` | 5'b10010 | 按位非运算
 `op` | `ALU_BITWISE_NOT` | `ALU_NOT` | 同上
-`op` | `ALU_XOR` | 5b'10011 | 按位异或运算
+`op` | `ALU_XOR` | 5'b10011 | 按位异或运算
 `op` | `ALU_MOVZ` | 5b'00010 | 数据转移运算（[1]）
-`.*comp_result` | `ALU_EQUAL` | 2b'00 | 等于
-`.*comp_result` | `ALU_EQUAL_TO` | `ALU_EQUAL` | 同上
-`.*comp_result` | `ALU_LARGER` | 2b'01 | 大于
-`.*comp_result` | `ALU_LARGER_THAN` | `ALU_LARGER` | 同上
-`.*comp_result` | `ALU_SMALLER` | 2b'10 | 小于
-`.*comp_result` | `ALU_SMALLER_THAN` | `ALU_SMALLER` | 同上
+`op` | `ALU_NOR` | 5'b10100 | 按位或非运算
+`op` | `ALU_SLT` | 5'b00011 | 若小于则设置运算
+`op` | `ALU_SLTU` | 5'b00100 | 无符号的若小于则设置运算
+`op` | `ALU_SLL` | 5'b10101 | 左移位运算
+`op` | `ALU_SRL` | 5'b10110 | 逻辑右移位运算
+`op` | `ALU_SRA` | 5'b10111 | 算数右移位运算
+`op` | `ALU_SLLV` | 5'b11000 | 寄存器为参数的左移位运算
+`op` | `ALU_SRLV` | 5'b11001 | 寄存器为参数的逻辑右移位运算
+`op` | `ALU_SRAV` | 5'b11110 | 寄存器为参数的算数右移位运算
+`.*cmp_result` | `ALU_EQUAL` | 2b'00 | 等于
+`.*cmp_result` | `ALU_EQUAL_TO` | `ALU_EQUAL` | 同上
+`.*cmp_result` | `ALU_LARGER` | 2b'01 | 大于
+`.*cmp_result` | `ALU_LARGER_THAN` | `ALU_LARGER` | 同上
+`.*cmp_result` | `ALU_SMALLER` | 2b'10 | 小于
+`.*cmp_result` | `ALU_SMALLER_THAN` | `ALU_SMALLER` | 同上
 `overflow` | `ALU_OVERFLOW` | 1'b1 | 溢出
 `overflow` | `ALU_NOT_OVERFLOW` | 1'b0 | 未溢出
 `op_invalid` | `ALU_INVALID_OP` | 1'b1 | 操作符无效
@@ -64,10 +74,15 @@ ALU 是运算控制单元的意思，负责两个 32 位整数的运算。它可
 
 如果 `op` 的值为非法操作，就令 `op_invalid` 为 `1'b1`，否则为 `1'b0`。此时令 `result` 为 `32'b0`。
 
-`.*comp_result` 的值仅由 `num[12]` 确定，与其它输入无关。`.*comp_result` 的比较方式，在端口定义中。比较的输出结果，在宏定义中。不会输出宏定义中没有定义的结果。
+`.*cmp_result` 的值仅由 `num[12]` 确定，与其它输入无关。`.*cmp_result` 的比较方式，在端口定义中。比较的输出结果，在宏定义中。不会输出宏定义中没有定义的结果。
+
+若小于则设置运算指的是把 `alu.num1` 和 `alu.num2` 作为有符号数比较，若 `alu.num1 < alu.num2`，则 `result = 32'b1`，否则 `result = 32'b0`。无符号的若小于则设置运算是把要比较的两个数作为无符号数比较，之后和若小于则设置运算相同。
+
+左右移位运算如果不说以寄存器为参数，就用 `shamt` 作为移位位数，否则用 `num1` 的最后 5 位作为移位位数。所有的移位运算都是对 `num2` 进行移位。如果当前 `op` 不对应移位运算，则移位位数为 0。
 
 ### 注意事项
 
 1. 添加新运算时注意同时改 `op_invalid` 的输出和 `result` 的输出
-2. 如果不确定符号，就加上 `$(un_|)signed`
+2. 如果不确定符号，就加上 `$(un|)signed`
+3. 由于 ISE 不支持以变量为位数对标量切片，所以只能提前穷举移位位数的 31 种情况，然后进行切片，如果移位位数不属于 [0, 31]，那么切片结果是原来的标量
 
