@@ -32,6 +32,7 @@ module dm_tb;
 	reg [31:0] write_addr;
 	reg [31:0] write_data;
 	reg write_enable;
+	reg [2:0] mode;
 
 	// Outputs
 	wire [31:0] read_result;
@@ -43,7 +44,9 @@ module dm_tb;
 		.write_addr(write_addr), 
 		.write_data(write_data), 
 		.write_enable(write_enable), 
-		.read_result(read_result)
+		.mode(mode), 
+		.read_result(read_result), 
+		.invalid(invalid)
 	);
 
 	initial begin
@@ -53,6 +56,7 @@ module dm_tb;
 		write_addr = 0;
 		write_data = 0;
 		write_enable = 0;
+		mode = 0;
 
 		// Wait 100 ns for global reset to finish
 		#100;
@@ -61,19 +65,29 @@ module dm_tb;
 		/* make sure the stimuli comes before the posedge of clk */
 		#5;
 		
+		/* read the 1st word */
+		#20;
+		read_addr = 0;
+		write_addr = 4;
+		write_data = 32'hdeadbeef;
+		write_enable = 1'b0;
+		mode = `DM_W;
+		
 		/* write the 2nd word and read the 1st one */
 		#20;
 		read_addr = 0;
 		write_addr = 4;
 		write_data = 32'h01234567;
 		write_enable = `DM_WRITE_ENABLED;
+		mode = `DM_W;
 		
 		/* write the 1st word and read the 2nd one */
 		#20;
 		read_addr = 4;
 		write_addr = 0;
-		write_data = 32'h89abcdef;
+		write_data = 32'h42424242;
 		write_enable = `DM_WRITE_ENABLED;
+		mode = `DM_W;
 		
 		/* read the 1st word, don't write */
 		#20;
@@ -81,6 +95,7 @@ module dm_tb;
 		write_addr = 4;
 		write_data = 32'hdeadbeef;
 		write_enable = `DM_WRITE_DISABLED;
+		mode = `DM_W;
 		
 		/* read the 2nd word, don't write either */
 		#20;
@@ -88,12 +103,65 @@ module dm_tb;
 		write_addr = 0;
 		write_data = 32'hdeadbeef;
 		write_enable = `DM_WRITE_DISABLED;
+		mode = `DM_W;
 		
 		/* large address */
 		#20;
-		read_addr = 32'h01234567;
+		read_addr = 32'h01234564;
 		write_addr = 0;
 		write_data = 32'hdeadbeef;
+		write_enable = 1'b0;
+		mode = `DM_W;
+		
+		/* Read by half word */
+		#20;
+		read_addr = 32'h00000000;
+		write_addr = 0;
+		write_data = 32'hdeadbeef;
+		write_enable = 1'b0;
+		mode = `DM_H;
+		
+		#20;
+		read_addr = 32'h00000002;
+		mode = `DM_H;
+		
+		#20;
+		read_addr = 32'h00000000;
+		mode = `DM_HU;
+		
+		#20;
+		read_addr = 32'h00000002;
+		mode = `DM_HU;
+		
+		/* Read by byte */
+		#20;
+		read_addr = 32'h00000000;
+		mode = `DM_B;
+		
+		#20;
+		read_addr = 32'h00000001;
+		mode = `DM_BU;
+		
+		/* Write by half word */
+		#20;
+		read_addr = 32'h00000000;
+		write_addr = 32'h00000002;
+		write_data = 32'hf1f2f3f4;
+		mode = `DM_H;
+		write_enable = 1'b1;
+		
+		/* Write by byte */
+		#20;
+		read_addr = 32'h00000000;
+		write_addr = 32'h00000001;
+		write_data = 32'hf5f6f7f8;
+		mode = `DM_B;
+		write_enable = 1'b1;
+		
+		/* Check the result */
+		#20;
+		read_addr = 32'h00000000;
+		mode = `DM_W;
 		write_enable = 1'b0;
 	end
 	

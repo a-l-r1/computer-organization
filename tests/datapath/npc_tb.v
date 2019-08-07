@@ -3,6 +3,7 @@
 `include "npc.h"
 
 `include "alu.h"
+`include "cmp.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Company: 
@@ -30,8 +31,8 @@ module npc_tb;
 
 	// Inputs
 	reg [31:0] curr_pc;
-	reg [2:0] jump_mode;
-	reg [1:0] alu_comp_result;
+	reg [3:0] jump_mode;
+	reg [1:0] cmp_result;
 	reg [15:0] num;
 
 	// Outputs
@@ -41,7 +42,7 @@ module npc_tb;
 	npc uut (
 		.curr_pc(curr_pc), 
 		.jump_mode(jump_mode), 
-		.alu_comp_result(alu_comp_result), 
+		.cmp_result(cmp_result), 
 		.num(num), 
 		.next_pc(next_pc)
 	);
@@ -50,7 +51,7 @@ module npc_tb;
 		// Initialize Inputs
 		curr_pc = 0;
 		jump_mode = 0;
-		alu_comp_result = 0;
+		cmp_result = 0;
 		num = 0;
 
 		// Wait 100 ns for global reset to finish
@@ -61,35 +62,63 @@ module npc_tb;
 		#10;
 		curr_pc = 32'h00000004;
 		jump_mode = `NPC_JUMP_DISABLED;
-		alu_comp_result = `ALU_EQUAL;
+		cmp_result = `ALU_EQUAL;
 		num = 16'h0008;
 		
 		/* beq with positive num */
 		#10;
 		curr_pc = 32'h00000004;
 		jump_mode = `NPC_JUMP_WHEN_EQUAL;
-		alu_comp_result = `ALU_EQUAL;
+		cmp_result = `ALU_EQUAL;
 		num = 16'h0008;
 		
 		/* beq with negative num */
 		#10;
 		curr_pc = 32'h00000004;
 		jump_mode = `NPC_JUMP_WHEN_EQUAL;
-		alu_comp_result = `ALU_EQUAL;
+		cmp_result = `ALU_EQUAL;
 		num = 16'hffff;
 		
 		/* beq with negative num and `ALU_LARGER */
 		#10;
 		curr_pc = 32'h00000004;
 		jump_mode = `NPC_JUMP_WHEN_EQUAL;
-		alu_comp_result = `ALU_LARGER;
+		cmp_result = `ALU_LARGER;
 		num = 16'hffff;
 		
 		/* bne with positive num */
 		#10;
 		curr_pc = 32'h00000004;
 		jump_mode = `NPC_JUMP_WHEN_NOT_EQUAL;
-		alu_comp_result = `ALU_LARGER;
+		cmp_result = `ALU_LARGER;
+		num = 16'h0008;
+		
+		/* bgez with positive num */
+		#10;
+		curr_pc = 32'h00000004;
+		jump_mode = `NPC_LARGER_OR_EQUAL;
+		cmp_result = `CMP_LARGER;
+		num = 16'h0008;
+		
+		/* bgez with negative num and `CMP_SMALLER */
+		#10;
+		curr_pc = 32'h00000004;
+		jump_mode = `NPC_LARGER_OR_EQUAL;
+		cmp_result = `CMP_SMALLER;
+		num = 16'hffff;
+		
+		/* bltz with negative num */
+		#10;
+		curr_pc = 32'h00000004;
+		jump_mode = `NPC_SMALLER;
+		cmp_result = `CMP_SMALLER;
+		num = 16'hffff;
+		
+		/* bltz with positive num and `CMP_LARGER */
+		#10;
+		curr_pc = 32'h00000004;
+		jump_mode = `NPC_SMALLER;
+		cmp_result = `CMP_LARGER;
 		num = 16'h0008;
 	end
       

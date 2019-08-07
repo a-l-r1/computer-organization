@@ -30,11 +30,12 @@ module alu_tb;
 	reg [31:0] num1;
 	reg [31:0] num2;
 	reg [4:0] op;
+	reg [4:0] shamt;
 
 	// Outputs
 	wire [31:0] result;
-	wire [1:0] comp_result;
-	wire [1:0] sig_comp_result;
+	wire [1:0] cmp_result;
+	wire [1:0] sig_cmp_result;
 	wire overflow;
 	wire op_invalid;
 
@@ -43,9 +44,10 @@ module alu_tb;
 		.num1(num1), 
 		.num2(num2), 
 		.op(op), 
+		.shamt(shamt), 
 		.result(result), 
-		.comp_result(comp_result), 
-		.sig_comp_result(sig_comp_result), 
+		.cmp_result(cmp_result), 
+		.sig_cmp_result(sig_cmp_result), 
 		.overflow(overflow), 
 		.op_invalid(op_invalid)
 	);
@@ -55,6 +57,7 @@ module alu_tb;
 		num1 = 0;
 		num2 = 0;
 		op = 0;
+		shamt = 0;
 
 		// Wait 100 ns for global reset to finish
 		#100;
@@ -98,6 +101,54 @@ module alu_tb;
 		/* xor */
 		#10;
 		op = `ALU_XOR;
+		
+		/* nor */
+		#10;
+		op = `ALU_NOR;
+		
+		/* movz */
+		#10;
+		op = `ALU_MOVZ;
+		
+		/* slt */
+		#10;
+		op = `ALU_SLT;
+		
+		/* sltu */
+		#10;
+		op = `ALU_SLTU;
+		
+		/* Shift operations */
+		#10;
+		op = `ALU_SLL;
+		shamt = 5;
+		
+		#10;
+		op = `ALU_SRL;
+		shamt = 5;
+		
+		#10;
+		op = `ALU_SRA;
+		shamt = 5;
+		
+		#10;
+		op = `ALU_SLLV;
+		
+		#10;
+		op = `ALU_SRLV;
+		
+		#10;
+		op = `ALU_SRAV;
+		
+		/* Arithmetic shift operations */
+		#10;
+		num1 = 32'h42424242;
+		num2 = 32'h98989898;
+		op = `ALU_SRA;
+		shamt = 5;
+		
+		#10;
+		op = `ALU_SRAV;
 	end
       
 endmodule
