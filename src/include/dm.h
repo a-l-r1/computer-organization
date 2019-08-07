@@ -6,6 +6,13 @@
 `define DM_WRITE_DISABLE 1'b0
 `define DM_WRITE_DISABLED `DM_WRITE_DISABLE
 
+`define DM_NONE 3'b000
+`define DM_W 3'b001
+`define DM_H 3'b011
+`define DM_HU 3'b010
+`define DM_B 3'b101
+`define DM_BU 3'b110
+
 /* DM_SIZE == 2^(DM_ADDR_WIDTH - 2) */
 
 `define DM_ADDR_WIDTH 12
