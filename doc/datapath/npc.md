@@ -11,8 +11,8 @@ NPC 是下个 PC 值的意思。它能做到根据当前的 PC 值，计算出�
 端口 | 类型 | 位宽 | 功能
 --- | --- | --- | ---
 `curr_pc` | 输入 | 32 | 当前 PC
-`jump_mode` | 输入 | 3 | 是否可以跳转
-`alu_comp_result` | 输入 | 2 | ALU 的比较结果
+`jump_mode` | 输入 | 4 | 是否可以跳转
+`cmp_result` | 输入 | 2 | ALU 的比较结果
 `num` | 输入 | 16 | 输入的立即数
 `jnum` | 输入 | 26 | 输入的 J 型指令的立即数
 `reg_` | 输入 | 32 | 输入的寄存器值
@@ -24,16 +24,22 @@ NPC 是下个 PC 值的意思。它能做到根据当前的 PC 值，计算出�
 
 类别 | 定义 | 值 | 意义
 --- | --- | --- | ---
-`jump_mode` | `NPC_JUMP_DISABLE` | 3'b000 | 不要跳转
+`jump_mode` | `NPC_JUMP_DISABLE` | 4'b0000 | 不要跳转
 `jump_mode` | `NPC_JUMP_DISABLED` | `NPC_JUMP_DISABLE` | 
-`jump_mode` | `NPC_JUMP_WHEN_EQUAL` | 3'b001 | 当 ALU 输入的比较结果相等时跳转
+`jump_mode` | `NPC_JUMP_WHEN_EQUAL` | 4'b0001 | 当输入的比较结果相等时跳转
 `jump_mode` | `NPC_JUMP_WHEN_EQUALS_TO` | `NPC_JUMP_WHEN_EQUAL` | 
-`jump_mode` | `NPC_JUMP_WHEN_NOT_EQUAL` | 3'b010 | 当 ALU 输入的比较结果不等时跳转
+`jump_mode` | `NPC_EQUAL` | `NPC_JUMP_WHEN_EQUAL` |
+`jump_mode` | `NPC_JUMP_WHEN_NOT_EQUAL` | 4'b0010 | 当输入的比较结果不等时跳转
 `jump_mode` | `NPC_JUMP_WHEN_NOT_EQUALS_TO` | `NPC_JUMP_WHEN_NOT_EQUAL` | 
-`jump_mode` | `NPC_REG` | 3'b111 | 按照寄存器内地址跳转
-`jump_mode` | `NPC_J` | 3'b110 | 按照 J 型指令的立即数跳转
+`jump_mode` | `NPC_NOT_EQUAL` | `NOT_JUMP_WHEN_NOT_EQUAL` |
+`jump_mode` | `NPC_REG` | 4'b1111 | 按照寄存器内地址跳转
+`jump_mode` | `NPC_J` | 4'b1110 | 按照 J 型指令的立即数跳转
+`jump_mode` | `NPC_LARGER` | 4'b0011 | 当输入的比较结果为大于时跳转
+`jump_mode` | `NPC_SMALLER` | 4'b0100 | 当输入的比较结果为小于时跳转
+`jump_mode` | `NPC_LARGER_OR_EQUAL` | 4'b0101 | 当输入的比较结果为大于或等于时跳转
+`jump_mode` | `NPC_SMALLER_OR_EQUAL` | 4'b0110 | 当输入的比较结果为小于或等于时跳转
 
-`alu_comp_result` 的相应数值代表的意义，与相应的宏有关，这些宏在 `alu.h` 中。
+`comp_result` 的相应数值代表的意义，与相应的宏有关，这些宏在 `alu.h` 中。
 
 ### 功能
 
