@@ -8,5 +8,707 @@
 <!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.    -->
 
 <messages>
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;instr-id.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;pipelined.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">6</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;debug/debug.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">8</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;alu.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">9</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;ext.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">10</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;npc.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">54</arg>. <arg fmt="%s" index="3">Macro &lt;OP&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">56</arg>. <arg fmt="%s" index="3">Macro &lt;FUNCT&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">56</arg>. <arg fmt="%s" index="3">Syntax error near &quot;:&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">57</arg>. <arg fmt="%s" index="3">Macro &lt;SUBU&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">58</arg>. <arg fmt="%s" index="3">Macro &lt;RS&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">59</arg>. <arg fmt="%s" index="3">Macro &lt;ORI&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Macro &lt;LW&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">61</arg>. <arg fmt="%s" index="3">Macro &lt;SW&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">62</arg>. <arg fmt="%s" index="3">Macro &lt;BEQ&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">63</arg>. <arg fmt="%s" index="3">Macro &lt;J&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">64</arg>. <arg fmt="%s" index="3">Macro &lt;JAL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">65</arg>. <arg fmt="%s" index="3">Macro &lt;RT&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">66</arg>. <arg fmt="%s" index="3">Macro &lt;MOVZ&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">67</arg>. <arg fmt="%s" index="3">Macro &lt;NOP&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">68</arg>. <arg fmt="%s" index="3">Macro &lt;UNKNOWN&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">234</arg>. <arg fmt="%s" index="3">Macro &lt;debug_write&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">234</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">246</arg>. <arg fmt="%s" index="3">Macro &lt;BRANCH&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">246</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">247</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_JUMP_WHEN_EQUAL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">248</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_JUMP_DISABLED&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">250</arg>. <arg fmt="%s" index="3">Macro &lt;JUMP_I&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">251</arg>. <arg fmt="%s" index="3">Macro &lt;JUMP_R&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">255</arg>. <arg fmt="%s" index="3">Macro &lt;CAL_I&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">255</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">256</arg>. <arg fmt="%s" index="3">Macro &lt;EXT_MODE_PAD&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">257</arg>. <arg fmt="%s" index="3">Macro &lt;EXT_MODE_UNSIGNED&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">260</arg>. <arg fmt="%s" index="3">Macro &lt;LOAD&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">268</arg>. <arg fmt="%s" index="3">Macro &lt;CAL_R&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">268</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">273</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">274</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_ADD&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">275</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_SUB&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">276</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_OR&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">284</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_MOVZ&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">291</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">295</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">301</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">311</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">312</arg>. <arg fmt="%s" index="3">Macro &lt;ZERO&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">316</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">320</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">323</arg>. <arg fmt="%s" index="3">Macro &lt;RA&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">336</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">336</arg>. <arg fmt="%s" index="3">Macro &lt;E2D_rf&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">337</arg>. <arg fmt="%s" index="3">Macro &lt;E2D_npc&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">338</arg>. <arg fmt="%s" index="3">Macro &lt;M2D_npc&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">339</arg>. <arg fmt="%s" index="3">Macro &lt;M2D_alu&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">340</arg>. <arg fmt="%s" index="3">Macro &lt;W2D_rf&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">341</arg>. <arg fmt="%s" index="3">Macro &lt;orig&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">344</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">344</arg>. <arg fmt="%s" index="3">Macro &lt;M2E_npc&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">345</arg>. <arg fmt="%s" index="3">Macro &lt;M2E_alu&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">346</arg>. <arg fmt="%s" index="3">Macro &lt;W2E_rf&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">352</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">360</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">366</arg>. <arg fmt="%s" index="3">Macro &lt;W2M_rf&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">366</arg>. <arg fmt="%s" index="3">Syntax error near &quot;:&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">372</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">377</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">383</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/control/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">388</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/cygwin64/home/A-l-r/co/src/src/cpu/pipelined.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/cpu/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;pipelined.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/cpu/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">157</arg>. <arg fmt="%s" index="3">Macro &lt;orig&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/cpu/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">157</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/cpu/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">158</arg>. <arg fmt="%s" index="3">Macro &lt;E2D_rf&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/cpu/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">159</arg>. <arg fmt="%s" index="3">Macro &lt;E2D_npc&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/cpu/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">160</arg>. <arg fmt="%s" index="3">Macro &lt;M2D_npc&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/cpu/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">161</arg>. <arg fmt="%s" index="3">Macro &lt;M2D_alu&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/cpu/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">162</arg>. <arg fmt="%s" index="3">Macro &lt;W2D_rf&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/cpu/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">168</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/cpu/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">231</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/cpu/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">232</arg>. <arg fmt="%s" index="3">Macro &lt;M2E_npc&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/cpu/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">233</arg>. <arg fmt="%s" index="3">Macro &lt;M2E_alu&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/cpu/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">234</arg>. <arg fmt="%s" index="3">Macro &lt;W2E_rf&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/cpu/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">240</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/cpu/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">294</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/cpu/pipelined.v</arg>&quot; Line <arg fmt="%d" index="2">295</arg>. <arg fmt="%s" index="3">Macro &lt;W2M_rf&gt; is not defined.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;alu.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">5</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;debug/debug.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">23</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_SLL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">23</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">24</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_SLLV&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">133</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_ADD&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">133</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">134</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_SUB&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">135</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_AND&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">136</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_OR&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">137</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_NOT&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">138</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_XOR&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">139</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_MOVZ&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">140</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_NOR&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">141</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_SLT&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">144</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_SLTU&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">150</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">156</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">163</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_EQUAL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">163</arg>. <arg fmt="%s" index="3">Syntax error near &quot;:&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">164</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_SMALLER&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">165</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_LARGER&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">168</arg>. <arg fmt="%s" index="3">Syntax error near &quot;:&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">174</arg>. <arg fmt="%s" index="3">Macro &lt;debug_write&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">174</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/cygwin64/home/A-l-r/co/src/src/datapath/cmp.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/cmp.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;alu.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/cmp.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;cmp.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/cmp.v</arg>&quot; Line <arg fmt="%d" index="2">6</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;debug/debug.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/cmp.v</arg>&quot; Line <arg fmt="%d" index="2">17</arg>. <arg fmt="%s" index="3">Macro &lt;CMP_LARGER&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/cmp.v</arg>&quot; Line <arg fmt="%d" index="2">17</arg>. <arg fmt="%s" index="3">Syntax error near &quot;:&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/cmp.v</arg>&quot; Line <arg fmt="%d" index="2">18</arg>. <arg fmt="%s" index="3">Macro &lt;CMP_SMALLER&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/cmp.v</arg>&quot; Line <arg fmt="%d" index="2">19</arg>. <arg fmt="%s" index="3">Macro &lt;CMP_EQUAL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/cmp.v</arg>&quot; Line <arg fmt="%d" index="2">22</arg>. <arg fmt="%s" index="3">Syntax error near &quot;:&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/cmp.v</arg>&quot; Line <arg fmt="%d" index="2">27</arg>. <arg fmt="%s" index="3">Syntax error near &quot;:&quot;.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;dm.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">5</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;debug/debug.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">22</arg>. <arg fmt="%s" index="3">Macro &lt;DM_SIZE&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">31</arg>. <arg fmt="%s" index="3">Syntax error near &quot;;&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">37</arg>. <arg fmt="%s" index="3">Macro &lt;debug_write&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">37</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">41</arg>. <arg fmt="%s" index="3">Macro &lt;DM_WRITE_ENABLED&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">41</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">44</arg>. <arg fmt="%s" index="3">Macro &lt;DM_NONE&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">44</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">45</arg>. <arg fmt="%s" index="3">Macro &lt;DM_W&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">46</arg>. <arg fmt="%s" index="3">Macro &lt;DM_H&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">47</arg>. <arg fmt="%s" index="3">Macro &lt;DM_HU&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">48</arg>. <arg fmt="%s" index="3">Macro &lt;DM_B&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">49</arg>. <arg fmt="%s" index="3">Macro &lt;DM_BU&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">54</arg>. <arg fmt="%s" index="3">Syntax error near &quot;&amp;&amp;&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">56</arg>. <arg fmt="%s" index="3">Syntax error near &quot;:&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">57</arg>. <arg fmt="%s" index="3">Macro &lt;DM_ADDR_WIDTH&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">58</arg>. <arg fmt="%s" index="3">Macro &lt;normal_write&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">58</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Syntax error near &quot;begin&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">61</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">62</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">71</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">83</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">86</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">89</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">92</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">93</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">94</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">95</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">99</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">100</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">101</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">102</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/cygwin64/home/A-l-r/co/src/src/datapath/ext.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/ext.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;ext.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/ext.v</arg>&quot; Line <arg fmt="%d" index="2">10</arg>. <arg fmt="%s" index="3">Macro &lt;EXT_MODE_SIGNED&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/ext.v</arg>&quot; Line <arg fmt="%d" index="2">10</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/ext.v</arg>&quot; Line <arg fmt="%d" index="2">11</arg>. <arg fmt="%s" index="3">Macro &lt;EXT_MODE_UNSIGNED&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/ext.v</arg>&quot; Line <arg fmt="%d" index="2">12</arg>. <arg fmt="%s" index="3">Macro &lt;EXT_MODE_PAD&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/ext.v</arg>&quot; Line <arg fmt="%d" index="2">12</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/ext.v</arg>&quot; Line <arg fmt="%d" index="2">13</arg>. <arg fmt="%s" index="3">Macro &lt;EXT_MODE_ONE&gt; is not defined.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/cygwin64/home/A-l-r/co/src/src/datapath/im.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/im.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;im.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/im.v</arg>&quot; Line <arg fmt="%d" index="2">5</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;debug/debug.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/im.v</arg>&quot; Line <arg fmt="%d" index="2">13</arg>. <arg fmt="%s" index="3">Macro &lt;IM_SIZE&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/im.v</arg>&quot; Line <arg fmt="%d" index="2">18</arg>. <arg fmt="%s" index="3">Syntax error near &quot;;&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/im.v</arg>&quot; Line <arg fmt="%d" index="2">22</arg>. <arg fmt="%s" index="3">Macro &lt;IM_CODE_FILENAME&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/im.v</arg>&quot; Line <arg fmt="%d" index="2">29</arg>. <arg fmt="%s" index="3">Macro &lt;IM_START_ADDRESS&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/im.v</arg>&quot; Line <arg fmt="%d" index="2">34</arg>. <arg fmt="%s" index="3">Macro &lt;debug_write&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/im.v</arg>&quot; Line <arg fmt="%d" index="2">34</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/im.v</arg>&quot; Line <arg fmt="%d" index="2">35</arg>. <arg fmt="%s" index="3">Macro &lt;IM_ADDR_WIDTH&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/im.v</arg>&quot; Line <arg fmt="%d" index="2">35</arg>. <arg fmt="%s" index="3">Syntax error near &quot;,&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/im.v</arg>&quot; Line <arg fmt="%d" index="2">39</arg>. <arg fmt="%s" index="3">Macro &lt;IM_ENABLE&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/im.v</arg>&quot; Line <arg fmt="%d" index="2">39</arg>. <arg fmt="%s" index="3">Syntax error near &quot;&amp;&amp;&quot;.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/cygwin64/home/A-l-r/co/src/src/datapath/mux.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/mux.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;mux.h&quot;.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/cygwin64/home/A-l-r/co/src/src/datapath/npc.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;npc.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;alu.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">3</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;cmp.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">7</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;debug/debug.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">32</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_EQUAL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">32</arg>. <arg fmt="%s" index="3">Syntax error near &quot;&amp;&amp;&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">33</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_NOT_EQUAL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">34</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_LARGER&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">35</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_SMALLER&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">36</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_LARGER_OR_EQUAL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">37</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_SMALLER_OR_EQUAL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">38</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_REG&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">39</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_J&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">39</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">44</arg>. <arg fmt="%s" index="3">Macro &lt;debug_write&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">44</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/cygwin64/home/A-l-r/co/src/src/datapath/pc.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/pc.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;pc.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/pc.v</arg>&quot; Line <arg fmt="%d" index="2">5</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;debug/debug.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/pc.v</arg>&quot; Line <arg fmt="%d" index="2">17</arg>. <arg fmt="%s" index="3">Macro &lt;debug_write&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/pc.v</arg>&quot; Line <arg fmt="%d" index="2">17</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/pc.v</arg>&quot; Line <arg fmt="%d" index="2">21</arg>. <arg fmt="%s" index="3">Macro &lt;PC_START_ADDRESS&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/pc.v</arg>&quot; Line <arg fmt="%d" index="2">21</arg>. <arg fmt="%s" index="3">Syntax error near &quot;;&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/pc.v</arg>&quot; Line <arg fmt="%d" index="2">25</arg>. <arg fmt="%s" index="3">Macro &lt;PC_ENABLED&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/pc.v</arg>&quot; Line <arg fmt="%d" index="2">25</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/cygwin64/home/A-l-r/co/src/src/datapath/pff.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/pff.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;pff.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/pff.v</arg>&quot; Line <arg fmt="%d" index="2">5</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;debug/debug.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/pff.v</arg>&quot; Line <arg fmt="%d" index="2">27</arg>. <arg fmt="%s" index="3">Macro &lt;PFF_ENABLED&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/pff.v</arg>&quot; Line <arg fmt="%d" index="2">27</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/pff.v</arg>&quot; Line <arg fmt="%d" index="2">29</arg>. <arg fmt="%s" index="3">Syntax error near &quot;else&quot;.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/cygwin64/home/A-l-r/co/src/src/datapath/rf.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/rf.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;rf.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/rf.v</arg>&quot; Line <arg fmt="%d" index="2">5</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;debug/debug.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/rf.v</arg>&quot; Line <arg fmt="%d" index="2">30</arg>. <arg fmt="%s" index="3">Macro &lt;debug_write&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/rf.v</arg>&quot; Line <arg fmt="%d" index="2">30</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/rf.v</arg>&quot; Line <arg fmt="%d" index="2">36</arg>. <arg fmt="%s" index="3">Macro &lt;RF_WRITE_ENABLED&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/rf.v</arg>&quot; Line <arg fmt="%d" index="2">36</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/rf.v</arg>&quot; Line <arg fmt="%d" index="2">37</arg>. <arg fmt="%s" index="3">Macro &lt;RF_ADDR_ZERO&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/rf.v</arg>&quot; Line <arg fmt="%d" index="2">37</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/rf.v</arg>&quot; Line <arg fmt="%d" index="2">38</arg>. <arg fmt="%s" index="3">Macro &lt;normal_display&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/rf.v</arg>&quot; Line <arg fmt="%d" index="2">44</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/src/datapath/rf.v</arg>&quot; Line <arg fmt="%d" index="2">46</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;C:/cygwin64/home/A-l-r/co/src/tests/debug/debug-print-test.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/tests/debug/debug-print-test.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;debug/debug.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/tests/debug/debug-print-test.v</arg>&quot; Line <arg fmt="%d" index="2">12</arg>. <arg fmt="%s" index="3">Macro &lt;debug_write&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/tests/debug/debug-print-test.v</arg>&quot; Line <arg fmt="%d" index="2">12</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/tests/debug/debug-print-test.v</arg>&quot; Line <arg fmt="%d" index="2">16</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/tests/debug/debug-print-test.v</arg>&quot; Line <arg fmt="%d" index="2">20</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/tests/debug/debug-print-test.v</arg>&quot; Line <arg fmt="%d" index="2">24</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/tests/debug/debug-print-test.v</arg>&quot; Line <arg fmt="%d" index="2">28</arg>. <arg fmt="%s" index="3">Macro &lt;normal_write&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">C:/cygwin64/home/A-l-r/co/src/tests/debug/debug-print-test.v</arg>&quot; Line <arg fmt="%d" index="2">28</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
 </messages>
 
