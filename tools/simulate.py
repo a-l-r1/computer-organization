@@ -23,13 +23,16 @@ _include_options = ['-I' + _include_dir]
 
 _targets = {
         'single-cycle': [*_include_options, *_datapath_srcs, *_debug_srcs, 'src/control/single-cycle.v', 'src/cpu/single-cycle.v', 'tests/cpu/single-cycle/single-cycle_tb.v'], 
-        'pipelined': [*_include_options, *_datapath_srcs, *_debug_srcs, 'src/control/pipelined.v', 'src/cpu/pipelined.v', 'tests/cpu/single-cycle/pipelined_tb.v']
+        'pipelined': [*_include_options, *_datapath_srcs, *_debug_srcs, 'src/control/pipelined.v', 'src/cpu/pipelined.v', 'tests/cpu/pipelined/pipelined_tb.v'], 
+        'pipelined2': [*_include_options, *_datapath_srcs, *_debug_srcs, 'src/control/pipelined2.v', 'src/cpu/pipelined2.v', 'tests/cpu/pipelined2/pipelined2_tb.v']
         }
 _target_aliases = {
         'p4': 'single-cycle', 
         'single_cycle': 'single-cycle', 
         'p5': 'pipelined', 
-        'pipeline': 'pipelined'
+        'pipeline': 'pipelined', 
+        'p6': 'pipelined2', 
+        'pipelined-ng': 'pipelined2'
         }
 
 
