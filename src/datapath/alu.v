@@ -21,7 +21,7 @@ wire [31:0] sll_result, srl_result, sra_result;
 
 assign actual_shamt = 
 	(op == `ALU_SLL || op == `ALU_SRL || op == `ALU_SRA) ? shamt : 
-	(op == `ALU_SLLV || op == `ALU_SRLV || op == `ALU_SRAV) ? num1[25:21] : 
+	(op == `ALU_SLLV || op == `ALU_SRLV || op == `ALU_SRAV) ? num1[4:0] : 
 	5'b0;
 
 assign sll_result = 

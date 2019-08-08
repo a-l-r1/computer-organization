@@ -149,6 +149,12 @@ module alu_tb;
 		
 		#10;
 		op = `ALU_SRAV;
+		
+		#10;
+		num1 = 32'h00000000;
+		num2 = 32'hffff0000;
+		op = `ALU_SLL;
+		shamt = 3;
 	end
       
 endmodule
