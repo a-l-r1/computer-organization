@@ -10,6 +10,7 @@ module npc(
 	input [31:0] curr_pc, 
 	input [3:0] jump_mode, 
 	input [1:0] cmp_result, 
+	input [1:0] cmp_sig_result, 
 	input [15:0] num, 
 	input [25:0] jnum, 
 	input [31:0] reg_,
@@ -35,6 +36,10 @@ assign next_pc =
 	(jump_mode == `NPC_SMALLER && cmp_result == `CMP_SMALLER) ? b_target : 
 	(jump_mode == `NPC_LARGER_OR_EQUAL && (cmp_result == `CMP_LARGER || cmp_result == `CMP_EQUAL)) ? b_target : 
 	(jump_mode == `NPC_SMALLER_OR_EQUAL && (cmp_result == `CMP_SMALLER || cmp_result == `CMP_EQUAL)) ? b_target : 
+	(jump_mode == `NPC_SIG_LARGER && cmp_sig_result == `CMP_LARGER) ? b_target : 
+	(jump_mode == `NPC_SIG_SMALLER && cmp_sig_result == `CMP_SMALLER) ? b_target : 
+	(jump_mode == `NPC_SIG_LARGER_OR_EQUAL && (cmp_sig_result == `CMP_LARGER || cmp_sig_result == `CMP_EQUAL)) ? b_target : 
+	(jump_mode == `NPC_SIG_SMALLER_OR_EQUAL && (cmp_sig_result == `CMP_SMALLER || cmp_sig_result == `CMP_EQUAL)) ? b_target : 
 	(jump_mode == `NPC_REG) ? reg_ : 
 	(jump_mode == `NPC_J) ? {base[31:28], jnum, 2'b0} : 
 	$unsigned(base) + $unsigned(4);

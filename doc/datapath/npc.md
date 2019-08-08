@@ -12,7 +12,8 @@ NPC 是下个 PC 值的意思。它能做到根据当前的 PC 值，计算出�
 --- | --- | --- | ---
 `curr_pc` | 输入 | 32 | 当前 PC
 `jump_mode` | 输入 | 4 | 是否可以跳转
-`cmp_result` | 输入 | 2 | ALU 的比较结果
+`cmp_result` | 输入 | 2 | `cmp` 的比较结果
+`cmp_sig_result` | 输入 | 2 | `cmp` 的有符号比较结果
 `num` | 输入 | 16 | 输入的立即数
 `jnum` | 输入 | 26 | 输入的 J 型指令的立即数
 `reg_` | 输入 | 32 | 输入的寄存器值
@@ -38,6 +39,10 @@ NPC 是下个 PC 值的意思。它能做到根据当前的 PC 值，计算出�
 `jump_mode` | `NPC_SMALLER` | 4'b0100 | 当输入的比较结果为小于时跳转
 `jump_mode` | `NPC_LARGER_OR_EQUAL` | 4'b0101 | 当输入的比较结果为大于或等于时跳转
 `jump_mode` | `NPC_SMALLER_OR_EQUAL` | 4'b0110 | 当输入的比较结果为小于或等于时跳转
+`jump_mode` | `NPC_SIG_LARGER` | 4'b0111 | 当输入的有符号比较结果为大于时跳转
+`jump_mode` | `NPC_SIG_SMALLER` | 4'b1000 | 当输入的有符号比较结果为小于时跳转
+`jump_mode` | `NPC_SIG_LARGER_OR_EQUAL` | 4'b1001 | 当输入的有符号比较结果为大于或等于时跳转
+`jump_mode` | `NPC_SIG_SMALLER_OR_EQUAL` | 4'b1010 | 当输入的有符号比较结果为小于或等于时跳转
 
 `comp_result` 的相应数值代表的意义，与相应的宏有关，这些宏在 `alu.h` 中。
 
@@ -49,7 +54,7 @@ NPC 是下个 PC 值的意思。它能做到根据当前的 PC 值，计算出�
 
 若 `jump_mode == NPC_JUMP_WHEN_EQUAL`，则 `alu_comp_result == ALU_EQUAL` 时，首先把 `num` 扩展成 32 位有符号立即数，扩展方式是首先把 `num` 后面加上 `2'b0`，然后把这 18 位二进制数扩展成 32 位有符号二进制数。然后令 `next_pc = $signed(base) + $signed(num)`。否则做跟 `jump_mode == NPC_JUMP_DISABLE` 时相同的步骤。
 
-若 `jump_mode == NPC_JUMP_WHEN_NOT_EQUAL`，则 `alu_comp_result != ALU_EQUAL` 时，做跟上面相同的步骤。否则做跟 `jump_mode == NPC_JUMP_DISABLE` 时相同的步骤。
+若 `jump_mode` 对应的意义有其它的比较，则 `cmp_result` 或 `cmp_sig_result` 满足相应条件时，做跟上面相同的步骤。否则做跟 `jump_mode == NPC_JUMP_DISABLE` 时相同的步骤。
 
 若 `jump_mode == NPC_REG`，则令 `next_pc = reg_`。
 
