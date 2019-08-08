@@ -15,8 +15,8 @@
 
 /* DM_SIZE == 2^(DM_ADDR_WIDTH - 2) */
 
-`define DM_ADDR_WIDTH 12
-`define DM_SIZE 1024
+`define DM_ADDR_WIDTH 14
+`define DM_SIZE 4096
 
 `define DM_OUTPUT_FORMAT "%d@%h: *%h <= %h"
 
