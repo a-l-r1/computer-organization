@@ -49,7 +49,7 @@
 
 然后确定操作是否合法。若 `mode == DM_NONE || (mode == DM_W && op_addr[1:0] == 2'b0) || (mode == DM_H && op_addr[0] == 1'b0) || (mode == DM_HU && op_addr[0] = 1'b0) || mode == DM_B || mode == DM_BU`，则操作合法，否则操作不合法。
 
-在每个时钟上升沿，若 `write_enable == DM_ENABLED && invalid == 0`，则根据操作模式写入相应地址对应的数据。写入半个字和字节分别取 `write_data` 的低 16 位和低 8 位。同时，打印当前 PC 的值、`write_addr`和它对应地址的新值。如果是写入半个字或者字节，就打印四位或者两位十六进制数。
+在每个时钟上升沿，若 `write_enable == DM_ENABLED && invalid == 0`，则根据操作模式写入相应地址对应的数据。写入半个字和字节分别取 `write_data` 的低 16 位和低 8 位。同时，打印当前 PC 的值、`write_addr` 对应的字和它对应字的新值。如果是写入半个字或者字节，也打印对应字的新值。
 
 任何时候，若 `invalid == 1'b1`，则 `read_result == 32'b0`。否则，若 `mode == DM_NONE`，则 `read_result == 32'b0`。若 `mode` 为其它 `dm` 宏的值，则按照相应宏的意义读出数据，读到 `read_result` 中。若 `mode` 为其他值，则 `read_result == 32'b0`。
 
@@ -60,4 +60,5 @@
 1. `DM_ADDR_WIDTH` 和 `DM_ADDR_SIZE` 要一块改
 2. 地址空间是被截断的，看起来是 32 位，实际上不是
 3. **CPU 是小端序的**
+4. 为了能打印出写到的字的值，可以把值提前用组合电路算出来
 

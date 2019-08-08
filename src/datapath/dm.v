@@ -22,7 +22,7 @@ module dm(
 reg [31:0] memory [`DM_SIZE - 1:0];
 
 wire [31:0] op_addr;
-wire [31:0] rword;
+wire [31:0] new_word;
 wire valid;
 
 integer i;
@@ -50,35 +50,32 @@ assign valid =
 
 assign invalid = ~valid;
 
+assign new_word = 
+	/* The next line has the most precedence */
+	(invalid == 1'b1) ? 32'b0 : 
+	(mode == `DM_W) ? write_data : 
+	(mode == `DM_H) ? (
+		(write_addr[1] == 1'b0) ? {`wword[31:16], write_data[15:8], write_data[7:0]} : 
+		{write_data[15:8], write_data[7:0], `wword[15:0]}
+	) : 
+	(mode == `DM_B) ? (
+		(write_addr[1:0] == 2'b00) ? {`wword[31:8], write_data[7:0]} : 
+		(write_addr[1:0] == 2'b01) ? {`wword[31:16], write_data[7:0], `wword[7:0]} : 
+		(write_addr[1:0] == 2'b10) ? {`wword[31:24], write_data[7:0], `wword[15:0]} : 
+		(write_addr[1:0] == 2'b11) ? {write_data[7:0], `wword[23:0]} : 
+		`wword
+	) : 
+	`wword;
+
 always @(posedge clk) begin
 	if (write_enable == `DM_WRITE_ENABLED && invalid == 1'b0) begin
-		case (mode)
-			`DM_W: begin
-				`wword <= write_data;
-				`normal_write((`DM_OUTPUT_FORMAT, $time, curr_pc, write_addr, write_data));
-			end
-			`DM_H: begin
-				`wword <= (write_addr[1] == 1'b0) ? {`wword[31:16], write_data[15:8], write_data[7:0]} : {write_data[15:8], write_data[7:0], `wword[15:0]};
-				`normal_write((`DM_OUTPUT_FORMAT, $time, curr_pc, write_addr, write_data[15:0]));
-			end
-			`DM_B: begin
-				`wword <= 
-					(write_addr[1:0] == 2'b00) ? {`wword[31:8], write_data[7:0]} : 
-					(write_addr[1:0] == 2'b01) ? {`wword[31:16], write_data[7:0], `wword[7:0]} : 
-					(write_addr[1:0] == 2'b10) ? {`wword[31:24], write_data[7:0], `wword[15:0]} : 
-					(write_addr[1:0] == 2'b11) ? {write_data[7:0], `wword[23:0]} : 
-					`wword;
-				`normal_write((`DM_OUTPUT_FORMAT, $time, curr_pc, write_addr, write_data[7:0]))
-			end
-			default: begin
-				/* Do nothing */
-			end
-		endcase
+		memory[write_addr[`DM_ADDR_WIDTH:2]] <= new_word;
+		`normal_display((`DM_OUTPUT_FORMAT, $time, curr_pc, {write_addr[31:2], 2'b0}, new_word));
 	end
 end
 
 assign read_result = 
-	/* The next like has the most precedence */
+	/* The next line has the most precedence */
 	(invalid == 1'b1) ? 32'b0 : 
 	(mode == `DM_NONE) ? 32'b0 : 
 	(mode == `DM_W) ? `rword : 
