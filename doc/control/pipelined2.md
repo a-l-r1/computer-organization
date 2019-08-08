@@ -16,13 +16,16 @@
 `cw_f_pc_enable` | 输出 | 1 | 控制 `pc` 使能
 `cw_d_pff_enable` | 输出 | 1 | 控制 D 级流水线寄存器使能
 `cw_e_pff_rst` | 输出 | 1 | 控制 E 级流水线寄存器复位
-`cw_f_npc_jump_mode` | 输出 | 3 | 控制 `npc` 的跳转模式
+`cw_f_npc_jump_mode` | 输出 | 4 | 控制 `npc` 的跳转模式
 `cw_d_ext_mode` | 输出 | 3 | 控制 `D: ext.mode`
 `cw_d_rf_read_addr1` | 输出 | 5 | 控制 `D: rf.read_addr1`
 `cw_d_rf_read_addr2` | 输出 | 5 | 控制 `D: rf.read_addr2`
 `cw_e_m_alusrc` | 输出 | 1 | 控制 `E: m_alu_num2`
 `cw_e_alu_op` | 输出 | 5 | 控制 `E: alu.op`
+`cw_e_md_op` | 输出 | 3 | 控制 `E: md.op`
+`cw_m_hilo` | 输出 | 1 | 控制 `E: m_hilo`
 `cw_m_dm_write_enable` | 输出 | 1 | 控制 `M: dm.write_enable`
+`cw_m_dm_mode` | 输出 | 1 | 控制 `M: dm.mode`
 `cw_w_rf_write_enable` | 输出 | 1 | 控制 `W: rf.write_enable`
 `cw_w_m_regdata` | 输出 | 3 | 控制 `W: m_rf_write_data`
 `cw_w_rf_write_addr` | 输出 | 5 | 控制 `W: rf.write_addr`
@@ -65,9 +68,16 @@
 
 指令类型 | `F: npc.jump_mode`
 --- | ---
-`BEQ` | `NPC_JUMP_WHEN_EQUAL`
+`BEQ` | `NPC_EQUAL`
+`BNE` | `NPC_NOT_EQUAL`
+`BLEZ` | `NPC_SIG_SMALLER_OR_EQUAL`
+`BGEZ` | `NPC_SIG_LARGER_OR_EQUAL`
+`BLTZ` | `NPC_SIG_SMALLER`
+`BGTZ` | `NPC_SIG_LARGER`
 
 注意：**F 级的控制信号是由 D 级指令控制的。**
+
+注意：**BRANCH 类指令要跟 0 比较的那些指令，是通过读 `$0` 比较的，所以能直接进行大小比较。**
 
 #### D 级（ID）
 
@@ -82,20 +92,31 @@
 
 指令类型 | `D: ext.mode`
 --- | ---
-`LUI` | `EXT_MODE_PAD`
-`ORI` | `EXT_MODE_UNSIGNED`
+`LUI` | `EXT_PAD`
+`ORI` | `EXT_UNSIGNED`
+`ADDI` | `EXT_SIGNED`
+`ADDIU` | `EXT_SIGNED`
+`ANDI` | `EXT_UNSIGNED`
+`XORI` | `EXT_UNSIGNED`
+`SLTI` | `EXT_SIGNED`
+`SLTIU` | `EXT_SIGNED`
+
+注意：**`SLTIU` 扩展立即数的时候确实是按照有符号扩展的，但比较是按照无符号数比较，可以查指令手册。**
 
 #### E 级（EX）
 
-数据通路类型 | `E: m_alusrc` | `E: alu.op`
---- | --- | ---
-`CAL_R` | `D: rf.read_result2` | 视具体指令而定
-`CAL_I` | `D: ext.result` | 视具体指令而定
-`LOAD` | `D: ext.result` | `ALU_ADD`
-`STORE` | `D: ext.result` | `ALU_ADD`
-`BRANCH` | `D: rf.read_result2` | `#ALU_OR`
-`CMOV` | `D: rf.read_result2` | 视具体指令而定
-（其它）| `#D: rf.read_result2` | `#ALU_OR`
+数据通路类型 | `E: m_alusrc` | `E: alu.op` | `E: md.op` | `E: m_hilo`
+--- | --- | --- | ---
+`CAL_R` | `D: rf.read_result2` | 视具体指令而定 | `MD_NONE` | `#E: md.hi`
+`CAL_I` | `D: ext.result` | 视具体指令而定 | `MD_NONE` | `#E: md.hi`
+`LOAD` | `D: ext.result` | `ALU_ADD` | `MD_NONE` | `#E: md.hi`
+`STORE` | `D: ext.result` | `ALU_ADD` | `MD_NONE` | `#E: md.hi`
+`BRANCH` | `D: rf.read_result2` | `#ALU_OR` | `MD_NONE` | `#E: md.hi`
+`CMOV` | `D: rf.read_result2` | 视具体指令而定 | `MD_NONE` | `#E: md.hi`
+`CAL_M` | `#D: rf.read_result2` | `#ALU_OR` | 视具体指令而定 | `#E: md.hi`
+`LOAD_M` | `#D: rf.read_result2` | `#ALU_OR` | 视具体指令而定 | 视具体指令而定
+`STORE_M` | `#D: rf.read_result2` | `#ALU_OR` | 视具体指令而定 | `#E: md.hi`
+（其它）| `#D: rf.read_result2` | `#ALU_OR` | `MD_NONE` | `#E: md.hi`
 
 `CAL_R` 类指令类型与 `E: alu.op` 的关系：
 
@@ -103,6 +124,20 @@
 --- | ---
 `ADDU` | `ALU_ADD`
 `SUBU` | `ALU_SUB`
+`ADD` | `ALU_ADD`
+`SUB` | `ALU_SUB`
+`AND` | `ALU_AND`
+`OR` | `ALU_OR`
+`NOR` | `ALU_NOR`
+`XOR` | `ALU_XOR`
+`SLT` | `ALU_SLT`
+`SLTU` | `ALU_SLTU`
+`SLL` | `ALU_SLL`
+`SRL` | `ALU_SRL`
+`SRA` | `ALU_SRA`
+`SLLV` | `ALU_SLLV`
+`SRLV` | `ALU_SRLV`
+`SRAV` | `ALU_SRAV`
 
 `CAL_I` 类指令类型与 `E: alu.op` 的关系：
 
@@ -110,19 +145,74 @@
 --- | ---
 `LUI` | `ALU_OR`
 `ORI` | `ALU_OR`
+`ADDI` | `ALU_ADD`
+`ADDIU` | `ALU_ADD`
+`ANDI` | `ALU_AND`
+`XORI` | `ALU_XOR`
+`SLTI` | `ALU_SLT`
+`SLTIU` | `ALU_SLTU`
 
-`CMOV` 类指令类型与 `E: alu.op` 的关系
+`CMOV` 类指令类型与 `E: alu.op` 的关系：
 
 指令类型 | `E: alu.op`
 --- | ---
-`MOVZ` | `ALU_CMOV`
+`MOVZ` | `ALU_MOVZ`
+
+`CAL_M` 类指令类型与 `E: md.op` 的关系：
+
+指令类型 | E: md.op
+--- | ---
+`MULT` | `MD_MULT`
+`MULTU` | `MD_MULTU`
+`DIV` | `MD_DIV`
+`DIVU` | `MD_DIVU`
+
+`LOAD_M` 类指令类型与 `E: md.op` 的关系：
+
+指令类型 | `E: md.op`
+--- | ---
+`MFHI` | `MD_MFHI`
+`MFLO` | `MD_MFLO`
+
+`STORE_M` 类指令类型与 `E: md.op` 的关系：
+
+指令类型 | `E: md.op`
+--- | ---
+`MTHI` | `MD_MTHI`
+`MTLO` | `MD_MTLO`
+
+`LOAD_M` 类指令类型与 `E: m_hilo` 的关系：
+
+指令类型 | `E: m_hilo`
+--- | ---
+`MFHI` | `E: md.hi`
+`MFLO` | `E: md.lo`
 
 #### M 级（MEM）
 
-数据通路类型 | `M: dm.write_enable`
+数据通路类型 | `M: dm.write_enable` | `M: dm.mode`
 --- | ---
-`STORE` | `1'b1`
-（其它）| `1'b0`
+`LOAD` | 1'b0 | 视具体指令而定
+`STORE` | `1'b1` | 视具体指令而定
+（其它）| `1'b0` | `DM_NONE`
+
+`LOAD` 类指令类型与 `M: dm.mode` 的关系：
+
+指令类型 | `M: dm.mode`
+--- | ---
+`LW` | `DM_W`
+`LH` | `DM_H`
+`LHU` | `DM_HU`
+`LB` | `DM_B`
+`LBU` | `DM_BU`
+
+`STORE` 类指令类型与 `M: dm.mode` 的关系：
+
+指令类型 | `M: dm.mode`
+--- | ---
+`SW` | `DM_W`
+`SH` | `DM_H`
+`SB` | `DM_B`
 
 #### W 级（WB）
 
@@ -131,8 +221,10 @@
 `CAL_R` | `1'b1` | `E: alu.result`
 `CAL_I` | `1'b1` | `E: alu.result`
 `LOAD` | `1'b1` | `E: dm.read_result`
-`JUMP` | `1'b1` | `D: npc.next_pc`
+`JUMP_I` | `1'b1` | `D: npc.next_pc`
+`JUMP_R` | `1'b1` | `D: npc.next_pc`
 `CMOV` | `1'b1` | `E: alu.result`
+`LOAD_M` | 1'b1 | `E: md.out`
 （其它）| `1'b0` | `#E: alu.result`
 
 #### 流水的内容
@@ -151,17 +243,21 @@
 `CAL_I` | `RS` | `RT` | `RT`
 `LOAD` | `RS` | `ZERO` | `RT`
 `STORE` | `RS` | `RT` | `ZERO`
-`BRANCH` | `RS` | `RT` | `ZERO`
-`JUMP` | `ZERO` | `ZERO` | 视指令而定（[2]）
-`JUMPR` | `RS` | `ZERO` | `ZERO`
+`BRANCH` | `RS` | 视指令类型而定（[4]） | `ZERO`
+`JUMP_I` | `ZERO` | `ZERO` | 视指令而定（[2]）
+`JUMP_R` | `RS` | `ZERO` | 视指令而定（[3]）
 `CMOV` | `RS` | `RT` | 视寄存器值而定（[1]）
-`NOP` | `ZERO` | `ZERO` | `ZERO`
+`CAL_M` | `RS` | `RT` | `ZERO`
+`LOAD_M` | `ZERO` | `ZERO` | `RD`
+`STORE_M` | `RS` | `ZERO` | `ZERO`
 （其它）| `ZERO` | `ZERO` | `ZERO`
 
 注：
 
 1. 有一点就是 `CMOV` 类指令。这类指令的一种实现是无条件把要写入的数据看成是 `$rs` 的值，但是**改变要写入的寄存器号**。如果 `$rt == 32'b0`，就写入 `$rd`，否则写入 `$0 / ZERO`。这样，加上把要读写的寄存器号流水的机制，能保证 `CMOV` 类指令的数据冒险处理不出错。哪怕在 W 级打开了 `rf` 的写使能，写入 `$0` 也没有影响。
 2. `JUMP` 类指令若为 `jal`，则 `regw == RA`。若为 `j`，则 `regw == ZERO`。
+3. `JUMP_R` 类指令若为 `jr`，则 `regw == ZERO`。若为 `jalr`，则 `regw == RD`。由于 `jr` 指令 `RS` 字段永远为 0，所以这样分析是正确的。
+4. `BRANCH` 类指令若为 `beq` 或 `bne`，则 `reg2 == RT`。若为 `blez, bgez, bltz, bgtz`，则 `reg2 == ZERO`。由于这样会让 `cmp` 的比较结果变成对应寄存器与 0 的比较，符合指令功能描述，所以这样分析是正确的。
 
 ### 转发控制信号
 
@@ -178,20 +274,23 @@
 类别 | 定义 | 值 | 意义
 所有转发 MUX | `orig` | `0` | 不转发，保持原样
 `fm_d[12]` | `E2D_rf` | `1` | E 级到 D 级，数据通路类型是 `CMOV`，要写入的数据在 D 级产生好了，到了 E 级才能转发
-`fm_d[12]` | `E2D_npc` | `2` | E 级到 D 级，数据通路类型是 `JUMP_I`，要写入的数据在 D 级产生好了，到了 E 级才能转发
+`fm_d[12]` | `E2D_npc` | `2` | E 级到 D 级，数据通路类型是 `JUMP_I / JUMP_R`，要写入的数据在 D 级产生好了，到了 E 级才能转发
 `fm_d[12]` |  `M2D_npc` | `3` | M 级到 D 级，之后同上
 `fm_d[12]` | `M2D_alu` | `4` | M 级到 D 级，数据通路类型是 `CAL_R / CAL_I / CMOV`，数据在 D 级或 E 级产生好了，但对 `CAL_R / CAL_I` 来说，到了 M 级才能转发
 `fm_d[12]` | `W2D_rf` | `5` | W 级到 D 级，数据通路类型是所有能够写入寄存器的类型，数据在 W 级都可以转发了
-`fm_e[12]` | `M2E_npc` | `1` | M 级到 E 级，数据通路类型是 `JUMP_I`，要写入的数据在 D 级产生好了，到了 E 级才能转发
+`fm_d[12]` | `M2D_md` | `6` | M 级到 D 级，数据通路类型是 `LOAD_M`，数据在 E 级产生好了
+`fm_d[12]` | `E2D_md` | `7` | E 级到 D 级，数据通路类型是 `LOAD_M`，数据在 E 级产生好了
+`fm_e[12]` | `M2E_npc` | `1` | M 级到 E 级，数据通路类型是 `JUMP_I / JUMP_R`，要写入的数据在 D 级产生好了，到了 E 级才能转发
 `fm_e[12]` | `M2E_alu` | `2` | M 级到 E 级，数据通路类型是 `CAL_R / CAL_I / CMOV`，数据在 D 级或 E 级产生好了，但对 `CAL_R / CAL_I` 来说，到了 M 级才能转发
 `fm_e[12]` | `W2E_rf` | `3` | W 级到 D 级，数据通路类型是所有能够写入寄存器的类型，数据在 W 级都可以转发了
+`fm_e[12]` | `M2E_md` | `4` | M 级到 D 级，数据通路类型为 `LOAD_M`，数据在 E 级产生好了
 `fm_m` | `W2M_rf` | `1` | W 级到 M 级，数据通路类型是所有能够写入寄存器的类型，数据在 W 级都可以转发了（比如 `sw` 指令转发 `rf` 内容）
 
 注意：**`B2A_.*` 表示 B 级从 A 级转发。**
 
 注意：**宏的值要和对应转发 MUX 的接线顺序相符。**
 
-注意：**`E2D_rf` 表示把 E 级的第一个寄存器转发出去。**
+注意：**`E2D_rf` 表示把 E 级的第一个寄存器转发出去，因为用到这条指令的是 `CMOV` 类指令。**
 
 注意：**`fm_m` 检查的是要读取的第二个寄存器，因为现在用到的所有写入内存的指令，要写入内存的数据都与相应指令第二个寄存器的读取结果对应。以后甚至可能加上检查要读取的第一个寄存器，不过就要根据指令类型判断了。**
 
@@ -224,7 +323,9 @@ Tuse 是指指令到 D 级以后还剩最晚多少时间就需要新值。Tnew �
 `JUMP_I` | | 
 `JUMP_R` | 0 |
 `CMOV` | 0 | 0
-`NOP` | |
+`CAL_M` | 1 | 1
+`LOAD_M` | |
+`STORE_M` | 1 | 1
 
 在 E 级和 M 级各种数据通路类型的 Tnew 如下。忽略 W 级，因为所有指令到 W 级时都可以马上转发数据。
 
@@ -236,14 +337,19 @@ Tuse 是指指令到 D 级以后还剩最晚多少时间就需要新值。Tnew �
 `LOAD` | 2 | 1
 `STORE` | |
 `BRANCH` | | 
-`JAL` | 0 | 0
-`JR` | 0 | 
+`JUMP_I` | 0 | 0
+`JUMP_R` | 0 | 0
 `CMOV` | 0 | 0
 `NOP` | |
+`CAL_M` | |
+`LOAD_M` | 0 | 0
+`STORE_M` | |
 
 以上列表中 Tuse 没有列出的，是因为它没有意义，认为 Tuse 足够大。Tnew 同理，认为 Tnew 为 0。
 
 这样，只要算出每个阶段的 Tuse 和 Tnew，并且保证发生数据冒险时对两个寄存器，Tuse >= Tnew，就能控制暂停和转发。当且仅当 `t_use_reg[12]` 小于 `t_new_[em]` 中的任何一个时，需要暂停。
+
+`md.busy == 1'b1` 时，会一直插入气泡，直到 `md.busy == 1'b0`。而且，`CAL_M` 类指令虽然进行计算，但不写普通寄存器，所以跟其它指令没有转发解决不了的数据冒险，所以不停地插入气泡这种方式是可以解决数据冒险的。而且，跟 `dm` 类似，`md` 的 `HI` 和 `LO` 寄存器也没有数据冒险。因此，乘除法相关指令和其它指令之间，可以看成解决了需要暂停的问题，虽然 `md` 需要多个周期运行。
 
 注意：**比较 Tuse 和 Tnew 应该用无符号比较，避免数值最高位是 1 时被看成负数。**
 
