@@ -8,8 +8,8 @@
 
 /* IM_SIZE == 2^(IM_ADDR_WIDTH - 2) */
 
-`define IM_ADDR_WIDTH 12
-`define IM_SIZE 1024
+`define IM_ADDR_WIDTH 14
+`define IM_SIZE 4096
 
 `define IM_CODE_FILENAME "code.hex"
 
