@@ -39,5 +39,5 @@ Waiting for 1 sub-compilation(s) to finish...
 WARNING:Simulator - Unable to copy libPortabilityNOSH.dll to the simulation executable directory: boost::filesystem::copy_file: 系统找不到指定的路径。, "isim\pipelined2_tb_isim_beh.exe.sim\libPortability.dll".
 Compiled 15 Verilog Units
 Built simulation executable C:/cygwin64/home/A-l-r/co/src/project/pipelined2_tb_isim_beh.exe
-Fuse Memory Usage: 36196 KB
-Fuse CPU Usage: 624 ms
+Fuse Memory Usage: 35500 KB
+Fuse CPU Usage: 577 ms
