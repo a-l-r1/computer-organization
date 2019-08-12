@@ -1,43 +1,19 @@
-Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -i C:/cygwin64/home/A-l-r/co/src/src/include -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o C:/cygwin64/home/A-l-r/co/src/project/pipelined2_tb_isim_beh.exe -prj C:/cygwin64/home/A-l-r/co/src/project/pipelined2_tb_beh.prj work.pipelined2_tb work.glbl 
+Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -i C:/cygwin64/home/A-l-r/co/src/src/include -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o C:/cygwin64/home/A-l-r/co/src/project/cp0_tb_isim_beh.exe -prj C:/cygwin64/home/A-l-r/co/src/project/cp0_tb_beh.prj work.cp0_tb work.glbl 
 ISim P.20131013 (signature 0x7708f090)
 Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
 Determining compilation order of HDL files
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/datapath/rf.v" into library work
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/datapath/pff.v" into library work
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/datapath/pc.v" into library work
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/datapath/npc.v" into library work
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/datapath/md.v" into library work
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/datapath/im.v" into library work
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/datapath/ext.v" into library work
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/datapath/dm.v" into library work
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/datapath/cmp.v" into library work
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/datapath/alu.v" into library work
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/control/pipelined2.v" into library work
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/cpu/pipelined2.v" into library work
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../tests/cpu/pipelined2/pipelined2_tb.v" into library work
+Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/datapath/cp0.v" into library work
+Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../tests/datapath/cp0_tb.v" into library work
 Analyzing Verilog file "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
 Completed static elaboration
-Compiling module kind
-Compiling module control
-Compiling module npc
-Compiling module pc
-Compiling module im
-Compiling module pff
-Compiling module rf
-Compiling module ext
-Compiling module cmp
-Compiling module alu
-Compiling module md
-Compiling module dm
-Compiling module cpu
-Compiling module pipelined2_tb
+Compiling module cp0
+Compiling module cp0_tb
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 1 sub-compilation(s) to finish...
-WARNING:Simulator - Unable to copy libPortabilityNOSH.dll to the simulation executable directory: boost::filesystem::copy_file: 系统找不到指定的路径。, "isim\pipelined2_tb_isim_beh.exe.sim\libPortability.dll".
-Compiled 15 Verilog Units
-Built simulation executable C:/cygwin64/home/A-l-r/co/src/project/pipelined2_tb_isim_beh.exe
-Fuse Memory Usage: 35500 KB
-Fuse CPU Usage: 577 ms
+WARNING:Simulator - Unable to copy libPortabilityNOSH.dll to the simulation executable directory: boost::filesystem::copy_file: 系统找不到指定的路径。, "isim\cp0_tb_isim_beh.exe.sim\libPortability.dll".
+Compiled 3 Verilog Units
+Built simulation executable C:/cygwin64/home/A-l-r/co/src/project/cp0_tb_isim_beh.exe
+Fuse Memory Usage: 29136 KB
+Fuse CPU Usage: 264 ms

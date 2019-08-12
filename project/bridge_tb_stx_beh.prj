@@ -1,0 +1,4 @@
+verilog isim_temp "../src/devices/timer.v"
+verilog isim_temp "../src/bridge/bridge.v"
+verilog isim_temp "../tests/bridge/bridge_tb.v"
+verilog isim_temp "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v"
