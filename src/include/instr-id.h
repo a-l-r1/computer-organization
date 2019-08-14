@@ -69,6 +69,9 @@
 `define MFLO 9'b1010_00001
 `define MTHI 9'b1011_00000
 `define MTLO 9'b1011_00001
+`define MFC0 9'b1100_00000
+`define MTC0 9'b1101_00000
+`define ERET 9'b1110_00000
 
 `define UNKNOWN_TYPE 4'b0000
 `define UNK_TYPE `UNKNOWN_TYPE
@@ -83,6 +86,9 @@
 `define CAL_M 4'b1001
 `define LOAD_M 4'b1010
 `define STORE_M 4'b1011
+`define LOAD_C0 4'b1100
+`define STORE_C0 4'b1101
+`define JUMP_C0 4'b1110
 
 `endif
 
