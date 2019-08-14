@@ -26,8 +26,9 @@ static unsigned int ng1[] = {32512U, 0U};
 static unsigned int ng2[] = {32523U, 0U};
 static unsigned int ng3[] = {0U, 0U};
 static unsigned int ng4[] = {32528U, 0U};
-static unsigned int ng5[] = {1U, 0U};
-static unsigned int ng6[] = {15U, 0U};
+static unsigned int ng5[] = {32539U, 0U};
+static unsigned int ng6[] = {1U, 0U};
+static unsigned int ng7[] = {15U, 0U};
 
 
 
@@ -529,7 +530,7 @@ LAB48:    t105 = (t98 + 4);
 
 LAB50:    t111 = (t0 + 1368U);
     t112 = *((char **)t111);
-    t111 = ((char*)((ng2)));
+    t111 = ((char*)((ng5)));
     memset(t114, 0, 8);
     t115 = (t112 + 4);
     if (*((unsigned int *)t115) != 0)
@@ -624,10 +625,10 @@ LAB67:    t164 = (t89 + 4);
     *((unsigned int *)t164) = 1;
     goto LAB68;
 
-LAB69:    t169 = ((char*)((ng5)));
+LAB69:    t169 = ((char*)((ng6)));
     goto LAB70;
 
-LAB71:    t174 = ((char*)((ng6)));
+LAB71:    t174 = ((char*)((ng7)));
     goto LAB72;
 
 LAB73:    xsi_vlog_unsigned_bit_combine(t88, 4, t169, 4, t174, 4);
@@ -820,7 +821,7 @@ LAB12:    t33 = (t0 + 2328U);
 
 LAB14:    t33 = (t0 + 2168U);
     t41 = *((char **)t33);
-    t33 = ((char*)((ng5)));
+    t33 = ((char*)((ng6)));
     memset(t42, 0, 8);
     t43 = (t41 + 4);
     t44 = (t33 + 4);
@@ -1321,7 +1322,7 @@ LAB6:    t10 = (t4 + 4);
 
 LAB8:    t15 = (t0 + 2168U);
     t16 = *((char **)t15);
-    t15 = ((char*)((ng5)));
+    t15 = ((char*)((ng6)));
     memset(t17, 0, 8);
     t18 = (t16 + 4);
     t19 = (t15 + 4);

@@ -2,27 +2,27 @@ Command line:
    pipelined3_tb_isim_beh.exe
      -simmode  gui
      -simrunnum  0
-     -socket  51836
+     -socket  52257
 
-Wed Aug 14 08:06:23 2019
+Wed Aug 14 12:20:00 2019
 
 
- Elaboration Time: 0.078125 sec
+ Elaboration Time: 0.0625 sec
 
- Current Memory Usage: 5192.95 Meg
+ Current Memory Usage: 5193.05 Meg
 
- Total Signals          : 445
- Total Nets             : 2411
- Total Signal Drivers   : 208
+ Total Signals          : 449
+ Total Nets             : 2415
+ Total Signal Drivers   : 212
  Total Blocks           : 41
  Total Primitive Blocks : 36
- Total Processes        : 271
+ Total Processes        : 275
  Total Traceable Variables  : 102
- Total Scalar Nets and Variables : 267471
+ Total Scalar Nets and Variables : 267475
 
- Total Simulation Time: 0.203125 sec
+ Total Simulation Time: 0.1875 sec
 
- Current Memory Usage: 5507.53 Meg
+ Current Memory Usage: 5035.77 Meg
 
-Wed Aug 14 08:07:14 2019
+Wed Aug 14 12:21:22 2019
 
