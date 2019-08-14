@@ -33,7 +33,11 @@ module npc_tb;
 	reg [31:0] curr_pc;
 	reg [3:0] jump_mode;
 	reg [1:0] cmp_result;
+	reg [1:0] cmp_sig_result;
 	reg [15:0] num;
+	reg [25:0] jnum;
+	reg [31:0] reg_;
+	reg [31:0] epc;
 
 	// Outputs
 	wire [31:0] next_pc;
@@ -42,8 +46,12 @@ module npc_tb;
 	npc uut (
 		.curr_pc(curr_pc), 
 		.jump_mode(jump_mode), 
-		.cmp_result(cmp_result), 
+		.cmp_result(cmp_result),
+		.cmp_sig_result(cmp_sig_result), 
 		.num(num), 
+		.jnum(jnum), 
+		.reg_(reg_), 
+		.epc(epc), 
 		.next_pc(next_pc)
 	);
 
@@ -52,7 +60,11 @@ module npc_tb;
 		curr_pc = 0;
 		jump_mode = 0;
 		cmp_result = 0;
+		cmp_sig_result = 0;
 		num = 0;
+		jnum = 0;
+		reg_ = 0;
+		epc = 0;
 
 		// Wait 100 ns for global reset to finish
 		#100;
@@ -93,33 +105,23 @@ module npc_tb;
 		cmp_result = `ALU_LARGER;
 		num = 16'h0008;
 		
-		/* bgez with positive num */
-		#10;
-		curr_pc = 32'h00000004;
-		jump_mode = `NPC_LARGER_OR_EQUAL;
-		cmp_result = `CMP_LARGER;
-		num = 16'h0008;
+		/* bgez, bgtz, bltz, blez, jnum and reg untested, since tests of p5 and p6 have passed */
 		
-		/* bgez with negative num and `CMP_SMALLER */
+		/* jump to isr */
 		#10;
 		curr_pc = 32'h00000004;
-		jump_mode = `NPC_LARGER_OR_EQUAL;
-		cmp_result = `CMP_SMALLER;
-		num = 16'hffff;
+		jump_mode = `NPC_ISR;
+		cmp_result = `CMP_EQUAL;
+		num = 16'h0000;
+		epc = 32'h00004000;
 		
-		/* bltz with negative num */
+		/* jump back to epc */
 		#10;
-		curr_pc = 32'h00000004;
-		jump_mode = `NPC_SMALLER;
-		cmp_result = `CMP_SMALLER;
-		num = 16'hffff;
-		
-		/* bltz with positive num and `CMP_LARGER */
-		#10;
-		curr_pc = 32'h00000004;
-		jump_mode = `NPC_SMALLER;
-		cmp_result = `CMP_LARGER;
-		num = 16'h0008;
+		curr_pc = 32'h00000008;
+		jump_mode = `NPC_EPC;
+		cmp_result = `CMP_EQUAL;
+		num = 16'h0000;
+		epc = 32'h00003004;
 	end
       
 endmodule
