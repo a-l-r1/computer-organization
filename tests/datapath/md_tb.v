@@ -31,6 +31,8 @@ module md_tb;
 	reg [31:0] dh;
 	reg [31:0] dl;
 	reg [3:0] op;
+	reg restore;
+	reg stop;
 
 	// Outputs
 	wire busy;
@@ -44,6 +46,8 @@ module md_tb;
 		.dh(dh), 
 		.dl(dl), 
 		.op(op), 
+		.restore(restore), 
+		.stop(stop), 
 		.busy(busy), 
 		.invalid(invalid), 
 		.hi(hi), 
@@ -56,6 +60,8 @@ module md_tb;
 		dh = 0;
 		dl = 0;
 		op = 0;
+		restore = 0;
+		stop = 0;
 
 		// Wait 100 ns for global reset to finish
 		#100;
@@ -111,6 +117,30 @@ module md_tb;
 		dl = 32'h0;
 		op = `MD_DIV;
 		#200;
+		
+		/* flush */
+		op = `MD_NONE;
+		#20;
+		
+		/* divide */
+		dh = 32'h42424242;
+		dl = 32'h21212121;
+		op = `MD_DIV;
+		#100;
+		
+		/* stop */
+		#20;
+		stop = 1'b1;
+		
+		#20;
+		stop = 1'b0;
+		
+		/* restore */
+		#20;
+		restore = 1'b1;
+		
+		#20;
+		restore = 1'b0;
 	end
 	
 	always begin
