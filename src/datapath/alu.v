@@ -13,6 +13,7 @@ module alu(
 	output [1:0] cmp_result, 
 	output [1:0] sig_cmp_result, 
 	output overflow, 
+	output sig_overflow, 
 	output op_invalid
 );
 
@@ -149,7 +150,7 @@ assign {op_invalid, result} =
 	(op == `ALU_SRA || op == `ALU_SRAV) ? {1'b0, sra_result} : 
 	{1'b1, 32'b0};
 
-wire [32:0] intermediate_result;
+wire [32:0] intermediate_result, sig_intermediate_result;
 
 /* TODO: is this correct? */
 assign intermediate_result = 
@@ -159,8 +160,16 @@ assign intermediate_result =
 
 assign overflow = intermediate_result[32];
 
+assign sig_intermediate_result = 
+	(op == `ALU_ADD) ? $signed({num1[31], num1}) + $signed({num2[31], num2}) : 
+	(op == `ALU_SUB) ? $signed({num1[31], num1}) - $signed({num2[31], num2}) : 
+	33'b0;
+
+/* Mind the difference in bit lengths */
+assign sig_overflow = (sig_intermediate_result[32] != result[31]);
+
 assign cmp_result = 
-   ($unsigned(num1) == $unsigned(num2)) ? `ALU_EQUAL : 
+	($unsigned(num1) == $unsigned(num2)) ? `ALU_EQUAL : 
 	($unsigned(num1) < $unsigned(num2)) ? `ALU_SMALLER : 
 	`ALU_LARGER;
 
