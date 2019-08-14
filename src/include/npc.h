@@ -23,5 +23,10 @@
 `define NPC_REG 4'b1111
 `define NPC_J 4'b1110
 
+`define NPC_ISR 4'b1101
+`define NPC_EPC 4'b1100
+
+`define NPC_ISR_ADDR 32'h00004180
+
 `endif
 

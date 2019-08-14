@@ -17,6 +17,7 @@ NPC 是下个 PC 值的意思。它能做到根据当前的 PC 值，计算出�
 `num` | 输入 | 16 | 输入的立即数
 `jnum` | 输入 | 26 | 输入的 J 型指令的立即数
 `reg_` | 输入 | 32 | 输入的寄存器值
+`epc` | 输入 | 32 | 输入的 `EPC` 值
 `next_pc` | 输出 | 32 | 下一个 PC
 
 ### 宏定义
@@ -43,6 +44,8 @@ NPC 是下个 PC 值的意思。它能做到根据当前的 PC 值，计算出�
 `jump_mode` | `NPC_SIG_SMALLER` | 4'b1000 | 当输入的有符号比较结果为小于时跳转
 `jump_mode` | `NPC_SIG_LARGER_OR_EQUAL` | 4'b1001 | 当输入的有符号比较结果为大于或等于时跳转
 `jump_mode` | `NPC_SIG_SMALLER_OR_EQUAL` | 4'b1010 | 当输入的有符号比较结果为小于或等于时跳转
+`jump_mode` | `NPC_ISR` | 4'b1101 | 跳转到固定地址 `NPC_ISR_ADDR`
+`jump_mode` | `NPC_EPC` | 4'b1100 | 跳转到 `epc`
 
 `comp_result` 的相应数值代表的意义，与相应的宏有关，这些宏在 `alu.h` 中。
 
@@ -59,6 +62,10 @@ NPC 是下个 PC 值的意思。它能做到根据当前的 PC 值，计算出�
 若 `jump_mode == NPC_REG`，则令 `next_pc = reg_`。
 
 若 `jump_mode == NPC_J`，则令 `next_pc = {base[31:28], jnum, 2'b0}`。
+
+若 `jump_mode == NPC_ISR`，则令 `next_pc = IM_ISR_START_ADDRESS`。
+
+若 `jump_mode == NPC_EPC`，则令 `next_pc = epc`。
 
 若 `jump_mode` 为其它值，则做跟 `jump_mode == NPC_JUMP_DISABLE` 时相同的步骤。
 

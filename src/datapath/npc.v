@@ -1,6 +1,8 @@
 `include "npc.h"
+
 `include "alu.h"
 `include "cmp.h"
+`include "im.h"
 
 `define PART_NAME "npc"
 
@@ -14,6 +16,7 @@ module npc(
 	input [15:0] num, 
 	input [25:0] jnum, 
 	input [31:0] reg_,
+	input [31:0] epc, 
 	output [31:0] next_pc
 );
 
@@ -42,6 +45,8 @@ assign next_pc =
 	(jump_mode == `NPC_SIG_SMALLER_OR_EQUAL && (cmp_sig_result == `CMP_SMALLER || cmp_sig_result == `CMP_EQUAL)) ? b_target : 
 	(jump_mode == `NPC_REG) ? reg_ : 
 	(jump_mode == `NPC_J) ? {base[31:28], jnum, 2'b0} : 
+	(jump_mode == `NPC_ISR) ? `NPC_ISR_ADDR : 
+	(jump_mode == `NPC_EPC) ? epc : 
 	$unsigned(base) + $unsigned(4);
 
 /* TODO: what if all the signals don't change? */
