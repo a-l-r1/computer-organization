@@ -41,12 +41,16 @@ end
 assign op_addr = (write_enable == `DM_WRITE_ENABLED) ? write_addr : read_addr;
 
 assign valid = 
-	mode == `DM_NONE || 
-	(mode == `DM_W && op_addr[1:0] == 2'b0) || 
-	(mode == `DM_H && op_addr[0] == 1'b0) || 
-	(mode == `DM_HU && op_addr[0] == 1'b0) || 
-	mode == `DM_B || 
-	mode == `DM_BU;
+	$unsigned(op_addr) >= $unsigned(`DM_ADDR_LB) && 
+	$unsigned(op_addr) <= $unsigned(`DM_ADDR_UB) && 
+	(
+		mode == `DM_NONE || 
+		(mode == `DM_W && op_addr[1:0] == 2'b0) || 
+		(mode == `DM_H && op_addr[0] == 1'b0) || 
+		(mode == `DM_HU && op_addr[0] == 1'b0) || 
+		mode == `DM_B || 
+		mode == `DM_BU
+	);
 
 assign invalid = ~valid;
 

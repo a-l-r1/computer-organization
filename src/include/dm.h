@@ -20,5 +20,8 @@
 
 `define DM_OUTPUT_FORMAT "%d@%h: *%h <= %h"
 
+`define DM_ADDR_UB 32'h00002fff 
+`define DM_ADDR_LB 32'h00000000
+
 `endif
 

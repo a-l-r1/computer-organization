@@ -12,8 +12,7 @@
 --- | --- | --- | ---
 `clk` | 输入 | 1 | 时钟信号
 `curr_pc` | 输入 | 32 | 当前 PC 值
-`read_addr` | 输入 | 32 | 读地址
-`write_addr` | 输入 | 32 | 写地址
+`addr` | 输入 | 32 | 读写的地址
 `write_data` | 输入 | 32 | 写数据
 `write_enable` | 输入 | 1 | 写使能信号
 `mode` | 输入 | 3 | 模式选择
@@ -38,6 +37,8 @@
 `mode` | `DM_BU` | 3'b110 | 读取一个字节，按无符号数读取
 `.*_addr` | `DM_ADDR_WIDTH` | 8 | `.*_addr` 的位宽
 指令存储器 | `DM_SIZE` | 64 | 能存储 32 位字的个数
+地址范围 | `DM_ADDR_UB` | 32 | `dm` 的地址上界
+地址范围 | `DM_ADDR_LB` | 32 | `dm` 的地址下界
 
 ### 功能
 
@@ -47,7 +48,7 @@
 
 首先得出操作地址 `op_addr`。若 `write_enable == DM_ENABLED`，则操作地址为写地址，否则操作地址为读地址。
 
-然后确定操作是否合法。若 `mode == DM_NONE || (mode == DM_W && op_addr[1:0] == 2'b0) || (mode == DM_H && op_addr[0] == 1'b0) || (mode == DM_HU && op_addr[0] = 1'b0) || mode == DM_B || mode == DM_BU`，则操作合法，否则操作不合法。
+然后确定操作是否合法。若 `mode == DM_NONE || (mode == DM_W && op_addr[1:0] == 2'b0) || (mode == DM_H && op_addr[0] == 1'b0) || (mode == DM_HU && op_addr[0] = 1'b0) || mode == DM_B || mode == DM_BU` 而且 `$unsigned(op_addr) >= DM_ADDR_LB && $unsigned(op_addr) <= DM_ADDR_UB`，则操作合法，否则操作不合法。
 
 在每个时钟上升沿，若 `write_enable == DM_ENABLED && invalid == 0`，则根据操作模式写入相应地址对应的数据。写入半个字和字节分别取 `write_data` 的低 16 位和低 8 位。同时，打印当前 PC 的值、`write_addr` 对应的字和它对应字的新值。如果是写入半个字或者字节，也打印对应字的新值。
 
