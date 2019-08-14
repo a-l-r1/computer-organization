@@ -20,6 +20,7 @@ initial begin
 	end
 
 	$readmemh(`IM_CODE_FILENAME, memory, 0);
+	$readmemh(`IM_ISR_CODE_FILENAME, memory, ($unsigned(`IM_ISR_START_ADDRESS) - $unsigned(`IM_START_ADDRESS)) >> $unsigned(2), 2047);
 end
 
 wire [31:0] im_calculated_address;
