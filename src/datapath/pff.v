@@ -21,7 +21,7 @@ initial begin
 end
 
 always @(posedge clk) begin
-	if (rst == 1'b0) begin
+	if (rst == 1'b1) begin
 		data <= 0;
 	end else begin
 		if (enable == `PFF_ENABLED) begin
