@@ -8,7 +8,7 @@
 
 ### 分析
 
-p6 需要实现的指令为：
+p7 需要实现的指令为：
 
 ```
 addu, subu, add, sub, sll, srl, sra, and, or, nor, xor, slt, sltu, sllv, srlv, srav
@@ -22,6 +22,9 @@ movz
 mult, multu, div, divu
 mfhi, mflo
 mthi, mtlo
+mfc0
+mtc0
+eret
 ```
 
 `nop` 作为 `sll` 指令的一种特殊情况存在。
@@ -42,6 +45,9 @@ mthi, mtlo
 `CAL_M` | `mult, multu, div, divu`
 `LOAD_M` | `mfhi, mflo`
 `STORE_M` | `mthi, mtlo`
+`LOAD_C0` | `mfc0`
+`STORE_C0` | `mtc0`
+`JUMP_C0` | `eret`
 
 通过分析它们的 RTL，可以得到每条指令对应的数据通路连接如下。其中表格某一列的值表示这个输入端口是哪个输出端口的输出。端口用 `流水线级: 部件.端口名字` 格式表示。空白的单元格表示不用关心相对应的端口的值，因为它们会被忽略，不影响指令的正常执行。未知指令只需要屏蔽各个写入的使能，这样就可以避免未知指令的影响，因此不用分析未知指令。
 
@@ -53,13 +59,14 @@ mthi, mtlo
 
 #### F 级（IF）
 
-数据通路类型 | `F: npc.curr_pc` | `F: npc.alu_comp_result` | `F: npc.num` | `F: npc.jnum` | `F: npc.reg_` | `F: pc.next_pc`
+数据通路类型 | `F: npc.curr_pc` | `F: npc.cmp_result` | `F: npc.cmp_sig_result` | `F: npc.num` | `F: npc.jnum` | `F: npc.reg_` | `F: npc.epc` | `F: pc.next_pc`
 --- | --- | --- | ---
-`BRANCH` | `F: pc.curr_pc` | `E: alu.comp_result` | `D: im.result[15:0]` | | | `F: npc.next_pc`
-`JUMP_I` | `F: pc.curr_pc` | | | `D: im.result[25:0]` | | `F: npc.next_pc`
-`JUMP_R` | `F: pc.curr_pc` | | | | `D: rf.read_result1` | `F: npc.next_pc`
-（其它）| `F: pc.curr_pc` | | | | | `F: npc.next_pc`
-综合 | `F: pc.curr_pc` | `D: cmp.cmp` | `D: im.result[15:0]` | `D: im.result[25:0]` | `D: rf.read_result1` | `F: npc.next_pc`
+`BRANCH` | `F: pc.curr_pc` | `D: cmp.cmp` | `D: cmp.sig_cmp` | `D: im.result[15:0]` | | | | `F: npc.next_pc`
+`JUMP_I` | `F: pc.curr_pc` | | | | `D: im.result[25:0]` | | | `F: npc.next_pc`
+`JUMP_R` | `F: pc.curr_pc` | | | | | `D: rf.read_result1` | | `F: npc.next_pc`
+`JUMP_C0` | `F: pc.curr_pc` | | | | | | `M: cp0.epc` | `F: npc.next_pc`
+（其它）| `F: pc.curr_pc` | | | | | | | `F: npc.next_pc`
+综合 | `F: pc.curr_pc` | `D: cmp.cmp` | `D: cmp.sig_cmp` | `D: im.result[15:0]` | `D: im.result[25:0]` | `D: rf.read_result1` | `M: cp0.epc` | `F: npc.next_pc`
 
 #### D 级（ID）
 
@@ -76,6 +83,9 @@ mthi, mtlo
 `CAL_M` | 
 `LOAD_M` | 
 `STORE_M` | 
+`LOAD_C0` |
+`STORE_C0` |
+`JUMP_C0` |
 综合 | `D: im.result[15:0]` | `D: rf.read_result1` | `D: rf.read_result2`
 
 #### E 级（EX）
@@ -93,24 +103,30 @@ mthi, mtlo
 `CAL_M` | | | | `D: rf.read_result1` | `D: rf.read_result2`
 `LOAD_M` | | | | |
 `STORE_M` | | | | `D: rf.read_result1` | `D: rf.read_result2`
+`LOAD_C0` |
+`STORE_C0` |
+`JUMP_C0` |
 综合 | `D: rf.read_result1` | `D: rf.read_result2, D: ext.result` | `D: im.result[10:6]` | `D: rf.read_result1` | `D: rf.read_result2`
 
 #### M 级（MEM）
 
-数据通路类型 | `M: dm.read_addr` | `M: dm.write_addr` | `M: dm.write_data`
-`CAL_R` | | | 
-`CAL_I` | | | 
-`LOAD` | `E: alu.result` | | | 
-`STORE` | | `E: alu.result` | `E: rf.read_result2`
-`BRANCH` | | | 
-`NOP` | | | 
-`JAL` | | | 
-`JR` | | | 
-`CMOV` | | | 
-`CAL_M` | | |
-`LOAD_M` | | |
-`STORE_M` | | |
-综合 | `E: alu.result` | `E: alu.result` | `E: rf.read_result2`
+数据通路类型 | `M: dm.read_addr` | `M: dm.write_addr` | `M: dm.write_data` | `M: cpu_addr` | `M: cpu_write_data` | `M: ac.addr` | `M: cp0.addr` | `M: cp0.write_data`
+`CAL_R` | | | | | | | |
+`CAL_I` | | | | | | | |
+`LOAD` | `E: alu.result` | | | `E: alu.result` | | `E: alu.result` | |
+`STORE` | | `E: alu.result` | `E: rf.read_result2` | `E: alu.result` | `E: rf.read_result2` | `E: alu.result` | | |
+`BRANCH` | | | | | | | |
+`NOP` | | | | | | | |
+`JAL` | | | | | | | |
+`JR` | | | | | | | |
+`CMOV` | | | | | | | |
+`CAL_M` | | | | | | | |
+`LOAD_M` | | | | | | | |
+`STORE_M` | | | | | | | |
+`LOAD_C0` | | | | | | | `F: im.result[15:10]` | `E: rf.read_result2`
+`STORE_C0` | | | | | | | `F: im.result[15:10]` | `E: rf.read_result2`
+`ERET` | | | | | | | |
+综合 | `E: alu.result` | `E: alu.result` | `E: rf.read_result2` | `E: alu.result` | `E: rf.read_result2` | `E: alu.result` | `F: im.result[15:11]` | `E: rf.read_result2`
 
 #### W 级（WB）
 
@@ -127,7 +143,10 @@ mthi, mtlo
 `CAL_M` |
 `LOAD_M` | `E: md.out`
 `STORE_M` |
-综合 | `E: alu.result, M: dm.read_result, F: $unsigned(pc.curr_pc) + $unsigned(8), E: md.out`
+`LOAD_C0` | `M: cp0.read_result`
+`STORE_C0` |
+`ERET` |
+综合 | `E: alu.result, M: dm.read_result, F: $unsigned(pc.curr_pc) + $unsigned(8), E: md.out, M: cp0.read_result`
 
 #### 流水线寄存器
 
@@ -135,36 +154,37 @@ mthi, mtlo
 
 流水线级 | 信号 | 流水线寄存器名称
 --- | --- | ---
+D | `pc.curr_pc` | `d_pc`
 D | `im.result` | `d_im`
+E | `pc.curr_pc` | `e_pc`
 E | `rf.read_result1` | `e_reg1`
 E | `rf.read_result2` | `e_reg2`
 E | `ext.result` | `e_ext`
+E | `im.result` | `e_im`
+M | `pc.curr_pc` | `m_pc`
 M | `alu.result` | `m_alu`
 M | `rf.read_result2` | `m_reg2`
 W | `alu.result` | `w_alu`
 W | `dm.read_result` | `w_dm`
 W | `pc.curr_pc` | `w_pc`
 W | `md.out` | `w_md`
+W | `cp0.read_result` | `w_cp0`
 
-由于需要的流水线寄存器有跨级的（比如只有 D 级和 W 级），所以需要把漏掉的级补充上。
+由于需要的流水线寄存器没有跨级的（比如只有 D 级和 W 级），所以不需要把漏掉的级补充上。
 
-流水线级 | 信号 | 流水线寄存器名称
---- | --- | ---
-D | `pc.curr_pc` | `d_pc`
-E | `pc.curr_pc` | `e_pc`
-M | `pc.curr_pc` | `m_pc`
-
-这里没有补充 D 级 `BRANCH` 类指令需要的 `alu.comp_result` 到 F 级的连接以及 `JAL` 和 `JR` 类指令相应数据到 F 级的连接，因为为了正确控制 PC 的转换，它们必须是实时的，不需要流水线寄存器。
+这里没有补充 D 级 `BRANCH` 类指令需要的 `cmp.cmp` 到 F 级的连接、 `JAL` 和 `JR` 类指令相应数据到 F 级的连接和 `cp0.epc` 到 F 级的连接，因为为了正确控制 PC 的转换，它们必须是实时的，不需要流水线寄存器。
 
 注意：**返回 `PC + 8` 实际上是通过流水 `PC` 再加 8 实现的。**
 
 注意：**D 级流水线寄存器都要接使能信号，E 级流水线寄存器都要接复位信号，因为要插入气泡。**
 
+注意：**所有级流水线都要接复位信号，因为要做到在异常产生时清空流水线。**
+
 ### 调试相关功能
 
-为了能够正确地打印出写入寄存器和 `dm` 时需要的 `pc` 值，需要流水 `pc.curr_pc`，一直到 W 级。因此，可能需要新增流水线寄存器，并把相应的 `pc` 值流水。
+为了能够正确地打印出写入寄存器和 `dm` 时需要的 `pc` 值，需要流水 `pc.curr_pc`，一直到 W 级。因此，需要新增流水线寄存器，并把相应的 `pc` 值流水。
 
-注意：**写入寄存器是使用 `w` 级流水到的 `pc` 值。**
+注意：**写入寄存器是使用 `w` 级流水到的 `pc` 值，然后把它看成无符号数，再加 8。**
 
 #### 数据通路 MUX
 
@@ -173,11 +193,14 @@ M | `pc.curr_pc` | `m_pc`
 端口 | 所有的信号来源 | MUX 名称
 --- | --- | ---
 `E: alu.num2` | `D: rf.read_result2, D: ext.result` | `m_alusrc`
-`W: rf.write_data` | `（无）, E: alu.result, M: dm.read_result, D: npc.next_pc, E: md.out` | `m_regdata`
+`M: dm.read_result` | `M: dm.read_result, M: cpu_read_result` | `m_bridge`
+`W: rf.write_data` | `（无）, E: alu.result, M: dm.read_result, D: npc.next_pc, E: md.out, M: cp0.read_result` | `m_regdata`
 
 注意：**都是把信号来源从 0 开始编号，对应 MUX 的 `input`_n_ 接第 _n_ 个信号源。**
 
 注意：**如果写了（无），那么相应端口的数据为全 0，不过这时相应端口实际上也没有作用。**
+
+注意：**`m_bridge` 是根据地址范围判断读取结果是哪个的，信号来源里的 `M: dm.read_result` 是原来的 `dm.read_result`。这是为了方便把 `bridge` 实现成钩子机制。**
 
 #### 转发
 
@@ -189,11 +212,14 @@ M | `pc.curr_pc` | `m_pc`
 
 端口 | 所有的信号来源 | MUX 名称
 --- | --- | ---
-`D: rf.read_result[12]` | `E: rf.read_result1, E: npc.next_pc, M: npc.next_pc, M: alu.result, W: rf.write_data, M: md.out` | `fm_d1`
-`E: rf.read_result[12]` | `M: npc.next_pc, M: alu.result, W: rf.write_data, M: md.out` | `fm_e1`
+`D: rf.read_result[12]` | `E: rf.read_result1, E: npc.next_pc, M: npc.next_pc, M: alu.result, W: rf.write_data, M: md.out, M: cp0.read_result` | `fm_d1`
+`E: rf.read_result[12]` | `M: npc.next_pc, M: alu.result, W: rf.write_data, M: md.out, M: cp0.read_result` | `fm_e1`
 `M: dm.write_data` | `W: rf.write_data` | `fm_m`
+`M: cp0.epc` | `D: rf.read_result2, E: rf.read_result2, M: rf.read_result2` | `fm_epc`
 
-**注意：不能在 M 级设置 MUX 转发 `dm` 的数据，因为这样 D 级或 E 级会等待 M 级 `dm` 的数据，关键路径会变得非常长，极大地降低流水线性能。同样地，也不能在 E 级设置 MUX 转发 `alu` 的数据。**
+注意：**不能在 M 级设置 MUX 转发 `dm` 的数据，因为这样 D 级或 E 级会等待 M 级 `dm` 的数据，关键路径会变得非常长，极大地降低流水线性能。同样地，也不能在 E 级设置 MUX 转发 `alu` 的数据。**
+
+注意：**`M: cp0.epc` 是流水线前面的级转发优先的，这是因为最前面的级写入的 `epc` 才是逻辑上最终的 `epc`。**
 
 转发 MUX 最终是由控制模块控制的。但是控制模块也没法克服有些数据通路不能转发的现实（比如 `M: dm.read_result`）。这就需要——
 
@@ -202,4 +228,10 @@ M | `pc.curr_pc` | `m_pc`
 需要暂停是因为有些数据冒险靠转发解决不了，必须要让后面的指令暂停一个时钟周期。暂停的方式是在流水线中插入一个 NOP（这时候也叫气泡），从而让发生数据冒险的指令能够转发。
 
 流水线 CPU 数据通路中能提供的暂停机制有锁定 `pc` 和清空 E 级各个流水线寄存器。这样就可以在流水线 E 级插入气泡。清空 E 级各个寄存器是通过流水线寄存器的同步复位功能实现的。
+
+#### 异常处理
+
+异常处理首先是在流水线寄存器中建立清除机制，让异常或者中断发生的时候能够清空整个流水线。然后，就是传输好 `epc`，建立好 `epc` 的转发机制，这样就能正确地从 ISR 中返回。从 ISR 中返回时需要考虑暂停和填充 `JUMP_C0` 类指令气泡的关系，还有因为 `JUMP_C0` 类指令新带来的数据转发。还有就是做好回退和禁止写入的机制，这样中断发生的那个时钟周期的下一个时钟上升沿就能正确地抵消所有效果。
+
+清除机制和回退、禁止写入的机制是各个数据通路部件内部实现的，`epc` 的转发机制在数据通路内部已经有转发 MUX 了。具体的控制由控制模块实现。
 
