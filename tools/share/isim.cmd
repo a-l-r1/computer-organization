@@ -1,5 +1,5 @@
 onerror {resume}
 wave add /
-run 20000 ns;
+run 10000 ns;
 exit
 
