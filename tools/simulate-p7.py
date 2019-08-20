@@ -25,7 +25,7 @@ _targets = {
         'single-cycle': [*_include_options, *_datapath_srcs, *_debug_srcs, 'src/control/single-cycle.v', 'src/cpu/single-cycle.v', 'tests/cpu/single-cycle/single-cycle_tb.v'], 
         'pipelined': [*_include_options, *_datapath_srcs, *_debug_srcs, 'src/control/pipelined.v', 'src/cpu/pipelined.v', 'tests/cpu/pipelined/pipelined_tb.v'], 
         'pipelined2': [*_include_options, *_datapath_srcs, *_debug_srcs, 'src/control/pipelined2.v', 'src/cpu/pipelined2.v', 'tests/cpu/pipelined2/pipelined2_tb.v'], 
-        'pipelined3': [*_include_options, *_datapath_srcs, *_debug_srcs, 'src/control/pipelined3.v', 'src/cpu/pipelined3.v', 'tests/cpu/pipelined3/pipelined3_tb.v', 'src/bridge/bridge.v', 'src/devices/timer.v']
+        'pipelined3': [*_include_options, *_datapath_srcs, *_debug_srcs, 'src/control/pipelined3.v', 'src/cpu/pipelined3.v', 'tests/cpu/pipelined3/pipelined3_tb.v', 'src/bridge/bridge.v', 'src/devices/timer.v', 'src/mips/pipelined3.v']
         }
 _target_aliases = {
         'p4': 'single-cycle', 
