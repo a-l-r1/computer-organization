@@ -21,12 +21,16 @@ always @(posedge clk or curr_pc) begin
 end
 
 initial begin
-	saved_pc = `PC_START_ADDRESS;
+	saved_pc = `PC_START_ADDR;
 end
 
 always @(posedge clk) begin
-	if (enable == `PC_ENABLED) begin
-		saved_pc <= next_pc;
+	if (rst == 1'b1) begin
+		saved_pc <= `PC_START_ADDR;
+	end else begin
+		if (enable == `PC_ENABLED) begin
+			saved_pc <= next_pc;
+		end
 	end
 end
 

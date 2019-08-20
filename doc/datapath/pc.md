@@ -11,6 +11,7 @@ PC 只负责表示程序执行到哪里，而 PC 的更新由 NPC 模块负责�
 端口 | 类型 | 位宽 | 功能
 --- | --- | --- | ---
 `clk` | 输入 | 1 | 时钟信号
+`rst` | 输入 | 1 | 复位信号
 `next_pc` | 输入 | 32 | NPC 计算得来的下一个 PC 地址
 `enable` | 输入 | 1 | PC 使能
 `invalid` | 输出 | 1 | 不对齐的 PC 值
@@ -26,15 +27,15 @@ PC 只负责表示程序执行到哪里，而 PC 的更新由 NPC 模块负责�
 `enable` | `PC_ENABLE` | `PC_ENABLED` | 
 `enable` | `PC_DISABLED` | 1'b0 | PC 非使能
 `enable` | `PC_DISABLE` | `PC_DISABLED` | 
-`curr_pc` | `PC_START_ADDRESS` | 32'h00003000 | PC 的起始地址
+`curr_pc` | `PC_START_ADDR` | 32'h00003000 | PC 的起始地址
 
 ### 功能
 
 该部件是时序部件。
 
-有一个 32 位的寄存器保存当前 PC 的值，初值为 `PC_START_ADDRESS`。
+有一个 32 位的寄存器保存当前 PC 的值，初值为 `PC_START_ADDR`。
 
-在每个时钟上升沿，若 `enable == PC_ENABLED`，则把 PC 部件中保存的当前 PC 的值更新成 `next_pc` 的值。否则，保存的当前 PC 的值不变。
+在每个时钟上升沿，若 `rst == 1'b1`，则把 PC 部件中保存的当前 PC 的值更新成 `PC_START_ADDR`。否则，若 `enable == PC_ENABLED`，则把 PC 部件中保存的当前 PC 的值更新成 `next_pc` 的值。否则，保存的当前 PC 的值不变。
 
 无论什么时候，输出端口 `curr_pc` 的值都是 PC 部件中保存的当前 PC 的值，但是把最低两位无条件清零。若 PC 最低两位不为 0 或 PC 作为无符号数超出 `im` 中指定的上下界，则 `invalid == 1'b1`。
 
