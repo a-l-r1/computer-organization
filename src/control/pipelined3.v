@@ -106,6 +106,7 @@ endmodule
 
 module control(
 	input clk, 
+	input rst, 
 	input [31:0] d_instr, 
 	input [31:0] e_instr, 
 	input [31:0] m_instr, 
@@ -618,10 +619,10 @@ assign m_exc_final =
 
 /* Pipeline resetting */
 
-assign cw_d_pff_rst = (ddptype == `JUMP_C0 && stall == 1'b0) || (have2handle == 1'b1);
+assign cw_d_pff_rst = (ddptype == `JUMP_C0 && stall == 1'b0) || (have2handle == 1'b1) || (rst == 1'b1);
 /* cw_e_pff_rst omitted */
-assign cw_m_pff_rst = have2handle;
-assign cw_w_pff_rst = have2handle;
+assign cw_m_pff_rst = (have2handle == 1'b1) || (rst == 1'b1);
+assign cw_w_pff_rst = (have2handle == 1'b1) || (rst == 1'b1);
 
 assign cw_e_md_restore = (edptype == `STORE_M || mdptype == `STORE_M) && (have2handle == 1'b1);
 
@@ -629,11 +630,11 @@ assign cw_e_md_stop = (edptype == `CAL_M || mdptype == `CAL_M) && (have2handle =
 
 /* Control signal hooking */
 
-assign cw_m_dm_write_enable = cw_m_dm_write_enable_orig & (~have2handle);
+assign cw_m_dm_write_enable = (cw_m_dm_write_enable_orig == 1'b1) && (have2handle == 1'b0);
 
-assign cw_m_cp0_write_enable = cw_m_cp0_write_enable_orig & (~have2handle);
+assign cw_m_cp0_write_enable = (cw_m_cp0_write_enable_orig == 1'b1) && (have2handle == 1'b0);
 
-assign cw_e_pff_rst = cw_e_pff_rst_orig | have2handle;
+assign cw_e_pff_rst = (cw_e_pff_rst_orig == 1'b1) || (have2handle == 1'b1) || (rst == 1'b1);
 
 assign cw_f_npc_jump_mode = 
 	(have2handle == 1'b1) ? `NPC_ISR : 
