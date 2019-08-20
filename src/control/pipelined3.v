@@ -14,8 +14,8 @@
 `include "dm.h"
 
 /* No more function definitions since ISE would crash seeing these functions
-* in modules, and iSim would refuse to simulate seeing these functions are out
-* of modules. Salute to ISE! */
+* are in modules, and iSim would refuse to simulate seeing these functions are 
+* out of modules. Salute to the ISE toolchain! */
 
 module kind(
 	input [31:0] instr, 
