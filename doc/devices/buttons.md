@@ -30,7 +30,7 @@
 
 该部件维护一个 8 位寄存器 `stored`，负责存储在这个时钟周期中用户的输入。
 
-每个时钟上升沿，若 `rst == 1'b1`，则 `stored <= 0`。否则，`stored <= input`。
+每个时钟上升沿，若 `rst == 1'b1`，则 `stored <= 0`。否则，`stored <= ~input_`。
 
 无论什么时候，若 `addr == BASE_ADDR`，则令 `out = {24'b0, stored}`，否则令 `out = 32'b0`。
 
