@@ -9,7 +9,7 @@
 // Notes      :     1. tx_unit and divisior must use the same clock
 //////////////////////////////////////////////////////////////////////////////////
 
-`include    ".\\src\\head_uart.v"
+`include    "uart.h"
 
 module  MiniUART( ADD_I, DAT_I, DAT_O, STB_I, WE_I, CLK_I, RST_I, ACK_O, RxD, TxD ) ;
     // WISHBONE slave interface

@@ -1,4 +1,4 @@
-`include    ".\\src\\head_uart.v"
+`include    "uart.h"
 `define     DELAY_MS    1000000         // the delay unit is millisecond
 
 module testbench_miniuart() ;
