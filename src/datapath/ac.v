@@ -17,9 +17,13 @@ wire [3:0] curr_dev;
 wire oorange, bad_alignment, bad_mode;
 
 assign curr_dev = 
-	($unsigned(addr) >= `DM_ADDR_LB && $unsigned(addr) <= `DM_ADDR_UB) ? 4'd14 : 
-	($unsigned(addr) >= `BRIDGE_TIMER0_LB && $unsigned(addr) <= `BRIDGE_TIMER0_UB) ? 4'd0 : 
-	($unsigned(addr) >= `BRIDGE_TIMER1_LB && $unsigned(addr) <= `BRIDGE_TIMER1_UB) ? 4'd1 : 
+	($unsigned(addr) >= $unsigned(`BRIDGE_TIMER_LB) && $unsigned(addr) <= $unsigned(`BRIDGE_TIMER_UB)) ? 4'd0 : 
+	($unsigned(addr) >= $unsigned(`BRIDGE_UART_LB) && $unsigned(addr) <= $unsigned(`BRIDGE_UART_UB)) ? 4'd1 : 
+	($unsigned(addr) >= $unsigned(`BRIDGE_SWITCHES_LB) && $unsigned(addr) <= $unsigned(`BRIDGE_SWITCHES_UB)) ? 4'd2 : 
+	($unsigned(addr) >= $unsigned(`BRIDGE_LED_LB) && $unsigned(addr) <= $unsigned(`BRIDGE_LED_UB)) ? 4'd3 : 
+	($unsigned(addr) >= $unsigned(`BRIDGE_NIXIE_LB) && $unsigned(addr) <= $unsigned(`BRIDGE_NIXIE_UB)) ? 4'd4 : 
+	($unsigned(addr) >= $unsigned(`BRIDGE_BUTTONS_LB) && $unsigned(addr) <= $unsigned(`BRIDGE_BUTTONS_UB)) ? 4'd5 : 
+	($unsigned(addr) >= $unsigned(`DM_ADDR_LB) && $unsigned(addr) <= $unsigned(`DM_ADDR_UB)) ? 4'd14 : 
 	4'd15;
 
 assign oorange = (curr_dev == 4'd15);
@@ -37,8 +41,8 @@ assign bad_mode =
 
 assign unwriteable = 
 	/* not complete but enough */
-	(addr == $unsigned(`BRIDGE_TIMER0_LB) + 8) || 
-	(addr == $unsigned(`BRIDGE_TIMER1_LB) + 8);
+	/* TODO: more unwriteable registers? */
+	(addr == $unsigned(`BRIDGE_TIMER_LB) + 8);
 
 assign invalid = (oorange || bad_alignment || bad_mode || unwriteable) && (dm_mode != `DM_NONE);
 
