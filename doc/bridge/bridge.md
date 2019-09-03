@@ -22,18 +22,24 @@
 
 类别 | 定义 | 值 | 意义
 --- | --- | --- | ---
-设备地址 | `BRIDGE_TIMER0_LB` | `32'h00007f00` | 第一个 `timer` 的地址下界
-设备地址 | `BRIDGE_TIMER0_UB` | `32'h00007f0b` | 第一个 `timer` 的地址上界
-设备地址 | `BRIDGE_TIMER1_LB` | `32'h00007f10` | 第二个 `timer` 的地址下界
-设备地址 | `BRIDGE_TIMER1_UB` | `32'h00007f1b` | 第二个 `timer` 的地址上界
-设备地址 | `BRIDGE_TIMER0_BASE` | `32'h00007f00` | 第一个 `timer` 的基址
-设备地址 | `BRIDGE_TIMER0_BASE` | `32'h00007f10` | 第二个 `timer` 的基址
+设备地址 | `BRIDGE_TIMER_LB` | `32'h00007f00` | `timer` 的地址下界
+设备地址 | `BRIDGE_TIMER_UB` | `32'h00007f0b` | `timer` 的地址上界
+设备地址 | `BRIDGE_UART_LB` | `32'h00007f10` | `uart` 的地址下界
+设备地址 | `BRIDGE_UART_UB` | `32'h00007f2b` | `uart` 的地址上界
+设备地址 | `BRIDGE_SWITCHES_LB` | `32'h00007f2c` | `switches` 的地址下界
+设备地址 | `BRIDGE_SWITCHES_UB` | `32'h00007f33` | `switches` 的地址上界
+设备地址 | `BRIDGE_LED_LB` | `32'h00007f34` | `led` 的地址下界
+设备地址 | `BRIDGE_LED_UB` | `32'h00007f37` | `led` 的地址上界
+设备地址 | `BRIDGE_NIXIE_LB` | `32'h00007f38` | `nixie` 的地址下界
+设备地址 | `BRIDGE_NIXIE_UB` | `32'h00007f3f` | `nixie` 的地址上界
+设备地址 | `BRIDGE_BUTTONS_LB` | `32'h00007f40` | `buttons` 的地址下界
+设备地址 | `BRIDGE_BUTTONS_UB` | `32'h00007f43` | `buttons` 的地址上界
 
 ### 功能
 
-如果地址落在某个 `timer` 的地址范围内，就令这个 `timer` 的写使能与 `write_enable` 相同，这个 `timer` 的 `read_result` 为要输出的值。其余的 `timer` 屏蔽写使能。否则，`read_result` 为 `32'b0`。
+如果地址落在某个设备的地址范围内，就令这个设备的写使能与 `write_enable` 相同，这个设备的 `read_result` 为要输出的值。其余的设备屏蔽写使能。否则，`read_result` 为 `32'b0`。 
 
-无论什么时候，`clk` 和 `rst` 的值都接入每个 `timer`。这是为了方便整体时钟信号同步和复位。`hwirq` 的最低位为第一个 `timer` 的 `irq`，倒数第二低位为第二个 `timer` 的 `irq`。
+无论什么时候，`clk` 和 `rst` 的值都接入每个设备。这是为了方便整体时钟信号同步和复位。`hwirq` 的最低位为 `timer` 的 `irq`，倒数第二低位为 `uart` 的 `IRQ_data_complete`。
 
 ### 注意事项
 
