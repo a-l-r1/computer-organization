@@ -96,12 +96,11 @@ beq $t0, 0, success
 nop
 
 # visv[0] = 1
-# hamiltonian(0, 0)
+# hamiltonian(0)
 li $t1, 1
 sw $t1, visv($0)
 
 li $a0, 0
-li $a1, 0
 jal hamiltonian
 nop
 
@@ -145,12 +144,12 @@ addi $s0, $s0, 1
 j i_loop_2
 nop
 i_loop_2_out: 
-# if (e[curr][start] == 1 && vise[curr][start] == 0)
-getindex($t0, $a0, $a1)
+# if (e[curr][0] == 1 && vise[curr][0] == 0)
+getindex($t0, $a0, $0)
 lw $t0, e($t0)
 seq $t0, $t0, 1
 
-getindex($t1, $a0, $a1)
+getindex($t1, $a0, $0)
 lw $t1, vise($t1)
 seq $t1, $t1, 0
 
@@ -161,11 +160,11 @@ beq $t0, $0, find
 nop
 
 b success
+nop
 
 find: 
 # make arguments permanent
 move $s1, $a0
-move $s2, $a1
 
 # for (i = 0; i < n; i++)
 li $s0, 0
@@ -176,22 +175,18 @@ nop
 
 	# if (i == curr) continue;
 	beq $s0, $s1, i_loop_3_continue
+	nop
 
-	# if (e[curr][i] == 1 && vise[curr][i] == 0 && visv[i] == 0)
+	# if (e[curr][i] == 1 && visv[i] == 0)
 	getindex($t0, $s1, $s0)
 	lw $t0, e($t0)
 	seq $t0, $t0, 1
 	
-	getindex($t1, $s1, $s0)
-	lw $t1, vise($t1)
+	sll $t1, $s0, 2
+	lw $t1, visv($t1)
 	seq $t1, $t1, 0
 	
-	sll $t2, $s0, 2
-	lw $t2, visv($t2)
-	seq $t2, $t2, 0
-	
 	and $t0, $t0, $t1
-	and $t0, $t0, $t2
 	
 	# else { continue; }
 	beq $t0, $0, i_loop_3_continue
@@ -211,9 +206,8 @@ nop
 	sll $t0, $s0, 2
 	sw $t1, visv($t0)
 	
-	# hamiltonian(i, start);
+	# hamiltonian(i);
 	move $a0, $s0
-	move $a1, $s2
 	jal hamiltonian
 	
 	# visv[i] = 0;
@@ -240,7 +234,7 @@ i_loop_3_out:
 restore_regs()
 jr $ra
 
-# void hamiltonian(int curr, int start)
+# void hamiltonian(int curr)
 # {
 # 	int i;
 # 	for (i = 0; i < n; i++)
@@ -250,7 +244,7 @@ jr $ra
 # 			goto find;
 # 		}
 # 	}
-# 	if (e[curr][start] == 1 && vise[curr][start] == 0)
+# 	if (e[curr][0] == 1 && vise[curr][0] == 0)
 # 	{
 # 		printf("1\n");
 # 		exit(0);
@@ -259,12 +253,12 @@ jr $ra
 # find: 
 # 	for (i = 0; i < n; i++)
 # 	{
-# 		if (e[curr][i] == 1 && vise[curr][i] == 0 && visv[i] == 0)
+# 		if (e[curr][i] == 1 && visv[i] == 0)
 # 		{
 # 			vise[curr][i] = 1;
 # 			vise[i][curr] = 1;
 # 			visv[i] = 1;
-# 			hamiltonian(i, start);
+# 			hamiltonian(i);
 # 			visv[i] = 0;
 # 			vise[i][curr] = 0;
 # 			vise[curr][i] = 0;
