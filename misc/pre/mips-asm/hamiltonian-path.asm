@@ -65,6 +65,10 @@ nop
 	subi $v0, $v0, 1
 	move $t2, $v0
 	
+	# if ($t1 == $t2) continue;
+	beq $t1, $t2, i_loop_0_continue
+	nop
+	
 	# $t4 = 1
 	li $t4, 1
 	
@@ -84,17 +88,35 @@ i_loop_0_out:
 # for breakpoint
 nop
 
+# if (n == 0 || n == 1) goto success;
+lw $t0, n($0)
+beq $t0, 1, success
+nop
+beq $t0, 0, success
+nop
+
 # visv[0] = 1
 # hamiltonian(0, 0)
 li $t1, 1
 sw $t1, visv($0)
-	
+
 li $a0, 0
 li $a1, 0
 jal hamiltonian
+nop
 
+fail: 
 # printf("0"); exit(0)
 li $a0, 0
+li $v0, 1
+syscall
+
+li $v0, 10
+syscall
+
+success:
+# printf("1"); exit(0)
+li $a0, 1
 li $v0, 1
 syscall
 
@@ -112,7 +134,7 @@ bge $s0, $t0, i_loop_2_out
 nop
 
 	# if (visv[i] == 0) goto find;
-	# NOTE: the address must be at word boundary
+	# NOTE: the addresses must be at word boundary
 	move $t0, $s0
 	sll $t0, $t0, 2
 	lw $t0, visv($t0)
@@ -138,13 +160,7 @@ and $t0, $t0, $t1
 beq $t0, $0, find
 nop
 
-# printf("1"); exit(0);
-li $a0, 1
-li $v0, 1
-syscall
-
-li $v0, 10
-syscall
+b success
 
 find: 
 # make arguments permanent
@@ -157,6 +173,9 @@ i_loop_3:
 lw $t0, n($0)
 bge $s0, $t0, i_loop_3_out
 nop
+
+	# if (i == curr) continue;
+	beq $s0, $s1, i_loop_3_continue
 
 	# if (e[curr][i] == 1 && vise[curr][i] == 0 && visv[i] == 0)
 	getindex($t0, $s1, $s0)
@@ -174,8 +193,8 @@ nop
 	and $t0, $t0, $t1
 	and $t0, $t0, $t2
 	
-	# else {}
-	beq $t0, $0, else_0
+	# else { continue; }
+	beq $t0, $0, i_loop_3_continue
 	nop
 	
 	# vise[curr][i] = 1;
@@ -211,7 +230,7 @@ nop
 	sll $t0, $s0, 2
 	sw $t1, visv($t0)
 
-else_0: 
+i_loop_3_continue: 
 
 addi $s0, $s0, 1
 j i_loop_3
