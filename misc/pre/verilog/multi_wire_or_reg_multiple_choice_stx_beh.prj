@@ -1,0 +1,2 @@
+verilog isim_temp "multi_wire_or_reg_multiple_choice.v"
+verilog isim_temp "/opt/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v"

@@ -35,6 +35,7 @@ e: .space 256
 vise: .space 256
 n: .word 0
 m: .word 0
+cr: .asciiz "\n"
 
 .text
 main: 
@@ -105,9 +106,13 @@ jal hamiltonian
 nop
 
 fail: 
-# printf("0"); exit(0)
+# printf("0\n"); exit(0)
 li $a0, 0
 li $v0, 1
+syscall
+
+la $a0, cr
+li $v0, 4
 syscall
 
 li $v0, 10
@@ -117,6 +122,10 @@ success:
 # printf("1"); exit(0)
 li $a0, 1
 li $v0, 1
+syscall
+
+la $a0, cr
+li $v0, 4
 syscall
 
 li $v0, 10
@@ -181,22 +190,22 @@ nop
 	getindex($t0, $s1, $s0)
 	lw $t0, e($t0)
 	seq $t0, $t0, 1
-	
+
 	sll $t1, $s0, 2
 	lw $t1, visv($t1)
 	seq $t1, $t1, 0
-	
+
 	and $t0, $t0, $t1
-	
+
 	# else { continue; }
 	beq $t0, $0, i_loop_3_continue
 	nop
-	
+
 	# vise[curr][i] = 1;
 	# vise[i][curr] = 1;
 	# visv[i] = 1;
 	li $t1, 1
-	
+
 	getindex($t0, $s1, $s0)
 	sw $t1, vise($t0)
 	

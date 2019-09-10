@@ -5,5 +5,17 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
+<msg type="warning" file="HDLCompiler" num="329" delta="unknown" >"/home/a-l-r/co/src/misc/pre/verilog/multi_wire_or_reg_multiple_choice.v" Line 33: Target &lt;<arg fmt="%s" index="1">o2</arg>&gt; of concurrent assignment or output port connection should be a net type.
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="329" delta="unknown" >"/home/a-l-r/co/src/misc/pre/verilog/multi_wire_or_reg_multiple_choice.v" Line 33: Target &lt;<arg fmt="%s" index="1">o2</arg>&gt; of concurrent assignment or output port connection should be a net type.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="696" delta="unknown" >"/home/a-l-r/co/src/misc/pre/verilog/multi_wire_or_reg_multiple_choice.v" Line 33: Part-select direction is opposite from prefix index direction
+</msg>
+
+<msg type="error" file="Simulator" num="778" delta="unknown" >Static elaboration of top level Verilog design unit(s) in library <arg fmt="%s" index="1">work</arg> failed
+</msg>
+
 </messages>
 
