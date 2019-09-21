@@ -523,7 +523,7 @@ TODO: `EXC_RI` 好像只是 `opcode` 未知
 --- | --- | --- | ---
 `cw_m_dm_write_enable_orig` | `cw_m_dm_write_enable` | `cw_m_dm_write_enable & (~have2handle)` |
 `cw_m_cp0_write_enable_orig` | `cw_cp0_write_enable` | `cw_cp0_write_enable_orig & (~have2handle)` | [1]
-`cw_e_pff_rst_orig` | `cw_e_pff_rst` | `cw_e_pff_rst_orig | have2handle` |
+`cw_e_pff_rst_orig` | `cw_e_pff_rst` | `cw_e_pff_rst_orig \| have2handle` |
 `cw_f_npc_jump_mode_orig` | `cw_f_npc_jump_mode` | `(have2handle == 1'b1) ? NPC_ISR : cw_f_npc_jump_mode_orig` | [2]
 `cw_f_pc_enable_orig` | `cw_f_pc_enable` | `cw_f_pc_enable_orig | have2handle` | [3]
 
@@ -570,5 +570,5 @@ TODO: `EXC_RI` 好像只是 `opcode` 未知
 
 注意：**D 级流水线只有不暂停的时候才能复位，否则一暂停会把 D 级的 `JUMP_C0` 类指令清空。**
 
-注意：**可以在 M 级时判断出 `JUMP_C0` 类指令再清空 `exl`，因为 `JUMP_C)` 类指令清空 `exl` 后到了 W 级，会正常执行完，这时正好当时的受害指令到了 M 级，如果还有中断或者异常，该指令及其之后指令仍然会被中断，重新进入 ISR。但是，会出现 `eret` 没到 M 级的时候或者刚清空流水线 ISR 的第一条指令还来不及进入 M 级的时候不持续的硬件中断不会响应的问题，这种问题应该可以忽略，把它当成 ISR 已经进入或者还没退出来解决。**
+注意：**可以在 M 级时判断出 `JUMP_C0` 类指令再清空 `exl`，因为 `JUMP_C0` 类指令清空 `exl` 后到了 W 级，会正常执行完，这时正好当时的受害指令到了 M 级，如果还有中断或者异常，该指令及其之后指令仍然会被中断，重新进入 ISR。但是，会出现 `eret` 没到 M 级的时候或者刚清空流水线 ISR 的第一条指令还来不及进入 M 级的时候不持续的硬件中断不会响应的问题，这种问题应该可以忽略，把它当成 ISR 已经进入或者还没退出来解决。**
 
