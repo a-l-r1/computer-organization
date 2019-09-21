@@ -10,31 +10,57 @@
 
 若单元格以 `#` 开头，则说明该控制信号或端口只是为了使控制单元功能明晰而加上的，实际上并不需要关心该控制信号或要接入的端口的值。如果想理解该单元格的值，去掉 `#` 再按照上一段理解即可。
 
-指令 | `addu` | `subu` | `lui` | `ori` 
---- | --- | --- | --- | ---
-`m_rf_write_addr` | `im.data[15:11]` | `im.data[15:11]` | `im.data[20:16]` | `im.data[20:16]` 
-`m_rf_write_data` | `alu.result` | `alu.result` | `alu.result` | `alu.result` 
-`m_alu_num2` | `rf.read_result2` | `rf.read_result2` | `ext.result` | `ext.result` 
-`npc.jump_mode` | `NPC_JUMP_DISABLED` | `NPC_JUMP_DISABLED` | `NPC_JUMP_DISABLED` | `NPC_JUMP_DISABLED` 
-`pc.enable` | `PC_ENABLED` | `PC_ENABLED` | `PC_ENABLED` | `PC_ENABLED` 
-`im.enable` | `IM_ENABLED` | `IM_ENABLED` | `IM_ENABLED` | `IM_ENABLED` 
-`rf.write_enable` | `RF_WRITE_ENABLED` | `RF_WRITE_ENABLED` | `RF_WRITE_ENABLED` | `RF_WRITE_ENABLED` 
-`alu.op` | `ALU_ADD` | `ALU_SUB` | `ALU_OR` | `ALU_OR` 
-`ext.mode` | `#EXT_MODE_UNSIGNED` | `#EXT_MODE_UNSIGNED` | `EXT_MODE_PAD` | `EXT_MODE_UNSIGNED` 
-`dm.write_enable` | `DM_WRITE_DISABLED` | `DM_WRITE_DISABLED` | `DM_WRITE_DISABLED` | `DM_WRITE_DISABLED` 
+指令 | `addu` | `subu` 
+--- | --- | ---
+`m_rf_write_addr` | `im.data[15:11]` | `im.data[15:11]`
+`m_rf_write_data` | `alu.result` | `alu.result`
+`m_alu_num2` | `rf.read_result2` | `rf.read_result2`
+`npc.jump_mode` | `NPC_JUMP_DISABLED` | `NPC_JUMP_DISABLED`
+`pc.enable` | `PC_ENABLED` | `PC_ENABLED`
+`im.enable` | `IM_ENABLED` | `IM_ENABLED`
+`rf.write_enable` | `RF_WRITE_ENABLED` | `RF_WRITE_ENABLED`
+`alu.op` | `ALU_ADD` | `ALU_SUB`
+`ext.mode` | `#EXT_MODE_UNSIGNED` | `#EXT_MODE_UNSIGNED`
+`dm.write_enable` | `DM_WRITE_DISABLED` | `DM_WRITE_DISABLED`
 
-指令 | `lw` | `sw` | `beq` | `nop` 
---- | --- | --- | --- | ---
-`m_rf_write_addr` | `im.data[20:16]` | `im.data[20:16]` | `#im.data[20:16]` | `#im.data[20:16]` 
-`m_rf_write_data` | `dm.read_result` | `alu.result` | `#alu.result` | `#alu.result` 
-`m_alu_num2` | `ext.result` | `ext.result` | `rf.read_result2` | `#rf.read_result2` 
-`npc.jump_mode` | `NPC_JUMP_DISABLED` | `NPC_JUMP_DISABLED` | `NPC_JUMP_WHEN_EQUAL` | `NPC_JUMP_DISABLED` 
-`pc.enable` | `PC_ENABLED` | `PC_ENABLED` | `PC_ENABLED` | `PC_ENABLED` 
-`im.enable` | `IM_ENABLED` | `IM_ENABLED` | `IM_ENABLED` | `IM_ENABLED` 
-`rf.write_enable` | `RF_WRITE_ENABLED` | `RF_WRITE_DISABLED` | `RF_WRITE_DISABLED` | `RF_WRITE_DISABLED` 
-`alu.op` | `ALU_ADD` | `ALU_ADD` | `#ALU_OR` | `#ALU_OR` 
-`ext.mode` | `EXT_MODE_SIGNED` | `EXT_MODE_SIGNED` | `#EXT_MODE_UNSIGNED` | `#EXT_MODE_UNSIGNED` 
-`dm.write_enable` | `DM_WRITE_DISABLED` | `DM_WRITE_ENABLED` | `DM_WRITE_DISABLED` | `DM_WRITE_DISABLED` 
+指令 | `lui` | `ori` 
+--- | --- | ---
+`m_rf_write_addr` | `im.data[20:16]` | `im.data[20:16]` 
+`m_rf_write_data` | `alu.result` | `alu.result` 
+`m_alu_num2` | `ext.result` | `ext.result` 
+`npc.jump_mode` | `NPC_JUMP_DISABLED` | `NPC_JUMP_DISABLED` 
+`pc.enable` | `PC_ENABLED` | `PC_ENABLED` 
+`im.enable` | `IM_ENABLED` | `IM_ENABLED` 
+`rf.write_enable` | `RF_WRITE_ENABLED` | `RF_WRITE_ENABLED` 
+`alu.op` | `ALU_OR` | `ALU_OR` 
+`ext.mode` | `EXT_MODE_PAD` | `EXT_MODE_UNSIGNED` 
+`dm.write_enable` | `DM_WRITE_DISABLED` | `DM_WRITE_DISABLED` 
+
+指令 | `lw` | `sw`
+--- | --- | ---
+`m_rf_write_addr` | `im.data[20:16]` | `im.data[20:16]`
+`m_rf_write_data` | `dm.read_result` | `alu.result`
+`m_alu_num2` | `ext.result` | `ext.result`
+`npc.jump_mode` | `NPC_JUMP_DISABLED` | `NPC_JUMP_DISABLED`
+`pc.enable` | `PC_ENABLED` | `PC_ENABLED`
+`im.enable` | `IM_ENABLED` | `IM_ENABLED`
+`rf.write_enable` | `RF_WRITE_ENABLED` | `RF_WRITE_DISABLED`
+`alu.op` | `ALU_ADD` | `ALU_ADD`
+`ext.mode` | `EXT_MODE_SIGNED` | `EXT_MODE_SIGNED`
+`dm.write_enable` | `DM_WRITE_DISABLED` | `DM_WRITE_ENABLED`
+
+指令 | `beq` | `nop` 
+--- | --- | ---
+`m_rf_write_addr` | `#im.data[20:16]` | `#im.data[20:16]` 
+`m_rf_write_data` | `#alu.result` | `#alu.result` 
+`m_alu_num2` | `rf.read_result2` | `#rf.read_result2` 
+`npc.jump_mode` | `NPC_JUMP_WHEN_EQUAL` | `NPC_JUMP_DISABLED` 
+`pc.enable` | `PC_ENABLED` | `PC_ENABLED` 
+`im.enable` | `IM_ENABLED` | `IM_ENABLED` 
+`rf.write_enable` | `RF_WRITE_DISABLED` | `RF_WRITE_DISABLED` 
+`alu.op` | `#ALU_OR` | `#ALU_OR` 
+`ext.mode` | `#EXT_MODE_UNSIGNED` | `#EXT_MODE_UNSIGNED` 
+`dm.write_enable` | `DM_WRITE_DISABLED` | `DM_WRITE_DISABLED` 
 
 对于未知指令，各控制信号的值与 `nop` 指令的相应值相同。这样相当于直接忽略未知指令。
 
