@@ -1,7 +1,7 @@
 PYTHON = python3
 
-MILESTONE = p5
-CODENAME = pipelined
+MILESTONE = p4
+CODENAME = single-cycle
 
 MIPS_AS = tools/mips-as.py
 DEBUG_CONTROL = tools/debug-control.py
@@ -22,14 +22,11 @@ _MD_FILES = header.md \
 	datapath/pc.md \
 	datapath/im.md \
 	datapath/rf.md \
-	datapath/cmp.md \
 	datapath/ext.md \
 	datapath/alu.md \
 	datapath/dm.md \
-	datapath/pff.md \
 	datapath/mux.md \
 	datapath/$(CODENAME).md \
-	control/instr-id.md \
 	control/$(CODENAME).md \
 	cpu/$(CODENAME).md
 MD_FILES = $(patsubst %, $(DOC)/%, $(_MD_FILES))
