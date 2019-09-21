@@ -2,6 +2,7 @@ PYTHON = python3
 
 MIPS_AS = tools/mips-as.py
 DEBUG_CONTROL = tools/debug-control.py
+MARKDOWN_PDF = tools/markdown-pdf
 
 ASM_FILE = tests/cpu/single-cycle/test.asm
 CODE_FILE = project/code.hex
@@ -15,9 +16,9 @@ all:
 code:
 	$(PYTHON) $(MIPS_AS) $(ASM_FILE) $(CODE_FILE)
 
-debug_on:
+debug-on:
 	$(PYTHON) $(DEBUG_CONTROL) $(DEBUG_H_FILE) on
 
-debug_off:
+debug-off:
 	$(PYTHON) $(DEBUG_CONTROL) $(DEBUG_H_FILE) off
 
