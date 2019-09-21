@@ -8,8 +8,6 @@ ASM_FILE = tests/cpu/single-cycle/test.asm
 CODE_FILE = project/code.hex
 DEBUG_H_FILE = src/include/debug/debug.h
 
-.PHONY: all code debug_on
-=======
 DOC = doc
 
 EXPORT = export
