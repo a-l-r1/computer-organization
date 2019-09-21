@@ -1,10 +1,11 @@
 PYTHON = python3
 
-MILESTONE = p8
+MILESTONE = p7
 CODENAME = pipelined3
 
 MIPS_AS = tools/mips-as.py
 DEBUG_CONTROL = tools/debug-control.py
+MARKDOWN_PDF = tools/markdown-pdf
 
 ASM_FILE = tests/cpu/single-cycle/test.asm
 CODE_FILE = project/code.hex
@@ -34,12 +35,7 @@ _MD_FILES = datapath/npc.md \
 	control/instr-id.md \
 	control/$(CODENAME).md \
 	cpu/$(CODENAME).md \
-	devices/buttons.md \
-	devices/led.md \
-	devices/nixie.md \
-	devices/switches.md \
 	devices/timer.md \
-	devices/uart.md \
 	mips/$(CODENAME).md
 MD_FILES = $(patsubst %, $(DOC)/%, $(_MD_FILES))
 
@@ -70,12 +66,7 @@ _MD_FILES = header.md \
 	control/instr-id.md \
 	control/$(CODENAME).md \
 	cpu/$(CODENAME).md \
-	devices/buttons.md \
-	devices/led.md \
-	devices/nixie.md \
-	devices/switches.md \
 	devices/timer.md \
-	devices/uart.md \
 	mips/$(CODENAME).md
 MD_FILES = $(patsubst %, $(DOC)/%, $(_MD_FILES))
 
