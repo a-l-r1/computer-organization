@@ -10,7 +10,7 @@
 
 p7 需要实现的指令为：
 
-```
+```text
 addu, subu, add, sub, sll, srl, sra, and, or, nor, xor, slt, sltu, sllv, srlv, srav
 lui, ori, addi, addiu, andi, xori, slti, sltiu
 lw, lh, lhu, lb, lbu
@@ -60,7 +60,7 @@ eret
 #### F 级（IF）
 
 数据通路类型 | `F: npc.curr_pc` | `F: npc.cmp_result` | `F: npc.cmp_sig_result` | `F: npc.num` | `F: npc.jnum` | `F: npc.reg_` | `F: npc.epc` | `F: pc.next_pc`
---- | --- | --- | ---
+--- | --- | --- | --- | --- | --- | --- | --- | ---
 `BRANCH` | `F: pc.curr_pc` | `D: cmp.cmp` | `D: cmp.sig_cmp` | `D: im.result[15:0]` | | | | `F: npc.next_pc`
 `JUMP_I` | `F: pc.curr_pc` | | | | `D: im.result[25:0]` | | | `F: npc.next_pc`
 `JUMP_R` | `F: pc.curr_pc` | | | | | `D: rf.read_result1` | | `F: npc.next_pc`
@@ -71,6 +71,7 @@ eret
 #### D 级（ID）
 
 数据通路类型 | `D: ext.num` | `D: cmp.reg1` | `D: cmp.reg2`
+--- | --- | --- | ---
 `CAL_R` | | |
 `CAL_I` | `D: im.result[15:0]` | |
 `LOAD` | `D: im.result[15:0]` | |
@@ -90,7 +91,8 @@ eret
 
 #### E 级（EX）
 
-数据通路类型 | `E: alu.num1` | `E: alu.num2`| `E: alu.shamt` | `E: md.dh` | `E: md.dl`
+数据通路类型 | `E: alu.num1` | `E: alu.num2` | `E: alu.shamt` | `E: md.dh` | `E: md.dl`
+--- | --- | --- | --- | --- | ---
 `CAL_R` | `D: rf.read_result1` | `D: rf.read_result2` | `D: im.result[10:6]` | |
 `CAL_I` | `D: rf.read_result1` | `D: ext.result` | | |
 `LOAD` | `D: rf.read_result1` | `D: ext.result` | | |
@@ -111,6 +113,7 @@ eret
 #### M 级（MEM）
 
 数据通路类型 | `M: dm.read_addr` | `M: dm.write_addr` | `M: dm.write_data` | `M: cpu_addr` | `M: cpu_write_data` | `M: ac.addr` | `M: cp0.addr` | `M: cp0.write_data`
+--- | --- | --- | --- | --- | --- | --- | --- | ---
 `CAL_R` | | | | | | | |
 `CAL_I` | | | | | | | |
 `LOAD` | `E: alu.result` | | | `E: alu.result` | | `E: alu.result` | |
@@ -131,6 +134,7 @@ eret
 #### W 级（WB）
 
 数据通路类型 | `W: rf.write_data`
+--- | ---
 `CAL_R` | `E: alu.result`
 `CAL_I` | `E: alu.result`
 `LOAD` | `M: dm.read_result`
