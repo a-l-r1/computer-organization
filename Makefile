@@ -17,7 +17,8 @@ EXPORT = export
 EXPORT_DOC = $(EXPORT)/doc
 
 # Put the files in the order of content
-_MD_FILES = datapath/npc.md \
+_MD_FILES = header.md \
+	datapath/npc.md \
 	datapath/pc.md \
 	datapath/im.md \
 	datapath/rf.md \
