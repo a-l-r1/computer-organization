@@ -494,7 +494,7 @@ Tuse 是指指令到 D 级以后还剩最晚多少时间就需要新值。Tnew �
 --- | ---
 D 级 | 若 `cw_d_pff_rst == 1'b1`，则值变为 `EXC_NONE`。若需要暂停，则值不变。否则，若 D 级数据通路类型为 `JUMP_C0`，则插入气泡。否则，若 `F: pc.invalid == 1'b1`，则写入 `EXC_ADEL`。否则，写入 `EXC_NONE`。
 E 级 | 若 `cw_e_pff_rst == 1'b1`，则值变为 `EXC_NONE`。若需要暂停，则写入 `EXC_NONE`。否则，若 `d_instr_kind == UNKNOWN`，则写入 `EXC_RI`。否则，写入 D 级的值。
-M 级 | 若 `cw_m_pff_rst == 1'b1`，则值变为 `EXC_NONE`。若 `(ekind == ADD || ekind == ADDI || ekind == SUB) && E: alu.sig_overflow == 1'b1`，则写入 `EXC_OV`。否则，写入 E 级的值。
+M 级 | 若 `cw_m_pff_rst == 1'b1`，则值变为 `EXC_NONE`。若 `ekind` 为 `ADD / ADDI / SUB` 且 `E: alu.sig_overflow == 1'b1`，则写入 `EXC_OV`。否则，写入 E 级的值。
 
 因为每级存储异常的流水线寄存器的复位逻辑与每级数据通路中的流水线寄存器是一致的，而每级数据通路中流水线寄存器的复位逻辑是正确的，因此可以这样借用控制信号。
 
