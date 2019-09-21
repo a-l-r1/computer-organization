@@ -8,8 +8,6 @@ ASM_FILE = tests/cpu/single-cycle/test.asm
 CODE_FILE = project/code.hex
 DEBUG_H_FILE = src/include/debug/debug.h
 
-.PHONY: all code debug_on
-=======
 DOC = doc
 
 EXPORT = export
@@ -51,6 +49,9 @@ all:
 
 code:
 	$(PYTHON) $(MIPS_AS) $(ASM_FILE) $(CODE_FILE)
+
+doc:
+	$(MARKDOWN_PDF) -o $(EXPORT_DOC)/$(CODENAME).pdf $(MD_FILES)
 
 debug-on:
 	$(PYTHON) $(DEBUG_CONTROL) $(DEBUG_H_FILE) on
