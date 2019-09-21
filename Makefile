@@ -1,5 +1,8 @@
 PYTHON = python3
 
+MILESTONE = p6
+CODENAME = pipelined2
+
 MIPS_AS = tools/mips-as.py
 DEBUG_CONTROL = tools/debug-control.py
 MARKDOWN_PDF = tools/markdown-pdf
@@ -24,22 +27,12 @@ _MD_FILES = header.md \
 	datapath/alu.md \
 	datapath/md.md \
 	datapath/dm.md \
-	bridge/bridge.md \
-	datapath/ac.md \
-	datapath/cp0.md \
 	datapath/pff.md \
 	datapath/mux.md \
 	datapath/$(CODENAME).md \
 	control/instr-id.md \
 	control/$(CODENAME).md \
-	cpu/$(CODENAME).md \
-	devices/buttons.md \
-	devices/led.md \
-	devices/nixie.md \
-	devices/switches.md \
-	devices/timer.md \
-	devices/uart.md \
-	mips/$(CODENAME).md
+	cpu/$(CODENAME).md
 MD_FILES = $(patsubst %, $(DOC)/%, $(_MD_FILES))
 
 .PHONY: all doc code debug_on
