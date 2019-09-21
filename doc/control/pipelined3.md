@@ -524,9 +524,9 @@ TODO: `EXC_RI` 好像只是 `opcode` 未知
 --- | --- | --- | ---
 `cw_m_dm_write_enable_orig` | `cw_m_dm_write_enable` | `cw_m_dm_write_enable & (~have2handle)` |
 `cw_m_cp0_write_enable_orig` | `cw_cp0_write_enable` | `cw_cp0_write_enable_orig & (~have2handle)` | [1]
-`cw_e_pff_rst_orig` | `cw_e_pff_rst` | `cw_e_pff_rst_orig \| have2handle` |
+`cw_e_pff_rst_orig` | `cw_e_pff_rst` | `cw_e_pff_rst_orig` 或 `have2handle` |
 `cw_f_npc_jump_mode_orig` | `cw_f_npc_jump_mode` | `(have2handle == 1'b1) ? NPC_ISR : cw_f_npc_jump_mode_orig` | [2]
-`cw_f_pc_enable_orig` | `cw_f_pc_enable` | `cw_f_pc_enable_orig | have2handle` | [3]
+`cw_f_pc_enable_orig` | `cw_f_pc_enable` | `cw_f_pc_enable_orig` 或 `have2handle` | [3]
 
 注：
 1. 实际上不需要加钩子，因为 `cp0` 内部就是写入的优先级比处理异常和中断的优先级低。
