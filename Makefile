@@ -43,6 +43,9 @@ all:
 code:
 	$(PYTHON) $(MIPS_AS) $(ASM_FILE) $(CODE_FILE)
 
+doc:
+	$(MARKDOWN_PDF) -o $(EXPORT_DOC)/$(CODENAME).pdf $(MD_FILES)
+
 debug-on:
 	$(PYTHON) $(DEBUG_CONTROL) $(DEBUG_H_FILE) on
 
