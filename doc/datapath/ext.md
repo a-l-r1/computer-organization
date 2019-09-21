@@ -19,6 +19,7 @@
 用把宏定义成宏的方法，定义表中值为宏的宏。把一个宏定义成另一个宏，那该宏的意义与定义它的宏一样，表中省略。
 
 类别 | 定义 | 值 | 意义
+--- | --- | --- | ---
 `mode` | `EXT_MODE_SIGNED` | 3'b000 | 符号扩展
 `mode` | `EXT_SIGNED` | `EXT_MODE_SIGNED` | 
 `mode` | `EXT_MODE_UNSIGNED` | 3'b001 | 无符号扩展
