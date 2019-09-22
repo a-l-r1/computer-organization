@@ -28,7 +28,8 @@ _MD_FILES = header.md \
 	datapath/mux.md \
 	datapath/$(CODENAME).md \
 	control/$(CODENAME).md \
-	cpu/$(CODENAME).md
+	cpu/$(CODENAME).md \
+	tips.md
 MD_FILES = $(patsubst %, $(DOC)/%, $(_MD_FILES))
 
 .PHONY: all doc code debug_on
