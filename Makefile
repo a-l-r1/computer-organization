@@ -36,7 +36,8 @@ _MD_FILES = datapath/npc.md \
 	control/$(CODENAME).md \
 	cpu/$(CODENAME).md \
 	devices/timer.md \
-	mips/$(CODENAME).md
+	mips/$(CODENAME).md \
+	tips.md
 MD_FILES = $(patsubst %, $(DOC)/%, $(_MD_FILES))
 
 .PHONY: all doc code debug_on
