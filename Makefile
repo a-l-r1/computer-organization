@@ -42,7 +42,8 @@ _MD_FILES = header.md \
 	devices/switches.md \
 	devices/timer.md \
 	devices/uart.md \
-	mips/$(CODENAME).md
+	mips/$(CODENAME).md \
+	tips.md
 MD_FILES = $(patsubst %, $(DOC)/%, $(_MD_FILES))
 
 .PHONY: all doc code debug_on
