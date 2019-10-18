@@ -1,7 +1,7 @@
 module nixie_decoder(
 	input [3:0] data, 
 	output [7:0] out
-)
+);
 
 assign out = 
 	(data == 4'h0) ? 8'b10000001 : 
