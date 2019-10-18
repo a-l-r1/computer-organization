@@ -4,10 +4,8 @@ import os
 import sys
 
 
-_mars_path = os.path.dirname(os.path.realpath(__file__)) + '/' + 'mars.jar'
-
-
 def main() -> None:
+    _mars_path = os.path.dirname(os.path.realpath(__file__)) + '/' + 'mars.jar'
     if sys.platform not in ['linux', 'win32', 'cygwin']:
         raise RuntimeError('OS unsupported')
 
