@@ -1,0 +1,1777 @@
+\hypertarget{ux5904ux7406ux5668ux8bbeux8ba1ux6587ux6863}{%
+\section{处理器设计文档}\label{ux5904ux7406ux5668ux8bbeux8ba1ux6587ux6863}}
+
+\hypertarget{npc}{%
+\subsection{NPC}\label{npc}}
+
+\hypertarget{ux529fux80fd}{%
+\subsubsection{功能}\label{ux529fux80fd}}
+
+NPC 是下个 PC 值的意思。它能做到根据当前的 PC 值，计算出下一个 32 位的
+PC 值。
+
+一般来说，PC 值的转换是顺序转换。但是，NPC
+必须要听控制模块的指令，做到在某些条件下进行符号转换。
+
+\hypertarget{ux63a5ux53e3ux5b9aux4e49}{%
+\subsubsection{接口定义}\label{ux63a5ux53e3ux5b9aux4e49}}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+端口 & 类型 & 位宽 & 功能\tabularnewline
+\midrule
+\endhead
+\texttt{curr\_pc} & 输入 & 32 & 当前 PC\tabularnewline
+\texttt{jump\_mode} & 输入 & 3 & 是否可以跳转\tabularnewline
+\texttt{alu\_comp\_result} & 输入 & 2 & ALU 的比较结果\tabularnewline
+\texttt{num} & 输入 & 16 & 输入的立即数\tabularnewline
+\texttt{next\_pc} & 输出 & 32 & 下一个 PC\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{ux5b8fux5b9aux4e49}{%
+\subsubsection{宏定义}\label{ux5b8fux5b9aux4e49}}
+
+用把宏定义成宏的方法，定义表中值为宏的宏。把一个宏定义成另一个宏，那该宏的意义与定义它的宏一样，表中省略。
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+类别 & 定义 & 值 & 意义\tabularnewline
+\midrule
+\endhead
+\texttt{jump\_mode} & \texttt{NPC\_JUMP\_DISABLE} & 3'b000 &
+不要跳转\tabularnewline
+\texttt{jump\_mode} & \texttt{NPC\_JUMP\_DISABLED} &
+\texttt{NPC\_JUMP\_DISABLE} &\tabularnewline
+\texttt{jump\_mode} & \texttt{NPC\_JUMP\_WHEN\_EQUAL} & 3'b001 & 当 ALU
+输入的比较结果相等时跳转\tabularnewline
+\texttt{jump\_mode} & \texttt{NPC\_JUMP\_WHEN\_EQUALS\_TO} &
+\texttt{NPC\_JUMP\_WHEN\_EQUAL} &\tabularnewline
+\texttt{jump\_mode} & \texttt{NPC\_JUMP\_WHEN\_NOT\_EQUAL} & 3'b010 & 当
+ALU 输入的比较结果不等时跳转\tabularnewline
+\texttt{jump\_mode} & \texttt{NPC\_JUMP\_WHEN\_NOT\_EQUALS\_TO} &
+\texttt{NPC\_JUMP\_WHEN\_NOT\_EQUAL} &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\texttt{alu\_comp\_result}
+的相应数值代表的意义，与相应的宏有关，这些宏在 \texttt{alu.h} 中。
+
+\hypertarget{ux529fux80fd-1}{%
+\subsubsection{功能}\label{ux529fux80fd-1}}
+
+若 \texttt{jump\_mode\ ==\ NPC\_JUMP\_DISABLE}，则令
+\texttt{next\_pc\ =\ \$unsigned(curr\_pc)\ +\ \$unsigned(4)}。
+
+若 \texttt{jump\_mode\ ==\ NPC\_JUMP\_WHEN\_EQUAL}，则
+\texttt{alu\_comp\_result\ ==\ ALU\_EQUAL} 时，首先把 \texttt{num}
+扩展成 32 位有符号立即数，扩展方式是首先把 \texttt{num} 后面加上
+\texttt{2\textquotesingle{}b0}，然后把这 18 位二进制数扩展成 32
+位有符号二进制数。然后令
+\texttt{next\_pc\ =\ \$signed(curr\_pc)\ +\ \$signed(4)\ +\ \$signed(num)}。否则做跟
+\texttt{jump\_mode\ ==\ NPC\_JUMP\_DISABLE} 时相同的步骤。
+
+若 \texttt{jump\_mode\ ==\ NPC\_JUMP\_WHEN\_NOT\_EQUAL}，则
+\texttt{alu\_comp\_result\ !=\ ALU\_EQUAL}
+时，做跟上面相同的步骤。否则做跟
+\texttt{jump\_mode\ ==\ NPC\_JUMP\_DISABLE} 时相同的步骤。
+
+若 \texttt{jump\_mode} 为其它值，则做跟
+\texttt{jump\_mode\ ==\ NPC\_JUMP\_DISABLE} 时相同的步骤。
+
+\hypertarget{ux6ce8ux610fux4e8bux9879}{%
+\subsubsection{注意事项}\label{ux6ce8ux610fux4e8bux9879}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  NPC 是在内部进行符号扩展，不用 ext。
+\item
+  \texttt{reg\_} 是为了避免和 \texttt{reg} 冲突。
+\item
+  \texttt{base} 抽象出来是为了方便调试和维护，它是跟 MIPS
+  指令集手册相符的。
+\end{enumerate}
+
+\hypertarget{pc}{%
+\subsection{PC}\label{pc}}
+
+\hypertarget{ux539fux7406}{%
+\subsubsection{原理}\label{ux539fux7406}}
+
+PC
+是程序计数器的意思，负责对当前的指令进行计数。它是标记程序执行到哪里的一种方法，同时输出的信息也被送入指令内存
+IM，用来取指。
+
+PC 只负责表示程序执行到哪里，而 PC 的更新由 NPC
+模块负责。这样可以做到更简便地处理跳转指令、也对流水线 CPU
+插入气泡有帮助。
+
+\hypertarget{ux7aefux53e3ux5b9aux4e49}{%
+\subsubsection{端口定义}\label{ux7aefux53e3ux5b9aux4e49}}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+端口 & 类型 & 位宽 & 功能\tabularnewline
+\midrule
+\endhead
+\texttt{clk} & 输入 & 1 & 时钟信号\tabularnewline
+\texttt{next\_pc} & 输入 & 32 & NPC 计算得来的下一个 PC
+地址\tabularnewline
+\texttt{enable} & 输入 & 1 & PC 使能\tabularnewline
+\texttt{curr\_pc} & 输出 & 32 & PC 地址\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{ux5b8fux5b9aux4e49-1}{%
+\subsubsection{宏定义}\label{ux5b8fux5b9aux4e49-1}}
+
+用把宏定义成宏的方法，定义表中值为宏的宏。值为宏的宏的意义，与定义它的宏一样，在表中省略。
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+类别 & 定义 & 值 & 意义\tabularnewline
+\midrule
+\endhead
+\texttt{enable} & \texttt{PC\_ENABLED} & 1'b1 & PC 使能\tabularnewline
+\texttt{enable} & \texttt{PC\_ENABLE} & \texttt{PC\_ENABLED}
+&\tabularnewline
+\texttt{enable} & \texttt{PC\_DISABLED} & 1'b0 & PC
+非使能\tabularnewline
+\texttt{enable} & \texttt{PC\_DISABLE} & \texttt{PC\_DISABLED}
+&\tabularnewline
+\texttt{curr\_pc} & \texttt{PC\_START\_ADDRESS} & 32'h00003000 & PC
+的起始地址\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{ux529fux80fd-2}{%
+\subsubsection{功能}\label{ux529fux80fd-2}}
+
+该部件是时序部件。
+
+有一个 32 位的寄存器保存当前 PC 的值，初值为
+\texttt{PC\_START\_ADDRESS}。
+
+在每个时钟上升沿，若 \texttt{enable\ ==\ PC\_ENABLED}，则把 PC
+部件中保存的当前 PC 的值更新成 \texttt{next\_pc} 的值。否则，保存的当前
+PC 的值不变。
+
+无论什么时候，输出端口 \texttt{curr\_pc} 的值都是 PC 部件中保存的当前 PC
+的值。
+
+\hypertarget{ux6ce8ux610fux4e8bux9879-1}{%
+\subsubsection{注意事项}\label{ux6ce8ux610fux4e8bux9879-1}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  PC 和 IM 的起始地址是分开定义的，改的时候要注意。
+\end{enumerate}
+
+\hypertarget{ux7a0bux5e8fux5b58ux50a8ux5668}{%
+\subsection{程序存储器}\label{ux7a0bux5e8fux5b58ux50a8ux5668}}
+
+\hypertarget{ux539fux7406-1}{%
+\subsubsection{原理}\label{ux539fux7406-1}}
+
+程序存储器是存储程序指令的地方。为了加载程序指令，它可以通过系统任务读取编译后的指令内容。
+
+为了简便，程序存储器由许多寄存器实现。
+
+\hypertarget{ux7aefux53e3ux5b9aux4e49-1}{%
+\subsubsection{端口定义}\label{ux7aefux53e3ux5b9aux4e49-1}}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+端口 & 类型 & 位宽 & 功能\tabularnewline
+\midrule
+\endhead
+\texttt{addr} & 输入 & \texttt{IM\_ADDR\_WIDTH} & 读地址\tabularnewline
+\texttt{enable} & 输入 & 1 & 使能信号\tabularnewline
+\texttt{result} & 输出 & 32 & 读到的结果\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{ux5b8fux5b9aux4e49-2}{%
+\subsubsection{宏定义}\label{ux5b8fux5b9aux4e49-2}}
+
+用把宏定义成宏的方法，定义表中值为宏的宏。值为宏的宏的意义，与定义它的宏一样，在表中省略。
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+类别 & 定义 & 值 & 意义\tabularnewline
+\midrule
+\endhead
+\texttt{enable} & \texttt{IM\_ENABLE} & \texttt{1\textquotesingle{}b1} &
+IM 使能\tabularnewline
+\texttt{enable} & \texttt{IM\_ENABLED} & \texttt{IM\_ENABLE}
+&\tabularnewline
+\texttt{enable} & \texttt{IM\_DISABLE} & \texttt{1\textquotesingle{}b0}
+& IM 非使能\tabularnewline
+\texttt{enable} & \texttt{IM\_DISABLED} & \texttt{IM\_DISABLE}
+&\tabularnewline
+\texttt{addr} & \texttt{IM\_ADDR\_WIDTH} & 8 & \texttt{addr}
+的位宽\tabularnewline
+\texttt{addr} & \texttt{IM\_START\_ADDRESS} & 32 & IM
+对外表现的起始地址\tabularnewline
+指令存储器 & \texttt{IM\_SIZE} & 64 & 能存储指令的个数\tabularnewline
+指令存储器 & \texttt{IM\_CODE\_FILENAME} & \texttt{"code/code.hex"} &
+要加载的机器码\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{ux529fux80fd-3}{%
+\subsubsection{功能}\label{ux529fux80fd-3}}
+
+有 \texttt{IM\_SIZE} 个 32
+位存储器，代表其中存储的指令。它们初值应该使用加载文件的系统任务加载。加载文件名由
+\texttt{IM\_CODE\_FILENAME} 指定。
+
+若 \texttt{enable\ ==\ IM\_ENABLED}，若 \texttt{addr} 作为无符号数小于
+\texttt{IM\_START\_ADDRESS}，则也返回
+\texttt{32\textquotesingle{}b0}。否则，\texttt{result} 为
+\texttt{addr\ -\ IM\_START\_ADDRESS} 这个地址再取
+\texttt{{[}IM\_ADDR\_WIDTH\ -\ 1:2{]}}
+对应的指令（从存储器中取得，是两个无符号数相减）。若相减后的结果超出了已经加载的指令所占的地址空间，则
+\texttt{result} 为 \texttt{32\textquotesingle{}b0}。
+
+若 \texttt{enable\ ==\ IM\_DISABLED}，则 \texttt{result} 为
+\texttt{32\textquotesingle{}b0}。
+
+\hypertarget{ux6ce8ux610fux4e8bux9879-2}{%
+\subsubsection{注意事项}\label{ux6ce8ux610fux4e8bux9879-2}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \texttt{IM\_ADDR\_WIDTH} 和 \texttt{IM\_SIZE}
+  需要一块改，因为它们的大小有关系
+\item
+  有 offset 了，注意跟 offset 相减是无符号数相减
+\item
+  offset 主要是为了和 MARS 兼容
+\end{enumerate}
+
+\hypertarget{ux5bc4ux5b58ux5668ux5806}{%
+\subsection{寄存器堆}\label{ux5bc4ux5b58ux5668ux5806}}
+
+\hypertarget{ux539fux7406-2}{%
+\subsubsection{原理}\label{ux539fux7406-2}}
+
+寄存器堆保存着 32 位 32 个通用寄存器，负责存储 CPU
+立刻想要的数据，它是存储器层次结构中的最高一级，负责暂存数据。第 0
+号寄存器 \texttt{\$0} 的值永远是
+\texttt{32\textquotesingle{}b0}，写入不会改变它的值。
+
+由于 MIPS
+体系结构中的指令最多读两个寄存器，写一个寄存器，所以寄存器输入两个要读的地址，输出两个要读的数据；输入一个要写的地址和一个要写的数据；同时还有写使能端口。
+
+寄存器的使用没有规定，这一般是软件关心的问题。
+
+\hypertarget{ux7aefux53e3ux5b9aux4e49-2}{%
+\subsubsection{端口定义}\label{ux7aefux53e3ux5b9aux4e49-2}}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+端口 & 类型 & 位宽 & 功能\tabularnewline
+\midrule
+\endhead
+\texttt{clk} & 输入 & 1 & 时钟信号\tabularnewline
+\texttt{curr\_pc} & 输入 & 32 & 当前 PC 的值\tabularnewline
+\texttt{read\_addr1} & 输入 & 5 & 第一个读地址\tabularnewline
+\texttt{read\_addr2} & 输入 & 5 & 第二个读地址\tabularnewline
+\texttt{write\_addr} & 输入 & 5 & 写地址\tabularnewline
+\texttt{write\_data} & 输入 & 32 & 要写入的数据\tabularnewline
+\texttt{write\_enable} & 输入 & 1 & 写使能\tabularnewline
+\texttt{read\_result1} & 输出 & 32 &
+第一个读地址读出的数据\tabularnewline
+\texttt{read\_result2} & 输出 & 32 &
+第二个读地址读出的数据\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{ux5b8fux5b9aux4e49-3}{%
+\subsubsection{宏定义}\label{ux5b8fux5b9aux4e49-3}}
+
+用把宏定义成宏的方法，定义表中值为宏的宏。值为宏的宏的意义，与定义它的宏一样，在表中省略。
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+类别 & 定义 & 值 & 意义\tabularnewline
+\midrule
+\endhead
+\texttt{.*\_addr.*} & \texttt{RF\_ADDR\_ZERO} & 5'b0 &
+零寄存器的地址\tabularnewline
+\texttt{.*\_addr.*} & \texttt{RF\_ZERO} & \texttt{RF\_ADDR\_ZERO}
+&\tabularnewline
+\texttt{write\_enable} & \texttt{RF\_WRITE\_ENABLED} & 1'b1 &
+寄存器堆使能\tabularnewline
+\texttt{write\_enable} & \texttt{RF\_WRITE\_ENABLE} &
+\texttt{RF\_WRITE\_ENABLED} &\tabularnewline
+\texttt{write\_enable} & \texttt{RF\_WRITE\_DISABLED} & 1'b0 &
+寄存器堆非使能\tabularnewline
+\texttt{write\_enable} & \texttt{RF\_WRITE\_DISABLE} &
+\texttt{RF\_WRITE\_DISABLED} &\tabularnewline
+输出 & \texttt{RF\_OUTPUT\_FORMAT} &
+\texttt{"\%d:\ 0x\%08x\ =\textgreater{}\ 0x\%08x"} &
+输出模版\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{ux529fux80fd-4}{%
+\subsubsection{功能}\label{ux529fux80fd-4}}
+
+该部件为时序部件。
+
+有 31 个 32 位寄存器，代表
+\texttt{\$1}\textasciitilde{}\texttt{\$31}，它们初值都为
+\texttt{32\textquotesingle{}b0}。\texttt{\$0} 实际上不需要寄存器。
+
+在每个时钟上升沿，若 \texttt{write\_enable\ ==\ RF\_WRITE\_ENABLED} 且
+\texttt{write\_addr\ !=\ RF\_ADDR\_ZERO}，则说明可以执行写操作，且写到的寄存器是可以保存数值的寄存器。此时把
+\texttt{write\_addr} 指代的寄存器的值更新为
+\texttt{write\_data}。更新时，以模版中的格式打印出数据变化，第一个参数是当前的模拟时钟的时间，第二个参数是当前
+PC 的值，第三个参数是寄存器号，第四个参数是更新后的值。
+
+无论什么时候，若 \texttt{read\_addr1\ !=\ RF\_ADDR\_ZERO}，则把
+\texttt{read\_addr1} 指代的寄存器的值输出到 \texttt{read\_result1}
+中，否则把 \texttt{32\textquotesingle{}b0} 输出到 \texttt{read\_result1}
+中。对 \texttt{read\_addr2} 和 \texttt{read\_result2} 的相应操作相同。
+
+\hypertarget{ux6ce8ux610fux4e8bux9879-3}{%
+\subsubsection{注意事项}\label{ux6ce8ux610fux4e8bux9879-3}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  暂时还没有内部转发。
+\item
+  寄存器可以定义为 \texttt{reg\ {[}31:1{]}\ registers\ {[}31:0{]}}，把
+  \texttt{\$0} 空出来。
+\item
+  TODO: 应该把正常显示 wrap 起来，等到 ISE 装好后再说
+\end{enumerate}
+
+\hypertarget{ux6269ux5c55ux5668}{%
+\subsection{扩展器}\label{ux6269ux5c55ux5668}}
+
+\hypertarget{ux529fux80fd-5}{%
+\subsubsection{功能}\label{ux529fux80fd-5}}
+
+扩展器是专门执行扩展整数功能的运算。它能做到小于 32 位的整数向 32
+位整数的转换，其中有符号转换，也有无符号转换。
+
+转换器的模式由宏定义的方式指定，有符号扩展，也有无符号扩展，也有其它模式。由于没有明显的层次和类别关系，采用顺序编号和按常见顺序编号的方法。
+
+\hypertarget{ux63a5ux53e3ux5b9aux4e49-1}{%
+\subsubsection{接口定义}\label{ux63a5ux53e3ux5b9aux4e49-1}}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+端口 & 类型 & 位宽 & 功能\tabularnewline
+\midrule
+\endhead
+\texttt{num} & 输入 & 16 & 输入的数字\tabularnewline
+\texttt{mode} & 输入 & 3 & 模式\tabularnewline
+\texttt{result} & 输出 & 32 & 扩展的结果\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{ux5b8fux5b9aux4e49-4}{%
+\subsubsection{宏定义}\label{ux5b8fux5b9aux4e49-4}}
+
+用把宏定义成宏的方法，定义表中值为宏的宏。把一个宏定义成另一个宏，那该宏的意义与定义它的宏一样，表中省略。
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+类别 & 定义 & 值 & 意义\tabularnewline
+\midrule
+\endhead
+\texttt{mode} & \texttt{EXT\_MODE\_SIGNED} & 3'b000 &
+符号扩展\tabularnewline
+\texttt{mode} & \texttt{EXT\_SIGNED} & \texttt{EXT\_MODE\_SIGNED}
+&\tabularnewline
+\texttt{mode} & \texttt{EXT\_MODE\_UNSIGNED} & 3'b001 &
+无符号扩展\tabularnewline
+\texttt{mode} & \texttt{EXT\_UNSIGNED} & \texttt{EXT\_MODE\_UNSIGNED}
+&\tabularnewline
+\texttt{mode} & \texttt{EXT\_MODE\_PAD} & 3'b010 & 把输入的 16
+位填充到输出结果的高 16 位，输出结果低 16 位置零的扩展\tabularnewline
+\texttt{mode} & \texttt{EXT\_PAD} & \texttt{EXT\_MODE\_PAD}
+&\tabularnewline
+\texttt{mode} & \texttt{EXT\_MODE\_HIGH\_BITS} & \texttt{EXT\_MODE\_PAD}
+&\tabularnewline
+\texttt{mode} & \texttt{EXT\_HIGH\_BITS} & \texttt{EXT\_MODE\_PAD}
+&\tabularnewline
+\texttt{mode} & \texttt{EXT\_MODE\_ONE} & 3'b011 & 在数字前面填充二进制
+1 的扩展\tabularnewline
+\texttt{mode} & \texttt{EXT\_ONE} & \texttt{EXT\_MODE\_ONE}
+&\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{ux529fux80fd-6}{%
+\subsubsection{功能}\label{ux529fux80fd-6}}
+
+若 \texttt{mode}
+的值为合法操作（即上面``宏定义''一节中列出的操作），按照 \texttt{mode}
+中给出的操作计算出结果，并把结果放入 \texttt{result} 中。
+
+若 \texttt{mode} 的值为非法操作，就令
+\texttt{result\ =\ 32\textquotesingle{}b0}。
+
+\hypertarget{alu}{%
+\subsection{ALU}\label{alu}}
+
+\hypertarget{ux539fux7406-3}{%
+\subsubsection{原理}\label{ux539fux7406-3}}
+
+ALU 是运算控制单元的意思，负责两个 32
+位整数的运算。它可以负责各种运算，包括数学运算和逻辑运算。易知它是纯组合逻辑。
+
+由于定义运算的时候需要给运算编码，所以表示运算就有点类似于 C 语言中的
+\texttt{enum}。因此，需要对各种运算进行宏定义，以保证系统的可维护性。宏定义也可以把定义的数据空间分隔开，以及对运算按照逻辑进行排序，从而得到对端口运算编码的更好理解。
+
+\hypertarget{ux7aefux53e3ux5b9aux4e49-3}{%
+\subsubsection{端口定义}\label{ux7aefux53e3ux5b9aux4e49-3}}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+端口 & 类型 & 位宽 & 功能\tabularnewline
+\midrule
+\endhead
+\texttt{num1} & 输入 & 32 & 第一个操作数\tabularnewline
+\texttt{num2} & 输入 & 32 & 第二个操作数\tabularnewline
+\texttt{op} & 输入 & 5 & 操作符\tabularnewline
+\texttt{result} & 输出 & 32 & 结果\tabularnewline
+\texttt{comp\_result} & 输出 & 2 & 作为无符号数的比较结果\tabularnewline
+\texttt{sig\_comp\_result} & 输出 & 2 &
+作为有符号数的比较结果\tabularnewline
+\texttt{overflow} & 输出 & 1 & 计算过程中是否发生溢出\tabularnewline
+\texttt{op\_invalid} & 输出 & 1 & 操作符是否无效\tabularnewline
+\bottomrule
+\end{longtable}
+
+由于在硬件层级对数的加减都是无符号数加减法，所以这里的溢出，是指操作过程中出现了做无符号数加减法时结果超出无符号数范围的现象。
+
+\hypertarget{ux5b8fux5b9aux4e49-5}{%
+\subsubsection{宏定义}\label{ux5b8fux5b9aux4e49-5}}
+
+采用操作符最高两位区分类别的方法定义宏。用把宏定义成宏的方法，定义表中值为宏的宏。
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+类别 & 定义 & 值 & 意义\tabularnewline
+\midrule
+\endhead
+\texttt{op} & \texttt{ALU\_ADD} & 5b'00000 & 加法运算\tabularnewline
+\texttt{op} & \texttt{ALU\_UNSIGNED\_ADD} & \texttt{ALU\_ADD} &
+同上\tabularnewline
+\texttt{op} & \texttt{ALU\_SUB} & 5b'00001 & 减法运算\tabularnewline
+\texttt{op} & \texttt{ALU\_UNSIGNED\_SUB} & \texttt{ALU\_SUB} &
+同上\tabularnewline
+\texttt{op} & \texttt{ALU\_AND} & 5b'10000 & 按位与运算\tabularnewline
+\texttt{op} & \texttt{ALU\_BITWISE\_AND} & \texttt{ALU\_AND} &
+同上\tabularnewline
+\texttt{op} & \texttt{ALU\_OR} & 5b'10001 & 按位或运算\tabularnewline
+\texttt{op} & \texttt{ALU\_BITWISE\_OR} & \texttt{ALU\_OR} &
+同上\tabularnewline
+\texttt{op} & \texttt{ALU\_NOT} & 5b'10010 & 按位非运算\tabularnewline
+\texttt{op} & \texttt{ALU\_BITWISE\_NOT} & \texttt{ALU\_NOT} &
+同上\tabularnewline
+\texttt{op} & \texttt{ALU\_XOR} & 5b'10011 & 按位异或运算\tabularnewline
+\texttt{.*comp\_result} & \texttt{ALU\_EQUAL} & 2b'00 &
+等于\tabularnewline
+\texttt{.*comp\_result} & \texttt{ALU\_EQUAL\_TO} & \texttt{ALU\_EQUAL}
+& 同上\tabularnewline
+\texttt{.*comp\_result} & \texttt{ALU\_LARGER} & 2b'01 &
+大于\tabularnewline
+\texttt{.*comp\_result} & \texttt{ALU\_LARGER\_THAN} &
+\texttt{ALU\_LARGER} & 同上\tabularnewline
+\texttt{.*comp\_result} & \texttt{ALU\_SMALLER} & 2b'10 &
+小于\tabularnewline
+\texttt{.*comp\_result} & \texttt{ALU\_SMALLER\_THAN} &
+\texttt{ALU\_SMALLER} & 同上\tabularnewline
+\texttt{overflow} & \texttt{ALU\_OVERFLOW} & 1'b1 & 溢出\tabularnewline
+\texttt{overflow} & \texttt{ALU\_NOT\_OVERFLOW} & 1'b0 &
+未溢出\tabularnewline
+\texttt{op\_invalid} & \texttt{ALU\_INVALID\_OP} & 1'b1 &
+操作符无效\tabularnewline
+\texttt{op\_invalid} & \texttt{ALU\_INVALID} & \texttt{ALU\_INVALID\_OP}
+& 同上\tabularnewline
+\texttt{op\_invalid} & \texttt{ALU\_VALID\_OP} & 1'b0 &
+操作符有效\tabularnewline
+\texttt{op\_invalid} & \texttt{ALU\_VALID} & \texttt{ALU\_VALID\_OP} &
+同上\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{ux529fux80fd-7}{%
+\subsubsection{功能}\label{ux529fux80fd-7}}
+
+若 \texttt{op} 的值为合法操作（即上面``宏定义''一节中列出的操作），按照
+\texttt{op} 中给出的操作计算出结果，并把结果放入 \texttt{result}
+中。然后把输入的数看成无符号数并比较，若发生上面提到的溢出现象，就令
+\texttt{overflow} 为 \texttt{1\textquotesingle{}b1}，否则为
+\texttt{1\textquotesingle{}b0}。注意不管 \texttt{num{[}12{]}}
+输入的原来意义是什么，都把它看成无符号数进行计算。
+
+检查溢出的方式是用一个 33
+位的中间变量，在加减法时用同样的方法算出该中间变量的值。如果有溢出，那它的最高位应该为
+1，否则为 0。在做其它运算时，把这个中间变量变为恒 0。
+
+如果 \texttt{op} 的值为非法操作，就令 \texttt{op\_invalid} 为
+\texttt{1\textquotesingle{}b1}，否则为
+\texttt{1\textquotesingle{}b0}。此时令 \texttt{result} 为
+\texttt{32\textquotesingle{}b0}。
+
+\texttt{.*comp\_result} 的值仅由 \texttt{num{[}12{]}}
+确定，与其它输入无关。\texttt{.*comp\_result}
+的比较方式，在端口定义中。比较的输出结果，在宏定义中。不会输出宏定义中没有定义的结果。
+
+\hypertarget{ux6ce8ux610fux4e8bux9879-4}{%
+\subsubsection{注意事项}\label{ux6ce8ux610fux4e8bux9879-4}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  添加新运算时注意同时改 \texttt{op\_invalid} 的输出和 \texttt{result}
+  的输出
+\item
+  如果不确定符号，就加上 \texttt{{[}un\textbar{}{]}signed}
+\end{enumerate}
+
+\hypertarget{ux6570ux636eux5b58ux50a8ux5668}{%
+\subsection{数据存储器}\label{ux6570ux636eux5b58ux50a8ux5668}}
+
+\hypertarget{ux539fux7406-4}{%
+\subsubsection{原理}\label{ux539fux7406-4}}
+
+数据存储器是存储数据的地方。
+
+为了渐变，数据存储器由许多寄存器实现。
+
+\hypertarget{ux7aefux53e3ux5b9aux4e49-4}{%
+\subsubsection{端口定义}\label{ux7aefux53e3ux5b9aux4e49-4}}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+端口 & 类型 & 位宽 & 功能\tabularnewline
+\midrule
+\endhead
+\texttt{clk} & 输入 & 1 & 时钟信号\tabularnewline
+\texttt{curr\_pc} & 输入 & 32 & 当前 PC 值\tabularnewline
+\texttt{read\_addr} & 输入 & 32 & 读地址\tabularnewline
+\texttt{write\_addr} & 输入 & 32 & 写地址\tabularnewline
+\texttt{write\_data} & 输入 & 32 & 写数据\tabularnewline
+\texttt{write\_enable} & 输入 & 1 & 写使能信号\tabularnewline
+\texttt{read\_result} & 输出 & 32 & 读到的结果\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{ux5b8fux5b9aux4e49-6}{%
+\subsubsection{宏定义}\label{ux5b8fux5b9aux4e49-6}}
+
+用把宏定义成宏的方法，定义表中值为宏的宏。值为宏的宏的意义，与定义它的宏一样，在表中省略。
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+类别 & 定义 & 值 & 意义\tabularnewline
+\midrule
+\endhead
+\texttt{write\_enable} & \texttt{DM\_WRITE\_ENABLE} &
+\texttt{1\textquotesingle{}b1} & DM 使能\tabularnewline
+\texttt{write\_enable} & \texttt{DM\_WRITE\_ENABLED} &
+\texttt{DM\_WRITE\_ENABLE} &\tabularnewline
+\texttt{write\_enable} & \texttt{DM\_WRITE\_DISABLE} &
+\texttt{1\textquotesingle{}b0} & DM 非使能\tabularnewline
+\texttt{write\_enable} & \texttt{DM\_WRITE\_DISABLED} &
+\texttt{DM\_WRITE\_DISABLE} &\tabularnewline
+\texttt{.*\_addr} & \texttt{DM\_ADDR\_WIDTH} & 8 & \texttt{.*\_addr}
+的位宽\tabularnewline
+指令存储器 & \texttt{DM\_SIZE} & 64 & 能存储 32
+位字的个数\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{ux529fux80fd-8}{%
+\subsubsection{功能}\label{ux529fux80fd-8}}
+
+该部件为时序部件。
+
+有 \texttt{DM\_SIZE} 个 32 位存储器，代表其中存储的指令。它们初值都为
+\texttt{32\textquotesingle{}b0}。
+
+在每个时钟上升沿，若 \texttt{write\_enable\ ==\ DM\_ENABLED}，则
+\texttt{write\_addr{[}DM\_ADDR\_WIDTH\ -\ 1:1{]}} 这个地址对应的 32
+位字写入 \texttt{write\_data} 对应的值。同时，打印当前 PC
+的值、\texttt{write\_addr}、\texttt{write\_addr} 这个地址对应的 32
+位字原来的值、它的新值。
+
+任何时候，\texttt{read\_result} 的值为
+\texttt{read\_addr{[}DM\_ADDR\_WIDTH\ -\ 1:1{]}} 对应的地址的值。
+
+注意 \texttt{dm} 内部对 \texttt{write\_addr} 和 \texttt{read\_addr}
+都截取了一部分。这样可以把 \texttt{dm}
+直接接入数据通路，在数据通路中假定地址是 32 位的；同时 \texttt{dm}
+的实现不需要那么多寄存器，更现实。但是实际上这样对地址空间进行了限制。
+
+\hypertarget{ux6ce8ux610fux4e8bux9879-5}{%
+\subsubsection{注意事项}\label{ux6ce8ux610fux4e8bux9879-5}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  现在还没有按照半个字或者字节寻址，所以暂时不加入 \texttt{mode} 端口
+\item
+  直接忽略地址后两位
+\item
+  \texttt{DM\_ADDR\_WIDTH} 和 \texttt{DM\_ADDR\_SIZE} 要一块改
+\item
+  地址空间是被截断的，看起来是 32 位，实际上不是
+\end{enumerate}
+
+\hypertarget{mux}{%
+\subsection{MUX}\label{mux}}
+
+\hypertarget{ux529fux80fd-9}{%
+\subsubsection{功能}\label{ux529fux80fd-9}}
+
+MUX
+是多路选择器的意思，是从多个数据源中选择数据的部件。其实它也是数据通路和控制之间的接口，控制部件通过
+MUX 来控制数据的流向，实现指令的功能。
+
+\hypertarget{ux7c7bux522b}{%
+\subsubsection{类别}\label{ux7c7bux522b}}
+
+MUX 有多个类别。有 2 路 MUX、3 路 MUX 以至于多路 MUX。实际上，在单周期
+CPU 中只能用到路数比较少的 MUX，多路的 MUX 要等到流水线 CPU
+的时候才能用。
+
+\hypertarget{ux547dux540d}{%
+\subsubsection{命名}\label{ux547dux540d}}
+
+由于 MUX 有多个类别，所以它也有多个
+\texttt{module}，也有多个命名。\emph{n} 路 MUX 命名为
+\texttt{mux}\emph{n}。
+
+\hypertarget{ux5b8fux5b9aux4e49-7}{%
+\subsubsection{宏定义}\label{ux5b8fux5b9aux4e49-7}}
+
+暂无
+
+但是仍然保留 \texttt{mux.h} 宏文件并填入模版，以备以后使用。
+
+\hypertarget{ux53c2ux6570ux5b9aux4e49}{%
+\subsubsection{参数定义}\label{ux53c2ux6570ux5b9aux4e49}}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+参数 & 默认值 & 功能\tabularnewline
+\midrule
+\endhead
+\texttt{BIT\_WIDTH} & 32 & 输入和输出数据的位宽\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{ux7aefux53e3ux5b9aux4e49-5}{%
+\subsubsection{端口定义}\label{ux7aefux53e3ux5b9aux4e49-5}}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+端口 & 类型 & 位宽 & 功能\tabularnewline
+\midrule
+\endhead
+\texttt{control} & 输入 & \emph{见注 1} & 输入控制信号\tabularnewline
+\texttt{result} & 输出 & \texttt{BIT\_WIDTH} & 输出数据\tabularnewline
+\texttt{input}\emph{n} & 输入 & \texttt{BIT\_WIDTH} & \emph{见注
+2}\tabularnewline
+\bottomrule
+\end{longtable}
+
+注： 1. 输入控制信号的位宽如下计算：有 \emph{n} 个输入信号，就取最小的使
+\emph{2\^{}width} 能够超过 \emph{n} 的 \emph{width}，这就是
+\texttt{control} 的位宽。 2. 功能是输入端口，但是个数有 \emph{n}
+个。输入端口\textbf{从 0 开始计数}。
+
+\hypertarget{ux529fux80fd-10}{%
+\subsubsection{功能}\label{ux529fux80fd-10}}
+
+若 \texttt{control} 的值为
+\emph{width}\texttt{\textquotesingle{}d}\emph{n}，则令 \texttt{result}
+的值为 \texttt{input}\emph{n} 的值。但是若 \emph{n} 超出了 MUX
+的输入端口个数（即路数）或 \emph{n} 为其它值，则令 \texttt{result}
+的值为 \texttt{input0} 的值。
+
+\hypertarget{ux6ce8ux610fux4e8bux9879-6}{%
+\subsubsection{注意事项}\label{ux6ce8ux610fux4e8bux9879-6}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \texttt{BIT\_WIDTH} 默认为 32，是因为一般传送的数据都是 32 位的。
+\item
+  接线时端口顺序\textbf{按照数据通路部分最终总结出来的接线表格中指定的顺序来！}
+\item
+  \textbf{\emph{n} 为其他值可能是 \texttt{x} 或 \texttt{z}！}
+\end{enumerate}
+
+\hypertarget{ux5355ux5468ux671fux6570ux636eux901aux8def}{%
+\subsection{单周期数据通路}\label{ux5355ux5468ux671fux6570ux636eux901aux8def}}
+
+\hypertarget{ux529fux80fd-11}{%
+\subsubsection{功能}\label{ux529fux80fd-11}}
+
+单周期数据通路是负责单周期处理器的数据通路。由于它只是在一个周期内做完五步操作，所以能简单一些。数据通路是把相应的数据通路部件按照一定的逻辑关系连接起来得到的、
+
+通过对需要实现的每条指令的分析，可以得出每条指令具体需要什么样的数据通路，然后用这个来知道实现。有些数据的流向是需要指定的，这时就需要控制单元出马，在相应的地方放上
+MUX，然后让控制单元控制。
+
+\hypertarget{ux5206ux6790}{%
+\subsubsection{分析}\label{ux5206ux6790}}
+
+p4 需要实现的 8 条指令为：
+
+\texttt{addu,\ subu,\ lui,\ ori,\ lw,\ sw,\ beq,\ nop}
+
+通过分析它们的
+RTL，可以得到每条指令对应的数据通路连接如下。其中表格某一列的值表示这个输入端口是哪个输出端口的输出。端口用
+\texttt{部件.端口名字}
+格式表示。空白的单元格表示不用关心相对应的端口的值，因为它们会被忽略，不影响指令的正常执行。
+
+最后一行是把所有可能的连接综合起来以后，得到的结果。如果有多个可能的连接，就需要一个
+MUX。把 MUX 的输出端口连接在相应的输入端口上，MUX
+的输入端口要保证所有可能的输入端口都能连接上。
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+指令 & \texttt{addu} & \texttt{subu} & \texttt{lui}\tabularnewline
+\midrule
+\endhead
+\texttt{npc.curr\_pc} & \texttt{pc.curr\_pc} & \texttt{pc.curr\_pc} &
+\texttt{pc.curr\_pc}\tabularnewline
+\texttt{npc.alu\_comp\_result} & & &\tabularnewline
+\texttt{npc.num} & & &\tabularnewline
+\texttt{pc.next\_pc} & \texttt{npc.next\_pc} & \texttt{npc.next\_pc} &
+\texttt{npc.next\_pc}\tabularnewline
+\texttt{im.addr} & \texttt{pc.curr\_pc} & \texttt{pc.curr\_pc} &
+\texttt{pc.curr\_pc}\tabularnewline
+\texttt{rf.read\_addr1} & \texttt{im.data{[}25:21{]}} &
+\texttt{im.data{[}25:21{]}} & \texttt{im.data{[}25:21{]}}\tabularnewline
+\texttt{rf.read\_addr2} & \texttt{im.data{[}20:16{]}} &
+\texttt{im.data{[}20:16{]}} &\tabularnewline
+\texttt{rf.write\_addr} & \texttt{im.data{[}15:11{]}} &
+\texttt{im.data{[}15:11{]}} & \texttt{im.data{[}20:16{]}}\tabularnewline
+\texttt{rf.write\_data} & \texttt{alu.result} & \texttt{alu.result} &
+\texttt{alu.result}\tabularnewline
+\texttt{alu.num1} & \texttt{rf.read\_result1} &
+\texttt{rf.read\_result1} & \texttt{rf.read\_result1}\tabularnewline
+\texttt{alu.num2} & \texttt{rf.read\_result2} &
+\texttt{rf.read\_result2} & \texttt{ext.result}\tabularnewline
+\texttt{ext.num} & & & \texttt{im.data{[}15:0{]}}\tabularnewline
+\texttt{dm.read\_addr} & & &\tabularnewline
+\texttt{dm.write\_addr} & & &\tabularnewline
+\texttt{dm.write\_data} & & &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+指令 & \texttt{ori} & \texttt{lw} & \texttt{sw}\tabularnewline
+\midrule
+\endhead
+\texttt{npc.curr\_pc} & \texttt{pc.curr\_pc} & \texttt{pc.curr\_pc} &
+\texttt{pc.curr\_pc}\tabularnewline
+\texttt{npc.alu\_comp\_result} & & &\tabularnewline
+\texttt{npc.num} & & &\tabularnewline
+\texttt{pc.next\_pc} & \texttt{npc.next\_pc} & \texttt{npc.next\_pc} &
+\texttt{npc.next\_pc}\tabularnewline
+\texttt{im.addr} & \texttt{pc.curr\_pc} & \texttt{pc.curr\_pc} &
+\texttt{pc.curr\_pc}\tabularnewline
+\texttt{rf.read\_addr1} & \texttt{im.data{[}25:21{]}} &
+\texttt{im.data{[}25:21{]}} & \texttt{im.data{[}25:21{]}}\tabularnewline
+\texttt{rf.read\_addr2} & \texttt{im.data{[}20:16{]}} & &
+\texttt{im.data{[}20:16{]}}\tabularnewline
+\texttt{rf.write\_addr} & \texttt{im.data{[}20:16{]}} &
+\texttt{im.data{[}20:16{]}} &\tabularnewline
+\texttt{rf.write\_data} & \texttt{alu.result} & \texttt{dm.read\_result}
+&\tabularnewline
+\texttt{alu.num1} & \texttt{rf.read\_result1} &
+\texttt{rf.read\_result1} & \texttt{rf.read\_result1}\tabularnewline
+\texttt{alu.num2} & \texttt{ext.result} & \texttt{ext.result} &
+\texttt{ext.result}\tabularnewline
+\texttt{ext.num} & \texttt{im.data{[}15:0{]}} &
+\texttt{im.data{[}15:0{]}} & \texttt{im.data{[}15:0{]}}\tabularnewline
+\texttt{dm.read\_addr} & & \texttt{alu.result} &\tabularnewline
+\texttt{dm.write\_addr} & & & \texttt{alu.result}\tabularnewline
+\texttt{dm.write\_data} & & & \texttt{rf.read\_result2}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+指令 & \texttt{beq} & \texttt{nop} & 综合\tabularnewline
+\midrule
+\endhead
+\texttt{npc.curr\_pc} & \texttt{pc.curr\_pc} & \texttt{pc.curr\_pc} &
+\texttt{pc.curr\_pc}\tabularnewline
+\texttt{npc.alu\_comp\_result} & \texttt{alu.comp\_result} & &
+\texttt{alu.comp\_result}\tabularnewline
+\texttt{npc.num} & \texttt{im.data{[}15:0{]}} & &
+\texttt{im.data{[}15:0{]}}\tabularnewline
+\texttt{pc.next\_pc} & \texttt{npc.next\_pc} & \texttt{npc.next\_pc} &
+\texttt{npc.next\_pc}\tabularnewline
+\texttt{im.addr} & \texttt{pc.curr\_pc} & \texttt{pc.curr\_pc} &
+\texttt{pc.curr\_pc}\tabularnewline
+\texttt{rf.read\_addr1} & \texttt{im.data{[}25:21{]}} &
+\texttt{im.data{[}25:21{]}} & \texttt{im.data{[}25:21{]}}\tabularnewline
+\texttt{rf.read\_addr2} & \texttt{im.data{[}20:16{]}} &
+\texttt{im.date{[}20:16{]}} & \texttt{im.data{[}20:16{]}}\tabularnewline
+\texttt{rf.write\_addr} & \texttt{im.data{[}20:16{]}} & &
+\texttt{im.data{[}20:16{]},\ im.data{[}15:11{]}}\tabularnewline
+\texttt{rf.write\_data} & \texttt{alu.result} & &
+\texttt{alu.result,\ dm.read\_result}\tabularnewline
+\texttt{alu.num1} & \texttt{rf.read\_result1} &
+\texttt{rf.read\_result1} & \texttt{rf.read\_result1}\tabularnewline
+\texttt{alu.num2} & \texttt{ext.result} & \texttt{rf.read\_result2} &
+\texttt{rf.read\_result2,\ ext.result}\tabularnewline
+\texttt{ext.num} & \texttt{im.data{[}15:0{]}} & &
+\texttt{im.data{[}15:0{]}}\tabularnewline
+\texttt{dm.read\_addr} & & \texttt{alu.result} &
+\texttt{alu.result}\tabularnewline
+\texttt{dm.write\_addr} & & & \texttt{alu.result}\tabularnewline
+\texttt{dm.write\_data} & & & \texttt{rf.read\_result2}\tabularnewline
+\bottomrule
+\end{longtable}
+
+这时可以看出如下的端口需要 MUX:
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+端口 & 所有的信号来源 & MUX 名称\tabularnewline
+\midrule
+\endhead
+\texttt{rf.write\_addr} &
+\texttt{im.data{[}20:16{]},\ im.data{[}15:11{]}} &
+\texttt{m\_rf\_write\_addr}\tabularnewline
+\texttt{rf.write\_data} & \texttt{alu.result,\ dm.read\_result} &
+\texttt{m\_rf\_write\_data}\tabularnewline
+\texttt{alu.num2} & \texttt{rf.read\_result2,\ ext.result} &
+\texttt{m\_alu\_num2}\tabularnewline
+\bottomrule
+\end{longtable}
+
+这些 MUX 最终还是让控制部件来识别。MUX
+端口的连接顺序（其实也对应着当控制信号从 0
+开始递增时会选择的端口）按照上表中的顺序给定。
+
+\hypertarget{ux63a7ux5236}{%
+\subsection{控制}\label{ux63a7ux5236}}
+
+\hypertarget{ux529fux80fd-12}{%
+\subsubsection{功能}\label{ux529fux80fd-12}}
+
+控制是指通过识别指令，控制数据的流通，从而让 CPU
+执行指定的计算的过程。数据通路只是得到了数据可能的流向，真正要控制还是控制完成。控制通过已有的控制信号和数据通路的分叉完成控制。
+
+\hypertarget{ux5206ux6790-1}{%
+\subsubsection{分析}\label{ux5206ux6790-1}}
+
+通过对数据通路的分析，可以得到每条指令需要的控制信号如下。其中表格某一单元格的值有两种情况：若该单元格所在的行最左边的单元格是
+MUX，则说明对应的指令需要让该 MUX
+的输入端口接入该单元格表示的端口；若该单元格所在的行最左边的单元格是端口，则说明对应的指令需要的控制信号为该单元格表示的控制信号。
+
+若单元格以 \texttt{\#}
+开头，则说明该控制信号或端口只是为了使控制单元功能明晰而加上的，实际上并不需要关心该控制信号或要接入的端口的值。如果想理解该单元格的值，去掉
+\texttt{\#} 再按照上一段理解即可。
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+指令 & \texttt{addu} & \texttt{subu}\tabularnewline
+\midrule
+\endhead
+\texttt{m\_rf\_write\_addr} & \texttt{im.data{[}15:11{]}} &
+\texttt{im.data{[}15:11{]}}\tabularnewline
+\texttt{m\_rf\_write\_data} & \texttt{alu.result} &
+\texttt{alu.result}\tabularnewline
+\texttt{m\_alu\_num2} & \texttt{rf.read\_result2} &
+\texttt{rf.read\_result2}\tabularnewline
+\texttt{npc.jump\_mode} & \texttt{NPC\_JUMP\_DISABLED} &
+\texttt{NPC\_JUMP\_DISABLED}\tabularnewline
+\texttt{pc.enable} & \texttt{PC\_ENABLED} &
+\texttt{PC\_ENABLED}\tabularnewline
+\texttt{im.enable} & \texttt{IM\_ENABLED} &
+\texttt{IM\_ENABLED}\tabularnewline
+\texttt{rf.write\_enable} & \texttt{RF\_WRITE\_ENABLED} &
+\texttt{RF\_WRITE\_ENABLED}\tabularnewline
+\texttt{alu.op} & \texttt{ALU\_ADD} & \texttt{ALU\_SUB}\tabularnewline
+\texttt{ext.mode} & \texttt{\#EXT\_MODE\_UNSIGNED} &
+\texttt{\#EXT\_MODE\_UNSIGNED}\tabularnewline
+\texttt{dm.write\_enable} & \texttt{DM\_WRITE\_DISABLED} &
+\texttt{DM\_WRITE\_DISABLED}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+指令 & \texttt{lui} & \texttt{ori}\tabularnewline
+\midrule
+\endhead
+\texttt{m\_rf\_write\_addr} & \texttt{im.data{[}20:16{]}} &
+\texttt{im.data{[}20:16{]}}\tabularnewline
+\texttt{m\_rf\_write\_data} & \texttt{alu.result} &
+\texttt{alu.result}\tabularnewline
+\texttt{m\_alu\_num2} & \texttt{ext.result} &
+\texttt{ext.result}\tabularnewline
+\texttt{npc.jump\_mode} & \texttt{NPC\_JUMP\_DISABLED} &
+\texttt{NPC\_JUMP\_DISABLED}\tabularnewline
+\texttt{pc.enable} & \texttt{PC\_ENABLED} &
+\texttt{PC\_ENABLED}\tabularnewline
+\texttt{im.enable} & \texttt{IM\_ENABLED} &
+\texttt{IM\_ENABLED}\tabularnewline
+\texttt{rf.write\_enable} & \texttt{RF\_WRITE\_ENABLED} &
+\texttt{RF\_WRITE\_ENABLED}\tabularnewline
+\texttt{alu.op} & \texttt{ALU\_OR} & \texttt{ALU\_OR}\tabularnewline
+\texttt{ext.mode} & \texttt{EXT\_MODE\_PAD} &
+\texttt{EXT\_MODE\_UNSIGNED}\tabularnewline
+\texttt{dm.write\_enable} & \texttt{DM\_WRITE\_DISABLED} &
+\texttt{DM\_WRITE\_DISABLED}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+指令 & \texttt{lw} & \texttt{sw}\tabularnewline
+\midrule
+\endhead
+\texttt{m\_rf\_write\_addr} & \texttt{im.data{[}20:16{]}} &
+\texttt{im.data{[}20:16{]}}\tabularnewline
+\texttt{m\_rf\_write\_data} & \texttt{dm.read\_result} &
+\texttt{alu.result}\tabularnewline
+\texttt{m\_alu\_num2} & \texttt{ext.result} &
+\texttt{ext.result}\tabularnewline
+\texttt{npc.jump\_mode} & \texttt{NPC\_JUMP\_DISABLED} &
+\texttt{NPC\_JUMP\_DISABLED}\tabularnewline
+\texttt{pc.enable} & \texttt{PC\_ENABLED} &
+\texttt{PC\_ENABLED}\tabularnewline
+\texttt{im.enable} & \texttt{IM\_ENABLED} &
+\texttt{IM\_ENABLED}\tabularnewline
+\texttt{rf.write\_enable} & \texttt{RF\_WRITE\_ENABLED} &
+\texttt{RF\_WRITE\_DISABLED}\tabularnewline
+\texttt{alu.op} & \texttt{ALU\_ADD} & \texttt{ALU\_ADD}\tabularnewline
+\texttt{ext.mode} & \texttt{EXT\_MODE\_SIGNED} &
+\texttt{EXT\_MODE\_SIGNED}\tabularnewline
+\texttt{dm.write\_enable} & \texttt{DM\_WRITE\_DISABLED} &
+\texttt{DM\_WRITE\_ENABLED}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+指令 & \texttt{beq} & \texttt{nop}\tabularnewline
+\midrule
+\endhead
+\texttt{m\_rf\_write\_addr} & \texttt{\#im.data{[}20:16{]}} &
+\texttt{\#im.data{[}20:16{]}}\tabularnewline
+\texttt{m\_rf\_write\_data} & \texttt{\#alu.result} &
+\texttt{\#alu.result}\tabularnewline
+\texttt{m\_alu\_num2} & \texttt{rf.read\_result2} &
+\texttt{\#rf.read\_result2}\tabularnewline
+\texttt{npc.jump\_mode} & \texttt{NPC\_JUMP\_WHEN\_EQUAL} &
+\texttt{NPC\_JUMP\_DISABLED}\tabularnewline
+\texttt{pc.enable} & \texttt{PC\_ENABLED} &
+\texttt{PC\_ENABLED}\tabularnewline
+\texttt{im.enable} & \texttt{IM\_ENABLED} &
+\texttt{IM\_ENABLED}\tabularnewline
+\texttt{rf.write\_enable} & \texttt{RF\_WRITE\_DISABLED} &
+\texttt{RF\_WRITE\_DISABLED}\tabularnewline
+\texttt{alu.op} & \texttt{\#ALU\_OR} & \texttt{\#ALU\_OR}\tabularnewline
+\texttt{ext.mode} & \texttt{\#EXT\_MODE\_UNSIGNED} &
+\texttt{\#EXT\_MODE\_UNSIGNED}\tabularnewline
+\texttt{dm.write\_enable} & \texttt{DM\_WRITE\_DISABLED} &
+\texttt{DM\_WRITE\_DISABLED}\tabularnewline
+\bottomrule
+\end{longtable}
+
+对于未知指令，各控制信号的值与 \texttt{nop}
+指令的相应值相同。这样相当于直接忽略未知指令。
+
+\hypertarget{ux5b8fux5b9aux4e49-8}{%
+\subsubsection{宏定义}\label{ux5b8fux5b9aux4e49-8}}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+\begin{minipage}[b]{0.22\columnwidth}\raggedright
+类别\strut
+\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\raggedright
+定义\strut
+\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\raggedright
+值\strut
+\end{minipage} & \begin{minipage}[b]{0.22\columnwidth}\raggedright
+意义\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+宏函数\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{GET\_OP(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{x{[}31:26{]}}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+得到指令的 \texttt{op} 字段\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+宏函数\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{GET\_FUNCT(x)}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{x{[}25:11{]}}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+得到指令的 \texttt{funct} 字段\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+指令类型\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{R\_TYPE}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+2'b00\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+R 型指令\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+指令类型\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{I\_TYPE}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+2'b01\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+I 型指令\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+指令类型\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{J\_TYPE}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+2'b10\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+J 型指令\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+指令类型\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{C\_TYPE}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+2'b11\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+协处理器指令\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+指令魔数\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{INSTR\_MAGIC\_RTYPE\_OP}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+6'b000000\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+R 型指令 \texttt{op} 字段魔数\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+指令魔数\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{INSTR\_MAGIC\_ADDU\_FUNCT}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+6'b100001\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{addu} 指令 \texttt{funct} 字段魔数\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+指令魔数\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{INSTR\_MAGIC\_SUBU\_FUNCT}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+6'b100011\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{subu} 指令 \texttt{funct} 字段魔数\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+指令魔数\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{INSTR\_MAGIC\_LUI\_OP}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+6'b001111\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{lui} 指令 \texttt{op} 字段魔数\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+指令魔数\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{INSTR\_MAGIC\_ORI\_OP}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+6'b001101\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{ori} 指令 \texttt{op} 字段魔数\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+指令魔数\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{INSTR\_MAGIC\_LW\_OP}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+6'b100011\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{lw} 指令 \texttt{op} 字段魔数\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+指令魔数\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{INSTR\_MAGIC\_SW\_OP}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+6'b101011\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{sw} 指令 \texttt{op} 字段魔数\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+指令魔数\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{INSTR\_MAGIC\_BEQ\_OP}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+6'b000100\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{beq} 指令 \texttt{op} 字段魔数\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+指令魔数\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{INSTR\_MAGIC\_NOP\_FUNCT}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+6'b000000\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{nop} 指令 \texttt{funct} 字段魔数\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+指令具体类型\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{INSTR\_UNKNOWN}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+8'd0\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+未知指令\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+指令具体类型\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{INSTR\_ADDU}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+8'd1\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{addu} 指令\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+指令具体类型\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{INSTR\_SUBU}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+8'd2\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{subu} 指令\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+指令具体类型\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{INSTR\_LUI}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+8'd3\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{lui} 指令\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+指令具体类型\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{INSTR\_ORI}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+8'd4\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{ori} 指令\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+指令具体类型\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{INSTR\_LW}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+8'd5\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{lw} 指令\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+指令具体类型\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{INSTR\_SW}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+8'd6\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{sw} 指令\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+指令具体类型\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{INSTR\_BEQ}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+8'd7\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{beq} 指令\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+指令具体类型\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{INSTR\_NOP}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+8'd8\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{nop} 指令\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{cm\_rf\_write\_addr}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{CM\_RF\_WRITE\_ADDR\_IM\_DATA\_20\_16}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+1'b0\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{m\_rf\_write\_addr} 输入来源为 \texttt{im.data{[}20:16{]}}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{cm\_rf\_write\_addr}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{CM\_RF\_WRITE\_ADDR\_IM\_DATA\_15\_11}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+1'b1\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{m\_rf\_write\_addr} 输入来源为 \texttt{im.data{[}15:11{]}}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{cm\_rf\_write\_data}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{CM\_RF\_WRITE\_DATA\_ALU\_RESULT}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+1'b0\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{m\_rf\_write\_data} 输入来源为 \texttt{alu.result}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{cm\_rf\_write\_data}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{CM\_RF\_WRITE\_DATA\_DM\_READ\_RESULT}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+1'b1\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{m\_rf\_write\_data} 输入来源为 \texttt{dm.read\_result}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{cm\_alu\_num2}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{CM\_ALU\_NUM2\_RF\_READ\_RESULT2}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+1'b0\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{m\_alu\_num2} 输入来源为 \texttt{rf.read\_result2}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{cm\_alu\_num2}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{CM\_ALU\_NUM2\_EXT\_RESULT}\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+1'b1\strut
+\end{minipage} & \begin{minipage}[t]{0.22\columnwidth}\raggedright
+\texttt{m\_alu\_num2} 输入来源为 \texttt{ext.result}\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{ux7aefux53e3ux5b9aux4e49-6}{%
+\subsubsection{端口定义}\label{ux7aefux53e3ux5b9aux4e49-6}}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+端口 & 类型 & 位宽 & 功能\tabularnewline
+\midrule
+\endhead
+\texttt{curr\_instr} & 输入 & 32 & 当前指令\tabularnewline
+\texttt{cm\_rf\_write\_addr} & 输出 & 1 & 控制
+\texttt{m\_rf\_write\_addr}\tabularnewline
+\texttt{cm\_rf\_write\_data} & 输出 & 1 & 控制
+\texttt{m\_rf\_write\_data}\tabularnewline
+\texttt{cm\_alu\_num2} & 输出 & 1 & 控制
+\texttt{m\_alu\_num2}\tabularnewline
+\texttt{cw\_npc\_jump\_mode} & 输出 & 1 & 控制
+\texttt{npc.jump\_mode}\tabularnewline
+\texttt{cw\_pc\_enable} & 输出 & 1 & 控制
+\texttt{pc.enable}\tabularnewline
+\texttt{cw\_im\_enable} & 输出 & 1 & 控制
+\texttt{im.enable}\tabularnewline
+\texttt{cw\_rf\_write\_enable} & 输出 & 1 & 控制
+\texttt{rf.write\_enable}\tabularnewline
+\texttt{cw\_alu\_op} & 输出 & 1 & 控制 \texttt{alu.op}\tabularnewline
+\texttt{cw\_ext\_mode} & 输出 & 1 & 控制
+\texttt{ext.mode}\tabularnewline
+\texttt{cw\_dm\_write\_enable} & 输出 & 1 & 控制
+\texttt{dm.write\_enable}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{ux529fux80fd-13}{%
+\subsubsection{功能}\label{ux529fux80fd-13}}
+
+由于 \texttt{pc.enable} 和 \texttt{im.enable}
+都是相应的启用值，所以真正实现控制模块的时候，不会控制这两个值，而是把它们都设成对应的常量。
+
+首先，识别指令具体类型。这里只使用一个 8 位的 \texttt{wire}
+类型变量存放指令类型，而不是多个 \texttt{wire}
+类型变量，这样其实也是一种类似 \texttt{enum}
+的做法。识别指令类型主要还是看 \texttt{op} 字段，再更细致一点地去看 R
+型指令的 \texttt{funct} 字段。当然也可以先看指令是否为 R
+型指令，但是这样逻辑上有点互相缠绕，所以个人认为识别到具体类型比较好。
+
+然后，识别指令类型。这里主要是为了以后的暂停和转发逻辑做准备，代码中不一定实现（虽然一定有宏定义），利用一个
+2 位的 \texttt{wire} 类型变量存放指令类型。
+
+最后，做相对应的操作，并输出控制信号。这个识别出指令具体类型以后，按照表格中每个单元格的意义实现即可，主要考虑的是一个判断问题。
+
+\hypertarget{ux6ce8ux610fux4e8bux9879-7}{%
+\subsubsection{注意事项}\label{ux6ce8ux610fux4e8bux9879-7}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  输入整个指令在电路设计中实际上没用，是为了方便 debug
+\item
+  控制信号和最终 CPU 实现中相应的连接数据通路和控制部分的 \texttt{wire}
+  有些名字是重复的，在 Verilog 中语法没错误，没有分开
+\item
+  \textbf{关于各 MUX 选择哪个输入的宏的值是跟 MUX 接线有关的}
+\item
+  \textbf{谨慎使用宏函数}
+\end{enumerate}
+
+\hypertarget{cpu}{%
+\subsection{CPU}\label{cpu}}
+
+\hypertarget{ux539fux7406-5}{%
+\subsubsection{原理}\label{ux539fux7406-5}}
+
+CPU
+是宏观部件，主要连接起数据通路和控制。该部件主要起的是宏观功能，也就是读取指令并完成计算。
+
+CPU 在模块结构中作为顶层模块而存在。
+
+\hypertarget{ux7aefux53e3ux5b9aux4e49-7}{%
+\subsubsection{端口定义}\label{ux7aefux53e3ux5b9aux4e49-7}}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+端口 & 类型 & 位宽 & 功能\tabularnewline
+\midrule
+\endhead
+\texttt{clk} & 输入 & 1 & 时钟信号\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{ux63a5ux7ebf}{%
+\subsubsection{接线}\label{ux63a5ux7ebf}}
+
+按照数据通路和控制部分的定义进行接线。数据通路中的接线方式在数据通路部分的文档中描述，控制部分按照控制部分的文档中描述。控制部分控制数据通路的哪部分，在控制部分的文档中。
+
+\hypertarget{ux529fux80fd-14}{%
+\subsubsection{功能}\label{ux529fux80fd-14}}
+
+CPU 需要的外部数据输入是极少的，只有时钟信号、必要的其它信号和指令文件。
+
+\hypertarget{ux6ce8ux610fux4e8bux9879-8}{%
+\subsubsection{注意事项}\label{ux6ce8ux610fux4e8bux9879-8}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  对部件分级是个好习惯，在流水线 CPU 时会有用。
+\item
+  TODO: \texttt{input\ rst}?
+\end{enumerate}
+
+\hypertarget{ux6280ux5de7}{%
+\subsection{技巧}\label{ux6280ux5de7}}
+
+\hypertarget{ux614cux4e86ux600eux4e48ux529e}{%
+\subsubsection{慌了怎么办}\label{ux614cux4e86ux600eux4e48ux529e}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Don't panic! 做出来是最重要的
+\item
+  深呼吸，专心想实现和调试的事情，不要害怕干不出来
+\item
+  看看哪里的逻辑出错了，\textbf{不要逃避！}
+\item
+  用小数据、边界数据、特殊数据测试
+\item
+  踏踏实实想逻辑、定义、算法，必要的时候自己再描述一遍 /
+  写一遍，不要根据原来做出来的
+\end{enumerate}
+
+\hypertarget{ux5982ux4f55ux52a0ux65b0ux6307ux4ee4}{%
+\subsubsection{如何加新指令}\label{ux5982ux4f55ux52a0ux65b0ux6307ux4ee4}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  看好 RTL，把它转换成数据通路的连线
+\item
+  如果有多对一的情况，就应该用 MUX
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  MUX 是原来的值，改控制信号
+\item
+  MUX 是新的值，改控制信号，\textbf{可能要改 MUX 的位宽和对应接线的位宽}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  改好控制信号
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  对指令域进行识别
+\item
+  对新指令指定相应的控制信号
+\item
+  对新指令指定相应的 MUX 控制信号
+\item
+  如果有新的跳转规则
+
+  \begin{itemize}
+  \tightlist
+  \item
+    尽量改 \texttt{npc}，让 \texttt{npc} 基于比较结果判断
+  \item
+    如果引入了新的比较方式，就需要改 \texttt{alu}，\textbf{注意有符号 /
+    无符号和运算溢出问题和改 \texttt{alu} 的接口}，同时也要改数据通路和
+    \texttt{npc} 的接口
+  \item
+    如果要跟立即数比较，\textbf{先看一下立即数的扩展模式}，能用
+    \texttt{npc} 解决的尽量用 \texttt{npc} 解决，p4 暂时还不用改
+    \texttt{cmp}
+  \item
+    如果根据一个寄存器跳转，那么按照引入了新的比较方式处理，改
+    \texttt{alu} 的比较方式
+  \end{itemize}
+\item
+  如果有新的立即数扩展方式
+
+  \begin{itemize}
+  \tightlist
+  \item
+    如果还是 \texttt{im.result{[}15:0{]}} 改
+    \texttt{ext}，\textbf{注意有符号 / 无符号的区别}
+  \item
+    如果是 \texttt{im.result} 的其它部分，记得加 MUX
+    信号来源，\textbf{注意位宽和有符号 / 无符号的区别}
+  \end{itemize}
+\item
+  如果有新的寄存器号表示方法
+
+  \begin{itemize}
+  \tightlist
+  \item
+    加 MUX 信号来源，\textbf{记得改位宽}，控制信号用 sane defaults\\
+  \item
+    可以根据指令类型特判
+  \end{itemize}
+\item
+  如果有新的运算
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{抓好定义}，例如补码的相反数，最小的负数没有相反数
+  \item
+    \textbf{注意地址计算是无符号计算、指令给定了是不是有符号运算要注意}
+  \item
+    如果是两个输入的运算，直接写新运算
+  \item
+    如果是三个输入的运算，看看能不能省下一个运算源，\textbf{有的时候要改控制的输入}，比如条件传送指令需要根据第二个寄存器的值判断
+    \texttt{rf.we}
+  \item
+    如果是输入带附加参数的运算，可以开一个 \texttt{alu}
+    端口，然后在控制器上接过去，也可以通过正常数据通路传过去（不推荐），比如移位运算可以直接在控制器和
+    \texttt{alu} 上开端口
+  \end{itemize}
+\item
+  如果有新的 \texttt{dm} 存取方式
+
+  \begin{itemize}
+  \tightlist
+  \item
+    如果是特殊的读写范围，那么因为是单周期，可以在 \texttt{dm} 上开端口
+    \texttt{mode}，让控制单元控制 \texttt{mode}，注意 sane defaults
+    和\textbf{端序}
+  \item
+    如果是同时读写，那么也可以用上面的方法，注意 \texttt{dm}
+    的读写地址端口是分开的，注意开 MUX 的端口和 sane defaults
+  \item
+    如果是根据其它来源读写，注意开 MUX 的端口和 sane defaults
+  \end{itemize}
+\item
+  如果有新的 \texttt{rf} 的值
+
+  \begin{itemize}
+  \tightlist
+  \item
+    注意要接线接过来，然后加 MUX
+  \item
+    如果是返回地址，\textbf{最好是先接过当前 PC，然后无符号数 +4}
+  \item
+    注意 \texttt{rf} 的值是否写入可以跟 \texttt{rf.we} 配合
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{ux5982ux4f55ux6709ux6548ux8c03ux8bd5}{%
+\subsubsection{如何有效调试}\label{ux5982ux4f55ux6709ux6548ux8c03ux8bd5}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  定位出错指令
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  平时可以用 \texttt{diff}
+\item
+  在考场上主要靠看数据和猜
+
+  \begin{itemize}
+  \tightlist
+  \item
+    看数据大法
+
+    \begin{itemize}
+    \tightlist
+    \item
+      前面一堆 0 位或者 1 位出错的，一般是移位指令
+    \item
+      前面数据乱了的，一般是乘除法指令
+    \item
+      数据差 1 的，一般是条件设置指令
+    \end{itemize}
+  \item
+    瞎猜大法
+
+    \begin{itemize}
+    \tightlist
+    \item
+      最近加了什么指令
+    \item
+      哪条指令原理不确定
+    \item
+      哪条指令是说了的重点
+    \item
+      哪条指令比较复杂，不好实现
+    \item
+      课下测试一直没过哪条指令
+    \end{itemize}
+  \item
+    实在不行就把感觉错了的指令都检查一遍
+  \end{itemize}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  分析每级的行为
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  先把 RTL 在心里分解成每级
+\item
+  然后比较出错指令或者觉得出错指令的差异
+\item
+  然后检查每级的行为
+
+  \begin{itemize}
+  \tightlist
+  \item
+    先检查控制信号对不对，\textbf{尤其是新加的控制信号和它们对应的
+    defaults}
+  \item
+    \texttt{npc} 看与 \texttt{alu} 的配合和 \texttt{npc}
+    模式本身的实现，注意\textbf{大小比较、有无符号数和指令取立即数的扩展}
+  \item
+    \texttt{rf} 看取寄存器号对不对，不要乱改改折了，\textbf{注意
+    MUX、数据位宽、有无符号数和扩展模式}
+  \item
+    \texttt{ext}
+    看扩展模式对不对，\textbf{注意扩展的是哪些数字和扩展模式}
+  \item
+    \texttt{alu} 看实现的运算对不对，\textbf{要踏实地看定义以及和
+    \texttt{rf} 的配合，不要读哪个寄存器都读错了}
+  \item
+    \texttt{dm}
+    看实现的读写模式和读写地址对不对，\textbf{注意端序和读写地址的对应
+    MUX，和它们与控制信号的对应关系}
+  \item
+    \texttt{rf}
+    还要看实现的钩子对不对，\textbf{尤其是根据寄存器值判断的那部分，因为需要控制器配合}
+  \end{itemize}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  分析指令之间的关系
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  跟上一条指令之间的关系
+\item
+  如果是跳转指令，跟以前指令的关系
+\item
+  如果是 L/S 指令，跟内存的关系
+\item
+  CPU 的初始状态
+\end{itemize}
+
+\hypertarget{ux5982ux4f55ux6539ux6570ux636eux901aux8def}{%
+\subsubsection{如何改数据通路}\label{ux5982ux4f55ux6539ux6570ux636eux901aux8def}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  分析为什么要改数据通路
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  改数据通路代价比较大
+\item
+  必须安装新部件吗？
+
+  \begin{itemize}
+  \tightlist
+  \item
+    可能有的部件可以通过 hook 来解决
+  \item
+    有的部件可以通过改部件本身的方式来解决
+  \item
+    可能可以重新把指令的 RTL fit 到现有的数据通路里
+  \item
+    可能可以直接 hook 控制机制
+  \item
+    如果要求加新部件，那也没办法
+  \end{itemize}
+\item
+  新部件部署在哪一级？
+
+  \begin{itemize}
+  \tightlist
+  \item
+    单周期处理器这样不重要，但是还是要做一遍
+  \item
+    对类比同级的 MUX 和部件有帮助
+  \item
+    对分清这个部件的功能有描述
+  \end{itemize}
+\item
+  改了新部件，如何既服务好新指令，又能与原来的指令兼容？
+
+  \begin{itemize}
+  \tightlist
+  \item
+    sane defaults
+  \item
+    可能需要回退机制
+  \item
+    原来的指令可能需要在控制层面避开新部件带来的影响，不过这一点一般不大可能
+  \end{itemize}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  分析怎么改数据通路
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  如果没安装新部件
+
+  \begin{itemize}
+  \tightlist
+  \item
+    如果在 \texttt{npc} 这里加上 hook 机制，记得跟 \texttt{alu}
+    和控制配合好，\textbf{扩展指令的立即数时源、目的和扩展哪个部分一定要注意}
+  \item
+    如果在控制加上 hook 机制，\textbf{要注意 sane defaults 和 hook
+    机制能不能方便之后修改代码}
+  \item
+    如果在 \texttt{alu\ /\ ext\ /\ dm}
+    加了新功能，\textbf{注意实现是否正确，要紧扣定义}
+  \end{itemize}
+\item
+  如果安装了新部件
+
+  \begin{itemize}
+  \tightlist
+  \item
+    重构一遍新指令的数据通路，\textbf{注意 sane defaults}
+  \item
+    分析一下新部件的功能
+  \item
+    如果比较有空，可以稍微测试一下
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{ux5982ux4f55ux6bd4ux8f83ux65b9ux4fbfux5730ux6539ux8bbeux8ba1}{%
+\subsubsection{如何比较方便地改设计}\label{ux5982ux4f55ux6bd4ux8f83ux65b9ux4fbfux5730ux6539ux8bbeux8ba1}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  可以在加 hook 机制的时候认为这是必须的
+\item
+  可以在扩展时认为这样可以简化数据通路
+\item
+  可以在部署部件时部署到比较方便实现的级
+\end{enumerate}
