@@ -32,3 +32,4 @@ Finished circuit initialization process.
 @0000307c: $30 <= 00003080
 @00003088: $ 9 <= 01230000
 @0000308c: $ 9 <= 01234567
+# exit 0
