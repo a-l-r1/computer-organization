@@ -14,19 +14,14 @@ module dm(
 	output [31:0] read_result
 );
 
-reg [31:0] memory [`DM_ADDR_WIDTH - 1:0];
+reg [31:0] memory [`DM_SIZE - 1:0];
 
 integer i;
 
 initial begin
-	for (i = 0; i < `DM_ADDR_WIDTH; i = i + 1) begin
+	for (i = 0; i < `DM_SIZE; i = i + 1) begin
 		memory[i] = 32'b0;
 	end
-end
-
-always @(posedge clk) begin
-	`debug_write(("curr_pc = 0x%08x, write_enable = %0d, read_addr = 0x%08x, write_addr = 0x%08x\n", curr_pc, write_enable, read_addr, write_addr));
-	`debug_write(("read_result = 0x%08x, write_data = 0x%08x\n", read_result, write_data));
 end
 
 always @(posedge clk) begin
