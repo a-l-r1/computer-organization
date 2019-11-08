@@ -184,23 +184,6 @@ static void Always_28_1(char *t0)
     int t42;
     int t43;
     int t44;
-    unsigned int t45;
-    unsigned int t46;
-    unsigned int t47;
-    unsigned int t48;
-    unsigned int t49;
-    unsigned int t50;
-    unsigned int t51;
-    unsigned int t52;
-    unsigned int t53;
-    unsigned int t54;
-    unsigned int t55;
-    unsigned int t56;
-    unsigned int t57;
-    unsigned int t58;
-    unsigned int t59;
-    unsigned int t60;
-    unsigned int t61;
 
 LAB0:    t1 = (t0 + 4208U);
     t2 = *((char **)t1);
@@ -378,61 +361,14 @@ LAB23:    t7 = (t6 + 4);
 LAB25:    xsi_set_current_line(34, ng0);
 
 LAB28:    xsi_set_current_line(35, ng0);
-    t21 = (t0 + 1848U);
+    t21 = (t0 + 1368U);
     t22 = *((char **)t21);
-    t21 = ((char*)((ng3)));
-    memset(t30, 0, 8);
-    t28 = (t22 + 4);
-    t29 = (t21 + 4);
-    t45 = *((unsigned int *)t22);
-    t46 = *((unsigned int *)t21);
-    t47 = (t45 ^ t46);
-    t48 = *((unsigned int *)t28);
-    t49 = *((unsigned int *)t29);
-    t50 = (t48 ^ t49);
-    t51 = (t47 | t50);
-    t52 = *((unsigned int *)t28);
-    t53 = *((unsigned int *)t29);
-    t54 = (t52 | t53);
-    t55 = (~(t54));
-    t56 = (t51 & t55);
-    if (t56 != 0)
-        goto LAB30;
-
-LAB29:    if (t54 != 0)
-        goto LAB31;
-
-LAB32:    t33 = (t30 + 4);
-    t57 = *((unsigned int *)t33);
-    t58 = (~(t57));
-    t59 = *((unsigned int *)t30);
-    t60 = (t59 & t58);
-    t61 = (t60 != 0);
-    if (t61 > 0)
-        goto LAB33;
-
-LAB34:
-LAB35:    goto LAB27;
-
-LAB30:    *((unsigned int *)t30) = 1;
-    goto LAB32;
-
-LAB31:    t32 = (t30 + 4);
-    *((unsigned int *)t30) = 1;
-    *((unsigned int *)t32) = 1;
-    goto LAB32;
-
-LAB33:    xsi_set_current_line(35, ng0);
-
-LAB36:    xsi_set_current_line(36, ng0);
-    t34 = (t0 + 1368U);
-    t35 = *((char **)t34);
-    t34 = (t0 + 1848U);
-    t36 = *((char **)t34);
-    t34 = (t0 + 2008U);
-    t37 = *((char **)t34);
-    xsi_vlogfile_write(1, 0, 0, ng5, 4, t0, (char)118, t35, 32, (char)118, t36, 5, (char)118, t37, 32);
-    xsi_set_current_line(37, ng0);
+    t21 = (t0 + 1848U);
+    t28 = *((char **)t21);
+    t21 = (t0 + 2008U);
+    t29 = *((char **)t21);
+    xsi_vlogfile_write(1, 0, 0, ng5, 4, t0, (char)118, t22, 32, (char)118, t28, 5, (char)118, t29, 32);
+    xsi_set_current_line(36, ng0);
     t2 = (t0 + 2008U);
     t3 = *((char **)t2);
     t2 = (t0 + 2888);
@@ -453,20 +389,20 @@ LAB36:    xsi_set_current_line(36, ng0);
     t41 = (!(t10));
     t42 = (t39 && t41);
     if (t42 == 1)
-        goto LAB37;
+        goto LAB29;
 
-LAB38:    goto LAB35;
+LAB30:    goto LAB27;
 
-LAB37:    t11 = *((unsigned int *)t6);
+LAB29:    t11 = *((unsigned int *)t6);
     t12 = *((unsigned int *)t30);
     t43 = (t11 - t12);
     t44 = (t43 + 1);
     xsi_vlogvar_wait_assign_value(t2, t3, 0, *((unsigned int *)t30), t44, 0LL);
-    goto LAB38;
+    goto LAB30;
 
 }
 
-static void Cont_43_2(char *t0)
+static void Cont_41_2(char *t0)
 {
     char t3[8];
     char t4[8];
@@ -530,7 +466,7 @@ LAB0:    t1 = (t0 + 4456U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(43, ng0);
+LAB2:    xsi_set_current_line(41, ng0);
     t2 = (t0 + 1528U);
     t5 = *((char **)t2);
     t2 = ((char*)((ng3)));
@@ -642,7 +578,7 @@ LAB18:    memcpy(t3, t36, 8);
 
 }
 
-static void Cont_45_3(char *t0)
+static void Cont_43_3(char *t0)
 {
     char t3[8];
     char t4[8];
@@ -706,7 +642,7 @@ LAB0:    t1 = (t0 + 4704U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(45, ng0);
+LAB2:    xsi_set_current_line(43, ng0);
     t2 = (t0 + 1688U);
     t5 = *((char **)t2);
     t2 = ((char*)((ng3)));
@@ -821,7 +757,7 @@ LAB18:    memcpy(t3, t36, 8);
 
 extern void work_m_14484932997211067321_2347679131_init()
 {
-	static char *pe[] = {(void *)Initial_22_0,(void *)Always_28_1,(void *)Cont_43_2,(void *)Cont_45_3};
+	static char *pe[] = {(void *)Initial_22_0,(void *)Always_28_1,(void *)Cont_41_2,(void *)Cont_43_3};
 	xsi_register_didat("work_m_14484932997211067321_2347679131", "isim/single_cycle_tb_isim_beh.exe.sim/work/m_14484932997211067321_2347679131.didat");
 	xsi_register_executes(pe);
 }

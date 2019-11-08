@@ -95,8 +95,7 @@ LAB3:    t1 = (t0 + 2088);
 
 LAB5:    xsi_set_current_line(20, ng0);
     t1 = (t0 + 1928);
-    t2 = ((char*)((ng1)));
-    xsi_vlogfile_readmemh(ng5, 0, t1, 1, *((unsigned int *)t2), 0, 0);
+    xsi_vlogfile_readmemh(ng5, 0, t1, 0, 0, 0, 0);
 
 LAB1:    return;
 LAB4:    xsi_set_current_line(16, ng0);

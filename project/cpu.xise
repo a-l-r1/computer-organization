@@ -457,7 +457,6 @@
     <file xil_pn:name="../src/include/npc.h" xil_pn:type="FILE_VERILOG"/>
     <file xil_pn:name="../src/include/pc.h" xil_pn:type="FILE_VERILOG"/>
     <file xil_pn:name="../src/include/rf.h" xil_pn:type="FILE_VERILOG"/>
-    <file xil_pn:name="../src/include/debug/debug.h" xil_pn:type="FILE_VERILOG"/>
     <file xil_pn:name="../src/include/mux.h" xil_pn:type="FILE_VERILOG"/>
   </autoManagedFiles>
 
