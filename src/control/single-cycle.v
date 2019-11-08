@@ -45,6 +45,7 @@ assign curr_instr_kind =
 	(`GET_OP(curr_instr) == `INSTR_MAGIC_RTYPE_OP && `GET_FUNCT(curr_instr) == `INSTR_MAGIC_NOP_FUNCT) ? `INSTR_NOP : 
 	(`GET_OP(curr_instr) == `INSTR_MAGIC_JAL_OP) ? `INSTR_JAL : 
 	(`GET_OP(curr_instr) == `INSTR_MAGIC_RTYPE_OP && `GET_FUNCT(curr_instr) == `INSTR_MAGIC_JR_FUNCT) ? `INSTR_JR : 
+	(`GET_OP(curr_instr) == `INSTR_MAGIC_RTYPE_OP && `GET_FUNCT(curr_instr) == `INSTR_MAGIC_JALR_FUNCT) ? `INSTR_JALR : 
 	`INSTR_UNKNOWN;
 
 assign cw_rf_read_addr1 = curr_instr[25:21];
@@ -56,12 +57,13 @@ assign cw_rf_write_addr =
 	(curr_instr_kind == `INSTR_ADDU || curr_instr_kind == `INSTR_SUBU) ? curr_instr[15:11] : 
 	(curr_instr_kind == `INSTR_LUI || curr_instr_kind == `INSTR_ORI || curr_instr_kind == `INSTR_LW || curr_instr_kind == `INSTR_SW || curr_instr_kind == `INSTR_BEQ || curr_instr_kind == `INSTR_NOP) ? curr_instr[20:16] : 
 	(curr_instr_kind == `INSTR_JAL) ? 5'd31 : 
+	(curr_instr_kind == `INSTR_JALR) ? curr_instr[15:11] : 
 	curr_instr[20:16];
 
 assign cm_rf_write_data = 
 	(curr_instr_kind == `INSTR_ADDU || curr_instr_kind == `INSTR_SUBU || curr_instr_kind == `INSTR_LUI || curr_instr_kind == `INSTR_ORI || curr_instr_kind == `INSTR_SW || curr_instr_kind == `INSTR_BEQ || curr_instr_kind == `INSTR_NOP) ? `CW_RF_WRITE_DATA_ALU_RESULT : 
 	(curr_instr_kind == `INSTR_LW) ? `CW_RF_WRITE_DATA_DM_READ_RESULT :
-	(curr_instr_kind == `INSTR_JAL) ? `CW_RF_WRITE_DATA_PC_ADD_4 : 
+	(curr_instr_kind == `INSTR_JAL || curr_instr_kind == `INSTR_JALR) ? `CW_RF_WRITE_DATA_PC_ADD_4 : 
 	`CW_RF_WRITE_DATA_ALU_RESULT;
 
 assign cm_alu_num2 = 
@@ -72,11 +74,11 @@ assign cm_alu_num2 =
 assign cw_npc_jump_mode =
 	(curr_instr_kind == `INSTR_BEQ) ? `NPC_JUMP_WHEN_EQUAL : 
 	(curr_instr_kind == `INSTR_JAL) ? `NPC_JUMP_JNUM : 
-	(curr_instr_kind == `INSTR_JR) ? `NPC_JUMP_REG : 
+	(curr_instr_kind == `INSTR_JR || curr_instr_kind == `INSTR_JALR) ? `NPC_JUMP_REG : 
 	`NPC_JUMP_DISABLED;
 
 assign cw_rf_write_enable =
-	(curr_instr_kind == `INSTR_ADDU || curr_instr_kind == `INSTR_SUBU || curr_instr_kind == `INSTR_LUI || curr_instr_kind == `INSTR_ORI || curr_instr_kind == `INSTR_LW || curr_instr_kind == `INSTR_JAL) ? `RF_WRITE_ENABLED : 
+	(curr_instr_kind == `INSTR_ADDU || curr_instr_kind == `INSTR_SUBU || curr_instr_kind == `INSTR_LUI || curr_instr_kind == `INSTR_ORI || curr_instr_kind == `INSTR_LW || curr_instr_kind == `INSTR_JAL || curr_instr_kind == `INSTR_JALR) ? `RF_WRITE_ENABLED : 
 	`RF_WRITE_DISABLED;
 
 assign cw_alu_op =
@@ -101,3 +103,4 @@ assign cw_dm_write_enable =
 	`DM_WRITE_DISABLED;
 
 endmodule
+

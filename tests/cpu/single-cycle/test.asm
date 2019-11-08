@@ -54,3 +54,13 @@ ori $9, 0xbeef
 good3:
 lui $9, 0x0123
 ori $9, 0x4567
+
+# Test 11: jalr
+ori $11, 0x3088 # la $11, good4
+jalr $30, $11
+evil4:
+lui $9, 0xdead
+ori $9, 0xbeef
+good4:
+lui $9, 0x0123
+ori $9, 0x4567
