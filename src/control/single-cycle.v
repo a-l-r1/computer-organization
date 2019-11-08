@@ -10,8 +10,6 @@
 
 `define PART_NAME "control"
 
-`include "debug/debug.h"
-
 module control(
 	input [31:0] curr_instr, 
 	output [4:0] cw_rf_read_addr1, 
