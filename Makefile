@@ -17,6 +17,12 @@ DOC = doc
 EXPORT = export
 EXPORT_DOC = $(EXPORT)/doc
 
+RELEASE_DIRNAME = release
+RELEASE := `git log --pretty=format:%h -n 1`
+
+VERILOG_FILES := $(shell find src -name '*.[vh]' | xargs)
+VERILOG_FILES_FLATTENED := $(shell find src -name '*.[vh]' -exec 'basename' {} \; | xargs)
+
 # Put the files in the order of content
 _MD_FILES = header.md \
 	datapath/npc.md \
@@ -37,7 +43,7 @@ _MD_FILES = header.md \
 	tips.md
 MD_FILES = $(patsubst %, $(DOC)/%, $(_MD_FILES))
 
-.PHONY: all doc code debug_on
+.PHONY: all doc code debug_on release
 
 all: 
 	@echo "TODO"
@@ -56,4 +62,10 @@ debug-on:
 
 debug-off:
 	$(PYTHON) $(DEBUG_CONTROL) $(DEBUG_H_FILE) off
+
+release:
+	mkdir $(RELEASE_DIRNAME)/tmp-release-zip
+	cp $(VERILOG_FILES) $(RELEASE_DIRNAME)/tmp-release-zip
+	zip -r $(RELEASE_DIRNAME)/cpu-$(CODENAME)-$(RELEASE).zip $(RELEASE_DIRNAME)/
+	rm -rf $(RELEASE_DIRNAME)/tmp-release-zip
 
