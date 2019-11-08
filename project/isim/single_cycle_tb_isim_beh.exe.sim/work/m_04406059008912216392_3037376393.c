@@ -26,7 +26,7 @@ static int ng1[] = {0, 0};
 static int ng2[] = {1024, 0};
 static unsigned int ng3[] = {0U, 0U};
 static int ng4[] = {1, 0};
-static const char *ng5 = "code.hex";
+static const char *ng5 = "code.txt";
 static unsigned int ng6[] = {12288U, 0U};
 static unsigned int ng7[] = {1U, 0U};
 
@@ -95,7 +95,8 @@ LAB3:    t1 = (t0 + 2088);
 
 LAB5:    xsi_set_current_line(20, ng0);
     t1 = (t0 + 1928);
-    xsi_vlogfile_readmemh(ng5, 0, t1, 0, 0, 0, 0);
+    t2 = ((char*)((ng1)));
+    xsi_vlogfile_readmemh(ng5, 0, t1, 1, *((unsigned int *)t2), 0, 0);
 
 LAB1:    return;
 LAB4:    xsi_set_current_line(16, ng0);
