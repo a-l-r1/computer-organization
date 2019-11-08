@@ -17,8 +17,8 @@ Analyzing Verilog file "/home/a-l-r/co/src/project/../tests/cpu/single-cycle/sin
 Analyzing Verilog file "/opt/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
 Completed static elaboration
-Fuse Memory Usage: 83556 KB
-Fuse CPU Usage: 860 ms
+Fuse Memory Usage: 83452 KB
+Fuse CPU Usage: 920 ms
 Compiling module control
 Compiling module npc
 Compiling module pc
@@ -35,6 +35,6 @@ Compiling module glbl
 Time Resolution for simulation is 1ps.
 Compiled 13 Verilog Units
 Built simulation executable /home/a-l-r/co/src/project/single_cycle_tb_isim_beh.exe
-Fuse Memory Usage: 1169056 KB
-Fuse CPU Usage: 890 ms
+Fuse Memory Usage: 1169004 KB
+Fuse CPU Usage: 960 ms
 GCC CPU Usage: 1240 ms
