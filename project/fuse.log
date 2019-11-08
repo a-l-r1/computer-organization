@@ -37,4 +37,4 @@ Compiled 13 Verilog Units
 Built simulation executable /home/a-l-r/co/src/project/single_cycle_tb_isim_beh.exe
 Fuse Memory Usage: 1169004 KB
 Fuse CPU Usage: 960 ms
-GCC CPU Usage: 1240 ms
+GCC CPU Usage: 1230 ms
