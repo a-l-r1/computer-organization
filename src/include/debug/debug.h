@@ -4,7 +4,7 @@
 /* The ultimate switch */
 /* WARNING: use `undef to turn off debugging properly */
 
-`define DEBUG
+`undef DEBUG
 
 /* Force override debugging */
 `ifdef NODEBUG
