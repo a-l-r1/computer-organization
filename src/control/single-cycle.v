@@ -14,8 +14,10 @@
 
 module control(
 	input [31:0] curr_instr, 
-	output cm_rf_write_addr, 
-	output cm_rf_write_data, 
+	output [4:0] cw_rf_read_addr1, 
+	output [4:0] cw_rf_read_addr2, 
+	output [4:0] cw_rf_write_addr, 
+	output [1:0] cm_rf_write_data, 
 	output cm_alu_num2, 
 	output [2:0] cw_npc_jump_mode, 
 	output cw_pc_enable, 
@@ -43,11 +45,14 @@ assign curr_instr_kind =
 	(`GET_OP(curr_instr) == `INSTR_MAGIC_RTYPE_OP && `GET_FUNCT(curr_instr) == `INSTR_MAGIC_NOP_FUNCT) ? `INSTR_NOP : 
 	`INSTR_UNKNOWN;
 
+assign cw_rf_read_addr1 = curr_instr[25:21];
+assign cw_rf_read_addr2 = curr_instr[20:16];
+
 /* TODO: instruction type identification not implemented */
 
-assign cm_rf_write_addr = 
-	(curr_instr_kind == `INSTR_ADDU || curr_instr_kind == `INSTR_SUBU) ? `CM_RF_WRITE_ADDR_IM_DATA_15_11 : 
-	(curr_instr_kind == `INSTR_LUI || curr_instr_kind == `INSTR_ORI || curr_instr_kind == `INSTR_LW || curr_instr_kind == `INSTR_SW || curr_instr_kind == `INSTR_BEQ || curr_instr_kind == `INSTR_NOP) ? `CM_RF_WRITE_ADDR_IM_DATA_20_16 : 
+assign cw_rf_write_addr = 
+	(curr_instr_kind == `INSTR_ADDU || curr_instr_kind == `INSTR_SUBU) ? curr_instr[15:11] : 
+	(curr_instr_kind == `INSTR_LUI || curr_instr_kind == `INSTR_ORI || curr_instr_kind == `INSTR_LW || curr_instr_kind == `INSTR_SW || curr_instr_kind == `INSTR_BEQ || curr_instr_kind == `INSTR_NOP) ? curr_instr[20:16] : 
 	`CM_RF_WRITE_ADDR_IM_DATA_20_16;
 
 assign cm_rf_write_data = 
