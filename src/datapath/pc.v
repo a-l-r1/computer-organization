@@ -24,7 +24,7 @@ end
 
 always @(posedge clk) begin
 	if (rst == 1'b1) begin
-		saved_pc <= `PC_START_ADDRESS:
+		saved_pc <= `PC_START_ADDRESS;
 	end else begin
 		if (enable == `PC_ENABLED) begin
 			saved_pc <= next_pc;
