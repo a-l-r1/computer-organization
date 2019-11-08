@@ -26,18 +26,22 @@ module single_cycle_tb;
 
 	// Inputs
 	reg clk;
+	reg rst;
 
 	// Instantiate the Unit Under Test (UUT)
-	cpu uut (
-		.clk(clk)
+	mips uut (
+		.clk(clk), 
+		.reset(rst)
 	);
 
 	initial begin
 		// Initialize Inputs
 		clk = 0;
+		rst = 1;
 
 		// Wait 100 ns for global reset to finish
 		#100;
+		rst = 0;
         
 		// Add stimulus here
 		/* No stimuli, but finishing the simulation is needed */
