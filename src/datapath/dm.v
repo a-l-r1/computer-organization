@@ -2,8 +2,6 @@
 
 `define PART_NAME "dm"
 
-`include "debug/debug.h"
-
 module dm(
 	input clk, 
 	input rst, 
@@ -33,7 +31,7 @@ always @(posedge clk) begin
 	end else begin
 		if (write_enable == `DM_WRITE_ENABLE) begin
 			memory[write_addr[`DM_ADDR_WIDTH - 1:2]] <= write_data;
-			`normal_display((`DM_OUTPUT_FORMAT, curr_pc, write_addr, write_data));
+			$display(`DM_OUTPUT_FORMAT, curr_pc, write_addr, write_data);
 		end
 	end
 end

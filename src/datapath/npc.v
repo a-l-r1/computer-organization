@@ -3,8 +3,6 @@
 
 `define PART_NAME "npc"
 
-`include "debug/debug.h"
-
 module npc(
 	input [31:0] curr_pc, 
 	input [2:0] jump_mode, 
@@ -27,12 +25,6 @@ assign next_pc =
 	(jump_mode == `NPC_JUMP_JNUM) ? {curr_pc[31:28], jnum, 2'b00} : 
 	(jump_mode == `NPC_JUMP_REG) ? reg_ : 
 	$signed(base);
-
-/* TODO: what if all the signals don't change? */
-always @* begin
-	`debug_write(("curr_pc = 0x%08x, jump_mode = 0b%03b, alu_comp_result = 0b%02b, num = 0x%04x, next_pc = 0x%08x\n", 
-		curr_pc, jump_mode, alu_comp_result, num, next_pc));
-end
 
 endmodule
 
