@@ -25,7 +25,7 @@ static const char *ng0 = "/home/a-l-r/co/src/src/cpu/mips.v";
 
 
 
-static void Cont_53_0(char *t0)
+static void Cont_59_0(char *t0)
 {
     char *t1;
     char *t2;
@@ -36,33 +36,33 @@ static void Cont_53_0(char *t0)
     char *t7;
     char *t8;
 
-LAB0:    t1 = (t0 + 6200U);
+LAB0:    t1 = (t0 + 6520U);
     t2 = *((char **)t1);
     if (t2 == 0)
         goto LAB2;
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(53, ng0);
-    t2 = (t0 + 3448U);
+LAB2:    xsi_set_current_line(59, ng0);
+    t2 = (t0 + 3768U);
     t3 = *((char **)t2);
-    t2 = (t0 + 6600);
+    t2 = (t0 + 6920);
     t4 = (t2 + 56U);
     t5 = *((char **)t4);
     t6 = (t5 + 56U);
     t7 = *((char **)t6);
     memcpy(t7, t3, 8);
     xsi_driver_vfirst_trans(t2, 0, 31);
-    t8 = (t0 + 6520);
+    t8 = (t0 + 6840);
     *((int *)t8) = 1;
 
 LAB1:    return;
 }
 
 
-extern void work_m_12939217808811439897_3877310806_init()
+extern void work_m_14686651114165047670_3877310806_init()
 {
-	static char *pe[] = {(void *)Cont_53_0};
-	xsi_register_didat("work_m_12939217808811439897_3877310806", "isim/single_cycle_tb_isim_beh.exe.sim/work/m_12939217808811439897_3877310806.didat");
+	static char *pe[] = {(void *)Cont_59_0};
+	xsi_register_didat("work_m_14686651114165047670_3877310806", "isim/single_cycle_tb_isim_beh.exe.sim/work/m_14686651114165047670_3877310806.didat");
 	xsi_register_executes(pe);
 }

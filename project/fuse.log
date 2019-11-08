@@ -18,15 +18,15 @@ Analyzing Verilog file "/opt/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into li
 Starting static elaboration
 Completed static elaboration
 Fuse Memory Usage: 83556 KB
-Fuse CPU Usage: 840 ms
+Fuse CPU Usage: 960 ms
 Compiling module control
 Compiling module npc
 Compiling module pc
 Compiling module im
-Compiling module mux2(BIT_WIDTH=5)
-Compiling module mux2
+Compiling module mux4
 Compiling module rf
 Compiling module ext
+Compiling module mux2
 Compiling module alu
 Compiling module dm
 Compiling module mips
@@ -37,5 +37,5 @@ Waiting for 1 sub-compilation(s) to finish...
 Compiled 13 Verilog Units
 Built simulation executable /home/a-l-r/co/src/project/single_cycle_tb_isim_beh.exe
 Fuse Memory Usage: 1169056 KB
-Fuse CPU Usage: 880 ms
-GCC CPU Usage: 1150 ms
+Fuse CPU Usage: 990 ms
+GCC CPU Usage: 1280 ms
