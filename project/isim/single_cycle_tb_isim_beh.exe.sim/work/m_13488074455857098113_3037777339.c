@@ -38,8 +38,9 @@ static unsigned int ng13[] = {7U, 0U};
 static unsigned int ng14[] = {8U, 0U};
 static unsigned int ng15[] = {9U, 0U};
 static unsigned int ng16[] = {10U, 0U};
-static unsigned int ng17[] = {31U, 0U};
-static unsigned int ng18[] = {17U, 0U};
+static unsigned int ng17[] = {11U, 0U};
+static unsigned int ng18[] = {31U, 0U};
+static unsigned int ng19[] = {17U, 0U};
 
 
 
@@ -205,6 +206,15 @@ static void Cont_37_2(char *t0)
     char t696[8];
     char t712[8];
     char t720[8];
+    char t768[8];
+    char t769[8];
+    char t770[8];
+    char t781[8];
+    char t797[8];
+    char t809[8];
+    char t820[8];
+    char t836[8];
+    char t844[8];
     char *t1;
     char *t2;
     char *t6;
@@ -912,21 +922,136 @@ static void Cont_37_2(char *t0)
     unsigned int t765;
     unsigned int t766;
     unsigned int t767;
-    char *t768;
-    char *t769;
-    char *t770;
     char *t771;
     char *t772;
     char *t773;
     unsigned int t774;
     unsigned int t775;
-    char *t776;
+    unsigned int t776;
     unsigned int t777;
     unsigned int t778;
-    char *t779;
-    unsigned int t780;
-    unsigned int t781;
+    unsigned int t779;
+    char *t780;
     char *t782;
+    char *t783;
+    unsigned int t784;
+    unsigned int t785;
+    unsigned int t786;
+    unsigned int t787;
+    unsigned int t788;
+    unsigned int t789;
+    unsigned int t790;
+    unsigned int t791;
+    unsigned int t792;
+    unsigned int t793;
+    unsigned int t794;
+    unsigned int t795;
+    char *t796;
+    char *t798;
+    unsigned int t799;
+    unsigned int t800;
+    unsigned int t801;
+    unsigned int t802;
+    unsigned int t803;
+    char *t804;
+    char *t805;
+    unsigned int t806;
+    unsigned int t807;
+    unsigned int t808;
+    char *t810;
+    char *t811;
+    char *t812;
+    unsigned int t813;
+    unsigned int t814;
+    unsigned int t815;
+    unsigned int t816;
+    unsigned int t817;
+    unsigned int t818;
+    char *t819;
+    char *t821;
+    char *t822;
+    unsigned int t823;
+    unsigned int t824;
+    unsigned int t825;
+    unsigned int t826;
+    unsigned int t827;
+    unsigned int t828;
+    unsigned int t829;
+    unsigned int t830;
+    unsigned int t831;
+    unsigned int t832;
+    unsigned int t833;
+    unsigned int t834;
+    char *t835;
+    char *t837;
+    unsigned int t838;
+    unsigned int t839;
+    unsigned int t840;
+    unsigned int t841;
+    unsigned int t842;
+    char *t843;
+    unsigned int t845;
+    unsigned int t846;
+    unsigned int t847;
+    char *t848;
+    char *t849;
+    char *t850;
+    unsigned int t851;
+    unsigned int t852;
+    unsigned int t853;
+    unsigned int t854;
+    unsigned int t855;
+    unsigned int t856;
+    unsigned int t857;
+    char *t858;
+    char *t859;
+    unsigned int t860;
+    unsigned int t861;
+    unsigned int t862;
+    unsigned int t863;
+    unsigned int t864;
+    unsigned int t865;
+    unsigned int t866;
+    unsigned int t867;
+    int t868;
+    int t869;
+    unsigned int t870;
+    unsigned int t871;
+    unsigned int t872;
+    unsigned int t873;
+    unsigned int t874;
+    unsigned int t875;
+    char *t876;
+    unsigned int t877;
+    unsigned int t878;
+    unsigned int t879;
+    unsigned int t880;
+    unsigned int t881;
+    char *t882;
+    char *t883;
+    unsigned int t884;
+    unsigned int t885;
+    unsigned int t886;
+    char *t887;
+    unsigned int t888;
+    unsigned int t889;
+    unsigned int t890;
+    unsigned int t891;
+    char *t892;
+    char *t893;
+    char *t894;
+    char *t895;
+    char *t896;
+    char *t897;
+    unsigned int t898;
+    unsigned int t899;
+    char *t900;
+    unsigned int t901;
+    unsigned int t902;
+    char *t903;
+    unsigned int t904;
+    unsigned int t905;
+    char *t906;
 
 LAB0:    t1 = (t0 + 4776U);
     t2 = *((char **)t1);
@@ -1032,27 +1157,27 @@ LAB35:    if (*((unsigned int *)t4) > 0)
 
 LAB37:    memcpy(t3, t126, 8);
 
-LAB38:    t769 = (t0 + 7944);
-    t770 = (t769 + 56U);
-    t771 = *((char **)t770);
-    t772 = (t771 + 56U);
-    t773 = *((char **)t772);
-    memset(t773, 0, 8);
-    t774 = 255U;
-    t775 = t774;
-    t776 = (t3 + 4);
-    t777 = *((unsigned int *)t3);
-    t774 = (t774 & t777);
-    t778 = *((unsigned int *)t776);
-    t775 = (t775 & t778);
-    t779 = (t773 + 4);
-    t780 = *((unsigned int *)t773);
-    *((unsigned int *)t773) = (t780 | t774);
-    t781 = *((unsigned int *)t779);
-    *((unsigned int *)t779) = (t781 | t775);
-    xsi_driver_vfirst_trans(t769, 0, 7);
-    t782 = (t0 + 7576);
-    *((int *)t782) = 1;
+LAB38:    t893 = (t0 + 7944);
+    t894 = (t893 + 56U);
+    t895 = *((char **)t894);
+    t896 = (t895 + 56U);
+    t897 = *((char **)t896);
+    memset(t897, 0, 8);
+    t898 = 255U;
+    t899 = t898;
+    t900 = (t3 + 4);
+    t901 = *((unsigned int *)t3);
+    t898 = (t898 & t901);
+    t902 = *((unsigned int *)t900);
+    t899 = (t899 & t902);
+    t903 = (t897 + 4);
+    t904 = *((unsigned int *)t897);
+    *((unsigned int *)t897) = (t904 | t898);
+    t905 = *((unsigned int *)t903);
+    *((unsigned int *)t903) = (t905 | t899);
+    xsi_driver_vfirst_trans(t893, 0, 7);
+    t906 = (t0 + 7576);
+    *((int *)t906) = 1;
 
 LAB1:    return;
 LAB6:    t30 = (t15 + 4);
@@ -2495,8 +2620,103 @@ LAB235:    t758 = (t645 + 4);
 LAB237:    t763 = ((char*)((ng16)));
     goto LAB238;
 
-LAB239:    t768 = ((char*)((ng2)));
-    goto LAB240;
+LAB239:    t771 = (t0 + 1048U);
+    t772 = *((char **)t771);
+    memset(t770, 0, 8);
+    t771 = (t770 + 4);
+    t773 = (t772 + 4);
+    t774 = *((unsigned int *)t772);
+    t775 = (t774 >> 26);
+    *((unsigned int *)t770) = t775;
+    t776 = *((unsigned int *)t773);
+    t777 = (t776 >> 26);
+    *((unsigned int *)t771) = t777;
+    t778 = *((unsigned int *)t770);
+    *((unsigned int *)t770) = (t778 & 63U);
+    t779 = *((unsigned int *)t771);
+    *((unsigned int *)t771) = (t779 & 63U);
+    t780 = ((char*)((ng2)));
+    memset(t781, 0, 8);
+    t782 = (t770 + 4);
+    t783 = (t780 + 4);
+    t784 = *((unsigned int *)t770);
+    t785 = *((unsigned int *)t780);
+    t786 = (t784 ^ t785);
+    t787 = *((unsigned int *)t782);
+    t788 = *((unsigned int *)t783);
+    t789 = (t787 ^ t788);
+    t790 = (t786 | t789);
+    t791 = *((unsigned int *)t782);
+    t792 = *((unsigned int *)t783);
+    t793 = (t791 | t792);
+    t794 = (~(t793));
+    t795 = (t790 & t794);
+    if (t795 != 0)
+        goto LAB249;
+
+LAB246:    if (t793 != 0)
+        goto LAB248;
+
+LAB247:    *((unsigned int *)t781) = 1;
+
+LAB249:    memset(t797, 0, 8);
+    t798 = (t781 + 4);
+    t799 = *((unsigned int *)t798);
+    t800 = (~(t799));
+    t801 = *((unsigned int *)t781);
+    t802 = (t801 & t800);
+    t803 = (t802 & 1U);
+    if (t803 != 0)
+        goto LAB250;
+
+LAB251:    if (*((unsigned int *)t798) != 0)
+        goto LAB252;
+
+LAB253:    t805 = (t797 + 4);
+    t806 = *((unsigned int *)t797);
+    t807 = *((unsigned int *)t805);
+    t808 = (t806 || t807);
+    if (t808 > 0)
+        goto LAB254;
+
+LAB255:    memcpy(t844, t797, 8);
+
+LAB256:    memset(t769, 0, 8);
+    t876 = (t844 + 4);
+    t877 = *((unsigned int *)t876);
+    t878 = (~(t877));
+    t879 = *((unsigned int *)t844);
+    t880 = (t879 & t878);
+    t881 = (t880 & 1U);
+    if (t881 != 0)
+        goto LAB268;
+
+LAB269:    if (*((unsigned int *)t876) != 0)
+        goto LAB270;
+
+LAB271:    t883 = (t769 + 4);
+    t884 = *((unsigned int *)t769);
+    t885 = *((unsigned int *)t883);
+    t886 = (t884 || t885);
+    if (t886 > 0)
+        goto LAB272;
+
+LAB273:    t888 = *((unsigned int *)t769);
+    t889 = (~(t888));
+    t890 = *((unsigned int *)t883);
+    t891 = (t889 || t890);
+    if (t891 > 0)
+        goto LAB274;
+
+LAB275:    if (*((unsigned int *)t883) > 0)
+        goto LAB276;
+
+LAB277:    if (*((unsigned int *)t769) > 0)
+        goto LAB278;
+
+LAB279:    memcpy(t768, t892, 8);
+
+LAB280:    goto LAB240;
 
 LAB241:    xsi_vlog_unsigned_bit_combine(t644, 8, t763, 8, t768, 8);
     goto LAB245;
@@ -2504,9 +2724,153 @@ LAB241:    xsi_vlog_unsigned_bit_combine(t644, 8, t763, 8, t768, 8);
 LAB243:    memcpy(t644, t763, 8);
     goto LAB245;
 
+LAB248:    t796 = (t781 + 4);
+    *((unsigned int *)t781) = 1;
+    *((unsigned int *)t796) = 1;
+    goto LAB249;
+
+LAB250:    *((unsigned int *)t797) = 1;
+    goto LAB253;
+
+LAB252:    t804 = (t797 + 4);
+    *((unsigned int *)t797) = 1;
+    *((unsigned int *)t804) = 1;
+    goto LAB253;
+
+LAB254:    t810 = (t0 + 1048U);
+    t811 = *((char **)t810);
+    memset(t809, 0, 8);
+    t810 = (t809 + 4);
+    t812 = (t811 + 4);
+    t813 = *((unsigned int *)t811);
+    t814 = (t813 >> 0);
+    *((unsigned int *)t809) = t814;
+    t815 = *((unsigned int *)t812);
+    t816 = (t815 >> 0);
+    *((unsigned int *)t810) = t816;
+    t817 = *((unsigned int *)t809);
+    *((unsigned int *)t809) = (t817 & 63U);
+    t818 = *((unsigned int *)t810);
+    *((unsigned int *)t810) = (t818 & 63U);
+    t819 = ((char*)((ng15)));
+    memset(t820, 0, 8);
+    t821 = (t809 + 4);
+    t822 = (t819 + 4);
+    t823 = *((unsigned int *)t809);
+    t824 = *((unsigned int *)t819);
+    t825 = (t823 ^ t824);
+    t826 = *((unsigned int *)t821);
+    t827 = *((unsigned int *)t822);
+    t828 = (t826 ^ t827);
+    t829 = (t825 | t828);
+    t830 = *((unsigned int *)t821);
+    t831 = *((unsigned int *)t822);
+    t832 = (t830 | t831);
+    t833 = (~(t832));
+    t834 = (t829 & t833);
+    if (t834 != 0)
+        goto LAB260;
+
+LAB257:    if (t832 != 0)
+        goto LAB259;
+
+LAB258:    *((unsigned int *)t820) = 1;
+
+LAB260:    memset(t836, 0, 8);
+    t837 = (t820 + 4);
+    t838 = *((unsigned int *)t837);
+    t839 = (~(t838));
+    t840 = *((unsigned int *)t820);
+    t841 = (t840 & t839);
+    t842 = (t841 & 1U);
+    if (t842 != 0)
+        goto LAB261;
+
+LAB262:    if (*((unsigned int *)t837) != 0)
+        goto LAB263;
+
+LAB264:    t845 = *((unsigned int *)t797);
+    t846 = *((unsigned int *)t836);
+    t847 = (t845 & t846);
+    *((unsigned int *)t844) = t847;
+    t848 = (t797 + 4);
+    t849 = (t836 + 4);
+    t850 = (t844 + 4);
+    t851 = *((unsigned int *)t848);
+    t852 = *((unsigned int *)t849);
+    t853 = (t851 | t852);
+    *((unsigned int *)t850) = t853;
+    t854 = *((unsigned int *)t850);
+    t855 = (t854 != 0);
+    if (t855 == 1)
+        goto LAB265;
+
+LAB266:
+LAB267:    goto LAB256;
+
+LAB259:    t835 = (t820 + 4);
+    *((unsigned int *)t820) = 1;
+    *((unsigned int *)t835) = 1;
+    goto LAB260;
+
+LAB261:    *((unsigned int *)t836) = 1;
+    goto LAB264;
+
+LAB263:    t843 = (t836 + 4);
+    *((unsigned int *)t836) = 1;
+    *((unsigned int *)t843) = 1;
+    goto LAB264;
+
+LAB265:    t856 = *((unsigned int *)t844);
+    t857 = *((unsigned int *)t850);
+    *((unsigned int *)t844) = (t856 | t857);
+    t858 = (t797 + 4);
+    t859 = (t836 + 4);
+    t860 = *((unsigned int *)t797);
+    t861 = (~(t860));
+    t862 = *((unsigned int *)t858);
+    t863 = (~(t862));
+    t864 = *((unsigned int *)t836);
+    t865 = (~(t864));
+    t866 = *((unsigned int *)t859);
+    t867 = (~(t866));
+    t868 = (t861 & t863);
+    t869 = (t865 & t867);
+    t870 = (~(t868));
+    t871 = (~(t869));
+    t872 = *((unsigned int *)t850);
+    *((unsigned int *)t850) = (t872 & t870);
+    t873 = *((unsigned int *)t850);
+    *((unsigned int *)t850) = (t873 & t871);
+    t874 = *((unsigned int *)t844);
+    *((unsigned int *)t844) = (t874 & t870);
+    t875 = *((unsigned int *)t844);
+    *((unsigned int *)t844) = (t875 & t871);
+    goto LAB267;
+
+LAB268:    *((unsigned int *)t769) = 1;
+    goto LAB271;
+
+LAB270:    t882 = (t769 + 4);
+    *((unsigned int *)t769) = 1;
+    *((unsigned int *)t882) = 1;
+    goto LAB271;
+
+LAB272:    t887 = ((char*)((ng17)));
+    goto LAB273;
+
+LAB274:    t892 = ((char*)((ng2)));
+    goto LAB275;
+
+LAB276:    xsi_vlog_unsigned_bit_combine(t768, 8, t887, 8, t892, 8);
+    goto LAB280;
+
+LAB278:    memcpy(t768, t887, 8);
+    goto LAB280;
+
 }
 
-static void Cont_50_3(char *t0)
+static void Cont_51_3(char *t0)
 {
     char t3[8];
     char *t1;
@@ -2541,7 +2905,7 @@ LAB0:    t1 = (t0 + 5024U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(50, ng0);
+LAB2:    xsi_set_current_line(51, ng0);
     t2 = (t0 + 1048U);
     t4 = *((char **)t2);
     memset(t3, 0, 8);
@@ -2582,7 +2946,7 @@ LAB2:    xsi_set_current_line(50, ng0);
 LAB1:    return;
 }
 
-static void Cont_51_4(char *t0)
+static void Cont_52_4(char *t0)
 {
     char t3[8];
     char *t1;
@@ -2617,7 +2981,7 @@ LAB0:    t1 = (t0 + 5272U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(51, ng0);
+LAB2:    xsi_set_current_line(52, ng0);
     t2 = (t0 + 1048U);
     t4 = *((char **)t2);
     memset(t3, 0, 8);
@@ -2658,7 +3022,7 @@ LAB2:    xsi_set_current_line(51, ng0);
 LAB1:    return;
 }
 
-static void Cont_55_5(char *t0)
+static void Cont_56_5(char *t0)
 {
     char t3[8];
     char t4[8];
@@ -2696,6 +3060,10 @@ static void Cont_55_5(char *t0)
     char t495[8];
     char t498[8];
     char t530[8];
+    char t531[8];
+    char t534[8];
+    char t561[8];
+    char t575[8];
     char *t1;
     char *t2;
     char *t5;
@@ -3190,29 +3558,70 @@ static void Cont_55_5(char *t0)
     unsigned int t527;
     unsigned int t528;
     unsigned int t529;
-    char *t531;
     char *t532;
     char *t533;
-    unsigned int t534;
-    unsigned int t535;
-    unsigned int t536;
+    char *t535;
+    char *t536;
     unsigned int t537;
     unsigned int t538;
     unsigned int t539;
-    char *t540;
-    char *t541;
-    char *t542;
-    char *t543;
-    char *t544;
+    unsigned int t540;
+    unsigned int t541;
+    unsigned int t542;
+    unsigned int t543;
+    unsigned int t544;
     unsigned int t545;
     unsigned int t546;
-    char *t547;
+    unsigned int t547;
     unsigned int t548;
-    unsigned int t549;
+    char *t549;
     char *t550;
     unsigned int t551;
     unsigned int t552;
-    char *t553;
+    unsigned int t553;
+    unsigned int t554;
+    unsigned int t555;
+    char *t556;
+    char *t557;
+    unsigned int t558;
+    unsigned int t559;
+    unsigned int t560;
+    char *t562;
+    char *t563;
+    char *t564;
+    unsigned int t565;
+    unsigned int t566;
+    unsigned int t567;
+    unsigned int t568;
+    unsigned int t569;
+    unsigned int t570;
+    unsigned int t571;
+    unsigned int t572;
+    unsigned int t573;
+    unsigned int t574;
+    char *t576;
+    char *t577;
+    char *t578;
+    unsigned int t579;
+    unsigned int t580;
+    unsigned int t581;
+    unsigned int t582;
+    unsigned int t583;
+    unsigned int t584;
+    char *t585;
+    char *t586;
+    char *t587;
+    char *t588;
+    char *t589;
+    unsigned int t590;
+    unsigned int t591;
+    char *t592;
+    unsigned int t593;
+    unsigned int t594;
+    char *t595;
+    unsigned int t596;
+    unsigned int t597;
+    char *t598;
 
 LAB0:    t1 = (t0 + 5520U);
     t2 = *((char **)t1);
@@ -3221,7 +3630,7 @@ LAB0:    t1 = (t0 + 5520U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(55, ng0);
+LAB2:    xsi_set_current_line(56, ng0);
     t2 = (t0 + 3128U);
     t5 = *((char **)t2);
     t2 = ((char*)((ng1)));
@@ -3306,27 +3715,27 @@ LAB35:    if (*((unsigned int *)t4) > 0)
 
 LAB37:    memcpy(t3, t114, 8);
 
-LAB38:    t540 = (t0 + 8136);
-    t541 = (t540 + 56U);
-    t542 = *((char **)t541);
-    t543 = (t542 + 56U);
-    t544 = *((char **)t543);
-    memset(t544, 0, 8);
-    t545 = 31U;
-    t546 = t545;
-    t547 = (t3 + 4);
-    t548 = *((unsigned int *)t3);
-    t545 = (t545 & t548);
-    t549 = *((unsigned int *)t547);
-    t546 = (t546 & t549);
-    t550 = (t544 + 4);
-    t551 = *((unsigned int *)t544);
-    *((unsigned int *)t544) = (t551 | t545);
-    t552 = *((unsigned int *)t550);
-    *((unsigned int *)t550) = (t552 | t546);
-    xsi_driver_vfirst_trans(t540, 0, 4);
-    t553 = (t0 + 7624);
-    *((int *)t553) = 1;
+LAB38:    t585 = (t0 + 8136);
+    t586 = (t585 + 56U);
+    t587 = *((char **)t586);
+    t588 = (t587 + 56U);
+    t589 = *((char **)t588);
+    memset(t589, 0, 8);
+    t590 = 31U;
+    t591 = t590;
+    t592 = (t3 + 4);
+    t593 = *((unsigned int *)t3);
+    t590 = (t590 & t593);
+    t594 = *((unsigned int *)t592);
+    t591 = (t591 & t594);
+    t595 = (t589 + 4);
+    t596 = *((unsigned int *)t589);
+    *((unsigned int *)t589) = (t596 | t590);
+    t597 = *((unsigned int *)t595);
+    *((unsigned int *)t595) = (t597 | t591);
+    xsi_driver_vfirst_trans(t585, 0, 4);
+    t598 = (t0 + 7624);
+    *((int *)t598) = 1;
 
 LAB1:    return;
 LAB6:    t21 = (t6 + 4);
@@ -4255,25 +4664,71 @@ LAB152:    t520 = (t495 + 4);
     *((unsigned int *)t520) = 1;
     goto LAB153;
 
-LAB154:    t525 = ((char*)((ng17)));
+LAB154:    t525 = ((char*)((ng18)));
     goto LAB155;
 
-LAB156:    t531 = (t0 + 1048U);
-    t532 = *((char **)t531);
-    memset(t530, 0, 8);
-    t531 = (t530 + 4);
-    t533 = (t532 + 4);
-    t534 = *((unsigned int *)t532);
-    t535 = (t534 >> 16);
-    *((unsigned int *)t530) = t535;
-    t536 = *((unsigned int *)t533);
-    t537 = (t536 >> 16);
-    *((unsigned int *)t531) = t537;
-    t538 = *((unsigned int *)t530);
-    *((unsigned int *)t530) = (t538 & 31U);
-    t539 = *((unsigned int *)t531);
-    *((unsigned int *)t531) = (t539 & 31U);
-    goto LAB157;
+LAB156:    t532 = (t0 + 3128U);
+    t533 = *((char **)t532);
+    t532 = ((char*)((ng17)));
+    memset(t534, 0, 8);
+    t535 = (t533 + 4);
+    t536 = (t532 + 4);
+    t537 = *((unsigned int *)t533);
+    t538 = *((unsigned int *)t532);
+    t539 = (t537 ^ t538);
+    t540 = *((unsigned int *)t535);
+    t541 = *((unsigned int *)t536);
+    t542 = (t540 ^ t541);
+    t543 = (t539 | t542);
+    t544 = *((unsigned int *)t535);
+    t545 = *((unsigned int *)t536);
+    t546 = (t544 | t545);
+    t547 = (~(t546));
+    t548 = (t543 & t547);
+    if (t548 != 0)
+        goto LAB166;
+
+LAB163:    if (t546 != 0)
+        goto LAB165;
+
+LAB164:    *((unsigned int *)t534) = 1;
+
+LAB166:    memset(t531, 0, 8);
+    t550 = (t534 + 4);
+    t551 = *((unsigned int *)t550);
+    t552 = (~(t551));
+    t553 = *((unsigned int *)t534);
+    t554 = (t553 & t552);
+    t555 = (t554 & 1U);
+    if (t555 != 0)
+        goto LAB167;
+
+LAB168:    if (*((unsigned int *)t550) != 0)
+        goto LAB169;
+
+LAB170:    t557 = (t531 + 4);
+    t558 = *((unsigned int *)t531);
+    t559 = *((unsigned int *)t557);
+    t560 = (t558 || t559);
+    if (t560 > 0)
+        goto LAB171;
+
+LAB172:    t571 = *((unsigned int *)t531);
+    t572 = (~(t571));
+    t573 = *((unsigned int *)t557);
+    t574 = (t572 || t573);
+    if (t574 > 0)
+        goto LAB173;
+
+LAB174:    if (*((unsigned int *)t557) > 0)
+        goto LAB175;
+
+LAB176:    if (*((unsigned int *)t531) > 0)
+        goto LAB177;
+
+LAB178:    memcpy(t530, t575, 8);
+
+LAB179:    goto LAB157;
 
 LAB158:    xsi_vlog_unsigned_bit_combine(t494, 5, t525, 5, t530, 5);
     goto LAB162;
@@ -4281,9 +4736,62 @@ LAB158:    xsi_vlog_unsigned_bit_combine(t494, 5, t525, 5, t530, 5);
 LAB160:    memcpy(t494, t525, 8);
     goto LAB162;
 
+LAB165:    t549 = (t534 + 4);
+    *((unsigned int *)t534) = 1;
+    *((unsigned int *)t549) = 1;
+    goto LAB166;
+
+LAB167:    *((unsigned int *)t531) = 1;
+    goto LAB170;
+
+LAB169:    t556 = (t531 + 4);
+    *((unsigned int *)t531) = 1;
+    *((unsigned int *)t556) = 1;
+    goto LAB170;
+
+LAB171:    t562 = (t0 + 1048U);
+    t563 = *((char **)t562);
+    memset(t561, 0, 8);
+    t562 = (t561 + 4);
+    t564 = (t563 + 4);
+    t565 = *((unsigned int *)t563);
+    t566 = (t565 >> 11);
+    *((unsigned int *)t561) = t566;
+    t567 = *((unsigned int *)t564);
+    t568 = (t567 >> 11);
+    *((unsigned int *)t562) = t568;
+    t569 = *((unsigned int *)t561);
+    *((unsigned int *)t561) = (t569 & 31U);
+    t570 = *((unsigned int *)t562);
+    *((unsigned int *)t562) = (t570 & 31U);
+    goto LAB172;
+
+LAB173:    t576 = (t0 + 1048U);
+    t577 = *((char **)t576);
+    memset(t575, 0, 8);
+    t576 = (t575 + 4);
+    t578 = (t577 + 4);
+    t579 = *((unsigned int *)t577);
+    t580 = (t579 >> 16);
+    *((unsigned int *)t575) = t580;
+    t581 = *((unsigned int *)t578);
+    t582 = (t581 >> 16);
+    *((unsigned int *)t576) = t582;
+    t583 = *((unsigned int *)t575);
+    *((unsigned int *)t575) = (t583 & 31U);
+    t584 = *((unsigned int *)t576);
+    *((unsigned int *)t576) = (t584 & 31U);
+    goto LAB174;
+
+LAB175:    xsi_vlog_unsigned_bit_combine(t530, 5, t561, 5, t575, 5);
+    goto LAB179;
+
+LAB177:    memcpy(t530, t561, 8);
+    goto LAB179;
+
 }
 
-static void Cont_61_6(char *t0)
+static void Cont_63_6(char *t0)
 {
     char t3[8];
     char t4[8];
@@ -4318,6 +4826,10 @@ static void Cont_61_6(char *t0)
     char t476[8];
     char t477[8];
     char t480[8];
+    char t496[8];
+    char t511[8];
+    char t527[8];
+    char t535[8];
     char *t1;
     char *t2;
     char *t5;
@@ -4780,37 +5292,100 @@ static void Cont_61_6(char *t0)
     unsigned int t493;
     unsigned int t494;
     char *t495;
-    char *t496;
-    unsigned int t497;
+    char *t497;
     unsigned int t498;
     unsigned int t499;
     unsigned int t500;
     unsigned int t501;
-    char *t502;
+    unsigned int t502;
     char *t503;
-    unsigned int t504;
+    char *t504;
     unsigned int t505;
     unsigned int t506;
-    char *t507;
+    unsigned int t507;
     unsigned int t508;
-    unsigned int t509;
-    unsigned int t510;
-    unsigned int t511;
+    char *t509;
+    char *t510;
     char *t512;
     char *t513;
-    char *t514;
-    char *t515;
-    char *t516;
-    char *t517;
+    unsigned int t514;
+    unsigned int t515;
+    unsigned int t516;
+    unsigned int t517;
     unsigned int t518;
     unsigned int t519;
-    char *t520;
+    unsigned int t520;
     unsigned int t521;
     unsigned int t522;
-    char *t523;
+    unsigned int t523;
     unsigned int t524;
     unsigned int t525;
     char *t526;
+    char *t528;
+    unsigned int t529;
+    unsigned int t530;
+    unsigned int t531;
+    unsigned int t532;
+    unsigned int t533;
+    char *t534;
+    unsigned int t536;
+    unsigned int t537;
+    unsigned int t538;
+    char *t539;
+    char *t540;
+    char *t541;
+    unsigned int t542;
+    unsigned int t543;
+    unsigned int t544;
+    unsigned int t545;
+    unsigned int t546;
+    unsigned int t547;
+    unsigned int t548;
+    char *t549;
+    char *t550;
+    unsigned int t551;
+    unsigned int t552;
+    unsigned int t553;
+    int t554;
+    unsigned int t555;
+    unsigned int t556;
+    unsigned int t557;
+    int t558;
+    unsigned int t559;
+    unsigned int t560;
+    unsigned int t561;
+    unsigned int t562;
+    char *t563;
+    unsigned int t564;
+    unsigned int t565;
+    unsigned int t566;
+    unsigned int t567;
+    unsigned int t568;
+    char *t569;
+    char *t570;
+    unsigned int t571;
+    unsigned int t572;
+    unsigned int t573;
+    char *t574;
+    unsigned int t575;
+    unsigned int t576;
+    unsigned int t577;
+    unsigned int t578;
+    char *t579;
+    char *t580;
+    char *t581;
+    char *t582;
+    char *t583;
+    char *t584;
+    unsigned int t585;
+    unsigned int t586;
+    char *t587;
+    unsigned int t588;
+    unsigned int t589;
+    char *t590;
+    unsigned int t591;
+    unsigned int t592;
+    char *t593;
 
 LAB0:    t1 = (t0 + 5768U);
     t2 = *((char **)t1);
@@ -4819,7 +5394,7 @@ LAB0:    t1 = (t0 + 5768U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(61, ng0);
+LAB2:    xsi_set_current_line(63, ng0);
     t2 = (t0 + 3128U);
     t5 = *((char **)t2);
     t2 = ((char*)((ng1)));
@@ -5019,27 +5594,27 @@ LAB125:    if (*((unsigned int *)t4) > 0)
 
 LAB127:    memcpy(t3, t440, 8);
 
-LAB128:    t513 = (t0 + 8200);
-    t514 = (t513 + 56U);
-    t515 = *((char **)t514);
-    t516 = (t515 + 56U);
-    t517 = *((char **)t516);
-    memset(t517, 0, 8);
-    t518 = 3U;
-    t519 = t518;
-    t520 = (t3 + 4);
-    t521 = *((unsigned int *)t3);
-    t518 = (t518 & t521);
-    t522 = *((unsigned int *)t520);
-    t519 = (t519 & t522);
-    t523 = (t517 + 4);
-    t524 = *((unsigned int *)t517);
-    *((unsigned int *)t517) = (t524 | t518);
-    t525 = *((unsigned int *)t523);
-    *((unsigned int *)t523) = (t525 | t519);
-    xsi_driver_vfirst_trans(t513, 0, 1);
-    t526 = (t0 + 7640);
-    *((int *)t526) = 1;
+LAB128:    t580 = (t0 + 8200);
+    t581 = (t580 + 56U);
+    t582 = *((char **)t581);
+    t583 = (t582 + 56U);
+    t584 = *((char **)t583);
+    memset(t584, 0, 8);
+    t585 = 3U;
+    t586 = t585;
+    t587 = (t3 + 4);
+    t588 = *((unsigned int *)t3);
+    t585 = (t585 & t588);
+    t589 = *((unsigned int *)t587);
+    t586 = (t586 & t589);
+    t590 = (t584 + 4);
+    t591 = *((unsigned int *)t584);
+    *((unsigned int *)t584) = (t591 | t585);
+    t592 = *((unsigned int *)t590);
+    *((unsigned int *)t590) = (t592 | t586);
+    xsi_driver_vfirst_trans(t580, 0, 1);
+    t593 = (t0 + 7640);
+    *((int *)t593) = 1;
 
 LAB1:    return;
 LAB6:    t21 = (t6 + 4);
@@ -5769,42 +6344,65 @@ LAB146:    if (t492 != 0)
 
 LAB147:    *((unsigned int *)t480) = 1;
 
-LAB149:    memset(t477, 0, 8);
-    t496 = (t480 + 4);
-    t497 = *((unsigned int *)t496);
-    t498 = (~(t497));
-    t499 = *((unsigned int *)t480);
-    t500 = (t499 & t498);
-    t501 = (t500 & 1U);
-    if (t501 != 0)
+LAB149:    memset(t496, 0, 8);
+    t497 = (t480 + 4);
+    t498 = *((unsigned int *)t497);
+    t499 = (~(t498));
+    t500 = *((unsigned int *)t480);
+    t501 = (t500 & t499);
+    t502 = (t501 & 1U);
+    if (t502 != 0)
         goto LAB150;
 
-LAB151:    if (*((unsigned int *)t496) != 0)
+LAB151:    if (*((unsigned int *)t497) != 0)
         goto LAB152;
 
-LAB153:    t503 = (t477 + 4);
-    t504 = *((unsigned int *)t477);
-    t505 = *((unsigned int *)t503);
-    t506 = (t504 || t505);
-    if (t506 > 0)
+LAB153:    t504 = (t496 + 4);
+    t505 = *((unsigned int *)t496);
+    t506 = (!(t505));
+    t507 = *((unsigned int *)t504);
+    t508 = (t506 || t507);
+    if (t508 > 0)
         goto LAB154;
 
-LAB155:    t508 = *((unsigned int *)t477);
-    t509 = (~(t508));
-    t510 = *((unsigned int *)t503);
-    t511 = (t509 || t510);
-    if (t511 > 0)
-        goto LAB156;
+LAB155:    memcpy(t535, t496, 8);
 
-LAB157:    if (*((unsigned int *)t503) > 0)
-        goto LAB158;
+LAB156:    memset(t477, 0, 8);
+    t563 = (t535 + 4);
+    t564 = *((unsigned int *)t563);
+    t565 = (~(t564));
+    t566 = *((unsigned int *)t535);
+    t567 = (t566 & t565);
+    t568 = (t567 & 1U);
+    if (t568 != 0)
+        goto LAB168;
 
-LAB159:    if (*((unsigned int *)t477) > 0)
-        goto LAB160;
+LAB169:    if (*((unsigned int *)t563) != 0)
+        goto LAB170;
 
-LAB161:    memcpy(t476, t512, 8);
+LAB171:    t570 = (t477 + 4);
+    t571 = *((unsigned int *)t477);
+    t572 = *((unsigned int *)t570);
+    t573 = (t571 || t572);
+    if (t573 > 0)
+        goto LAB172;
 
-LAB162:    goto LAB140;
+LAB173:    t575 = *((unsigned int *)t477);
+    t576 = (~(t575));
+    t577 = *((unsigned int *)t570);
+    t578 = (t576 || t577);
+    if (t578 > 0)
+        goto LAB174;
+
+LAB175:    if (*((unsigned int *)t570) > 0)
+        goto LAB176;
+
+LAB177:    if (*((unsigned int *)t477) > 0)
+        goto LAB178;
+
+LAB179:    memcpy(t476, t579, 8);
+
+LAB180:    goto LAB140;
 
 LAB141:    xsi_vlog_unsigned_bit_combine(t440, 2, t471, 2, t476, 2);
     goto LAB145;
@@ -5817,29 +6415,129 @@ LAB148:    t495 = (t480 + 4);
     *((unsigned int *)t495) = 1;
     goto LAB149;
 
-LAB150:    *((unsigned int *)t477) = 1;
+LAB150:    *((unsigned int *)t496) = 1;
     goto LAB153;
 
-LAB152:    t502 = (t477 + 4);
+LAB152:    t503 = (t496 + 4);
+    *((unsigned int *)t496) = 1;
+    *((unsigned int *)t503) = 1;
+    goto LAB153;
+
+LAB154:    t509 = (t0 + 3128U);
+    t510 = *((char **)t509);
+    t509 = ((char*)((ng17)));
+    memset(t511, 0, 8);
+    t512 = (t510 + 4);
+    t513 = (t509 + 4);
+    t514 = *((unsigned int *)t510);
+    t515 = *((unsigned int *)t509);
+    t516 = (t514 ^ t515);
+    t517 = *((unsigned int *)t512);
+    t518 = *((unsigned int *)t513);
+    t519 = (t517 ^ t518);
+    t520 = (t516 | t519);
+    t521 = *((unsigned int *)t512);
+    t522 = *((unsigned int *)t513);
+    t523 = (t521 | t522);
+    t524 = (~(t523));
+    t525 = (t520 & t524);
+    if (t525 != 0)
+        goto LAB160;
+
+LAB157:    if (t523 != 0)
+        goto LAB159;
+
+LAB158:    *((unsigned int *)t511) = 1;
+
+LAB160:    memset(t527, 0, 8);
+    t528 = (t511 + 4);
+    t529 = *((unsigned int *)t528);
+    t530 = (~(t529));
+    t531 = *((unsigned int *)t511);
+    t532 = (t531 & t530);
+    t533 = (t532 & 1U);
+    if (t533 != 0)
+        goto LAB161;
+
+LAB162:    if (*((unsigned int *)t528) != 0)
+        goto LAB163;
+
+LAB164:    t536 = *((unsigned int *)t496);
+    t537 = *((unsigned int *)t527);
+    t538 = (t536 | t537);
+    *((unsigned int *)t535) = t538;
+    t539 = (t496 + 4);
+    t540 = (t527 + 4);
+    t541 = (t535 + 4);
+    t542 = *((unsigned int *)t539);
+    t543 = *((unsigned int *)t540);
+    t544 = (t542 | t543);
+    *((unsigned int *)t541) = t544;
+    t545 = *((unsigned int *)t541);
+    t546 = (t545 != 0);
+    if (t546 == 1)
+        goto LAB165;
+
+LAB166:
+LAB167:    goto LAB156;
+
+LAB159:    t526 = (t511 + 4);
+    *((unsigned int *)t511) = 1;
+    *((unsigned int *)t526) = 1;
+    goto LAB160;
+
+LAB161:    *((unsigned int *)t527) = 1;
+    goto LAB164;
+
+LAB163:    t534 = (t527 + 4);
+    *((unsigned int *)t527) = 1;
+    *((unsigned int *)t534) = 1;
+    goto LAB164;
+
+LAB165:    t547 = *((unsigned int *)t535);
+    t548 = *((unsigned int *)t541);
+    *((unsigned int *)t535) = (t547 | t548);
+    t549 = (t496 + 4);
+    t550 = (t527 + 4);
+    t551 = *((unsigned int *)t549);
+    t552 = (~(t551));
+    t553 = *((unsigned int *)t496);
+    t554 = (t553 & t552);
+    t555 = *((unsigned int *)t550);
+    t556 = (~(t555));
+    t557 = *((unsigned int *)t527);
+    t558 = (t557 & t556);
+    t559 = (~(t554));
+    t560 = (~(t558));
+    t561 = *((unsigned int *)t541);
+    *((unsigned int *)t541) = (t561 & t559);
+    t562 = *((unsigned int *)t541);
+    *((unsigned int *)t541) = (t562 & t560);
+    goto LAB167;
+
+LAB168:    *((unsigned int *)t477) = 1;
+    goto LAB171;
+
+LAB170:    t569 = (t477 + 4);
     *((unsigned int *)t477) = 1;
-    *((unsigned int *)t502) = 1;
-    goto LAB153;
+    *((unsigned int *)t569) = 1;
+    goto LAB171;
 
-LAB154:    t507 = ((char*)((ng5)));
-    goto LAB155;
+LAB172:    t574 = ((char*)((ng5)));
+    goto LAB173;
 
-LAB156:    t512 = ((char*)((ng2)));
-    goto LAB157;
+LAB174:    t579 = ((char*)((ng2)));
+    goto LAB175;
 
-LAB158:    xsi_vlog_unsigned_bit_combine(t476, 2, t507, 2, t512, 2);
-    goto LAB162;
+LAB176:    xsi_vlog_unsigned_bit_combine(t476, 2, t574, 2, t579, 2);
+    goto LAB180;
 
-LAB160:    memcpy(t476, t507, 8);
-    goto LAB162;
+LAB178:    memcpy(t476, t574, 8);
+    goto LAB180;
 
 }
 
-static void Cont_67_7(char *t0)
+static void Cont_69_7(char *t0)
 {
     char t3[8];
     char t4[8];
@@ -6339,7 +7037,7 @@ LAB0:    t1 = (t0 + 6016U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(67, ng0);
+LAB2:    xsi_set_current_line(69, ng0);
     t2 = (t0 + 3128U);
     t5 = *((char **)t2);
     t2 = ((char*)((ng1)));
@@ -7274,7 +7972,7 @@ LAB143:    memcpy(t239, t471, 8);
 
 }
 
-static void Cont_72_8(char *t0)
+static void Cont_74_8(char *t0)
 {
     char t3[8];
     char t4[8];
@@ -7285,6 +7983,10 @@ static void Cont_72_8(char *t0)
     char t74[8];
     char t75[8];
     char t78[8];
+    char t94[8];
+    char t109[8];
+    char t125[8];
+    char t133[8];
     char *t1;
     char *t2;
     char *t5;
@@ -7369,37 +8071,100 @@ static void Cont_72_8(char *t0)
     unsigned int t91;
     unsigned int t92;
     char *t93;
-    char *t94;
-    unsigned int t95;
+    char *t95;
     unsigned int t96;
     unsigned int t97;
     unsigned int t98;
     unsigned int t99;
-    char *t100;
+    unsigned int t100;
     char *t101;
-    unsigned int t102;
+    char *t102;
     unsigned int t103;
     unsigned int t104;
-    char *t105;
+    unsigned int t105;
     unsigned int t106;
-    unsigned int t107;
-    unsigned int t108;
-    unsigned int t109;
+    char *t107;
+    char *t108;
     char *t110;
     char *t111;
-    char *t112;
-    char *t113;
-    char *t114;
-    char *t115;
+    unsigned int t112;
+    unsigned int t113;
+    unsigned int t114;
+    unsigned int t115;
     unsigned int t116;
     unsigned int t117;
-    char *t118;
+    unsigned int t118;
     unsigned int t119;
     unsigned int t120;
-    char *t121;
+    unsigned int t121;
     unsigned int t122;
     unsigned int t123;
     char *t124;
+    char *t126;
+    unsigned int t127;
+    unsigned int t128;
+    unsigned int t129;
+    unsigned int t130;
+    unsigned int t131;
+    char *t132;
+    unsigned int t134;
+    unsigned int t135;
+    unsigned int t136;
+    char *t137;
+    char *t138;
+    char *t139;
+    unsigned int t140;
+    unsigned int t141;
+    unsigned int t142;
+    unsigned int t143;
+    unsigned int t144;
+    unsigned int t145;
+    unsigned int t146;
+    char *t147;
+    char *t148;
+    unsigned int t149;
+    unsigned int t150;
+    unsigned int t151;
+    int t152;
+    unsigned int t153;
+    unsigned int t154;
+    unsigned int t155;
+    int t156;
+    unsigned int t157;
+    unsigned int t158;
+    unsigned int t159;
+    unsigned int t160;
+    char *t161;
+    unsigned int t162;
+    unsigned int t163;
+    unsigned int t164;
+    unsigned int t165;
+    unsigned int t166;
+    char *t167;
+    char *t168;
+    unsigned int t169;
+    unsigned int t170;
+    unsigned int t171;
+    char *t172;
+    unsigned int t173;
+    unsigned int t174;
+    unsigned int t175;
+    unsigned int t176;
+    char *t177;
+    char *t178;
+    char *t179;
+    char *t180;
+    char *t181;
+    char *t182;
+    unsigned int t183;
+    unsigned int t184;
+    char *t185;
+    unsigned int t186;
+    unsigned int t187;
+    char *t188;
+    unsigned int t189;
+    unsigned int t190;
+    char *t191;
 
 LAB0:    t1 = (t0 + 6264U);
     t2 = *((char **)t1);
@@ -7408,7 +8173,7 @@ LAB0:    t1 = (t0 + 6264U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(72, ng0);
+LAB2:    xsi_set_current_line(74, ng0);
     t2 = (t0 + 3128U);
     t5 = *((char **)t2);
     t2 = ((char*)((ng13)));
@@ -7470,27 +8235,27 @@ LAB17:    if (*((unsigned int *)t4) > 0)
 
 LAB19:    memcpy(t3, t38, 8);
 
-LAB20:    t111 = (t0 + 8328);
-    t112 = (t111 + 56U);
-    t113 = *((char **)t112);
-    t114 = (t113 + 56U);
-    t115 = *((char **)t114);
-    memset(t115, 0, 8);
-    t116 = 7U;
-    t117 = t116;
-    t118 = (t3 + 4);
-    t119 = *((unsigned int *)t3);
-    t116 = (t116 & t119);
-    t120 = *((unsigned int *)t118);
-    t117 = (t117 & t120);
-    t121 = (t115 + 4);
-    t122 = *((unsigned int *)t115);
-    *((unsigned int *)t115) = (t122 | t116);
-    t123 = *((unsigned int *)t121);
-    *((unsigned int *)t121) = (t123 | t117);
-    xsi_driver_vfirst_trans(t111, 0, 2);
-    t124 = (t0 + 7672);
-    *((int *)t124) = 1;
+LAB20:    t178 = (t0 + 8328);
+    t179 = (t178 + 56U);
+    t180 = *((char **)t179);
+    t181 = (t180 + 56U);
+    t182 = *((char **)t181);
+    memset(t182, 0, 8);
+    t183 = 7U;
+    t184 = t183;
+    t185 = (t3 + 4);
+    t186 = *((unsigned int *)t3);
+    t183 = (t183 & t186);
+    t187 = *((unsigned int *)t185);
+    t184 = (t184 & t187);
+    t188 = (t182 + 4);
+    t189 = *((unsigned int *)t182);
+    *((unsigned int *)t182) = (t189 | t183);
+    t190 = *((unsigned int *)t188);
+    *((unsigned int *)t188) = (t190 | t184);
+    xsi_driver_vfirst_trans(t178, 0, 2);
+    t191 = (t0 + 7672);
+    *((int *)t191) = 1;
 
 LAB1:    return;
 LAB6:    t21 = (t6 + 4);
@@ -7620,42 +8385,65 @@ LAB38:    if (t90 != 0)
 
 LAB39:    *((unsigned int *)t78) = 1;
 
-LAB41:    memset(t75, 0, 8);
-    t94 = (t78 + 4);
-    t95 = *((unsigned int *)t94);
-    t96 = (~(t95));
-    t97 = *((unsigned int *)t78);
-    t98 = (t97 & t96);
-    t99 = (t98 & 1U);
-    if (t99 != 0)
+LAB41:    memset(t94, 0, 8);
+    t95 = (t78 + 4);
+    t96 = *((unsigned int *)t95);
+    t97 = (~(t96));
+    t98 = *((unsigned int *)t78);
+    t99 = (t98 & t97);
+    t100 = (t99 & 1U);
+    if (t100 != 0)
         goto LAB42;
 
-LAB43:    if (*((unsigned int *)t94) != 0)
+LAB43:    if (*((unsigned int *)t95) != 0)
         goto LAB44;
 
-LAB45:    t101 = (t75 + 4);
-    t102 = *((unsigned int *)t75);
-    t103 = *((unsigned int *)t101);
-    t104 = (t102 || t103);
-    if (t104 > 0)
+LAB45:    t102 = (t94 + 4);
+    t103 = *((unsigned int *)t94);
+    t104 = (!(t103));
+    t105 = *((unsigned int *)t102);
+    t106 = (t104 || t105);
+    if (t106 > 0)
         goto LAB46;
 
-LAB47:    t106 = *((unsigned int *)t75);
-    t107 = (~(t106));
-    t108 = *((unsigned int *)t101);
-    t109 = (t107 || t108);
-    if (t109 > 0)
-        goto LAB48;
+LAB47:    memcpy(t133, t94, 8);
 
-LAB49:    if (*((unsigned int *)t101) > 0)
-        goto LAB50;
+LAB48:    memset(t75, 0, 8);
+    t161 = (t133 + 4);
+    t162 = *((unsigned int *)t161);
+    t163 = (~(t162));
+    t164 = *((unsigned int *)t133);
+    t165 = (t164 & t163);
+    t166 = (t165 & 1U);
+    if (t166 != 0)
+        goto LAB60;
 
-LAB51:    if (*((unsigned int *)t75) > 0)
-        goto LAB52;
+LAB61:    if (*((unsigned int *)t161) != 0)
+        goto LAB62;
 
-LAB53:    memcpy(t74, t110, 8);
+LAB63:    t168 = (t75 + 4);
+    t169 = *((unsigned int *)t75);
+    t170 = *((unsigned int *)t168);
+    t171 = (t169 || t170);
+    if (t171 > 0)
+        goto LAB64;
 
-LAB54:    goto LAB32;
+LAB65:    t173 = *((unsigned int *)t75);
+    t174 = (~(t173));
+    t175 = *((unsigned int *)t168);
+    t176 = (t174 || t175);
+    if (t176 > 0)
+        goto LAB66;
+
+LAB67:    if (*((unsigned int *)t168) > 0)
+        goto LAB68;
+
+LAB69:    if (*((unsigned int *)t75) > 0)
+        goto LAB70;
+
+LAB71:    memcpy(t74, t177, 8);
+
+LAB72:    goto LAB32;
 
 LAB33:    xsi_vlog_unsigned_bit_combine(t38, 3, t69, 3, t74, 3);
     goto LAB37;
@@ -7668,29 +8456,129 @@ LAB40:    t93 = (t78 + 4);
     *((unsigned int *)t93) = 1;
     goto LAB41;
 
-LAB42:    *((unsigned int *)t75) = 1;
+LAB42:    *((unsigned int *)t94) = 1;
     goto LAB45;
 
-LAB44:    t100 = (t75 + 4);
+LAB44:    t101 = (t94 + 4);
+    *((unsigned int *)t94) = 1;
+    *((unsigned int *)t101) = 1;
+    goto LAB45;
+
+LAB46:    t107 = (t0 + 3128U);
+    t108 = *((char **)t107);
+    t107 = ((char*)((ng17)));
+    memset(t109, 0, 8);
+    t110 = (t108 + 4);
+    t111 = (t107 + 4);
+    t112 = *((unsigned int *)t108);
+    t113 = *((unsigned int *)t107);
+    t114 = (t112 ^ t113);
+    t115 = *((unsigned int *)t110);
+    t116 = *((unsigned int *)t111);
+    t117 = (t115 ^ t116);
+    t118 = (t114 | t117);
+    t119 = *((unsigned int *)t110);
+    t120 = *((unsigned int *)t111);
+    t121 = (t119 | t120);
+    t122 = (~(t121));
+    t123 = (t118 & t122);
+    if (t123 != 0)
+        goto LAB52;
+
+LAB49:    if (t121 != 0)
+        goto LAB51;
+
+LAB50:    *((unsigned int *)t109) = 1;
+
+LAB52:    memset(t125, 0, 8);
+    t126 = (t109 + 4);
+    t127 = *((unsigned int *)t126);
+    t128 = (~(t127));
+    t129 = *((unsigned int *)t109);
+    t130 = (t129 & t128);
+    t131 = (t130 & 1U);
+    if (t131 != 0)
+        goto LAB53;
+
+LAB54:    if (*((unsigned int *)t126) != 0)
+        goto LAB55;
+
+LAB56:    t134 = *((unsigned int *)t94);
+    t135 = *((unsigned int *)t125);
+    t136 = (t134 | t135);
+    *((unsigned int *)t133) = t136;
+    t137 = (t94 + 4);
+    t138 = (t125 + 4);
+    t139 = (t133 + 4);
+    t140 = *((unsigned int *)t137);
+    t141 = *((unsigned int *)t138);
+    t142 = (t140 | t141);
+    *((unsigned int *)t139) = t142;
+    t143 = *((unsigned int *)t139);
+    t144 = (t143 != 0);
+    if (t144 == 1)
+        goto LAB57;
+
+LAB58:
+LAB59:    goto LAB48;
+
+LAB51:    t124 = (t109 + 4);
+    *((unsigned int *)t109) = 1;
+    *((unsigned int *)t124) = 1;
+    goto LAB52;
+
+LAB53:    *((unsigned int *)t125) = 1;
+    goto LAB56;
+
+LAB55:    t132 = (t125 + 4);
+    *((unsigned int *)t125) = 1;
+    *((unsigned int *)t132) = 1;
+    goto LAB56;
+
+LAB57:    t145 = *((unsigned int *)t133);
+    t146 = *((unsigned int *)t139);
+    *((unsigned int *)t133) = (t145 | t146);
+    t147 = (t94 + 4);
+    t148 = (t125 + 4);
+    t149 = *((unsigned int *)t147);
+    t150 = (~(t149));
+    t151 = *((unsigned int *)t94);
+    t152 = (t151 & t150);
+    t153 = *((unsigned int *)t148);
+    t154 = (~(t153));
+    t155 = *((unsigned int *)t125);
+    t156 = (t155 & t154);
+    t157 = (~(t152));
+    t158 = (~(t156));
+    t159 = *((unsigned int *)t139);
+    *((unsigned int *)t139) = (t159 & t157);
+    t160 = *((unsigned int *)t139);
+    *((unsigned int *)t139) = (t160 & t158);
+    goto LAB59;
+
+LAB60:    *((unsigned int *)t75) = 1;
+    goto LAB63;
+
+LAB62:    t167 = (t75 + 4);
     *((unsigned int *)t75) = 1;
-    *((unsigned int *)t100) = 1;
-    goto LAB45;
+    *((unsigned int *)t167) = 1;
+    goto LAB63;
 
-LAB46:    t105 = ((char*)((ng9)));
-    goto LAB47;
+LAB64:    t172 = ((char*)((ng9)));
+    goto LAB65;
 
-LAB48:    t110 = ((char*)((ng2)));
-    goto LAB49;
+LAB66:    t177 = ((char*)((ng2)));
+    goto LAB67;
 
-LAB50:    xsi_vlog_unsigned_bit_combine(t74, 3, t105, 3, t110, 3);
-    goto LAB54;
+LAB68:    xsi_vlog_unsigned_bit_combine(t74, 3, t172, 3, t177, 3);
+    goto LAB72;
 
-LAB52:    memcpy(t74, t105, 8);
-    goto LAB54;
+LAB70:    memcpy(t74, t172, 8);
+    goto LAB72;
 
 }
 
-static void Cont_78_9(char *t0)
+static void Cont_80_9(char *t0)
 {
     char t3[8];
     char t4[8];
@@ -7715,6 +8603,10 @@ static void Cont_78_9(char *t0)
     char t305[8];
     char t321[8];
     char t329[8];
+    char t357[8];
+    char t372[8];
+    char t388[8];
+    char t396[8];
     char *t1;
     char *t2;
     char *t5;
@@ -8048,37 +8940,100 @@ static void Cont_78_9(char *t0)
     unsigned int t354;
     unsigned int t355;
     unsigned int t356;
-    char *t357;
-    unsigned int t358;
+    char *t358;
     unsigned int t359;
     unsigned int t360;
     unsigned int t361;
     unsigned int t362;
-    char *t363;
+    unsigned int t363;
     char *t364;
-    unsigned int t365;
+    char *t365;
     unsigned int t366;
     unsigned int t367;
-    char *t368;
+    unsigned int t368;
     unsigned int t369;
-    unsigned int t370;
-    unsigned int t371;
-    unsigned int t372;
+    char *t370;
+    char *t371;
     char *t373;
     char *t374;
-    char *t375;
-    char *t376;
-    char *t377;
-    char *t378;
+    unsigned int t375;
+    unsigned int t376;
+    unsigned int t377;
+    unsigned int t378;
     unsigned int t379;
     unsigned int t380;
-    char *t381;
+    unsigned int t381;
     unsigned int t382;
     unsigned int t383;
-    char *t384;
+    unsigned int t384;
     unsigned int t385;
     unsigned int t386;
     char *t387;
+    char *t389;
+    unsigned int t390;
+    unsigned int t391;
+    unsigned int t392;
+    unsigned int t393;
+    unsigned int t394;
+    char *t395;
+    unsigned int t397;
+    unsigned int t398;
+    unsigned int t399;
+    char *t400;
+    char *t401;
+    char *t402;
+    unsigned int t403;
+    unsigned int t404;
+    unsigned int t405;
+    unsigned int t406;
+    unsigned int t407;
+    unsigned int t408;
+    unsigned int t409;
+    char *t410;
+    char *t411;
+    unsigned int t412;
+    unsigned int t413;
+    unsigned int t414;
+    int t415;
+    unsigned int t416;
+    unsigned int t417;
+    unsigned int t418;
+    int t419;
+    unsigned int t420;
+    unsigned int t421;
+    unsigned int t422;
+    unsigned int t423;
+    char *t424;
+    unsigned int t425;
+    unsigned int t426;
+    unsigned int t427;
+    unsigned int t428;
+    unsigned int t429;
+    char *t430;
+    char *t431;
+    unsigned int t432;
+    unsigned int t433;
+    unsigned int t434;
+    char *t435;
+    unsigned int t436;
+    unsigned int t437;
+    unsigned int t438;
+    unsigned int t439;
+    char *t440;
+    char *t441;
+    char *t442;
+    char *t443;
+    char *t444;
+    char *t445;
+    unsigned int t446;
+    unsigned int t447;
+    char *t448;
+    unsigned int t449;
+    unsigned int t450;
+    char *t451;
+    unsigned int t452;
+    unsigned int t453;
+    char *t454;
 
 LAB0:    t1 = (t0 + 6512U);
     t2 = *((char **)t1);
@@ -8087,7 +9042,7 @@ LAB0:    t1 = (t0 + 6512U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(78, ng0);
+LAB2:    xsi_set_current_line(80, ng0);
     t2 = (t0 + 3128U);
     t5 = *((char **)t2);
     t2 = ((char*)((ng1)));
@@ -8229,62 +9184,85 @@ LAB83:    t298 = (t290 + 4);
 
 LAB85:    memcpy(t329, t290, 8);
 
-LAB86:    memset(t4, 0, 8);
-    t357 = (t329 + 4);
-    t358 = *((unsigned int *)t357);
-    t359 = (~(t358));
-    t360 = *((unsigned int *)t329);
-    t361 = (t360 & t359);
-    t362 = (t361 & 1U);
-    if (t362 != 0)
+LAB86:    memset(t357, 0, 8);
+    t358 = (t329 + 4);
+    t359 = *((unsigned int *)t358);
+    t360 = (~(t359));
+    t361 = *((unsigned int *)t329);
+    t362 = (t361 & t360);
+    t363 = (t362 & 1U);
+    if (t363 != 0)
         goto LAB98;
 
-LAB99:    if (*((unsigned int *)t357) != 0)
+LAB99:    if (*((unsigned int *)t358) != 0)
         goto LAB100;
 
-LAB101:    t364 = (t4 + 4);
-    t365 = *((unsigned int *)t4);
-    t366 = *((unsigned int *)t364);
-    t367 = (t365 || t366);
-    if (t367 > 0)
+LAB101:    t365 = (t357 + 4);
+    t366 = *((unsigned int *)t357);
+    t367 = (!(t366));
+    t368 = *((unsigned int *)t365);
+    t369 = (t367 || t368);
+    if (t369 > 0)
         goto LAB102;
 
-LAB103:    t369 = *((unsigned int *)t4);
-    t370 = (~(t369));
-    t371 = *((unsigned int *)t364);
-    t372 = (t370 || t371);
-    if (t372 > 0)
-        goto LAB104;
+LAB103:    memcpy(t396, t357, 8);
 
-LAB105:    if (*((unsigned int *)t364) > 0)
-        goto LAB106;
+LAB104:    memset(t4, 0, 8);
+    t424 = (t396 + 4);
+    t425 = *((unsigned int *)t424);
+    t426 = (~(t425));
+    t427 = *((unsigned int *)t396);
+    t428 = (t427 & t426);
+    t429 = (t428 & 1U);
+    if (t429 != 0)
+        goto LAB116;
 
-LAB107:    if (*((unsigned int *)t4) > 0)
-        goto LAB108;
+LAB117:    if (*((unsigned int *)t424) != 0)
+        goto LAB118;
 
-LAB109:    memcpy(t3, t373, 8);
+LAB119:    t431 = (t4 + 4);
+    t432 = *((unsigned int *)t4);
+    t433 = *((unsigned int *)t431);
+    t434 = (t432 || t433);
+    if (t434 > 0)
+        goto LAB120;
 
-LAB110:    t374 = (t0 + 8392);
-    t375 = (t374 + 56U);
-    t376 = *((char **)t375);
-    t377 = (t376 + 56U);
-    t378 = *((char **)t377);
-    memset(t378, 0, 8);
-    t379 = 1U;
-    t380 = t379;
-    t381 = (t3 + 4);
-    t382 = *((unsigned int *)t3);
-    t379 = (t379 & t382);
-    t383 = *((unsigned int *)t381);
-    t380 = (t380 & t383);
-    t384 = (t378 + 4);
-    t385 = *((unsigned int *)t378);
-    *((unsigned int *)t378) = (t385 | t379);
-    t386 = *((unsigned int *)t384);
-    *((unsigned int *)t384) = (t386 | t380);
-    xsi_driver_vfirst_trans(t374, 0, 0);
-    t387 = (t0 + 7688);
-    *((int *)t387) = 1;
+LAB121:    t436 = *((unsigned int *)t4);
+    t437 = (~(t436));
+    t438 = *((unsigned int *)t431);
+    t439 = (t437 || t438);
+    if (t439 > 0)
+        goto LAB122;
+
+LAB123:    if (*((unsigned int *)t431) > 0)
+        goto LAB124;
+
+LAB125:    if (*((unsigned int *)t4) > 0)
+        goto LAB126;
+
+LAB127:    memcpy(t3, t440, 8);
+
+LAB128:    t441 = (t0 + 8392);
+    t442 = (t441 + 56U);
+    t443 = *((char **)t442);
+    t444 = (t443 + 56U);
+    t445 = *((char **)t444);
+    memset(t445, 0, 8);
+    t446 = 1U;
+    t447 = t446;
+    t448 = (t3 + 4);
+    t449 = *((unsigned int *)t3);
+    t446 = (t446 & t449);
+    t450 = *((unsigned int *)t448);
+    t447 = (t447 & t450);
+    t451 = (t445 + 4);
+    t452 = *((unsigned int *)t445);
+    *((unsigned int *)t445) = (t452 | t446);
+    t453 = *((unsigned int *)t451);
+    *((unsigned int *)t451) = (t453 | t447);
+    xsi_driver_vfirst_trans(t441, 0, 0);
+    t454 = (t0 + 7688);
+    *((int *)t454) = 1;
 
 LAB1:    return;
 LAB6:    t21 = (t6 + 4);
@@ -8792,29 +9770,129 @@ LAB95:    t341 = *((unsigned int *)t329);
     *((unsigned int *)t335) = (t356 & t354);
     goto LAB97;
 
-LAB98:    *((unsigned int *)t4) = 1;
+LAB98:    *((unsigned int *)t357) = 1;
     goto LAB101;
 
-LAB100:    t363 = (t4 + 4);
+LAB100:    t364 = (t357 + 4);
+    *((unsigned int *)t357) = 1;
+    *((unsigned int *)t364) = 1;
+    goto LAB101;
+
+LAB102:    t370 = (t0 + 3128U);
+    t371 = *((char **)t370);
+    t370 = ((char*)((ng17)));
+    memset(t372, 0, 8);
+    t373 = (t371 + 4);
+    t374 = (t370 + 4);
+    t375 = *((unsigned int *)t371);
+    t376 = *((unsigned int *)t370);
+    t377 = (t375 ^ t376);
+    t378 = *((unsigned int *)t373);
+    t379 = *((unsigned int *)t374);
+    t380 = (t378 ^ t379);
+    t381 = (t377 | t380);
+    t382 = *((unsigned int *)t373);
+    t383 = *((unsigned int *)t374);
+    t384 = (t382 | t383);
+    t385 = (~(t384));
+    t386 = (t381 & t385);
+    if (t386 != 0)
+        goto LAB108;
+
+LAB105:    if (t384 != 0)
+        goto LAB107;
+
+LAB106:    *((unsigned int *)t372) = 1;
+
+LAB108:    memset(t388, 0, 8);
+    t389 = (t372 + 4);
+    t390 = *((unsigned int *)t389);
+    t391 = (~(t390));
+    t392 = *((unsigned int *)t372);
+    t393 = (t392 & t391);
+    t394 = (t393 & 1U);
+    if (t394 != 0)
+        goto LAB109;
+
+LAB110:    if (*((unsigned int *)t389) != 0)
+        goto LAB111;
+
+LAB112:    t397 = *((unsigned int *)t357);
+    t398 = *((unsigned int *)t388);
+    t399 = (t397 | t398);
+    *((unsigned int *)t396) = t399;
+    t400 = (t357 + 4);
+    t401 = (t388 + 4);
+    t402 = (t396 + 4);
+    t403 = *((unsigned int *)t400);
+    t404 = *((unsigned int *)t401);
+    t405 = (t403 | t404);
+    *((unsigned int *)t402) = t405;
+    t406 = *((unsigned int *)t402);
+    t407 = (t406 != 0);
+    if (t407 == 1)
+        goto LAB113;
+
+LAB114:
+LAB115:    goto LAB104;
+
+LAB107:    t387 = (t372 + 4);
+    *((unsigned int *)t372) = 1;
+    *((unsigned int *)t387) = 1;
+    goto LAB108;
+
+LAB109:    *((unsigned int *)t388) = 1;
+    goto LAB112;
+
+LAB111:    t395 = (t388 + 4);
+    *((unsigned int *)t388) = 1;
+    *((unsigned int *)t395) = 1;
+    goto LAB112;
+
+LAB113:    t408 = *((unsigned int *)t396);
+    t409 = *((unsigned int *)t402);
+    *((unsigned int *)t396) = (t408 | t409);
+    t410 = (t357 + 4);
+    t411 = (t388 + 4);
+    t412 = *((unsigned int *)t410);
+    t413 = (~(t412));
+    t414 = *((unsigned int *)t357);
+    t415 = (t414 & t413);
+    t416 = *((unsigned int *)t411);
+    t417 = (~(t416));
+    t418 = *((unsigned int *)t388);
+    t419 = (t418 & t417);
+    t420 = (~(t415));
+    t421 = (~(t419));
+    t422 = *((unsigned int *)t402);
+    *((unsigned int *)t402) = (t422 & t420);
+    t423 = *((unsigned int *)t402);
+    *((unsigned int *)t402) = (t423 & t421);
+    goto LAB115;
+
+LAB116:    *((unsigned int *)t4) = 1;
+    goto LAB119;
+
+LAB118:    t430 = (t4 + 4);
     *((unsigned int *)t4) = 1;
-    *((unsigned int *)t363) = 1;
-    goto LAB101;
+    *((unsigned int *)t430) = 1;
+    goto LAB119;
 
-LAB102:    t368 = ((char*)((ng1)));
-    goto LAB103;
+LAB120:    t435 = ((char*)((ng1)));
+    goto LAB121;
 
-LAB104:    t373 = ((char*)((ng2)));
-    goto LAB105;
+LAB122:    t440 = ((char*)((ng2)));
+    goto LAB123;
 
-LAB106:    xsi_vlog_unsigned_bit_combine(t3, 1, t368, 1, t373, 1);
-    goto LAB110;
+LAB124:    xsi_vlog_unsigned_bit_combine(t3, 1, t435, 1, t440, 1);
+    goto LAB128;
 
-LAB108:    memcpy(t3, t368, 8);
-    goto LAB110;
+LAB126:    memcpy(t3, t435, 8);
+    goto LAB128;
 
 }
 
-static void Cont_82_10(char *t0)
+static void Cont_84_10(char *t0)
 {
     char t3[8];
     char t4[8];
@@ -9128,7 +10206,7 @@ LAB0:    t1 = (t0 + 6760U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(82, ng0);
+LAB2:    xsi_set_current_line(84, ng0);
     t2 = (t0 + 3128U);
     t5 = *((char **)t2);
     t2 = ((char*)((ng1)));
@@ -9396,7 +10474,7 @@ LAB44:    t100 = (t75 + 4);
     *((unsigned int *)t100) = 1;
     goto LAB45;
 
-LAB46:    t105 = ((char*)((ng18)));
+LAB46:    t105 = ((char*)((ng19)));
     goto LAB47;
 
 LAB48:    t112 = (t0 + 3128U);
@@ -9481,7 +10559,7 @@ LAB61:    t136 = (t111 + 4);
     *((unsigned int *)t136) = 1;
     goto LAB62;
 
-LAB63:    t141 = ((char*)((ng18)));
+LAB63:    t141 = ((char*)((ng19)));
     goto LAB64;
 
 LAB65:    t148 = (t0 + 3128U);
@@ -9736,7 +10814,7 @@ LAB112:    t244 = (t219 + 4);
     *((unsigned int *)t244) = 1;
     goto LAB113;
 
-LAB114:    t249 = ((char*)((ng18)));
+LAB114:    t249 = ((char*)((ng19)));
     goto LAB115;
 
 LAB116:    t256 = (t0 + 3128U);
@@ -9821,10 +10899,10 @@ LAB129:    t280 = (t255 + 4);
     *((unsigned int *)t280) = 1;
     goto LAB130;
 
-LAB131:    t285 = ((char*)((ng18)));
+LAB131:    t285 = ((char*)((ng19)));
     goto LAB132;
 
-LAB133:    t290 = ((char*)((ng18)));
+LAB133:    t290 = ((char*)((ng19)));
     goto LAB134;
 
 LAB135:    xsi_vlog_unsigned_bit_combine(t254, 5, t285, 5, t290, 5);
@@ -9835,7 +10913,7 @@ LAB137:    memcpy(t254, t285, 8);
 
 }
 
-static void Cont_93_11(char *t0)
+static void Cont_95_11(char *t0)
 {
     char t3[8];
     char t4[8];
@@ -10304,7 +11382,7 @@ LAB0:    t1 = (t0 + 7008U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(93, ng0);
+LAB2:    xsi_set_current_line(95, ng0);
     t2 = (t0 + 3128U);
     t5 = *((char **)t2);
     t2 = ((char*)((ng1)));
@@ -11201,7 +12279,7 @@ LAB142:    memcpy(t342, t440, 8);
 
 }
 
-static void Cont_99_12(char *t0)
+static void Cont_101_12(char *t0)
 {
     char t3[8];
     char t4[8];
@@ -11263,7 +12341,7 @@ LAB0:    t1 = (t0 + 7256U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(99, ng0);
+LAB2:    xsi_set_current_line(101, ng0);
     t2 = (t0 + 3128U);
     t5 = *((char **)t2);
     t2 = ((char*)((ng12)));
@@ -11378,7 +12456,7 @@ LAB18:    memcpy(t3, t33, 8);
 
 extern void work_m_13488074455857098113_3037777339_init()
 {
-	static char *pe[] = {(void *)Cont_32_0,(void *)Cont_33_1,(void *)Cont_37_2,(void *)Cont_50_3,(void *)Cont_51_4,(void *)Cont_55_5,(void *)Cont_61_6,(void *)Cont_67_7,(void *)Cont_72_8,(void *)Cont_78_9,(void *)Cont_82_10,(void *)Cont_93_11,(void *)Cont_99_12};
+	static char *pe[] = {(void *)Cont_32_0,(void *)Cont_33_1,(void *)Cont_37_2,(void *)Cont_51_3,(void *)Cont_52_4,(void *)Cont_56_5,(void *)Cont_63_6,(void *)Cont_69_7,(void *)Cont_74_8,(void *)Cont_80_9,(void *)Cont_84_10,(void *)Cont_95_11,(void *)Cont_101_12};
 	xsi_register_didat("work_m_13488074455857098113_3037777339", "isim/single_cycle_tb_isim_beh.exe.sim/work/m_13488074455857098113_3037777339.didat");
 	xsi_register_executes(pe);
 }
