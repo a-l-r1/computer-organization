@@ -35,7 +35,7 @@ end
 always @(posedge clk) begin
 	if (write_enable == `RF_WRITE_ENABLED) begin
 		if (write_addr != `RF_ADDR_ZERO) begin
-			`normal_display((`RF_OUTPUT_FORMAT, $time, curr_pc, write_addr, write_data));
+			`normal_display((`RF_OUTPUT_FORMAT, curr_pc, write_addr, write_data));
 			registers[write_addr] <= write_data;
 		end
 	end
