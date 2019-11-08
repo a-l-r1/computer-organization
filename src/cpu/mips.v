@@ -19,6 +19,9 @@ module mips(
 
 /* wire declarations */
 
+wire rst;
+assign rst = reset;
+
 wire [31:0] control_curr_instr;
 wire cm_alu_num2;
 wire [1:0] cm_rf_write_data;
@@ -60,7 +63,6 @@ assign control_curr_instr = im_result;
 
 /* ID / WB */
 
-wire [4:0] m_rf_write_addr;
 wire [31:0] m_rf_write_data;
 wire [31:0] ext_result;
 wire [31:0] rf_read_result2;

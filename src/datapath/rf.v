@@ -31,7 +31,7 @@ always @(posedge clk) begin
 			registers[i] <= 32'b0;
 		end
 	end else begin
-		if (write_enable == `RF_WRITE_ENABLED) begin
+		if (write_enable == `RF_WRITE_ENABLED && write_addr != 0) begin
 			$display("@%h: $%d <= %h", curr_pc, write_addr, write_data);
 			registers[write_addr] <= write_data;
 		end
