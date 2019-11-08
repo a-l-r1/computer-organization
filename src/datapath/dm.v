@@ -32,7 +32,7 @@ end
 always @(posedge clk) begin
 	if (write_enable == `DM_WRITE_ENABLE) begin
 		memory[write_addr[`DM_ADDR_WIDTH - 1:2]] <= write_data;
-		`normal_display((`DM_OUTPUT_FORMAT, $time, curr_pc, write_addr, write_data));
+		`normal_display((`DM_OUTPUT_FORMAT, curr_pc, write_addr, write_data));
 	end
 end
 
