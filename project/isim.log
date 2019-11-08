@@ -22,4 +22,7 @@ Finished circuit initialization process.
 @00003030: $ 8 <= 002a0029
 @00003040: $ 9 <= 01230000
 @00003044: $ 9 <= 01234567
+@0000304c: $31 <= 00003050
+@00003058: $ 9 <= 01230000
+@0000305c: $ 9 <= 01234567
 Stopped at time : 1100 ns : File "/home/a-l-r/co/src/tests/cpu/single-cycle/single-cycle_tb.v" Line 48
