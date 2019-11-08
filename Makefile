@@ -57,9 +57,11 @@ debug-off:
 	$(PYTHON) $(DEBUG_CONTROL) $(DEBUG_H_FILE) off
 
 release:
+	# NOTE: hack
 	mkdir $(RELEASE_DIRNAME)/tmp-release-zip
 	cp $(VERILOG_FILES) $(RELEASE_DIRNAME)/tmp-release-zip
-	zip -r $(RELEASE_DIRNAME)/cpu-$(CODENAME)-$(RELEASE).zip $(RELEASE_DIRNAME)/
+	cd $(RELEASE_DIRNAME)/tmp-release-zip; zip -r cpu-$(CODENAME)-$(RELEASE).zip *
+	mv $(RELEASE_DIRNAME)/tmp-release-zip/cpu-$(CODENAME)-$(RELEASE).zip $(RELEASE_DIRNAME)	
 	rm -rf $(RELEASE_DIRNAME)/tmp-release-zip
 
 migrate-to-latex:
