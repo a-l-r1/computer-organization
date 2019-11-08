@@ -10,8 +10,9 @@
 
 `include "dm.h"
 
-module cpu(
-	input clk
+module mips(
+	input clk, 
+	input reset
 );
 
 /* Control */
@@ -83,6 +84,7 @@ npc npc(
 
 pc pc(
 	.clk(clk), 
+	.rst(rst), 
 	.next_pc(w_pc_next_pc), 
 	.enable(cw_pc_enable), 
 	.curr_pc(w_im_addr)
@@ -112,6 +114,7 @@ mux2 #(.BIT_WIDTH(32)) m_rf_write_data (
 
 rf rf(
 	.clk(clk), 
+	.rst(rst), 
 	.curr_pc(w_im_addr), 
 	.read_addr1(wo_im_result[25:21]), 
 	.read_addr2(wo_im_result[20:16]), 
@@ -155,6 +158,7 @@ alu alu(
 
 dm dm(
 	.clk(clk), 
+	.rst(rst), 
 	.curr_pc(w_im_addr), 
 	.read_addr(wo_alu_result), 
 	.write_addr(wo_alu_result), 
