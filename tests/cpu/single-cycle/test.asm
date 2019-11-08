@@ -36,3 +36,12 @@ ori $9, 0x4567
 # Test 8: nop
 nop
 
+# Test 9: jal
+jal good2
+evil2:
+lui $9, 0xdead
+ori $9, 0xbeef
+good2:
+lui $9, 0x0123
+ori $9, 0x4567
+

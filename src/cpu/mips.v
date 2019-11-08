@@ -64,6 +64,7 @@ wire [4:0] m_rf_write_addr;
 wire [31:0] m_rf_write_data;
 wire [31:0] ext_result;
 wire [31:0] rf_read_result2;
+wire [31:0] curr_pc_add_4;
 
 /* EX */
 
@@ -85,6 +86,7 @@ npc npc(
 	.jump_mode(cw_npc_jump_mode), 
 	.alu_comp_result(alu_comp_result), 
 	.num(im_result[15:0]), 
+	.jnum(im_result[25:0]), 
 	.next_pc(npc_next_pc)
 );
 
@@ -104,13 +106,15 @@ im im(
 
 /* ID / WB */
 
+assign curr_pc_add_4 = $unsigned(pc_curr_pc) + $unsigned(4);
+
 mux4 #(.BIT_WIDTH(32)) mux_rf_write_data (
 	.control(cm_rf_write_data), 
 	.result(m_rf_write_data), 
 	.input0(alu_result), 
 	.input1(dm_read_result), 
+	.input2(curr_pc_add_4), 
 	/* unused */
-	.input2(), 
 	.input3()
 );
 
