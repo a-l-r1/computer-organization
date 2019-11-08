@@ -4,16 +4,16 @@ Command line:
      -wdb  project/single_cycle_tb_isim_beh.wdb
      -simmode  tcl
      -simrunnum  0
-     -socket  33175
+     -socket  49781
 
-Fri Nov  8 22:00:15 2019
+Fri Nov  8 22:07:09 2019
 
 
- Elaboration Time: 0.02 sec
+ Elaboration Time: 0.03 sec
 
  Current Memory Usage: 162.23 Meg
 
- Total Signals          : 113
+ Total Signals          : 114
  Total Nets             : 613
  Total Signal Drivers   : 40
  Total Blocks           : 13
@@ -24,7 +24,7 @@ Fri Nov  8 22:00:15 2019
 
  Total Simulation Time: 0.03 sec
 
- Current Memory Usage: 239.415 Meg
+ Current Memory Usage: 239.411 Meg
 
-Fri Nov  8 22:00:16 2019
+Fri Nov  8 22:07:09 2019
 
