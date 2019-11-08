@@ -44,6 +44,7 @@ assign curr_instr_kind =
 	(`GET_OP(curr_instr) == `INSTR_MAGIC_BEQ_OP) ? `INSTR_BEQ : 
 	(`GET_OP(curr_instr) == `INSTR_MAGIC_RTYPE_OP && `GET_FUNCT(curr_instr) == `INSTR_MAGIC_NOP_FUNCT) ? `INSTR_NOP : 
 	(`GET_OP(curr_instr) == `INSTR_MAGIC_JAL_OP) ? `INSTR_JAL : 
+	(`GET_OP(curr_instr) == `INSTR_MAGIC_RTYPE_OP && `GET_FUNCT(curr_instr) == `INSTR_MAGIC_JR_FUNCT) ? `INSTR_JR : 
 	`INSTR_UNKNOWN;
 
 assign cw_rf_read_addr1 = curr_instr[25:21];
@@ -71,6 +72,7 @@ assign cm_alu_num2 =
 assign cw_npc_jump_mode =
 	(curr_instr_kind == `INSTR_BEQ) ? `NPC_JUMP_WHEN_EQUAL : 
 	(curr_instr_kind == `INSTR_JAL) ? `NPC_JUMP_JNUM : 
+	(curr_instr_kind == `INSTR_JR) ? `NPC_JUMP_REG : 
 	`NPC_JUMP_DISABLED;
 
 assign cw_rf_write_enable =

@@ -87,6 +87,7 @@ npc npc(
 	.alu_comp_result(alu_comp_result), 
 	.num(im_result[15:0]), 
 	.jnum(im_result[25:0]), 
+	.reg_(rf_read_result1), 
 	.next_pc(npc_next_pc)
 );
 

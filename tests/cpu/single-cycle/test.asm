@@ -45,3 +45,12 @@ good2:
 lui $9, 0x0123
 ori $9, 0x4567
 
+# Test 10: jr
+ori $10, 0x3070 # la $10, good3
+jr $10
+evil3:
+lui $9, 0xdead
+ori $9, 0xbeef
+good3:
+lui $9, 0x0123
+ori $9, 0x4567
