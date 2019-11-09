@@ -5,5 +5,8 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
+<msg type="warning" file="HDLCompiler" num="35" delta="unknown" >"/home/a-l-r/co/src/project/../src/cpu/mips.v" Line 59: &lt;<arg fmt="%s" index="1">im_result</arg>&gt; is already implicitly declared earlier.
+</msg>
+
 </messages>
 

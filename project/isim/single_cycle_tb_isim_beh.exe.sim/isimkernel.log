@@ -1,28 +1,30 @@
 Command line:
    single_cycle_tb_isim_beh.exe
-     -simmode  gui
+     -intstyle  ise
+     -wdb  project/single_cycle_tb_isim_beh.wdb
+     -simmode  tcl
      -simrunnum  0
-     -socket  48183
+     -socket  49183
 
-Fri Nov  8 23:11:31 2019
+Sat Nov  9 08:51:33 2019
 
 
  Elaboration Time: 0.02 sec
 
- Current Memory Usage: 186.216 Meg
+ Current Memory Usage: 162.099 Meg
 
- Total Signals          : 113
- Total Nets             : 608
+ Total Signals          : 112
+ Total Nets             : 576
  Total Signal Drivers   : 41
  Total Blocks           : 13
  Total Primitive Blocks : 11
  Total Processes        : 50
  Total Traceable Variables  : 29
- Total Scalar Nets and Variables : 67410
+ Total Scalar Nets and Variables : 67378
 
  Total Simulation Time: 0.03 sec
 
- Current Memory Usage: 261.853 Meg
+ Current Memory Usage: 239.46 Meg
 
-Fri Nov  8 23:11:33 2019
+Sat Nov  9 08:51:34 2019
 

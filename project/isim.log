@@ -1,35 +1,36 @@
 ISim log file
-Running: /home/a-l-r/co/src/project/single_cycle_tb_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb /home/a-l-r/co/src/project/single_cycle_tb_isim_beh.wdb 
+Running: ./single_cycle_tb_isim_beh.exe -intstyle ise -tclbatch ../tools/share/isim.cmd -wdb project/single_cycle_tb_isim_beh.wdb 
 ISim P.20131013 (signature 0xfbc00daa)
 This is a Full version of ISim.
 Time resolution is 1 ps
 # onerror resume
 # wave add /
-# run 1000 ns
+# run 10000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
-@00003000: $ 1 <= 002a0000
-@00003004: $ 2 <= ffff0000
-@00003008: $ 1 <= 002a002a
-@0000300c: $ 2 <= ffffffff
-@00003010: $ 3 <= 002a0029
-@00003018: $ 4 <= 002a002b
-@0000301c: $ 5 <= 00000000
-@00003020: *00000000 <= 002a0029
-@00003024: *00000008 <= 002a0029
-@00003028: $ 6 <= 002a0029
-@0000302c: $ 7 <= 002a0029
-@00003030: $ 8 <= 002a0029
-@00003040: $ 9 <= 01230000
-@00003044: $ 9 <= 01234567
-@0000304c: $31 <= 00003050
-@00003058: $ 9 <= 01230000
-@0000305c: $ 9 <= 01234567
-@00003060: $10 <= 00003070
-@00003070: $ 9 <= 01230000
-@00003074: $ 9 <= 01234567
-@00003078: $11 <= 00003088
-@0000307c: $30 <= 00003080
-@00003088: $ 9 <= 01230000
-@0000308c: $ 9 <= 01234567
-# exit 0
+@00003000: $ 8 <= 00000000
+@00003004: $ 8 <= 00000ff0
+@00003008: $ 9 <= 00000000
+@0000300c: $ 9 <= 00001000
+@00003010: $10 <= 00000000
+@00003014: $10 <= 00000004
+@00003018: $12 <= ffff0000
+@0000301c: $12 <= ffffffff
+@00003020: $11 <= 00000001
+@00003028: *00000ff0 <= ffffffff
+@0000302c: $12 <= ffffffff
+@00003030: $ 8 <= 00000ff4
+@00003020: $11 <= 00000001
+@00003028: *00000ff4 <= ffffffff
+@0000302c: $12 <= ffffffff
+@00003030: $ 8 <= 00000ff8
+@00003020: $11 <= 00000001
+@00003028: *00000ff8 <= ffffffff
+@0000302c: $12 <= ffffffff
+@00003030: $ 8 <= 00000ffc
+@00003020: $11 <= 00000001
+@00003028: *00000ffc <= ffffffff
+@0000302c: $12 <= ffffffff
+@00003030: $ 8 <= 00001000
+@00003020: $11 <= 00000000
+# exit

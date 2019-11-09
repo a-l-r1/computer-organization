@@ -839,10 +839,10 @@ LAB67:    t189 = (t0 + 1928);
     t206 = (t205 >> 2);
     *((unsigned int *)t200) = t206;
     t207 = *((unsigned int *)t199);
-    *((unsigned int *)t199) = (t207 & 255U);
+    *((unsigned int *)t199) = (t207 & 1023U);
     t208 = *((unsigned int *)t200);
-    *((unsigned int *)t200) = (t208 & 255U);
-    xsi_vlog_generic_get_array_select_value(t192, 32, t191, t195, t198, 2, 1, t199, 8, 2);
+    *((unsigned int *)t200) = (t208 & 1023U);
+    xsi_vlog_generic_get_array_select_value(t192, 32, t191, t195, t198, 2, 1, t199, 10, 2);
     goto LAB68;
 
 LAB69:    t213 = ((char*)((ng3)));

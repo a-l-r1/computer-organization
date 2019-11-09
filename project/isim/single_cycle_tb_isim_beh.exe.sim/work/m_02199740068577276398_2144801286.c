@@ -66,9 +66,7 @@ LAB5:    xsi_set_current_line(44, ng0);
     *((char **)t1) = &&LAB6;
     goto LAB1;
 
-LAB6:    xsi_set_current_line(48, ng0);
-    xsi_vlog_finish(1);
-    goto LAB1;
+LAB6:    goto LAB1;
 
 }
 
