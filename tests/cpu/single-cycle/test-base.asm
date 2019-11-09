@@ -36,3 +36,7 @@ ori $9, 0x4567
 # Test 8: nop
 nop
 
+# Test 9: slt
+lui $10, 0xffff
+slt $10, $10, $0
+

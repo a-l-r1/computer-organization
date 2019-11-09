@@ -66,6 +66,15 @@ module im_tb;
 		#20;
 		addr = $unsigned(`IM_START_ADDRESS) - $unsigned(4);
 		enable = `IM_ENABLED;
+		
+		/* borderline */
+		#20;
+		addr = $unsigned(`IM_START_ADDRESS) + $unsigned(32'hfff);
+		enable = `IM_ENABLED;
+		
+		#20;
+		addr = $unsigned(`IM_START_ADDRESS) + $unsigned(32'h1000);
+		enable = `IM_ENABLED;
 	end
       
 endmodule

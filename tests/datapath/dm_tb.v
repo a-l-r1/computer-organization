@@ -79,15 +79,22 @@ module dm_tb;
 		#20;
 		read_addr = 0;
 		write_addr = 4;
-		write_data = 32'hdeedbeef;
+		write_data = 32'hdeadbeef;
 		write_enable = `DM_WRITE_DISABLED;
 		
 		/* read the 2nd word, don't write either */
 		#20;
 		read_addr = 4;
 		write_addr = 0;
-		write_data = 32'hdeedbeef;
+		write_data = 32'hdeadbeef;
 		write_enable = `DM_WRITE_DISABLED;
+		
+		/* borderline */
+		#20;
+		read_addr = 32'hfff;
+		
+		#20;
+		read_addr = 32'h1000;
 	end
 	
 	always begin

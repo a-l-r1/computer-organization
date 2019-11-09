@@ -64,3 +64,8 @@ ori $9, 0xbeef
 good4:
 lui $9, 0x0123
 ori $9, 0x4567
+
+# Test 12: slt
+lui $12, 0xffff
+slt $12, $12, $0
+
