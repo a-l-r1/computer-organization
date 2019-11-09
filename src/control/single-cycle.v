@@ -44,6 +44,7 @@ assign curr_instr_kind =
 	(`GET_OP(curr_instr) == `INSTR_MAGIC_JAL_OP) ? `INSTR_JAL : 
 	(`GET_OP(curr_instr) == `INSTR_MAGIC_RTYPE_OP && `GET_FUNCT(curr_instr) == `INSTR_MAGIC_JR_FUNCT) ? `INSTR_JR : 
 	(`GET_OP(curr_instr) == `INSTR_MAGIC_RTYPE_OP && `GET_FUNCT(curr_instr) == `INSTR_MAGIC_JALR_FUNCT) ? `INSTR_JALR : 
+	(`GET_OP(curr_instr) == `INSTR_MAGIC_RTYPE_OP && `GET_FUNCT(curr_instr) == `INSTR_MAGIC_SLT_FUNCT) ? `INSTR_SLT : 
 	`INSTR_UNKNOWN;
 
 assign cw_rf_read_addr1 = curr_instr[25:21];
@@ -52,20 +53,20 @@ assign cw_rf_read_addr2 = curr_instr[20:16];
 /* TODO: instruction type identification not implemented */
 
 assign cw_rf_write_addr = 
-	(curr_instr_kind == `INSTR_ADDU || curr_instr_kind == `INSTR_SUBU) ? curr_instr[15:11] : 
+	(curr_instr_kind == `INSTR_ADDU || curr_instr_kind == `INSTR_SUBU || curr_instr_kind == `INSTR_SLT) ? curr_instr[15:11] : 
 	(curr_instr_kind == `INSTR_LUI || curr_instr_kind == `INSTR_ORI || curr_instr_kind == `INSTR_LW || curr_instr_kind == `INSTR_SW || curr_instr_kind == `INSTR_BEQ || curr_instr_kind == `INSTR_NOP) ? curr_instr[20:16] : 
 	(curr_instr_kind == `INSTR_JAL) ? 5'd31 : 
 	(curr_instr_kind == `INSTR_JALR) ? curr_instr[15:11] : 
 	curr_instr[20:16];
 
 assign cm_rf_write_data = 
-	(curr_instr_kind == `INSTR_ADDU || curr_instr_kind == `INSTR_SUBU || curr_instr_kind == `INSTR_LUI || curr_instr_kind == `INSTR_ORI || curr_instr_kind == `INSTR_SW || curr_instr_kind == `INSTR_BEQ || curr_instr_kind == `INSTR_NOP) ? `CW_RF_WRITE_DATA_ALU_RESULT : 
+	(curr_instr_kind == `INSTR_ADDU || curr_instr_kind == `INSTR_SUBU || curr_instr_kind == `INSTR_LUI || curr_instr_kind == `INSTR_ORI || curr_instr_kind == `INSTR_SW || curr_instr_kind == `INSTR_BEQ || curr_instr_kind == `INSTR_NOP || curr_instr_kind == `INSTR_SLT) ? `CW_RF_WRITE_DATA_ALU_RESULT : 
 	(curr_instr_kind == `INSTR_LW) ? `CW_RF_WRITE_DATA_DM_READ_RESULT :
 	(curr_instr_kind == `INSTR_JAL || curr_instr_kind == `INSTR_JALR) ? `CW_RF_WRITE_DATA_PC_ADD_4 : 
 	`CW_RF_WRITE_DATA_ALU_RESULT;
 
 assign cm_alu_num2 = 
-	(curr_instr_kind == `INSTR_ADDU || curr_instr_kind == `INSTR_SUBU || curr_instr_kind == `INSTR_BEQ || curr_instr_kind == `INSTR_NOP) ? `CM_ALU_NUM2_RF_READ_RESULT2 : 
+	(curr_instr_kind == `INSTR_ADDU || curr_instr_kind == `INSTR_SUBU || curr_instr_kind == `INSTR_BEQ || curr_instr_kind == `INSTR_NOP || curr_instr_kind == `INSTR_SLT) ? `CM_ALU_NUM2_RF_READ_RESULT2 : 
 	(curr_instr_kind == `INSTR_LUI || curr_instr_kind == `INSTR_ORI || curr_instr_kind == `INSTR_LW || curr_instr_kind == `INSTR_SW) ? `CM_ALU_NUM2_EXT_RESULT : 
 	`CM_ALU_NUM2_RF_READ_RESULT2;
 
@@ -76,7 +77,7 @@ assign cw_npc_jump_mode =
 	`NPC_JUMP_DISABLED;
 
 assign cw_rf_write_enable =
-	(curr_instr_kind == `INSTR_ADDU || curr_instr_kind == `INSTR_SUBU || curr_instr_kind == `INSTR_LUI || curr_instr_kind == `INSTR_ORI || curr_instr_kind == `INSTR_LW || curr_instr_kind == `INSTR_JAL || curr_instr_kind == `INSTR_JALR) ? `RF_WRITE_ENABLED : 
+	(curr_instr_kind == `INSTR_ADDU || curr_instr_kind == `INSTR_SUBU || curr_instr_kind == `INSTR_LUI || curr_instr_kind == `INSTR_ORI || curr_instr_kind == `INSTR_LW || curr_instr_kind == `INSTR_JAL || curr_instr_kind == `INSTR_JALR || curr_instr_kind == `INSTR_SLT) ? `RF_WRITE_ENABLED : 
 	`RF_WRITE_DISABLED;
 
 assign cw_alu_op =
@@ -88,6 +89,7 @@ assign cw_alu_op =
 	(curr_instr_kind == `INSTR_SW) ? `ALU_ADD : 
 	(curr_instr_kind == `INSTR_BEQ) ? `ALU_OR : 
 	(curr_instr_kind == `INSTR_NOP) ? `ALU_OR : 
+	(curr_instr_kind == `INSTR_SLT) ? `ALU_SLT : 
 	`ALU_OR;
 
 assign cw_ext_mode =
