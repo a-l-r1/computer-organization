@@ -22,7 +22,6 @@ module mips(
 wire rst;
 assign rst = reset;
 
-wire [31:0] control_curr_instr;
 wire cm_alu_num2;
 wire [1:0] cm_rf_write_data;
 wire cw_pc_enable, cw_im_enable, cw_rf_write_enable, cw_dm_write_enable;
@@ -36,7 +35,7 @@ wire [4:0] cw_rf_write_addr;
 /* module references */
 
 control control(
-	.curr_instr(control_curr_instr), 
+	.curr_instr(im_result), 
 	.cw_rf_read_addr1(cw_rf_read_addr1), 
 	.cw_rf_read_addr2(cw_rf_read_addr2), 
 	.cw_rf_write_addr(cw_rf_write_addr), 
@@ -58,8 +57,6 @@ control control(
 wire [31:0] npc_next_pc;
 wire [31:0] pc_curr_pc;
 wire [31:0] im_result;
-/* break circular dependency of im and control */
-assign control_curr_instr = im_result;
 
 /* ID / WB */
 
@@ -118,7 +115,7 @@ mux4 #(.BIT_WIDTH(32)) mux_rf_write_data (
 	.input1(dm_read_result), 
 	.input2(curr_pc_add_4), 
 	/* unused */
-	.input3()
+	.input3(32'hdeadbeef)
 );
 
 rf rf(
