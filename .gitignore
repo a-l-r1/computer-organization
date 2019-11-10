@@ -1,6 +1,9 @@
 # temporary directory
 tmp/
 
+# release directory
+release/
+
 # vim swap files
 *.swp
 
