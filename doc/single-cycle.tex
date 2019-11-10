@@ -94,11 +94,9 @@
 \hypertarget{ux529fux80fd}{%
 \subsection{功能}\label{ux529fux80fd}}
 
-NPC 是下个 PC 值的意思。它能做到根据当前的 PC 值，计算出下一个 32 位的
-PC 值。
+NPC 是下个 PC 值的意思。它能做到根据当前的 PC 值，计算出下一个 32 位的 PC 值。
 
-一般来说，PC 值的转换是顺序转换。但是，NPC
-必须要听控制模块的指令，做到在某些条件下进行符号转换。
+一般来说，PC 值的转换是顺序转换。但是，NPC 必须要听控制模块的指令，做到在某些条件下进行特殊的转换。
 
 \hypertarget{ux63a5ux53e3ux5b9aux4e49}{%
 \subsection{接口定义}\label{ux63a5ux53e3ux5b9aux4e49}}
@@ -112,6 +110,8 @@ PC 值。
 \texttt{jump\_mode} & 输入 & 3 & 是否可以跳转\tabularnewline\hline
 \texttt{alu\_comp\_result} & 输入 & 2 & ALU 的比较结果\tabularnewline\hline
 \texttt{num} & 输入 & 16 & 输入的立即数\tabularnewline\hline
+\texttt{jnum} & 输入 & 26 & 输入的 J 型指令的立即数\tabularnewline\hline
+\texttt{reg\_{}} & 输入 & 32 & 输入的寄存器值\tabularnewline\hline
 \texttt{next\_pc} & 输出 & 32 & 下一个 PC\tabularnewline\hline
 
 \end{longtable}
@@ -126,18 +126,14 @@ PC 值。
 \headingcellfirst{类别} & \headingcellmiddle{定义} & \headingcellmiddle{值} & \headingcelllast{意义}\tabularnewline\hline
 
 \endhead\hiderowcolors
-\texttt{jump\_mode} & \texttt{NPC\_JUMP\_DISABLE} & 3'b000 &
+\texttt{jump\_mode} & \texttt{NPC\_JUMP\_DISABLED} & 3'b000 &
 不要跳转\tabularnewline\hline
-\texttt{jump\_mode} & \texttt{NPC\_JUMP\_DISABLED} &
-\texttt{NPC\_JUMP\_DISABLE} &\tabularnewline\hline
 \texttt{jump\_mode} & \texttt{NPC\_JUMP\_WHEN\_EQUAL} & 3'b001 & 当 ALU
 输入的比较结果相等时跳转\tabularnewline\hline
-\texttt{jump\_mode} & \texttt{NPC\_JUMP\_WHEN\_EQUALS\_TO} &
-\texttt{NPC\_JUMP\_WHEN\_EQUAL} &\tabularnewline\hline
 \texttt{jump\_mode} & \texttt{NPC\_JUMP\_WHEN\_NOT\_EQUAL} & 3'b010 & 当
 ALU 输入的比较结果不等时跳转\tabularnewline\hline
-\texttt{jump\_mode} & \texttt{NPC\_JUMP\_WHEN\_NOT\_EQUALS\_TO} &
-\texttt{NPC\_JUMP\_WHEN\_NOT\_EQUAL} &\tabularnewline\hline
+\texttt{jump\_mode} & \texttt{NPC\_JUMP\_JNUM} & 3'b011 & \makecell{跳转到\\\texttt{\{{}curr\_pc[31:28], jnum, 2'b0\}{}}\\对应的地址}\tabularnewline\hline
+\texttt{jump\_mode} & \texttt{NPC\_JUMP\_REG} & 3'b100 & 跳转到 \texttt{reg\_} 对应的地址\tabularnewline\hline
 
 \end{longtable}
 
@@ -147,7 +143,7 @@ ALU 输入的比较结果不等时跳转\tabularnewline\hline
 \hypertarget{ux529fux80fd-1}{%
 \subsection{功能}\label{ux529fux80fd-1}}
 
-若 \texttt{jump\_mode\ ==\ NPC\_JUMP\_DISABLE}，则令
+若 \texttt{jump\_mode\ ==\ NPC\_JUMP\_DISABLED}，则令
 \texttt{next\_pc\ =\ \$unsigned(curr\_pc)\ +\ \$unsigned(4)}。
 
 若 \texttt{jump\_mode\ ==\ NPC\_JUMP\_WHEN\_EQUAL}，则
@@ -156,12 +152,16 @@ ALU 输入的比较结果不等时跳转\tabularnewline\hline
 \texttt{2\textquotesingle{}b0}，然后把这 18 位二进制数扩展成 32
 位有符号二进制数。然后令
 \texttt{next\_pc\ =\ \$signed(curr\_pc)\ +\ \$signed(4)\ +\ \$signed(num)}。否则做跟
-\texttt{jump\_mode\ ==\ NPC\_JUMP\_DISABLE} 时相同的步骤。
+\texttt{jump\_mode\ ==\ NPC\_JUMP\_DISABLED} 时相同的步骤。
 
 若 \texttt{jump\_mode\ ==\ NPC\_JUMP\_WHEN\_NOT\_EQUAL}，则
 \texttt{alu\_comp\_result\ !=\ ALU\_EQUAL}
 时，做跟上面相同的步骤。否则做跟
-\texttt{jump\_mode\ ==\ NPC\_JUMP\_DISABLE} 时相同的步骤。
+\texttt{jump\_mode\ ==\ NPC\_JUMP\_DISABLED} 时相同的步骤。
+
+若 \texttt{jump\_mode == NPC\_JUMP\_JNUM}，则令 \texttt{next\_pc = \{{}curr\_pc[31:28], jnum, 2'b0\}{}}。
+
+若 \texttt{jump\_mode == NPC\_JUMP\_REG}，则令 \texttt{curr\_pc = reg}。
 
 若 \texttt{jump\_mode} 为其它值，则做跟
 \texttt{jump\_mode\ ==\ NPC\_JUMP\_DISABLE} 时相同的步骤。
@@ -173,12 +173,9 @@ ALU 输入的比较结果不等时跳转\tabularnewline\hline
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  NPC 是在内部进行符号扩展，不用 ext。
+  NPC 是在内部进行符号扩展，不用 \texttt{ext}。
 \item
   \texttt{reg\_} 是为了避免和 \texttt{reg} 冲突。
-\item
-  \texttt{base} 抽象出来是为了方便调试和维护，它是跟 MIPS
-  指令集手册相符的。
 \end{enumerate}
 
 \hypertarget{pc}{%
@@ -187,9 +184,7 @@ ALU 输入的比较结果不等时跳转\tabularnewline\hline
 \hypertarget{ux539fux7406}{%
 \subsection{原理}\label{ux539fux7406}}
 
-PC
-是程序计数器的意思，负责对当前的指令进行计数。它是标记程序执行到哪里的一种方法，同时输出的信息也被送入指令内存
-IM，用来取指。
+PC 是程序计数器的意思，负责对当前的指令进行计数。它是标记程序执行到哪里的一种方法，同时输出的信息也被送入指令内存 IM，用来取指。 
 
 PC 只负责表示程序执行到哪里，而 PC 的更新由 NPC
 模块负责。这样可以做到更简便地处理跳转指令、也对流水线 CPU
@@ -204,8 +199,8 @@ PC 只负责表示程序执行到哪里，而 PC 的更新由 NPC
 
 \endhead\hiderowcolors
 \texttt{clk} & 输入 & 1 & 时钟信号\tabularnewline\hline
-\texttt{next\_pc} & 输入 & 32 & NPC 计算得来的下一个 PC
-地址\tabularnewline\hline
+\texttt{rst} & 输入 & 1 & 同步复位信号\tabularnewline\hline
+\texttt{next\_pc} & 输入 & 32 & NPC 计算得来的下一个 PC 地址\tabularnewline\hline
 \texttt{enable} & 输入 & 1 & PC 使能\tabularnewline\hline
 \texttt{curr\_pc} & 输出 & 32 & PC 地址\tabularnewline\hline
 
@@ -222,12 +217,8 @@ PC 只负责表示程序执行到哪里，而 PC 的更新由 NPC
 
 \endhead\hiderowcolors
 \texttt{enable} & \texttt{PC\_ENABLED} & 1'b1 & PC 使能\tabularnewline\hline
-\texttt{enable} & \texttt{PC\_ENABLE} & \texttt{PC\_ENABLED}
-&\tabularnewline\hline
 \texttt{enable} & \texttt{PC\_DISABLED} & 1'b0 & PC
 非使能\tabularnewline\hline
-\texttt{enable} & \texttt{PC\_DISABLE} & \texttt{PC\_DISABLED}
-&\tabularnewline\hline
 \texttt{curr\_pc} & \texttt{PC\_START\_ADDRESS} & 32'h00003000 & PC
 的起始地址\tabularnewline\hline
 
@@ -241,12 +232,9 @@ PC 只负责表示程序执行到哪里，而 PC 的更新由 NPC
 有一个 32 位的寄存器保存当前 PC 的值，初值为
 \texttt{PC\_START\_ADDRESS}。
 
-在每个时钟上升沿，若 \texttt{enable\ ==\ PC\_ENABLED}，则把 PC
-部件中保存的当前 PC 的值更新成 \texttt{next\_pc} 的值。否则，保存的当前
-PC 的值不变。
+在每个时钟上升沿，若同步复位信号为 1'b1，则进行同步复位。否则，若 \texttt{enable\ ==\ PC\_ENABLED}，则把 PC 部件中保存的当前 PC 的值更新成 \texttt{next\_pc} 的值。否则，保存的当前 PC 的值不变。 
 
-无论什么时候，输出端口 \texttt{curr\_pc} 的值都是 PC 部件中保存的当前 PC
-的值。
+无论什么时候，输出端口 \texttt{curr\_pc} 的值都是 PC 部件中保存的当前 PC 的值。
 
 \hypertarget{ux6ce8ux610fux4e8bux9879-1}{%
 \subsection{注意事项}\label{ux6ce8ux610fux4e8bux9879-1}}
@@ -292,37 +280,29 @@ PC 的值不变。
 \headingcellfirst{类别} & \headingcellmiddle{定义} & \headingcellmiddle{值} & \headingcelllast{意义}\tabularnewline\hline
 
 \endhead\hiderowcolors
-\texttt{enable} & \texttt{IM\_ENABLE} & \texttt{1\textquotesingle{}b1} &
+\texttt{enable} & \texttt{IM\_ENABLED} & \texttt{1\textquotesingle{}b1} &
 IM 使能\tabularnewline\hline
-\texttt{enable} & \texttt{IM\_ENABLED} & \texttt{IM\_ENABLE}
-&\tabularnewline\hline
-\texttt{enable} & \texttt{IM\_DISABLE} & \texttt{1\textquotesingle{}b0}
+\texttt{enable} & \texttt{IM\_DISABLED} & \texttt{1\textquotesingle{}b0}
 & IM 非使能\tabularnewline\hline
-\texttt{enable} & \texttt{IM\_DISABLED} & \texttt{IM\_DISABLE}
-&\tabularnewline\hline
-\texttt{addr} & \texttt{IM\_ADDR\_WIDTH} & 8 & \texttt{addr}
+\texttt{addr} & \texttt{IM\_ADDR\_WIDTH} & 12 & \texttt{addr}
 的位宽\tabularnewline\hline
-\texttt{addr} & \texttt{IM\_START\_ADDRESS} & 32 & IM
-对外表现的起始地址\tabularnewline\hline
-指令存储器 & \texttt{IM\_SIZE} & 64 & 能存储指令的个数\tabularnewline\hline
-指令存储器 & \texttt{IM\_CODE\_FILENAME} & \texttt{"code/code.hex"} &
-要加载的机器码\tabularnewline\hline
+\texttt{addr} & \texttt{IM\_START\_ADDRESS} & 32'h00003000 & IM 对外表现的起始地址\tabularnewline\hline
+指令存储器 & \texttt{IM\_SIZE} & 1024 & 能存储指令的个数\tabularnewline\hline
+指令存储器 & \texttt{IM\_CODE\_FILENAME} & \texttt{"code/code.txt"} & 要加载的机器码\tabularnewline\hline
 
 \end{longtable}
 
 \hypertarget{ux529fux80fd-3}{%
 \subsection{功能}\label{ux529fux80fd-3}}
 
-有 \texttt{IM\_SIZE} 个 32
-位存储器，代表其中存储的指令。它们初值应该使用加载文件的系统任务加载。加载文件名由
-\texttt{IM\_CODE\_FILENAME} 指定。
+有 \texttt{IM\_SIZE} 个 32 位存储器，代表其中存储的指令。它们初值应该使用加载文件的系统任务加载。加载文件名由 \texttt{IM\_CODE\_FILENAME} 指定。 
 
-若 \texttt{enable\ ==\ IM\_ENABLED}，若 \texttt{addr} 作为无符号数小于
+若 \texttt{enable\ ==\ IM\_ENABLED}，且 \texttt{addr} 作为无符号数小于
 \texttt{IM\_START\_ADDRESS}，则也返回
 \texttt{32\textquotesingle{}b0}。否则，\texttt{result} 为
 \texttt{addr\ -\ IM\_START\_ADDRESS} 这个地址再取
 \texttt{{[}IM\_ADDR\_WIDTH\ -\ 1:2{]}}
-对应的指令（从存储器中取得，是两个无符号数相减）。若相减后的结果超出了已经加载的指令所占的地址空间，则
+下标之后对应的指令（从存储器中取得，是两个无符号数相减）。若相减后的结果超出了已经加载的指令所占的地址空间，则
 \texttt{result} 为 \texttt{32\textquotesingle{}b0}。
 
 若 \texttt{enable\ ==\ IM\_DISABLED}，则 \texttt{result} 为
@@ -339,8 +319,6 @@ IM 使能\tabularnewline\hline
   需要一块改，因为它们的大小有关系
 \item
   有 offset 了，注意跟 offset 相减是无符号数相减
-\item
-  offset 主要是为了和 MARS 兼容
 \end{enumerate}
 
 \hypertarget{ux5bc4ux5b58ux5668ux5806}{%
@@ -354,8 +332,7 @@ IM 使能\tabularnewline\hline
 号寄存器 \texttt{\$0} 的值永远是
 \texttt{32\textquotesingle{}b0}，写入不会改变它的值。
 
-由于 MIPS
-体系结构中的指令最多读两个寄存器，写一个寄存器，所以寄存器输入两个要读的地址，输出两个要读的数据；输入一个要写的地址和一个要写的数据；同时还有写使能端口。
+由于 MIPS 体系结构中的指令最多读两个寄存器，写一个寄存器，所以寄存器输入两个要读的地址，输出两个要读的数据；输入一个要写的地址和一个要写的数据；同时还有写使能端口。
 
 寄存器的使用没有规定，这一般是软件关心的问题。
 
@@ -368,6 +345,7 @@ IM 使能\tabularnewline\hline
 
 \endhead\hiderowcolors
 \texttt{clk} & 输入 & 1 & 时钟信号\tabularnewline\hline
+\texttt{rst} & 输入 & 1 & 同步复位信号\tabularnewline\hline
 \texttt{curr\_pc} & 输入 & 32 & 当前 PC 的值\tabularnewline\hline
 \texttt{read\_addr1} & 输入 & 5 & 第一个读地址\tabularnewline\hline
 \texttt{read\_addr2} & 输入 & 5 & 第二个读地址\tabularnewline\hline
@@ -393,18 +371,12 @@ IM 使能\tabularnewline\hline
 \endhead\hiderowcolors
 \texttt{.*\_addr.*} & \texttt{RF\_ADDR\_ZERO} & 5'b0 &
 零寄存器的地址\tabularnewline\hline
-\texttt{.*\_addr.*} & \texttt{RF\_ZERO} & \texttt{RF\_ADDR\_ZERO}
-&\tabularnewline\hline
 \texttt{write\_enable} & \texttt{RF\_WRITE\_ENABLED} & 1'b1 &
 寄存器堆使能\tabularnewline\hline
-\texttt{write\_enable} & \texttt{RF\_WRITE\_ENABLE} &
-\texttt{RF\_WRITE\_ENABLED} &\tabularnewline\hline
 \texttt{write\_enable} & \texttt{RF\_WRITE\_DISABLED} & 1'b0 &
 寄存器堆非使能\tabularnewline\hline
-\texttt{write\_enable} & \texttt{RF\_WRITE\_DISABLE} &
-\texttt{RF\_WRITE\_DISABLED} &\tabularnewline\hline
 输出 & \texttt{RF\_OUTPUT\_FORMAT} &
-\texttt{"\%d:\ 0x\%08x\ =\textgreater{}\ 0x\%08x"} &
+\texttt{"@\%h: \$\%d <= \%h"} &
 输出模版\tabularnewline\hline
 
 \end{longtable}
@@ -415,19 +387,16 @@ IM 使能\tabularnewline\hline
 该部件为时序部件。
 
 有 31 个 32 位寄存器，代表
-\texttt{\$1}\textasciitilde{}\texttt{\$31}，它们初值都为
-\texttt{32\textquotesingle{}b0}。\texttt{\$0} 实际上不需要寄存器。
+\texttt{\$1}\textasciitilde{}\texttt{\$31}，它们初值都为 \texttt{32\textquotesingle{}b0}。\texttt{\$0} 实际上不需要寄存器。
 
-在每个时钟上升沿，若 \texttt{write\_enable\ ==\ RF\_WRITE\_ENABLED} 且
+在每个时钟上升沿，若同步复位信号为 1'b1，则进行同步复位。否则，若 \texttt{write\_enable\ ==\ RF\_WRITE\_ENABLED} 且
 \texttt{write\_addr\ !=\ RF\_ADDR\_ZERO}，则说明可以执行写操作，且写到的寄存器是可以保存数值的寄存器。此时把
 \texttt{write\_addr} 指代的寄存器的值更新为
-\texttt{write\_data}。更新时，以模版中的格式打印出数据变化，第一个参数是当前的模拟时钟的时间，第二个参数是当前
-PC 的值，第三个参数是寄存器号，第四个参数是更新后的值。
+\texttt{write\_data}。更新时，以模版中的格式打印出数据变化，第一个参数是当前 PC 的值，第二个参数是寄存器号，第三个参数是更新后的值。
 
 无论什么时候，若 \texttt{read\_addr1\ !=\ RF\_ADDR\_ZERO}，则把
 \texttt{read\_addr1} 指代的寄存器的值输出到 \texttt{read\_result1}
-中，否则把 \texttt{32\textquotesingle{}b0} 输出到 \texttt{read\_result1}
-中。对 \texttt{read\_addr2} 和 \texttt{read\_result2} 的相应操作相同。
+中，否则把 \texttt{32\textquotesingle{}b0} 输出到 \texttt{read\_result1} 中。对 \texttt{read\_addr2} 和 \texttt{read\_result2} 的相应操作相同。
 
 \hypertarget{ux6ce8ux610fux4e8bux9879-3}{%
 \subsection{注意事项}\label{ux6ce8ux610fux4e8bux9879-3}}
@@ -440,8 +409,6 @@ PC 的值，第三个参数是寄存器号，第四个参数是更新后的值�
 \item
   寄存器可以定义为 \texttt{reg\ {[}31:1{]}\ registers\ {[}31:0{]}}，把
   \texttt{\$0} 空出来。
-\item
-  TODO: 应该把正常显示 wrap 起来，等到 ISE 装好后再说
 \end{enumerate}
 
 \hypertarget{ux6269ux5c55ux5668}{%
@@ -453,7 +420,7 @@ PC 的值，第三个参数是寄存器号，第四个参数是更新后的值�
 扩展器是专门执行扩展整数功能的运算。它能做到小于 32 位的整数向 32
 位整数的转换，其中有符号转换，也有无符号转换。
 
-转换器的模式由宏定义的方式指定，有符号扩展，也有无符号扩展，也有其它模式。由于没有明显的层次和类别关系，采用顺序编号和按常见顺序编号的方法。
+转换器的模式由宏定义的方式指定，有符号扩展，也有无符号扩展，也有其它模式。
 
 \hypertarget{ux63a5ux53e3ux5b9aux4e49-1}{%
 \subsection{接口定义}\label{ux63a5ux53e3ux5b9aux4e49-1}}
@@ -481,24 +448,11 @@ PC 的值，第三个参数是寄存器号，第四个参数是更新后的值�
 \endhead\hiderowcolors
 \texttt{mode} & \texttt{EXT\_MODE\_SIGNED} & 3'b000 &
 符号扩展\tabularnewline\hline
-\texttt{mode} & \texttt{EXT\_SIGNED} & \texttt{EXT\_MODE\_SIGNED}
-&\tabularnewline\hline
 \texttt{mode} & \texttt{EXT\_MODE\_UNSIGNED} & 3'b001 &
 无符号扩展\tabularnewline\hline
-\texttt{mode} & \texttt{EXT\_UNSIGNED} & \texttt{EXT\_MODE\_UNSIGNED}
-&\tabularnewline\hline
-\texttt{mode} & \texttt{EXT\_MODE\_PAD} & 3'b010 & 把输入的 16
-位填充到输出结果的高 16 位，输出结果低 16 位置零的扩展\tabularnewline\hline
-\texttt{mode} & \texttt{EXT\_PAD} & \texttt{EXT\_MODE\_PAD}
-&\tabularnewline\hline
-\texttt{mode} & \texttt{EXT\_MODE\_HIGH\_BITS} & \texttt{EXT\_MODE\_PAD}
-&\tabularnewline\hline
-\texttt{mode} & \texttt{EXT\_HIGH\_BITS} & \texttt{EXT\_MODE\_PAD}
-&\tabularnewline\hline
+\texttt{mode} & \texttt{EXT\_MODE\_PAD} & 3'b010 & \makecell{把输入的 16 位填充到输出结果的高 16 位，\\输出结果低 16 位置零的扩展}\tabularnewline\hline
 \texttt{mode} & \texttt{EXT\_MODE\_ONE} & 3'b011 & 在数字前面填充二进制
 1 的扩展\tabularnewline\hline
-\texttt{mode} & \texttt{EXT\_ONE} & \texttt{EXT\_MODE\_ONE}
-&\tabularnewline\hline
 
 \end{longtable}
 
@@ -518,11 +472,10 @@ PC 的值，第三个参数是寄存器号，第四个参数是更新后的值�
 \hypertarget{ux539fux7406-3}{%
 \subsection{原理}\label{ux539fux7406-3}}
 
-ALU 是运算控制单元的意思，负责两个 32
-位整数的运算。它可以负责各种运算，包括数学运算和逻辑运算。易知它是纯组合逻辑。
+ALU 是运算控制单元的意思，负责两个 32 位整数的运算。它可以负责各种运算，包括数学运算和逻辑运算。易知它是纯组合逻辑。
 
 由于定义运算的时候需要给运算编码，所以表示运算就有点类似于 C 语言中的
-\texttt{enum}。因此，需要对各种运算进行宏定义，以保证系统的可维护性。宏定义也可以把定义的数据空间分隔开，以及对运算按照逻辑进行排序，从而得到对端口运算编码的更好理解。
+\texttt{enum}。
 
 \hypertarget{ux7aefux53e3ux5b9aux4e49-3}{%
 \subsection{端口定义}\label{ux7aefux53e3ux5b9aux4e49-3}}
@@ -556,31 +509,32 @@ ALU 是运算控制单元的意思，负责两个 32
 \headingcellfirst{类别} & \headingcellmiddle{定义} & \headingcellmiddle{值} & \headingcelllast{意义}\tabularnewline\hline
 
 \endhead\hiderowcolors
-\texttt{op} & \texttt{ALU\_ADD} & 5b'00000 & 加法运算\tabularnewline\hline
+\texttt{op} & \texttt{ALU\_ADD} & 5'b00000 & 加法运算\tabularnewline\hline
 \texttt{op} & \texttt{ALU\_UNSIGNED\_ADD} & \texttt{ALU\_ADD} &
 同上\tabularnewline\hline
-\texttt{op} & \texttt{ALU\_SUB} & 5b'00001 & 减法运算\tabularnewline\hline
+\texttt{op} & \texttt{ALU\_SUB} & 5'b00001 & 减法运算\tabularnewline\hline
 \texttt{op} & \texttt{ALU\_UNSIGNED\_SUB} & \texttt{ALU\_SUB} &
 同上\tabularnewline\hline
-\texttt{op} & \texttt{ALU\_AND} & 5b'10000 & 按位与运算\tabularnewline\hline
+\texttt{op} & \texttt{ALU\_AND} & 5'b10000 & 按位与运算\tabularnewline\hline
 \texttt{op} & \texttt{ALU\_BITWISE\_AND} & \texttt{ALU\_AND} &
 同上\tabularnewline\hline
-\texttt{op} & \texttt{ALU\_OR} & 5b'10001 & 按位或运算\tabularnewline\hline
+\texttt{op} & \texttt{ALU\_OR} & 5'b10001 & 按位或运算\tabularnewline\hline
 \texttt{op} & \texttt{ALU\_BITWISE\_OR} & \texttt{ALU\_OR} &
 同上\tabularnewline\hline
-\texttt{op} & \texttt{ALU\_NOT} & 5b'10010 & 按位非运算\tabularnewline\hline
+\texttt{op} & \texttt{ALU\_NOT} & 5'b10010 & 按位非运算\tabularnewline\hline
 \texttt{op} & \texttt{ALU\_BITWISE\_NOT} & \texttt{ALU\_NOT} &
 同上\tabularnewline\hline
-\texttt{op} & \texttt{ALU\_XOR} & 5b'10011 & 按位异或运算\tabularnewline\hline
-\texttt{.*comp\_result} & \texttt{ALU\_EQUAL} & 2b'00 &
+\texttt{op} & \texttt{ALU\_SLT} & 5'b00010 & \makecell{若 \texttt{num1}\\小于 \texttt{num2}\\则设 \\\texttt{result}\\为 1\\否则为 0\\的运算}\tabularnewline\hline
+\texttt{op} & \texttt{ALU\_XOR} & 5'b10011 & 按位异或运算\tabularnewline\hline
+\texttt{.*comp\_result} & \texttt{ALU\_EQUAL} & 2'b00 &
 等于\tabularnewline\hline
 \texttt{.*comp\_result} & \texttt{ALU\_EQUAL\_TO} & \texttt{ALU\_EQUAL}
 & 同上\tabularnewline\hline
-\texttt{.*comp\_result} & \texttt{ALU\_LARGER} & 2b'01 &
+\texttt{.*comp\_result} & \texttt{ALU\_LARGER} & 2'b01 &
 大于\tabularnewline\hline
 \texttt{.*comp\_result} & \texttt{ALU\_LARGER\_THAN} &
 \texttt{ALU\_LARGER} & 同上\tabularnewline\hline
-\texttt{.*comp\_result} & \texttt{ALU\_SMALLER} & 2b'10 &
+\texttt{.*comp\_result} & \texttt{ALU\_SMALLER} & 2'b10 &
 小于\tabularnewline\hline
 \texttt{.*comp\_result} & \texttt{ALU\_SMALLER\_THAN} &
 \texttt{ALU\_SMALLER} & 同上\tabularnewline\hline
@@ -631,7 +585,7 @@ ALU 是运算控制单元的意思，负责两个 32
   添加新运算时注意同时改 \texttt{op\_invalid} 的输出和 \texttt{result}
   的输出
 \item
-  如果不确定符号，就加上 \texttt{{[}un\textbar{}{]}signed}
+  如果不确定是否作为有符号数处理，就加上 \texttt{{\${}[}un\textbar{}{]}signed}
 \end{enumerate}
 
 \hypertarget{ux6570ux636eux5b58ux50a8ux5668}{%
@@ -642,7 +596,7 @@ ALU 是运算控制单元的意思，负责两个 32
 
 数据存储器是存储数据的地方。
 
-为了渐变，数据存储器由许多寄存器实现。
+为了简便，数据存储器由许多寄存器实现。
 
 \hypertarget{ux7aefux53e3ux5b9aux4e49-4}{%
 \subsection{端口定义}\label{ux7aefux53e3ux5b9aux4e49-4}}
@@ -653,6 +607,7 @@ ALU 是运算控制单元的意思，负责两个 32
 
 \endhead\hiderowcolors
 \texttt{clk} & 输入 & 1 & 时钟信号\tabularnewline\hline
+\texttt{rst} & 输入 & 1 & 同步复位信号\tabularnewline\hline
 \texttt{curr\_pc} & 输入 & 32 & 当前 PC 值\tabularnewline\hline
 \texttt{read\_addr} & 输入 & 32 & 读地址\tabularnewline\hline
 \texttt{write\_addr} & 输入 & 32 & 写地址\tabularnewline\hline
@@ -680,9 +635,9 @@ ALU 是运算控制单元的意思，负责两个 32
 \texttt{1\textquotesingle{}b0} & DM 非使能\tabularnewline\hline
 \texttt{write\_enable} & \texttt{DM\_WRITE\_DISABLED} &
 \texttt{DM\_WRITE\_DISABLE} &\tabularnewline\hline
-\texttt{.*\_addr} & \texttt{DM\_ADDR\_WIDTH} & 8 & \texttt{.*\_addr}
+\texttt{.*\_addr} & \texttt{DM\_ADDR\_WIDTH} & 12 & \texttt{.*\_addr}
 的位宽\tabularnewline\hline
-指令存储器 & \texttt{DM\_SIZE} & 64 & 能存储 32
+指令存储器 & \texttt{DM\_SIZE} & 1024 & 能存储 32
 位字的个数\tabularnewline\hline
 
 \end{longtable}
@@ -692,17 +647,13 @@ ALU 是运算控制单元的意思，负责两个 32
 
 该部件为时序部件。
 
-有 \texttt{DM\_SIZE} 个 32 位存储器，代表其中存储的指令。它们初值都为
-\texttt{32\textquotesingle{}b0}。
+有 \texttt{DM\_SIZE} 个 32 位存储器，代表其中存储的指令。它们初值都为 \texttt{32\textquotesingle{}b0}。 
 
-在每个时钟上升沿，若 \texttt{write\_enable\ ==\ DM\_ENABLED}，则
-\texttt{write\_addr{[}DM\_ADDR\_WIDTH\ -\ 1:1{]}} 这个地址对应的 32
-位字写入 \texttt{write\_data} 对应的值。同时，打印当前 PC
-的值、\texttt{write\_addr}、\texttt{write\_addr} 这个地址对应的 32
-位字原来的值、它的新值。
+在每个时钟上升沿，若复位信号为 1'b1 ，则进行同步复位。否则，若 \texttt{write\_enable\ ==\ DM\_ENABLED}，则
+\texttt{write\_addr\ {[}DM\_ADDR\_WIDTH\ -\ 1:1{]}} 这个地址对应的 32 位字写入 \texttt{write\_data} 对应的值。同时，打印当前 PC 的值、\texttt{write\_addr}、\texttt{write\_addr} 这个地址对应的 32 位字原来的值、它的新值。
 
 任何时候，\texttt{read\_result} 的值为
-\texttt{read\_addr{[}DM\_ADDR\_WIDTH\ -\ 1:1{]}} 对应的地址的值。
+\texttt{read\_addr{[}DM\_ADDR\_WIDTH\ -\ 1:1{]}} 对应的地址的字的值。
 
 注意 \texttt{dm} 内部对 \texttt{write\_addr} 和 \texttt{read\_addr}
 都截取了一部分。这样可以把 \texttt{dm}
@@ -731,16 +682,12 @@ ALU 是运算控制单元的意思，负责两个 32
 \hypertarget{ux529fux80fd-9}{%
 \subsection{功能}\label{ux529fux80fd-9}}
 
-MUX
-是多路选择器的意思，是从多个数据源中选择数据的部件。其实它也是数据通路和控制之间的接口，控制部件通过
-MUX 来控制数据的流向，实现指令的功能。
+MUX 是多路选择器的意思，是从多个数据源中选择数据的部件。其实它也是数据通路和控制之间的接口，控制部件通过 MUX 来控制数据的流向，实现指令的功能。
 
 \hypertarget{ux7c7bux522b}{%
 \subsection{类别}\label{ux7c7bux522b}}
 
-MUX 有多个类别。有 2 路 MUX、3 路 MUX 以至于多路 MUX。实际上，在单周期
-CPU 中只能用到路数比较少的 MUX，多路的 MUX 要等到流水线 CPU
-的时候才能用。
+MUX 有多个类别。有 2 路 MUX、3 路 MUX 以至于多路 MUX。
 
 \hypertarget{ux547dux540d}{%
 \subsection{命名}\label{ux547dux540d}}
@@ -754,7 +701,7 @@ CPU 中只能用到路数比较少的 MUX，多路的 MUX 要等到流水线 CPU
 
 暂无
 
-但是仍然保留 \texttt{mux.h} 宏文件并填入模版，以备以后使用。
+但是仍然保留 \texttt{mux.h} 宏文件并填入模板，以备以后使用。
 
 \hypertarget{ux53c2ux6570ux5b9aux4e49}{%
 \subsection{参数定义}\label{ux53c2ux6570ux5b9aux4e49}}
@@ -790,7 +737,7 @@ CPU 中只能用到路数比较少的 MUX，多路的 MUX 要等到流水线 CPU
 \tightlist
 \item
   输入控制信号的位宽如下计算：有 \emph{n} 个输入信号，就取最小的使
-  \emph{2\^{}width} 能够超过 \emph{n} 的 \emph{width}，这就是
+  \emph{$2^{width}$} 能够超过 \emph{n} 的 \emph{width}，这就是
   \texttt{control} 的位宽。
 \item
   功能是输入端口，但是个数有 \emph{n} 个。输入端口\textbf{从 0
@@ -834,9 +781,13 @@ MUX，然后让控制单元控制。
 \hypertarget{ux5206ux6790}{%
 \subsection{分析}\label{ux5206ux6790}}
 
-p4 需要实现的 8 条指令为：
+p4 需要实现的 10 条指令为：
 
-\texttt{addu,\ subu,\ lui,\ ori,\ lw,\ sw,\ beq,\ nop}
+\texttt{addu,\ subu,\ lui,\ ori,\ lw,\ sw,\ beq,\ nop,\ jal,\ jr}
+
+扩展实现的 2 条指令为：
+
+\texttt{jalr,\ slt}
 
 通过分析它们的
 RTL，可以得到每条指令对应的数据通路连接如下。其中表格某一列的值表示这个输入端口是哪个输出端口的输出。端口用
@@ -849,30 +800,32 @@ MUX。把 MUX 的输出端口连接在相应的输入端口上，MUX
 
 \begin{longtable}[]{@{}|l|l|l|l|@{}}
 \hline
-指令 & \texttt{addu} & \texttt{subu} & \texttt{lui}\tabularnewline\hline
+\headingcellfirst{指令} & \headingcellmiddle{\texttt{addu}} & \headingcellmiddle{\texttt{subu}} & \headingcelllast{\texttt{lui}}\tabularnewline\hline
 
 \endhead\hiderowcolors
 \texttt{npc.curr\_pc} & \texttt{pc.curr\_pc} & \texttt{pc.curr\_pc} &
 \texttt{pc.curr\_pc}\tabularnewline\hline
-\texttt{npc.alu\_comp\_result} & & &\tabularnewline\hline
-\texttt{npc.num} & & &\tabularnewline\hline
+\texttt{npc.alu\_comp\_result} & & & \tabularnewline\hline
+\texttt{npc.num} & & & \tabularnewline\hline
+\texttt{npc.jnum} & & & \tabularnewline\hline
+\texttt{npc.reg} & & & \tabularnewline\hline
 \texttt{pc.next\_pc} & \texttt{npc.next\_pc} & \texttt{npc.next\_pc} &
 \texttt{npc.next\_pc}\tabularnewline\hline
 \texttt{im.addr} & \texttt{pc.curr\_pc} & \texttt{pc.curr\_pc} &
 \texttt{pc.curr\_pc}\tabularnewline\hline
-\texttt{rf.read\_addr1} & \texttt{im.data{[}25:21{]}} &
-\texttt{im.data{[}25:21{]}} & \texttt{im.data{[}25:21{]}}\tabularnewline\hline
-\texttt{rf.read\_addr2} & \texttt{im.data{[}20:16{]}} &
-\texttt{im.data{[}20:16{]}} &\tabularnewline\hline
-\texttt{rf.write\_addr} & \texttt{im.data{[}15:11{]}} &
-\texttt{im.data{[}15:11{]}} & \texttt{im.data{[}20:16{]}}\tabularnewline\hline
+\texttt{rf.read\_addr1} & \texttt{im.result{[}25:21{]}} &
+\texttt{im.result{[}25:21{]}} & \texttt{im.result{[}25:21{]}}\tabularnewline\hline
+\texttt{rf.read\_addr2} & \texttt{im.result{[}20:16{]}} &
+\texttt{im.result{[}20:16{]}} &\tabularnewline\hline
+\texttt{rf.write\_addr} & \texttt{im.result{[}15:11{]}} &
+\texttt{im.result{[}15:11{]}} & \texttt{im.result{[}20:16{]}}\tabularnewline\hline
 \texttt{rf.write\_data} & \texttt{alu.result} & \texttt{alu.result} &
 \texttt{alu.result}\tabularnewline\hline
 \texttt{alu.num1} & \texttt{rf.read\_result1} &
 \texttt{rf.read\_result1} & \texttt{rf.read\_result1}\tabularnewline\hline
 \texttt{alu.num2} & \texttt{rf.read\_result2} &
 \texttt{rf.read\_result2} & \texttt{ext.result}\tabularnewline\hline
-\texttt{ext.num} & & & \texttt{im.data{[}15:0{]}}\tabularnewline\hline
+\texttt{ext.num} & & & \texttt{im.result{[}15:0{]}}\tabularnewline\hline
 \texttt{dm.read\_addr} & & &\tabularnewline\hline
 \texttt{dm.write\_addr} & & &\tabularnewline\hline
 \texttt{dm.write\_data} & & &\tabularnewline\hline
@@ -881,70 +834,136 @@ MUX。把 MUX 的输出端口连接在相应的输入端口上，MUX
 
 \begin{longtable}[]{@{}|l|l|l|l|@{}}
 \hline
-指令 & \texttt{ori} & \texttt{lw} & \texttt{sw}\tabularnewline\hline
+\headingcellfirst{指令} & \headingcellmiddle{\texttt{ori}} & \headingcellmiddle{\texttt{lw}} & \headingcelllast{\texttt{sw}}\tabularnewline\hline
 
 \endhead\hiderowcolors
 \texttt{npc.curr\_pc} & \texttt{pc.curr\_pc} & \texttt{pc.curr\_pc} &
 \texttt{pc.curr\_pc}\tabularnewline\hline
 \texttt{npc.alu\_comp\_result} & & &\tabularnewline\hline
+\texttt{npc.num} & & & \tabularnewline\hline
+\texttt{npc.jnum} & & & \tabularnewline\hline
+\texttt{npc.reg} & & & \tabularnewline\hline
 \texttt{npc.num} & & &\tabularnewline\hline
 \texttt{pc.next\_pc} & \texttt{npc.next\_pc} & \texttt{npc.next\_pc} &
 \texttt{npc.next\_pc}\tabularnewline\hline
 \texttt{im.addr} & \texttt{pc.curr\_pc} & \texttt{pc.curr\_pc} &
 \texttt{pc.curr\_pc}\tabularnewline\hline
-\texttt{rf.read\_addr1} & \texttt{im.data{[}25:21{]}} &
-\texttt{im.data{[}25:21{]}} & \texttt{im.data{[}25:21{]}}\tabularnewline\hline
-\texttt{rf.read\_addr2} & \texttt{im.data{[}20:16{]}} & &
-\texttt{im.data{[}20:16{]}}\tabularnewline\hline
-\texttt{rf.write\_addr} & \texttt{im.data{[}20:16{]}} &
-\texttt{im.data{[}20:16{]}} &\tabularnewline\hline
+\texttt{rf.read\_addr1} & \texttt{im.result{[}25:21{]}} &
+\texttt{im.result{[}25:21{]}} & \texttt{im.result{[}25:21{]}}\tabularnewline\hline
+\texttt{rf.read\_addr2} & \texttt{im.result{[}20:16{]}} & &
+\texttt{im.result{[}20:16{]}}\tabularnewline\hline
+\texttt{rf.write\_addr} & \texttt{im.result{[}20:16{]}} &
+\texttt{im.result{[}20:16{]}} &\tabularnewline\hline
 \texttt{rf.write\_data} & \texttt{alu.result} & \texttt{dm.read\_result}
 &\tabularnewline\hline
 \texttt{alu.num1} & \texttt{rf.read\_result1} &
 \texttt{rf.read\_result1} & \texttt{rf.read\_result1}\tabularnewline\hline
 \texttt{alu.num2} & \texttt{ext.result} & \texttt{ext.result} &
 \texttt{ext.result}\tabularnewline\hline
-\texttt{ext.num} & \texttt{im.data{[}15:0{]}} &
-\texttt{im.data{[}15:0{]}} & \texttt{im.data{[}15:0{]}}\tabularnewline\hline
+\texttt{ext.num} & \texttt{im.result{[}15:0{]}} &
+\texttt{im.result{[}15:0{]}} & \texttt{im.result{[}15:0{]}}\tabularnewline\hline
 \texttt{dm.read\_addr} & & \texttt{alu.result} &\tabularnewline\hline
 \texttt{dm.write\_addr} & & & \texttt{alu.result}\tabularnewline\hline
 \texttt{dm.write\_data} & & & \texttt{rf.read\_result2}\tabularnewline\hline
 
 \end{longtable}
 
-\begin{longtable}[]{@{}|l|l|l|l|@{}}
+\begin{longtable}[]{@{}|l|l|l|@{}}
 \hline
-指令 & \texttt{beq} & \texttt{nop} & 综合\tabularnewline\hline
+\headingcellfirst{指令} & \headingcellmiddle{\texttt{beq}} & \headingcellmiddle{\texttt{nop}} \tabularnewline\hline
+
 
 \endhead\hiderowcolors
-\texttt{npc.curr\_pc} & \texttt{pc.curr\_pc} & \texttt{pc.curr\_pc} &
-\texttt{pc.curr\_pc}\tabularnewline\hline
-\texttt{npc.alu\_comp\_result} & \texttt{alu.comp\_result} & &
-\texttt{alu.comp\_result}\tabularnewline\hline
-\texttt{npc.num} & \texttt{im.data{[}15:0{]}} & &
-\texttt{im.data{[}15:0{]}}\tabularnewline\hline
-\texttt{pc.next\_pc} & \texttt{npc.next\_pc} & \texttt{npc.next\_pc} &
-\texttt{npc.next\_pc}\tabularnewline\hline
-\texttt{im.addr} & \texttt{pc.curr\_pc} & \texttt{pc.curr\_pc} &
-\texttt{pc.curr\_pc}\tabularnewline\hline
-\texttt{rf.read\_addr1} & \texttt{im.data{[}25:21{]}} &
-\texttt{im.data{[}25:21{]}} & \texttt{im.data{[}25:21{]}}\tabularnewline\hline
-\texttt{rf.read\_addr2} & \texttt{im.data{[}20:16{]}} &
-\texttt{im.date{[}20:16{]}} & \texttt{im.data{[}20:16{]}}\tabularnewline\hline
-\texttt{rf.write\_addr} & \texttt{im.data{[}20:16{]}} & &
-\texttt{im.data{[}20:16{]},\ im.data{[}15:11{]}}\tabularnewline\hline
-\texttt{rf.write\_data} & \texttt{alu.result} & &
-\texttt{alu.result,\ dm.read\_result}\tabularnewline\hline
+\texttt{npc.curr\_pc} & \texttt{pc.curr\_pc} & \texttt{pc.curr\_pc}\tabularnewline\hline \texttt{npc.alu\_comp\_result} & \texttt{alu.comp\_result} & 
+\tabularnewline\hline
+\texttt{npc.num} & \texttt{im.result[15:0]} & \tabularnewline\hline
+\texttt{npc.jnum} & & \tabularnewline\hline
+\texttt{npc.reg} & & \tabularnewline\hline
+\texttt{pc.next\_pc} & \texttt{npc.next\_pc} & \texttt{npc.next\_pc} \tabularnewline\hline
+\texttt{im.addr} & \texttt{pc.curr\_pc} & \texttt{pc.curr\_pc} \tabularnewline\hline
+\texttt{rf.read\_addr1} & \texttt{im.result{[}25:21{]}} &
+\texttt{im.result{[}25:21{]}} \tabularnewline\hline
+\texttt{rf.read\_addr2} & \texttt{im.result{[}20:16{]}} &
+\texttt{im.result{[}20:16{]}}\tabularnewline\hline
+\texttt{rf.write\_addr} & \texttt{im.result{[}20:16{]}} & \tabularnewline\hline
+\texttt{rf.write\_data} & \texttt{alu.result} & \tabularnewline\hline
 \texttt{alu.num1} & \texttt{rf.read\_result1} &
-\texttt{rf.read\_result1} & \texttt{rf.read\_result1}\tabularnewline\hline
-\texttt{alu.num2} & \texttt{ext.result} & \texttt{rf.read\_result2} &
-\texttt{rf.read\_result2,\ ext.result}\tabularnewline\hline
-\texttt{ext.num} & \texttt{im.data{[}15:0{]}} & &
-\texttt{im.data{[}15:0{]}}\tabularnewline\hline
-\texttt{dm.read\_addr} & & \texttt{alu.result} &
-\texttt{alu.result}\tabularnewline\hline
-\texttt{dm.write\_addr} & & & \texttt{alu.result}\tabularnewline\hline
-\texttt{dm.write\_data} & & & \texttt{rf.read\_result2}\tabularnewline\hline
+\texttt{rf.read\_result1}\tabularnewline\hline
+\texttt{alu.num2} & \texttt{ext.result} & \texttt{rf.read\_result2}\tabularnewline\hline
+\texttt{ext.num} & \texttt{im.result{[}15:0{]}} & \tabularnewline\hline
+\texttt{dm.read\_addr} & & \texttt{alu.result} \tabularnewline\hline
+\texttt{dm.write\_addr} & & \tabularnewline\hline
+\texttt{dm.write\_data} & & \tabularnewline\hline
+
+\end{longtable}
+
+\begin{longtable}[]{@{}|l|l|l|@{}}
+\hline
+\headingcellfirst{指令} & \headingcellmiddle{\texttt{jal}} & \headingcelllast{\texttt{jr}}\tabularnewline\hline
+\endhead\hiderowcolors
+\texttt{npc.curr\_pc} & \texttt{pc.curr\_pc} & \texttt{pc.curr\_pc} \tabularnewline\hline
+\texttt{npc.alu\_comp\_result} & & \tabularnewline\hline
+\texttt{npc.num} & & \tabularnewline\hline
+\texttt{npc.jnum} & \texttt{im.result[25:0]} & \tabularnewline\hline
+\texttt{npc.reg} & & \texttt{rf.read\_addr1} \tabularnewline\hline
+\texttt{pc.next\_pc} & \texttt{npc.next\_pc} & \texttt{npc.next\_pc} \tabularnewline\hline
+\texttt{im.addr} & \texttt{pc.curr\_pc} & \texttt{pc.curr\_pc} \tabularnewline\hline
+\texttt{rf.read\_addr1} & & \texttt{im.result[25:21]}\tabularnewline\hline
+\texttt{rf.read\_addr2} & & \tabularnewline\hline
+\texttt{rf.write\_addr} & \texttt{5'd31} & \tabularnewline\hline
+\texttt{rf.write\_data} & \texttt{\$unsigned(curr\_pc) + 4} & \tabularnewline\hline
+\texttt{alu.num1} & & \tabularnewline\hline
+\texttt{alu.num2} & & \tabularnewline\hline
+\texttt{ext.num} & & \tabularnewline\hline
+\texttt{dm.read\_addr} & & \tabularnewline\hline
+\texttt{dm.write\_addr} & & \tabularnewline\hline
+ 
+\end{longtable}
+
+\begin{longtable}[]{@{}|l|l|l|@{}}
+\hline
+\headingcellfirst{指令} & \headingcellmiddle{\texttt{jalr}} & \headingcelllast{\texttt{slt}} \tabularnewline\hline \endhead\hiderowcolors
+
+\texttt{npc.curr\_pc} & & \tabularnewline\hline
+\texttt{npc.alu\_comp\_result} & & \tabularnewline\hline
+\texttt{npc.num} & & \tabularnewline\hline
+\texttt{npc.jnum} & & \tabularnewline\hline
+\texttt{npc.reg} & \texttt{rf.read\_addr1} & \tabularnewline\hline
+\texttt{pc.next\_pc} & \texttt{npc.next\_pc} & \texttt{npc.next\_pc} \tabularnewline\hline
+\texttt{im.addr} & \texttt{pc.curr\_pc} & \texttt{pc.curr\_pc} \tabularnewline\hline
+\texttt{rf.read\_addr1} & \texttt{im.result[25:21]} & \texttt{im.result[25:21]} \tabularnewline\hline
+\texttt{rf.read\_addr2} & & \texttt{im.result[20:16]} \tabularnewline\hline
+
+\texttt{rf.write\_addr} & \texttt{5'd31} & \texttt{im.result[15:11]} \tabularnewline\hline
+\texttt{rf.write\_data} & \texttt{\$unsigned(curr\_pc) + 4} & \texttt{alu.result} \tabularnewline\hline
+\texttt{alu.num1} & & \texttt{rf.read\_result1} \tabularnewline\hline
+\texttt{alu.num2} & & \texttt{rf.read\_result2} \tabularnewline\hline
+\texttt{ext.num} & & \tabularnewline\hline
+\texttt{dm.read\_addr} & & \tabularnewline\hline
+\texttt{dm.write\_addr} & & \tabularnewline\hline
+
+\end{longtable}
+
+\begin{longtable}[]{@{}|l|l|@{}}
+\hline
+\headingcellfirst{指令} & \headingcelllast{综合} \tabularnewline\hline
+\endhead\hiderowcolors
+\texttt{npc.curr\_pc} & \texttt{pc.curr\_pc} \tabularnewline\hline
+\texttt{npc.alu\_comp\_result} & \texttt{alu.comp\_result} \tabularnewline\hline
+\texttt{npc.num} & \texttt{im.result[15:0]} \tabularnewline\hline
+\texttt{npc.jnum} & \texttt{im.result[25:0]} \tabularnewline\hline
+\texttt{npc.reg} & \texttt{rf.read\_addr1} \tabularnewline\hline
+\texttt{pc.next\_pc} & \texttt{npc.next\_pc} \tabularnewline\hline
+\texttt{im.addr} & \texttt{pc.curr\_pc} \tabularnewline\hline
+\texttt{rf.read\_addr1} & \texttt{im.result[25:21]} \tabularnewline\hline
+\texttt{rf.read\_addr2} & \texttt{im.result[20:16]}\tabularnewline\hline
+\texttt{rf.write\_addr} & \makecell{\texttt{im.result[20:16], im.result[15:11], }\\\texttt{5'd31}}\tabularnewline\hline
+\texttt{rf.write\_data} & \makecell{\texttt{alu.result, dm.read\_result, }\\\texttt{\$unsigned(curr\_pc) + 4}}\tabularnewline\hline
+\texttt{alu.num1} & \texttt{rf.read\_result1}\tabularnewline\hline
+\texttt{alu.num2} & \texttt{rf.read\_result2, ext.result}\tabularnewline\hline
+\texttt{ext.num} & \texttt{im.result[15:0]}\tabularnewline\hline
+\texttt{dm.read\_addr} & \texttt{alu.result}\tabularnewline\hline
+\texttt{dm.write\_addr} & \texttt{alu.result}\tabularnewline\hline
 
 \end{longtable}
 
@@ -952,22 +971,21 @@ MUX。把 MUX 的输出端口连接在相应的输入端口上，MUX
 
 \begin{longtable}[]{@{}|l|l|l|@{}}
 \hline
-端口 & 所有的信号来源 & MUX 名称\tabularnewline\hline
+\headingcellfirst{端口} & \headingcellmiddle{所有的信号来源} & \headingcelllast{MUX 名称}\tabularnewline\hline
 
 \endhead\hiderowcolors
 \texttt{rf.write\_addr} &
-\texttt{im.data{[}20:16{]},\ im.data{[}15:11{]}} &
+\texttt{im.result{[}20:16{]},\ im.result{[}15:11{]}} &
 \texttt{m\_rf\_write\_addr}\tabularnewline\hline
-\texttt{rf.write\_data} & \texttt{alu.result,\ dm.read\_result} &
+\texttt{rf.write\_data} & \makecell{\texttt{alu.result,\ dm.read\_result,\ }\\\texttt{\$unsigned(curr\_pc) + 4}} &
 \texttt{m\_rf\_write\_data}\tabularnewline\hline
-\texttt{alu.num2} & \texttt{rf.read\_result2,\ ext.result} &
+\texttt{alu.num2} & \makecell{\texttt{rf.read\_result2,\ ext.result}} &
 \texttt{m\_alu\_num2}\tabularnewline\hline
 
 \end{longtable}
 
-这些 MUX 最终还是让控制部件来识别。MUX
-端口的连接顺序（其实也对应着当控制信号从 0
-开始递增时会选择的端口）按照上表中的顺序给定。
+
+这些 MUX 最终还是让控制部件来识别。MUX 端口的连接顺序（其实也对应着当控制信号从 0 开始递增时会选择的端口）按照上表中的顺序给定。
 
 \hypertarget{ux63a7ux5236}{%
 \section{控制}\label{ux63a7ux5236}}
@@ -975,27 +993,22 @@ MUX。把 MUX 的输出端口连接在相应的输入端口上，MUX
 \hypertarget{ux529fux80fd-12}{%
 \subsection{功能}\label{ux529fux80fd-12}}
 
-控制是指通过识别指令，控制数据的流通，从而让 CPU
-执行指定的计算的过程。数据通路只是得到了数据可能的流向，真正要控制还是控制完成。控制通过已有的控制信号和数据通路的分叉完成控制。
+控制是指通过识别指令，控制数据的流通，从而让 CPU 执行指定的计算的过程。数据通路只是得到了数据可能的流向，真正要控制还是控制完成。控制通过已有的控制信号和数据通路的分叉完成控制。
 
 \hypertarget{ux5206ux6790-1}{%
 \subsection{分析}\label{ux5206ux6790-1}}
 
-通过对数据通路的分析，可以得到每条指令需要的控制信号如下。其中表格某一单元格的值有两种情况：若该单元格所在的行最左边的单元格是
-MUX，则说明对应的指令需要让该 MUX
-的输入端口接入该单元格表示的端口；若该单元格所在的行最左边的单元格是端口，则说明对应的指令需要的控制信号为该单元格表示的控制信号。
+通过对数据通路的分析，可以得到每条指令需要的控制信号如下。其中表格某一单元格的值有两种情况：若该单元格所在的行最左边的单元格是 MUX，则说明对应的指令需要让该 MUX 的输入端口接入该单元格表示的端口；若该单元格所在的行最左边的单元格是端口，则说明对应的指令需要的控制信号为该单元格表示的控制信号。
 
-若单元格以 \texttt{\#}
-开头，则说明该控制信号或端口只是为了使控制单元功能明晰而加上的，实际上并不需要关心该控制信号或要接入的端口的值。如果想理解该单元格的值，去掉
-\texttt{\#} 再按照上一段理解即可。
+若单元格以 \texttt{\#} 开头，则说明该控制信号或端口只是为了使控制单元功能明晰而加上的，实际上并不需要关心该控制信号或要接入的端口的值。如果想理解该单元格的值，去掉 \texttt{\#} 再按照上一段理解即可。
 
 \begin{longtable}[]{@{}|l|l|l|@{}}
 \hline
-指令 & \texttt{addu} & \texttt{subu}\tabularnewline\hline
+\headingcellfirst{指令} & \headingcellmiddle{\texttt{addu}} & \headingcelllast{\texttt{subu}}\tabularnewline\hline
 
 \endhead\hiderowcolors
-\texttt{m\_rf\_write\_addr} & \texttt{im.data{[}15:11{]}} &
-\texttt{im.data{[}15:11{]}}\tabularnewline\hline
+\texttt{rf.write\_addr} & \texttt{im.result{[}15:11{]}} &
+\texttt{im.result{[}15:11{]}}\tabularnewline\hline
 \texttt{m\_rf\_write\_data} & \texttt{alu.result} &
 \texttt{alu.result}\tabularnewline\hline
 \texttt{m\_alu\_num2} & \texttt{rf.read\_result2} &
@@ -1018,11 +1031,11 @@ MUX，则说明对应的指令需要让该 MUX
 
 \begin{longtable}[]{@{}|l|l|l|@{}}
 \hline
-指令 & \texttt{lui} & \texttt{ori}\tabularnewline\hline
+\headingcellfirst{指令} & \headingcellmiddle{\texttt{lui}} & \headingcelllast{\texttt{ori}}\tabularnewline\hline
 
 \endhead\hiderowcolors
-\texttt{m\_rf\_write\_addr} & \texttt{im.data{[}20:16{]}} &
-\texttt{im.data{[}20:16{]}}\tabularnewline\hline
+\texttt{rf.write\_addr} & \texttt{im.result{[}20:16{]}} &
+\texttt{im.result{[}20:16{]}}\tabularnewline\hline
 \texttt{m\_rf\_write\_data} & \texttt{alu.result} &
 \texttt{alu.result}\tabularnewline\hline
 \texttt{m\_alu\_num2} & \texttt{ext.result} &
@@ -1045,11 +1058,11 @@ MUX，则说明对应的指令需要让该 MUX
 
 \begin{longtable}[]{@{}|l|l|l|@{}}
 \hline
-指令 & \texttt{lw} & \texttt{sw}\tabularnewline\hline
+\headingcellfirst{指令} & \headingcellmiddle{\texttt{lw}} & \headingcelllast{\texttt{sw}}\tabularnewline\hline
 
 \endhead\hiderowcolors
-\texttt{m\_rf\_write\_addr} & \texttt{im.data{[}20:16{]}} &
-\texttt{im.data{[}20:16{]}}\tabularnewline\hline
+\texttt{rf.write\_addr} & \texttt{im.result{[}20:16{]}} &
+\texttt{im.result{[}20:16{]}}\tabularnewline\hline
 \texttt{m\_rf\_write\_data} & \texttt{dm.read\_result} &
 \texttt{alu.result}\tabularnewline\hline
 \texttt{m\_alu\_num2} & \texttt{ext.result} &
@@ -1072,11 +1085,11 @@ MUX，则说明对应的指令需要让该 MUX
 
 \begin{longtable}[]{@{}|l|l|l|@{}}
 \hline
-指令 & \texttt{beq} & \texttt{nop}\tabularnewline\hline
+\headingcellfirst{指令} & \headingcellmiddle{\texttt{beq}} & \headingcelllast{\texttt{nop}}\tabularnewline\hline
 
 \endhead\hiderowcolors
-\texttt{m\_rf\_write\_addr} & \texttt{\#im.data{[}20:16{]}} &
-\texttt{\#im.data{[}20:16{]}}\tabularnewline\hline
+\texttt{rf.write\_addr} & \texttt{\#im.result{[}20:16{]}} &
+\texttt{\#im.result{[}20:16{]}}\tabularnewline\hline
 \texttt{m\_rf\_write\_data} & \texttt{\#alu.result} &
 \texttt{\#alu.result}\tabularnewline\hline
 \texttt{m\_alu\_num2} & \texttt{rf.read\_result2} &
@@ -1096,6 +1109,42 @@ MUX，则说明对应的指令需要让该 MUX
 \texttt{DM\_WRITE\_DISABLED}\tabularnewline\hline
 
 \end{longtable}
+
+\begin{longtable}[]{@{}|l|l|l|@{}}
+\hline
+\headingcellfirst{指令} & \headingcellmiddle{\texttt{jal}} & \headingcelllast{\texttt{jr}}\tabularnewline\hline
+\endhead\hiderowcolors
+\texttt{rf.write\_addr} & \texttt{5'd31} & \texttt{\#im.result[20:16]}\tabularnewline\hline
+\texttt{m\_rf\_write\_data} & \texttt{\$unsigned(curr\_pc) + 4} & \texttt{\#alu.result}\tabularnewline\hline
+\texttt{m\_alu\_num2} & \texttt{\#rf.read\_result2} & \texttt{\#rf.read\_result2}\tabularnewline\hline
+\texttt{npc.jump\_mode} & \texttt{NPC\_JUMP\_JNUM} & \texttt{NPC\_JUMP\_REG}\tabularnewline\hline
+\texttt{pc.enable} & \texttt{PC\_ENABLED} & \texttt{PC\_ENABLED}\tabularnewline\hline
+\texttt{im.enable} & \texttt{IM\_ENABLED} & \texttt{IM\_ENABLED}\tabularnewline\hline
+\texttt{rf.write\_enable} & \texttt{RF\_WRITE\_ENABLED} & \texttt{RF\_WRITE\_DISABLED}\tabularnewline\hline
+\texttt{alu.op} & \texttt{\#ALU\_OR} & \texttt{\#ALU\_OR}\tabularnewline\hline
+\texttt{ext.mode} & \texttt{\#EXT\_MODE\_UNSIGNED} & \texttt{\#EXT\_MODE\_UNSIGNED}\tabularnewline\hline
+\texttt{dm.write\_enable} & \texttt{DM\_WRITE\_DISABLED} & \texttt{DM\_WRITE\_DISABLED}\tabularnewline\hline
+
+\end{longtable}
+
+\begin{longtable}[]{@{}|l|l|l|@{}}
+\hline
+\headingcellfirst{指令} & \headingcellmiddle{\texttt{jalr}} & \headingcelllast{\texttt{slt}}\tabularnewline\hline
+\endhead\hiderowcolors
+
+\texttt{rf.write\_addr} & \texttt{im.result[20:16]} & \texttt{im.result[15:11]}\tabularnewline\hline
+\texttt{m\_rf\_write\_data} & \texttt{\$unsigned(curr\_pc) + 4} & \texttt{alu.result}\tabularnewline\hline
+\texttt{m\_alu\_num2} & \texttt{\#rf.read\_result2} & \texttt{rf.read\_result2}\tabularnewline\hline
+\texttt{npc.jump\_mode} & \texttt{NPC\_JUMP\_REG} & \texttt{NPC\_JUMP\_DISABLED}\tabularnewline\hline
+\texttt{pc.enable} & \texttt{PC\_ENABLED} & \texttt{PC\_ENABLED}\tabularnewline\hline
+\texttt{im.enable} & \texttt{IM\_ENABLED} & \texttt{IM\_ENABLED}\tabularnewline\hline
+\texttt{rf.write\_enable} & \texttt{RF\_WRITE\_ENABLED} & \texttt{RF\_WRITE\_ENABLED}\tabularnewline\hline
+\texttt{alu.op} & \texttt{\#ALU\_OR} & \texttt{ALU\_SLT}\tabularnewline\hline
+\texttt{ext.mode} & \texttt{\#EXT\_MODE\_UNSIGNED} & \texttt{\#EXT\_MODE\_UNSIGNED}\tabularnewline\hline
+\texttt{dm.write\_enable} & \texttt{DM\_WRITE\_DISABLED} & \texttt{DM\_WRITE\_DISABLED}\tabularnewline\hline
+
+\end{longtable}
+
 
 对于未知指令，各控制信号的值与 \texttt{nop}
 指令的相应值相同。这样相当于直接忽略未知指令。
@@ -1134,6 +1183,10 @@ MUX，则说明对应的指令需要让该 MUX
 指令 \texttt{op} 字段魔数\tabularnewline\hline
 指令魔数 & \texttt{INSTR\_MAGIC\_NOP\_FUNCT} & 6'b000000 & \texttt{nop}
 指令 \texttt{funct} 字段魔数\tabularnewline\hline
+指令魔数 & \texttt{INSTR\_MAGIC\_JAL\_OP} & 6'b000011 & \texttt{jal} 指令 \texttt{op} 字段魔数\tabularnewline\hline
+指令魔数 & \texttt{INSTR\_MAGIC\_JR\_FUNCT} & 6'b001000 & \texttt{jr} 指令 \texttt{funct} 字段魔数\tabularnewline\hline
+指令魔数 & \texttt{INSTR\_MAGIC\_JALR\_FUNCT} & 6'b001001 & \texttt{jalr} 指令 \texttt{funct} 字段魔数\tabularnewline\hline
+指令魔数 & \texttt{INSTR\_MAGIC\_SLT\_FUNCT} & 6'b101010 & \texttt{slt} 指令 \texttt{funct} 字段魔数\tabularnewline\hline
 指令具体类型 & \texttt{INSTR\_UNKNOWN} & 8'd0 & 未知指令\tabularnewline\hline
 指令具体类型 & \texttt{INSTR\_ADDU} & 8'd1 & \texttt{addu}
 指令\tabularnewline\hline
@@ -1152,25 +1205,22 @@ MUX，则说明对应的指令需要让该 MUX
 指令具体类型 & \texttt{INSTR\_NOP} & 8'd8 & \texttt{nop}
 指令\tabularnewline\hline
 \texttt{cm\_rf\_write\_addr} &
-\texttt{CM\_RF\_WRITE\_ADDR\_IM\_DATA\_20\_16} & 1'b0 &
-\texttt{m\_rf\_write\_addr} 输入来源为
-\texttt{im.data{[}20:16{]}}\tabularnewline\hline
-\texttt{cm\_rf\_write\_addr} &
-\texttt{CM\_RF\_WRITE\_ADDR\_IM\_DATA\_15\_11} & 1'b1 &
-\texttt{m\_rf\_write\_addr} 输入来源为
-\texttt{im.data{[}15:11{]}}\tabularnewline\hline
-\texttt{cm\_rf\_write\_data} & \texttt{CM\_RF\_WRITE\_DATA\_ALU\_RESULT}
-& 1'b0 & \texttt{m\_rf\_write\_data} 输入来源为
-\texttt{alu.result}\tabularnewline\hline
+\makecell{\texttt{CM\_RF\_WRITE\_ADDR\_}\\\texttt{IM\_DATA\_20\_16}} & 1'b0 &
+\makecell{\texttt{m\_rf\_write\_addr} \\输入来源为 \texttt{im.result{[}20:16{]}}}\tabularnewline\hline
+\texttt{cm\_rf\_write\_addr} & \makecell{\texttt{CM\_RF\_WRITE\_ADDR\_}\\\texttt{IM\_DATA\_15\_11}} & 1'b1 & \makecell{\texttt{m\_rf\_write\_addr} \\输入来源为
+\texttt{im.result{[}15:11{]}}}\tabularnewline\hline
+\texttt{cm\_rf\_write\_data} & \makecell{\texttt{CM\_RF\_WRITE\_DATA\_}\\\texttt{ALU\_RESULT}}
+& 1'b0 & \makecell{\texttt{m\_rf\_write\_data} \\输入来源为
+\texttt{alu.result}}\tabularnewline\hline
 \texttt{cm\_rf\_write\_data} &
-\texttt{CM\_RF\_WRITE\_DATA\_DM\_READ\_RESULT} & 1'b1 &
-\texttt{m\_rf\_write\_data} 输入来源为
-\texttt{dm.read\_result}\tabularnewline\hline
-\texttt{cm\_alu\_num2} & \texttt{CM\_ALU\_NUM2\_RF\_READ\_RESULT2} &
-1'b0 & \texttt{m\_alu\_num2} 输入来源为
-\texttt{rf.read\_result2}\tabularnewline\hline
-\texttt{cm\_alu\_num2} & \texttt{CM\_ALU\_NUM2\_EXT\_RESULT} & 1'b1 &
-\texttt{m\_alu\_num2} 输入来源为 \texttt{ext.result}\tabularnewline\hline
+\makecell{\texttt{CM\_RF\_WRITE\_DATA\_}\\\texttt{DM\_READ\_RESULT}} & 1'b1 &
+\makecell{\texttt{m\_rf\_write\_data} \\输入来源为
+\texttt{dm.read\_result}}\tabularnewline\hline
+\texttt{cm\_alu\_num2} & \makecell{\texttt{CM\_ALU\_NUM2\_}\\\texttt{RF\_READ\_RESULT2}} &
+1'b0 & \makecell{\texttt{m\_alu\_num2} \\输入来源为
+\texttt{rf.read\_result2}}\tabularnewline\hline
+\texttt{cm\_alu\_num2} & \makecell{\texttt{CM\_ALU\_NUM2\_}\\\texttt{EXT\_RESULT}} & 1'b1 &
+\makecell{\texttt{m\_alu\_num2} \\输入来源为 \texttt{ext.result}}\tabularnewline\hline
 
 \end{longtable}
 
@@ -1183,13 +1233,13 @@ MUX，则说明对应的指令需要让该 MUX
 
 \endhead\hiderowcolors
 \texttt{curr\_instr} & 输入 & 32 & 当前指令\tabularnewline\hline
-\texttt{cm\_rf\_write\_addr} & 输出 & 1 & 控制
-\texttt{m\_rf\_write\_addr}\tabularnewline\hline
-\texttt{cm\_rf\_write\_data} & 输出 & 1 & 控制
+\texttt{cw\_rf\_write\_addr} & 输出 & 5 & 控制
+\texttt{rf.write\_addr}\tabularnewline\hline
+\texttt{cm\_rf\_write\_data} & 输出 & 2 & 控制
 \texttt{m\_rf\_write\_data}\tabularnewline\hline
 \texttt{cm\_alu\_num2} & 输出 & 1 & 控制
 \texttt{m\_alu\_num2}\tabularnewline\hline
-\texttt{cw\_npc\_jump\_mode} & 输出 & 1 & 控制
+\texttt{cw\_npc\_jump\_mode} & 输出 & 3 & 控制
 \texttt{npc.jump\_mode}\tabularnewline\hline
 \texttt{cw\_pc\_enable} & 输出 & 1 & 控制
 \texttt{pc.enable}\tabularnewline\hline
@@ -1197,8 +1247,8 @@ MUX，则说明对应的指令需要让该 MUX
 \texttt{im.enable}\tabularnewline\hline
 \texttt{cw\_rf\_write\_enable} & 输出 & 1 & 控制
 \texttt{rf.write\_enable}\tabularnewline\hline
-\texttt{cw\_alu\_op} & 输出 & 1 & 控制 \texttt{alu.op}\tabularnewline\hline
-\texttt{cw\_ext\_mode} & 输出 & 1 & 控制
+\texttt{cw\_alu\_op} & 输出 & 5 & 控制 \texttt{alu.op}\tabularnewline\hline
+\texttt{cw\_ext\_mode} & 输出 & 2 & 控制
 \texttt{ext.mode}\tabularnewline\hline
 \texttt{cw\_dm\_write\_enable} & 输出 & 1 & 控制
 \texttt{dm.write\_enable}\tabularnewline\hline
@@ -1218,9 +1268,6 @@ MUX，则说明对应的指令需要让该 MUX
 型指令的 \texttt{funct} 字段。当然也可以先看指令是否为 R
 型指令，但是这样逻辑上有点互相缠绕，所以个人认为识别到具体类型比较好。
 
-然后，识别指令类型。这里主要是为了以后的暂停和转发逻辑做准备，代码中不一定实现（虽然一定有宏定义），利用一个
-2 位的 \texttt{wire} 类型变量存放指令类型。
-
 最后，做相对应的操作，并输出控制信号。这个识别出指令具体类型以后，按照表格中每个单元格的意义实现即可，主要考虑的是一个判断问题。
 
 \hypertarget{ux6ce8ux610fux4e8bux9879-7}{%
@@ -1236,8 +1283,6 @@ MUX，则说明对应的指令需要让该 MUX
   有些名字是重复的，在 Verilog 中语法没错误，没有分开
 \item
   \textbf{关于各 MUX 选择哪个输入的宏的值是跟 MUX 接线有关的}
-\item
-  \textbf{谨慎使用宏函数}
 \end{enumerate}
 
 \hypertarget{cpu}{%
@@ -1246,10 +1291,9 @@ MUX，则说明对应的指令需要让该 MUX
 \hypertarget{ux539fux7406-5}{%
 \subsection{原理}\label{ux539fux7406-5}}
 
-CPU
-是宏观部件，主要连接起数据通路和控制。该部件主要起的是宏观功能，也就是读取指令并完成计算。
+CPU 是宏观部件，主要连接起数据通路和控制。该部件主要起的是宏观功能，也就是读取指令并完成计算。
 
-CPU 在模块结构中作为顶层模块而存在。
+CPU 在模块结构中作为顶层模块而存在。注意 CPU 作为顶层模块，模块名字是 \texttt{mips}。
 
 \hypertarget{ux7aefux53e3ux5b9aux4e49-7}{%
 \subsection{端口定义}\label{ux7aefux53e3ux5b9aux4e49-7}}
@@ -1260,6 +1304,7 @@ CPU 在模块结构中作为顶层模块而存在。
 
 \endhead\hiderowcolors
 \texttt{clk} & 输入 & 1 & 时钟信号\tabularnewline\hline
+\texttt{reset} & 输入 & 1 & 同步复位信号\tabularnewline\hline
 
 \end{longtable}
 
@@ -1271,18 +1316,139 @@ CPU 在模块结构中作为顶层模块而存在。
 \hypertarget{ux529fux80fd-14}{%
 \subsection{功能}\label{ux529fux80fd-14}}
 
-CPU 需要的外部数据输入是极少的，只有时钟信号、必要的其它信号和指令文件。
+CPU 需要的外部数据输入是极少的，只有时钟信号、复位信号和指令文件。
 
-\hypertarget{ux6ce8ux610fux4e8bux9879-8}{%
-\subsection{注意事项}\label{ux6ce8ux610fux4e8bux9879-8}}
+\section{思考题}
+
+\subsection{数据通路设计}
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  对部件分级是个好习惯，在流水线 CPU 时会有用。
-\item
-  TODO: \texttt{input\ rst}?
+\item 因为 \texttt{addr} 目前只用到按字读写，而 \texttt{dm} 是按字节寻址的，因此 \texttt{addr} 后两位可以舍弃。\texttt{dm} 只有 1K 个字，所以 \texttt{addr} 高位没有意义，也可以舍弃。所以地址信号位数是 \texttt{[11:2]}。用 \texttt{[9:0]} 也可以，但是显示不出 \texttt{dm} 外用来读写的 32 位地址和 \texttt{dm} 内部地址在每一位上的对应关系。\texttt{addr} 是外部输入的 32 位的 \texttt{dm} 的地址映射过来的。
+\item 针对 \texttt{pc}、\texttt{grf} 和 \texttt{dm}。\texttt{pc} 复位实际上是返回其起始地址。因为复位操作相当于让 CPU 返回初始状态，而初始状态下这些部件的所有寄存器的值都为零。
+\end{enumerate}
+
+\subsection{控制器设计}
+
+\begin{enumerate}
+\item 设计控制器有若干种编码方式。
+\begin{enumerate}
+\item 利用条件语句完成操作码和控制信号的值之间的对应
+\begin{lstlisting}[language=Verilog]
+wire [5:0] op, funct;
+wire rtype;
+
+reg cw_rf_write_enable;
+
+assign op = curr_instr[31:26];
+assign funct = curr_instr[5:0];
+
+always @(*) begin
+    case (op)
+        `OP_RTYPE: begin
+            case (funct)
+                `FUNCT_ADDU: begin
+                    cw_rf_write_enable = 1'b1;
+                    /* ... */
+                end
+                `FUNCT_SUBU: /* ... */
+                /* ... */
+                default: /* ... */
+                /* default 不能省略 */
+            endcase
+        end
+        `OP_LUI: /* ... */
+        `OP_ORI: /* ... */
+        default: /* ... */
+        /* default 不能省略 */
+    endcase
+end
+\end{lstlisting}
+\item 利用 \texttt{assign} 语句完成操作码和控制信号的值之间的对应
+\begin{lstlisting}[language=Verilog]
+wire [5:0] op, funct;
+wire rtype;
+
+assign op = curr_instr[31:26];
+assign funct = curr_instr[5:0];
+
+assign rtype = (op == 6'b000000);
+
+assign cw_rf_write_enable =
+    ((rtype && op == `OP_ADDU) || 
+    /* ... */
+    );
+
+/* ... */
+\end{lstlisting}
+\item 利用宏定义
+\begin{lstlisting}[language=Verilog]
+`define OP(x) (x[31:26])
+`define FUNCT(x) (x[5:0])
+`define RTYPE(x) (`OP(x) == 6'b0)
+
+assign cw_rf_write_enable = 
+    ((`RTYPE(curr_instr) && `FUNCT(x) == `FUNCT_ADDU) ||
+    /* ... */
+    );
+
+/* ... */
+\end{lstlisting}
+\item 利用指令识别的方式，每个指令一条线
+\begin{lstlisting}[language=Verilog]
+wire [5:0] op, funct;
+wire rtype;
+
+assign op = curr_instr[31:26];
+assign funct = curr_instr[5:0];
+
+wire addu, /* ... */;
+
+assign addu = rtype && (funct == `FUNCT_ADDU);
+
+/* ... */
+
+assign cw_rf_write_enable = addu | /* ... */;
+
+/* ... */
+\end{lstlisting}
+\item 把指令分类识别，然后只看指令所属的类
+\begin{lstlisting}[language=Verilog]
+wire [7:0] kind;
+wire [5:0] op, funct;
+wire rtype;
+
+assign op = curr_instr[31:26];
+assign funct = curr_instr[5:0];
+
+assign kind = 
+    (rtype && funct == `FUNCT_ADDU) ? `INSTR_ADDU : 
+    /* ... */
+    `INSTR_UNKNOWN;
+
+assign cw_rf_write_enable = 
+    (kind == `INSTR_ADDU) || 
+    /* ... */
+    ;
+
+/* ... */
+\end{lstlisting}
+\end{enumerate}
+\item 优缺点如下。
+\begin{longtable}[]{@{}|l|l|l|@{}}
+\hline
+\headingcellfirst{编码方式} & \headingcellmiddle{优点} & \headingcelllast{缺点}\tabularnewline\hline
+\endhead\hiderowcolors
+
+(a) & 逻辑清晰 & 代码过长、容易错误引入寄存器\tabularnewline\hline
+(b) & 一定是组合逻辑 & \texttt{wire} 较多、三目运算符反直观、影响有符号数运算\tabularnewline\hline
+(c) & 减小 \texttt{wire} 数、更符合逻辑 & 宏需要技巧、可能会使 ISE 出错、多层嵌套难以检测\tabularnewline\hline
+(d) & 模块化、更好维护 & 增多 \texttt{wire} 数、扩展指令略困难\tabularnewline\hline
+(e) & 减少 \texttt{wire} 数、逻辑较清晰 & 不利于综合时优化、普通宏定义较多、代码量较大\tabularnewline\hline
+
+\end{longtable}
+\item 因为这两对指令的每一对，具体操作中都只差了一个检测溢出。所以在忽略溢出的情况下，这两对指令中的每一对都是等价的。
+\item 优点：便于设计和实现。缺点：关键路径较长、难以发挥硬件并行能力。
+\item \texttt{jal} 把返回地址放入 \texttt{\$31} 中，\texttt{jr} 可以根据 \texttt{\$31} 中的地址返回。如果能按函数调用顺序把 \texttt{\$31} 的先后内容入栈，函数返回时又出栈，就可以实现初步的、能记住每层函数调用点的递归，或者说一种调用约定。
 \end{enumerate}
 
 \hypertarget{ux6280ux5de7}{%
