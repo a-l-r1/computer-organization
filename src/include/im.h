@@ -1,10 +1,8 @@
 `ifndef IM_H
 `define IM_H
 
-`define IM_ENABLE 1'b1
-`define IM_ENABLED `IM_ENABLE
-`define IM_DISABLE 1'b0
-`define IM_DISABLED `IM_DISABLE
+`define IM_ENABLED 1'b1
+`define IM_DISABLED 1'b0
 
 /* IM_SIZE == 2^(IM_ADDR_WIDTH - 2) */
 
