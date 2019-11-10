@@ -27,8 +27,8 @@ wire [31:0] im_calculated_address;
 assign im_calculated_address = $unsigned(addr) - $unsigned(`IM_START_ADDRESS);
 
 assign result = 
-	(enable == `IM_ENABLE && $unsigned(addr) < $unsigned(`IM_START_ADDRESS)) ? 32'b0 : 
-	(enable == `IM_ENABLE && $unsigned(addr) >= $unsigned(`IM_START_ADDRESS)) ? memory[im_calculated_address[`IM_ADDR_WIDTH - 1:2]] : 
+	(enable == `IM_ENABLED && $unsigned(addr) < $unsigned(`IM_START_ADDRESS)) ? 32'b0 : 
+	(enable == `IM_ENABLED && $unsigned(addr) >= $unsigned(`IM_START_ADDRESS)) ? memory[im_calculated_address[`IM_ADDR_WIDTH - 1:2]] : 
 	32'b0;
 
 endmodule
