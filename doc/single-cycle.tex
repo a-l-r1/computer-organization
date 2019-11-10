@@ -1455,6 +1455,164 @@ assign cw_rf_write_enable =
 \item \texttt{jal} 把返回地址放入 \texttt{\$31} 中，\texttt{jr} 可以根据 \texttt{\$31} 中的地址返回。如果能按函数调用顺序把 \texttt{\$31} 的先后内容入栈，函数返回时又出栈，就可以实现初步的、能记住每层函数调用点的递归，或者说一种调用约定。
 \end{enumerate}
 
+\section{测试程序}
+
+\begin{enumerate}
+\item
+\begin{lstlisting}[language={[mips]Assembler}]
+# Test 1: lui
+# 42
+lui $1, 0x002a
+lui $2, 0xffff
+
+# Test 2: ori
+ori $1, 0x002a
+ori $2, 0xffff
+
+# Test 3: addu
+addu $3, $1, $2
+addu $0, $1, $2
+
+# Test 4: subu
+subu $4, $1, $2
+subu $5, $0, $0
+
+# Test 5: sw
+sw $3, 0($0)
+sw $3, 8($0)
+
+# Test 6: lw
+lw $6, 0($0)
+lw $7, 0($0)
+lw $8, 0($0)
+
+# Test 7: beq
+beq $0, $0, good
+evil:
+lui $9, 0xdead
+ori $9, 0xbeef
+good:
+lui $9, 0x0123
+ori $9, 0x4567
+
+# Test 8: nop
+nop
+
+# Test 9: jal
+jal good2
+evil2:
+lui $9, 0xdead
+ori $9, 0xbeef
+good2:
+lui $9, 0x0123
+ori $9, 0x4567
+
+# Test 10: jr
+ori $10, 0x3070 # la $10, good3
+jr $10
+evil3:
+lui $9, 0xdead
+ori $9, 0xbeef
+good3:
+lui $9, 0x0123
+ori $9, 0x4567
+
+# Test 11: jalr
+ori $11, 0x3088 # la $11, good4
+jalr $30, $11
+evil4:
+lui $9, 0xdead
+ori $9, 0xbeef
+good4:
+lui $9, 0x0123
+ori $9, 0x4567
+
+# Test 12: slt
+lui $12, 0xffff
+slt $12, $12, $0
+\end{lstlisting}
+期望结果：
+\begin{lstlisting}
+@00003000: $ 1 <= 002a0000
+@00003004: $ 2 <= ffff0000
+@00003008: $ 1 <= 002a002a
+@0000300c: $ 2 <= ffffffff
+@00003010: $ 3 <= 002a0029
+@00003018: $ 4 <= 002a002b
+@0000301c: $ 5 <= 00000000
+@00003020: *00000000 <= 002a0029
+@00003024: *00000008 <= 002a0029
+@00003028: $ 6 <= 002a0029
+@0000302c: $ 7 <= 002a0029
+@00003030: $ 8 <= 002a0029
+@00003040: $ 9 <= 01230000
+@00003044: $ 9 <= 01234567
+@0000304c: $31 <= 00003050
+@00003058: $ 9 <= 01230000
+@0000305c: $ 9 <= 01234567
+@00003060: $10 <= 00003070
+@00003070: $ 9 <= 01230000
+@00003074: $ 9 <= 01234567
+@00003078: $11 <= 00003088
+@0000307c: $30 <= 00003080
+@00003088: $ 9 <= 01230000
+@0000308c: $ 9 <= 01234567
+@00003090: $12 <= ffff0000
+@00003094: $12 <= 00000001
+\end{lstlisting}
+\item
+\begin{lstlisting}[language={[mips]Assembler}]
+for_0_begin:
+lui $t0, 0
+ori $t0, 0xff0
+lui $t1, 0
+ori $t1, 0x1000
+lui $t2, 0
+ori $t2, 4
+lui $t4, 0xffff
+ori $t4, 0xffff
+for_0_loop:
+slt $t3, $t0, $t1
+beq $t3, $0, for_0_end
+
+	sw $t4, 0($t0)
+	lw $t4, 0($t0)
+
+addu $t0, $t0, $t2
+beq $0, $0, for_0_loop
+for_0_end:
+\end{lstlisting}
+期望结果：
+\begin{lstlisting}
+@00003000: $ 8 <= 00000000
+@00003004: $ 8 <= 00000ff0
+@00003008: $ 9 <= 00000000
+@0000300c: $ 9 <= 00001000
+@00003010: $10 <= 00000000
+@00003014: $10 <= 00000004
+@00003018: $12 <= ffff0000
+@0000301c: $12 <= ffffffff
+@00003020: $11 <= 00000001
+@00003028: *00000ff0 <= ffffffff
+@0000302c: $12 <= ffffffff
+@00003030: $ 8 <= 00000ff4
+@00003020: $11 <= 00000001
+@00003028: *00000ff4 <= ffffffff
+@0000302c: $12 <= ffffffff
+@00003030: $ 8 <= 00000ff8
+@00003020: $11 <= 00000001
+@00003028: *00000ff8 <= ffffffff
+@0000302c: $12 <= ffffffff
+@00003030: $ 8 <= 00000ffc
+@00003020: $11 <= 00000001
+@00003028: *00000ffc <= ffffffff
+@0000302c: $12 <= ffffffff
+@00003030: $ 8 <= 00001000
+@00003020: $11 <= 00000000
+\end{lstlisting}
+\end{enumerate}
+
+
 \hypertarget{ux6280ux5de7}{%
 \section{技巧}\label{ux6280ux5de7}}
 

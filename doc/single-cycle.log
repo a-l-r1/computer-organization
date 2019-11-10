@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2019/dev/Debian) (preloaded format=xelatex 2019.6.28)  10 NOV 2019 15:36
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2019/dev/Debian) (preloaded format=xelatex 2019.6.28)  10 NOV 2019 18:34
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1551,25 +1551,25 @@ Overfull \hbox (14.36551pt too wide) in alignment at lines 1440--1447
  [] [] [] 
  []
 
-[32] [33] [34] [35] [36]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1829.
- [37]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1829.
+[32] [33] [34] [35] [36] [37] [38] [39] [40] [41]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1987.
+ [42]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1987.
  (./single-cycle.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1829.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1829.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1987.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1987.
 
 Package rerunfilecheck Info: File `single-cycle.out' has not changed.
-(rerunfilecheck)             Checksum: A5C992FFE612A2F792F3C009BF538377.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1829.
+(rerunfilecheck)             Checksum: F02BFC5EB00B54B10FF76E2B96BD6CFB.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1987.
  ) 
 Here is how much of TeX's memory you used:
- 32500 strings out of 492912
- 614513 string characters out of 6134893
- 1057660 words of memory out of 5000000
- 36151 multiletter control sequences out of 15000+600000
+ 32824 strings out of 492912
+ 617605 string characters out of 6134893
+ 1072660 words of memory out of 5000000
+ 36475 multiletter control sequences out of 15000+600000
  538445 words of font info for 116 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  59i,12n,109p,946b,2166s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on single-cycle.pdf (37 pages).
+Output written on single-cycle.pdf (42 pages).
