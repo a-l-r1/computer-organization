@@ -66,6 +66,7 @@
 \contentsline {section}{\numberline {12}思考题}{28}{section.12}% 
 \contentsline {subsection}{\numberline {12.1}数据通路设计}{28}{subsection.12.1}% 
 \contentsline {subsection}{\numberline {12.2}控制器设计}{29}{subsection.12.2}% 
+\contentsline {subsection}{\numberline {12.3}在线测试相关信息}{32}{subsection.12.3}% 
 \contentsline {section}{\numberline {13}技巧}{33}{section.13}% 
 \contentsline {subsection}{\numberline {13.1}慌了怎么办}{33}{subsection.13.1}% 
 \contentsline {subsection}{\numberline {13.2}如何加新指令}{33}{subsection.13.2}% 

@@ -2,7 +2,7 @@
 \PassOptionsToPackage{hyphens}{url}
 %
 
-\documentclass[12pt,AutoFakeBold]{article}
+\documentclass[12pt,AutoFakeBold,AutoFakeSlant]{article}
 % 12pt == 小四
 
 \usepackage{amssymb,amsmath}
@@ -1444,8 +1444,12 @@ assign cw_rf_write_enable =
 (c) & 减小 \texttt{wire} 数、更符合逻辑 & 宏需要技巧、可能会使 ISE 出错、多层嵌套难以检测\tabularnewline\hline
 (d) & 模块化、更好维护 & 增多 \texttt{wire} 数、扩展指令略困难\tabularnewline\hline
 (e) & 减少 \texttt{wire} 数、逻辑较清晰 & 不利于综合时优化、普通宏定义较多、代码量较大\tabularnewline\hline
-
 \end{longtable}
+\end{enumerate}
+
+\subsection{在线测试相关信息}
+
+\begin{enumerate}
 \item 因为这两对指令的每一对，具体操作中都只差了一个检测溢出。所以在忽略溢出的情况下，这两对指令中的每一对都是等价的。
 \item 优点：便于设计和实现。缺点：关键路径较长、难以发挥硬件并行能力。
 \item \texttt{jal} 把返回地址放入 \texttt{\$31} 中，\texttt{jr} 可以根据 \texttt{\$31} 中的地址返回。如果能按函数调用顺序把 \texttt{\$31} 的先后内容入栈，函数返回时又出栈，就可以实现初步的、能记住每层函数调用点的递归，或者说一种调用约定。

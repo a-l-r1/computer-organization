@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2019/dev/Debian) (preloaded format=xelatex 2019.6.28)  10 NOV 2019 15:32
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2019/dev/Debian) (preloaded format=xelatex 2019.6.28)  10 NOV 2019 15:36
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -911,20 +911,9 @@ Package xeCJK Warning: Redefining CJKfamily `\CJKrmdefault'
 (xeCJK)                (FandolSong-Regular(0)).
 
 
-Package fontspec Info: Could not resolve font "SimSun/I" (it probably doesn't
-(fontspec)             exist).
-
-
-Package fontspec Info: Could not resolve font "SimSun/BI" (it probably doesn't
-(fontspec)             exist).
-
-
-Package fontspec Info: Could not resolve font "SimSun/I" (it probably doesn't
-(fontspec)             exist).
-
-
 Package fontspec Info: Font family 'SimSun(0)' created for font 'SimSun' with
-(fontspec)             options [Script={CJK},AutoFakeBold={4}].
+(fontspec)             options
+(fontspec)             [Script={CJK},AutoFakeBold={4},AutoFakeSlant={0.167}].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
@@ -935,6 +924,13 @@ Package fontspec Info: Font family 'SimSun(0)' created for font 'SimSun' with
 (fontspec)             - 'bold' (bx/n) with NFSS spec.:
 (fontspec)             <->"SimSun/OT:script=hani;language=DFLT;embolden=4;"
 (fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"SimSun/OT:script=hani;language=DFLT;slant=0.167;"
+(fontspec)             - 'italic small caps'  (m/itsc) with NFSS spec.: 
+(fontspec)             - 'bold italic' (bx/it) with NFSS spec.:
+(fontspec)             <->"SimSun/OT:script=hani;language=DFLT;embolden=4;slant
+=0.167;"
+(fontspec)             - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
 
 
 Package xeCJK Warning: Redefining CJKfamily `\CJKttdefault'
@@ -1387,7 +1383,7 @@ Package fontspec Warning: Font "FandolHei-Regular" does not contain requested
 Package fontspec Info: Font family 'FandolHei-Regular(0)' created for font
 (fontspec)             'FandolHei-Regular' with options
 (fontspec)             [Script={CJK},Extension={.otf},BoldFont={FandolHei-Bold}
-].
+,AutoFakeSlant={0.167}].
 (fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
@@ -1398,6 +1394,9 @@ Package fontspec Info: Font family 'FandolHei-Regular(0)' created for font
 (fontspec)             - 'bold' (bx/n) with NFSS spec.:
 (fontspec)             <->"[FandolHei-Bold.otf]/OT"
 (fontspec)             - 'bold small caps'  (bx/sc) with NFSS spec.: 
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"[FandolHei-Regular.otf]/OT:slant=0.167;"
+(fontspec)             - 'italic small caps'  (m/itsc) with NFSS spec.: 
 
 (./single-cycle.toc
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
@@ -1497,12 +1496,7 @@ Underfull \hbox (badness 5203) in paragraph at lines 652--654
 12 1’b1 \TU/SimSun(0)/m/n/12 ，|  则 进 行 同 步 复 位。|  否 则，|  若
  []
 
-[15]
-
-LaTeX Font Warning: Font shape `TU/SimSun(0)/m/it' undefined
-(Font)              using `TU/SimSun(0)/m/n' instead on input line 726.
-
-[16] [17]
+[15] [16] [17]
 Overfull \hbox (40.63153pt too wide) in alignment at lines 801--805
  [] [] [] [] 
  []
@@ -1553,32 +1547,28 @@ Overfull \hbox (14.36551pt too wide) in alignment at lines 1437--1440
  []
 
 
-Overfull \hbox (14.36551pt too wide) in alignment at lines 1440--1448
+Overfull \hbox (14.36551pt too wide) in alignment at lines 1440--1447
  [] [] [] 
  []
 
 [32] [33] [34] [35] [36]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1825.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1829.
  [37]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1825.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1829.
  (./single-cycle.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1825.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1825.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1829.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1829.
 
 Package rerunfilecheck Info: File `single-cycle.out' has not changed.
-(rerunfilecheck)             Checksum: 8B114FB433AEAAB5C72EFEE04D2B38B5.
-
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1825.
+(rerunfilecheck)             Checksum: A5C992FFE612A2F792F3C009BF538377.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1829.
  ) 
 Here is how much of TeX's memory you used:
- 32486 strings out of 492912
- 614005 string characters out of 6134893
- 1057414 words of memory out of 5000000
- 36138 multiletter control sequences out of 15000+600000
- 538437 words of font info for 115 fonts, out of 8000000 for 9000
+ 32500 strings out of 492912
+ 614513 string characters out of 6134893
+ 1057660 words of memory out of 5000000
+ 36151 multiletter control sequences out of 15000+600000
+ 538445 words of font info for 116 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  59i,12n,109p,946b,2166s stack positions out of 5000i,500n,10000p,200000b,80000s
 
