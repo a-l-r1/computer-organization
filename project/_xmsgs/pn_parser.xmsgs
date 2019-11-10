@@ -8,5 +8,1394 @@
 <!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.    -->
 
 <messages>
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/a-l-r/co/src/src/bridge/bridge.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/bridge/bridge.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;bridge.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/bridge/bridge.v</arg>&quot; Line <arg fmt="%d" index="2">3</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;dm.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/bridge/bridge.v</arg>&quot; Line <arg fmt="%d" index="2">17</arg>. <arg fmt="%s" index="3">Macro &lt;BRIDGE_TIMER_LB&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/bridge/bridge.v</arg>&quot; Line <arg fmt="%d" index="2">18</arg>. <arg fmt="%s" index="3">Macro &lt;BRIDGE_UART_LB&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/bridge/bridge.v</arg>&quot; Line <arg fmt="%d" index="2">19</arg>. <arg fmt="%s" index="3">Macro &lt;BRIDGE_SWITCHES_LB&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/bridge/bridge.v</arg>&quot; Line <arg fmt="%d" index="2">20</arg>. <arg fmt="%s" index="3">Macro &lt;BRIDGE_LED_LB&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/bridge/bridge.v</arg>&quot; Line <arg fmt="%d" index="2">21</arg>. <arg fmt="%s" index="3">Macro &lt;BRIDGE_NIXIE_LB&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/bridge/bridge.v</arg>&quot; Line <arg fmt="%d" index="2">22</arg>. <arg fmt="%s" index="3">Macro &lt;BRIDGE_BUTTONS_LB&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/bridge/bridge.v</arg>&quot; Line <arg fmt="%d" index="2">23</arg>. <arg fmt="%s" index="3">Macro &lt;DM_ADDR_LB&gt; is not defined.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/a-l-r/co/src/src/control/pipelined3.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;instr-id.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;pipelined3.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">6</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;debug/debug.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">8</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;alu.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">9</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;ac.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">10</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;ext.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">11</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;cp0.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">12</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;npc.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">13</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;md.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">14</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;dm.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">28</arg>. <arg fmt="%s" index="3">Macro &lt;OP&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">32</arg>. <arg fmt="%s" index="3">Macro &lt;RS&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">33</arg>. <arg fmt="%s" index="3">Macro &lt;RT&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">34</arg>. <arg fmt="%s" index="3">Macro &lt;RD&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">35</arg>. <arg fmt="%s" index="3">Macro &lt;SHAMT&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">38</arg>. <arg fmt="%s" index="3">Macro &lt;FUNCT&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">38</arg>. <arg fmt="%s" index="3">Syntax error near &quot;:&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">39</arg>. <arg fmt="%s" index="3">Macro &lt;SUBU&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">40</arg>. <arg fmt="%s" index="3">Macro &lt;ADD&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">41</arg>. <arg fmt="%s" index="3">Macro &lt;SUB&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">42</arg>. <arg fmt="%s" index="3">Macro &lt;SLL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">43</arg>. <arg fmt="%s" index="3">Macro &lt;SRL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">44</arg>. <arg fmt="%s" index="3">Macro &lt;SRA&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">45</arg>. <arg fmt="%s" index="3">Macro &lt;AND&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">46</arg>. <arg fmt="%s" index="3">Macro &lt;OR&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">47</arg>. <arg fmt="%s" index="3">Macro &lt;NOR&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">48</arg>. <arg fmt="%s" index="3">Macro &lt;XOR&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">49</arg>. <arg fmt="%s" index="3">Macro &lt;SLT&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">50</arg>. <arg fmt="%s" index="3">Macro &lt;SLTU&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">51</arg>. <arg fmt="%s" index="3">Macro &lt;SLLV&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">52</arg>. <arg fmt="%s" index="3">Macro &lt;SRLV&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">53</arg>. <arg fmt="%s" index="3">Macro &lt;SRAV&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">55</arg>. <arg fmt="%s" index="3">Macro &lt;LUI&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">56</arg>. <arg fmt="%s" index="3">Macro &lt;ORI&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">57</arg>. <arg fmt="%s" index="3">Macro &lt;ADDI&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">58</arg>. <arg fmt="%s" index="3">Macro &lt;ADDIU&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">59</arg>. <arg fmt="%s" index="3">Macro &lt;ANDI&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Macro &lt;XORI&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">61</arg>. <arg fmt="%s" index="3">Macro &lt;SLTI&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">62</arg>. <arg fmt="%s" index="3">Macro &lt;SLTIU&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">64</arg>. <arg fmt="%s" index="3">Macro &lt;LW&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">65</arg>. <arg fmt="%s" index="3">Macro &lt;LH&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">66</arg>. <arg fmt="%s" index="3">Macro &lt;LHU&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">67</arg>. <arg fmt="%s" index="3">Macro &lt;LB&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">68</arg>. <arg fmt="%s" index="3">Macro &lt;LBU&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">70</arg>. <arg fmt="%s" index="3">Macro &lt;SW&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">71</arg>. <arg fmt="%s" index="3">Macro &lt;SH&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">72</arg>. <arg fmt="%s" index="3">Macro &lt;SB&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">74</arg>. <arg fmt="%s" index="3">Macro &lt;BEQ&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">75</arg>. <arg fmt="%s" index="3">Macro &lt;BNE&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">76</arg>. <arg fmt="%s" index="3">Macro &lt;BLEZ&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">77</arg>. <arg fmt="%s" index="3">Macro &lt;BGEZ&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">78</arg>. <arg fmt="%s" index="3">Macro &lt;BLTZ&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">79</arg>. <arg fmt="%s" index="3">Macro &lt;BGTZ&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">81</arg>. <arg fmt="%s" index="3">Macro &lt;J&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">82</arg>. <arg fmt="%s" index="3">Macro &lt;JAL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">84</arg>. <arg fmt="%s" index="3">Macro &lt;JR&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">85</arg>. <arg fmt="%s" index="3">Macro &lt;JALR&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">87</arg>. <arg fmt="%s" index="3">Macro &lt;MOVZ&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">89</arg>. <arg fmt="%s" index="3">Macro &lt;MULT&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">90</arg>. <arg fmt="%s" index="3">Macro &lt;MULTU&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">91</arg>. <arg fmt="%s" index="3">Macro &lt;DIV&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">92</arg>. <arg fmt="%s" index="3">Macro &lt;DIVU&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">94</arg>. <arg fmt="%s" index="3">Macro &lt;MFHI&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">95</arg>. <arg fmt="%s" index="3">Macro &lt;MFLO&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">97</arg>. <arg fmt="%s" index="3">Macro &lt;MTHI&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">98</arg>. <arg fmt="%s" index="3">Macro &lt;MTLO&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">100</arg>. <arg fmt="%s" index="3">Macro &lt;MFC0&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">101</arg>. <arg fmt="%s" index="3">Macro &lt;MTC0&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">102</arg>. <arg fmt="%s" index="3">Macro &lt;ERET&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">104</arg>. <arg fmt="%s" index="3">Macro &lt;UNKNOWN&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">296</arg>. <arg fmt="%s" index="3">Macro &lt;debug_write&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">296</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">308</arg>. <arg fmt="%s" index="3">Macro &lt;BRANCH&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">308</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">309</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_EQUAL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">310</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_NOT_EQUAL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">311</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_SIG_SMALLER_OR_EQUAL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">312</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_SIG_LARGER_OR_EQUAL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">313</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_SIG_SMALLER&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">314</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_SIG_LARGER&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">315</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_JUMP_DISABLED&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">317</arg>. <arg fmt="%s" index="3">Macro &lt;JUMP_I&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">318</arg>. <arg fmt="%s" index="3">Macro &lt;JUMP_R&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">319</arg>. <arg fmt="%s" index="3">Macro &lt;JUMP_C0&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">323</arg>. <arg fmt="%s" index="3">Macro &lt;CAL_I&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">323</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">324</arg>. <arg fmt="%s" index="3">Macro &lt;EXT_MODE_PAD&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">325</arg>. <arg fmt="%s" index="3">Macro &lt;EXT_MODE_UNSIGNED&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">326</arg>. <arg fmt="%s" index="3">Macro &lt;EXT_SIGNED&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">328</arg>. <arg fmt="%s" index="3">Macro &lt;EXT_UNSIGNED&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">334</arg>. <arg fmt="%s" index="3">Macro &lt;LOAD&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">342</arg>. <arg fmt="%s" index="3">Macro &lt;CAL_R&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">342</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">347</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">348</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_ADD&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">349</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_SUB&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">352</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_AND&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">353</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_OR&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">354</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_NOR&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">355</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_XOR&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">356</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_SLT&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">357</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_SLTU&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">358</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_SLL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">359</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_SRL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">360</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_SRA&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">361</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_SLLV&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">362</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_SRLV&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">363</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_SRAV&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">380</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_MOVZ&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">387</arg>. <arg fmt="%s" index="3">Macro &lt;CAL_M&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">387</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">388</arg>. <arg fmt="%s" index="3">Macro &lt;MD_MULT&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">389</arg>. <arg fmt="%s" index="3">Macro &lt;MD_MULTU&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">390</arg>. <arg fmt="%s" index="3">Macro &lt;MD_DIV&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">391</arg>. <arg fmt="%s" index="3">Macro &lt;MD_DIVU&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">392</arg>. <arg fmt="%s" index="3">Macro &lt;MD_NONE&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">394</arg>. <arg fmt="%s" index="3">Macro &lt;LOAD_M&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">395</arg>. <arg fmt="%s" index="3">Macro &lt;MD_MFHI&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">396</arg>. <arg fmt="%s" index="3">Macro &lt;MD_MFLO&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">399</arg>. <arg fmt="%s" index="3">Macro &lt;STORE_M&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">400</arg>. <arg fmt="%s" index="3">Macro &lt;MD_MTHI&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">401</arg>. <arg fmt="%s" index="3">Macro &lt;MD_MTLO&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">407</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">415</arg>. <arg fmt="%s" index="3">Macro &lt;DM_ADDR_LB&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">415</arg>. <arg fmt="%s" index="3">Syntax error near &quot;&amp;&amp;&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">419</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">423</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">424</arg>. <arg fmt="%s" index="3">Macro &lt;DM_W&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">425</arg>. <arg fmt="%s" index="3">Macro &lt;DM_H&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">426</arg>. <arg fmt="%s" index="3">Macro &lt;DM_HU&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">427</arg>. <arg fmt="%s" index="3">Macro &lt;DM_B&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">428</arg>. <arg fmt="%s" index="3">Macro &lt;DM_BU&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">429</arg>. <arg fmt="%s" index="3">Macro &lt;DM_NONE&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">440</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">440</arg>. <arg fmt="%s" index="3">Macro &lt;LOAD_C0&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">446</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">458</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">459</arg>. <arg fmt="%s" index="3">Macro &lt;ZERO&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">462</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">462</arg>. <arg fmt="%s" index="3">Macro &lt;STORE_C0&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">475</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">478</arg>. <arg fmt="%s" index="3">Macro &lt;RA&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">496</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">496</arg>. <arg fmt="%s" index="3">Macro &lt;E2D_rf&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">497</arg>. <arg fmt="%s" index="3">Macro &lt;E2D_npc&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">498</arg>. <arg fmt="%s" index="3">Macro &lt;E2D_md&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">499</arg>. <arg fmt="%s" index="3">Macro &lt;M2D_npc&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">500</arg>. <arg fmt="%s" index="3">Macro &lt;M2D_alu&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">501</arg>. <arg fmt="%s" index="3">Macro &lt;M2D_md&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">502</arg>. <arg fmt="%s" index="3">Macro &lt;M2D_cp0&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">503</arg>. <arg fmt="%s" index="3">Macro &lt;W2D_rf&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">504</arg>. <arg fmt="%s" index="3">Macro &lt;orig&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">507</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">507</arg>. <arg fmt="%s" index="3">Macro &lt;M2E_npc&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">508</arg>. <arg fmt="%s" index="3">Macro &lt;M2E_alu&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">509</arg>. <arg fmt="%s" index="3">Macro &lt;M2E_md&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">510</arg>. <arg fmt="%s" index="3">Macro &lt;M2E_cp0&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">511</arg>. <arg fmt="%s" index="3">Macro &lt;W2E_rf&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">517</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">528</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">536</arg>. <arg fmt="%s" index="3">Macro &lt;W2M_rf&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">536</arg>. <arg fmt="%s" index="3">Syntax error near &quot;:&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">540</arg>. <arg fmt="%s" index="3">Syntax error near &quot;&amp;&amp;&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">540</arg>. <arg fmt="%s" index="3">Macro &lt;EPC_D2M_rf&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">541</arg>. <arg fmt="%s" index="3">Macro &lt;EPC_E2M_rf&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">542</arg>. <arg fmt="%s" index="3">Macro &lt;EPC_M2M_rf&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">548</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">553</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">559</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">564</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">574</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">577</arg>. <arg fmt="%s" index="3">Syntax error near &quot;&amp;&amp;&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">596</arg>. <arg fmt="%s" index="3">Macro &lt;EXC_NONE&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">596</arg>. <arg fmt="%s" index="3">Syntax error near &quot;:&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">597</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">599</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">599</arg>. <arg fmt="%s" index="3">Macro &lt;EXC_ADEL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">602</arg>. <arg fmt="%s" index="3">Syntax error near &quot;:&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">603</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">604</arg>. <arg fmt="%s" index="3">Macro &lt;EXC_RI&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">607</arg>. <arg fmt="%s" index="3">Syntax error near &quot;:&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">608</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">608</arg>. <arg fmt="%s" index="3">Macro &lt;EXC_OV&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">613</arg>. <arg fmt="%s" index="3">Macro &lt;AC_VALID&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">613</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">614</arg>. <arg fmt="%s" index="3">Macro &lt;AC_BAD&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">615</arg>. <arg fmt="%s" index="3">Macro &lt;EXC_ADES&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">622</arg>. <arg fmt="%s" index="3">Syntax error near &quot;&amp;&amp;&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">627</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">629</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">640</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_ISR&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">640</arg>. <arg fmt="%s" index="3">Syntax error near &quot;:&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">647</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">649</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/control/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">651</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/a-l-r/co/src/src/cpu/pipelined3.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;pipelined3.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">233</arg>. <arg fmt="%s" index="3">Macro &lt;orig&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">233</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">234</arg>. <arg fmt="%s" index="3">Macro &lt;E2D_rf&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">235</arg>. <arg fmt="%s" index="3">Macro &lt;E2D_npc&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">236</arg>. <arg fmt="%s" index="3">Macro &lt;E2D_md&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">237</arg>. <arg fmt="%s" index="3">Macro &lt;M2D_npc&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">238</arg>. <arg fmt="%s" index="3">Macro &lt;M2D_alu&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">239</arg>. <arg fmt="%s" index="3">Macro &lt;M2D_md&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">240</arg>. <arg fmt="%s" index="3">Macro &lt;M2D_cp0&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">241</arg>. <arg fmt="%s" index="3">Macro &lt;W2D_rf&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">247</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">312</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">313</arg>. <arg fmt="%s" index="3">Macro &lt;M2E_npc&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">314</arg>. <arg fmt="%s" index="3">Macro &lt;M2E_alu&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">315</arg>. <arg fmt="%s" index="3">Macro &lt;M2E_md&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">316</arg>. <arg fmt="%s" index="3">Macro &lt;M2E_cp0&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">317</arg>. <arg fmt="%s" index="3">Macro &lt;W2E_rf&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">323</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">416</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">417</arg>. <arg fmt="%s" index="3">Macro &lt;W2M_rf&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">466</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">467</arg>. <arg fmt="%s" index="3">Macro &lt;EPC_D2M_rf&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">468</arg>. <arg fmt="%s" index="3">Macro &lt;EPC_E2M_rf&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3.v</arg>&quot; Line <arg fmt="%d" index="2">469</arg>. <arg fmt="%s" index="3">Macro &lt;EPC_M2M_rf&gt; is not defined.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/a-l-r/co/src/src/datapath/ac.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ac.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;ac.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ac.v</arg>&quot; Line <arg fmt="%d" index="2">3</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;dm.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ac.v</arg>&quot; Line <arg fmt="%d" index="2">4</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;bridge.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ac.v</arg>&quot; Line <arg fmt="%d" index="2">8</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;debug/debug.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ac.v</arg>&quot; Line <arg fmt="%d" index="2">20</arg>. <arg fmt="%s" index="3">Macro &lt;BRIDGE_TIMER_LB&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ac.v</arg>&quot; Line <arg fmt="%d" index="2">21</arg>. <arg fmt="%s" index="3">Macro &lt;BRIDGE_UART_LB&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ac.v</arg>&quot; Line <arg fmt="%d" index="2">22</arg>. <arg fmt="%s" index="3">Macro &lt;BRIDGE_SWITCHES_LB&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ac.v</arg>&quot; Line <arg fmt="%d" index="2">23</arg>. <arg fmt="%s" index="3">Macro &lt;BRIDGE_LED_LB&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ac.v</arg>&quot; Line <arg fmt="%d" index="2">24</arg>. <arg fmt="%s" index="3">Macro &lt;BRIDGE_NIXIE_LB&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ac.v</arg>&quot; Line <arg fmt="%d" index="2">25</arg>. <arg fmt="%s" index="3">Macro &lt;BRIDGE_BUTTONS_LB&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ac.v</arg>&quot; Line <arg fmt="%d" index="2">26</arg>. <arg fmt="%s" index="3">Macro &lt;DM_ADDR_LB&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ac.v</arg>&quot; Line <arg fmt="%d" index="2">32</arg>. <arg fmt="%s" index="3">Macro &lt;DM_H&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ac.v</arg>&quot; Line <arg fmt="%d" index="2">32</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ac.v</arg>&quot; Line <arg fmt="%d" index="2">33</arg>. <arg fmt="%s" index="3">Macro &lt;DM_W&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ac.v</arg>&quot; Line <arg fmt="%d" index="2">37</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ac.v</arg>&quot; Line <arg fmt="%d" index="2">47</arg>. <arg fmt="%s" index="3">Macro &lt;DM_NONE&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ac.v</arg>&quot; Line <arg fmt="%d" index="2">47</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ac.v</arg>&quot; Line <arg fmt="%d" index="2">50</arg>. <arg fmt="%s" index="3">Macro &lt;AC_BAD&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ac.v</arg>&quot; Line <arg fmt="%d" index="2">50</arg>. <arg fmt="%s" index="3">Syntax error near &quot;:&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ac.v</arg>&quot; Line <arg fmt="%d" index="2">51</arg>. <arg fmt="%s" index="3">Macro &lt;AC_VALID&gt; is not defined.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/a-l-r/co/src/src/datapath/alu.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;alu.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">5</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;debug/debug.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">24</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_SLL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">24</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">25</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_SLLV&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">134</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_ADD&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">134</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">135</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_SUB&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">136</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_AND&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">137</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_OR&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">138</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_NOT&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">139</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_XOR&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">140</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_MOVZ&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">141</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_NOR&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">142</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_SLT&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">145</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_SLTU&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">151</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">157</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">164</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">172</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_EQUAL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">172</arg>. <arg fmt="%s" index="3">Syntax error near &quot;:&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">173</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_SMALLER&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">174</arg>. <arg fmt="%s" index="3">Macro &lt;ALU_LARGER&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">177</arg>. <arg fmt="%s" index="3">Syntax error near &quot;:&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">183</arg>. <arg fmt="%s" index="3">Macro &lt;debug_write&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/alu.v</arg>&quot; Line <arg fmt="%d" index="2">183</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/a-l-r/co/src/src/datapath/cmp.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/cmp.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;alu.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/cmp.v</arg>&quot; Line <arg fmt="%d" index="2">2</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;cmp.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/cmp.v</arg>&quot; Line <arg fmt="%d" index="2">6</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;debug/debug.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/cmp.v</arg>&quot; Line <arg fmt="%d" index="2">17</arg>. <arg fmt="%s" index="3">Macro &lt;CMP_LARGER&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/cmp.v</arg>&quot; Line <arg fmt="%d" index="2">17</arg>. <arg fmt="%s" index="3">Syntax error near &quot;:&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/cmp.v</arg>&quot; Line <arg fmt="%d" index="2">18</arg>. <arg fmt="%s" index="3">Macro &lt;CMP_SMALLER&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/cmp.v</arg>&quot; Line <arg fmt="%d" index="2">19</arg>. <arg fmt="%s" index="3">Macro &lt;CMP_EQUAL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/cmp.v</arg>&quot; Line <arg fmt="%d" index="2">22</arg>. <arg fmt="%s" index="3">Syntax error near &quot;:&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/cmp.v</arg>&quot; Line <arg fmt="%d" index="2">27</arg>. <arg fmt="%s" index="3">Syntax error near &quot;:&quot;.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/a-l-r/co/src/src/datapath/cp0.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/cp0.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;cp0.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/cp0.v</arg>&quot; Line <arg fmt="%d" index="2">5</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;debug/debug.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/cp0.v</arg>&quot; Line <arg fmt="%d" index="2">43</arg>. <arg fmt="%s" index="3">Macro &lt;CP0_PRID&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/cp0.v</arg>&quot; Line <arg fmt="%d" index="2">43</arg>. <arg fmt="%s" index="3">Syntax error near &quot;;&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/cp0.v</arg>&quot; Line <arg fmt="%d" index="2">53</arg>. <arg fmt="%s" index="3">Macro &lt;EXC_NONE&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/cp0.v</arg>&quot; Line <arg fmt="%d" index="2">53</arg>. <arg fmt="%s" index="3">Syntax error near &quot;&amp;&amp;&quot;.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/a-l-r/co/src/src/datapath/dm.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;dm.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">5</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;debug/debug.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">22</arg>. <arg fmt="%s" index="3">Macro &lt;DM_SIZE&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">31</arg>. <arg fmt="%s" index="3">Syntax error near &quot;;&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">37</arg>. <arg fmt="%s" index="3">Macro &lt;debug_write&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">37</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">41</arg>. <arg fmt="%s" index="3">Macro &lt;DM_WRITE_ENABLED&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">41</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">44</arg>. <arg fmt="%s" index="3">Macro &lt;DM_ADDR_LB&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">45</arg>. <arg fmt="%s" index="3">Macro &lt;DM_ADDR_UB&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">47</arg>. <arg fmt="%s" index="3">Macro &lt;DM_NONE&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">47</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">48</arg>. <arg fmt="%s" index="3">Macro &lt;DM_W&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">49</arg>. <arg fmt="%s" index="3">Macro &lt;DM_H&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">50</arg>. <arg fmt="%s" index="3">Macro &lt;DM_HU&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">51</arg>. <arg fmt="%s" index="3">Macro &lt;DM_B&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">52</arg>. <arg fmt="%s" index="3">Macro &lt;DM_BU&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">60</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">62</arg>. <arg fmt="%s" index="3">Macro &lt;DM_ADDR_WIDTH&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">62</arg>. <arg fmt="%s" index="3">Syntax error near &quot;,&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">63</arg>. <arg fmt="%s" index="3">Syntax error near &quot;,&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">66</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">67</arg>. <arg fmt="%s" index="3">Syntax error near &quot;,&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">68</arg>. <arg fmt="%s" index="3">Syntax error near &quot;,&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">69</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">75</arg>. <arg fmt="%s" index="3">Syntax error near &quot;&amp;&amp;&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">76</arg>. <arg fmt="%s" index="3">Syntax error near &quot;:&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">77</arg>. <arg fmt="%s" index="3">Macro &lt;normal_display&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">77</arg>. <arg fmt="%s" index="3">Syntax error near &quot;,&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">84</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">87</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">90</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">93</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">94</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">95</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">96</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">100</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">101</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">102</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/dm.v</arg>&quot; Line <arg fmt="%d" index="2">103</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/a-l-r/co/src/src/datapath/ext.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ext.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;ext.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ext.v</arg>&quot; Line <arg fmt="%d" index="2">10</arg>. <arg fmt="%s" index="3">Macro &lt;EXT_MODE_SIGNED&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ext.v</arg>&quot; Line <arg fmt="%d" index="2">10</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ext.v</arg>&quot; Line <arg fmt="%d" index="2">11</arg>. <arg fmt="%s" index="3">Macro &lt;EXT_MODE_UNSIGNED&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ext.v</arg>&quot; Line <arg fmt="%d" index="2">12</arg>. <arg fmt="%s" index="3">Macro &lt;EXT_MODE_PAD&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ext.v</arg>&quot; Line <arg fmt="%d" index="2">12</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/ext.v</arg>&quot; Line <arg fmt="%d" index="2">13</arg>. <arg fmt="%s" index="3">Macro &lt;EXT_MODE_ONE&gt; is not defined.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/a-l-r/co/src/src/datapath/im.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/im.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;im.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/im.v</arg>&quot; Line <arg fmt="%d" index="2">5</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;debug/debug.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/im.v</arg>&quot; Line <arg fmt="%d" index="2">13</arg>. <arg fmt="%s" index="3">Macro &lt;IM_SIZE&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/im.v</arg>&quot; Line <arg fmt="%d" index="2">18</arg>. <arg fmt="%s" index="3">Syntax error near &quot;;&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/im.v</arg>&quot; Line <arg fmt="%d" index="2">22</arg>. <arg fmt="%s" index="3">Macro &lt;IM_CODE_FILENAME&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/im.v</arg>&quot; Line <arg fmt="%d" index="2">23</arg>. <arg fmt="%s" index="3">Macro &lt;IM_ISR_CODE_FILENAME&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/im.v</arg>&quot; Line <arg fmt="%d" index="2">35</arg>. <arg fmt="%s" index="3">Macro &lt;debug_write&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/im.v</arg>&quot; Line <arg fmt="%d" index="2">35</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/im.v</arg>&quot; Line <arg fmt="%d" index="2">36</arg>. <arg fmt="%s" index="3">Macro &lt;IM_ADDR_WIDTH&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/im.v</arg>&quot; Line <arg fmt="%d" index="2">36</arg>. <arg fmt="%s" index="3">Syntax error near &quot;,&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/im.v</arg>&quot; Line <arg fmt="%d" index="2">40</arg>. <arg fmt="%s" index="3">Macro &lt;IM_ENABLE&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/im.v</arg>&quot; Line <arg fmt="%d" index="2">40</arg>. <arg fmt="%s" index="3">Syntax error near &quot;&amp;&amp;&quot;.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/a-l-r/co/src/src/datapath/md.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/md.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;md.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/md.v</arg>&quot; Line <arg fmt="%d" index="2">5</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;debug/debug.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/md.v</arg>&quot; Line <arg fmt="%d" index="2">31</arg>. <arg fmt="%s" index="3">Macro &lt;MD_DIV&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/md.v</arg>&quot; Line <arg fmt="%d" index="2">31</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/md.v</arg>&quot; Line <arg fmt="%d" index="2">50</arg>. <arg fmt="%s" index="3">Macro &lt;MD_NONE&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/md.v</arg>&quot; Line <arg fmt="%d" index="2">50</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/md.v</arg>&quot; Line <arg fmt="%d" index="2">51</arg>. <arg fmt="%s" index="3">Macro &lt;MD_MTHI&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/md.v</arg>&quot; Line <arg fmt="%d" index="2">51</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/md.v</arg>&quot; Line <arg fmt="%d" index="2">57</arg>. <arg fmt="%s" index="3">Macro &lt;MD_MTLO&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/md.v</arg>&quot; Line <arg fmt="%d" index="2">57</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/md.v</arg>&quot; Line <arg fmt="%d" index="2">63</arg>. <arg fmt="%s" index="3">Macro &lt;MD_MULT&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/md.v</arg>&quot; Line <arg fmt="%d" index="2">63</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/md.v</arg>&quot; Line <arg fmt="%d" index="2">69</arg>. <arg fmt="%s" index="3">Syntax error near &quot;||&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/md.v</arg>&quot; Line <arg fmt="%d" index="2">100</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/md.v</arg>&quot; Line <arg fmt="%d" index="2">103</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/md.v</arg>&quot; Line <arg fmt="%d" index="2">105</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/md.v</arg>&quot; Line <arg fmt="%d" index="2">107</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/md.v</arg>&quot; Line <arg fmt="%d" index="2">109</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/md.v</arg>&quot; Line <arg fmt="%d" index="2">110</arg>. <arg fmt="%s" index="3">Syntax error near &quot;;&quot;.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/a-l-r/co/src/src/datapath/mux.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/mux.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;mux.h&quot;.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/a-l-r/co/src/src/datapath/npc.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;npc.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">3</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;alu.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">4</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;cmp.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">5</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;im.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">9</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;debug/debug.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">36</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_EQUAL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">36</arg>. <arg fmt="%s" index="3">Syntax error near &quot;&amp;&amp;&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">37</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_NOT_EQUAL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">38</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_LARGER&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">39</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_SMALLER&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">40</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_LARGER_OR_EQUAL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">41</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_SMALLER_OR_EQUAL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">42</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_SIG_LARGER&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">43</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_SIG_SMALLER&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">44</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_SIG_LARGER_OR_EQUAL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">45</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_SIG_SMALLER_OR_EQUAL&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">46</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_REG&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">47</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_J&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">47</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">48</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_ISR&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">49</arg>. <arg fmt="%s" index="3">Macro &lt;NPC_EPC&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">54</arg>. <arg fmt="%s" index="3">Macro &lt;debug_write&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/npc.v</arg>&quot; Line <arg fmt="%d" index="2">54</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/a-l-r/co/src/src/datapath/pc.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/pc.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;pc.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/pc.v</arg>&quot; Line <arg fmt="%d" index="2">3</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;im.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/pc.v</arg>&quot; Line <arg fmt="%d" index="2">7</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;debug/debug.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/pc.v</arg>&quot; Line <arg fmt="%d" index="2">20</arg>. <arg fmt="%s" index="3">Macro &lt;debug_write&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/pc.v</arg>&quot; Line <arg fmt="%d" index="2">20</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/pc.v</arg>&quot; Line <arg fmt="%d" index="2">24</arg>. <arg fmt="%s" index="3">Macro &lt;PC_START_ADDR&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/pc.v</arg>&quot; Line <arg fmt="%d" index="2">24</arg>. <arg fmt="%s" index="3">Syntax error near &quot;;&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/pc.v</arg>&quot; Line <arg fmt="%d" index="2">29</arg>. <arg fmt="%s" index="3">Syntax error near &quot;;&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/pc.v</arg>&quot; Line <arg fmt="%d" index="2">31</arg>. <arg fmt="%s" index="3">Macro &lt;PC_ENABLED&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/pc.v</arg>&quot; Line <arg fmt="%d" index="2">31</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/pc.v</arg>&quot; Line <arg fmt="%d" index="2">41</arg>. <arg fmt="%s" index="3">Macro &lt;IM_ADDR_LB&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/pc.v</arg>&quot; Line <arg fmt="%d" index="2">42</arg>. <arg fmt="%s" index="3">Macro &lt;IM_ADDR_UB&gt; is not defined.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/a-l-r/co/src/src/datapath/pff.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/pff.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;pff.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/pff.v</arg>&quot; Line <arg fmt="%d" index="2">5</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;debug/debug.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/pff.v</arg>&quot; Line <arg fmt="%d" index="2">27</arg>. <arg fmt="%s" index="3">Macro &lt;PFF_ENABLED&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/pff.v</arg>&quot; Line <arg fmt="%d" index="2">27</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/pff.v</arg>&quot; Line <arg fmt="%d" index="2">29</arg>. <arg fmt="%s" index="3">Syntax error near &quot;else&quot;.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/a-l-r/co/src/src/datapath/rf.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/rf.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;rf.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/rf.v</arg>&quot; Line <arg fmt="%d" index="2">5</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;debug/debug.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/rf.v</arg>&quot; Line <arg fmt="%d" index="2">30</arg>. <arg fmt="%s" index="3">Macro &lt;debug_write&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/rf.v</arg>&quot; Line <arg fmt="%d" index="2">30</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/rf.v</arg>&quot; Line <arg fmt="%d" index="2">68</arg>. <arg fmt="%s" index="3">Macro &lt;RF_WRITE_ENABLED&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/rf.v</arg>&quot; Line <arg fmt="%d" index="2">68</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/rf.v</arg>&quot; Line <arg fmt="%d" index="2">69</arg>. <arg fmt="%s" index="3">Macro &lt;RF_ADDR_ZERO&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/rf.v</arg>&quot; Line <arg fmt="%d" index="2">69</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/rf.v</arg>&quot; Line <arg fmt="%d" index="2">70</arg>. <arg fmt="%s" index="3">Macro &lt;normal_display&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/rf.v</arg>&quot; Line <arg fmt="%d" index="2">77</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/datapath/rf.v</arg>&quot; Line <arg fmt="%d" index="2">79</arg>. <arg fmt="%s" index="3">Syntax error near &quot;)&quot;.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/a-l-r/co/src/src/devices/timer.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/devices/timer.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;timer.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/devices/timer.v</arg>&quot; Line <arg fmt="%d" index="2">5</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;debug/debug.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/devices/timer.v</arg>&quot; Line <arg fmt="%d" index="2">41</arg>. <arg fmt="%s" index="3">Macro &lt;TIMER_IDLE&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/devices/timer.v</arg>&quot; Line <arg fmt="%d" index="2">41</arg>. <arg fmt="%s" index="3">Syntax error near &quot;;&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/devices/timer.v</arg>&quot; Line <arg fmt="%d" index="2">61</arg>. <arg fmt="%s" index="3">Syntax error near &quot;:&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/devices/timer.v</arg>&quot; Line <arg fmt="%d" index="2">64</arg>. <arg fmt="%s" index="3">Macro &lt;TIMER_LOAD&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/devices/timer.v</arg>&quot; Line <arg fmt="%d" index="2">64</arg>. <arg fmt="%s" index="3">Syntax error near &quot;;&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/devices/timer.v</arg>&quot; Line <arg fmt="%d" index="2">71</arg>. <arg fmt="%s" index="3">Syntax error near &quot;begin&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/devices/timer.v</arg>&quot; Line <arg fmt="%d" index="2">73</arg>. <arg fmt="%s" index="3">Macro &lt;TIMER_CNT&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/devices/timer.v</arg>&quot; Line <arg fmt="%d" index="2">77</arg>. <arg fmt="%s" index="3">Syntax error near &quot;;&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/devices/timer.v</arg>&quot; Line <arg fmt="%d" index="2">84</arg>. <arg fmt="%s" index="3">Macro &lt;TIMER_INT&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/devices/timer.v</arg>&quot; Line <arg fmt="%d" index="2">84</arg>. <arg fmt="%s" index="3">Syntax error near &quot;;&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/devices/timer.v</arg>&quot; Line <arg fmt="%d" index="2">92</arg>. <arg fmt="%s" index="3">Syntax error near &quot;begin&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/devices/timer.v</arg>&quot; Line <arg fmt="%d" index="2">112</arg>. <arg fmt="%s" index="3">Syntax error near &quot;}&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/devices/timer.v</arg>&quot; Line <arg fmt="%d" index="2">115</arg>. <arg fmt="%s" index="3">Syntax error near &quot;;&quot;.</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/a-l-r/co/src/src/mips/pipelined3.v&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1845" ><arg fmt="%s" index="1">Analyzing Verilog file &quot;/home/a-l-r/co/src/tests/debug/debug-print-test.v&quot; into library work</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="281" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/tests/debug/debug-print-test.v</arg>&quot; Line <arg fmt="%d" index="2">1</arg>. <arg fmt="%s" index="3">Cannot open include file &quot;debug/debug.h&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/tests/debug/debug-print-test.v</arg>&quot; Line <arg fmt="%d" index="2">12</arg>. <arg fmt="%s" index="3">Macro &lt;debug_write&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/tests/debug/debug-print-test.v</arg>&quot; Line <arg fmt="%d" index="2">12</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/tests/debug/debug-print-test.v</arg>&quot; Line <arg fmt="%d" index="2">16</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/tests/debug/debug-print-test.v</arg>&quot; Line <arg fmt="%d" index="2">20</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/tests/debug/debug-print-test.v</arg>&quot; Line <arg fmt="%d" index="2">24</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="870" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/tests/debug/debug-print-test.v</arg>&quot; Line <arg fmt="%d" index="2">28</arg>. <arg fmt="%s" index="3">Macro &lt;normal_write&gt; is not defined.</arg>
+</msg>
+
+<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/tests/debug/debug-print-test.v</arg>&quot; Line <arg fmt="%d" index="2">28</arg>. <arg fmt="%s" index="3">Syntax error near &quot;(&quot;.</arg>
+</msg>
+
 </messages>
 
