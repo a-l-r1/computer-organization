@@ -5,7 +5,10 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="751" delta="unknown" >"/home/a-l-r/co/src/project/../src/control/pipelined.v" Line 108: Redeclaration of ansi port <arg fmt="%s" index="1">d_instr</arg> is not allowed
+<msg type="error" file="HDLCompiler" num="1654" delta="unknown" >"/home/a-l-r/co/src/project/../tests/cpu/pipelined/pipelined_tb.v" Line 32: Instantiating &lt;<arg fmt="%s" index="1">uut</arg>&gt; from unknown module &lt;<arg fmt="%s" index="2">cpu</arg>&gt;
+</msg>
+
+<msg type="error" file="Simulator" num="778" delta="unknown" >Static elaboration of top level Verilog design unit(s) in library <arg fmt="%s" index="1">work</arg> failed
 </msg>
 
 </messages>
