@@ -103,7 +103,6 @@ module control(
 
 /* Wire and register declarations */
 
-wire [31:0] d_instr;
 wire [31:0] e_instr;
 wire [31:0] m_instr;
 wire [31:0] w_instr;
