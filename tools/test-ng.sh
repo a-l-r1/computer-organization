@@ -9,7 +9,7 @@ export XILINX=/opt/Xilinx/14.7/ISE_DS/ISE/
 export PATH=/opt/Xilinx/14.7/ISE_DS/ISE//bin/lin64:/opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64:/opt/Xilinx/14.7/ISE_DS/ISE/sysgen/util:/opt/Xilinx/14.7/ISE_DS/ISE/sysgen/bin:/opt/Xilinx/14.7/ISE_DS/ISE/../../../DocNav:/opt/Xilinx/14.7/ISE_DS/PlanAhead/bin:/opt/Xilinx/14.7/ISE_DS/EDK/bin/lin64:/opt/Xilinx/14.7/ISE_DS/EDK/gnu/microblaze/lin/bin:/opt/Xilinx/14.7/ISE_DS/EDK/gnu/powerpc-eabi/lin/bin:/opt/Xilinx/14.7/ISE_DS/EDK/gnu/arm/lin/bin:/opt/Xilinx/14.7/ISE_DS/EDK/gnu/microblaze/linux_toolchain/lin64_be/bin:/opt/Xilinx/14.7/ISE_DS/EDK/gnu/microblaze/linux_toolchain/lin64_le/bin:/opt/Xilinx/14.7/ISE_DS/common/bin/lin64:/home/a-l-r/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
 export LMC_HOME=/opt/Xilinx/14.7/ISE_DS/ISE/smartmodel/lin64/installed_lin64
 
-TB_NAME=single_cycle
+TB_NAME=pipelined
 TMPDIR=`mktemp -d -p tmp`
 
 # NOTE: mind to change testbench names and branch delay slot availability
@@ -17,7 +17,7 @@ TMPDIR=`mktemp -d -p tmp`
 echo "tmpdir: ${TMPDIR}"
 
 # mips-as.py
-java -jar tools/mars.jar nc mc CompactDataAtZero a dump .text HexText project/code.hex $1
+java -jar tools/mars.jar nc db mc CompactDataAtZero a dump .text HexText project/code.txt $1
 
 # simulate.py
 pushd project
@@ -29,11 +29,14 @@ sed -i '/^This is a Full version of ISim.$/d' ${TMPDIR}/output
 sed -i '/^Time resolution is 1 ps$/d' ${TMPDIR}/output
 sed -i '/^Simulator is doing circuit initialization process\.$/d' ${TMPDIR}/output
 sed -i '/^Finished circuit initialization process\.$/d' ${TMPDIR}/output
-# preserve the final newline - for compability with MARS outputs
-sed -i 's/^Stopped at time : .*$//g' ${TMPDIR}/output
+sed -i '/^Stopped at time : .*$/d' ${TMPDIR}/output
+# add a newline for compatibility with MARS outputs
+echo '' >> ${TMPDIR}/output
+# remove $time
+sed -i 's/^[ ]*[0-9]*//g' ${TMPDIR}/output
 
 # simulate-mars.py
-java -jar tools/mars.jar mc CompactDataAtZero nc $1 > ${TMPDIR}/ref_output
+java -jar tools/mars.jar db mc CompactDataAtZero nc $1 > ${TMPDIR}/ref_output
 
 colordiff -u ${TMPDIR}/ref_output ${TMPDIR}/output
 
