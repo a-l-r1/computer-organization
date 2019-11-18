@@ -130,16 +130,8 @@ PC 值。
 \endhead\hiderowcolors
 \texttt{jump\_mode} & \texttt{NPC\_JUMP\_DISABLE} & 3'b000 &
 不要跳转\tabularnewline\hline
-\texttt{jump\_mode} & \texttt{NPC\_JUMP\_DISABLED} &
-\texttt{NPC\_JUMP\_DISABLE} &\tabularnewline\hline
-\texttt{jump\_mode} & \texttt{NPC\_JUMP\_WHEN\_EQUAL} & 3'b001 & 当 ALU
-输入的比较结果相等时跳转\tabularnewline\hline
-\texttt{jump\_mode} & \texttt{NPC\_JUMP\_WHEN\_EQUALS\_TO} &
-\texttt{NPC\_JUMP\_WHEN\_EQUAL} &\tabularnewline\hline
-\texttt{jump\_mode} & \texttt{NPC\_JUMP\_WHEN\_NOT\_EQUAL} & 3'b010 & 当
-ALU 输入的比较结果不等时跳转\tabularnewline\hline
-\texttt{jump\_mode} & \texttt{NPC\_JUMP\_WHEN\_NOT\_EQUALS\_TO} &
-\texttt{NPC\_JUMP\_WHEN\_NOT\_EQUAL} &\tabularnewline\hline
+\texttt{jump\_mode} & \texttt{NPC\_JUMP\_WHEN\_EQUAL} & 3'b001 & 当输入的比较结果相等时跳转\tabularnewline\hline
+\texttt{jump\_mode} & \texttt{NPC\_JUMP\_WHEN\_NOT\_EQUAL} & 3'b010 & 当输入的比较结果不等时跳转\tabularnewline\hline
 \texttt{jump\_mode} & \texttt{NPC\_REG} & 3'b111 &
 按照寄存器内地址跳转\tabularnewline\hline
 \texttt{jump\_mode} & \texttt{NPC\_J} & 3'b110 & 按照 J
@@ -217,6 +209,7 @@ PC 只负责表示程序执行到哪里，而 PC 的更新由 NPC
 
 \endhead\hiderowcolors
 \texttt{clk} & 输入 & 1 & 时钟信号\tabularnewline\hline
+\texttt{rst} & 输入 & 1 & 同步复位信号\tabularnewline\hline
 \texttt{next\_pc} & 输入 & 32 & NPC 计算得来的下一个 PC
 地址\tabularnewline\hline
 \texttt{enable} & 输入 & 1 & PC 使能\tabularnewline\hline
@@ -235,12 +228,8 @@ PC 只负责表示程序执行到哪里，而 PC 的更新由 NPC
 
 \endhead\hiderowcolors
 \texttt{enable} & \texttt{PC\_ENABLED} & 1'b1 & PC 使能\tabularnewline\hline
-\texttt{enable} & \texttt{PC\_ENABLE} & \texttt{PC\_ENABLED}
-&\tabularnewline\hline
 \texttt{enable} & \texttt{PC\_DISABLED} & 1'b0 & PC
 非使能\tabularnewline\hline
-\texttt{enable} & \texttt{PC\_DISABLE} & \texttt{PC\_DISABLED}
-&\tabularnewline\hline
 \texttt{curr\_pc} & \texttt{PC\_START\_ADDRESS} & 32'h00003000 & PC
 的起始地址\tabularnewline\hline
 
@@ -254,8 +243,7 @@ PC 只负责表示程序执行到哪里，而 PC 的更新由 NPC
 有一个 32 位的寄存器保存当前 PC 的值，初值为
 \texttt{PC\_START\_ADDRESS}。
 
-在每个时钟上升沿，若 \texttt{enable\ ==\ PC\_ENABLED}，则把 PC
-部件中保存的当前 PC 的值更新成 \texttt{next\_pc} 的值。否则，保存的当前
+在每个时钟上升沿，若复位信号为 \texttt{1'b1}，则进行同步复位，把 \texttt{pc} 寄存器恢复到初值。否则，若 \texttt{enable\ ==\ PC\_ENABLED}，则把 PC 部件中保存的当前 PC 的值更新成 \texttt{next\_pc} 的值。否则，保存的当前
 PC 的值不变。
 
 无论什么时候，输出端口 \texttt{curr\_pc} 的值都是 PC 部件中保存的当前 PC
@@ -307,18 +295,14 @@ PC 的值不变。
 \endhead\hiderowcolors
 \texttt{enable} & \texttt{IM\_ENABLE} & \texttt{1\textquotesingle{}b1} &
 IM 使能\tabularnewline\hline
-\texttt{enable} & \texttt{IM\_ENABLED} & \texttt{IM\_ENABLE}
-&\tabularnewline\hline
 \texttt{enable} & \texttt{IM\_DISABLE} & \texttt{1\textquotesingle{}b0}
 & IM 非使能\tabularnewline\hline
-\texttt{enable} & \texttt{IM\_DISABLED} & \texttt{IM\_DISABLE}
-&\tabularnewline\hline
-\texttt{addr} & \texttt{IM\_ADDR\_WIDTH} & 8 & \texttt{addr}
+\texttt{addr} & \texttt{IM\_ADDR\_WIDTH} & 12 & \texttt{addr}
 的位宽\tabularnewline\hline
-\texttt{addr} & \texttt{IM\_START\_ADDRESS} & 32 & IM
+\texttt{addr} & \texttt{IM\_START\_ADDRESS} & \texttt{32'h00003000} & IM
 对外表现的起始地址\tabularnewline\hline
-指令存储器 & \texttt{IM\_SIZE} & 64 & 能存储指令的个数\tabularnewline\hline
-指令存储器 & \texttt{IM\_CODE\_FILENAME} & \texttt{"code/code.hex"} &
+指令存储器 & \texttt{IM\_SIZE} & 1024 & 能存储指令的个数\tabularnewline\hline
+指令存储器 & \texttt{IM\_CODE\_FILENAME} & \texttt{"code.txt"} &
 要加载的机器码\tabularnewline\hline
 
 \end{longtable}
@@ -377,6 +361,7 @@ IM 使能\tabularnewline\hline
 
 \endhead\hiderowcolors
 \texttt{clk} & 输入 & 1 & 时钟信号\tabularnewline\hline
+\texttt{rst} & 输入 & 1 & 同步复位信号\tabularnewline\hline
 \texttt{curr\_pc} & 输入 & 32 & 当前 PC 的值\tabularnewline\hline
 \texttt{read\_addr1} & 输入 & 5 & 第一个读地址\tabularnewline\hline
 \texttt{read\_addr2} & 输入 & 5 & 第二个读地址\tabularnewline\hline
@@ -402,19 +387,13 @@ IM 使能\tabularnewline\hline
 \endhead\hiderowcolors
 \texttt{.*\_addr.*} & \texttt{RF\_ADDR\_ZERO} & 5'b0 &
 零寄存器的地址\tabularnewline\hline
-\texttt{.*\_addr.*} & \texttt{RF\_ZERO} & \texttt{RF\_ADDR\_ZERO}
-&\tabularnewline\hline
 \texttt{write\_enable} & \texttt{RF\_WRITE\_ENABLED} & 1'b1 &
 寄存器堆使能\tabularnewline\hline
-\texttt{write\_enable} & \texttt{RF\_WRITE\_ENABLE} &
-\texttt{RF\_WRITE\_ENABLED} &\tabularnewline\hline
 \texttt{write\_enable} & \texttt{RF\_WRITE\_DISABLED} & 1'b0 &
 寄存器堆非使能\tabularnewline\hline
-\texttt{write\_enable} & \texttt{RF\_WRITE\_DISABLE} &
-\texttt{RF\_WRITE\_DISABLED} &\tabularnewline\hline
 输出 & \texttt{RF\_OUTPUT\_FORMAT} &
-\texttt{"\%d:\ 0x\%08x\ =\textgreater{}\ 0x\%08x"} &
-输出模版\tabularnewline\hline
+\texttt{"\%d@\%h: \$\%d <= \%h"} &
+输出模板\tabularnewline\hline
 
 \end{longtable}
 
@@ -427,7 +406,7 @@ IM 使能\tabularnewline\hline
 \texttt{\$1}\textasciitilde{}\texttt{\$31}，它们初值都为
 \texttt{32\textquotesingle{}b0}。\texttt{\$0} 实际上不需要寄存器。
 
-在每个时钟上升沿，若 \texttt{write\_enable\ ==\ RF\_WRITE\_ENABLED} 且
+在每个时钟上升沿，若同步复位信号为 \texttt{1'b1}，则进行同步复位。否则，若 \texttt{write\_enable\ ==\ RF\_WRITE\_ENABLED} 且
 \texttt{write\_addr\ !=\ RF\_ADDR\_ZERO}，则说明可以执行写操作，且写到的寄存器是可以保存数值的寄存器。此时把
 \texttt{write\_addr} 指代的寄存器的值更新为
 \texttt{write\_data}。更新时，以模版中的格式打印出数据变化，第一个参数是当前的模拟时钟的时间，第二个参数是当前
@@ -449,8 +428,6 @@ PC 的值，第三个参数是寄存器号，第四个参数是更新后的值�
 \item
   寄存器可以定义为 \texttt{reg\ {[}31:1{]}\ registers\ {[}31:0{]}}，把
   \texttt{\$0} 空出来。
-\item
-  TODO: 应该把正常显示 wrap 起来，等到 ISE 装好后再说
 \end{enumerate}
 
 \hypertarget{ux6bd4ux8f83ux6a21ux5757}{%
@@ -487,7 +464,7 @@ PC 的值，第三个参数是寄存器号，第四个参数是更新后的值�
 \hypertarget{ux529fux80fd-4}{%
 \subsection{功能}\label{ux529fux80fd-4}}
 
-在 \texttt{comp,\ sig\_comp,\ reg2comp}
+在 \texttt{comp,\ sig\_comp,\ reg2\_sig\_comp}
 三个输出端口分别输出第一个寄存器与第二个寄存器作为无符号数的比较结果、它们作为有符号数的比较结果和第二个寄存器与
 0 作为有符号数的比较结果。
 
@@ -528,20 +505,9 @@ PC 的值，第三个参数是寄存器号，第四个参数是更新后的值�
 \endhead\hiderowcolors
 \texttt{mode} & \texttt{EXT\_MODE\_SIGNED} & 3'b000 &
 符号扩展\tabularnewline\hline
-\texttt{mode} & \texttt{EXT\_SIGNED} & \texttt{EXT\_MODE\_SIGNED}
-&\tabularnewline\hline
 \texttt{mode} & \texttt{EXT\_MODE\_UNSIGNED} & 3'b001 &
 无符号扩展\tabularnewline\hline
-\texttt{mode} & \texttt{EXT\_UNSIGNED} & \texttt{EXT\_MODE\_UNSIGNED}
-&\tabularnewline\hline
-\texttt{mode} & \texttt{EXT\_MODE\_PAD} & 3'b010 & 把输入的 16
-位填充到输出结果的高 16 位，输出结果低 16 位置零的扩展\tabularnewline\hline
-\texttt{mode} & \texttt{EXT\_PAD} & \texttt{EXT\_MODE\_PAD}
-&\tabularnewline\hline
-\texttt{mode} & \texttt{EXT\_MODE\_HIGH\_BITS} & \texttt{EXT\_MODE\_PAD}
-&\tabularnewline\hline
-\texttt{mode} & \texttt{EXT\_HIGH\_BITS} & \texttt{EXT\_MODE\_PAD}
-&\tabularnewline\hline
+\texttt{mode} & \texttt{EXT\_MODE\_PAD} & 3'b010 & \texttt{lui} 式扩展\tabularnewline\hline
 \texttt{mode} & \texttt{EXT\_MODE\_ONE} & 3'b011 & 在数字前面填充二进制
 1 的扩展\tabularnewline\hline
 \texttt{mode} & \texttt{EXT\_ONE} & \texttt{EXT\_MODE\_ONE}
@@ -567,9 +533,6 @@ PC 的值，第三个参数是寄存器号，第四个参数是更新后的值�
 
 ALU 是运算控制单元的意思，负责两个 32
 位整数的运算。它可以负责各种运算，包括数学运算和逻辑运算。易知它是纯组合逻辑。
-
-由于定义运算的时候需要给运算编码，所以表示运算就有点类似于 C 语言中的
-\texttt{enum}。因此，需要对各种运算进行宏定义，以保证系统的可维护性。宏定义也可以把定义的数据空间分隔开，以及对运算按照逻辑进行排序，从而得到对端口运算编码的更好理解。
 
 \hypertarget{ux7aefux53e3ux5b9aux4e49-3}{%
 \subsection{端口定义}\label{ux7aefux53e3ux5b9aux4e49-3}}
@@ -620,7 +583,7 @@ ALU 是运算控制单元的意思，负责两个 32
 同上\tabularnewline\hline
 \texttt{op} & \texttt{ALU\_XOR} & 5b'10011 & 按位异或运算\tabularnewline\hline
 \texttt{op} & \texttt{ALU\_MOVZ} & 5b'00010 &
-数据转移运算（{[}1{]}）\tabularnewline\hline
+数据转移运算\textsuperscript{{[}1{]}}\tabularnewline\hline
 \texttt{.*comp\_result} & \texttt{ALU\_EQUAL} & 2b'00 &
 等于\tabularnewline\hline
 \texttt{.*comp\_result} & \texttt{ALU\_EQUAL\_TO} & \texttt{ALU\_EQUAL}
@@ -700,7 +663,7 @@ ALU 是运算控制单元的意思，负责两个 32
 
 数据存储器是存储数据的地方。
 
-为了渐变，数据存储器由许多寄存器实现。
+为了简便，数据存储器由许多寄存器实现。
 
 \hypertarget{ux7aefux53e3ux5b9aux4e49-4}{%
 \subsection{端口定义}\label{ux7aefux53e3ux5b9aux4e49-4}}
@@ -711,6 +674,7 @@ ALU 是运算控制单元的意思，负责两个 32
 
 \endhead\hiderowcolors
 \texttt{clk} & 输入 & 1 & 时钟信号\tabularnewline\hline
+\texttt{rst} & 输入 & 1 & 同步复位信号\tabularnewline\hline
 \texttt{curr\_pc} & 输入 & 32 & 当前 PC 值\tabularnewline\hline
 \texttt{read\_addr} & 输入 & 32 & 读地址\tabularnewline\hline
 \texttt{write\_addr} & 输入 & 32 & 写地址\tabularnewline\hline
@@ -740,8 +704,7 @@ ALU 是运算控制单元的意思，负责两个 32
 \texttt{DM\_WRITE\_DISABLE} &\tabularnewline\hline
 \texttt{.*\_addr} & \texttt{DM\_ADDR\_WIDTH} & 8 & \texttt{.*\_addr}
 的位宽\tabularnewline\hline
-指令存储器 & \texttt{DM\_SIZE} & 64 & 能存储 32
-位字的个数\tabularnewline\hline
+指令存储器 & \texttt{DM\_SIZE} & 64 & 能存储字的个数\tabularnewline\hline
 
 \end{longtable}
 
@@ -753,9 +716,9 @@ ALU 是运算控制单元的意思，负责两个 32
 有 \texttt{DM\_SIZE} 个 32 位存储器，代表其中存储的指令。它们初值都为
 \texttt{32\textquotesingle{}b0}。
 
-在每个时钟上升沿，若 \texttt{write\_enable\ ==\ DM\_ENABLED}，则
-\texttt{write\_addr{[}DM\_ADDR\_WIDTH\ -\ 1:1{]}} 这个地址对应的 32
-位字写入 \texttt{write\_data} 对应的值。同时，打印当前 PC
+在每个时钟上升沿，若 \texttt{rst == 1'b1}，则进行同步复位。否则，若  \texttt{write\_enable\ ==\ DM\_ENABLED}，则
+\texttt{write\_addr{[}\ DM\_ADDR\_WIDTH\ -\ 1:1{]}} 这个地址对应的 32
+位字写入 \texttt{write\_data} 对应的值。同时，打印当前的模拟时间、当前 PC
 的值、\texttt{write\_addr}、\texttt{write\_addr} 这个地址对应的 32
 位字原来的值、它的新值。
 
@@ -790,7 +753,7 @@ ALU 是运算控制单元的意思，负责两个 32
 \subsection{原理}\label{ux539fux7406-7}}
 
 流水线中需要很多寄存器来保存中间状态，而直接使用 \texttt{always}
-块写，有不容易管理的缺点。所以更好的方法是设置流水线寄存器。
+块写，有难以维护的缺点。所以更好的方法是设置流水线寄存器。
 
 \hypertarget{ux7aefux53e3ux5b9aux4e49-5}{%
 \subsection{端口定义}\label{ux7aefux53e3ux5b9aux4e49-5}}
@@ -857,7 +820,7 @@ ALU 是运算控制单元的意思，负责两个 32
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  复位设成了同步复位，这是为了更好地插入气泡。
+  复位设成了同步复位，这是为了兼容。
 \end{enumerate}
 
 \hypertarget{mux}{%
@@ -866,9 +829,7 @@ ALU 是运算控制单元的意思，负责两个 32
 \hypertarget{ux529fux80fd-10}{%
 \subsection{功能}\label{ux529fux80fd-10}}
 
-MUX
-是多路选择器的意思，是从多个数据源中选择数据的部件。其实它也是数据通路和控制之间的接口，控制部件通过
-MUX 来控制数据的流向，实现指令的功能。
+MUX 是多路选择器的意思，是从多个数据源中选择数据的部件。其实它也是数据通路和控制之间的接口，控制部件通过 MUX 来控制数据的流向，实现指令的功能。
 
 \hypertarget{ux7c7bux522b}{%
 \subsection{类别}\label{ux7c7bux522b}}
@@ -971,13 +932,17 @@ CPU 中只能用到路数比较少的 MUX，多路的 MUX 要等到流水线 CPU
 
 p5 需要实现的指令为：
 
-\texttt{addu,\ subu,\ lui,\ ori,\ lw,\ sw,\ beq,\ nop,\ j,\ jal,\ jr,\ movz}
+\texttt{addu,\ subu,\ lui,\ ori,\ lw,\ sw,\ beq,\ nop,\ j,\ jal,\ jr}
+
+新加的指令为：
+
+\texttt{movz}
 
 由于不同指令的数据通路可以归类，因此首先需要对数据通路进行分类，之后再对每类数据通路总结连接。数据通路分类表如下。
 
-\begin{longtable}[]{@{}ll@{}}
+\begin{longtable}[]{@{}|l|l|@{}}
 \hline
-数据通路类型 & 指令\tabularnewline\hline
+\headingcellfirst{数据通路类型 } & \headingcelllast{指令}\tabularnewline\hline
 
 \endhead\hiderowcolors
 \texttt{UNKNOWN} & （未知指令）\tabularnewline\hline
@@ -987,15 +952,15 @@ p5 需要实现的指令为：
 \texttt{STORE} & \texttt{sw}\tabularnewline\hline
 \texttt{BRANCH} & \texttt{beq}\tabularnewline\hline
 \texttt{NOP} & \texttt{nop}\tabularnewline\hline
-\texttt{JAL} & \texttt{j,\ jal}\tabularnewline\hline
-\texttt{JR} & \texttt{jr}\tabularnewline\hline
+\texttt{JUMP\_I} & \texttt{j,\ jal}\tabularnewline\hline
+\texttt{JUMP\_R} & \texttt{jr}\tabularnewline\hline
 \texttt{CMOV} & \texttt{movz}\tabularnewline\hline
 
 \end{longtable}
 
 通过分析它们的
 RTL，可以得到每条指令对应的数据通路连接如下。其中表格某一列的值表示这个输入端口是哪个输出端口的输出。端口用
-\texttt{流水线级:\ 部件.端口名字}
+\texttt{流水线级: 部件.端口名字}
 格式表示。空白的单元格表示不用关心相对应的端口的值，因为它们会被忽略，不影响指令的正常执行。未知指令只需要屏蔽各个写入的使能，这样就可以避免未知指令的影响，因此不用分析未知指令。
 
 有时部件名称可能和级不对应。这表示相应端口的值是经过流水后的结果。
@@ -1006,93 +971,72 @@ RTL，可以得到每条指令对应的数据通路连接如下。其中表格�
 
 \textbf{注意：使用延迟槽来简化暂停和转发的分析。}
 
-\hypertarget{f-ux7ea7if}{%
-\paragraph{F 级（IF）}\label{f-ux7ea7if}}
+\begin{longtable}[]{@{}|l|l|l|l|l|@{}}
+\hline
+\headingcellfirst{数据通路类型} & \headingcellmiddle{\texttt{F: npc.curr\_pc}} & \headingcellmiddle{\texttt{F: npc.comp\_result}} & \headingcellmiddle{\texttt{F: npc.num}} \tabularnewline\hline
+\endhead\hiderowcolors
+\texttt{BRANCH} & \texttt{F: pc.curr\_pc} & \texttt{D: cmp.cmp} & \texttt{D: im.result[15:0]}\tabularnewline\hline
+其它 & \texttt{F: pc.curr\_pc} & \texttt{D: cmp.cmp} & --- \tabularnewline\hline
+综合 & \texttt{F: pc.curr\_pc} & \texttt{D: cmp.cmp} & \texttt{D: im.result[15:0]} \tabularnewline\hline
+\end{longtable}
 
-数据通路类型 \textbar{} \texttt{F:\ npc.curr\_pc} \textbar{}
-\texttt{F:\ npc.alu\_comp\_result} \textbar{} \texttt{F:\ npc.num}
-\textbar{} \texttt{F:\ npc.jnum} \textbar{} \texttt{F:\ npc.reg\_}
-\textbar{} \texttt{F:\ pc.next\_pc} -\/-\/- \textbar{} -\/-\/-
-\textbar{} -\/-\/- \textbar{} -\/-\/- \texttt{BRANCH} \textbar{}
-\texttt{F:\ pc.curr\_pc} \textbar{} \texttt{E:\ alu.comp\_result}
-\textbar{} \texttt{D:\ im.result{[}15:0{]}} \textbar{} \textbar{}
-\textbar{} \texttt{F:\ npc.next\_pc} \texttt{JAL} \textbar{}
-\texttt{F:\ pc.curr\_pc} \textbar{} \textbar{} \textbar{}
-\texttt{D:\ im.result{[}25:0{]}} \textbar{} \textbar{}
-\texttt{F:\ npc.next\_pc} \texttt{JR} \textbar{}
-\texttt{F:\ pc.curr\_pc} \textbar{} \textbar{} \textbar{} \textbar{}
-\texttt{D:\ rf.read\_result1} \textbar{} \texttt{F:\ npc.next\_pc}
-（其它）\textbar{} \texttt{F:\ pc.curr\_pc} \textbar{} \textbar{}
-\textbar{} \textbar{} \textbar{} \texttt{F:\ npc.next\_pc} 综合
-\textbar{} \texttt{F:\ pc.curr\_pc} \textbar{} \texttt{D:\ cmp.cmp}
-\textbar{} \texttt{D:\ im.result{[}15:0{]}} \textbar{}
-\texttt{D:\ im.result{[}25:0{]}} \textbar{}
-\texttt{D:\ rf.read\_result1} \textbar{} \texttt{F:\ npc.next\_pc}
+\begin{longtable}[]{@{}|l|l|l|l|l|@{}}
+\hline
+\headingcellfirst{数据通路类型} & \headingcellmiddle{\texttt{F: npc.jnum}} & \headingcellmiddle{\texttt{F: npc.reg\_}} & \headingcellmiddle{\texttt{F: pc.next\_pc}} \tabularnewline\hline
+\endhead\hiderowcolors
+\texttt{JUMP\_I} & \texttt{D: im.result[25:0]} & --- & \texttt{D: npc.next\_pc} \tabularnewline\hline
+\texttt{JUMP\_R} & --- & \texttt{D: rf.read\_result1} & \texttt{D: npc.next\_pc} \tabularnewline\hline
+其它 & --- & --- & \texttt{D: npc.next\_pc} \tabularnewline\hline
+综合 & \texttt{D: im.result[25:0]} & \texttt{D: rf.read\_result1} & \texttt{D: npc.next\_pc} \tabularnewline\hline
+\end{longtable}
 
-\hypertarget{d-ux7ea7id}{%
-\paragraph{D 级（ID）}\label{d-ux7ea7id}}
+\begin{longtable}[]{@{}|l|l|l|l|@{}}
+\hline
+\headingcellfirst{数据通路类型} & \headingcellmiddle{\texttt{D: ext.num}} & \headingcellmiddle{\texttt{D: cmp.reg1}} & \headingcelllast{\texttt{D: cmp.reg2}} \tabularnewline\hline
+\endhead\hiderowcolors
+\texttt{CAL\_I} & \texttt{D: im.result[15:0]} & --- & --- \tabularnewline\hline
+\texttt{LOAD} & \texttt{D: im.result[15:0]} & --- & --- \tabularnewline\hline
+\texttt{STORE} & \texttt{D: im.result[15:0]} & --- & --- \tabularnewline\hline
+\texttt{BRANCH} & --- & \makecell{\texttt{D: rf.}\\\texttt{read\_result1}} & \makecell{\texttt{D: rf.}\\\texttt{read\_result2}} \tabularnewline\hline
+其它 & --- & --- & --- \tabularnewline\hline
+综合 & \texttt{D: im.result[15:0]} & \makecell{\texttt{D: rf.}\\\texttt{read\_result1}} & \makecell{\texttt{D: rf.}\\\texttt{read\_result2}} \tabularnewline\hline
+\end{longtable}
 
-数据通路类型 \textbar{} \texttt{D:\ ext.num} \textbar{}
-\texttt{D:\ cmp.reg1} \textbar{} \texttt{D:\ cmp.reg2} \texttt{CAL\_R}
-\textbar{} \textbar{} \textbar{} \texttt{CAL\_I} \textbar{}
-\texttt{D:\ im.result{[}15:0{]}} \textbar{} \textbar{} \texttt{LOAD}
-\textbar{} \texttt{D:\ im.result{[}15:0{]}} \textbar{} \textbar{}
-\texttt{STORE} \textbar{} \textbar{} \textbar{} \texttt{BRANCH}
-\textbar{} \textbar{} \texttt{D:\ rf.read\_result1} \textbar{}
-\texttt{D:\ rf.read\_result2} \texttt{NOP} \textbar{} \textbar{}
-\textbar{} \texttt{JAL} \textbar{} \textbar{} \textbar{} \texttt{JR}
-\textbar{} \textbar{} \textbar{} \texttt{CMOV} \textbar{} \textbar{}
-\texttt{D:\ rf.read\_result2} 综合 \textbar{}
-\texttt{D:\ im.result{[}15:0{]}} \textbar{}
-\texttt{D:\ rf.read\_result1} \textbar{} \texttt{D:\ rf.read\_result2}
+\begin{longtable}[]{@{}|l|l|l|@{}}
+\hline
+\headingcellfirst{数据通路类型} & \headingcellmiddle{\texttt{E: alu.num1}} & \headingcelllast{\texttt{E: alu.num2}} \tabularnewline\hline
+\endhead\hiderowcolors
+\texttt{CAL\_R} & \texttt{D: rf.read\_result1} & \texttt{D: rf.read\_result2} \tabularnewline\hline
+\texttt{CAL\_I} & \texttt{D: rf.read\_result1} & \texttt{D: ext.result} \tabularnewline\hline
+\texttt{LOAD} & \texttt{D: rf.read\_result1} & \texttt{D: ext.result} \tabularnewline\hline
+\texttt{STORE} & \texttt{D: rf.read\_result1} & \texttt{D: ext.result} \tabularnewline\hline
+\texttt{CMOV} & \texttt{D: rf.read\_result1} & \texttt{D: rf.read\_result2} \tabularnewline\hline
+其它 & --- & --- \tabularnewline\hline
+综合 & \texttt{D: rf.read\_result1} & \makecell{\texttt{D: rf.read\_result2}\\\texttt{D: ext.result}} \tabularnewline\hline
+\end{longtable}
 
-\hypertarget{e-ux7ea7ex}{%
-\paragraph{E 级（EX）}\label{e-ux7ea7ex}}
+\begin{longtable}[]{@{}|l|l|l|l|@{}}
+\hline
+\headingcellfirst{数据通路类型} & \headingcellmiddle{\texttt{M: dm.read\_addr}} & \headingcellmiddle{\texttt{M: dm.write\_addr}} & \headingcelllast{\texttt{M: dm.write\_data}} \tabularnewline\hline 
+\endhead\hiderowcolors
+\texttt{LOAD} & \texttt{E: alu.result} & --- & --- \tabularnewline\hline
+\texttt{STORE} & --- & \texttt{E: alu.result} & \texttt{E: rf.read\_result2} \tabularnewline\hline
+其它 & --- & --- & --- \tabularnewline\hline
+综合 & \texttt{E: alu.result} & \texttt{E: alu.result} & \texttt{E: rf.read\_result2} \tabularnewline\hline
+\end{longtable}
 
-数据通路类型 \textbar{} \texttt{E:\ alu.num1} \textbar{}
-\texttt{E:\ alu.num2} \texttt{CAL\_R} \textbar{}
-\texttt{D:\ rf.read\_result1} \textbar{} \texttt{D:\ rf.read\_result2}
-\texttt{CAL\_I} \textbar{} \texttt{D:\ rf.read\_result1} \textbar{}
-\texttt{D:\ ext.result} \texttt{LOAD} \textbar{}
-\texttt{D:\ rf.read\_result1} \textbar{} \texttt{D:\ ext.result}
-\texttt{STORE} \textbar{} \texttt{D:\ rf.read\_result1} \textbar{}
-\texttt{D:\ ext.result} \texttt{BRANCH} \textbar{} \textbar{}
-\texttt{NOP} \textbar{} \textbar{} \texttt{JAL} \textbar{} \textbar{}
-\texttt{JR} \textbar{} \textbar{} \texttt{CMOV} \textbar{}
-\texttt{D:\ rf.read\_result1} \textbar{} \texttt{D:\ rf.read\_result2}
-综合 \textbar{} \texttt{D:\ rf.read\_result1} \textbar{}
-\texttt{D:\ rf.read\_result2,\ D:\ ext.result}
-
-\hypertarget{m-ux7ea7mem}{%
-\paragraph{M 级（MEM）}\label{m-ux7ea7mem}}
-
-数据通路类型 \textbar{} \texttt{M:\ dm.read\_addr} \textbar{}
-\texttt{M:\ dm.write\_addr} \textbar{} \texttt{M:\ dm.write\_data}
-\texttt{CAL\_R} \textbar{} \textbar{} \textbar{} \texttt{CAL\_I}
-\textbar{} \textbar{} \textbar{} \texttt{LOAD} \textbar{}
-\texttt{E:\ alu.result} \textbar{} \textbar{} \textbar{} \texttt{STORE}
-\textbar{} \textbar{} \texttt{E:\ alu.result} \textbar{}
-\texttt{E:\ rf.read\_result2} \texttt{BRANCH} \textbar{} \textbar{}
-\textbar{} \texttt{NOP} \textbar{} \textbar{} \textbar{} \texttt{JAL}
-\textbar{} \textbar{} \textbar{} \texttt{JR} \textbar{} \textbar{}
-\textbar{} \texttt{CMOV} \textbar{} \textbar{} \textbar{} 综合
-\textbar{} \texttt{E:\ alu.result} \textbar{} \texttt{E:\ alu.result}
-\textbar{} \texttt{E:\ rf.read\_result2}
-
-\hypertarget{w-ux7ea7wb}{%
-\paragraph{W 级（WB）}\label{w-ux7ea7wb}}
-
-数据通路类型 \textbar{} \texttt{W:\ rf.write\_data} \texttt{CAL\_R}
-\textbar{} \texttt{E:\ alu.result} \texttt{CAL\_I} \textbar{}
-\texttt{E:\ alu.result} \texttt{LOAD} \textbar{}
-\texttt{M:\ dm.read\_result} \texttt{STORE} \textbar{} \texttt{BRANCH}
-\textbar{}\\
-\texttt{NOP} \textbar{} \texttt{JAL} \textbar{}
-\texttt{F:\ \$unsigned(pc.curr\_pc)\ +\ \$unsigned(8)} \texttt{JR}
-\textbar{} \texttt{CMOV} \textbar{} \texttt{E:\ alu.result} 综合
-\textbar{}
-\texttt{E:\ alu.result,\ M:\ dm.read\_result,\ F:\ \$unsigned(pc.curr\_pc)\ +\ \$unsigned(8)}
-
+\begin{longtable}[]{@{}|l|l|@{}}
+\hline
+\headingcellfirst{数据通路类型} & \headingcelllast{W: rf.write\_data} \tabularnewline\hline
+\endhead\hiderowcolors
+\texttt{CAL\_R} & \texttt{E: alu.result} \tabularnewline\hline
+\texttt{CAL\_I} & \texttt{E: alu.result} \tabularnewline\hline
+\texttt{LOAD} & \texttt{M: dm.read\_result} \tabularnewline\hline
+\texttt{JUMP\_I} & \texttt{\$unsigned(pc.curr\_pc) + \$unsigned(8)} \tabularnewline\hline
+\texttt{CMOV} & \texttt{E: alu.result} \tabularnewline\hline
+其它 & --- \tabularnewline\hline
+综合 & \makecell{\texttt{E: alu.result}\\\texttt{M: dm.read\_result}\\\texttt{\$unsigned(pc.curr\_pc) + \$unsigned(8)}} \tabularnewline\hline
+\end{longtable}
 \hypertarget{ux6d41ux6c34ux7ebfux5bc4ux5b58ux5668-1}{%
 \paragraph{流水线寄存器}\label{ux6d41ux6c34ux7ebfux5bc4ux5b58ux5668-1}}
 
@@ -1130,24 +1074,15 @@ M & \texttt{pc.curr\_pc} & \texttt{m\_pc}\tabularnewline\hline
 \end{longtable}
 
 这里没有补充 D 级 \texttt{BRANCH} 类指令需要的 \texttt{alu.comp\_result}
-到 F 级的连接以及 \texttt{JAL} 和 \texttt{JR} 类指令相应数据到 F
+到 F 级的连接以及 \texttt{JUMP\_R} 和 \texttt{JUMP\_I} 类指令相应数据到 F
 级的连接，因为为了正确控制 PC
-的转换，它们必须是实时的，不需要流水线寄存器。
+的转换，它们必须是直接连接的，不需要流水线寄存器。
 
 注意：\textbf{返回 \texttt{PC\ +\ 8} 实际上是通过流水 \texttt{PC} 再加 8
 实现的。}
 
 注意：\textbf{D 级流水线寄存器都要接使能信号，E
 级流水线寄存器都要接复位信号，因为要插入气泡。}
-
-\hypertarget{ux8c03ux8bd5ux76f8ux5173ux529fux80fd}{%
-\subsection{调试相关功能}\label{ux8c03ux8bd5ux76f8ux5173ux529fux80fd}}
-
-为了能够正确地打印出写入寄存器和 \texttt{dm} 时需要的 \texttt{pc}
-值，需要流水 \texttt{pc.curr\_pc}，一直到 W
-级。因此，可能需要新增流水线寄存器，并把相应的 \texttt{pc} 值流水。
-
-注意：\textbf{写入寄存器是使用 \texttt{w} 级流水到的 \texttt{pc} 值。}
 
 \hypertarget{ux6570ux636eux901aux8def-mux}{%
 \paragraph{数据通路 MUX}\label{ux6570ux636eux901aux8def-mux}}
@@ -1161,10 +1096,10 @@ MUX。把 MUX 的输出端口连接在相应的输入端口上，MUX
 端口 & 所有的信号来源 & MUX 名称\tabularnewline\hline
 
 \endhead\hiderowcolors
-\texttt{E:\ alu.num2} & \texttt{D:\ rf.read\_result2,\ D:\ ext.result} &
+\texttt{E:\ alu.num2} & \makecell{\texttt{D:\ rf.read\_result2}\\\texttt{D:\ ext.result}} &
 \texttt{m\_alusrc}\tabularnewline\hline
 \texttt{W:\ rf.write\_data} &
-\texttt{（无）,\ E:\ alu.result,\ M:\ dm.read\_result,\ D:\ npc.next\_pc}
+\makecell{（无）\\\texttt{E:\ alu.result}\\\texttt{M:\ dm.read\_result}\\\texttt{D:\ npc.next\_pc}}
 & \texttt{m\_regdata}\tabularnewline\hline
 
 \end{longtable}
@@ -1178,9 +1113,7 @@ MUX。把 MUX 的输出端口连接在相应的输入端口上，MUX
 \hypertarget{ux8f6cux53d1}{%
 \paragraph{转发}\label{ux8f6cux53d1}}
 
-需要转发是因为可能出现后面的指令需要使用前面的指令的结果，而前面的指令结果来不及写回（数据冒险）的情况。由于同一个时钟周期只有一条指令读写
-\texttt{dm}，所以 \texttt{dm} 不需要转发。但是 \texttt{rf}
-在同一个时钟周期内一般会有多条指令读写，所以 \texttt{rf} 需要转发。
+需要转发是因为可能出现后面的指令需要使用前面的指令的结果，而前面的指令结果来不及写回（数据冒险）的情况。由于同一个时钟周期只有一条指令读写 \texttt{dm}，所以 \texttt{dm} 不需要转发。但是 \texttt{rf} 在同一个时钟周期内一般会有多条指令读写，所以 \texttt{rf} 需要转发。
 
 转发的原则就是比较新的指令需要读的寄存器和比较老的指令需要写的寄存器一样。对这个条件的判断，在指令识别函数中已经有了。注意一条指令最多读
 2 个寄存器，所以要判断 2 次。
@@ -1197,20 +1130,20 @@ MUX 总结如下。
 
 \endhead\hiderowcolors
 \texttt{D:\ rf.read\_result{[}12{]}} &
-\texttt{E:\ rf.read\_result1,\ E:\ npc.next\_pc,\ M:\ npc.next\_pc,\ M:\ alu.result,\ W:\ rf.write\_data}
+\makecell{\texttt{E:\ rf.read\_result1}\\\texttt{E:\ npc.next\_pc}\\\texttt{M:\ npc.next\_pc}\\\texttt{M:\ alu.result}\\\texttt{W:\ rf.write\_data}}
 & \texttt{fm\_d1}\tabularnewline\hline
 \texttt{E:\ rf.read\_result{[}12{]}} &
-\texttt{M:\ npc.next\_pc,\ M:\ alu.result,\ W:\ rf.write\_data} &
+\makecell{\texttt{M:\ npc.next\_pc}\\\texttt{M:\ alu.result}\\\texttt{W:\ rf.write\_data}} &
 \texttt{fm\_e1}\tabularnewline\hline
 \texttt{M:\ dm.write\_data} & \texttt{W:\ rf.write\_data} &
 \texttt{fm\_m}\tabularnewline\hline
 
 \end{longtable}
 
-\textbf{注意：不能在 M 级设置 MUX 转发 \texttt{dm} 的数据，因为这样 D
+注意：\textbf{不能在 M 级设置 MUX 转发 \texttt{dm} 的数据，因为这样 D
 级或 E 级会等待 M 级 \texttt{dm}
 的数据，关键路径会变得非常长，极大地降低流水线性能。同样地，也不能在 E
-级设置 MUX 转发 \texttt{alu} 的数据。}
+级设置 MUX 转发 \texttt{alu} 的数据。总之，某个功能部件出来的数据不能直接转发。}
 
 转发 MUX
 最终是由控制模块控制的。但是控制模块也没法克服有些数据通路不能转发的现实（比如
@@ -1253,31 +1186,30 @@ NOP（这时候也叫气泡），从而让发生数据冒险的指令能够转�
 寄存器号 & \texttt{NULL} & \texttt{ZERO} &\tabularnewline\hline
 寄存器号 & \texttt{RA} & \texttt{5\textquotesingle{}d31} & 31
 号寄存器（\texttt{\$ra}，\texttt{jal} 指令要写入）\tabularnewline\hline
-函数声明 & \texttt{ROBUST\_FUNCTION} & \texttt{function\ automatic} &
-\texttt{automatic} 保证函数同时调用时一定使用不同的硬件块\tabularnewline\hline
-
 \end{longtable}
 
 \hypertarget{ux7aefux53e3ux5b9aux4e49-7}{%
 \subsection{端口定义}\label{ux7aefux53e3ux5b9aux4e49-7}}
 
-端口 \textbar{} 类型 \textbar{} 位宽 \textbar{} 功能 -\/-\/- \textbar{}
--\/-\/- \textbar{} -\/-\/- \texttt{instr} \textbar{} 输入 \textbar{} 32
-\textbar{} 要分析的指令 \texttt{kind} \textbar{} 输出 \textbar{} 9
-\textbar{} 当前指令的具体类型
+\begin{longtable}[]{@{}|l|l|l|l|@{}}
+\hline
+\headingcellfirst{端口} & \headingcellmiddle{类型} & \headingcellmiddle{位宽} & \headingcelllast{功能} \tabularnewline\hline
+\endhead\hiderowcolors
+\texttt{instr} & 输入 & 32 & 要分析的指令 \tabularnewline\hline
+\texttt{kind} & 输出 & 9 & 当前指令的具体类型 \tabularnewline\hline
+\end{longtable}
 
 \hypertarget{ux529fux80fd-12}{%
-\paragraph{功能}\label{ux529fux80fd-12}}
+\subsection{功能}\label{ux529fux80fd-12}}
 
-获取当前指令的具体类型。返回的结果一共 9 位，前 4 位是数据通路类型，后 5
-位是具体类型。
+获取当前指令的具体类型。返回的结果一共 9 位，前 4 位是数据通路类型，后 5 位是具体类型。
 
 若指令的格式符合 MIPS
 指令集中的相应格式，则返回对应指令的代码（在宏定义一节中描述）。否则，返回
 0。
 
 \hypertarget{ux5b8fux5b9aux4e49-11}{%
-\paragraph{宏定义}\label{ux5b8fux5b9aux4e49-11}}
+\subsection{宏定义}\label{ux5b8fux5b9aux4e49-11}}
 
 用把宏定义成宏的方法，定义表中值为宏的宏。值为宏的宏的意义，与定义它的宏一样，在表中省略。
 
@@ -1346,8 +1278,7 @@ NOP（这时候也叫气泡），从而让发生数据冒险的指令能够转�
 指令类型 & \texttt{MOVZ} & \texttt{9\textquotesingle{}b1000\_00000}
 &\tabularnewline\hline
 指令类型 & \texttt{NOP} & \texttt{9\textquotesingle{}b1111\_00000} &
-\texttt{nop} 指令是 \texttt{sll}
-指令的一个特例，所以临时开一栏，在扩充指令时会去掉这一类\tabularnewline\hline
+\makecell{\texttt{nop} 指令是 \texttt{sll} 指令的\\一个特例，所以临时开一栏，\\在扩充指令时会去掉这一类}\tabularnewline\hline
 
 \end{longtable}
 
@@ -1358,7 +1289,7 @@ NOP（这时候也叫气泡），从而让发生数据冒险的指令能够转�
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  临时的数据通路类型都是从上往下长的。
+  临时的数据通路类型都是从上往下编号的。
 \end{enumerate}
 
 \hypertarget{ux63a7ux5236}{%
@@ -1371,7 +1302,7 @@ NOP（这时候也叫气泡），从而让发生数据冒险的指令能够转�
 执行指定的计算的过程。数据通路只是得到了数据可能的流向，真正要控制还是控制完成。控制通过已有的控制信号和数据通路的分叉完成控制。
 
 在流水线 CPU
-中，由于存在结构冒险和数据冒险，所以需要通过暂停和转发解决。暂停控制和转发控制可以放在单独的控制模块中，从而不影响原来单周期时的控制模块。但是，也可以通过改造控制模块的方式集成暂停和转发功能。通过指令识别系列函数（实际上综合时也会被综合成电路），可以分析指令，做到有效的暂停和转发。
+中，由于存在结构冒险和数据冒险，所以需要通过暂停和转发解决。暂停控制和转发控制可以放在单独的控制模块中，从而不影响原来单周期时的控制模块。通过指令识别，可以分析指令，做到有效的暂停和转发。
 
 \hypertarget{ux7aefux53e3ux5b9aux4e49-8}{%
 \subsection{端口定义}\label{ux7aefux53e3ux5b9aux4e49-8}}
@@ -1459,12 +1390,12 @@ MUX，则说明对应的指令需要让该 MUX
 开头，则说明该控制信号或端口只是为了使控制单元功能明晰而加上的，实际上并不需要关心该控制信号或要接入的端口的值。如果想理解该单元格的值，去掉
 \texttt{\#} 再按照上一段理解即可。
 
-\hypertarget{f-ux7ea7}{%
-\paragraph{F 级}\label{f-ux7ea7}}
+\hypertarget{f-ux7ea7if-1}{%
+\paragraph{F 级（IF）}\label{f-ux7ea7id-1}}
 
-\begin{longtable}[]{@{}ll@{}}
+\begin{longtable}[]{@{}|l|l|@{}}
 \hline
-数据通路类型 & \texttt{F:\ npc.jump\_mode}\tabularnewline\hline
+\headingcellfirst{数据通路类型} & \headingcelllast{\texttt{F:\ npc.jump\_mode}}\tabularnewline\hline
 
 \endhead\hiderowcolors
 \texttt{BRANCH} & 视具体指令而定\tabularnewline\hline
@@ -1476,9 +1407,9 @@ MUX，则说明对应的指令需要让该 MUX
 
 \texttt{BRANCH} 类指令类型与 \texttt{F:\ npc.jump\_mode} 的关系：
 
-\begin{longtable}[]{@{}ll@{}}
+\begin{longtable}[]{@{}|l|l|@{}}
 \hline
-指令类型 & \texttt{F:\ npc.jump\_mode}\tabularnewline\hline
+\headingcellfirst{指令类型} & \headingcelllast{\texttt{F:\ npc.jump\_mode}}\tabularnewline\hline
 
 \endhead\hiderowcolors
 \texttt{BEQ} & \texttt{NPC\_JUMP\_WHEN\_EQUAL}\tabularnewline\hline
@@ -1490,9 +1421,9 @@ MUX，则说明对应的指令需要让该 MUX
 \hypertarget{d-ux7ea7id-1}{%
 \paragraph{D 级（ID）}\label{d-ux7ea7id-1}}
 
-\begin{longtable}[]{@{}ll@{}}
+\begin{longtable}[]{@{}|l|l|@{}}
 \hline
-数据通路类型 & \texttt{D:\ ext.mode}\tabularnewline\hline
+\headingcellfirst{数据通路类型} & \headingcelllast{\texttt{D:\ ext.mode}}\tabularnewline\hline
 
 \endhead\hiderowcolors
 \texttt{CAL\_I} & 视具体指令而定\tabularnewline\hline
@@ -1504,9 +1435,9 @@ MUX，则说明对应的指令需要让该 MUX
 
 \texttt{CAL\_I} 类指令类型与 \texttt{D:\ ext.mode} 的关系：
 
-\begin{longtable}[]{@{}ll@{}}
+\begin{longtable}[]{@{}|l|l|@{}}
 \hline
-指令类型 & \texttt{D:\ ext.mode}\tabularnewline\hline
+\headingcellfirst{指令类型} & \headingcelllast{\texttt{D:\ ext.mode}}\tabularnewline\hline
 
 \endhead\hiderowcolors
 \texttt{LUI} & \texttt{EXT\_MODE\_PAD}\tabularnewline\hline
@@ -1519,8 +1450,8 @@ MUX，则说明对应的指令需要让该 MUX
 
 \begin{longtable}[]{@{}|l|l|l|@{}}
 \hline
-数据通路类型 & \texttt{E:\ m\_alusrc} &
-\texttt{E:\ alu.op}\tabularnewline\hline
+\headingcellfirst{数据通路类型} & \headingcellmiddle{\texttt{E:\ m\_alusrc}} &
+\headingcelllast{\texttt{E:\ alu.op}} \tabularnewline\hline
 
 \endhead\hiderowcolors
 \texttt{CAL\_R} & \texttt{D:\ rf.read\_result2} &
@@ -1542,9 +1473,9 @@ MUX，则说明对应的指令需要让该 MUX
 
 \texttt{CAL\_R} 类指令类型与 \texttt{E:\ alu.op} 的关系：
 
-\begin{longtable}[]{@{}ll@{}}
+\begin{longtable}[]{@{}|l|l|@{}}
 \hline
-指令类型 & \texttt{E:\ alu.op}\tabularnewline\hline
+\headingcellfirst{指令类型} & \headingcelllast{\texttt{E:\ alu.op}} \tabularnewline\hline
 
 \endhead\hiderowcolors
 \texttt{ADDU} & \texttt{ALU\_ADD}\tabularnewline\hline
@@ -1554,9 +1485,9 @@ MUX，则说明对应的指令需要让该 MUX
 
 \texttt{CAL\_I} 类指令类型与 \texttt{E:\ alu.op} 的关系：
 
-\begin{longtable}[]{@{}ll@{}}
+\begin{longtable}[]{@{}|l|l|@{}}
 \hline
-指令类型 & \texttt{E:\ alu.op}\tabularnewline\hline
+\headingcellfirst{指令类型} & \headingcelllast{\texttt{E:\ alu.op}} \tabularnewline\hline
 
 \endhead\hiderowcolors
 \texttt{LUI} & \texttt{ALU\_OR}\tabularnewline\hline
@@ -1566,9 +1497,9 @@ MUX，则说明对应的指令需要让该 MUX
 
 \texttt{CMOV} 类指令类型与 \texttt{E:\ alu.op} 的关系
 
-\begin{longtable}[]{@{}ll@{}}
+\begin{longtable}[]{@{}|l|l|@{}}
 \hline
-指令类型 & \texttt{E:\ alu.op}\tabularnewline\hline
+\headingcellfirst{指令类型} & \headingcelllast{\texttt{E:\ alu.op}} \tabularnewline\hline
 
 \endhead\hiderowcolors
 \texttt{MOVZ} & \texttt{ALU\_CMOV}\tabularnewline\hline
@@ -1578,9 +1509,9 @@ MUX，则说明对应的指令需要让该 MUX
 \hypertarget{m-ux7ea7mem-1}{%
 \paragraph{M 级（MEM）}\label{m-ux7ea7mem-1}}
 
-\begin{longtable}[]{@{}ll@{}}
+\begin{longtable}[]{@{}|l|l|@{}}
 \hline
-数据通路类型 & \texttt{M:\ dm.write\_enable}\tabularnewline\hline
+\headingcellfirst{数据通路类型} & \headingcelllast{\texttt{M:\ dm.write\_enable}}\tabularnewline\hline
 
 \endhead\hiderowcolors
 \texttt{STORE} & \texttt{1\textquotesingle{}b1}\tabularnewline\hline
@@ -1593,8 +1524,8 @@ MUX，则说明对应的指令需要让该 MUX
 
 \begin{longtable}[]{@{}|l|l|l|@{}}
 \hline
-数据通路类型 & \texttt{W:\ rf.write\_enable} &
-\texttt{W:\ m\_regdata}\tabularnewline\hline
+\headingcellfirst{数据通路类型} & \headingcellmiddle{\texttt{W:\ rf.write\_enable}} &
+\headingcelllast{\texttt{W:\ m\_regdata}} \tabularnewline\hline
 
 \endhead\hiderowcolors
 \texttt{CAL\_R} & \texttt{1\textquotesingle{}b1} &
@@ -1642,11 +1573,11 @@ D 级指令是为了配合暂停机制，D 级一被暂停，D
 \texttt{BRANCH} & \texttt{RS} & \texttt{RT} &
 \texttt{ZERO}\tabularnewline\hline
 \texttt{JUMP} & \texttt{ZERO} & \texttt{ZERO} &
-视指令而定（{[}2{]}）\tabularnewline\hline
+视指令而定\textsuperscript{[2]}\tabularnewline\hline
 \texttt{JUMPR} & \texttt{RS} & \texttt{ZERO} &
 \texttt{ZERO}\tabularnewline\hline
 \texttt{CMOV} & \texttt{RS} & \texttt{RT} &
-视寄存器值而定（{[}1{]}）\tabularnewline\hline
+视寄存器值而定\textsuperscript{[1]}\tabularnewline\hline
 \texttt{NOP} & \texttt{ZERO} & \texttt{ZERO} &
 \texttt{ZERO}\tabularnewline\hline
 （其它） & \texttt{ZERO} & \texttt{ZERO} & \texttt{ZERO}\tabularnewline\hline
@@ -1668,7 +1599,7 @@ D 级指令是为了配合暂停机制，D 级一被暂停，D
   \texttt{CMOV} 类指令的数据冒险处理不出错。哪怕在 W 级打开了
   \texttt{rf} 的写使能，写入 \texttt{\$0} 也没有影响。
 \item
-  \texttt{JUMP} 类指令若为 \texttt{jal}，则 \texttt{regw\ ==\ RA}。若为
+  \texttt{JUMP\_I} 类指令若为 \texttt{jal}，则 \texttt{regw\ ==\ RA}。若为
   \texttt{j}，则 \texttt{regw\ ==\ ZERO}。
 \end{enumerate}
 
@@ -1678,8 +1609,7 @@ D 级指令是为了配合暂停机制，D 级一被暂停，D
 由于流水线 CPU
 中存在数据冒险，所以需要转发。由于有了指令识别函数，所以转发是非常抽象的，只需要判断涉及的寄存器号。而且只有两个级是转发的接收端（数据的需求者），因此可以在某一级的角度，一级一级往后排查。
 
-注意：\textbf{先检查较新级的数据冒险，再检查较老级的，因为 \texttt{rf}
-中的内容最终还是较新级的。}
+注意：\textbf{先检查较新级的数据冒险，再检查较老级的，因为 \texttt{rf} 中的内容最终还是较新级的。}
 
 对 D 级，先检查 E 级，再检查 M 级，再检查 W 级。对 E 级的寄存器，先检查
 M 级，再检查 W 级。这样就能保证转发的完整性。
@@ -1695,35 +1625,16 @@ M 级，再检查 W 级。这样就能保证转发的完整性。
 \endhead\hiderowcolors
 所有转发 MUX & \texttt{orig} & \texttt{0} &
 不转发，保持原样\tabularnewline\hline
-\texttt{fm\_d{[}12{]}} & \texttt{E2D\_rf} & \texttt{1} & E 级到 D
-级，数据通路类型是 \texttt{CMOV}，要写入的数据在 D 级产生好了，到了 E
-级才能转发\tabularnewline\hline
-\texttt{fm\_d{[}12{]}} & \texttt{E2D\_npc} & \texttt{2} & E 级到 D
-级，数据通路类型是 \texttt{JUMP\_I}，要写入的数据在 D 级产生好了，到了 E
-级才能转发\tabularnewline\hline
+\texttt{fm\_d{[}12{]}} & \texttt{E2D\_rf} & \texttt{1} & \makecell{E 级到 D 级，数据通路类型是 \texttt{CMOV}，\\要写入的数据在 D 级产生好了，到了 E 级才能转发}\tabularnewline\hline
+\texttt{fm\_d{[}12{]}} & \texttt{E2D\_npc} & \texttt{2} & \makecell{E 级到 D 级，数据通路类型是 \texttt{JUMP\_I}，\\要写入的数据在 D 级产生好了，到了 E 级才能转发}\tabularnewline\hline
 \texttt{fm\_d{[}12{]}} & \texttt{M2D\_npc} & \texttt{3} & M 级到 D
 级，之后同上\tabularnewline\hline
-\texttt{fm\_d{[}12{]}} & \texttt{M2D\_alu} & \texttt{4} & M 级到 D
-级，数据通路类型是 \texttt{CAL\_R\ /\ CAL\_I\ /\ CMOV}，数据在 D 级或 E
-级产生好了，但对 \texttt{CAL\_R\ /\ CAL\_I} 来说，到了 M
-级才能转发\tabularnewline\hline
-\texttt{fm\_d{[}12{]}} & \texttt{W2D\_rf} & \texttt{5} & W 级到 D
-级，数据通路类型是所有能够写入寄存器的类型，数据在 W
-级都可以转发了\tabularnewline\hline
-\texttt{fm\_e{[}12{]}} & \texttt{M2E\_npc} & \texttt{1} & M 级到 E
-级，数据通路类型是 \texttt{JUMP\_I}，要写入的数据在 D 级产生好了，到了 E
-级才能转发\tabularnewline\hline
-\texttt{fm\_e{[}12{]}} & \texttt{M2E\_alu} & \texttt{2} & M 级到 E
-级，数据通路类型是 \texttt{CAL\_R\ /\ CAL\_I\ /\ CMOV}，数据在 D 级或 E
-级产生好了，但对 \texttt{CAL\_R\ /\ CAL\_I} 来说，到了 M
-级才能转发\tabularnewline\hline
-\texttt{fm\_e{[}12{]}} & \texttt{W2E\_rf} & \texttt{3} & W 级到 D
-级，数据通路类型是所有能够写入寄存器的类型，数据在 W
-级都可以转发了\tabularnewline\hline
-\texttt{fm\_m} & \texttt{W2M\_rf} & \texttt{1} & W 级到 M
-级，数据通路类型是所有能够写入寄存器的类型，数据在 W
-级都可以转发了（比如 \texttt{sw} 指令转发 \texttt{rf}
-内容）\tabularnewline\hline
+\texttt{fm\_d{[}12{]}} & \texttt{M2D\_alu} & \texttt{4} & \makecell{M 级到 D 级，数据通路类型是 \texttt{CAL\_R\ /\ CAL\_I\ /\ CMOV}，\\数据在 D 级或 E 级产生好了，\\但对 \texttt{CAL\_R\ /\ CAL\_I} 来说，到了 M 级才能转发}\tabularnewline\hline
+\texttt{fm\_d{[}12{]}} & \texttt{W2D\_rf} & \texttt{5} & \makecell{W 级到 D 级，数据通路类型是所有能够写入寄存器的类型，\\数据在 W 级都可以转发了}\tabularnewline\hline
+\texttt{fm\_e{[}12{]}} & \texttt{M2E\_npc} & \texttt{1} & \makecell{M 级到 E 级，数据通路类型是 \texttt{JUMP\_I}，\\要写入的数据在 D 级产生好了，到了 E 级才能转发}\tabularnewline\hline
+\texttt{fm\_e{[}12{]}} & \texttt{M2E\_alu} & \texttt{2} & \makecell{M 级到 E 级，数据通路类型是 \texttt{CAL\_R\ /\ CAL\_I\ /\ CMOV}，\\数据在 D 级或 E 级产生好了，但对 \texttt{CAL\_R\ /\ CAL\_I} 来说，\\到了 M 级才能转发}\tabularnewline\hline
+\texttt{fm\_e{[}12{]}} & \texttt{W2E\_rf} & \texttt{3} & \makecell{W 级到 D 级，数据通路类型是所有能够写入寄存器的类型，\\数据在 W 级都可以转发了}\tabularnewline\hline
+\texttt{fm\_m} & \texttt{W2M\_rf} & \texttt{1} & \makecell{W 级到 M 级，数据通路类型是所有能够写入寄存器的类型，\\数据在 W 级都可以转发了（比如 \texttt{sw} 指令转发 \texttt{rf} 内容）}\tabularnewline\hline
 
 \end{longtable}
 
@@ -1740,30 +1651,29 @@ M 级，再检查 W 级。这样就能保证转发的完整性。
 \subsection{暂停控制信号}\label{ux6682ux505cux63a7ux5236ux4fe1ux53f7}}
 
 由于流水线中有些数据冒险通过转发解决不了，所以需要暂停机制。暂停机制的前提是产生数据冒险。暂停机制是通过
-Tuse 和 Tnew 机制实现的。
+$ T_{use} $ 和 $ T_{new} $ 机制实现的。
 
-Tuse 是指指令到 D 级以后还剩最晚多少时间就需要新值。Tnew
-是指指令还需要多长时间才能开始转发。因此只要 Tuse \textless{}
-Tnew，就需要暂停，因为在流水线中如果没有暂停，两条指令的相对位置是不变的，如果不暂停，就不能解决数据冒险。
+$ T_{use} $ 是指指令到 D 级以后还剩最晚多少时间就需要新值。$ T_{new} $
+是指指令还需要多长时间才能开始转发。因此只要 $ T_{use} < T_{new} $，就需要暂停，因为在流水线中如果没有暂停，两条指令的相对位置是不变的，如果不暂停，就不能解决数据冒险。
 
 数据冒险可以只在 D 级检测和在 E 级解决，因为在 E 级插入气泡，就可以保证
-Tuse 和 Tnew 最终回回归正常。
+$ T_{use} $ 和 $ T_{new} $ 最终回回归正常。
 
 插入气泡是通过锁定 \texttt{pc} 和清空 E
 级各个流水线寄存器实现的。但是，控制内部的流水线也要插入气泡。
 
 暂停要分两个寄存器，因为数据冒险也是要分成两个寄存器的情况的。
 
-注意：\textbf{Tnew
+注意：\textbf{$ T_{new} $
 的计算是要看能够开始转发的时间，而不是生成好要转发数据的时间，因为不是所有转发路径都是可能的。}
 
 注意：\textbf{控制内部的流水线也要插入气泡。}
 
-在 D 级各种数据通路类型的 Tuse 如下。
+在 D 级各种数据通路类型的 $ T_{use} $ 如下。
 
 \begin{longtable}[]{@{}|l|l|l|@{}}
 \hline
-数据通路类型 & Tuse (read\_addr1) & Tuse (read\_addr2)\tabularnewline\hline
+\headingcellfirst{数据通路类型} & \headingcellmiddle{$ T_{use1} $} & \headingcelllast{$ T_{use2} $} \tabularnewline\hline
 
 \endhead\hiderowcolors
 \texttt{UNKNOWN} & &\tabularnewline\hline
@@ -1779,12 +1689,11 @@ Tuse 和 Tnew 最终回回归正常。
 
 \end{longtable}
 
-在 E 级和 M 级各种数据通路类型的 Tnew 如下。忽略 W 级，因为所有指令到 W
-级时都可以马上转发数据。
+在 E 级和 M 级各种数据通路类型的 $ T_{new} $ 如下。忽略 W 级，因为所有指令到 W 级时都可以马上转发数据。
 
 \begin{longtable}[]{@{}|l|l|l|@{}}
 \hline
-数据通路类型 & Tnew (E) & Tnew (M)\tabularnewline\hline
+数据通路类型 & $ T_{newE} $ & $ T_{newM} $\tabularnewline\hline
 
 \endhead\hiderowcolors
 \texttt{UNKNOWN} & &\tabularnewline\hline
@@ -1800,16 +1709,13 @@ Tuse 和 Tnew 最终回回归正常。
 
 \end{longtable}
 
-以上列表中 Tuse 没有列出的，是因为它没有意义，认为 Tuse 足够大。Tnew
-同理，认为 Tnew 为 0。
+以上列表中 $ T_{use} $ 没有列出的，是因为它没有意义，认为 $ T_{use} $ 足够大。$ T_{new} $
+同理，认为 $ T_{new} $ 为 0。
 
-这样，只要算出每个阶段的 Tuse 和
-Tnew，并且保证发生数据冒险时对两个寄存器，Tuse \textgreater{}=
-Tnew，就能控制暂停和转发。当且仅当 \texttt{t\_use\_reg{[}12{]}} 小于
-\texttt{t\_new\_{[}em{]}} 中的任何一个时，需要暂停。
+这样，只要算出每个阶段的 $ T_{use} $ 和
+$ T_{new} $，并且保证发生数据冒险时对两个寄存器，$ T_{use} \ge T_{new} $，就能控制暂停和转发。当且仅当 $ \{T_{use1}, T_{use2}\} $ 小于 $ \{T_{newE}, T_{newM}\} $ 中的任何一个时，需要暂停。
 
-注意：\textbf{比较 Tuse 和 Tnew 应该用无符号比较，避免数值最高位是 1
-时被看成负数。}
+注意：\textbf{表示 $ T_{use} $ 和 $ T_{new} $ 时，是用 3 位无符号数表示。$ T_{use} = 7 $ 表示不需要获取 \texttt{rf} 的值。$ T_{new} = 0 $ 表示马上就能生成 \texttt{rf} 的对应新值。比较 $ T_{use} $ 和 $ T_{new} $ 应该用无符号比较，避免数值最高位是 1 时被看成负数。}
 
 \hypertarget{ux5bc4ux5b58ux5668ux5730ux5740ux63a7ux5236ux4fe1ux53f7}{%
 \subsection{寄存器地址控制信号}\label{ux5bc4ux5b58ux5668ux5730ux5740ux63a7ux5236ux4fe1ux53f7}}
@@ -1817,14 +1723,97 @@ Tnew，就能控制暂停和转发。当且仅当 \texttt{t\_use\_reg{[}12{]}} �
 由于已经有指令识别机制了，所以寄存器的地址控制可以简化。只需要在 D 级和
 M 级的三个地址端口输入指令识别机制相应的结果即可。
 
+\section{转发控制模块}
+
+\subsection{原理}
+
+转发控制模块是流水线 CPU 控制机制的一部分，通过评估各指令读写寄存器的情况，实现有效的尽力转发。
+
+\subsection{端口定义}
+
+\begin{longtable}[]{@{}|l|l|l|l|}
+\hline
+\headingcellfirst{端口} & \headingcellmiddle{类型} & \headingcellmiddle{位宽} & \headingcelllast{功能} \tabularnewline\hline
+\endhead\hiderowcolors
+\texttt{ddptype} & 输入 & 9 & D 级指令类型 \tabularnewline\hline
+\texttt{dreg1} & 输入 & 5 & D 级指令与 \texttt{rf.read\_addr1} 对应的寄存器号 \tabularnewline\hline
+\texttt{dreg2} & 输入 & 5 & D 级指令与 \texttt{rf.read\_addr2} 对应的寄存器号 \tabularnewline\hline
+\texttt{dregw} & 输入 & 5 & D 级指令与 \texttt{rf.write\_addr} 对应的寄存器号 \tabularnewline\hline
+\texttt{edptype} & 输入 & 9 & E 级指令类型 \tabularnewline\hline
+\texttt{ereg1} & 输入 & 5 & E 级指令与 \texttt{rf.read\_addr1} 对应的寄存器号 \tabularnewline\hline
+\texttt{ereg2} & 输入 & 5 & E 级指令与 \texttt{rf.read\_addr2} 对应的寄存器号 \tabularnewline\hline
+\texttt{eregw} & 输入 & 5 & E 级指令与 \texttt{rf.write\_addr} 对应的寄存器号 \tabularnewline\hline
+\texttt{mdptype} & 输入 & 9 & M 级指令类型 \tabularnewline\hline
+\texttt{mreg1} & 输入 & 5 & M 级指令与 \texttt{rf.read\_addr1} 对应的寄存器号 \tabularnewline\hline
+\texttt{mreg2} & 输入 & 5 & M 级指令与 \texttt{rf.read\_addr2} 对应的寄存器号 \tabularnewline\hline
+\texttt{mregw} & 输入 & 5 & M 级指令与 \texttt{rf.write\_addr} 对应的寄存器号 \tabularnewline\hline
+\texttt{wdptype} & 输入 & 9 & W 级指令类型 \tabularnewline\hline
+\texttt{wreg1} & 输入 & 5 & W 级指令与 \texttt{rf.read\_addr1} 对应的寄存器号 \tabularnewline\hline
+\texttt{wreg2} & 输入 & 5 & W 级指令与 \texttt{rf.read\_addr2} 对应的寄存器号 \tabularnewline\hline
+\texttt{wregw} & 输入 & 5 & W 级指令与 \texttt{rf.write\_addr} 对应的寄存器号 \tabularnewline\hline
+\texttt{cw\_fm\_[de][12]} & 输出 & 3 & D / E 级与 \texttt{rf.read\_addr[12]} 对应的转发 MUX \tabularnewline\hline
+\texttt{cw\_fm\_m} & 输出 & 3 & M 级与 \texttt{rf.read\_addr2} 对应的转发 MUX \tabularnewline\hline
+\end{longtable}
+
+\subsection{宏定义}
+
+暂无。
+
+\subsection{功能}
+
+见控制中的对应节。
+
+\section{暂停控制模块}
+
+\subsection{原理}
+
+暂停控制模块是流水线 CPU 控制机制的一部分，通过评估 $ T_{use} $ 和 $ T_{new} $ 实现尽量少的暂停。它是控制模块内部的一部分。
+
+\subsection{端口定义}
+
+\begin{longtable}[]{@{}|l|l|l|l|}
+\hline
+\headingcellfirst{端口} & \headingcellmiddle{类型} & \headingcellmiddle{位宽} & \headingcelllast{功能} \tabularnewline\hline
+\endhead\hiderowcolors
+\texttt{ddptype} & 输入 & 9 & D 级指令类型 \tabularnewline\hline
+\texttt{dreg1} & 输入 & 5 & D 级指令与 \texttt{rf.read\_addr1} 对应的寄存器号 \tabularnewline\hline
+\texttt{dreg2} & 输入 & 5 & D 级指令与 \texttt{rf.read\_addr2} 对应的寄存器号 \tabularnewline\hline
+\texttt{dregw} & 输入 & 5 & D 级指令与 \texttt{rf.write\_addr} 对应的寄存器号 \tabularnewline\hline
+\texttt{edptype} & 输入 & 9 & E 级指令类型 \tabularnewline\hline
+\texttt{ereg1} & 输入 & 5 & E 级指令与 \texttt{rf.read\_addr1} 对应的寄存器号 \tabularnewline\hline
+\texttt{ereg2} & 输入 & 5 & E 级指令与 \texttt{rf.read\_addr2} 对应的寄存器号 \tabularnewline\hline
+\texttt{eregw} & 输入 & 5 & E 级指令与 \texttt{rf.write\_addr} 对应的寄存器号 \tabularnewline\hline
+\texttt{mdptype} & 输入 & 9 & M 级指令类型 \tabularnewline\hline
+\texttt{mreg1} & 输入 & 5 & M 级指令与 \texttt{rf.read\_addr1} 对应的寄存器号 \tabularnewline\hline
+\texttt{mreg2} & 输入 & 5 & M 级指令与 \texttt{rf.read\_addr2} 对应的寄存器号 \tabularnewline\hline
+\texttt{mregw} & 输入 & 5 & M 级指令与 \texttt{rf.write\_addr} 对应的寄存器号 \tabularnewline\hline
+\texttt{wdptype} & 输入 & 9 & W 级指令类型 \tabularnewline\hline
+\texttt{wreg1} & 输入 & 5 & W 级指令与 \texttt{rf.read\_addr1} 对应的寄存器号 \tabularnewline\hline
+\texttt{wreg2} & 输入 & 5 & W 级指令与 \texttt{rf.read\_addr2} 对应的寄存器号 \tabularnewline\hline
+\texttt{wregw} & 输入 & 5 & W 级指令与 \texttt{rf.write\_addr} 对应的寄存器号 \tabularnewline\hline
+\texttt{stall} & 输出 & 1 & 是否需要暂停 \tabularnewline\hline
+\end{longtable}
+
+\subsection{宏定义}
+
+\begin{longtable}[]{@{}|l|l|l|l|@{}}
+\hline
+\headingcellfirst{类别} & \headingcellmiddle{定义} & \headingcellmiddle{值} & \headingcelllast{意义} \tabularnewline\hline
+\endhead\hiderowcolors
+$ T_{use} $ 或 $ T_{new} $ 的值 & \texttt{inf} & 3'd7 & 值为概念上的无穷大时，实际的值 \tabularnewline\hline
+\end{longtable}
+
+\subsection{功能}
+
+见控制中的对应节。
+
 \hypertarget{cpu}{%
 \section{CPU}\label{cpu}}
 
 \hypertarget{ux539fux7406-11}{%
 \subsection{原理}\label{ux539fux7406-11}}
 
-CPU
-是宏观部件，主要连接起数据通路和控制。该部件主要起的是宏观功能，也就是读取指令并完成计算。
+CPU 是宏观部件，主要连接起数据通路和控制。该部件主要起的是宏观功能，也就是读取指令并完成计算。
 
 CPU 在模块结构中作为顶层模块而存在。
 
@@ -1837,6 +1826,7 @@ CPU 在模块结构中作为顶层模块而存在。
 
 \endhead\hiderowcolors
 \texttt{clk} & 输入 & 1 & 时钟信号\tabularnewline\hline
+\texttt{reset} & 输入 & 1 & 同步复位信号 \tabularnewline\hline
 
 \end{longtable}
 
@@ -1845,21 +1835,409 @@ CPU 在模块结构中作为顶层模块而存在。
 
 按照数据通路和控制部分的定义进行接线。数据通路中的接线方式在数据通路部分的文档中描述，控制部分按照控制部分的文档中描述。控制部分控制数据通路的哪部分，在控制部分的文档中。
 
+\texttt{reset} 信号接到所有时序部件对应的同步复位接口中。
+
 \hypertarget{ux529fux80fd-13}{%
 \subsection{功能}\label{ux529fux80fd-13}}
 
 CPU 需要的外部数据输入是极少的，只有时钟信号、必要的其它信号和指令文件。
 
-\hypertarget{ux6ce8ux610fux4e8bux9879-8}{%
-\subsection{注意事项}\label{ux6ce8ux610fux4e8bux9879-8}}
+\section{思考题}
+
+在 p5 中遇到了很多种不同指令类型组合产生的冲突。
+
+解决方式：通过暂停和转发解决。大体上方案类似于 A/T 编码器方案。
+
+\begin{description}
+\item[转发条件判断] 控制模块内部流水指令，同时在 D 级判断出 A1-A3 三个寄存器。然后把这三个寄存器流水，这样转发条件就容易判断了。
+\item[暂停机制] 获取到 D 级指令的 $ T_{use1} $ 和 $ T_{use2} $，以及 E 级和 M 级指令的 $ T_{new} $。然后直接通过比较 $ T_{use} $ 和 $ T_{new} $ 的方式确定是否暂停。
+\item[转发机制] 通过指令类型确定对应指令在哪一级的哪里生成转发数据。然后根据转发条件，在每个需求位点部署转发 MUX，连入原来的值和后面所有供给者的值。若转发条件满足，则选择时间上最后生成的值，进行转发。
+\end{description}
+
+考虑过使用标记转发法，但是因为个人感觉暂停机制更好理解、不需要在每一级的控制单元对标记进行处理和特判、转发机制通常不需要大修改，所以还是使用了比较老的类似 A/T 编码器的方案。
+
+测试样例是完全随机生成为主，手动构造小样例为辅。
+
+\begin{description}
+\item[手动构造小样例] 可以明白流水线处理器的工作原理，检查是否有比较基本的错误。但是工作强度大、覆盖性不强。
+\item[完全随机生成] 可以利用自动化工具，进行覆盖性更强、更省力的测试，但是覆盖不一定全面、调试略微麻烦。
+\end{description}
+
+没有使用采用特殊策略的方式，但是可以通过固定产生冲突的寄存器和指令类型，在其它寄存器的读写上增加随机性，来增加测试的强度。
+\section{测试}
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  对部件分级是个好习惯，在流水线 CPU 时会有用。
-\item
-  TODO: \texttt{input\ rst}?
+\item 
+\begin{lstlisting}[language={[mips]Assembler}]
+# fm_e: M2E_alu
+lui $1, 0x002a
+ori $1, 0x002a
+nop
+nop
+nop
+
+# fm_d: E2D_npc, fm_m: M2E_npc, fm_m: W2M_rf
+jal good
+addu $2, $31, $31
+evil:
+lui $2, 0xdead
+lui $2, 0xbeef
+good:
+nop
+nop
+nop
+nop
+
+# fm_d: E2D_rf
+movz $3, $1, $0
+addu $0, $3, $3
+nop
+nop
+nop
+
+# fm_d: M2D_npc
+jal good2
+nop
+good2:
+addu $0, $31, $31
+nop
+nop
+nop
+nop
+
+# fm_d: M2D_alu, fw_e: W2E_rf
+lui $4, 0x4242
+nop
+ori $4, 0x4242
+nop
+nop
+
+# fm_d: W2D_rf
+lui $5, 0x4242
+nop
+nop
+ori $5, 0x4242
+nop
+nop
+nop
+nop
+\end{lstlisting}
+\begin{verbatim}
+@00003000: $ 1 <= 002a0000
+@00003004: $ 1 <= 002a002a
+@00003014: $31 <= 0000301c
+@00003018: $ 2 <= 00006038
+@00003034: $ 3 <= 002a002a
+@00003048: $31 <= 00003050
+@00003064: $ 4 <= 42420000
+@0000306c: $ 4 <= 42424242
+@00003078: $ 5 <= 42420000
+@00003084: $ 5 <= 42424242
+\end{verbatim}
+\item 
+\begin{lstlisting}[language={[mips]Assembler}]
+lui $1, 0x4242
+ori $1, 0x4242
+sw $1, 0($0)
+nop
+nop
+
+# T_use (reg2) < T_new (E) and T_use (reg2) < T_new (M)
+lw $2, 0($0)
+movz $3, $1, $0
+nop
+nop
+nop
+
+# T_use (reg1) < T_new (W) and T_use (reg1) < T_new (M)
+lw $4, 0($0)
+movz $5, $4, $0
+nop
+nop
+nop
+\end{lstlisting}
+\begin{verbatim}
+@00003000: $ 1 <= 42420000
+@00003004: $ 1 <= 42424242
+@00003008: *00000000 <= 42424242
+@00003014: $ 2 <= 42424242
+@00003018: $ 3 <= 42424242
+@00003028: $ 4 <= 42424242
+@0000302c: $ 5 <= 42424242
+\end{verbatim}
+\item 
+\begin{lstlisting}[language={[mips]Assembler}]
+# Test 1: lui
+# 42
+lui $1, 0x002a
+nop
+nop
+nop
+nop
+lui $2, 0xffff
+nop
+nop
+nop
+nop
+
+# Test 2: ori
+ori $1, 0x002a
+nop
+nop
+nop
+nop
+ori $2, 0xffff
+nop
+nop
+nop
+nop
+
+# Test 3: addu
+addu $3, $1, $2
+nop
+nop
+nop
+nop
+addu $0, $1, $2
+nop
+nop
+nop
+nop
+
+# Test 4: subu
+subu $4, $1, $2
+nop
+nop
+nop
+nop
+subu $5, $0, $0
+nop
+nop
+nop
+nop
+
+# Test 5: sw
+sw $3, 0($0)
+nop
+nop
+nop
+nop
+sw $3, 8($0)
+nop
+nop
+nop
+nop
+
+# Test 6: lw
+lw $6, 0($0)
+nop
+nop
+nop
+nop
+lw $7, 0($0)
+nop
+nop
+nop
+nop
+lw $8, 0($0)
+nop
+nop
+nop
+nop
+
+# Test 7: beq
+beq $0, $0, good
+nop
+nop
+nop
+nop
+evil:
+lui $9, 0xdead
+nop
+nop
+nop
+nop
+ori $9, 0xbeef
+nop
+nop
+nop
+nop
+good:
+lui $9, 0x0123
+nop
+nop
+nop
+nop
+ori $9, 0x4567
+nop
+nop
+nop
+nop
+
+# Test 8: nop
+nop
+
+\end{lstlisting}
+\begin{verbatim}
+@00003000: $ 1 <= 002a0000
+@00003014: $ 2 <= ffff0000
+@00003028: $ 1 <= 002a002a
+@0000303c: $ 2 <= ffffffff
+@00003050: $ 3 <= 002a0029
+@00003078: $ 4 <= 002a002b
+@0000308c: $ 5 <= 00000000
+@000030a0: *00000000 <= 002a0029
+@000030b4: *00000008 <= 002a0029
+@000030c8: $ 6 <= 002a0029
+@000030dc: $ 7 <= 002a0029
+@000030f0: $ 8 <= 002a0029
+@00003140: $ 9 <= 01230000
+@00003154: $ 9 <= 01234567
+
+\end{verbatim}
+\item 
+\begin{lstlisting}[language={[mips]Assembler}]
+luI $9, 0x002a
+nop
+nop
+nop
+nop
+ori $9, 0x002a
+nop
+nop
+nop
+nop
+
+# Test 9: movz
+movz $10, $9, $0
+nop
+nop
+nop
+nop
+movz $11, $9, $9
+nop
+nop
+nop
+nop
+
+# Test 10: j
+j good1
+nop
+nop
+nop
+nop
+evil1:
+lui $12, 0xdead
+nop
+nop
+nop
+nop
+ori $12, 0xbeef
+nop
+nop
+nop
+nop
+good1:
+lui $12, 0x0123
+nop
+nop
+nop
+nop
+ori $12, 0x4567
+nop
+nop
+nop
+nop
+
+# Test 11: jal
+jal good2
+nop
+nop
+nop
+nop
+evil2:
+lui $13, 0xdead
+nop
+nop
+nop
+nop
+ori $13, 0xbeef
+nop
+nop
+nop
+nop
+good2:
+lui $13, 0x0123
+nop
+nop
+nop
+nop
+ori $13, 0x4567
+nop
+nop
+nop
+nop
+
+# Test 12: jr
+lui $14, 0x0000
+nop
+nop
+nop
+nop
+ori $14, 0x3168
+nop
+nop
+nop
+nop
+jr $14
+nop
+nop
+nop
+nop
+lui $15, 0xdeed
+nop
+nop
+nop
+nop
+lui $15, 0x002a
+nop
+nop
+nop
+nop
+\end{lstlisting}
+\begin{verbatim}
+@00003000: $ 9 <= 002a0000
+@00003014: $ 9 <= 002a002a
+@00003028: $10 <= 002a002a
+@0000308c: $12 <= 01230000
+@000030a0: $12 <= 01234567
+@000030b4: $31 <= 000030bc
+@000030f0: $13 <= 01230000
+@00003104: $13 <= 01234567
+@00003118: $14 <= 00000000
+@0000312c: $14 <= 00003168
+@00003168: $15 <= 002a0000
+
+\end{verbatim}
+\item 
+\begin{lstlisting}[language={[mips]Assembler}]
+ori $t0, $t0, 10
+lui $t1, 6
+addu $t2, $t0, $t1
+nop
+subu $t3, $t1, $t2
+subu $t3, $t1, $t0
+
+
+\end{lstlisting}
+\begin{verbatim}
+@00003000: $ 8 <= 0000000a
+@00003004: $ 9 <= 00060000
+@00003008: $10 <= 0006000a
+@00003010: $11 <= fffffff6
+@00003014: $11 <= 0005fff6
+
+\end{verbatim}
 \end{enumerate}
 
 \hypertarget{ux6280ux5de7}{%
@@ -1946,7 +2324,7 @@ CPU 需要的外部数据输入是极少的，只有时钟信号、必要的其�
   \item
     计算好控制信号
   \item
-    计算好 Tuse 和 Tnew
+    计算好 $ T_{use} $ 和 $ T_{new} $
   \item
     看好如何转发、是否需要改转发路径
   \end{itemize}
@@ -2034,25 +2412,6 @@ CPU 需要的外部数据输入是极少的，只有时钟信号、必要的其�
     \item
       注意一般都有 Python，\textbf{可以自动代码生成}
     \end{itemize}
-  \end{itemize}
-\item
-  如果 \texttt{md} 有新的运算
-
-  \begin{itemize}
-  \tightlist
-  \item
-    \textbf{抓好定义}，比如补码的乘除法运算
-  \item
-    \textbf{注意有 / 无符号计算}
-  \item
-    \textbf{注意掌握好 \texttt{md} 的内部状态机，\texttt{md}
-    利用了时钟的下降沿}
-  \item
-    \textbf{如果需要检测特殊情况，最好在收到数据后马上检测}，比如检测除法是否除
-    0
-  \item
-    \textbf{注意暂停机制，现在是把跟 \texttt{md}
-    相关的指令串行化，但是可能有更复杂的暂停控制}
   \end{itemize}
 \item
   如果有新的 \texttt{dm} 存取方式
@@ -2175,7 +2534,7 @@ CPU 需要的外部数据输入是极少的，只有时钟信号、必要的其�
   \begin{itemize}
   \tightlist
   \item
-    首先检查\textbf{每级得出的寄存器结果、Tuse 和 Tnew}
+    首先检查\textbf{每级得出的寄存器结果、$ T_{use} $ 和 $ T_{new} $}
   \item
     然后检查控制器的转发是否写对
   \item
@@ -2219,15 +2578,6 @@ CPU 需要的外部数据输入是极少的，只有时钟信号、必要的其�
     \tightlist
     \item
       \textbf{如果有第三个参数，检查一下关于第三个参数的逻辑}
-    \end{itemize}
-  \item
-    \texttt{md}
-    看实现的运算对不对，\textbf{要踏实地看定义以及内部寄存器的值，注意好时钟周期}
-
-    \begin{itemize}
-    \tightlist
-    \item
-      注意 \texttt{md} 的内部状态机和错误检测机制
     \end{itemize}
   \item
     \texttt{dm}
@@ -2333,8 +2683,6 @@ CPU 需要的外部数据输入是极少的，只有时钟信号、必要的其�
     可能需要回退机制
   \item
     原来的指令可能需要在控制层面避开新部件带来的影响，不过这一点一般不大可能
-  \item
-    对 \texttt{md} 这种自带状态机的部件，弄好状态机
   \end{itemize}
 \end{itemize}
 
@@ -2360,7 +2708,7 @@ CPU 需要的外部数据输入是极少的，只有时钟信号、必要的其�
     如果在控制加上 hook 机制，\textbf{要注意 sane defaults 和 hook
     机制能不能方便之后修改代码}
   \item
-    如果在 \texttt{alu\ /\ ext\ /\ md\ /\ dm}
+    如果在 \texttt{alu\ /\ ext\ /\ dm}
     加了新功能，\textbf{注意实现是否正确，要紧扣定义}
   \end{itemize}
 \item
