@@ -29,7 +29,7 @@ module pipelined_tb;
 	reg reset;
 
 	// Instantiate the Unit Under Test (UUT)
-	cpu uut (
+	mips uut (
 		.clk(clk), 
 		.reset(reset)
 	);
