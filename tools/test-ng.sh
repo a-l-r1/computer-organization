@@ -17,7 +17,7 @@ TMPDIR=`mktemp -d -p tmp`
 echo "tmpdir: ${TMPDIR}"
 
 # mips-as.py
-java -jar tools/mars.jar nc mc CompactDataAtZero a dump .text HexText project/code.txt $1
+java -jar tools/mars.jar nc db mc CompactDataAtZero a dump .text HexText project/code.txt $1
 
 # simulate.py
 pushd project
@@ -29,11 +29,14 @@ sed -i '/^This is a Full version of ISim.$/d' ${TMPDIR}/output
 sed -i '/^Time resolution is 1 ps$/d' ${TMPDIR}/output
 sed -i '/^Simulator is doing circuit initialization process\.$/d' ${TMPDIR}/output
 sed -i '/^Finished circuit initialization process\.$/d' ${TMPDIR}/output
-# preserve the final newline - for compability with MARS outputs
-sed -i 's/^Stopped at time : .*$//g' ${TMPDIR}/output
+sed -i '/^Stopped at time : .*$/d' ${TMPDIR}/output
+# add a newline for compatibility with MARS outputs
+echo '' >> ${TMPDIR}/output
+# remove $time
+sed -i 's/^[ ]*[0-9]*//g' ${TMPDIR}/output
 
 # simulate-mars.py
-java -jar tools/mars.jar mc CompactDataAtZero nc $1 > ${TMPDIR}/ref_output
+java -jar tools/mars.jar db mc CompactDataAtZero nc $1 > ${TMPDIR}/ref_output
 
 colordiff -u ${TMPDIR}/ref_output ${TMPDIR}/output
 
