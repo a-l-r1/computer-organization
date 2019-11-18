@@ -9,7 +9,7 @@
 `define IM_ADDR_WIDTH 12
 `define IM_SIZE 1024
 
-`define IM_CODE_FILENAME "code.hex"
+`define IM_CODE_FILENAME "code.txt"
 
 `define IM_START_ADDRESS 32'h00003000
 
