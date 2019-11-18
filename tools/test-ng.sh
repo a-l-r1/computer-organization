@@ -14,7 +14,8 @@ TMPDIR=`mktemp -d -p tmp`
 
 # NOTE: mind to change testbench names and branch delay slot availability
 
-echo "tmpdir: ${TMPDIR}"
+echo "[*] tmpdir: ${TMPDIR}"
+echo "[*] testing: $1"
 
 # mips-as.py
 java -jar tools/mars.jar nc db mc CompactDataAtZero a dump .text HexText project/code.txt $1
@@ -39,4 +40,12 @@ sed -i 's/^[ ]*[0-9]*//g' ${TMPDIR}/output
 java -jar tools/mars.jar db mc CompactDataAtZero nc $1 > ${TMPDIR}/ref_output
 
 colordiff -u ${TMPDIR}/ref_output ${TMPDIR}/output
+DIFF_EXIT_STATUS=$?
+
+if [ ${DIFF_EXIT_STATUS} -eq 0 ]; then
+	echo "[+] test passed on $1"
+else
+	echo "[-] test failed on $1, manual inspection needed"
+	read
+fi
 
