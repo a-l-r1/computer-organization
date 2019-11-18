@@ -1,6 +1,6 @@
 `include "pipelined.h"
 
-module cpu(
+module mips(
 	input clk, 
 	input reset
 );
