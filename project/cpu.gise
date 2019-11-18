@@ -101,11 +101,13 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1565004785" xil_pn:in_ck="4999174130927748430" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1565004785">
+    <transform xil_pn:end_ts="1574076242" xil_pn:in_ck="-2784582862803081738" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1574076242">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="../src/control/pipelined-forward.v"/>
+      <outfile xil_pn:name="../src/control/pipelined-hazard.v"/>
       <outfile xil_pn:name="../src/control/pipelined.v"/>
-      <outfile xil_pn:name="../src/cpu/pipelined.v"/>
+      <outfile xil_pn:name="../src/cpu/mips.v"/>
       <outfile xil_pn:name="../src/datapath/alu.v"/>
       <outfile xil_pn:name="../src/datapath/cmp.v"/>
       <outfile xil_pn:name="../src/datapath/dm.v"/>
@@ -141,23 +143,25 @@
       <outfile xil_pn:name="../tests/datapath/rf_tb.v"/>
       <outfile xil_pn:name="../tests/debug/debug-print-test.v"/>
     </transform>
-    <transform xil_pn:end_ts="1564993165" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-511559569222965178" xil_pn:start_ts="1564993165">
+    <transform xil_pn:end_ts="1574075331" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-511559569222965178" xil_pn:start_ts="1574075331">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1564993165" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="-5901937408018248860" xil_pn:start_ts="1564993165">
+    <transform xil_pn:end_ts="1574075331" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="-5901937408018248860" xil_pn:start_ts="1574075331">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1564993165" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="1737863330774165797" xil_pn:start_ts="1564993165">
+    <transform xil_pn:end_ts="1574071457" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="1737863330774165797" xil_pn:start_ts="1574071457">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1565004785" xil_pn:in_ck="4999174130927748430" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1565004785">
+    <transform xil_pn:end_ts="1574076242" xil_pn:in_ck="-2784582862803081738" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1574076242">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="../src/control/pipelined-forward.v"/>
+      <outfile xil_pn:name="../src/control/pipelined-hazard.v"/>
       <outfile xil_pn:name="../src/control/pipelined.v"/>
-      <outfile xil_pn:name="../src/cpu/pipelined.v"/>
+      <outfile xil_pn:name="../src/cpu/mips.v"/>
       <outfile xil_pn:name="../src/datapath/alu.v"/>
       <outfile xil_pn:name="../src/datapath/cmp.v"/>
       <outfile xil_pn:name="../src/datapath/dm.v"/>
@@ -193,7 +197,7 @@
       <outfile xil_pn:name="../tests/datapath/rf_tb.v"/>
       <outfile xil_pn:name="../tests/debug/debug-print-test.v"/>
     </transform>
-    <transform xil_pn:end_ts="1565004788" xil_pn:in_ck="4999174130927748430" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="6786518762761399137" xil_pn:start_ts="1565004785">
+    <transform xil_pn:end_ts="1574076244" xil_pn:in_ck="-2784582862803081738" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="6786518762761399137" xil_pn:start_ts="1574076242">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
@@ -205,11 +209,9 @@
       <outfile xil_pn:name="pipelined_tb_isim_beh.exe"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1565006292" xil_pn:in_ck="8519363098412258708" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-4701990605574328866" xil_pn:start_ts="1565006291">
+    <transform xil_pn:end_ts="1574076244" xil_pn:in_ck="8519363098412258708" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-4701990605574328866" xil_pn:start_ts="1574076244">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="isim.cmd"/>
       <outfile xil_pn:name="isim.log"/>
       <outfile xil_pn:name="pipelined_tb_isim_beh.wdb"/>

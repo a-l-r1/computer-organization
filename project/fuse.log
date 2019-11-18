@@ -1,29 +1,37 @@
-Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -i C:/cygwin64/home/A-l-r/co/src/src/include -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o C:/cygwin64/home/A-l-r/co/src/project/pipelined_tb_isim_beh.exe -prj C:/cygwin64/home/A-l-r/co/src/project/pipelined_tb_beh.prj work.pipelined_tb work.glbl 
-ISim P.20131013 (signature 0x7708f090)
+Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -i /home/a-l-r/co/src/src/include -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o /home/a-l-r/co/src/project/pipelined_tb_isim_beh.exe -prj /home/a-l-r/co/src/project/pipelined_tb_beh.prj work.pipelined_tb work.glbl 
+ISim P.20131013 (signature 0xfbc00daa)
 Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
 Determining compilation order of HDL files
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/datapath/rf.v" into library work
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/datapath/pff.v" into library work
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/datapath/pc.v" into library work
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/datapath/npc.v" into library work
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/datapath/im.v" into library work
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/datapath/ext.v" into library work
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/datapath/dm.v" into library work
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/datapath/cmp.v" into library work
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/datapath/alu.v" into library work
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/control/pipelined.v" into library work
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../src/cpu/pipelined.v" into library work
-Analyzing Verilog file "C:/cygwin64/home/A-l-r/co/src/project/../tests/cpu/pipelined/pipelined_tb.v" into library work
-Analyzing Verilog file "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/pff.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/control/pipelined-hazard.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/control/pipelined-forward.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/rf.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/pc.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/npc.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/im.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/ext.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/dm.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/cmp.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/alu.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/control/pipelined.v" into library work
+WARNING:HDLCompiler:751 - "/home/a-l-r/co/src/project/../src/control/pipelined.v" Line 108: Redeclaration of ansi port d_instr is not allowed
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/cpu/mips.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../tests/cpu/pipelined/pipelined_tb.v" into library work
+Analyzing Verilog file "/opt/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
 Completed static elaboration
+Fuse Memory Usage: 83432 KB
+Fuse CPU Usage: 930 ms
 Compiling module kind
+Compiling module pff
+Compiling module pff(BIT_WIDTH=5)
+Compiling module forward
+Compiling module hazard
 Compiling module control
 Compiling module npc
 Compiling module pc
 Compiling module im
-Compiling module pff
 Compiling module rf
 Compiling module ext
 Compiling module cmp
@@ -34,8 +42,8 @@ Compiling module pipelined_tb
 Compiling module glbl
 Time Resolution for simulation is 1ps.
 Waiting for 1 sub-compilation(s) to finish...
-WARNING:Simulator - Unable to copy libPortabilityNOSH.dll to the simulation executable directory: boost::filesystem::copy_file: 系统找不到指定的路径。, "isim\pipelined_tb_isim_beh.exe.sim\libPortability.dll".
-Compiled 14 Verilog Units
-Built simulation executable C:/cygwin64/home/A-l-r/co/src/project/pipelined_tb_isim_beh.exe
-Fuse Memory Usage: 32840 KB
-Fuse CPU Usage: 531 ms
+Compiled 17 Verilog Units
+Built simulation executable /home/a-l-r/co/src/project/pipelined_tb_isim_beh.exe
+Fuse Memory Usage: 1169708 KB
+Fuse CPU Usage: 1000 ms
+GCC CPU Usage: 2420 ms

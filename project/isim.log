@@ -1,6 +1,6 @@
 ISim log file
-Running: C:\cygwin64\home\A-l-r\co\src\project\pipelined_tb_isim_beh.exe -intstyle ise -tclbatch ../tools/share/isim.cmd -wdb pipelined_tb_isim_beh.wdb 
-ISim P.20131013 (signature 0x7708f090)
+Running: ./pipelined_tb_isim_beh.exe -intstyle ise -tclbatch ../tools/share/isim.cmd -wdb project/pipelined_tb_isim_beh.wdb 
+ISim P.20131013 (signature 0xfbc00daa)
 This is a Full version of ISim.
 Time resolution is 1 ps
 # onerror resume
@@ -8,43 +8,11 @@ Time resolution is 1 ps
 # run 10000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
-                  45@00003000: $ 8 <= f65b0000
-                  55@00003004: $ 9 <= 0000abfe
-                  65@00003008: $12 <= af780000
-                  75@0000300c: $10 <= 00003018
-                  85@00003010: $13 <= 0000abfe
-                 115@00003018: $11 <= 49bf0000
-                 135@00003020: $12 <= 49bfabfe
-                 145@0000300c: $10 <= 00003018
-                 155@00003010: $13 <= 49bfabfe
-                 185@00003018: $11 <= 49bf0000
-                 195@00003028: $13 <= 00007be6
-                 205@0000302c: $11 <= 00003044
-                 235@00003034: $12 <= 49bfdc16
-                 245@00003038: $13 <= 0000734d
-                 255@0000303c: $31 <= 00003044
-                 265@00003040: $13 <= 0000605c
-                 285@00003034: $12 <= 49c00c2e
-                 295@00003048: $12 <= 49c00c2e
-                 305@0000304c: $13 <= 49c00c2e
-                 335@00003054: $12 <= 49bfdbea
-                 345@00003060: $11 <= 49bfffeb
-                 355@00003064: $ 1 <= 00000030
-                 365@00003068: $31 <= 00003074
-                 375@0000306c: $ 2 <= 41ba0000
-                 395@00003074: $ 1 <= 49bfffeb
-                 405@00003074: $ 1 <= 49bfffeb
-                 415@00003078: $12 <= 49bf2fec
-                 425@0000307c: $16 <= 00000018
-                 435@00003080: $31 <= 0000308c
-                 465@00003088: $12 <= 49c0b82c
-                 475@0000308c: $10 <= 0000b841
-                 485@00003090: $ 1 <= 00000004
-                 495@00003094: $31 <= 0000309c
-                 505@00003098: $31 <= 000030a0
-                 535@00003088: $12 <= 49c0b82c
-                 545@000030a0: $17 <= ffffcf60
-                 555@000030a4: $31 <= 000030ac
-                 565@000030a8: $ 8 <= fffff3bd
-                 585@00003088: $12 <= 49c0b82c
+                  45@00003000: $ 1 <= 42420000
+                  55@00003004: $ 1 <= 42424242
+                  55@00003008: *00000000 <= 42424242
+                  95@00003014: $ 2 <= 42424242
+                 105@00003018: $ 3 <= 42424242
+                 145@00003028: $ 4 <= 42424242
+                 175@0000302c: $ 5 <= 42424242
 # exit

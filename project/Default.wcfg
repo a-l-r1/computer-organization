@@ -3,7 +3,7 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="C:/cygwin64/home/A-l-r/co/src/project/pipelined_tb_isim_beh.wdb" id="1" type="auto">
+      <db_ref path="/home/a-l-r/co/src/project/pipelined_tb_isim_beh.wdb" id="1" type="auto">
          <top_modules>
             <top_module name="glbl" />
             <top_module name="pipelined_tb" />
@@ -134,41 +134,21 @@
          <obj_property name="ObjectShortName">w_regw[4:0]</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/pipelined_tb/uut/control/t_use_reg1" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">t_use_reg1[3:0]</obj_property>
-         <obj_property name="ObjectShortName">t_use_reg1[3:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/pipelined_tb/uut/control/hazard_/t_use_reg1" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">t_use_reg1</obj_property>
+         <obj_property name="ObjectShortName">t_use_reg1</obj_property>
       </wvobject>
-      <wvobject fp_name="/pipelined_tb/uut/control/t_use_reg2" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">t_use_reg2[3:0]</obj_property>
-         <obj_property name="ObjectShortName">t_use_reg2[3:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/pipelined_tb/uut/control/hazard_/t_use_reg2" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">t_use_reg2</obj_property>
+         <obj_property name="ObjectShortName">t_use_reg2</obj_property>
       </wvobject>
-      <wvobject fp_name="/pipelined_tb/uut/control/t_new_e" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">t_new_e[3:0]</obj_property>
-         <obj_property name="ObjectShortName">t_new_e[3:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/pipelined_tb/uut/control/hazard_/t_new_e" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">t_new_e</obj_property>
+         <obj_property name="ObjectShortName">t_new_e</obj_property>
       </wvobject>
-      <wvobject fp_name="/pipelined_tb/uut/control/t_new_m" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">t_new_m[3:0]</obj_property>
-         <obj_property name="ObjectShortName">t_new_m[3:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined_tb/uut/control/stall_e2d_reg1" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">stall_e2d_reg1</obj_property>
-         <obj_property name="ObjectShortName">stall_e2d_reg1</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined_tb/uut/control/stall_m2d_reg1" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">stall_m2d_reg1</obj_property>
-         <obj_property name="ObjectShortName">stall_m2d_reg1</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined_tb/uut/control/stall_e2d_reg2" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">stall_e2d_reg2</obj_property>
-         <obj_property name="ObjectShortName">stall_e2d_reg2</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined_tb/uut/control/stall_m2d_reg2" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">stall_m2d_reg2</obj_property>
-         <obj_property name="ObjectShortName">stall_m2d_reg2</obj_property>
+      <wvobject fp_name="/pipelined_tb/uut/control/hazard_/t_new_m" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">t_new_m</obj_property>
+         <obj_property name="ObjectShortName">t_new_m</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined_tb/uut/control/stall" type="logic" db_ref_id="1">
          <obj_property name="ElementShortName">stall</obj_property>
