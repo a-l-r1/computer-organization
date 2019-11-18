@@ -6,6 +6,7 @@
 
 module md(
 	input clk, 
+	input rst, 
 	input [31:0] dh, 
 	input [31:0] dl, 
 	input [3:0] op, 
@@ -58,24 +59,33 @@ always @(negedge clk) begin
 end
 
 always @(posedge clk) begin
-	if ($unsigned(ctr) > $unsigned(1)) begin
-		ctr <= $unsigned(ctr) - $unsigned(1);
-	/* ctr == 0 || ctr == 1 */
+	if (rst == 1'b1) begin
+		dh_i <= 0;
+		dl_i <= 0;
+		op_i <= 0;
+		hi_reg <= 0;
+		lo_reg <= 0;
+		ctr <= 0;
 	end else begin
-		if ($unsigned(ctr) == $unsigned(1)) begin
-			ctr <= 0;
-			{hi_reg, lo_reg} <= 
-				(op_i == `MD_MULT) ? {{32{dh_i[31]}}, dh_i} * {{32{dl_i[31]}}, dl_i} : 
-				(op_i == `MD_MULTU) ? (dh_i * dl_i) : 
-				(op_i == `MD_DIV) ? (
-					(dl_i != 32'b0) ? {$signed(dh_i) % $signed(dl_i), $signed(dh_i) / $signed(dl_i)} : 
-					64'b0
-				) : 
-				(op_i == `MD_DIVU) ? (
-					(dl_i != 32'b0) ? {$unsigned(dh_i) % $unsigned(dl_i), $unsigned(dh_i) / $unsigned(dl_i)} : 
-					64'b0
-				) : 
-				{hi_reg, lo_reg};
+		if ($unsigned(ctr) > $unsigned(1)) begin
+			ctr <= $unsigned(ctr) - $unsigned(1);
+		/* ctr == 0 || ctr == 1 */
+		end else begin
+			if ($unsigned(ctr) == $unsigned(1)) begin
+				ctr <= 0;
+				{hi_reg, lo_reg} <= 
+					(op_i == `MD_MULT) ? {{32{dh_i[31]}}, dh_i} * {{32{dl_i[31]}}, dl_i} : 
+					(op_i == `MD_MULTU) ? (dh_i * dl_i) : 
+					(op_i == `MD_DIV) ? (
+						(dl_i != 32'b0) ? {$signed(dh_i) % $signed(dl_i), $signed(dh_i) / $signed(dl_i)} : 
+						64'b0
+					) : 
+					(op_i == `MD_DIVU) ? (
+						(dl_i != 32'b0) ? {$unsigned(dh_i) % $unsigned(dl_i), $unsigned(dh_i) / $unsigned(dl_i)} : 
+						64'b0
+					) : 
+					{hi_reg, lo_reg};
+			end
 		end
 	end
 end

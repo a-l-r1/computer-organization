@@ -3,8 +3,6 @@
 
 `define PART_NAME "cmp"
 
-`include "debug/debug.h"
-
 module cmp(
 	input [31:0] reg1, 
 	input [31:0] reg2, 

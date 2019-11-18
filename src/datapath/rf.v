@@ -2,8 +2,6 @@
 
 `define PART_NAME "rf"
 
-`include "debug/debug.h"
-
 module rf(
 	input clk, 
 	input rst, 
@@ -26,12 +24,6 @@ initial begin
 		registers[i] = 32'b0;
 	end
 end
-
-always @(posedge clk) begin
-	`debug_write(("curr_pc = 0x%08x, write_enable = %0d, read_addr1 = %0d, read_addr2 = %0d, write_addr = %0d\n", curr_pc, write_enable, read_addr1, read_addr2, write_addr));
-	`debug_write(("read_result1 = 0x%08x, read_result2 = 0x%08x, write_data = 0x%08x\n", read_result1, read_result2, write_data));
-end
-
 
 always @(posedge clk) begin
 	if (rst == 1'b1) begin
