@@ -54,9 +54,6 @@ code:
 doc:
 	$(MARKDOWN_PDF) -o $(EXPORT_DOC)/$(CODENAME).pdf $(MD_FILES)
 
-migrate-to-latex:
-	$(PANDOC) --standalone -f gfm -t latex --standalone --top-level-division=section -o $(EXPORT_DOC)/$(CODENAME).tex $(MD_FILES)
-
 debug-on:
 	$(PYTHON) $(DEBUG_CONTROL) $(DEBUG_H_FILE) on
 
