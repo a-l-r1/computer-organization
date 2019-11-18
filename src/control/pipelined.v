@@ -1,8 +1,6 @@
 `include "instr-id.h"
 `include "pipelined.h"
 
-`include "debug/debug.h"
-
 `include "alu.h"
 `include "ext.h"
 `include "npc.h"
