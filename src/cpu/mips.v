@@ -1,10 +1,14 @@
 `include "pipelined.h"
 
 module cpu(
-	input clk
+	input clk, 
+	input reset
 );
 
 /* Wire definitions */
+
+wire rst;
+assign rst = reset;
 
 /* Control */
 
@@ -66,6 +70,7 @@ wire [31:0] w_rf_write_data;
 
 control control(
 	.clk(clk), 
+	.rst(rst), 
 	.d_instr(d_im_result), 
 	.rf_read_result2(d_rf_read_result2), 
 	.cw_f_pc_enable(cw_f_pc_enable), 
@@ -102,6 +107,7 @@ npc npc(
 
 pc pc(
 	.clk(clk), 
+	.rst(rst), 
 	.next_pc(f_npc_next_pc), 
 	.enable(cw_f_pc_enable), 
 	.curr_pc(f_pc_curr_pc)
@@ -119,7 +125,7 @@ im im(
 pff #(.BIT_WIDTH(32)) d_pc(
 	.clk(clk), 
 	.enable(cw_d_pff_enable), 
-	.rst(1'b1), 
+	.rst(rst), 
 	.i(f_pc_curr_pc), 
 	.o(d_pc_curr_pc)
 );
@@ -129,13 +135,14 @@ assign d_retaddr = $unsigned(d_pc_curr_pc) + $unsigned(8);
 pff #(.BIT_WIDTH(32)) d_im(
 	.clk(clk), 
 	.enable(cw_d_pff_enable), 
-	.rst(1'b1), 
+	.rst(rst), 
 	.i(f_im_result), 
 	.o(d_im_result)
 );
 
 rf rf(
 	.clk(clk), 
+	.rst(rst), 
 	/* display the corresponding pc of the instruction in level D */
 	.curr_pc(w_pc_curr_pc), 
 	.read_addr1(cw_d_rf_read_addr1), 
@@ -188,7 +195,7 @@ cmp cmp(
 pff #(.BIT_WIDTH(32)) e_pc(
 	.clk(clk), 
 	.enable(1'b1), 
-	.rst(cw_e_pff_rst), 
+	.rst(cw_e_pff_rst | rst), 
 	.i(d_pc_curr_pc), 
 	.o(e_pc_curr_pc)
 );
@@ -198,7 +205,7 @@ assign e_retaddr = $unsigned(e_pc_curr_pc) + $unsigned(8);
 pff #(.BIT_WIDTH(32)) e_im(
 	.clk(clk), 
 	.enable(1'b1), 
-	.rst(cw_e_pff_rst), 
+	.rst(cw_e_pff_rst | rst), 
 	.i(d_im_result), 
 	.o(e_im_result)
 );
@@ -206,7 +213,7 @@ pff #(.BIT_WIDTH(32)) e_im(
 pff #(.BIT_WIDTH(32)) e_ext(
 	.clk(clk), 
 	.enable(1'b1), 
-	.rst(cw_e_pff_rst), 
+	.rst(cw_e_pff_rst | rst), 
 	.i(d_ext_result), 
 	.o(e_ext_result)
 );
@@ -214,7 +221,7 @@ pff #(.BIT_WIDTH(32)) e_ext(
 pff #(.BIT_WIDTH(32)) e_reg1(
 	.clk(clk), 
 	.enable(1'b1), 
-	.rst(cw_e_pff_rst), 
+	.rst(cw_e_pff_rst | rst), 
 	.i(d_rf_read_result1), 
 	.o(e_rf_read_result1_orig)
 );
@@ -222,7 +229,7 @@ pff #(.BIT_WIDTH(32)) e_reg1(
 pff #(.BIT_WIDTH(32)) e_reg2(
 	.clk(clk), 
 	.enable(1'b1), 
-	.rst(cw_e_pff_rst), 
+	.rst(cw_e_pff_rst | rst), 
 	.i(d_rf_read_result2), 
 	.o(e_rf_read_result2_orig)
 );
@@ -267,7 +274,7 @@ alu alu(
 pff #(.BIT_WIDTH(32)) m_pc(
 	.clk(clk), 
 	.enable(1'b1), 
-	.rst(1'b1), 
+	.rst(rst), 
 	.i(e_pc_curr_pc), 
 	.o(m_pc_curr_pc)
 );
@@ -277,7 +284,7 @@ assign m_retaddr = $unsigned(m_pc_curr_pc) + $unsigned(8);
 pff #(.BIT_WIDTH(32)) m_alu(
 	.clk(clk), 
 	.enable(1'b1), 
-	.rst(1'b1), 
+	.rst(rst), 
 	.i(e_alu_result), 
 	.o(m_alu_result)
 );
@@ -285,7 +292,7 @@ pff #(.BIT_WIDTH(32)) m_alu(
 pff #(.BIT_WIDTH(32)) m_reg2(
 	.clk(clk), 
 	.enable(1'b1), 
-	.rst(1'b1), 
+	.rst(rst), 
 	.i(e_rf_read_result2), 
 	.o(m_rf_read_result2)
 );
@@ -297,6 +304,7 @@ assign m_dm_write_data =
 
 dm dm(
 	.clk(clk), 
+	.rst(rst), 
 	.curr_pc(m_pc_curr_pc), 
 	.read_addr(m_alu_result), 
 	.write_addr(m_alu_result), 
@@ -310,7 +318,7 @@ dm dm(
 pff #(.BIT_WIDTH(32)) w_pc(
 	.clk(clk), 
 	.enable(1'b1), 
-	.rst(1'b1), 
+	.rst(rst), 
 	.i(m_pc_curr_pc), 
 	.o(w_pc_curr_pc)
 );
@@ -320,7 +328,7 @@ assign w_retaddr = $unsigned(w_pc_curr_pc) + $unsigned(8);
 pff #(.BIT_WIDTH(32)) w_alu(
 	.clk(clk), 
 	.enable(1'b1), 
-	.rst(1'b1), 
+	.rst(rst), 
 	.i(m_alu_result), 
 	.o(w_alu_result)
 );
@@ -328,7 +336,7 @@ pff #(.BIT_WIDTH(32)) w_alu(
 pff #(.BIT_WIDTH(32)) w_dm(
 	.clk(clk), 
 	.enable(1'b1), 
-	.rst(1'b1), 
+	.rst(rst), 
 	.i(m_dm_read_result), 
 	.o(w_dm_read_result)
 );

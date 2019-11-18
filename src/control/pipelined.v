@@ -1,8 +1,6 @@
 `include "instr-id.h"
 `include "pipelined.h"
 
-`define PART_NAME "instr-id"
-
 `include "debug/debug.h"
 
 `include "alu.h"
@@ -71,6 +69,7 @@ endmodule
 
 module control(
 	input clk, 
+	input rst, 
 	input [31:0] d_instr, 
 	input [31:0] rf_read_result2, 
 	output cw_f_pc_enable, 
@@ -104,15 +103,12 @@ module control(
 `define drt `RT(d_instr)
 `define drd `RD(d_instr)
 
-`define fwable(old, new) (((old) == (new)) && ((old) != 0))
-
-`define inf 3'd7
-
 /* Wire and register declarations */
 
-reg [31:0] e_instr;
-reg [31:0] m_instr;
-reg [31:0] w_instr;
+wire [31:0] d_instr;
+wire [31:0] e_instr;
+wire [31:0] m_instr;
+wire [31:0] w_instr;
 
 wire [8:0] dkind;
 wire [8:0] ekind;
@@ -128,44 +124,19 @@ wire [4:0] d_reg1;
 wire [4:0] d_reg2;
 wire [4:0] d_regw;
 
-reg [4:0] e_reg1;
-reg [4:0] e_reg2;
-reg [4:0] e_regw;
+wire [4:0] e_reg1;
+wire [4:0] e_reg2;
+wire [4:0] e_regw;
 
-reg [4:0] m_reg1;
-reg [4:0] m_reg2;
-reg [4:0] m_regw;
+wire [4:0] m_reg1;
+wire [4:0] m_reg2;
+wire [4:0] m_regw;
 
-reg [4:0] w_reg1;
-reg [4:0] w_reg2;
-reg [4:0] w_regw;
+wire [4:0] w_reg1;
+wire [4:0] w_reg2;
+wire [4:0] w_regw;
 
 wire stall;
-
-wire [3:0] t_use_reg1;
-wire [3:0] t_use_reg2;
-wire [3:0] t_new_e;
-wire [3:0] t_new_m;
-
-/* Initial block */
-
-initial begin
-	e_instr = 32'b0;
-	m_instr = 32'b0;
-	w_instr = 32'b0;
-
-	e_reg1 = 5'b0;
-	e_reg2 = 5'b0;
-	e_regw = 5'b0;
-
-	m_reg1 = 5'b0;
-	m_reg2 = 5'b0;
-	m_regw = 5'b0;
-
-	w_reg1 = 5'b0;
-	w_reg2 = 5'b0;
-	w_regw = 5'b0;
-end
 
 /* Module references */
 
@@ -196,51 +167,130 @@ assign wdptype = wkind[8:5];
 
 /* Internal pipeline */
 
-always @(posedge clk) begin
-	if (stall == 1'b1) begin
-		e_instr <= 32'b0;
-		m_instr <= e_instr;
-		w_instr <= m_instr;
+pff #(.BIT_WIDTH(32)) e_instr_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(cw_e_pff_rst | rst), 
+	.i(d_instr), 
+	.o(e_instr)
+);
 
-		e_reg1 <= 5'b0;
-		m_reg1 <= e_reg1;
-		w_reg1 <= m_reg1;
+pff #(.BIT_WIDTH(32)) m_instr_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(rst), 
+	.i(e_instr), 
+	.o(m_instr)
+);
 
-		e_reg2 <= 5'b0;
-		m_reg2 <= e_reg2;
-		w_reg2 <= m_reg2;
+pff #(.BIT_WIDTH(32)) w_instr_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(rst), 
+	.i(m_instr), 
+	.o(w_instr)
+);
 
-		e_regw <= 5'b0;
-		m_regw <= e_regw;
-		w_regw <= m_regw;
-	end else begin
-		e_instr <= d_instr;
-		m_instr <= e_instr;
-		w_instr <= m_instr;
+pff #(.BIT_WIDTH(5)) e_reg1_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(cw_e_pff_rst | rst), 
+	.i(d_reg1), 
+	.o(e_reg1)
+);
 
-		e_reg1 <= d_reg1;
-		m_reg1 <= e_reg1;
-		w_reg1 <= m_reg1;
+pff #(.BIT_WIDTH(5)) m_reg1_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(rst), 
+	.i(e_reg1), 
+	.o(m_reg1)
+);
 
-		e_reg2 <= d_reg2;
-		m_reg2 <= e_reg2;
-		w_reg2 <= m_reg2;
+pff #(.BIT_WIDTH(5)) w_reg1_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(rst), 
+	.i(m_reg1), 
+	.o(w_reg1)
+);
 
-		e_regw <= d_regw;
-		m_regw <= e_regw;
-		w_regw <= m_regw;
-	end
+pff #(.BIT_WIDTH(5)) e_reg2_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(cw_e_pff_rst | rst), 
+	.i(d_reg2), 
+	.o(e_reg2)
+);
 
-	`debug_write(("instructions: D: 0x%08x, E: 0x%08x, M: 0x%08x, W: 0x%08x\n", d_instr, e_instr, m_instr, w_instr));
-	`debug_write(("kind: D: 0b%09b, E: 0b%09b, M: 0b%09b, W: 0b%09b\n", dkind, ekind, mkind, wkind));
-	`debug_write(("reg1: D: %0d, E: %0d, M: %0d, W: %0d\n", d_reg1, e_reg1, m_reg1, w_reg1));
-	`debug_write(("reg2: D: %0d, E: %0d, M: %0d, W: %0d\n", d_reg2, e_reg2, m_reg2, w_reg2));
-	`debug_write(("regw: D: %0d, E: %0d, M: %0d, W: %0d\n", d_regw, e_regw, m_regw, w_regw));
-end
+pff #(.BIT_WIDTH(5)) m_reg2_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(rst), 
+	.i(e_reg2), 
+	.o(m_reg2)
+);
+
+pff #(.BIT_WIDTH(5)) w_reg2_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(rst), 
+	.i(m_reg2), 
+	.o(w_reg2)
+);
+
+pff #(.BIT_WIDTH(5)) e_regw_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(cw_e_pff_rst | rst), 
+	.i(d_regw), 
+	.o(e_regw)
+);
+
+pff #(.BIT_WIDTH(5)) m_regw_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(rst), 
+	.i(e_regw), 
+	.o(m_regw)
+);
+
+pff #(.BIT_WIDTH(5)) w_regw_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(rst), 
+	.i(m_regw), 
+	.o(w_regw)
+);
+
+/* Register identification */
+
+assign d_reg1 = 
+	(ddptype == `CAL_R || ddptype == `CAL_I || ddptype == `LOAD || ddptype == `STORE || ddptype == `BRANCH || ddptype == `JUMP_R || ddptype == `CMOV) ? `drs : 
+	(ddptype == `JUMP_I || ddptype == `NOP) ? `ZERO : 
+	`ZERO;
+
+assign d_reg2 = 
+	(ddptype == `CAL_R || ddptype == `CAL_I || ddptype == `STORE || ddptype == `BRANCH || ddptype == `CMOV) ? `drt : 
+	`ZERO;
+
+assign d_regw = 
+	(ddptype == `CAL_R) ? `drd : 
+	(ddptype == `CAL_I || ddptype == `LOAD) ? `drt : 
+	(ddptype == `JUMP_I) ? (
+		(dkind == `JAL) ? `RA : 
+		(dkind == `J) ? `ZERO : 
+		`ZERO
+	) : 
+	(ddptype == `CMOV) ? (
+		(dkind == `MOVZ && rf_read_result2 == 32'b0) ? `drd : 
+		`ZERO
+	) : 
+	`ZERO;
 
 /* Normal control signals */
 
-/* npc.jump_mode is controlled by the instruction in level E */
+/* npc.jump_mode is controlled by the instruction in level D */
 
 assign cw_f_npc_jump_mode = 
 	(ddptype == `BRANCH) ? (
@@ -305,95 +355,53 @@ assign cw_w_m_regdata =
 
 assign cw_w_rf_write_addr = w_regw;
 
-/* Register identification */
-
-assign d_reg1 = 
-	(ddptype == `CAL_R || ddptype == `CAL_I || ddptype == `LOAD || ddptype == `STORE || ddptype == `BRANCH || ddptype == `JUMP_R || ddptype == `CMOV) ? `drs : 
-	(ddptype == `JUMP_I || ddptype == `NOP) ? `ZERO : 
-	`ZERO;
-
-assign d_reg2 = 
-	(ddptype == `CAL_R || ddptype == `CAL_I || ddptype == `STORE || ddptype == `BRANCH || ddptype == `CMOV) ? `drt : 
-	`ZERO;
-
-assign d_regw = 
-	(ddptype == `CAL_R) ? `drd : 
-	(ddptype == `CAL_I || ddptype == `LOAD) ? `drt : 
-	(ddptype == `JUMP_I) ? (
-		(dkind == `JAL) ? `RA : 
-		(dkind == `J) ? `ZERO : 
-		`ZERO
-	) : 
-	(ddptype == `CMOV) ? (
-		(dkind == `MOVZ && rf_read_result2 == 32'b0) ? `drd : 
-		`ZERO
-	) : 
-	`ZERO;
-
 /* Forward control */
 
-assign cw_fm_d1 = 
-	(`fwable(d_reg1, e_regw) && edptype == `CMOV) ? `E2D_rf : 
-	(`fwable(d_reg1, e_regw) && edptype == `JUMP_I) ? `E2D_npc : 
-	(`fwable(d_reg1, m_regw) && mdptype == `JUMP_I) ? `M2D_npc : 
-	(`fwable(d_reg1, m_regw) && (mdptype == `CAL_R || mdptype == `CAL_I || mdptype == `CMOV)) ? `M2D_alu : 
-	(`fwable(d_reg1, w_regw)) ? `W2D_rf : 
-	`orig;
-
-assign cw_fm_e1 = 
-	(`fwable(e_reg1, m_regw) && mdptype == `JUMP_I) ? `M2E_npc : 
-	(`fwable(e_reg1, m_regw) && (mdptype == `CAL_R || mdptype == `CAL_I || mdptype == `CMOV)) ? `M2E_alu : 
-	(`fwable(e_reg1, w_regw)) ? `W2E_rf : 
-	`orig;
-
-/* Edit cw_fm_[de]1 instead */
-
-assign cw_fm_d2 = 
-	(`fwable(d_reg2, e_regw) && edptype == `CMOV) ? `E2D_rf : 
-	(`fwable(d_reg2, e_regw) && edptype == `JUMP_I) ? `E2D_npc : 
-	(`fwable(d_reg2, m_regw) && mdptype == `JUMP_I) ? `M2D_npc : 
-	(`fwable(d_reg2, m_regw) && (mdptype == `CAL_R || mdptype == `CAL_I || mdptype == `CMOV)) ? `M2D_alu : 
-	(`fwable(d_reg2, w_regw)) ? `W2D_rf : 
-	`orig;
-
-assign cw_fm_e2 = 
-	(`fwable(e_reg2, m_regw) && mdptype == `JUMP_I) ? `M2E_npc : 
-	(`fwable(e_reg2, m_regw) && (mdptype == `CAL_R || mdptype == `CAL_I || mdptype == `CMOV)) ? `M2E_alu : 
-	(`fwable(e_reg2, w_regw)) ? `W2E_rf : 
-	`orig;
-
-assign cw_fm_m = 
-	(`fwable(m_reg2, w_regw)) ? `W2M_rf : 
-	`orig;
+forward forward_(
+	.dkind(dkind), 
+	.ekind(ekind), 
+	.mkind(mkind), 
+	.wkind(wkind), 
+	.d_reg1(d_reg1), 
+	.d_reg2(d_reg2), 
+	.d_regw(d_regw), 
+	.e_reg1(e_reg1), 
+	.e_reg2(e_reg2), 
+	.e_regw(e_regw), 
+	.m_reg1(m_reg1), 
+	.m_reg2(m_reg2), 
+	.m_regw(m_regw), 
+	.w_reg1(w_reg1), 
+	.w_reg2(w_reg2), 
+	.w_regw(w_regw), 
+	.cw_fm_d1(cw_fm_d1), 
+	.cw_fm_e1(cw_fm_e1), 
+	.cw_fm_d2(cw_fm_d2), 
+	.cw_fm_e2(cw_fm_e2), 
+	.cw_fm_m(cw_fm_m)
+);
 
 /* Stall control */
 
-assign t_use_reg1 = 
-	(ddptype == `CAL_R || ddptype == `CAL_I || ddptype == `LOAD || ddptype == `STORE) ? 3'd1 : 
-	(ddptype == `BRANCH || ddptype == `JUMP_R || ddptype == `CMOV) ? 3'd0 : 
-	`inf;
-
-assign t_use_reg2 = 
-	(ddptype == `STORE) ? 3'd2 : 
-	(ddptype == `CAL_R || ddptype == `CAL_I) ? 3'd1 : 
-	(ddptype == `BRANCH || ddptype == `CMOV) ? 3'd0 : 
-	`inf;
-
-assign t_new_e = 
-	(edptype == `LOAD) ? 3'd2 : 
-	(edptype == `CAL_R || edptype == `CAL_I) ? 3'd1 : 
-	3'd0;
-
-assign t_new_m = 
-	(mdptype == `LOAD || mdptype == `STORE) ? 3'd1 : 
-	3'd0;
-
-assign stall_e2d_reg1 = `fwable(d_reg1, e_regw) && $unsigned(t_use_reg1) < $unsigned(t_new_e);
-assign stall_m2d_reg1 = `fwable(d_reg1, m_regw) && $unsigned(t_use_reg1) < $unsigned(t_new_m);
-assign stall_e2d_reg2 = `fwable(d_reg2, e_regw) && $unsigned(t_use_reg2) < $unsigned(t_new_e);
-assign stall_m2d_reg2 = `fwable(d_reg2, m_regw) && $unsigned(t_use_reg2) < $unsigned(t_new_m);
-
-assign stall = stall_e2d_reg1 | stall_m2d_reg1 | stall_e2d_reg2 | stall_m2d_reg2;
+hazard hazard_(
+	.dkind(dkind), 
+	.ekind(ekind), 
+	.mkind(mkind), 
+	.wkind(wkind), 
+	.d_reg1(d_reg1), 
+	.d_reg2(d_reg2), 
+	.d_regw(d_regw), 
+	.e_reg1(e_reg1), 
+	.e_reg2(e_reg2), 
+	.e_regw(e_regw), 
+	.m_reg1(m_reg1), 
+	.m_reg2(m_reg2), 
+	.m_regw(m_regw), 
+	.w_reg1(w_reg1), 
+	.w_reg2(w_reg2), 
+	.w_regw(w_regw), 
+	.stall(stall)
+);
 
 /* TODO: more thorough stall control? */
 
@@ -401,7 +409,7 @@ assign cw_f_pc_enable = ~stall;
 
 assign cw_d_pff_enable = ~stall;
 
-assign cw_e_pff_rst = ~stall;
+assign cw_e_pff_rst = stall;
 
 endmodule
 

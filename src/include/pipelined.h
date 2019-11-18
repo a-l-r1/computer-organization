@@ -14,5 +14,7 @@
 
 `define W2M_rf 1
 
+`define fwable(old, new) (((old) == (new)) && ((old) != 0))
+
 `endif
 
