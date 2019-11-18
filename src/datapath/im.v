@@ -2,8 +2,6 @@
 
 `define PART_NAME "im"
 
-`include "debug/debug.h"
-
 module im(
 	input [31:0] addr, 
 	input enable, 
@@ -27,13 +25,6 @@ wire [31:0] im_calculated_address;
 /* Don't worry about underflows, it's taken care of by the first check in 
  * assign result */
 assign im_calculated_address = $unsigned(addr) - $unsigned(`IM_START_ADDRESS);
-
-/* TODO: what if the address doesn't change? */
-
-always @(addr) begin
-	`debug_write(("enable = %0d, addr = 0x%08x, real_addr = 0x%08x, result = 0x%08x\n",
-		enable, addr, im_calculated_address[`IM_ADDR_WIDTH - 1:2], result));
-end
 
 assign result = 
 	(enable == `IM_ENABLED && $unsigned(addr) < $unsigned(`IM_START_ADDRESS)) ? 32'b0 : 

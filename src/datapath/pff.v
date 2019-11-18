@@ -2,8 +2,6 @@
 
 `define PART_NAME "pff"
 
-`include "debug/debug.h"
-
 module pff(
 	input clk, 
 	input enable, 
