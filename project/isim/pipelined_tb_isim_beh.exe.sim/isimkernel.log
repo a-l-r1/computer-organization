@@ -1,0 +1,30 @@
+Command line:
+   pipelined_tb_isim_beh.exe
+     -intstyle  ise
+     -wdb  project/pipelined_tb_isim_beh.wdb
+     -simmode  tcl
+     -simrunnum  0
+     -socket  39927
+
+Fri Nov 22 15:03:59 2019
+
+
+ Elaboration Time: 0.03 sec
+
+ Current Memory Usage: 164.049 Meg
+
+ Total Signals          : 360
+ Total Nets             : 1593
+ Total Signal Drivers   : 146
+ Total Blocks           : 43
+ Total Primitive Blocks : 40
+ Total Processes        : 205
+ Total Traceable Variables  : 77
+ Total Scalar Nets and Variables : 69688
+
+ Total Simulation Time: 0.08 sec
+
+ Current Memory Usage: 241.222 Meg
+
+Fri Nov 22 15:03:59 2019
+
