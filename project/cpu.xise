@@ -252,9 +252,9 @@
     <property xil_pn:name="ISim UUT Instance Name" xil_pn:value="UUT" xil_pn:valueState="default"/>
     <property xil_pn:name="Ignore User Timing Constraints Map" xil_pn:value="false" xil_pn:valueState="default"/>
     <property xil_pn:name="Ignore User Timing Constraints Par" xil_pn:value="false" xil_pn:valueState="default"/>
-    <property xil_pn:name="Implementation Top" xil_pn:value="Module|cpu" xil_pn:valueState="non-default"/>
+    <property xil_pn:name="Implementation Top" xil_pn:value="Module|mips" xil_pn:valueState="non-default"/>
     <property xil_pn:name="Implementation Top File" xil_pn:value="../src/cpu/mips.v" xil_pn:valueState="non-default"/>
-    <property xil_pn:name="Implementation Top Instance Path" xil_pn:value="/cpu" xil_pn:valueState="non-default"/>
+    <property xil_pn:name="Implementation Top Instance Path" xil_pn:value="/mips" xil_pn:valueState="non-default"/>
     <property xil_pn:name="Include 'uselib Directive in Verilog File" xil_pn:value="false" xil_pn:valueState="default"/>
     <property xil_pn:name="Include SIMPRIM Models in Verilog File" xil_pn:value="false" xil_pn:valueState="default"/>
     <property xil_pn:name="Include UNISIM Models in Verilog File" xil_pn:value="false" xil_pn:valueState="default"/>
@@ -474,7 +474,6 @@
     <!-- include files.                                                       -->
     <file xil_pn:name="../src/include/instr-id.h" xil_pn:type="FILE_VERILOG"/>
     <file xil_pn:name="../src/include/pipelined.h" xil_pn:type="FILE_VERILOG"/>
-    <file xil_pn:name="../src/include/debug/debug.h" xil_pn:type="FILE_VERILOG"/>
     <file xil_pn:name="../src/include/alu.h" xil_pn:type="FILE_VERILOG"/>
     <file xil_pn:name="../src/include/ext.h" xil_pn:type="FILE_VERILOG"/>
     <file xil_pn:name="../src/include/npc.h" xil_pn:type="FILE_VERILOG"/>
@@ -485,6 +484,7 @@
     <file xil_pn:name="../src/include/pc.h" xil_pn:type="FILE_VERILOG"/>
     <file xil_pn:name="../src/include/pff.h" xil_pn:type="FILE_VERILOG"/>
     <file xil_pn:name="../src/include/rf.h" xil_pn:type="FILE_VERILOG"/>
+    <file xil_pn:name="../src/include/debug/debug.h" xil_pn:type="FILE_VERILOG"/>
   </autoManagedFiles>
 
 </project>
