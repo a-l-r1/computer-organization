@@ -17,7 +17,7 @@ TMPDIR=`mktemp -d -p tmp`
 echo "tmpdir: ${TMPDIR}"
 
 # mips-as.py
-java -jar tools/mars.jar nc mc CompactDataAtZero a dump .text HexText project/code.hex $1
+java -jar tools/mars.jar nc mc CompactDataAtZero a dump .text HexText project/code.txt $1
 
 # simulate.py
 pushd project
