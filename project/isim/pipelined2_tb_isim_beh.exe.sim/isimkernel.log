@@ -1,13 +1,13 @@
 Command line:
    pipelined2_tb_isim_beh.exe
      -simmode  gui
-     -simrunnum  0
-     -socket  53833
+     -simrunnum  1
+     -socket  41125
 
-Sun Nov 24 20:23:17 2019
+Sun Nov 24 20:30:39 2019
 
 
- Elaboration Time: 0.09 sec
+ Elaboration Time: 0.02 sec
 
  Current Memory Usage: 188.461 Meg
 
@@ -24,5 +24,5 @@ Sun Nov 24 20:23:17 2019
 
  Current Memory Usage: 263.963 Meg
 
-Sun Nov 24 20:23:23 2019
+Sun Nov 24 20:32:41 2019
 
