@@ -569,7 +569,7 @@ assign cw_f_pc_enable = ~stall;
 
 assign cw_d_pff_enable = ~stall;
 
-assign cw_e_pff_rst = ~stall;
+assign cw_e_pff_rst = stall;
 
 endmodule
 
