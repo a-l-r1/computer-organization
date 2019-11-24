@@ -1,7 +1,7 @@
 `ifndef NPC_H
 `define NPC_H
 
-`define NPC_JUMP_DISABLE 4'b0000
+`define NPC_JUMP_DISABLED 4'b0000
 `define NPC_EQUAL 4'b0001
 `define NPC_NOT_EQUAL 4'b0010
 
