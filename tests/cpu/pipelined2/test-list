@@ -26,7 +26,6 @@ tests/cpu/pipelined2/external/p6_debug/新建文件夹/test1.asm
 tests/cpu/pipelined2/external/p6_debug/新建文件夹/testcal_i.asm
 tests/cpu/pipelined2/external/p6_debug/新建文件夹/teststore.asm
 tests/cpu/pipelined2/external/p6_debug/新建文件夹/testcal_r.asm
-tests/cpu/pipelined2/external/p6_debug/新建文件夹/finaltest.asm
 tests/cpu/pipelined2/external/p6_debug/新建文件夹/test4.asm
 tests/cpu/pipelined2/external/mult_and_div.asm
 tests/cpu/pipelined2/external/DefaultTest.asm
