@@ -129,7 +129,7 @@ im im(
 pff #(.BIT_WIDTH(32)) d_pc(
 	.clk(clk), 
 	.enable(cw_d_pff_enable), 
-	.rst(1'b1), 
+	.rst(1'b0), 
 	.i(f_pc_curr_pc), 
 	.o(d_pc_curr_pc)
 );
@@ -139,7 +139,7 @@ assign d_retaddr = $unsigned(d_pc_curr_pc) + $unsigned(8);
 pff #(.BIT_WIDTH(32)) d_im(
 	.clk(clk), 
 	.enable(cw_d_pff_enable), 
-	.rst(1'b1), 
+	.rst(1'b0), 
 	.i(f_im_result), 
 	.o(d_im_result)
 );
@@ -300,7 +300,7 @@ assign e_md_out =
 pff #(.BIT_WIDTH(32)) m_pc(
 	.clk(clk), 
 	.enable(1'b1), 
-	.rst(1'b1), 
+	.rst(1'b0), 
 	.i(e_pc_curr_pc), 
 	.o(m_pc_curr_pc)
 );
@@ -310,7 +310,7 @@ assign m_retaddr = $unsigned(m_pc_curr_pc) + $unsigned(8);
 pff #(.BIT_WIDTH(32)) m_alu(
 	.clk(clk), 
 	.enable(1'b1), 
-	.rst(1'b1), 
+	.rst(1'b0), 
 	.i(e_alu_result), 
 	.o(m_alu_result)
 );
@@ -318,7 +318,7 @@ pff #(.BIT_WIDTH(32)) m_alu(
 pff #(.BIT_WIDTH(32)) m_md(
 	.clk(clk), 
 	.enable(1'b1), 
-	.rst(1'b1), 
+	.rst(1'b0), 
 	.i(e_md_out), 
 	.o(m_md_out)
 );
@@ -326,7 +326,7 @@ pff #(.BIT_WIDTH(32)) m_md(
 pff #(.BIT_WIDTH(32)) m_reg2(
 	.clk(clk), 
 	.enable(1'b1), 
-	.rst(1'b1), 
+	.rst(1'b0), 
 	.i(e_rf_read_result2), 
 	.o(m_rf_read_result2)
 );
@@ -354,7 +354,7 @@ dm dm(
 pff #(.BIT_WIDTH(32)) w_pc(
 	.clk(clk), 
 	.enable(1'b1), 
-	.rst(1'b1), 
+	.rst(1'b0), 
 	.i(m_pc_curr_pc), 
 	.o(w_pc_curr_pc)
 );
@@ -364,7 +364,7 @@ assign w_retaddr = $unsigned(w_pc_curr_pc) + $unsigned(8);
 pff #(.BIT_WIDTH(32)) w_alu(
 	.clk(clk), 
 	.enable(1'b1), 
-	.rst(1'b1), 
+	.rst(1'b0), 
 	.i(m_alu_result), 
 	.o(w_alu_result)
 );
@@ -372,7 +372,7 @@ pff #(.BIT_WIDTH(32)) w_alu(
 pff #(.BIT_WIDTH(32)) w_md(
 	.clk(clk), 
 	.enable(1'b1), 
-	.rst(1'b1), 
+	.rst(1'b0), 
 	.i(m_md_out), 
 	.o(w_md_out)
 );
@@ -380,7 +380,7 @@ pff #(.BIT_WIDTH(32)) w_md(
 pff #(.BIT_WIDTH(32)) w_dm(
 	.clk(clk), 
 	.enable(1'b1), 
-	.rst(1'b1), 
+	.rst(1'b0), 
 	.i(m_dm_read_result), 
 	.o(w_dm_read_result)
 );
