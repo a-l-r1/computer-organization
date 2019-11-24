@@ -326,12 +326,12 @@ assign cw_d_ext_mode =
 	(ddptype == `CAL_I) ? (
 		(dkind == `LUI) ? `EXT_MODE_PAD : 
 		(dkind == `ORI) ? `EXT_MODE_UNSIGNED : 
-		(dkind == `ADDI) ? `EXT_SIGNED : 
-		(dkind == `ADDIU) ? `EXT_SIGNED : 
-		(dkind == `ANDI) ? `EXT_UNSIGNED : 
-		(dkind == `XORI) ? `EXT_UNSIGNED : 
-		(dkind == `SLTI) ? `EXT_SIGNED : 
-		(dkind == `SLTIU) ? `EXT_SIGNED : 
+		(dkind == `ADDI) ? `EXT_MODE_SIGNED : 
+		(dkind == `ADDIU) ? `EXT_MODE_SIGNED : 
+		(dkind == `ANDI) ? `EXT_MODE_UNSIGNED : 
+		(dkind == `XORI) ? `EXT_MODE_UNSIGNED : 
+		(dkind == `SLTI) ? `EXT_MODE_SIGNED : 
+		(dkind == `SLTIU) ? `EXT_MODE_SIGNED : 
 		`EXT_MODE_UNSIGNED
 	) : 
 	(ddptype == `LOAD || ddptype == `STORE) ? `EXT_MODE_SIGNED :
