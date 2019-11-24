@@ -468,20 +468,20 @@
     <!-- Do not hand-edit this section, as it will be overwritten when the    -->
     <!-- project is analyzed based on files automatically identified as       -->
     <!-- include files.                                                       -->
+    <file xil_pn:name="../src/include/instr-id.h" xil_pn:type="FILE_VERILOG"/>
     <file xil_pn:name="../src/include/pipelined2.h" xil_pn:type="FILE_VERILOG"/>
-    <file xil_pn:name="../src/include/alu.h" xil_pn:type="FILE_VERILOG"/>
     <file xil_pn:name="../src/include/debug/debug.h" xil_pn:type="FILE_VERILOG"/>
-    <file xil_pn:name="../src/include/cmp.h" xil_pn:type="FILE_VERILOG"/>
-    <file xil_pn:name="../src/include/dm.h" xil_pn:type="FILE_VERILOG"/>
+    <file xil_pn:name="../src/include/alu.h" xil_pn:type="FILE_VERILOG"/>
     <file xil_pn:name="../src/include/ext.h" xil_pn:type="FILE_VERILOG"/>
+    <file xil_pn:name="../src/include/npc.h" xil_pn:type="FILE_VERILOG"/>
     <file xil_pn:name="../src/include/md.h" xil_pn:type="FILE_VERILOG"/>
+    <file xil_pn:name="../src/include/dm.h" xil_pn:type="FILE_VERILOG"/>
+    <file xil_pn:name="../src/include/cmp.h" xil_pn:type="FILE_VERILOG"/>
+    <file xil_pn:name="../src/include/im.h" xil_pn:type="FILE_VERILOG"/>
     <file xil_pn:name="../src/include/mux.h" xil_pn:type="FILE_VERILOG"/>
     <file xil_pn:name="../src/include/pc.h" xil_pn:type="FILE_VERILOG"/>
     <file xil_pn:name="../src/include/pff.h" xil_pn:type="FILE_VERILOG"/>
     <file xil_pn:name="../src/include/rf.h" xil_pn:type="FILE_VERILOG"/>
-    <file xil_pn:name="../src/include/im.h" xil_pn:type="FILE_VERILOG"/>
-    <file xil_pn:name="../src/include/npc.h" xil_pn:type="FILE_VERILOG"/>
-    <file xil_pn:name="../src/include/instr-id.h" xil_pn:type="FILE_VERILOG"/>
   </autoManagedFiles>
 
 </project>
