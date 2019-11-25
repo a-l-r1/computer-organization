@@ -2235,6 +2235,90 @@ Tnew，就能控制暂停和转发。当且仅当 \texttt{t\_use\_reg{[}12{]}} �
 
 由于已经有指令识别机制了，所以寄存器的地址控制可以简化。只需要在 D 级和 M 级的三个地址端口输入指令识别机制相应的结果即可。
 
+\section{转发控制模块}
+
+\subsection{原理}
+
+转发控制模块是流水线 CPU 控制机制的一部分，通过评估各指令读写寄存器的情况，实现有效的尽力转发。
+
+\subsection{端口定义}
+
+\begin{longtable}[]{@{}|l|l|l|l|}
+\hline
+\headingcellfirst{端口} & \headingcellmiddle{类型} & \headingcellmiddle{位宽} & \headingcelllast{功能} \tabularnewline\hline
+\endhead\hiderowcolors
+\texttt{ddptype} & 输入 & 9 & D 级指令类型 \tabularnewline\hline
+\texttt{dreg1} & 输入 & 5 & D 级指令与 \texttt{rf.read\_addr1} 对应的寄存器号 \tabularnewline\hline
+\texttt{dreg2} & 输入 & 5 & D 级指令与 \texttt{rf.read\_addr2} 对应的寄存器号 \tabularnewline\hline
+\texttt{dregw} & 输入 & 5 & D 级指令与 \texttt{rf.write\_addr} 对应的寄存器号 \tabularnewline\hline
+\texttt{edptype} & 输入 & 9 & E 级指令类型 \tabularnewline\hline
+\texttt{ereg1} & 输入 & 5 & E 级指令与 \texttt{rf.read\_addr1} 对应的寄存器号 \tabularnewline\hline
+\texttt{ereg2} & 输入 & 5 & E 级指令与 \texttt{rf.read\_addr2} 对应的寄存器号 \tabularnewline\hline
+\texttt{eregw} & 输入 & 5 & E 级指令与 \texttt{rf.write\_addr} 对应的寄存器号 \tabularnewline\hline
+\texttt{mdptype} & 输入 & 9 & M 级指令类型 \tabularnewline\hline
+\texttt{mreg1} & 输入 & 5 & M 级指令与 \texttt{rf.read\_addr1} 对应的寄存器号 \tabularnewline\hline
+\texttt{mreg2} & 输入 & 5 & M 级指令与 \texttt{rf.read\_addr2} 对应的寄存器号 \tabularnewline\hline
+\texttt{mregw} & 输入 & 5 & M 级指令与 \texttt{rf.write\_addr} 对应的寄存器号 \tabularnewline\hline
+\texttt{wdptype} & 输入 & 9 & W 级指令类型 \tabularnewline\hline
+\texttt{wreg1} & 输入 & 5 & W 级指令与 \texttt{rf.read\_addr1} 对应的寄存器号 \tabularnewline\hline
+\texttt{wreg2} & 输入 & 5 & W 级指令与 \texttt{rf.read\_addr2} 对应的寄存器号 \tabularnewline\hline
+\texttt{wregw} & 输入 & 5 & W 级指令与 \texttt{rf.write\_addr} 对应的寄存器号 \tabularnewline\hline
+\texttt{cw\_fm\_[de][12]} & 输出 & 4 & D / E 级与 \texttt{rf.read\_addr[12]} 对应的转发 MUX \tabularnewline\hline
+\texttt{cw\_fm\_m} & 输出 & 4 & M 级与 \texttt{rf.read\_addr2} 对应的转发 MUX \tabularnewline\hline
+\end{longtable}
+
+\subsection{宏定义}
+
+暂无。
+
+\subsection{功能}
+
+见控制中的对应节。
+
+\section{暂停控制模块}
+
+\subsection{原理}
+
+暂停控制模块是流水线 CPU 控制机制的一部分，通过评估 $ T_{use} $ 和 $ T_{new} $ 实现尽量少的暂停。它是控制模块内部的一部分。
+
+\subsection{端口定义}
+
+\begin{longtable}[]{@{}|l|l|l|l|}
+\hline
+\headingcellfirst{端口} & \headingcellmiddle{类型} & \headingcellmiddle{位宽} & \headingcelllast{功能} \tabularnewline\hline
+\endhead\hiderowcolors
+\texttt{ddptype} & 输入 & 9 & D 级指令类型 \tabularnewline\hline
+\texttt{dreg1} & 输入 & 5 & D 级指令与 \texttt{rf.read\_addr1} 对应的寄存器号 \tabularnewline\hline
+\texttt{dreg2} & 输入 & 5 & D 级指令与 \texttt{rf.read\_addr2} 对应的寄存器号 \tabularnewline\hline
+\texttt{dregw} & 输入 & 5 & D 级指令与 \texttt{rf.write\_addr} 对应的寄存器号 \tabularnewline\hline
+\texttt{edptype} & 输入 & 9 & E 级指令类型 \tabularnewline\hline
+\texttt{ereg1} & 输入 & 5 & E 级指令与 \texttt{rf.read\_addr1} 对应的寄存器号 \tabularnewline\hline
+\texttt{ereg2} & 输入 & 5 & E 级指令与 \texttt{rf.read\_addr2} 对应的寄存器号 \tabularnewline\hline
+\texttt{eregw} & 输入 & 5 & E 级指令与 \texttt{rf.write\_addr} 对应的寄存器号 \tabularnewline\hline
+\texttt{mdptype} & 输入 & 9 & M 级指令类型 \tabularnewline\hline
+\texttt{mreg1} & 输入 & 5 & M 级指令与 \texttt{rf.read\_addr1} 对应的寄存器号 \tabularnewline\hline
+\texttt{mreg2} & 输入 & 5 & M 级指令与 \texttt{rf.read\_addr2} 对应的寄存器号 \tabularnewline\hline
+\texttt{mregw} & 输入 & 5 & M 级指令与 \texttt{rf.write\_addr} 对应的寄存器号 \tabularnewline\hline
+\texttt{wdptype} & 输入 & 9 & W 级指令类型 \tabularnewline\hline
+\texttt{wreg1} & 输入 & 5 & W 级指令与 \texttt{rf.read\_addr1} 对应的寄存器号 \tabularnewline\hline
+\texttt{wreg2} & 输入 & 5 & W 级指令与 \texttt{rf.read\_addr2} 对应的寄存器号 \tabularnewline\hline
+\texttt{wregw} & 输入 & 5 & W 级指令与 \texttt{rf.write\_addr} 对应的寄存器号 \tabularnewline\hline
+\texttt{stall} & 输出 & 1 & 是否需要暂停 \tabularnewline\hline
+\end{longtable}
+
+\subsection{宏定义}
+
+\begin{longtable}[]{@{}|l|l|l|l|@{}}
+\hline
+\headingcellfirst{类别} & \headingcellmiddle{定义} & \headingcellmiddle{值} & \headingcelllast{意义} \tabularnewline\hline
+\endhead\hiderowcolors
+$ T_{use} $ 或 $ T_{new} $ 的值 & \texttt{inf} & 3'd7 & 值为概念上的无穷大时，实际的值 \tabularnewline\hline
+\end{longtable}
+
+\subsection{功能}
+
+见控制中的对应节。
+
 \hypertarget{cpu}{%
 \section{CPU}\label{cpu}}
 
@@ -2267,6 +2351,56 @@ CPU 在模块结构中作为顶层模块而存在。
 \subsection{功能}\label{ux529fux80fd-14}}
 
 CPU 需要的外部数据输入是极少的，只有时钟信号、必要的其它信号和指令文件。
+
+\section{思考题}
+
+\subsection{乘除法部件}
+
+\begin{enumerate}
+\item 因为乘除法运算比较复杂，通常需要多个周期；而 ALU 对应的运算通常需要一个周期。让乘除法器成为独立模块，可以让非乘除法指令在乘除法器使用时，仍然进行运算，更好地利用硬件的并行性。有单独的 HI 和 LO 寄存器，是因为乘除法器模块相对独立，如果使用通用寄存器保留计算结果，保存的时间难以确定，容易跟不使用乘除法器的指令冲突。而且，有了这两个寄存器，也方便保存和恢复现场。
+\item 延迟槽是分支指令起作用前，需要一个周期决定下一个 PC，因此在它后面紧接着插入一条无关的非分支指令，插入的地方叫做延迟槽。所以类似地，乘除槽是乘除指令算出结果前，需要一定的周期数，因此在它后面紧接着插入不对乘除法器进行操作的指令，插入的地方叫做乘除槽。乘除槽的长度跟乘除法指令算出结果以前需要的周期数有关。
+\end{enumerate}
+
+\subsection{扩展 DM}
+
+\begin{enumerate}
+\item 只需要读取或者写入一个字节的情况。比如读取 C 语言字符串中的一个字节，用字节操作指令可以直接读出这个字节，并且把这个字节放到对应寄存器的最低 8 位；但是用读出一个字的指令，还需要处理才能做到这个效果。
+\end{enumerate}
+
+\subsection{复杂性控制与设计风格}
+
+\begin{enumerate}
+\item 使用 A/T 编码器的侦测者风格。采用的抽象与规范手段如下。
+\begin{itemize}
+ \item 统一的命名规则
+ \item 一致的代码风格
+ \item 强制基于名称的端口连线
+ \item 所有连线必须显式声明
+ \item 代码中体现流水线分级
+ \item 部分常见功能的抽象
+ \item 暂停和转发分开处理
+ \item A/T 编码器
+ \item 指令按数据通路类型分类
+ \item 数据通路和控制严格分开
+\end{itemize}
+\end{enumerate}
+
+\subsection{在线测试相关说明}
+
+\begin{enumerate}
+\item 遇到了很多种不同指令类型产生的冲突。采用侦测者方法解决的。测试样例有很多种。
+
+主要采用手动构造 + 完全随机生成的方法。
+
+手动构造针对正确性构造，主要保证正确性；完全随机生成针对广泛性构造，保证覆盖性。考虑过采用特殊策略，采用模板结合随机性，从而达到强测的效果。
+\end{enumerate}
+
+\subsection{测试}
+
+\begin{enumerate}
+\item 
+\end{enumerate}
+
 
 \hypertarget{ux6280ux5de7}{%
 \section{技巧}\label{ux6280ux5de7}}
