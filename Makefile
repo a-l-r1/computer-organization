@@ -77,6 +77,7 @@ migrate-to-latex:
 	sed -i 's/\\subsubsection{/\\subsection{/g' $(EXPORT_DOC)/$(CODENAME).tex
 
 	# add vertical lines to longtables
+	sed -i 's/^\\begin{longtable}\[\]{@{}ll@{}}$$/\\begin{longtable}\[\]{@{}\|l\|l\|@{}}/g' $(EXPORT_DOC)/$(CODENAME).tex
 	sed -i 's/^\\begin{longtable}\[\]{@{}lll@{}}$$/\\begin{longtable}\[\]{@{}\|l\|l\|l\|@{}}/g' $(EXPORT_DOC)/$(CODENAME).tex
 	sed -i 's/^\\begin{longtable}\[\]{@{}llll@{}}$$/\\begin{longtable}\[\]{@{}\|l\|l\|l\|l\|@{}}/g' $(EXPORT_DOC)/$(CODENAME).tex
 	sed -i 's/^\\begin{longtable}\[\]{@{}lllll@{}}$$/\\begin{longtable}\[\]{@{}\|l\|l\|l\|l\|l\|@{}}/g' $(EXPORT_DOC)/$(CODENAME).tex
