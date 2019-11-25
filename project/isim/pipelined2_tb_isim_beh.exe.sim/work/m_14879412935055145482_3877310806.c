@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "/home/a-l-r/co/src/src/cpu/pipelined2.v";
+static const char *ng0 = "/home/a-l-r/co/src/src/cpu/mips.v";
 static int ng1[] = {8, 0};
 static int ng2[] = {0, 0};
 static int ng3[] = {1, 0};
@@ -6208,9 +6208,9 @@ LAB1:    return;
 }
 
 
-extern void work_m_14879412935055145482_1200043877_init()
+extern void work_m_14879412935055145482_3877310806_init()
 {
 	static char *pe[] = {(void *)Cont_11_0,(void *)Cont_143_1,(void *)Cont_173_2,(void *)Cont_186_3,(void *)Cont_216_4,(void *)Cont_250_5,(void *)Cont_260_6,(void *)Cont_268_7,(void *)Cont_302_8,(void *)Cont_316_9,(void *)Cont_342_10,(void *)Cont_371_11,(void *)Cont_397_12,(void *)implSig1_execute,(void *)implSig2_execute,(void *)implSig3_execute,(void *)implSig4_execute,(void *)implSig5_execute,(void *)implSig6_execute,(void *)implSig7_execute,(void *)implSig8_execute,(void *)implSig9_execute,(void *)implSig10_execute,(void *)implSig11_execute,(void *)implSig12_execute,(void *)implSig13_execute,(void *)implSig14_execute,(void *)implSig15_execute,(void *)implSig16_execute,(void *)implSig17_execute,(void *)implSig18_execute,(void *)implSig19_execute};
-	xsi_register_didat("work_m_14879412935055145482_1200043877", "isim/pipelined2_tb_isim_beh.exe.sim/work/m_14879412935055145482_1200043877.didat");
+	xsi_register_didat("work_m_14879412935055145482_3877310806", "isim/pipelined2_tb_isim_beh.exe.sim/work/m_14879412935055145482_3877310806.didat");
 	xsi_register_executes(pe);
 }

@@ -4,12 +4,12 @@ Command line:
      -wdb  project/pipelined2_tb_isim_beh.wdb
      -simmode  tcl
      -simrunnum  0
-     -socket  57323
+     -socket  39861
 
-Mon Nov 25 10:50:37 2019
+Mon Nov 25 10:53:34 2019
 
 
- Elaboration Time: 0.02 sec
+ Elaboration Time: 0.03 sec
 
  Current Memory Usage: 165.048 Meg
 
@@ -26,5 +26,5 @@ Mon Nov 25 10:50:37 2019
 
  Current Memory Usage: 242.221 Meg
 
-Mon Nov 25 10:50:37 2019
+Mon Nov 25 10:53:34 2019
 
