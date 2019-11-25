@@ -1,5 +1,7 @@
-verilog work "../src/datapath/rf.v"
 verilog work "../src/datapath/pff.v"
+verilog work "../src/control/pipelined2-hazard.v"
+verilog work "../src/control/pipelined2-forward.v"
+verilog work "../src/datapath/rf.v"
 verilog work "../src/datapath/pc.v"
 verilog work "../src/datapath/npc.v"
 verilog work "../src/datapath/md.v"
