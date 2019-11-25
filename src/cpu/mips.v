@@ -295,13 +295,18 @@ md md(
 	.busy(e_md_busy), 
 	/* unused */
 	.invalid(), 
-	.hi(e_md_hi), 
-	.lo(e_md_lo)
+	/* unused */
+	.hi(), 
+	/* unused */
+	.lo(), 
+	.out(e_md_out)
 );
 
+/*
 assign e_md_out = 
 	(cw_m_hilo == 1'b0) ? e_md_hi : 
 	e_md_lo;
+*/
 
 /* M */
 

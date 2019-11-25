@@ -66,7 +66,7 @@ assign stall_m2d_reg2 = `fwable(d_reg2, m_regw) && $unsigned(t_use_reg2) < $unsi
 
 assign stall_md_busy = 
 	e_md_busy == 1'b1 && 
-	(ddptype == `CAL_M || ddptype == `LOAD_M || ddptype == `STORE_M);
+	(ddptype == `LOAD_M || ddptype == `STORE_M);
 
 assign stall = stall_e2d_reg1 | stall_m2d_reg1 | stall_e2d_reg2 | stall_m2d_reg2 | stall_md_busy;
 
