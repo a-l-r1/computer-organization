@@ -18,11 +18,11 @@ module forward(
 	input [4:0] w_reg1, 
 	input [4:0] w_reg2, 
 	input [4:0] w_regw, 
-	output [2:0] cw_fm_d1, 
-	output [2:0] cw_fm_e1, 
-	output [2:0] cw_fm_d2, 
-	output [2:0] cw_fm_e2, 
-	output [2:0] cw_fm_m
+	output [3:0] cw_fm_d1, 
+	output [3:0] cw_fm_e1, 
+	output [3:0] cw_fm_d2, 
+	output [3:0] cw_fm_e2, 
+	output [3:0] cw_fm_m
 );
 
 wire [3:0] ddptype;

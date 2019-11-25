@@ -21,8 +21,8 @@ wire [4:0] cw_e_alu_op;
 wire [3:0] cw_e_md_op;
 wire [2:0] cw_m_dm_mode;
 wire [2:0] cw_w_m_regdata;
-wire [2:0] cw_fm_d1, cw_fm_d2, cw_fm_e1, cw_fm_e2;
-wire [2:0] cw_fm_m;
+wire [3:0] cw_fm_d1, cw_fm_d2, cw_fm_e1, cw_fm_e2;
+wire [3:0] cw_fm_m;
 
 /* F */
 

@@ -151,11 +151,11 @@ module control(
 	output cw_w_rf_write_enable, 
 	output [2:0] cw_w_m_regdata, 
 	output [4:0] cw_w_rf_write_addr, 
-	output [2:0] cw_fm_d1, 
-	output [2:0] cw_fm_d2, 
-	output [2:0] cw_fm_e1, 
-	output [2:0] cw_fm_e2, 
-	output [2:0] cw_fm_m
+	output [3:0] cw_fm_d1, 
+	output [3:0] cw_fm_d2, 
+	output [3:0] cw_fm_e1, 
+	output [3:0] cw_fm_e2, 
+	output [3:0] cw_fm_m
 );
 
 /* Macro definitions */
