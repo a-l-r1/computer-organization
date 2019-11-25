@@ -32,11 +32,6 @@ initial begin
 	end
 end
 
-always @(posedge clk) begin
-	`debug_write(("curr_pc = 0x%08x, mode = 0x%08x, write_enable = %0d, read_addr = 0x%08x, write_addr = 0x%08x\n", curr_pc, mode, write_enable, read_addr, write_addr));
-	`debug_write(("read_result = 0x%08x, write_data = 0x%08x\n", read_result, write_data));
-end
-
 assign op_addr = (write_enable == `DM_WRITE_ENABLED) ? write_addr : read_addr;
 
 assign valid = 

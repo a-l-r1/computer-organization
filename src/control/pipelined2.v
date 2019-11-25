@@ -3,8 +3,6 @@
 
 `define PART_NAME "instr-id"
 
-`include "debug/debug.h"
-
 `include "alu.h"
 `include "ext.h"
 `include "npc.h"

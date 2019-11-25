@@ -2,8 +2,6 @@
 
 `define PART_NAME "md"
 
-`include "debug/debug.h"
-
 module md(
 	input clk, 
 	input rst, 
