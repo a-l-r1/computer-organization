@@ -76,7 +76,7 @@ always @(posedge clk) begin
 	end else begin
 		if (write_enable == `DM_WRITE_ENABLE) begin
 			memory[write_addr[`DM_ADDR_WIDTH - 1:2]] <= new_word;
-			`normal_display((`DM_OUTPUT_FORMAT, $time, curr_pc, {write_addr[31:2], 2'b0}, write_data));
+			$display(`DM_OUTPUT_FORMAT, $time, curr_pc, {write_addr[31:2], 2'b0}, write_data);
 		end
 	end
 end
