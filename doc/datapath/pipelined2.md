@@ -64,6 +64,7 @@ mthi, mtlo
 #### D 级（ID）
 
 数据通路类型 | `D: ext.num` | `D: cmp.reg1` | `D: cmp.reg2`
+--- | --- | --- | ---
 `CAL_R` | | |
 `CAL_I` | `D: im.result[15:0]` | |
 `LOAD` | `D: im.result[15:0]` | |
@@ -81,6 +82,7 @@ mthi, mtlo
 #### E 级（EX）
 
 数据通路类型 | `E: alu.num1` | `E: alu.num2`| `E: alu.shamt` | `E: md.dh` | `E: md.dl`
+--- | --- | --- | --- | --- | ---
 `CAL_R` | `D: rf.read_result1` | `D: rf.read_result2` | `D: im.result[10:6]` | |
 `CAL_I` | `D: rf.read_result1` | `D: ext.result` | | |
 `LOAD` | `D: rf.read_result1` | `D: ext.result` | | |
@@ -98,6 +100,7 @@ mthi, mtlo
 #### M 级（MEM）
 
 数据通路类型 | `M: dm.read_addr` | `M: dm.write_addr` | `M: dm.write_data`
+--- | --- | --- | ---
 `CAL_R` | | | 
 `CAL_I` | | | 
 `LOAD` | `E: alu.result` | | | 
@@ -115,6 +118,7 @@ mthi, mtlo
 #### W 级（WB）
 
 数据通路类型 | `W: rf.write_data`
+--- | ---
 `CAL_R` | `E: alu.result`
 `CAL_I` | `E: alu.result`
 `LOAD` | `M: dm.read_result`

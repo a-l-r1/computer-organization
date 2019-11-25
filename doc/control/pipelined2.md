@@ -105,18 +105,18 @@
 
 #### E 级（EX）
 
-数据通路类型 | `E: m_alusrc` | `E: alu.op` | `E: md.op` | `E: m_hilo`
+数据通路类型 | `E: m_alusrc` | `E: alu.op` | `E: md.op`
 --- | --- | --- | ---
-`CAL_R` | `D: rf.read_result2` | 视具体指令而定 | `MD_NONE` | `#E: md.hi`
-`CAL_I` | `D: ext.result` | 视具体指令而定 | `MD_NONE` | `#E: md.hi`
-`LOAD` | `D: ext.result` | `ALU_ADD` | `MD_NONE` | `#E: md.hi`
-`STORE` | `D: ext.result` | `ALU_ADD` | `MD_NONE` | `#E: md.hi`
-`BRANCH` | `D: rf.read_result2` | `#ALU_OR` | `MD_NONE` | `#E: md.hi`
-`CMOV` | `D: rf.read_result2` | 视具体指令而定 | `MD_NONE` | `#E: md.hi`
-`CAL_M` | `#D: rf.read_result2` | `#ALU_OR` | 视具体指令而定 | `#E: md.hi`
-`LOAD_M` | `#D: rf.read_result2` | `#ALU_OR` | 视具体指令而定 | 视具体指令而定
-`STORE_M` | `#D: rf.read_result2` | `#ALU_OR` | 视具体指令而定 | `#E: md.hi`
-（其它）| `#D: rf.read_result2` | `#ALU_OR` | `MD_NONE` | `#E: md.hi`
+`CAL_R` | `D: rf.read_result2` | 视具体指令而定 | `MD_NONE`
+`CAL_I` | `D: ext.result` | 视具体指令而定 | `MD_NONE`
+`LOAD` | `D: ext.result` | `ALU_ADD` | `MD_NONE`
+`STORE` | `D: ext.result` | `ALU_ADD` | `MD_NONE`
+`BRANCH` | `D: rf.read_result2` | `#ALU_OR` | `MD_NONE`
+`CMOV` | `D: rf.read_result2` | 视具体指令而定 | `MD_NONE`
+`CAL_M` | `#D: rf.read_result2` | `#ALU_OR` | 视具体指令而定
+`LOAD_M` | `#D: rf.read_result2` | `#ALU_OR` | 视具体指令而定
+`STORE_M` | `#D: rf.read_result2` | `#ALU_OR` | 视具体指令而定
+（其它）| `#D: rf.read_result2` | `#ALU_OR` | `MD_NONE`
 
 `CAL_R` 类指令类型与 `E: alu.op` 的关系：
 
@@ -180,13 +180,6 @@
 --- | ---
 `MTHI` | `MD_MTHI`
 `MTLO` | `MD_MTLO`
-
-`LOAD_M` 类指令类型与 `E: m_hilo` 的关系：
-
-指令类型 | `E: m_hilo`
---- | ---
-`MFHI` | `E: md.hi`
-`MFLO` | `E: md.lo`
 
 #### M 级（MEM）
 
