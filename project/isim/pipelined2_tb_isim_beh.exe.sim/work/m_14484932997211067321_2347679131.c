@@ -170,6 +170,7 @@ static void Always_36_2(char *t0)
     char t6[8];
     char t30[8];
     char t31[8];
+    char t62[16];
     char *t1;
     char *t2;
     char *t3;
@@ -320,7 +321,10 @@ LAB24:    t8 = (t6 + 4);
     if (t27 > 0)
         goto LAB25;
 
-LAB26:;
+LAB26:
+LAB27:
+LAB12:    goto LAB2;
+
 LAB8:    t21 = (t6 + 4);
     *((unsigned int *)t6) = 1;
     *((unsigned int *)t21) = 1;
@@ -349,8 +353,7 @@ LAB14:    t2 = (t0 + 3048);
     if (t13 > 0)
         goto LAB15;
 
-LAB16:
-LAB12:    goto LAB2;
+LAB16:    goto LAB12;
 
 LAB15:    xsi_set_current_line(38, ng0);
 
@@ -436,8 +439,9 @@ LAB32:    t33 = (t30 + 4);
     if (t61 > 0)
         goto LAB33;
 
-LAB34:;
-LAB27:;
+LAB34:
+LAB35:    goto LAB27;
+
 LAB30:    *((unsigned int *)t30) = 1;
     goto LAB32;
 
@@ -449,15 +453,46 @@ LAB31:    t32 = (t30 + 4);
 LAB33:    xsi_set_current_line(43, ng0);
 
 LAB36:    xsi_set_current_line(44, ng0);
-    t34 = (t0 + 1368U);
-    t35 = *((char **)t34);
-    t34 = (t0 + 1848U);
-    t36 = *((char **)t34);
-    t34 = (t0 + 2008U);
-    t37 = *((char **)t34);
-    goto LAB12;
+    t34 = xsi_vlog_time(t62, 1000.0000000000000, 1000.0000000000000);
+    t35 = (t0 + 1368U);
+    t36 = *((char **)t35);
+    t35 = (t0 + 1848U);
+    t37 = *((char **)t35);
+    t35 = (t0 + 2008U);
+    t38 = *((char **)t35);
+    xsi_vlogfile_write(1, 0, 0, ng5, 5, t0, (char)118, t62, 64, (char)118, t36, 32, (char)118, t37, 5, (char)118, t38, 32);
+    xsi_set_current_line(45, ng0);
+    t2 = (t0 + 2008U);
+    t3 = *((char **)t2);
+    t2 = (t0 + 2888);
+    t4 = (t0 + 2888);
+    t5 = (t4 + 72U);
+    t7 = *((char **)t5);
+    t8 = (t0 + 2888);
+    t21 = (t8 + 64U);
+    t22 = *((char **)t21);
+    t28 = (t0 + 1848U);
+    t29 = *((char **)t28);
+    xsi_vlog_generic_convert_array_indices(t6, t30, t7, t22, 2, 1, t29, 5, 2);
+    t28 = (t6 + 4);
+    t9 = *((unsigned int *)t28);
+    t39 = (!(t9));
+    t32 = (t30 + 4);
+    t10 = *((unsigned int *)t32);
+    t41 = (!(t10));
+    t42 = (t39 && t41);
+    if (t42 == 1)
+        goto LAB37;
 
-LAB35:;
+LAB38:    goto LAB35;
+
+LAB37:    t11 = *((unsigned int *)t6);
+    t12 = *((unsigned int *)t30);
+    t43 = (t11 - t12);
+    t44 = (t43 + 1);
+    xsi_vlogvar_wait_assign_value(t2, t3, 0, *((unsigned int *)t30), t44, 0LL);
+    goto LAB38;
+
 }
 
 static void Cont_51_3(char *t0)

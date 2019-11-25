@@ -1,11 +1,11 @@
 ISim log file
-Running: /home/a-l-r/co/src/project/pipelined2_tb_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb /home/a-l-r/co/src/project/pipelined2_tb_isim_beh.wdb 
+Running: ./pipelined2_tb_isim_beh.exe -intstyle ise -tclbatch ../tools/share/isim.cmd -wdb project/pipelined2_tb_isim_beh.wdb 
 ISim P.20131013 (signature 0xfbc00daa)
 This is a Full version of ISim.
 Time resolution is 1 ps
 # onerror resume
 # wave add /
-# run 1000 ns
+# run 20000 ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
                   45@00003000: $ 8 <= f65b0000
@@ -14,4 +14,4 @@ Finished circuit initialization process.
                   75@0000300c: $11 <= 49bf0000
                   85@00003010: $12 <= 49bfabfe
                   95@00003014: $13 <= fffd9695
-# exit 0
+# exit
