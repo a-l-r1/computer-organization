@@ -5,8 +5,5 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"/home/a-l-r/co/src/project/../src/cpu/pipelined2.v" Line 76: Port <arg fmt="%s" index="1">rst</arg> is not connected to this instance
-</msg>
-
 </messages>
 

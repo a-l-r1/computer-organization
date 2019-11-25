@@ -20,10 +20,9 @@ Analyzing Verilog file "/home/a-l-r/co/src/project/../src/cpu/pipelined2.v" into
 Analyzing Verilog file "/home/a-l-r/co/src/project/../tests/cpu/pipelined2/pipelined2_tb.v" into library work
 Analyzing Verilog file "/opt/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
-WARNING:HDLCompiler:1016 - "/home/a-l-r/co/src/project/../src/cpu/pipelined2.v" Line 76: Port rst is not connected to this instance
 Completed static elaboration
-Fuse Memory Usage: 83804 KB
-Fuse CPU Usage: 910 ms
+Fuse Memory Usage: 83796 KB
+Fuse CPU Usage: 880 ms
 Compiling module pff
 Compiling module pff(BIT_WIDTH=5)
 Compiling module kind
@@ -45,6 +44,6 @@ Compiling module glbl
 Time Resolution for simulation is 1ps.
 Compiled 18 Verilog Units
 Built simulation executable /home/a-l-r/co/src/project/pipelined2_tb_isim_beh.exe
-Fuse Memory Usage: 1172488 KB
+Fuse Memory Usage: 1172472 KB
 Fuse CPU Usage: 1110 ms
-GCC CPU Usage: 5690 ms
+GCC CPU Usage: 6080 ms
