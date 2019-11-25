@@ -1,10 +1,14 @@
 `include "pipelined2.h"
 
 module cpu(
-	input clk
+	input clk, 
+	input reset
 );
 
 /* Wire definitions */
+
+wire rst;
+assign rst = reset;
 
 /* Control */
 
@@ -146,6 +150,7 @@ pff #(.BIT_WIDTH(32)) d_im(
 
 rf rf(
 	.clk(clk), 
+	.rst(rst), 
 	/* display the corresponding pc of the instruction in level D */
 	.curr_pc(w_pc_curr_pc), 
 	.read_addr1(cw_d_rf_read_addr1), 
@@ -338,6 +343,7 @@ assign m_dm_write_data =
 
 dm dm(
 	.clk(clk), 
+	.rst(rst), 
 	.curr_pc(m_pc_curr_pc), 
 	.read_addr(m_alu_result), 
 	.write_addr(m_alu_result), 
