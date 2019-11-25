@@ -75,6 +75,7 @@ wire [31:0] w_rf_write_data;
 
 control control(
 	.clk(clk), 
+	.rst(rst), 
 	.d_instr(d_im_result), 
 	.rf_read_result2(d_rf_read_result2), 
 	.e_md_busy(e_md_busy), 
