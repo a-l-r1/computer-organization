@@ -1,4 +1,4 @@
-Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -i /home/a-l-r/co/src/src/include -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o /home/a-l-r/co/src/project/pipelined2_tb_isim_beh.exe -prj /home/a-l-r/co/src/project/pipelined2_tb_beh.prj work.pipelined2_tb work.glbl 
+Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -i /home/a-l-r/co/src/src/include -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o /home/a-l-r/co/src/project/pipelined2_tb_isim_beh.exe -prj /home/a-l-r/co/src/project/pipelined2_tb_beh.prj pipelined2_tb work.glbl 
 ISim P.20131013 (signature 0xfbc00daa)
 Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
@@ -23,7 +23,7 @@ Starting static elaboration
 WARNING:HDLCompiler:1016 - "/home/a-l-r/co/src/project/../src/cpu/mips.v" Line 75: Port cw_m_hilo is not connected to this instance
 Completed static elaboration
 Fuse Memory Usage: 83800 KB
-Fuse CPU Usage: 950 ms
+Fuse CPU Usage: 900 ms
 Compiling module pff
 Compiling module pff(BIT_WIDTH=5)
 Compiling module kind
@@ -43,8 +43,9 @@ Compiling module mips
 Compiling module pipelined2_tb
 Compiling module glbl
 Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
 Compiled 18 Verilog Units
 Built simulation executable /home/a-l-r/co/src/project/pipelined2_tb_isim_beh.exe
-Fuse Memory Usage: 1172488 KB
-Fuse CPU Usage: 1210 ms
-GCC CPU Usage: 6730 ms
+Fuse Memory Usage: 1172504 KB
+Fuse CPU Usage: 1170 ms
+GCC CPU Usage: 6640 ms
