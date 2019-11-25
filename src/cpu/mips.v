@@ -14,7 +14,6 @@ assign rst = reset;
 
 wire cw_f_pc_enable, cw_d_pff_enable;
 wire cw_m_dm_write_enable, cw_w_rf_write_enable;
-wire cw_m_hilo;
 wire [3:0] cw_f_npc_jump_mode;
 wire [2:0] cw_d_ext_mode;
 wire [4:0] cw_d_rf_read_addr1, cw_d_rf_read_addr2, cw_w_rf_write_addr;
@@ -50,7 +49,7 @@ wire [31:0] e_alu_result;
 wire [31:0] e_rf_read_result1_orig, e_rf_read_result2_orig;
 wire [31:0] e_rf_read_result1, e_rf_read_result2;
 wire [31:0] e_alu_num2;
-wire [31:0] e_md_hi, e_md_lo, e_md_out;
+wire [31:0] e_md_out;
 
 /* M */
 
@@ -89,7 +88,6 @@ control control(
 	.cw_e_m_alusrc(cw_e_m_alusrc), 
 	.cw_e_alu_op(cw_e_alu_op), 
 	.cw_e_md_op(cw_e_md_op), 
-	.cw_m_hilo(cw_m_hilo), 
 	.cw_m_dm_write_enable(cw_m_dm_write_enable), 
 	.cw_m_dm_mode(cw_m_dm_mode), 
 	.cw_w_rf_write_enable(cw_w_rf_write_enable), 
@@ -301,12 +299,6 @@ md md(
 	.lo(), 
 	.out(e_md_out)
 );
-
-/*
-assign e_md_out = 
-	(cw_m_hilo == 1'b0) ? e_md_hi : 
-	e_md_lo;
-*/
 
 /* M */
 
