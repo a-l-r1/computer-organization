@@ -26,18 +26,20 @@ module pipelined2_tb;
 
 	// Inputs
 	reg clk;
+	reg reset;
 
 	// Instantiate the Unit Under Test (UUT)
 	cpu uut (
-		.clk(clk)
+		.clk(clk), 
+		.reset(reset)
 	);
 
 	initial begin
 		// Initialize Inputs
 		clk = 0;
+		reset = 0;
 
 		// Wait 100 ns for global reset to finish
-		#100;
         
 		// Add stimulus here
 
