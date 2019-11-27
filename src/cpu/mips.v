@@ -12,7 +12,7 @@ assign rst = reset;
 
 /* Control */
 
-wire cw_f_pc_enable, cw_d_pff_enable;
+wire cw_f_pc_enable, cw_d_pff_enable, cw_d_pff_rst;
 wire cw_m_dm_write_enable, cw_w_rf_write_enable;
 wire [3:0] cw_f_npc_jump_mode;
 wire [2:0] cw_d_ext_mode;
@@ -76,11 +76,13 @@ control control(
 	.clk(clk), 
 	.rst(rst), 
 	.d_instr(d_im_result), 
+	.rf_read_result1(d_rf_read_result1), 
 	.rf_read_result2(d_rf_read_result2), 
 	.e_md_busy(e_md_busy), 
 	.cw_f_pc_enable(cw_f_pc_enable), 
 	.cw_f_npc_jump_mode(cw_f_npc_jump_mode), 
 	.cw_d_pff_enable(cw_d_pff_enable), 
+	.cw_d_pff_rst(cw_d_pff_rst), 
 	.cw_e_pff_rst(cw_e_pff_rst), 
 	.cw_d_ext_mode(cw_d_ext_mode), 
 	.cw_d_rf_read_addr1(cw_d_rf_read_addr1), 
@@ -133,7 +135,7 @@ im im(
 pff #(.BIT_WIDTH(32)) d_pc(
 	.clk(clk), 
 	.enable(cw_d_pff_enable), 
-	.rst(rst), 
+	.rst(rst | cw_d_pff_rst), 
 	.i(f_pc_curr_pc), 
 	.o(d_pc_curr_pc)
 );
@@ -143,7 +145,7 @@ assign d_retaddr = $unsigned(d_pc_curr_pc) + $unsigned(8);
 pff #(.BIT_WIDTH(32)) d_im(
 	.clk(clk), 
 	.enable(cw_d_pff_enable), 
-	.rst(rst), 
+	.rst(rst | cw_d_pff_rst), 
 	.i(f_im_result), 
 	.o(d_im_result)
 );

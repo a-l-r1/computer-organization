@@ -133,10 +133,12 @@ module control(
 	input clk, 
 	input rst, 
 	input [31:0] d_instr, 
+	input [31:0] rf_read_result1, 
 	input [31:0] rf_read_result2, 
 	input e_md_busy, 
 	output cw_f_pc_enable, 
 	output cw_d_pff_enable, 
+	output cw_d_pff_rst, 
 	output cw_e_pff_rst, 
 	output [3:0] cw_f_npc_jump_mode, 
 	output [2:0] cw_d_ext_mode, 
@@ -145,7 +147,6 @@ module control(
 	output cw_e_m_alusrc, 
 	output [4:0] cw_e_alu_op, 
 	output [3:0] cw_e_md_op, 
-	output cw_m_hilo, 
 	output cw_m_dm_write_enable, 
 	output [2:0] cw_m_dm_mode, 
 	output cw_w_rf_write_enable, 
@@ -427,14 +428,6 @@ assign cw_e_md_op =
 	) : 
 	`MD_NONE;
 
-assign cw_m_hilo = 
-	(edptype == `LOAD_M) ? (
-		(ekind == `MFHI) ? 1'b0 : 
-		(ekind == `MFLO) ? 1'b1 : 
-		1'b0
-	) : 
-	1'b0;
-
 assign cw_m_dm_write_enable = 
 	(mdptype == `STORE) ? 1'b1 : 
 	1'b0;
@@ -565,6 +558,10 @@ assign cw_f_pc_enable = ~stall;
 assign cw_d_pff_enable = ~stall;
 
 assign cw_e_pff_rst = stall;
+
+/* TODO: branch ... and link likely */
+
+assign cw_d_pff_rst = rst;
 
 endmodule
 
