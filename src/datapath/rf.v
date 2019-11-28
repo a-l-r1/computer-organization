@@ -2,8 +2,6 @@
 
 `define PART_NAME "rf"
 
-`include "debug/debug.h"
-
 module rf(
 	input clk, 
 	input rst, 
@@ -35,7 +33,7 @@ always @(posedge clk) begin
 	end else begin 
 		if (write_enable == `RF_WRITE_ENABLED) begin
 			if (write_addr != `RF_ADDR_ZERO) begin
-				`normal_display((`RF_OUTPUT_FORMAT, $time, curr_pc, write_addr, write_data));
+				$display(`RF_OUTPUT_FORMAT, $time, curr_pc, write_addr, write_data);
 				registers[write_addr] <= write_data;
 			end
 		end
