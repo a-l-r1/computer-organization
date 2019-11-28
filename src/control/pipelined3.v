@@ -19,7 +19,7 @@
 
 module kind(
 	input [31:0] instr, 
-	output [8:0] result
+	output [9:0] result
 );
 
 wire r, regimm, cop0;
@@ -183,15 +183,15 @@ module control(
 
 /* Wire and register declarations */
 
-wire [8:0] dkind;
-wire [8:0] ekind;
-wire [8:0] mkind;
-wire [8:0] wkind;
+wire [9:0] dkind;
+wire [9:0] ekind;
+wire [9:0] mkind;
+wire [9:0] wkind;
 
-wire [3:0] ddptype;
-wire [3:0] edptype;
-wire [3:0] mdptype;
-wire [3:0] wdptype;
+wire [4:0] ddptype;
+wire [4:0] edptype;
+wire [4:0] mdptype;
+wire [4:0] wdptype;
 
 wire [4:0] d_reg1;
 wire [4:0] d_reg2;
@@ -272,10 +272,10 @@ kind _wkind(
 	.result(wkind)
 );
 
-assign ddptype = dkind[8:5];
-assign edptype = ekind[8:5];
-assign mdptype = mkind[8:5];
-assign wdptype = wkind[8:5];
+assign ddptype = dkind[9:5];
+assign edptype = ekind[9:5];
+assign mdptype = mkind[9:5];
+assign wdptype = wkind[9:5];
 
 /* Internal pipeline */
 
