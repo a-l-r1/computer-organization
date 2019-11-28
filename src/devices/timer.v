@@ -50,12 +50,14 @@ always @(posedge clk) begin
 		mode <= 0;
 		enable <= 0;
 	end else begin
+
 		if (write_valid == 1'b1) begin
 			case (real_addr)
 				32'd0: {allow_irq, mode, enable} <= {write_data[3], write_data[1], write_data[0]};
 				32'd4: preset <= write_data;
 				/* default omitted */
 			endcase
+
 		end else begin
 			case (state)
 				`TIMER_IDLE: begin
@@ -68,10 +70,12 @@ always @(posedge clk) begin
 						end
 					end
 				end
+
 				`TIMER_LOAD: begin
 					count <= preset;
 					state <= `TIMER_CNT;
 				end
+
 				`TIMER_CNT: begin
 					if (enable == 1'b0) begin
 						state <= `TIMER_IDLE;
@@ -89,6 +93,7 @@ always @(posedge clk) begin
 						end
 					end
 				end
+
 				`TIMER_INT: begin
 					state <= `TIMER_IDLE;
 					if (mode == 1'b0) begin
@@ -102,6 +107,7 @@ always @(posedge clk) begin
 						end
 					end
 				end
+
 				/* default omitted */
 			endcase
 		end
