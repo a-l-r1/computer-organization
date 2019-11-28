@@ -5,8 +5,6 @@
 
 `define PART_NAME "ac"
 
-`include "debug/debug.h"
-
 module ac(
 	input [31:0] addr, 
 	input [2:0] dm_mode, 

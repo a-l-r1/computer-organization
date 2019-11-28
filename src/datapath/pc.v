@@ -4,8 +4,6 @@
 
 `define PART_NAME "pc"
 
-`include "debug/debug.h"
-
 module pc(
 	input clk, 
 	input rst, 

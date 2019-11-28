@@ -2,8 +2,6 @@
 
 `define PART_NAME "cp0"
 
-`include "debug/debug.h"
-
 module cp0(
 	input clk, 
 	input rst, 

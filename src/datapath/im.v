@@ -2,8 +2,6 @@
 
 `define PART_NAME "im"
 
-`include "debug/debug.h"
-
 module im(
 	input [31:0] addr, 
 	input enable, 

@@ -2,8 +2,6 @@
 
 `define PART_NAME "alu"
 
-`include "debug/debug.h"
-
 module alu(
 	input [31:0] num1, 
 	input [31:0] num2, 
