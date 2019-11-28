@@ -23,7 +23,7 @@ java -jar tools/mars.jar nc db mc CompactDataAtZero a dump 0x00004180-0x00005000
 
 # simulate.py
 pushd project
-./${TB_NAME}_tb_isim_beh.exe -intstyle ise -tclbatch ../tools/share/isim.cmd -wdb project/${TB_NAME}_tb_isim_beh.wdb > ../${TMPDIR}/output_orig
+./${TB_NAME}_tb_isim_beh.exe -intstyle ise -tclbatch ../tools/share/isim-p7.cmd -wdb project/${TB_NAME}_tb_isim_beh.wdb > ../${TMPDIR}/output_orig
 cp ../${TMPDIR}/output_orig ../${TMPDIR}/output
 popd
 # sed(1) post-processing
