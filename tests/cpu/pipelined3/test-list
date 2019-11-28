@@ -1,0 +1,10 @@
+tests/cpu/pipelined3/basic_isr.asm
+tests/cpu/pipelined3/forwarded_isr.asm
+tests/cpu/pipelined3/exception_in_bds.asm
+tests/cpu/pipelined3/external/p7weak.asm
+tests/cpu/pipelined3/external/山寨强测_by_hansbug/强测，含异常，异常处理有操作/2.asm
+tests/cpu/pipelined3/external/山寨强测_by_hansbug/强测，含异常，异常处理有操作/1.asm
+tests/cpu/pipelined3/external/山寨强测_by_hansbug/强测，含异常，异常处理无操作仅跳过异常指令/2.asm
+tests/cpu/pipelined3/external/山寨强测_by_hansbug/强测，含异常，异常处理无操作仅跳过异常指令/1.asm
+tests/cpu/pipelined3/external/山寨强测_by_hansbug/强测，含异常，异常处理有操作，主程序含mtc0_mfc0/2.asm
+tests/cpu/pipelined3/external/山寨强测_by_hansbug/强测，含异常，异常处理有操作，主程序含mtc0_mfc0/1.asm
