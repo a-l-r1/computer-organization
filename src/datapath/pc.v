@@ -16,10 +16,6 @@ module pc(
 
 reg [31:0] saved_pc;
 
-always @(posedge clk or curr_pc) begin
-	`debug_write(("enable = %0d, curr_pc = 0x%08d\n", enable, curr_pc));
-end
-
 initial begin
 	saved_pc = `PC_START_ADDRESS;
 end

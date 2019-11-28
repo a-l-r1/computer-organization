@@ -178,10 +178,5 @@ assign sig_cmp_result =
 	($signed(num1) < $signed(num2)) ? `ALU_SMALLER : 
 	`ALU_LARGER;
 
-/* TODO: what if both num1 and num2 don't change? */
-always @(num1 or num2) begin
-	`debug_write(("num1 = 0x%08x, num2 = 0x%08x, op = 0b%5b, result = 0x%08x\n", num1, num2, op, result));
-end
-
 endmodule
 
