@@ -6,6 +6,7 @@
 
 module dm(
 	input clk, 
+	input rst, 
 	input [31:0] curr_pc, 
 	input [31:0] read_addr, 
 	input [31:0] write_addr, 
@@ -67,9 +68,15 @@ assign new_word =
 	`wword;
 
 always @(posedge clk) begin
-	if (write_enable == `DM_WRITE_ENABLED && invalid == 1'b0) begin
-		memory[write_addr[`DM_ADDR_WIDTH:2]] <= new_word;
-		`normal_display((`DM_OUTPUT_FORMAT, $time, curr_pc, {write_addr[31:2], 2'b0}, new_word));
+	if (rst == 1'b1) begin
+		for (i = 0; i < `DM_SIZE; i = i + 1) begin
+			memory[i] = 32'b0;
+		end
+	end else begin
+		if (write_enable == `DM_WRITE_ENABLED && invalid == 1'b0) begin
+			memory[write_addr[`DM_ADDR_WIDTH:2]] <= new_word;
+			`normal_display((`DM_OUTPUT_FORMAT, $time, curr_pc, {write_addr[31:2], 2'b0}, new_word));
+		end
 	end
 end
 

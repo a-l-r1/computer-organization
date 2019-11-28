@@ -177,6 +177,7 @@ npc npc(
 
 pc pc(
 	.clk(clk), 
+	.rst(rst), 
 	.next_pc(f_npc_next_pc), 
 	.enable(cw_f_pc_enable), 
 	.curr_pc(f_pc_curr_pc), 
@@ -212,6 +213,7 @@ pff #(.BIT_WIDTH(32)) d_im(
 
 rf rf(
 	.clk(clk), 
+	.rst(rst), 
 	/* display the corresponding pc of the instruction in level D */
 	.curr_pc(w_pc_curr_pc), 
 	.read_addr1(cw_d_rf_read_addr1), 
@@ -425,6 +427,7 @@ ac ac(
 
 dm dm(
 	.clk(clk), 
+	.rst(rst), 
 	.curr_pc(m_pc_curr_pc), 
 	.read_addr(m_alu_result), 
 	.write_addr(m_alu_result), 
