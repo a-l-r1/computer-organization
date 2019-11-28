@@ -574,10 +574,10 @@ assign stall_md_busy =
 
 assign stall_tnew_mtc0_eret = 
 	ddptype == `JUMP_C0 && 
-	(edptype == `STORE_C0 && `RT(e_instr) == `cp0_epc && `RT(e_instr) != 0) && 
+	(edptype == `STORE_C0 && `RT(e_instr) != 0 && `RD(e_instr) == `cp0_epc) && 
 	($unsigned(t_new_m) > $unsigned(0));
 
-assign stall = stall_e2d_reg1 | stall_m2d_reg1 | stall_e2d_reg2 | stall_m2d_reg2 | stall_md_busy;
+assign stall = stall_e2d_reg1 | stall_m2d_reg1 | stall_e2d_reg2 | stall_m2d_reg2 | stall_md_busy | stall_tnew_mtc0_eret;
 
 /* TODO: more thorough stall control? */
 
