@@ -26,21 +26,20 @@ module pipelined3_tb;
 
 	// Inputs
 	reg clk;
-	reg rst;
+	reg reset;
 
 	// Instantiate the Unit Under Test (UUT)
 	mips uut (
 		.clk(clk), 
-		.rst(rst)
+		.reset(reset)
 	);
 
 	initial begin
 		// Initialize Inputs
 		clk = 0;
-		rst = 0;
+		reset = 0;
 
 		// Wait 100 ns for global reset to finish
-		#100;
         
 		// Add stimulus here
 

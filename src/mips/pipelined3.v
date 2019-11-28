@@ -1,7 +1,10 @@
 module mips(
 	input clk, 
-	input rst
+	input reset
 );
+
+wire rst;
+assign rst = reset;
 
 wire [31:0] cpu_addr;
 wire [31:0] cpu_write_data, cpu_read_result;
