@@ -4,27 +4,32 @@
 
 module md(
 	input clk, 
+	input rst, 
 	input [31:0] dh, 
 	input [31:0] dl, 
 	input [3:0] op, 
-	input stop, 
-	input restore, 
 	output busy, 
 	output invalid, 
 	output [31:0] hi, 
-	output [31:0] lo
+	output [31:0] lo, 
+	output [31:0] out
 );
 
 reg [31:0] dh_i, dl_i;
 reg [3:0] op_i;
 reg [31:0] hi_reg, lo_reg;
-reg [31:0] old_hi, old_lo;
 reg [3:0] ctr;
 
 assign hi = hi_reg;
 assign lo = lo_reg;
-assign busy = ($unsigned(ctr) > $unsigned(0)) ? 1'b1 : 1'b0;
+assign busy = 
+	(op == `MD_MULT || op == `MD_MULTU || op == `MD_DIV || op == `MD_DIVU) || 
+	($unsigned(ctr) > $unsigned(0));
 assign invalid = ((op_i == `MD_DIV || op_i == `MD_DIVU) && dl_i == 32'b0) ? 1'b1 : 1'b0;
+assign out = 
+	(op == `MD_MFHI) ? hi_reg : 
+	(op == `MD_MFLO) ? lo_reg : 
+	32'b0;
 
 initial begin
 	dh_i <= 0;
@@ -32,61 +37,55 @@ initial begin
 	op_i <= 0;
 	hi_reg <= 0;
 	lo_reg <= 0;
-	old_hi <= 0;
-	old_lo <= 0;
 	ctr <= 0;
 end
 
-always @(negedge clk) begin
-	if (!(op == `MD_NONE || stop == 1'b1 || restore == 1'b1)) begin
-		if (op == `MD_MTHI) begin
-			op_i <= op;
-			hi_reg <= dh;
-			old_hi <= hi_reg;
-			old_lo <= lo_reg;
-		end
-		if (op == `MD_MTLO) begin
-			op_i <= op;
-			lo_reg <= dh;
-			old_hi <= hi_reg;
-			old_lo <= lo_reg;
-		end
-		if (op == `MD_MULT || op == `MD_MULTU) begin
-			op_i <= op;
-			ctr <= 4'd5;
-			dh_i <= dh;
-			dl_i <= dl;
-		end
-		if (op == `MD_DIV || op == `MD_DIVU) begin
-			op_i <= op;
-			ctr <= 4'd10;
-			dh_i <= dh;
-			dl_i <= dl;
-		end
-	end
-end
-
 always @(posedge clk) begin
-	if (restore == 1'b0 && stop == 1'b0) begin
-		if ($unsigned(ctr) > $unsigned(1)) begin
-			ctr <= $unsigned(ctr) - $unsigned(1);
-		/* ctr == 0 || ctr == 1 */
-		end else begin
-			if ($unsigned(ctr) == $unsigned(1)) begin
-				ctr <= 0;
-				{hi_reg, lo_reg} <= 
-					(op_i == `MD_MULT) ? {{32{dh_i[31]}}, dh_i} * {{32{dl_i[31]}}, dl_i} : 
-					(op_i == `MD_MULTU) ? (dh_i * dl_i) : 
-					(op_i == `MD_DIV) ? (
-						(dl_i != 32'b0) ? {$signed(dh_i) % $signed(dl_i), $signed(dh_i) / $signed(dl_i)} : 
-						{hi_reg, lo_reg}
-					) : 
-					(op_i == `MD_DIVU) ? (
-						(dl_i != 32'b0) ? {$unsigned(dh_i) % $unsigned(dl_i), $unsigned(dh_i) / $unsigned(dl_i)} : 
-						{hi_reg, lo_reg}
-					) : 
-					{hi_reg, lo_reg};
-				{old_hi, old_lo} <= {hi_reg, lo_reg};
+	if (rst == 1'b1) begin
+		dh_i <= 0;
+		dl_i <= 0;
+		op_i <= 0;
+		hi_reg <= 0;
+		lo_reg <= 0;
+		ctr <= 0;
+	end else begin
+		if (op == `MD_MULT || op == `MD_MULTU || op == `MD_DIV || op == `MD_DIVU) begin
+			dh_i <= dh;
+			dl_i <= dl;
+			op_i <= op;
+			ctr <= 
+				(op == `MD_MULT || op == `MD_MULTU) ? 5 : 
+				(op == `MD_DIV || op == `MD_DIVU) ? 10 :
+				0;
+		end
+
+		if (op == `MD_MTHI) begin
+			hi_reg <= dh;
+		end
+
+		if (op == `MD_MTLO) begin
+			lo_reg <= dh;
+		end 
+
+		if (op == `MD_NONE) begin
+			if ($unsigned(ctr) >= $unsigned(1)) begin
+				ctr <= $unsigned(ctr) - $unsigned(1);
+			end else begin
+				if ($unsigned(ctr) == $unsigned(0)) begin
+					{hi_reg, lo_reg} <= 
+						(op_i == `MD_MULT) ? {{32{dh_i[31]}}, dh_i} * {{32{dl_i[31]}}, dl_i} : 
+						(op_i == `MD_MULTU) ? (dh_i * dl_i) : 
+						(op_i == `MD_DIV) ? (
+							(dl_i != 32'b0) ? {$signed(dh_i) % $signed(dl_i), $signed(dh_i) / $signed(dl_i)} : 
+							64'b0
+						) : 
+						(op_i == `MD_DIVU) ? (
+							(dl_i != 32'b0) ? {$unsigned(dh_i) % $unsigned(dl_i), $unsigned(dh_i) / $unsigned(dl_i)} : 
+							64'b0
+						) : 
+						{hi_reg, lo_reg};
+					op_i <= `MD_NONE;
+				end
 			end
 		end
 	end
