@@ -83,7 +83,7 @@ always @(posedge clk) begin
 						if ($unsigned(count) > $unsigned(1)) begin
 							count <= $unsigned(count) - $unsigned(1);
 						end else begin
-							if ($unsigned(count) == $unsigned(1)) begin
+							if ($unsigned(count) <= $unsigned(1)) begin
 								count <= $unsigned(count) - $unsigned(1);
 								state <= `TIMER_INT;
 								if (allow_irq == 1'b1) begin
