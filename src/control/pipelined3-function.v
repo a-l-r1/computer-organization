@@ -623,9 +623,8 @@ assign cw_d_pff_rst = (ddptype == `JUMP_C0 && stall == 1'b0) || (have2handle == 
 assign cw_m_pff_rst = have2handle;
 assign cw_w_pff_rst = have2handle;
 
-assign cw_e_md_restore = (edptype == `STORE_M || mdptype == `STORE_M) && (have2handle == 1'b1);
-
-assign cw_e_md_stop = (edptype == `CAL_M || mdptype == `CAL_M) && (have2handle == 1'b1);
+assign cw_e_md_restore = (mdptype == `STORE_M) && (have2handle == 1'b1);
+assign cw_e_md_stop = (edptype == `CAL_M || mdptype == `CAL_M || edptype == `STORE_M) && (have2handle == 1'b1);
 
 /* Control signal hooking */
 

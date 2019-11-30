@@ -354,6 +354,7 @@ alu alu(
 
 md md(
 	.clk(clk), 
+	.rst(rst), 
 	.dh(e_rf_read_result1), 
 	.dl(e_rf_read_result2), 
 	.op(cw_e_md_op), 
