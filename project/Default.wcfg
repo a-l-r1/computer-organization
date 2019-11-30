@@ -3,7 +3,7 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="C:/cygwin64/home/A-l-r/co/src/project/pipelined3_tb_isim_beh.wdb" id="1" type="auto">
+      <db_ref path="/home/a-l-r/co/src/project/pipelined3_tb_isim_beh.wdb" id="1" type="auto">
          <top_modules>
             <top_module name="glbl" />
             <top_module name="pipelined3_tb" />
@@ -48,12 +48,12 @@
          <obj_property name="CustomSignalColor">#aaaaff</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/control/dkind" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">dkind[8:0]</obj_property>
-         <obj_property name="ObjectShortName">dkind[8:0]</obj_property>
+         <obj_property name="ElementShortName">dkind[9:0]</obj_property>
+         <obj_property name="ObjectShortName">dkind[9:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/control/ddptype" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">ddptype[3:0]</obj_property>
-         <obj_property name="ObjectShortName">ddptype[3:0]</obj_property>
+         <obj_property name="ElementShortName">ddptype[4:0]</obj_property>
+         <obj_property name="ObjectShortName">ddptype[4:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/control/d_reg1" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">d_reg1[4:0]</obj_property>
@@ -83,12 +83,12 @@
          <obj_property name="CustomSignalColor">#aaaaff</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/control/ekind" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">ekind[8:0]</obj_property>
-         <obj_property name="ObjectShortName">ekind[8:0]</obj_property>
+         <obj_property name="ElementShortName">ekind[9:0]</obj_property>
+         <obj_property name="ObjectShortName">ekind[9:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/control/edptype" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">edptype[3:0]</obj_property>
-         <obj_property name="ObjectShortName">edptype[3:0]</obj_property>
+         <obj_property name="ElementShortName">edptype[4:0]</obj_property>
+         <obj_property name="ObjectShortName">edptype[4:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/control/e_reg1" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">e_reg1[4:0]</obj_property>
@@ -118,12 +118,12 @@
          <obj_property name="CustomSignalColor">#aaaaff</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/control/mkind" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">mkind[8:0]</obj_property>
-         <obj_property name="ObjectShortName">mkind[8:0]</obj_property>
+         <obj_property name="ElementShortName">mkind[9:0]</obj_property>
+         <obj_property name="ObjectShortName">mkind[9:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/control/mdptype" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">mdptype[3:0]</obj_property>
-         <obj_property name="ObjectShortName">mdptype[3:0]</obj_property>
+         <obj_property name="ElementShortName">mdptype[4:0]</obj_property>
+         <obj_property name="ObjectShortName">mdptype[4:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/control/m_reg1" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">m_reg1[4:0]</obj_property>
@@ -158,8 +158,8 @@
          <obj_property name="CustomSignalColor">#aaaaff</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/control/wdptype" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">wdptype[3:0]</obj_property>
-         <obj_property name="ObjectShortName">wdptype[3:0]</obj_property>
+         <obj_property name="ElementShortName">wdptype[4:0]</obj_property>
+         <obj_property name="ObjectShortName">wdptype[4:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/control/w_reg1" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">w_reg1[4:0]</obj_property>
@@ -934,6 +934,28 @@
    <wvobject fp_name="group176" type="group">
       <obj_property name="label">md</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/pipelined3_tb/uut/cpu/md/stop" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">stop</obj_property>
+         <obj_property name="ObjectShortName">stop</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/cpu/md/restore" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">restore</obj_property>
+         <obj_property name="ObjectShortName">restore</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/cpu/md/dh" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dh[31:0]</obj_property>
+         <obj_property name="ObjectShortName">dh[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/cpu/md/dl" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dl[31:0]</obj_property>
+         <obj_property name="ObjectShortName">dl[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/cpu/md/op" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">op[3:0]</obj_property>
+         <obj_property name="ObjectShortName">op[3:0]</obj_property>
+      </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/md/dh_i" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">dh_i[31:0]</obj_property>
          <obj_property name="ObjectShortName">dh_i[31:0]</obj_property>
@@ -948,6 +970,10 @@
          <obj_property name="ElementShortName">op_i[3:0]</obj_property>
          <obj_property name="ObjectShortName">op_i[3:0]</obj_property>
       </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/cpu/md/op_cal" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">op_cal</obj_property>
+         <obj_property name="ObjectShortName">op_cal</obj_property>
+      </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/md/hi_reg" type="array" db_ref_id="1">
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="ElementShortName">hi_reg[31:0]</obj_property>
@@ -960,14 +986,14 @@
          <obj_property name="ObjectShortName">lo_reg[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/cpu/md/old_hi" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">old_hi[31:0]</obj_property>
-         <obj_property name="ObjectShortName">old_hi[31:0]</obj_property>
+      <wvobject fp_name="/pipelined3_tb/uut/cpu/md/hi_reg_old" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">hi_reg_old[31:0]</obj_property>
+         <obj_property name="ObjectShortName">hi_reg_old[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/cpu/md/old_lo" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">old_lo[31:0]</obj_property>
-         <obj_property name="ObjectShortName">old_lo[31:0]</obj_property>
+      <wvobject fp_name="/pipelined3_tb/uut/cpu/md/lo_reg_old" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">lo_reg_old[31:0]</obj_property>
+         <obj_property name="ObjectShortName">lo_reg_old[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/md/ctr" type="array" db_ref_id="1">

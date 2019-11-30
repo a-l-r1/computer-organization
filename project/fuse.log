@@ -23,9 +23,10 @@ Analyzing Verilog file "/home/a-l-r/co/src/project/../src/mips/pipelined3.v" int
 Analyzing Verilog file "/home/a-l-r/co/src/project/../tests/cpu/pipelined3/pipelined3_tb.v" into library work
 Analyzing Verilog file "/opt/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
+WARNING:HDLCompiler:1016 - "/home/a-l-r/co/src/project/../src/cpu/pipelined3-cpu.v" Line 355: Port out is not connected to this instance
 Completed static elaboration
-Fuse Memory Usage: 83824 KB
-Fuse CPU Usage: 960 ms
+Fuse Memory Usage: 83828 KB
+Fuse CPU Usage: 940 ms
 Compiling module kind
 Compiling module control
 Compiling module npc
@@ -48,8 +49,9 @@ Compiling module mips
 Compiling module pipelined3_tb
 Compiling module glbl
 Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
 Compiled 21 Verilog Units
 Built simulation executable /home/a-l-r/co/src/project/pipelined3_tb_isim_beh.exe
-Fuse Memory Usage: 1177160 KB
-Fuse CPU Usage: 1210 ms
-GCC CPU Usage: 7130 ms
+Fuse Memory Usage: 1177176 KB
+Fuse CPU Usage: 1190 ms
+GCC CPU Usage: 6880 ms
