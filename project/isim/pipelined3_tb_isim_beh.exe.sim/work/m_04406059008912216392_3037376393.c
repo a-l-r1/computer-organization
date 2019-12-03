@@ -23,7 +23,7 @@
 #endif
 static const char *ng0 = "/home/a-l-r/co/src/src/datapath/im.v";
 static int ng1[] = {0, 0};
-static int ng2[] = {4096, 0};
+static int ng2[] = {2048, 0};
 static unsigned int ng3[] = {0U, 0U};
 static int ng4[] = {1, 0};
 static const char *ng5 = "code.txt";
@@ -855,10 +855,10 @@ LAB67:    t189 = (t0 + 1928);
     t206 = (t205 >> 2);
     *((unsigned int *)t200) = t206;
     t207 = *((unsigned int *)t199);
-    *((unsigned int *)t199) = (t207 & 4095U);
+    *((unsigned int *)t199) = (t207 & 2047U);
     t208 = *((unsigned int *)t200);
-    *((unsigned int *)t200) = (t208 & 4095U);
-    xsi_vlog_generic_get_array_select_value(t192, 32, t191, t195, t198, 2, 1, t199, 12, 2);
+    *((unsigned int *)t200) = (t208 & 2047U);
+    xsi_vlog_generic_get_array_select_value(t192, 32, t191, t195, t198, 2, 1, t199, 11, 2);
     goto LAB68;
 
 LAB69:    t213 = ((char*)((ng3)));
