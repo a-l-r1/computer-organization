@@ -4,11 +4,12 @@ module cpu(
 	input clk, 
 	input rst, 
 	input [31:0] cpu_read_result, 
-	input [5:0] hwirq, 
+	input [7:2] hwirq, 
 	output [31:0] cpu_addr, 
 	output dev_write_enable, 
 	output [2:0] dm_mode, 
-	output [31:0] cpu_write_data
+	output [31:0] cpu_write_data, 
+	output [31:0] test_addr
 );
 
 /* Wire definitions */
@@ -459,13 +460,15 @@ cp0 cp0(
 	.write_data(m_rf_read_result2), 
 	.exit_isr(cw_m_cp0_exit_isr), 
 	.in_bds(cw_m_cp0_in_bds), 
-	.hwirq(hwirq), 
+	.hwirq(hwirq[7:2]), 
 	.exc(cw_m_cp0_exc), 
 	.curr_pc(cw_m_cp0_curr_pc), 
 	.read_result(m_cp0_read_result), 
 	.epc(m_cp0_epc_orig), 
 	.have2handle(m_cp0_have2handle)
 );
+
+assign test_addr = cw_m_cp0_curr_pc;
 
 assign m_cp0_epc = 
 	(cw_fm_epc == `orig) ? m_cp0_epc_orig : 

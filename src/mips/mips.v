@@ -10,7 +10,7 @@ assign rst = reset;
 
 wire [31:0] cpu_addr;
 wire [31:0] cpu_write_data, cpu_read_result;
-wire [5:0] hwirq;
+wire [7:2] hwirq;
 wire [2:0] dm_mode;
 
 wire dev_write_enable;
@@ -18,12 +18,13 @@ wire dev_write_enable;
 cpu cpu(
 	.clk(clk), 
 	.rst(rst), 
+	.cpu_read_result(cpu_read_result), 
+	.hwirq(hwirq), 
 	.cpu_addr(cpu_addr), 
 	.dev_write_enable(dev_write_enable), 
 	.dm_mode(dm_mode), 
 	.cpu_write_data(cpu_write_data), 
-	.cpu_read_result(cpu_read_result), 
-	.hwirq(hwirq)
+	.test_addr(addr)
 );
 
 bridge bridge(
@@ -33,6 +34,7 @@ bridge bridge(
 	.write_enable(dev_write_enable), 
 	.dm_mode(dm_mode), 
 	.write_data(cpu_write_data), 
+	.test_interrupt(test_interrupt), 
 	.read_result(cpu_read_result), 
 	.hwirq(hwirq)
 );

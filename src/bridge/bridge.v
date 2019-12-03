@@ -7,8 +7,9 @@ module bridge(
 	input write_enable, 
 	input [2:0] dm_mode, 
 	input [31:0] write_data, 
+	input test_interrupt, 
 	output [31:0] read_result, 
-	output [5:0] hwirq
+	output [7:2] hwirq
 );
 
 wire [3:0] curr_dev;
@@ -40,7 +41,7 @@ assign timer1_addr =
 	(curr_dev == 4'd1) ? $unsigned(addr) - $unsigned(`BRIDGE_TIMER1_BASE) : 
 	2'b0;
 
-assign hwirq = {4'b0, timer1_irq, timer0_irq};
+assign hwirq = {3'b0, test_interrupt, timer1_irq, timer0_irq};
 
 timer timer0 (
 	.clk(clk), 
