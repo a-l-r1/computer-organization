@@ -1,6 +1,8 @@
 module mips(
 	input clk, 
-	input reset
+	input reset, 
+	input interrupt, 
+	output [31:0] addr
 );
 
 wire rst;
