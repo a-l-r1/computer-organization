@@ -1,3 +1,6 @@
+/* NOTE: This is the example devices/timer.v, which is copied verbatim from
+ * the course website excluding this comment. */
+
 `timescale 1ns / 1ps
 `define IDLE 2'b00
 `define LOAD 2'b01

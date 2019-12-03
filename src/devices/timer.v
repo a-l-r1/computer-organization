@@ -4,33 +4,38 @@
 
 `include "debug/debug.h"
 
+/* NOTE: This code is considered correct under the 3 following assumptions: 
+ * 1. Values of all registers have no Xs or Zs. 
+ * 2. The state register always contains valid values (values correspond to
+ * one and only one state). 
+ * 3. No reads or writes to the 4th memory-mapped word (actually invalid) would happen. */
+
 module timer(
 	input clk, 
 	input rst, 
-	input [31:0] addr, 
+	input [1:0] addr, 
 	input write_enable, 
 	input [31:0] write_data, 
 	output [31:0] read_result, 
 	output irq
 );
 
-parameter BASE = 32'h00007f00;
-
 reg [31:0] preset, count;
-reg allow_irq, mode, enable, irq_reg;
-
-wire [31:0] ctrl;
-assign ctrl = {28'b0, allow_irq, 1'b0, mode, enable};
-
-assign irq = irq_reg;
-
-wire [31:0] real_addr;
-assign real_addr = $unsigned(addr) - $unsigned(BASE);
-
-wire write_valid;
-assign write_valid = (write_enable == 1'b1) && (real_addr == 0 || real_addr == 4); 
+reg [1:0] mode;
+reg allow_irq, enable, irq_reg;
 
 reg [2:0] state;
+
+wire [31:0] ctrl;
+assign ctrl = {28'b0, allow_irq, mode, enable};
+
+assign irq = irq_reg & allow_irq;
+
+assign read_result = 
+	(addr == 2'd0) ? {28'b0, allow_irq, mode, enable} : 
+	(addr == 2'd1) ? preset : 
+	(addr == 2'd2) ? count : 
+	32'b0;
 
 initial begin
 	preset <= 0;
@@ -49,12 +54,16 @@ always @(posedge clk) begin
 		allow_irq <= 0;
 		mode <= 0;
 		enable <= 0;
+		state <= `TIMER_IDLE;
+		irq_reg <= 0;
 	end else begin
 
-		if (write_valid == 1'b1) begin
-			case (real_addr)
-				32'd0: {allow_irq, mode, enable} <= {write_data[3], write_data[1], write_data[0]};
-				32'd4: preset <= write_data;
+		if (write_enable == 1'b1) begin
+			case (addr)
+				2'd0: {allow_irq, mode, enable} <= {write_data[3], write_data[2:1], write_data[0]};
+				2'd1: preset <= write_data;
+				/* TODO: inconsistency */
+				2'd2: count <= write_data;
 				/* default omitted */
 			endcase
 
@@ -64,10 +73,6 @@ always @(posedge clk) begin
 					if (enable == 1'b1) begin
 						irq_reg <= 1'b0;
 						state <= `TIMER_LOAD;
-					end else begin
-						if (allow_irq == 1'b0) begin
-							irq_reg <= 1'b0;
-						end
 					end
 				end
 
@@ -80,31 +85,26 @@ always @(posedge clk) begin
 					if (enable == 1'b0) begin
 						state <= `TIMER_IDLE;
 					end else begin
-						if ($unsigned(count) > $unsigned(1)) begin
-							count <= $unsigned(count) - $unsigned(1);
+						/* NOTE: No $unsigned
+						* wrappings since the 
+						* example doesn't
+						* have them. */
+						if (count > 1) begin
+							count <= count - 1;
 						end else begin
-							if ($unsigned(count) <= $unsigned(1)) begin
-								count <= $unsigned(count) - $unsigned(1);
-								state <= `TIMER_INT;
-								if (allow_irq == 1'b1) begin
-									irq_reg <= 1'b1;
-								end
-							end
+							count <= 0;
+							state <= `TIMER_INT;
+							irq_reg <= 1'b1;
 						end
 					end
 				end
 
 				`TIMER_INT: begin
 					state <= `TIMER_IDLE;
-					if (mode == 1'b0) begin
+					if (mode == 2'b00) begin
 						enable <= 1'b0;
-						if (allow_irq == 1'b0) begin
-							irq_reg <= 1'b0;
-						end
 					end else begin
-						if (mode == 1'b1) begin
-							irq_reg <= 1'b0;
-						end
+						irq_reg <= 1'b0;
 					end
 				end
 
@@ -113,12 +113,6 @@ always @(posedge clk) begin
 		end
 	end
 end
-
-assign read_result = 
-	(real_addr == 32'd0) ? {28'b0, allow_irq, 1'b0, mode, enable} : 
-	(real_addr == 32'd4) ? preset : 
-	(real_addr == 32'd8) ? count : 
-	32'b0;
 
 endmodule
 
