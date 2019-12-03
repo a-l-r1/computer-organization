@@ -29,6 +29,9 @@ sw $0, 1($0)
 
 mthi $0
 
+mfhi $9
+mflo $10
+
 # flush pipeline
 nop
 nop
@@ -42,6 +45,9 @@ mult $1, $1
 
 # exception at level M
 add $1, $1, $1
+
+mfhi $9
+mflo $10
 
 loop:
 beq $0, $0, loop
