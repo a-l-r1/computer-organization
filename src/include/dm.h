@@ -13,10 +13,8 @@
 `define DM_B 3'b101
 `define DM_BU 3'b110
 
-/* DM_SIZE == 2^(DM_ADDR_WIDTH - 2) */
-
 `define DM_ADDR_WIDTH 14
-`define DM_SIZE 4096
+`define DM_SIZE 3072
 
 `define DM_OUTPUT_FORMAT "%d@%h: *%h <= %h"
 

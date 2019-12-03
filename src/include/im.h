@@ -8,8 +8,8 @@
 
 /* IM_SIZE == 2^(IM_ADDR_WIDTH - 2) */
 
-`define IM_ADDR_WIDTH 14
-`define IM_SIZE 4096
+`define IM_ADDR_WIDTH 13
+`define IM_SIZE 2048
 
 `define IM_CODE_FILENAME "code.txt"
 `define IM_ISR_CODE_FILENAME "code_handler.txt"
