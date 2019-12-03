@@ -70,7 +70,11 @@ always @(posedge clk) begin
 	if (have2handle == 1'b1) begin
 		`exl <= 1'b1;
 		`in_bds_i <= in_bds;
-		`epc_i <= (in_bds == 1'b1) ? $unsigned(curr_pc) - $unsigned(4) : $unsigned(curr_pc);
+		/* NOTE: For compliance with cscore. But is changing addr in
+		 * the top-level module mips needed? */
+		`epc_i <= (in_bds == 1'b1) ? $unsigned({curr_pc[31:2], 2'b0}) - $unsigned(4) : 
+			$unsigned({curr_pc[31:2], 2'b0});
+
 		if (have_irq == 1'b1) begin
 			`exc_i <= 0;
 		end else begin
@@ -91,7 +95,8 @@ always @(posedge clk) begin
 				5'd14: epc_i <= write_data;
 `else /* MARS_COMPAT */
 				5'd12: {`allow_hwirq, `exl, `g_allow_hwirq} <= {write_data[15:10], write_data[1], write_data[0]};
-				5'd13: {`in_bds_i, `hwirq_i, `exc_i} <= {write_data[31], write_data[15:10], write_data[6:2]};
+				/* NOTE: for compliance with cscore */
+				/* 5'd13: {`in_bds_i, `hwirq_i, `exc_i} <= {write_data[31], write_data[15:10], write_data[6:2]}; */
 				5'd14: epc_i <= write_data;
 `endif /* MARS_COMPAT */
 				/* default omitted */
