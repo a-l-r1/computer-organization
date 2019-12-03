@@ -1,10 +1,6 @@
 `include "instr-id.h"
 `include "pipelined3.h"
 
-`define PART_NAME "instr-id"
-
-`include "debug/debug.h"
-
 `include "alu.h"
 `include "ac.h"
 `include "ext.h"
@@ -160,26 +156,9 @@ module control(
 	output [3:0] cw_fm_d2, 
 	output [3:0] cw_fm_e1, 
 	output [3:0] cw_fm_e2, 
-	output [2:0] cw_fm_m, 
-	output [2:0] cw_fm_epc
+	output [3:0] cw_fm_m, 
+	output [3:0] cw_fm_epc
 );
-
-/* Macro definitions */
-
-/* No, can't use `define dkind(x) (dkind_result == x). ISE would crash.
-* Salute to ISE. */
-
-`define is(x, y) ((x) == (y))
-
-`define drs `RS(d_instr)
-`define drt `RT(d_instr)
-`define drd `RD(d_instr)
-
-`define fwable(old, new) (((old) == (new)) && ((old) != 0))
-
-`define inf 3'd7
-
-`define cp0_epc 14
 
 /* Wire and register declarations */
 
@@ -197,24 +176,19 @@ wire [4:0] d_reg1;
 wire [4:0] d_reg2;
 wire [4:0] d_regw;
 
-reg [4:0] e_reg1;
-reg [4:0] e_reg2;
-reg [4:0] e_regw;
+wire [4:0] e_reg1;
+wire [4:0] e_reg2;
+wire [4:0] e_regw;
 
-reg [4:0] m_reg1;
-reg [4:0] m_reg2;
-reg [4:0] m_regw;
+wire [4:0] m_reg1;
+wire [4:0] m_reg2;
+wire [4:0] m_regw;
 
-reg [4:0] w_reg1;
-reg [4:0] w_reg2;
-reg [4:0] w_regw;
+wire [4:0] w_reg1;
+wire [4:0] w_reg2;
+wire [4:0] w_regw;
 
 wire stall;
-
-wire [3:0] t_use_reg1;
-wire [3:0] t_use_reg2;
-wire [3:0] t_new_e;
-wire [3:0] t_new_m;
 
 /* F */
 
@@ -233,18 +207,6 @@ wire [4:0] m_exc_final;
 /* Initial block */
 
 initial begin
-	e_reg1 = 5'b0;
-	e_reg2 = 5'b0;
-	e_regw = 5'b0;
-
-	m_reg1 = 5'b0;
-	m_reg2 = 5'b0;
-	m_regw = 5'b0;
-
-	w_reg1 = 5'b0;
-	w_reg2 = 5'b0;
-	w_regw = 5'b0;
-	
 	d_exc = 5'b0;
 	e_exc = 5'b0;
 	m_exc = 5'b0;
@@ -279,25 +241,77 @@ assign wdptype = wkind[9:5];
 
 /* Internal pipeline */
 
-always @(posedge clk) begin
-	e_reg1 <= (cw_e_pff_rst == 1'b1) ? 5'b0 : d_reg1;
-	m_reg1 <= (cw_m_pff_rst == 1'b1) ? 5'b0 : e_reg1;
-	w_reg1 <= (cw_w_pff_rst == 1'b1) ? 5'b0 : m_reg1;
+pff #(.BIT_WIDTH(5)) e_reg1_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(rst | cw_e_pff_rst), 
+	.i(d_reg1), 
+	.o(e_reg1)
+);
 
-	e_reg2 <= (cw_e_pff_rst == 1'b1) ? 5'b0 : d_reg2;
-	m_reg2 <= (cw_m_pff_rst == 1'b1) ? 5'b0 : e_reg2;
-	w_reg2 <= (cw_w_pff_rst == 1'b1) ? 5'b0 : m_reg2;
+pff #(.BIT_WIDTH(5)) e_reg2_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(rst | cw_e_pff_rst), 
+	.i(d_reg2), 
+	.o(e_reg2)
+);
 
-	e_regw <= (cw_e_pff_rst == 1'b1) ? 5'b0 : d_regw;
-	m_regw <= (cw_m_pff_rst == 1'b1) ? 5'b0 : e_regw;
-	w_regw <= (cw_w_pff_rst == 1'b1) ? 5'b0 : m_regw;
+pff #(.BIT_WIDTH(5)) e_regw_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(rst | cw_e_pff_rst), 
+	.i(d_regw), 
+	.o(e_regw)
+);
 
-	`debug_write(("instructions: D: 0x%08x, E: 0x%08x, M: 0x%08x, W: 0x%08x\n", d_instr, e_instr, m_instr, w_instr));
-	`debug_write(("kind: D: 0b%09b, E: 0b%09b, M: 0b%09b, W: 0b%09b\n", dkind, ekind, mkind, wkind));
-	`debug_write(("reg1: D: %0d, E: %0d, M: %0d, W: %0d\n", d_reg1, e_reg1, m_reg1, w_reg1));
-	`debug_write(("reg2: D: %0d, E: %0d, M: %0d, W: %0d\n", d_reg2, e_reg2, m_reg2, w_reg2));
-	`debug_write(("regw: D: %0d, E: %0d, M: %0d, W: %0d\n", d_regw, e_regw, m_regw, w_regw));
-end
+pff #(.BIT_WIDTH(5)) m_reg1_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(rst | cw_m_pff_rst), 
+	.i(e_reg1), 
+	.o(m_reg1)
+);
+
+pff #(.BIT_WIDTH(5)) m_reg2_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(rst | cw_m_pff_rst), 
+	.i(e_reg2), 
+	.o(m_reg2)
+);
+
+pff #(.BIT_WIDTH(5)) m_regw_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(rst | cw_m_pff_rst), 
+	.i(e_regw), 
+	.o(m_regw)
+);
+
+pff #(.BIT_WIDTH(5)) w_reg1_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(rst | cw_w_pff_rst), 
+	.i(m_reg1), 
+	.o(w_reg1)
+);
+
+pff #(.BIT_WIDTH(5)) w_reg2_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(rst | cw_w_pff_rst), 
+	.i(m_reg2), 
+	.o(w_reg2)
+);
+
+pff #(.BIT_WIDTH(5)) w_regw_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(rst | cw_w_pff_rst), 
+	.i(m_regw), 
+	.o(w_regw)
+);
 
 /* Normal control signals */
 
@@ -491,93 +505,61 @@ assign d_regw =
 
 /* Forward control */
 
-assign cw_fm_d1 = 
-	(`fwable(d_reg1, e_regw) && edptype == `CMOV) ? `E2D_rf : 
-	(`fwable(d_reg1, e_regw) && (edptype == `JUMP_I || edptype == `JUMP_R)) ? `E2D_npc : 
-	(`fwable(d_reg1, e_regw) && edptype == `LOAD_M) ? `E2D_md : 
-	(`fwable(d_reg1, m_regw) && (mdptype == `JUMP_I || mdptype == `JUMP_R)) ? `M2D_npc : 
-	(`fwable(d_reg1, m_regw) && (mdptype == `CAL_R || mdptype == `CAL_I || mdptype == `CMOV)) ? `M2D_alu : 
-	(`fwable(d_reg1, m_regw) && mdptype == `LOAD_M) ? `M2D_md : 
-	(`fwable(d_reg1, m_regw) && mdptype == `LOAD_C0) ? `M2D_cp0 : 
-	(`fwable(d_reg1, w_regw)) ? `W2D_rf : 
-	`orig;
-
-assign cw_fm_e1 = 
-	(`fwable(e_reg1, m_regw) && (mdptype == `JUMP_I || mdptype == `JUMP_R)) ? `M2E_npc : 
-	(`fwable(e_reg1, m_regw) && (mdptype == `CAL_R || mdptype == `CAL_I || mdptype == `CMOV)) ? `M2E_alu : 
-	(`fwable(e_reg1, m_regw) && mdptype == `LOAD_M) ? `M2E_md : 
-	(`fwable(e_reg1, m_regw) && mdptype == `LOAD_C0) ? `M2E_cp0 : 
-	(`fwable(e_reg1, w_regw)) ? `W2E_rf : 
-	`orig;
-
-/* Edit cw_fm_[de]1 instead */
-
-assign cw_fm_d2 = 
-	(`fwable(d_reg2, e_regw) && edptype == `CMOV) ? `E2D_rf : 
-	(`fwable(d_reg2, e_regw) && (edptype == `JUMP_I || edptype == `JUMP_R)) ? `E2D_npc : 
-	(`fwable(d_reg2, e_regw) && edptype == `LOAD_M) ? `E2D_md : 
-	(`fwable(d_reg2, m_regw) && (mdptype == `JUMP_I || mdptype == `JUMP_R)) ? `M2D_npc : 
-	(`fwable(d_reg2, m_regw) && (mdptype == `CAL_R || mdptype == `CAL_I || mdptype == `CMOV)) ? `M2D_alu : 
-	(`fwable(d_reg2, m_regw) && mdptype == `LOAD_M) ? `M2D_md : 
-	(`fwable(d_reg2, m_regw) && mdptype == `LOAD_C0) ? `M2D_cp0 : 
-	(`fwable(d_reg2, w_regw)) ? `W2D_rf : 
-	`orig;
-
-assign cw_fm_e2 = 
-	(`fwable(e_reg2, m_regw) && (mdptype == `JUMP_I || mdptype == `JUMP_R)) ? `M2E_npc : 
-	(`fwable(e_reg2, m_regw) && (mdptype == `CAL_R || mdptype == `CAL_I || mdptype == `CMOV)) ? `M2E_alu : 
-	(`fwable(e_reg2, m_regw) && mdptype == `LOAD_M) ? `M2E_md : 
-	(`fwable(e_reg2, m_regw) && mdptype == `LOAD_C0) ? `M2E_cp0 : 
-	(`fwable(e_reg2, w_regw)) ? `W2E_rf : 
-	`orig;
-
-assign cw_fm_m = 
-	(`fwable(m_reg2, w_regw)) ? `W2M_rf : 
-	`orig;
-
-assign cw_fm_epc = 
-	(ddptype == `STORE_C0 && `RD(d_instr) == `cp0_epc && `RD(d_instr) != 0) ? `EPC_D2M_rf : 
-	(edptype == `STORE_C0 && `RD(e_instr) == `cp0_epc && `RD(e_instr) != 0) ? `EPC_E2M_rf : 
-	(mdptype == `STORE_C0 && `RD(m_instr) == `cp0_epc && `RD(m_instr) != 0) ? `EPC_M2M_rf : 
-	`orig;
+forward forward(
+	.dkind(dkind), 
+	.ekind(ekind), 
+	.mkind(mkind), 
+	.wkind(wkind), 
+	.d_reg1(d_reg1), 
+	.d_reg2(d_reg2), 
+	.d_regw(d_regw), 
+	.e_reg1(e_reg1), 
+	.e_reg2(e_reg2), 
+	.e_regw(e_regw), 
+	.m_reg1(m_reg1), 
+	.m_reg2(m_reg2), 
+	.m_regw(m_regw), 
+	.w_reg1(w_reg1), 
+	.w_reg2(w_reg2), 
+	.w_regw(w_regw), 
+	.d_instr(d_instr), 
+	.e_instr(e_instr), 
+	.m_instr(m_instr), 
+	.w_instr(w_instr), 
+	.cw_fm_d1(cw_fm_d1), 
+	.cw_fm_e1(cw_fm_e1), 
+	.cw_fm_d2(cw_fm_d2), 
+	.cw_fm_e2(cw_fm_e2), 
+	.cw_fm_m(cw_fm_m), 
+	.cw_fm_epc(cw_fm_epc)
+);
 
 /* Stall control */
 
-assign t_use_reg1 = 
-	(ddptype == `CAL_R || ddptype == `CAL_I || ddptype == `LOAD || ddptype == `STORE || ddptype == `CAL_M || ddptype == `STORE_M) ? 3'd1 : 
-	(ddptype == `BRANCH || ddptype == `JUMP_R || ddptype == `CMOV) ? 3'd0 : 
-	`inf;
-
-assign t_use_reg2 = 
-	(ddptype == `STORE || ddptype == `STORE_C0) ? 3'd2 : 
-	(ddptype == `CAL_R || ddptype == `CAL_I || ddptype == `CAL_M || ddptype == `STORE_M) ? 3'd1 : 
-	(ddptype == `BRANCH || ddptype == `CMOV) ? 3'd0 : 
-	`inf;
-
-assign t_new_e = 
-	(edptype == `LOAD || edptype == `LOAD_C0) ? 3'd2 : 
-	(edptype == `CAL_R || edptype == `CAL_I || edptype == `LOAD_C0) ? 3'd1 : 
-	3'd0;
-
-assign t_new_m = 
-	(mdptype == `LOAD || mdptype == `STORE) ? 3'd1 : 
-	3'd0;
-
-assign stall_e2d_reg1 = `fwable(d_reg1, e_regw) && $unsigned(t_use_reg1) < $unsigned(t_new_e);
-assign stall_m2d_reg1 = `fwable(d_reg1, m_regw) && $unsigned(t_use_reg1) < $unsigned(t_new_m);
-assign stall_e2d_reg2 = `fwable(d_reg2, e_regw) && $unsigned(t_use_reg2) < $unsigned(t_new_e);
-assign stall_m2d_reg2 = `fwable(d_reg2, m_regw) && $unsigned(t_use_reg2) < $unsigned(t_new_m);
-
-assign stall_md_busy = 
-	e_md_busy == 1'b1 && 
-	(ddptype == `CAL_M || ddptype == `LOAD_M || ddptype == `STORE_M);
-
-assign stall_tnew_mtc0_eret = 
-	ddptype == `JUMP_C0 && 
-	(edptype == `STORE_C0 && `RT(e_instr) != 0 && `RD(e_instr) == `cp0_epc) && 
-	($unsigned(t_new_m) > $unsigned(0));
-
-assign stall = stall_e2d_reg1 | stall_m2d_reg1 | stall_e2d_reg2 | stall_m2d_reg2 | stall_md_busy | stall_tnew_mtc0_eret;
+hazard hazard(
+	.dkind(dkind), 
+	.ekind(ekind), 
+	.mkind(mkind), 
+	.wkind(wkind), 
+	.d_reg1(d_reg1), 
+	.d_reg2(d_reg2), 
+	.d_regw(d_regw), 
+	.e_reg1(e_reg1), 
+	.e_reg2(e_reg2), 
+	.e_regw(e_regw), 
+	.m_reg1(m_reg1), 
+	.m_reg2(m_reg2), 
+	.m_regw(m_regw), 
+	.w_reg1(w_reg1), 
+	.w_reg2(w_reg2), 
+	.w_regw(w_regw), 
+	.e_md_busy(e_md_busy), 
+	.d_instr(d_instr), 
+	.e_instr(e_instr), 
+	.m_instr(m_instr), 
+	.w_instr(w_instr), 
+	.stall(stall)
+);
 
 /* TODO: more thorough stall control? */
 

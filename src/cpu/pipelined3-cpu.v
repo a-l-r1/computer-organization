@@ -28,9 +28,7 @@ wire [31:0] cw_m_cp0_curr_pc;
 
 wire [2:0] cw_w_m_regdata;
 
-wire [3:0] cw_fm_d1, cw_fm_d2, cw_fm_e1, cw_fm_e2;
-wire [2:0] cw_fm_m;
-wire [2:0] cw_fm_epc;
+wire [3:0] cw_fm_d1, cw_fm_d2, cw_fm_e1, cw_fm_e2, cw_fm_m, cw_fm_epc;
 
 wire cw_f_pc_enable, cw_d_pff_enable;
 wire cw_d_pff_rst, cw_e_pff_rst, cw_m_pff_rst, cw_w_pff_rst;

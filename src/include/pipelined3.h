@@ -1,6 +1,23 @@
 `ifndef PIPELINED_H
 `define PIPELINED_H
 
+/* Macro definitions */
+
+/* No, can't use `define dkind(x) (dkind_result == x). ISE would crash.
+* Salute to ISE. */
+
+`define is(x, y) ((x) == (y))
+
+`define drs `RS(d_instr)
+`define drt `RT(d_instr)
+`define drd `RD(d_instr)
+
+`define fwable(old, new) (((old) == (new)) && ((old) != 0))
+
+`define inf 3'd7
+
+`define cp0_epc 14
+
 `define orig 0
 `define E2D_rf 1
 `define E2D_npc 2
