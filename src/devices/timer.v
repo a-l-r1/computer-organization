@@ -2,8 +2,6 @@
 
 `define PART_NAME "timer"
 
-`include "debug/debug.h"
-
 /* NOTE: This code is considered correct under the 3 following assumptions: 
  * 1. Values of all registers have no Xs or Zs. 
  * 2. The state register always contains valid values (values correspond to
