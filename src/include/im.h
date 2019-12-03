@@ -15,7 +15,6 @@
 `define IM_ISR_CODE_FILENAME "code_handler.txt"
 
 `define IM_START_ADDRESS 32'h00003000
-`define IM_ISR_START_ADDRESS 32'h00004180
 
 `define IM_ADDR_LB 32'h00003000
 `define IM_ADDR_UB 32'h00004fff
