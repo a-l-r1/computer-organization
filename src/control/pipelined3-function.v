@@ -200,17 +200,7 @@ wire cw_m_dm_write_enable_orig;
 
 /* Exception ID pipeline */
 
-reg [4:0] d_exc, e_exc, m_exc;
-
-wire [4:0] m_exc_final;
-
-/* Initial block */
-
-initial begin
-	d_exc = 5'b0;
-	e_exc = 5'b0;
-	m_exc = 5'b0;
-end
+wire [4:0] d_exc, e_exc, m_exc, m_exc_final;
 
 /* Module references */
 
@@ -561,8 +551,6 @@ hazard hazard(
 	.stall(stall)
 );
 
-/* TODO: more thorough stall control? */
-
 assign cw_f_pc_enable_orig = ~stall;
 
 assign cw_d_pff_enable = ~stall;
@@ -571,24 +559,41 @@ assign cw_e_pff_rst_orig = stall;
 
 /* Exception ID pipeline */
 
-always @(posedge clk) begin
-	/* Remember the precedence! */
-	d_exc <= 
-		(cw_d_pff_rst == 1'b1) ? `EXC_NONE : 
-		(stall == 1'b1) ? d_exc : 
+/* Remember the precedence! */
+
+pff #(.BIT_WIDTH(5)) d_exc_(
+	.clk(clk), 
+	.enable(cw_d_pff_enable), 
+	.rst(rst | cw_d_pff_rst), 
+	.i(
 		(ddptype == `JUMP_C0) ? `EXC_NONE : 
 		(f_pc_invalid == 1'b1) ? `EXC_ADEL : 
-		`EXC_NONE;
-	e_exc <= 
-		(cw_e_pff_rst == 1'b1) ? `EXC_NONE : 
-		(stall == 1'b1) ? `EXC_NONE : 
+		`EXC_NONE
+	), 
+	.o(d_exc)
+);
+
+pff #(.BIT_WIDTH(5)) e_exc_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(rst | cw_e_pff_rst), 
+	.i(
 		(dkind == `UNKNOWN) ? `EXC_RI : 
-		d_exc;
-	m_exc <= 
-		(cw_m_pff_rst == 1'b1) ? `EXC_NONE : 
+		d_exc
+	), 
+	.o(e_exc)
+);
+
+pff #(.BIT_WIDTH(5)) m_exc_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(rst | cw_m_pff_rst), 
+	.i(
 		((ekind == `ADD || ekind == `ADDI || ekind == `SUB) && e_alu_sig_overflow == 1'b1) ? `EXC_OV : 
-		e_exc;
-end
+		e_exc
+	), 
+	.o(m_exc)
+);
 
 assign m_exc_final = 
 	(m_ac_validity != `AC_VALID) ? (
