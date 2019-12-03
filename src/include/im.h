@@ -17,7 +17,7 @@
 `define IM_START_ADDRESS 32'h00003000
 
 `define IM_ADDR_LB 32'h00003000
-`define IM_ADDR_UB 32'h00004fff
+`define IM_ADDR_UB 32'h00004ffc
 
 `endif
 
