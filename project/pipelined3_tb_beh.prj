@@ -1,5 +1,6 @@
 verilog work "../src/datapath/pff.v"
 verilog work "../src/control/pipelined3-hazard.v"
+verilog work "../src/control/pipelined3-handler.v"
 verilog work "../src/control/pipelined3-forward.v"
 verilog work "../src/devices/timer.v"
 verilog work "../src/datapath/rf.v"
