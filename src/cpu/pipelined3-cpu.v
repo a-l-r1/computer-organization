@@ -48,7 +48,7 @@ wire cw_w_rf_write_enable;
 
 wire [31:0] f_pc_curr_pc, f_npc_next_pc;
 wire [31:0] f_im_result;
-wire f_pc_invalid;
+wire f_im_valid;
 
 /* D */
 
@@ -102,6 +102,8 @@ wire [31:0] w_cp0_read_result;
 
 control control(
 	.clk(clk), 
+	.rst(rst), 
+
 	.d_instr(d_im_result), 
 	.e_instr(e_im_result), 
 	.m_instr(m_im_result), 
@@ -112,7 +114,7 @@ control control(
 	/* read_addr and write_addr are the same as m_alu_result */
 	.m_dm_addr(m_alu_result), 
 
-	.f_pc_invalid(f_pc_invalid), 
+	.f_im_valid(f_im_valid), 
 	.e_alu_sig_overflow(e_alu_sig_overflow), 
 	.m_ac_validity(m_ac_validity), 
 	.d_pc_curr_pc(d_pc_curr_pc), 
@@ -180,15 +182,15 @@ pc pc(
 	.rst(rst), 
 	.next_pc(f_npc_next_pc), 
 	.enable(cw_f_pc_enable), 
-	.curr_pc(f_pc_curr_pc), 
-	.invalid(f_pc_invalid)
+	.curr_pc(f_pc_curr_pc)
 );
 
 im im(
 	.addr(f_pc_curr_pc), 
 	/* im is always enabled */
 	.enable(1'b1), 
-	.result(f_im_result)
+	.result(f_im_result), 
+	.valid(f_im_valid)
 );
 
 /* D */

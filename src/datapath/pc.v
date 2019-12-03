@@ -2,8 +2,6 @@
 
 `include "im.h"
 
-`define PART_NAME "pc"
-
 module pc(
 	input clk, 
 	input rst, 
@@ -16,12 +14,12 @@ module pc(
 reg [31:0] saved_pc;
 
 initial begin
-	saved_pc = `PC_START_ADDRESS;
+	saved_pc = `IM_START_ADDRESS;
 end
 
 always @(posedge clk) begin
 	if (rst == 1'b1) begin
-		saved_pc <= `PC_START_ADDRESS;
+		saved_pc <= `IM_START_ADDRESS;
 	end else begin
 		if (enable == `PC_ENABLED) begin
 			saved_pc <= next_pc;
@@ -29,12 +27,7 @@ always @(posedge clk) begin
 	end
 end
 
-assign curr_pc = {saved_pc[31:2], 2'b0};
-
-assign invalid = 
-	(curr_pc[1:0] != 2'b0) || 
-	($unsigned(curr_pc) < $unsigned(`IM_ADDR_LB)) || 
-	($unsigned(curr_pc) > $unsigned(`IM_ADDR_UB));
+assign curr_pc = saved_pc;
 
 endmodule
 

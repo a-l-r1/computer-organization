@@ -102,6 +102,7 @@ endmodule
 
 module control(
 	input clk, 
+	input rst, 
 	input [31:0] d_instr, 
 	input [31:0] e_instr, 
 	input [31:0] m_instr, 
@@ -111,7 +112,7 @@ module control(
 	input e_md_busy, 
 	input [31:0] m_dm_addr, 
 
-	input f_pc_invalid, 
+	input f_im_valid, 
 	input e_alu_sig_overflow, 
 	input [2:0] m_ac_validity, 
 	input [31:0] d_pc_curr_pc, 
@@ -567,7 +568,7 @@ pff #(.BIT_WIDTH(5)) d_exc_(
 	.rst(rst | cw_d_pff_rst), 
 	.i(
 		(ddptype == `JUMP_C0) ? `EXC_NONE : 
-		(f_pc_invalid == 1'b1) ? `EXC_ADEL : 
+		(f_im_valid == 1'b0) ? `EXC_ADEL : 
 		`EXC_NONE
 	), 
 	.o(d_exc)
