@@ -92,9 +92,6 @@ doc: $(MD_FILES)
 code:
 	$(PYTHON) $(MIPS_AS) $(ASM_FILE) $(CODE_FILE)
 
-migrate-to-latex:
-	$(PANDOC) --standalone -f gfm -t latex --standalone --top-level-division=section -o $(EXPORT_DOC)/$(CODENAME).tex $(MD_FILES)
-
 debug-on:
 	$(PYTHON) $(DEBUG_CONTROL) $(DEBUG_H_FILE) on
 
