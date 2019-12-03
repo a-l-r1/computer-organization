@@ -34,7 +34,7 @@ bridge bridge(
 	.write_enable(dev_write_enable), 
 	.dm_mode(dm_mode), 
 	.write_data(cpu_write_data), 
-	.test_interrupt(test_interrupt), 
+	.test_interrupt(interrupt), 
 	.read_result(cpu_read_result), 
 	.hwirq(hwirq)
 );
