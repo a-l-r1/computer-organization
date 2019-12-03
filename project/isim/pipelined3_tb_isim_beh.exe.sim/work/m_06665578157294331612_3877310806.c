@@ -21,11 +21,11 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "/home/a-l-r/co/src/src/mips/pipelined3.v";
+static const char *ng0 = "/home/a-l-r/co/src/src/mips/mips.v";
 
 
 
-static void Cont_7_0(char *t0)
+static void Cont_9_0(char *t0)
 {
     char *t1;
     char *t2;
@@ -44,17 +44,17 @@ static void Cont_7_0(char *t0)
     unsigned int t15;
     char *t16;
 
-LAB0:    t1 = (t0 + 3480U);
+LAB0:    t1 = (t0 + 3800U);
     t2 = *((char **)t1);
     if (t2 == 0)
         goto LAB2;
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(7, ng0);
+LAB2:    xsi_set_current_line(9, ng0);
     t2 = (t0 + 1208U);
     t3 = *((char **)t2);
-    t2 = (t0 + 3880);
+    t2 = (t0 + 4200);
     t4 = (t2 + 56U);
     t5 = *((char **)t4);
     t6 = (t5 + 56U);
@@ -73,16 +73,16 @@ LAB2:    xsi_set_current_line(7, ng0);
     t15 = *((unsigned int *)t13);
     *((unsigned int *)t13) = (t15 | t9);
     xsi_driver_vfirst_trans(t2, 0, 0);
-    t16 = (t0 + 3800);
+    t16 = (t0 + 4120);
     *((int *)t16) = 1;
 
 LAB1:    return;
 }
 
 
-extern void work_m_12015556432817483446_3877310806_init()
+extern void work_m_06665578157294331612_3877310806_init()
 {
-	static char *pe[] = {(void *)Cont_7_0};
-	xsi_register_didat("work_m_12015556432817483446_3877310806", "isim/pipelined3_tb_isim_beh.exe.sim/work/m_12015556432817483446_3877310806.didat");
+	static char *pe[] = {(void *)Cont_9_0};
+	xsi_register_didat("work_m_06665578157294331612_3877310806", "isim/pipelined3_tb_isim_beh.exe.sim/work/m_06665578157294331612_3877310806.didat");
 	xsi_register_executes(pe);
 }

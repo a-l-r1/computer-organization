@@ -1,4 +1,4 @@
-Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -i /home/a-l-r/co/src/src/include -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o /home/a-l-r/co/src/project/pipelined3_tb_isim_beh.exe -prj /home/a-l-r/co/src/project/pipelined3_tb_beh.prj pipelined3_tb work.glbl 
+Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -i /home/a-l-r/co/src/src/include -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o /home/a-l-r/co/src/project/pipelined3_tb_isim_beh.exe -prj /home/a-l-r/co/src/project/pipelined3_tb_beh.prj work.pipelined3_tb work.glbl 
 ISim P.20131013 (signature 0xfbc00daa)
 Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
@@ -22,14 +22,15 @@ Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/ac.v" into li
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/control/pipelined3-function.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/cpu/pipelined3-cpu.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/bridge/bridge.v" into library work
-Analyzing Verilog file "/home/a-l-r/co/src/project/../src/mips/pipelined3.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/mips/mips.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../tests/cpu/pipelined3/pipelined3_tb.v" into library work
 Analyzing Verilog file "/opt/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
+WARNING:HDLCompiler:1016 - "/home/a-l-r/co/src/project/../tests/cpu/pipelined3/pipelined3_tb.v" Line 32: Port interrupt is not connected to this instance
 WARNING:HDLCompiler:1016 - "/home/a-l-r/co/src/project/../src/cpu/pipelined3-cpu.v" Line 354: Port out is not connected to this instance
 Completed static elaboration
-Fuse Memory Usage: 83936 KB
-Fuse CPU Usage: 970 ms
+Fuse Memory Usage: 83944 KB
+Fuse CPU Usage: 870 ms
 Compiling module kind
 Compiling module pff(BIT_WIDTH=5)
 Compiling module forward
@@ -55,9 +56,9 @@ Compiling module mips
 Compiling module pipelined3_tb
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 2 sub-compilation(s) to finish...
+Waiting for 6 sub-compilation(s) to finish...
 Compiled 24 Verilog Units
 Built simulation executable /home/a-l-r/co/src/project/pipelined3_tb_isim_beh.exe
-Fuse Memory Usage: 1172464 KB
-Fuse CPU Usage: 1250 ms
-GCC CPU Usage: 8240 ms
+Fuse Memory Usage: 1172476 KB
+Fuse CPU Usage: 1170 ms
+GCC CPU Usage: 8410 ms
