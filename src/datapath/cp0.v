@@ -81,6 +81,7 @@ always @(posedge clk) begin
 `ifdef MARS_COMPAT
 		cause[9:8] <= 2'b0;
 `endif /* MARS_COMPAT */
+
 	end else begin
 		if (write_valid == 1'b1) begin
 			case (addr)
@@ -102,7 +103,7 @@ always @(posedge clk) begin
 		end
 	end
 
-	/* MARS don't even update it's hardware IRQ related bits */
+	/* MARS doesn't even update it's hardware IRQ related bits */
 `ifndef MARS_COMPAT
 	if (~(have2handle == 1'b0 && write_valid == 1'b1 && addr == 5'd13)) begin
 		`hwirq_i <= hwirq;
