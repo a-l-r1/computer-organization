@@ -5,7 +5,7 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"/home/a-l-r/co/src/project/../src/cpu/pipelined3-cpu.v" Line 355: Port <arg fmt="%s" index="1">out</arg> is not connected to this instance
+<msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"/home/a-l-r/co/src/project/../src/cpu/pipelined3-cpu.v" Line 353: Port <arg fmt="%s" index="1">out</arg> is not connected to this instance
 </msg>
 
 </messages>

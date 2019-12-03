@@ -4,27 +4,27 @@ Command line:
      -wdb  project/pipelined3_tb_isim_beh.wdb
      -simmode  tcl
      -simrunnum  0
-     -socket  36321
+     -socket  47105
 
-Fri Nov 29 10:05:19 2019
+Tue Dec  3 16:47:29 2019
 
 
- Elaboration Time: 0.03 sec
+ Elaboration Time: 0.04 sec
 
- Current Memory Usage: 165.945 Meg
+ Current Memory Usage: 166.228 Meg
 
- Total Signals          : 456
- Total Nets             : 2475
- Total Signal Drivers   : 233
- Total Blocks           : 41
- Total Primitive Blocks : 36
- Total Processes        : 289
- Total Traceable Variables  : 102
- Total Scalar Nets and Variables : 267535
+ Total Signals          : 567
+ Total Nets             : 2577
+ Total Signal Drivers   : 268
+ Total Blocks           : 52
+ Total Primitive Blocks : 47
+ Total Processes        : 341
+ Total Traceable Variables  : 111
+ Total Scalar Nets and Variables : 267925
 
- Total Simulation Time: 0.5 sec
+ Total Simulation Time: 0.51 sec
 
- Current Memory Usage: 243.114 Meg
+ Current Memory Usage: 243.614 Meg
 
-Fri Nov 29 10:05:20 2019
+Tue Dec  3 16:47:30 2019
 
