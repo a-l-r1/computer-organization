@@ -1,6 +1,7 @@
 tests/cpu/pipelined3/basic_isr.asm
 tests/cpu/pipelined3/forwarded_isr.asm
 tests/cpu/pipelined3/exception_in_bds.asm
+tests/cpu/pipelined3/eret_block.asm
 tests/cpu/pipelined3/external/p7weak.asm
 tests/cpu/pipelined3/external/山寨强测_by_hansbug/强测，含异常，异常处理有操作/2.asm
 tests/cpu/pipelined3/external/山寨强测_by_hansbug/强测，含异常，异常处理有操作/1.asm

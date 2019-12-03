@@ -54,6 +54,9 @@ assign wdptype = wkind[9:5];
 
 /* Pipeline resetting */
 
+/* Unconditionally reset level D pipeline registers when stalling isn't
+ * needed. This effectively blocks execution of the possible instruction
+ * following eret. */
 assign cw_d_pff_rst = 
 	(rst == 1'b1) || 
 	(have2handle == 1'b1) || 
