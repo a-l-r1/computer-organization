@@ -7,6 +7,7 @@ module cpu(
 	input [5:0] hwirq, 
 	output [31:0] cpu_addr, 
 	output dev_write_enable, 
+	output [2:0] dm_mode, 
 	output [31:0] cpu_write_data
 );
 
@@ -443,6 +444,8 @@ assign cpu_addr = m_alu_result;
 assign cpu_write_data = m_rf_read_result2;
 
 assign dev_write_enable = cw_m_dm_write_enable;
+
+assign dm_mode = cw_m_dm_mode;
 
 assign m_dm_read_result = 
 	(cw_m_m_bridge == 1'b0) ? m_dm_read_result_orig : 

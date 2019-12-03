@@ -5,6 +5,7 @@ module bridge(
 	input rst, 
 	input [31:0] addr, 
 	input write_enable, 
+	input [2:0] dm_mode, 
 	input [31:0] write_data, 
 	output [31:0] read_result, 
 	output [5:0] hwirq
