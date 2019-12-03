@@ -76,7 +76,7 @@ always @(posedge clk) begin
 			$unsigned({curr_pc[31:2], 2'b0});
 
 		if (have_irq == 1'b1) begin
-			`exc_i <= 0;
+			`exc_i <= `EXC_INT;
 		end else begin
 			if (have_exc == 1'b1) begin
 				`exc_i <= exc;
