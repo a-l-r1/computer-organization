@@ -436,7 +436,7 @@ dm dm(
 	.mode(cw_m_dm_mode), 
 	.read_result(m_dm_read_result_orig), 
 	/* unused */
-	.invalid()
+	.valid()
 );
 
 assign cpu_addr = m_alu_result;

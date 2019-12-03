@@ -12,7 +12,7 @@ module dm(
 	input write_enable, 
 	input [2:0] mode, 
 	output [31:0] read_result, 
-	output invalid
+	output valid
 );
 
 `define rword memory[read_addr[`DM_ADDR_WIDTH - 1:2]]
@@ -22,7 +22,8 @@ reg [31:0] memory [`DM_SIZE - 1:0];
 
 wire [31:0] op_addr;
 wire [31:0] new_word;
-wire valid;
+wire [3:0] write_bitmask;
+wire invalid;
 
 integer i;
 
@@ -48,21 +49,37 @@ assign valid =
 
 assign invalid = ~valid;
 
-assign new_word = 
-	/* The next line has the most precedence */
-	(invalid == 1'b1) ? 32'b0 : 
-	(mode == `DM_W) ? write_data : 
+assign write_bitmask = 
+	/* Remember the precedence! */
+	(invalid == 1'b1) ? 4'b0000 : 
+	(write_enable == 1'b0) ? 4'b0000 : 
+	(mode == `DM_W) ? 4'b1111 : 
 	(mode == `DM_H) ? (
-		(write_addr[1] == 1'b0) ? {`wword[31:16], write_data[15:8], write_data[7:0]} : 
-		{write_data[15:8], write_data[7:0], `wword[15:0]}
+		(write_addr[1] == 1'b0) ? 4'b0011 : 
+		(write_addr[1] == 1'b1) ? 4'b1100 : 
+		4'b0000
 	) : 
 	(mode == `DM_B) ? (
-		(write_addr[1:0] == 2'b00) ? {`wword[31:8], write_data[7:0]} : 
-		(write_addr[1:0] == 2'b01) ? {`wword[31:16], write_data[7:0], `wword[7:0]} : 
-		(write_addr[1:0] == 2'b10) ? {`wword[31:24], write_data[7:0], `wword[15:0]} : 
-		(write_addr[1:0] == 2'b11) ? {write_data[7:0], `wword[23:0]} : 
-		`wword
+		(write_addr[1:0] == 2'b00) ? 4'b0001 : 
+		(write_addr[1:0] == 2'b01) ? 4'b0010 : 
+		(write_addr[1:0] == 2'b10) ? 4'b0100 : 
+		(write_addr[1:0] == 2'b11) ? 4'b1000 : 
+		4'b0000
 	) : 
+	4'b0000;
+
+assign new_word = 
+	/* Remember the precedence! */
+	(invalid == 1'b1) ? `wword : 
+	(write_enable == 1'b0) ? `wword : 
+	(write_bitmask == 4'b0000) ? `wword : 
+	(write_bitmask == 4'b1111) ? write_data : 
+	(write_bitmask == 4'b0011) ? {`wword[31:16], write_data[15:0]} : 
+	(write_bitmask == 4'b1100) ? {write_data[15:0], `wword[15:0]} : 
+	(write_bitmask == 4'b0001) ? {`wword[31:24], `wword[23:16], `wword[15:8], write_data[7:0]} : 
+	(write_bitmask == 4'b0010) ? {`wword[31:24], `wword[23:16], write_data[7:0], `wword[7:0]} : 
+	(write_bitmask == 4'b0100) ? {`wword[31:24], write_data[7:0], `wword[15:8], `wword[7:0]} : 
+	(write_bitmask == 4'b1000) ? {write_data[7:0], `wword[23:16], `wword[15:8], `wword[7:0]} : 
 	`wword;
 
 always @(posedge clk) begin
