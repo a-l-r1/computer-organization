@@ -3212,7 +3212,7 @@ LAB37:    t7 = (t6 + 4);
 LAB39:    xsi_set_current_line(78, ng0);
 
 LAB42:    xsi_set_current_line(79, ng0);
-    t21 = ((char*)((ng6)));
+    t21 = ((char*)((ng1)));
     t22 = (t0 + 4168);
     t28 = (t0 + 4168);
     t29 = (t28 + 72U);
