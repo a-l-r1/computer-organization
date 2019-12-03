@@ -603,45 +603,68 @@ assign m_exc_final =
 	) : 
 	m_exc;
 
-/* Pipeline resetting */
-
-assign cw_d_pff_rst = (ddptype == `JUMP_C0 && stall == 1'b0) || (have2handle == 1'b1);
-/* cw_e_pff_rst omitted */
-assign cw_m_pff_rst = have2handle;
-assign cw_w_pff_rst = have2handle;
-
-assign cw_e_md_restore = (mdptype == `STORE_M) && (have2handle == 1'b1);
-assign cw_e_md_stop = (edptype == `CAL_M || mdptype == `CAL_M || edptype == `STORE_M) && (have2handle == 1'b1);
-
-/* Control signal hooking */
-
-assign cw_m_dm_write_enable = cw_m_dm_write_enable_orig & (~have2handle);
-
-assign cw_m_cp0_write_enable = cw_m_cp0_write_enable_orig & (~have2handle);
-
-assign cw_e_pff_rst = cw_e_pff_rst_orig | have2handle;
-
-assign cw_f_npc_jump_mode = 
-	(have2handle == 1'b1) ? `NPC_ISR : 
-	cw_f_npc_jump_mode_orig;
-
-assign cw_f_pc_enable = cw_f_pc_enable_orig | have2handle;
-
 /* Coprocessor 0 control signals */
 
 assign cw_m_cp0_write_enable_orig = (mdptype == `STORE_C0);
 
+/* In ISR, so don't consider interrupts. */
 assign cw_m_cp0_exit_isr = (mdptype == `JUMP_C0);
 
+/* About to go into ISR, so interrupts are considered. */
 assign cw_m_cp0_in_bds = (wdptype == `JUMP_I || wdptype == `JUMP_R || wdptype == `BRANCH);
 
+/* About to go into ISR when cw_m_cp0_exc != `EXC_NONE, so interrupts are
+ * considered. */
 assign cw_m_cp0_exc = m_exc_final;
 
+/* There is no D level reset outside ISR, so cm_m_cp0_curr_pc must have
+ * a non-zero value. */
 assign cw_m_cp0_curr_pc = 
 	/* Remember the precedence! */
 	(m_pc_curr_pc != 32'b0) ? m_pc_curr_pc : 
 	(e_pc_curr_pc != 32'b0) ? e_pc_curr_pc : 
 	d_pc_curr_pc;
+
+/* Exception control */
+
+handler handler(
+	.dkind(dkind), 
+	.ekind(ekind), 
+	.mkind(mkind), 
+	.wkind(wkind), 
+
+	.d_exc(d_exc), 
+	.e_exc(e_exc), 
+	.m_exc(m_exc), 
+	.m_exc_final(m_exc_final), 
+
+	.rst(rst), 
+	.have2handle(have2handle), 
+	.stall(stall), 
+
+	.cw_d_pff_rst(cw_d_pff_rst), 
+	/* cw_e_pff_rst omitted */
+	.cw_m_pff_rst(cw_m_pff_rst), 
+	.cw_w_pff_rst(cw_w_pff_rst), 
+
+	.cw_f_npc_jump_mode_orig(cw_f_npc_jump_mode_orig), 
+	.cw_f_npc_jump_mode(cw_f_npc_jump_mode), 
+
+	.cw_f_pc_enable_orig(cw_f_pc_enable_orig), 
+	.cw_f_pc_enable(cw_f_pc_enable), 
+	
+	.cw_e_pff_rst_orig(cw_e_pff_rst_orig), 
+	.cw_e_pff_rst(cw_e_pff_rst), 
+	
+	.cw_e_md_restore(cw_e_md_restore), 
+	.cw_e_md_stop(cw_e_md_stop), 
+
+	.cw_m_dm_write_enable_orig(cw_m_dm_write_enable_orig), 
+	.cw_m_dm_write_enable(cw_m_dm_write_enable), 
+
+	.cw_m_cp0_write_enable_orig(cw_m_cp0_write_enable_orig), 
+	.cw_m_cp0_write_enable(cw_m_cp0_write_enable)
+);
 
 endmodule
 
