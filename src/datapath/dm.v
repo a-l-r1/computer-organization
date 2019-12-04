@@ -11,6 +11,7 @@ module dm(
 	input [31:0] write_data, 
 	input write_enable, 
 	input [2:0] mode, 
+	input stop, 
 	output [31:0] read_result, 
 	output valid
 );
@@ -23,7 +24,6 @@ reg [31:0] memory [`DM_SIZE - 1:0];
 wire [31:0] op_addr;
 wire [31:0] new_word;
 wire [3:0] write_bitmask;
-wire invalid;
 
 integer i;
 
@@ -36,23 +36,20 @@ end
 assign op_addr = (write_enable == `DM_WRITE_ENABLED) ? write_addr : read_addr;
 
 assign valid = 
-	$unsigned(op_addr) >= $unsigned(`DM_ADDR_LB) && 
-	$unsigned(op_addr) <= $unsigned(`DM_ADDR_UB) && 
+	(mode == `DM_NONE) || 
 	(
-		mode == `DM_NONE || 
-		(mode == `DM_W && op_addr[1:0] == 2'b0) || 
-		(mode == `DM_H && op_addr[0] == 1'b0) || 
-		(mode == `DM_HU && op_addr[0] == 1'b0) || 
-		mode == `DM_B || 
-		mode == `DM_BU
+		$unsigned(op_addr) >= $unsigned(`DM_ADDR_LB) && 
+		$unsigned(op_addr) <= $unsigned(`DM_ADDR_UB) && 
+		(
+			(mode == `DM_W && op_addr[1:0] == 2'b0) || 
+			((mode == `DM_H || mode == `DM_HU) && op_addr[0] == 1'b0) || 
+			(mode == `DM_B || mode == `DM_BU)
+		)
 	);
-
-assign invalid = ~valid;
 
 assign write_bitmask = 
 	/* Remember the precedence! */
-	(invalid == 1'b1) ? 4'b0000 : 
-	(write_enable == 1'b0) ? 4'b0000 : 
+	(valid == 1'b0 || write_enable == 1'b0) ? 4'b0000 : 
 	(mode == `DM_W) ? 4'b1111 : 
 	(mode == `DM_H) ? (
 		(write_addr[1] == 1'b0) ? 4'b0011 : 
@@ -70,8 +67,7 @@ assign write_bitmask =
 
 assign new_word = 
 	/* Remember the precedence! */
-	(invalid == 1'b1) ? `wword : 
-	(write_enable == 1'b0) ? `wword : 
+	(valid == 1'b0 || write_enable == 1'b0) ? `wword : 
 	(write_bitmask == 4'b0000) ? `wword : 
 	(write_bitmask == 4'b1111) ? write_data : 
 	(write_bitmask == 4'b0011) ? {`wword[31:16], write_data[15:0]} : 
@@ -88,7 +84,7 @@ always @(posedge clk) begin
 			memory[i] = 32'b0;
 		end
 	end else begin
-		if (write_enable == `DM_WRITE_ENABLED && invalid == 1'b0) begin
+		if (write_enable == `DM_WRITE_ENABLED && valid == 1'b1 && stop == 1'b0) begin
 			/* NOTE: DO NOT USE $display(..., memory[i]). */
 			memory[write_addr[`DM_ADDR_WIDTH:2]] <= new_word;
 			$display(`DM_OUTPUT_FORMAT, $time, curr_pc, {write_addr[31:2], 2'b0}, new_word);
@@ -97,9 +93,8 @@ always @(posedge clk) begin
 end
 
 assign read_result = 
-	/* The next line has the most precedence */
-	(invalid == 1'b1) ? 32'b0 : 
-	(mode == `DM_NONE) ? 32'b0 : 
+	/* Remember the precedence! */
+	(valid == 1'b0 || mode == `DM_NONE) ? 32'b0 : 
 	(mode == `DM_W) ? `rword : 
 	(mode == `DM_H) ? (
 		(read_addr[1] == 1'b0) ? {{16{`rword[15]}}, `rword[15:0]} : {{16{`rword[31]}}, `rword[31:16]}
