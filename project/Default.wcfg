@@ -10,7 +10,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="12" />
+   <WVObjectSize size="14" />
    <wvobject fp_name="group4" type="group">
       <obj_property name="label">Clock</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -35,10 +35,6 @@
       <wvobject fp_name="/pipelined3_tb/uut/cpu/control/cw_f_npc_jump_mode_orig" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">cw_f_npc_jump_mode_orig[3:0]</obj_property>
          <obj_property name="ObjectShortName">cw_f_npc_jump_mode_orig[3:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/cpu/control/cw_m_dm_write_enable_orig" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">cw_m_dm_write_enable_orig</obj_property>
-         <obj_property name="ObjectShortName">cw_m_dm_write_enable_orig</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/control/d_instr" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">d_instr[31:0]</obj_property>
@@ -176,50 +172,6 @@
          <obj_property name="ObjectShortName">w_regw[4:0]</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/cpu/control/t_use_reg1" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">t_use_reg1[3:0]</obj_property>
-         <obj_property name="ObjectShortName">t_use_reg1[3:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/cpu/control/t_use_reg2" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">t_use_reg2[3:0]</obj_property>
-         <obj_property name="ObjectShortName">t_use_reg2[3:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/cpu/control/t_new_e" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">t_new_e[3:0]</obj_property>
-         <obj_property name="ObjectShortName">t_new_e[3:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/cpu/control/t_new_m" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">t_new_m[3:0]</obj_property>
-         <obj_property name="ObjectShortName">t_new_m[3:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/cpu/control/stall_e2d_reg1" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">stall_e2d_reg1</obj_property>
-         <obj_property name="ObjectShortName">stall_e2d_reg1</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/cpu/control/stall_m2d_reg1" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">stall_m2d_reg1</obj_property>
-         <obj_property name="ObjectShortName">stall_m2d_reg1</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/cpu/control/stall_m2d_reg2" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">stall_m2d_reg2</obj_property>
-         <obj_property name="ObjectShortName">stall_m2d_reg2</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/cpu/control/stall_e2d_reg2" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">stall_e2d_reg2</obj_property>
-         <obj_property name="ObjectShortName">stall_e2d_reg2</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/cpu/control/stall_md_busy" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">stall_md_busy</obj_property>
-         <obj_property name="ObjectShortName">stall_md_busy</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/cpu/control/stall_tnew_mtc0_eret" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">stall_tnew_mtc0_eret</obj_property>
-         <obj_property name="ObjectShortName">stall_tnew_mtc0_eret</obj_property>
-      </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/control/stall" type="logic" db_ref_id="1">
          <obj_property name="ElementShortName">stall</obj_property>
          <obj_property name="ObjectShortName">stall</obj_property>
@@ -254,10 +206,6 @@
          <obj_property name="Radix">HEXRADIX</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
          <obj_property name="CustomSignalColor">#aaaaff</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/cpu/f_pc_invalid" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">f_pc_invalid</obj_property>
-         <obj_property name="ObjectShortName">f_pc_invalid</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group9" type="group">
@@ -521,13 +469,13 @@
          <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/cw_fm_m" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">cw_fm_m[2:0]</obj_property>
-         <obj_property name="ObjectShortName">cw_fm_m[2:0]</obj_property>
+         <obj_property name="ElementShortName">cw_fm_m[3:0]</obj_property>
+         <obj_property name="ObjectShortName">cw_fm_m[3:0]</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/cw_fm_epc" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">cw_fm_epc[2:0]</obj_property>
-         <obj_property name="ObjectShortName">cw_fm_epc[2:0]</obj_property>
+         <obj_property name="ElementShortName">cw_fm_epc[3:0]</obj_property>
+         <obj_property name="ObjectShortName">cw_fm_epc[3:0]</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/m_pc_curr_pc" type="array" db_ref_id="1">
@@ -604,8 +552,8 @@
          <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/hwirq" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">hwirq[5:0]</obj_property>
-         <obj_property name="ObjectShortName">hwirq[5:0]</obj_property>
+         <obj_property name="ElementShortName">hwirq[7:2]</obj_property>
+         <obj_property name="ObjectShortName">hwirq[7:2]</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/cpu_read_result" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">cpu_read_result[31:0]</obj_property>
@@ -625,10 +573,6 @@
          <obj_property name="ElementShortName">cpu_write_data[31:0]</obj_property>
          <obj_property name="ObjectShortName">cpu_write_data[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/cpu/m_ac_validity" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">m_ac_validity[2:0]</obj_property>
-         <obj_property name="ObjectShortName">m_ac_validity[2:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/m_cp0_have2handle" type="logic" db_ref_id="1">
          <obj_property name="ElementShortName">m_cp0_have2handle</obj_property>
@@ -1002,6 +946,69 @@
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
    </wvobject>
+   <wvobject fp_name="group246" type="group">
+      <obj_property name="label">dm</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/pipelined3_tb/uut/cpu/dm/curr_pc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">curr_pc[31:0]</obj_property>
+         <obj_property name="ObjectShortName">curr_pc[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/cpu/dm/read_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">read_addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">read_addr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/cpu/dm/write_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">write_addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">write_addr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/cpu/dm/write_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">write_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">write_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/cpu/dm/write_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">write_enable</obj_property>
+         <obj_property name="ObjectShortName">write_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/cpu/dm/mode" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">mode[2:0]</obj_property>
+         <obj_property name="ObjectShortName">mode[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/cpu/dm/read_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">read_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">read_result[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/cpu/dm/valid" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">valid</obj_property>
+         <obj_property name="ObjectShortName">valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/cpu/dm/stop" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">stop</obj_property>
+         <obj_property name="ObjectShortName">stop</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/cpu/dm/op_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">op_addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">op_addr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/cpu/dm/new_word" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">new_word[31:0]</obj_property>
+         <obj_property name="ObjectShortName">new_word[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/cpu/dm/write_bitmask" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">write_bitmask[3:0]</obj_property>
+         <obj_property name="ObjectShortName">write_bitmask[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/cpu/dm/i" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">i[31:0]</obj_property>
+         <obj_property name="ObjectShortName">i[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
    <wvobject fp_name="group185" type="group">
       <obj_property name="label">cp0</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -1089,8 +1096,8 @@
          <obj_property name="ObjectShortName">write_enable</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0/addr" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">addr[31:0]</obj_property>
-         <obj_property name="ObjectShortName">addr[31:0]</obj_property>
+         <obj_property name="ElementShortName">addr[1:0]</obj_property>
+         <obj_property name="ObjectShortName">addr[1:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0/write_data" type="array" db_ref_id="1">
@@ -1106,15 +1113,6 @@
       <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0/irq" type="logic" db_ref_id="1">
          <obj_property name="ElementShortName">irq</obj_property>
          <obj_property name="ObjectShortName">irq</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0/real_addr" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">real_addr[31:0]</obj_property>
-         <obj_property name="ObjectShortName">real_addr[31:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0/write_valid" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">write_valid</obj_property>
-         <obj_property name="ObjectShortName">write_valid</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0/ctrl" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">ctrl[31:0]</obj_property>
@@ -1135,9 +1133,9 @@
          <obj_property name="ElementShortName">allow_irq</obj_property>
          <obj_property name="ObjectShortName">allow_irq</obj_property>
       </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0/mode" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">mode</obj_property>
-         <obj_property name="ObjectShortName">mode</obj_property>
+      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0/mode" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">mode[1:0]</obj_property>
+         <obj_property name="ObjectShortName">mode[1:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0/enable" type="logic" db_ref_id="1">
          <obj_property name="ElementShortName">enable</obj_property>
@@ -1146,11 +1144,6 @@
       <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0/state" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">state[2:0]</obj_property>
          <obj_property name="ObjectShortName">state[2:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0/BASE" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">BASE[31:0]</obj_property>
-         <obj_property name="ObjectShortName">BASE[31:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group219" type="group">
@@ -1161,8 +1154,8 @@
          <obj_property name="ObjectShortName">write_enable</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1/addr" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">addr[31:0]</obj_property>
-         <obj_property name="ObjectShortName">addr[31:0]</obj_property>
+         <obj_property name="ElementShortName">addr[1:0]</obj_property>
+         <obj_property name="ObjectShortName">addr[1:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1/write_data" type="array" db_ref_id="1">
@@ -1184,15 +1177,6 @@
          <obj_property name="ObjectShortName">ctrl[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1/real_addr" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">real_addr[31:0]</obj_property>
-         <obj_property name="ObjectShortName">real_addr[31:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1/write_valid" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">write_valid</obj_property>
-         <obj_property name="ObjectShortName">write_valid</obj_property>
-      </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1/preset" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">preset[31:0]</obj_property>
          <obj_property name="ObjectShortName">preset[31:0]</obj_property>
@@ -1207,9 +1191,9 @@
          <obj_property name="ElementShortName">allow_irq</obj_property>
          <obj_property name="ObjectShortName">allow_irq</obj_property>
       </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1/mode" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">mode</obj_property>
-         <obj_property name="ObjectShortName">mode</obj_property>
+      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1/mode" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">mode[1:0]</obj_property>
+         <obj_property name="ObjectShortName">mode[1:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1/enable" type="logic" db_ref_id="1">
          <obj_property name="ElementShortName">enable</obj_property>
@@ -1223,10 +1207,88 @@
          <obj_property name="ElementShortName">state[2:0]</obj_property>
          <obj_property name="ObjectShortName">state[2:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1/BASE" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">BASE[31:0]</obj_property>
-         <obj_property name="ObjectShortName">BASE[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="group237" type="group">
+      <obj_property name="label">bridge</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/pipelined3_tb/uut/bridge/addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">addr[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/bridge/write_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">write_enable</obj_property>
+         <obj_property name="ObjectShortName">write_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/bridge/dm_mode" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dm_mode[2:0]</obj_property>
+         <obj_property name="ObjectShortName">dm_mode[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/bridge/write_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">write_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">write_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/bridge/test_interrupt" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">test_interrupt</obj_property>
+         <obj_property name="ObjectShortName">test_interrupt</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/bridge/stop" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">stop</obj_property>
+         <obj_property name="ObjectShortName">stop</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/bridge/read_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">read_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">read_result[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/bridge/hwirq" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">hwirq[7:2]</obj_property>
+         <obj_property name="ObjectShortName">hwirq[7:2]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/bridge/valid" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">valid</obj_property>
+         <obj_property name="ObjectShortName">valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/bridge/curr_dev" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">curr_dev[3:0]</obj_property>
+         <obj_property name="ObjectShortName">curr_dev[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0_write_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">timer0_write_enable</obj_property>
+         <obj_property name="ObjectShortName">timer0_write_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1_write_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">timer1_write_enable</obj_property>
+         <obj_property name="ObjectShortName">timer1_write_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">timer0_addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">timer0_addr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">timer1_addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">timer1_addr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0_read_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">timer0_read_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">timer0_read_result[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1_read_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">timer1_read_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">timer1_read_result[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0_irq" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">timer0_irq</obj_property>
+         <obj_property name="ObjectShortName">timer0_irq</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1_irq" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">timer1_irq</obj_property>
+         <obj_property name="ObjectShortName">timer1_irq</obj_property>
       </wvobject>
    </wvobject>
 </wave_config>

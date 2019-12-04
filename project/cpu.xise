@@ -118,11 +118,11 @@
       <association xil_pn:name="PostTranslateSimulation" xil_pn:seqID="108"/>
     </file>
     <file xil_pn:name="../src/bridge/bridge.v" xil_pn:type="FILE_VERILOG">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="19"/>
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="18"/>
       <association xil_pn:name="Implementation" xil_pn:seqID="110"/>
     </file>
     <file xil_pn:name="../src/control/pipelined3-function.v" xil_pn:type="FILE_VERILOG">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="17"/>
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="16"/>
       <association xil_pn:name="Implementation" xil_pn:seqID="112"/>
     </file>
     <file xil_pn:name="../src/devices/timer.v" xil_pn:type="FILE_VERILOG">
@@ -130,7 +130,7 @@
       <association xil_pn:name="Implementation" xil_pn:seqID="113"/>
     </file>
     <file xil_pn:name="../src/datapath/ac.v" xil_pn:type="FILE_VERILOG">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="16"/>
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
       <association xil_pn:name="Implementation" xil_pn:seqID="114"/>
     </file>
     <file xil_pn:name="../src/datapath/cp0.v" xil_pn:type="FILE_VERILOG">
@@ -156,11 +156,11 @@
       <association xil_pn:name="PostTranslateSimulation" xil_pn:seqID="160"/>
     </file>
     <file xil_pn:name="../src/cpu/pipelined3-cpu.v" xil_pn:type="FILE_VERILOG">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="18"/>
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="17"/>
       <association xil_pn:name="Implementation" xil_pn:seqID="128"/>
     </file>
     <file xil_pn:name="../tests/cpu/pipelined3/pipelined3_tb.v" xil_pn:type="FILE_VERILOG">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="21"/>
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="20"/>
       <association xil_pn:name="PostMapSimulation" xil_pn:seqID="130"/>
       <association xil_pn:name="PostRouteSimulation" xil_pn:seqID="130"/>
       <association xil_pn:name="PostTranslateSimulation" xil_pn:seqID="130"/>
@@ -178,7 +178,7 @@
       <association xil_pn:name="Implementation" xil_pn:seqID="143"/>
     </file>
     <file xil_pn:name="../src/mips/mips.v" xil_pn:type="FILE_VERILOG">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="20"/>
+      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="19"/>
       <association xil_pn:name="Implementation" xil_pn:seqID="140"/>
     </file>
   </files>
@@ -531,10 +531,10 @@
     <file xil_pn:name="../src/include/cmp.h" xil_pn:type="FILE_VERILOG"/>
     <file xil_pn:name="../src/include/im.h" xil_pn:type="FILE_VERILOG"/>
     <file xil_pn:name="../src/include/mux.h" xil_pn:type="FILE_VERILOG"/>
+    <file xil_pn:name="../src/include/pc.h" xil_pn:type="FILE_VERILOG"/>
     <file xil_pn:name="../src/include/pff.h" xil_pn:type="FILE_VERILOG"/>
     <file xil_pn:name="../src/include/rf.h" xil_pn:type="FILE_VERILOG"/>
     <file xil_pn:name="../src/include/timer.h" xil_pn:type="FILE_VERILOG"/>
-    <file xil_pn:name="../src/include/pc.h" xil_pn:type="FILE_VERILOG"/>
     <file xil_pn:name="../src/include/debug/debug.h" xil_pn:type="FILE_VERILOG"/>
   </autoManagedFiles>
 
