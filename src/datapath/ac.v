@@ -35,8 +35,8 @@ assign bad_mode =
 
 assign unwriteable = 
 	/* not complete but enough */
-	(addr == $unsigned(`BRIDGE_TIMER0_LB) + 8) || 
-	(addr == $unsigned(`BRIDGE_TIMER1_LB) + 8);
+	/* TODO: detection broken */
+	(addr == $unsigned(`BRIDGE_TIMER0_LB) + 8) || (addr == $unsigned(`BRIDGE_TIMER1_LB) + 8);
 
 assign invalid = (oorange || bad_alignment || bad_mode || unwriteable) && (dm_mode != `DM_NONE);
 

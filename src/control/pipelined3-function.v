@@ -591,6 +591,8 @@ pff #(.BIT_WIDTH(5)) m_exc_(
 	.rst(rst | cw_m_pff_rst), 
 	.i(
 		((ekind == `ADD || ekind == `ADDI || ekind == `SUB) && e_alu_sig_overflow == 1'b1) ? `EXC_OV : 
+		(edptype == `LOAD && e_alu_sig_overflow == 1'b1) ? `EXC_ADEL : 
+		(edptype == `STORE && e_alu_sig_overflow == 1'b1) ? `EXC_ADES : 
 		e_exc
 	), 
 	.o(m_exc)
