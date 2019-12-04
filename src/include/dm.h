@@ -14,7 +14,8 @@
 `define DM_BU 3'b110
 
 `define DM_ADDR_WIDTH 14
-`define DM_SIZE 3072
+/* The extra 1048 words makes construction of new_word happy (no Xs). */
+`define DM_SIZE 4096
 
 `define DM_OUTPUT_FORMAT "%d@%h: *%h <= %h"
 
