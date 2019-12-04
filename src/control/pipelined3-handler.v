@@ -35,8 +35,7 @@ module handler(
 	output cw_e_md_restore, 
 	output cw_e_md_stop, 
 
-	input cw_m_dm_write_enable_orig, 
-	output cw_m_dm_write_enable, 
+	output cw_m_dm_stop, 
 
 	input cw_m_cp0_write_enable_orig, 
 	output cw_m_cp0_write_enable
@@ -98,10 +97,8 @@ assign cw_e_md_stop =
 	(have2handle == 1'b1) && 
 	(edptype == `CAL_M || mdptype == `CAL_M || edptype == `STORE_M);
 
-/* Stop commiting to dm when having to handle interrupts. */
-assign cw_m_dm_write_enable = 
-	(have2handle == 1'b0) && 
-	(cw_m_dm_write_enable_orig == 1'b1);
+/* Stop commiting to dm and bridge when having to handle interrupts. */
+assign cw_m_dm_stop = (have2handle == 1'b1);
 
 /* Stop commiting to cp0 when having to handle interrupts. */
 assign cw_m_cp0_write_enable = 

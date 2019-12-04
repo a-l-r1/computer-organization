@@ -114,7 +114,8 @@ module control(
 
 	input f_im_valid, 
 	input e_alu_sig_overflow, 
-	input [2:0] m_ac_validity, 
+	input m_dm_valid, 
+	input m_bridge_valid, 
 	input [31:0] d_pc_curr_pc, 
 	input [31:0] e_pc_curr_pc, 
 	input [31:0] m_pc_curr_pc, 
@@ -142,6 +143,7 @@ module control(
 
 	output cw_m_m_bridge, 
 	output cw_m_dm_write_enable, 
+	output cw_m_dm_stop, 
 	output [2:0] cw_m_dm_mode, 
 	output cw_m_cp0_write_enable, 
 	output cw_m_cp0_exit_isr, 
@@ -196,8 +198,6 @@ wire stall;
 wire [3:0] cw_f_npc_jump_mode_orig;
 
 /* M */
-
-wire cw_m_dm_write_enable_orig;
 
 /* Exception ID pipeline */
 
@@ -419,7 +419,7 @@ assign cw_m_m_bridge =
 	($unsigned(m_dm_addr) >= `DM_ADDR_LB && $unsigned(m_dm_addr) <= `DM_ADDR_UB) ? 1'b0 : 
 	1'b1;
 
-assign cw_m_dm_write_enable_orig = 
+assign cw_m_dm_write_enable = 
 	(mdptype == `STORE) ? 1'b1 : 
 	1'b0;
 
@@ -599,10 +599,10 @@ pff #(.BIT_WIDTH(5)) m_exc_(
 );
 
 assign m_exc_final = 
-	(m_ac_validity != `AC_VALID) ? (
-		(m_ac_validity == `AC_BAD && cw_m_dm_write_enable_orig == 1'b0) ? `EXC_ADEL : 
-		(m_ac_validity == `AC_BAD && cw_m_dm_write_enable_orig == 1'b1) ? `EXC_ADES : 
-		m_exc
+	(m_dm_valid == 1'b0 && m_bridge_valid == 1'b0) ? (
+		/* DM_NONEs are always valid */
+		(cw_m_dm_write_enable == 1'b0) ? `EXC_ADEL : 
+		`EXC_ADES
 	) : 
 	m_exc;
 
@@ -662,8 +662,7 @@ handler handler(
 	.cw_e_md_restore(cw_e_md_restore), 
 	.cw_e_md_stop(cw_e_md_stop), 
 
-	.cw_m_dm_write_enable_orig(cw_m_dm_write_enable_orig), 
-	.cw_m_dm_write_enable(cw_m_dm_write_enable), 
+	.cw_m_dm_stop(cw_m_dm_stop), 
 
 	.cw_m_cp0_write_enable_orig(cw_m_cp0_write_enable_orig), 
 	.cw_m_cp0_write_enable(cw_m_cp0_write_enable)
