@@ -37,7 +37,7 @@ assign im_calculated_address = $unsigned(addr) - $unsigned(`IM_START_ADDRESS);
 assign result = 
 	/* Remember the precedence! */
 	(valid == 1'b0) ? 32'b0 : 
-	(enable == `IM_ENABLE && $unsigned(addr) >= $unsigned(`IM_START_ADDRESS)) ? memory[im_calculated_address[`IM_ADDR_WIDTH - 1:2]] : 
+	(enable == `IM_ENABLED && $unsigned(addr) >= $unsigned(`IM_START_ADDRESS)) ? memory[im_calculated_address[`IM_ADDR_WIDTH - 1:2]] : 
 	32'b0;
 
 endmodule
