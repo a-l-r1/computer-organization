@@ -5,11 +5,13 @@ module cpu(
 	input rst, 
 	input [31:0] cpu_read_result, 
 	input [7:2] hwirq, 
+	input bridge_valid, 
 	output [31:0] cpu_addr, 
 	output dev_write_enable, 
 	output [2:0] dm_mode, 
 	output [31:0] cpu_write_data, 
-	output [31:0] test_addr
+	output [31:0] test_addr, 
+	output bridge_stop
 );
 
 /* Wire definitions */
@@ -38,7 +40,7 @@ wire cw_d_pff_rst, cw_e_pff_rst, cw_m_pff_rst, cw_w_pff_rst;
 wire cw_e_m_hilo;
 wire cw_e_md_stop, cw_e_md_restore;
 
-wire cw_m_dm_write_enable;
+wire cw_m_dm_write_enable, cw_m_dm_stop;
 wire cw_m_m_bridge;
 wire cw_m_cp0_write_enable, cw_m_cp0_exit_isr, cw_m_cp0_in_bds;
 
@@ -84,8 +86,7 @@ wire [31:0] m_rf_read_result2_orig, m_rf_read_result2;
 wire [31:0] m_dm_read_result_orig, m_dm_read_result;
 wire [31:0] m_cp0_read_result;
 wire [31:0] m_cp0_epc_orig, m_cp0_epc;
-wire [2:0] m_ac_validity;
-wire m_cp0_have2handle;
+wire m_dm_valid, m_bridge_valid, m_cp0_have2handle;
 
 /* W */
 
@@ -116,7 +117,8 @@ control control(
 
 	.f_im_valid(f_im_valid), 
 	.e_alu_sig_overflow(e_alu_sig_overflow), 
-	.m_ac_validity(m_ac_validity), 
+	.m_dm_valid(m_dm_valid), 
+	.m_bridge_valid(m_bridge_valid), 
 	.d_pc_curr_pc(d_pc_curr_pc), 
 	.e_pc_curr_pc(e_pc_curr_pc), 
 	.m_pc_curr_pc(m_pc_curr_pc), 
@@ -144,6 +146,7 @@ control control(
 
 	.cw_m_m_bridge(cw_m_m_bridge), 
 	.cw_m_dm_write_enable(cw_m_dm_write_enable), 
+	.cw_m_dm_stop(cw_m_dm_stop), 
 	.cw_m_dm_mode(cw_m_dm_mode), 
 	.cw_m_cp0_write_enable(cw_m_cp0_write_enable), 
 	.cw_m_cp0_exit_isr(cw_m_cp0_exit_isr), 
@@ -422,12 +425,6 @@ assign m_rf_read_result2 =
 	(cw_fm_m == `W2M_rf) ? w_rf_write_data : 
 	m_rf_read_result2_orig;
 
-ac ac(
-	.addr(m_alu_result), 
-	.dm_mode(cw_m_dm_mode), 
-	.validity(m_ac_validity)
-);
-
 dm dm(
 	.clk(clk), 
 	.rst(rst), 
@@ -437,18 +434,19 @@ dm dm(
 	.write_data(m_rf_read_result2), 
 	.write_enable(cw_m_dm_write_enable), 
 	.mode(cw_m_dm_mode), 
+	.stop(cw_m_dm_stop), 
 	.read_result(m_dm_read_result_orig), 
-	/* unused */
-	.valid()
+	.valid(m_dm_valid)
 );
 
+/* for bridge */
+
+assign m_bridge_valid = bridge_valid;
 assign cpu_addr = m_alu_result;
-
 assign cpu_write_data = m_rf_read_result2;
-
 assign dev_write_enable = cw_m_dm_write_enable;
-
 assign dm_mode = cw_m_dm_mode;
+assign bridge_stop = cw_m_dm_stop;
 
 assign m_dm_read_result = 
 	(cw_m_m_bridge == 1'b0) ? m_dm_read_result_orig : 
