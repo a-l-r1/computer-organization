@@ -60,8 +60,6 @@ always @(posedge clk) begin
 			case (addr)
 				2'd0: {allow_irq, mode, enable} <= {write_data[3], write_data[2:1], write_data[0]};
 				2'd1: preset <= write_data;
-				/* TODO: inconsistency */
-				2'd2: count <= write_data;
 				/* default omitted */
 			endcase
 
