@@ -29,7 +29,7 @@ WARNING:HDLCompiler:1016 - "/home/a-l-r/co/src/project/../src/cpu/pipelined3-cpu
 WARNING:HDLCompiler:1016 - "/home/a-l-r/co/src/project/../src/cpu/pipelined3-cpu.v" Line 360: Port out is not connected to this instance
 Completed static elaboration
 Fuse Memory Usage: 83932 KB
-Fuse CPU Usage: 920 ms
+Fuse CPU Usage: 950 ms
 Compiling module kind
 Compiling module pff(BIT_WIDTH=5)
 Compiling module forward
@@ -54,9 +54,8 @@ Compiling module mips
 Compiling module pipelined3_tb
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 2 sub-compilation(s) to finish...
 Compiled 23 Verilog Units
 Built simulation executable /home/a-l-r/co/src/project/pipelined3_tb_isim_beh.exe
 Fuse Memory Usage: 1172472 KB
-Fuse CPU Usage: 1240 ms
-GCC CPU Usage: 8180 ms
+Fuse CPU Usage: 1270 ms
+GCC CPU Usage: 8650 ms
