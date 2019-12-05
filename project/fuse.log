@@ -54,8 +54,9 @@ Compiling module mips
 Compiling module pipelined3_tb
 Compiling module glbl
 Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
 Compiled 23 Verilog Units
 Built simulation executable /home/a-l-r/co/src/project/pipelined3_tb_isim_beh.exe
 Fuse Memory Usage: 1172472 KB
-Fuse CPU Usage: 1260 ms
-GCC CPU Usage: 7880 ms
+Fuse CPU Usage: 1280 ms
+GCC CPU Usage: 8850 ms
