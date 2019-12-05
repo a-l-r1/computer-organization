@@ -1,10 +1,8 @@
 `ifndef DM_H
 `define DM_H
 
-`define DM_WRITE_ENABLE 1'b1
-`define DM_WRITE_ENABLED `DM_WRITE_ENABLE
-`define DM_WRITE_DISABLE 1'b0
-`define DM_WRITE_DISABLED `DM_WRITE_DISABLE
+`define DM_WRITE_ENABLED 1'b1
+`define DM_WRITE_DISABLED 1'b0
 
 `define DM_NONE 3'b000
 `define DM_W 3'b001
