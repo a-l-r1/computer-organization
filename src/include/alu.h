@@ -8,6 +8,8 @@
 `define ALU_MOVZ 5'b00010
 `define ALU_SLT 5'b00011
 `define ALU_SLTU 5'b00100
+`define ALU_ADDU 5'b00101
+`define ALU_SUBU 5'b00110
 
 `define ALU_AND 5'b10000
 `define ALU_BITWISE_AND `ALU_AND
@@ -23,7 +25,7 @@
 `define ALU_SRA 5'b10111
 `define ALU_SLLV 5'b11000
 `define ALU_SRLV 5'b11001
-`define ALU_SRAV 5'b11110
+`define ALU_SRAV 5'b11010
 
 `define ALU_EQUAL 2'b00
 `define ALU_EQUAL_TO `ALU_EQUAL

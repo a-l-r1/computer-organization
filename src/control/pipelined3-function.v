@@ -327,12 +327,12 @@ assign cw_d_ext_mode =
 	(ddptype == `CAL_I) ? (
 		(dkind == `LUI) ? `EXT_MODE_PAD : 
 		(dkind == `ORI) ? `EXT_MODE_UNSIGNED : 
-		(dkind == `ADDI) ? `EXT_SIGNED : 
-		(dkind == `ADDIU) ? `EXT_SIGNED : 
-		(dkind == `ANDI) ? `EXT_UNSIGNED : 
-		(dkind == `XORI) ? `EXT_UNSIGNED : 
-		(dkind == `SLTI) ? `EXT_SIGNED : 
-		(dkind == `SLTIU) ? `EXT_SIGNED : 
+		(dkind == `ADDI) ? `EXT_MODE_SIGNED : 
+		(dkind == `ADDIU) ? `EXT_MODE_SIGNED : 
+		(dkind == `ANDI) ? `EXT_MODE_UNSIGNED : 
+		(dkind == `XORI) ? `EXT_MODE_UNSIGNED : 
+		(dkind == `SLTI) ? `EXT_MODE_SIGNED : 
+		(dkind == `SLTIU) ? `EXT_MODE_SIGNED : 
 		`EXT_MODE_UNSIGNED
 	) : 
 	(ddptype == `LOAD || ddptype == `STORE) ? `EXT_MODE_SIGNED :
@@ -349,8 +349,8 @@ assign cw_e_m_alusrc =
 
 assign cw_e_alu_op = 
 	(edptype == `CAL_R) ? (
-		(ekind == `ADDU) ? `ALU_ADD : 
-		(ekind == `SUBU) ? `ALU_SUB : 
+		(ekind == `ADDU) ? `ALU_ADDU : 
+		(ekind == `SUBU) ? `ALU_SUBU : 
 		(ekind == `ADD) ? `ALU_ADD : 
 		(ekind == `SUB) ? `ALU_SUB : 
 		(ekind == `AND) ? `ALU_AND : 
@@ -372,7 +372,7 @@ assign cw_e_alu_op =
 		(ekind == `LUI) ? `ALU_OR : 
 		(ekind == `ORI) ? `ALU_OR : 
 		(ekind == `ADDI) ? `ALU_ADD : 
-		(ekind == `ADDIU) ? `ALU_ADD : 
+		(ekind == `ADDIU) ? `ALU_ADDU : 
 		(ekind == `ANDI) ? `ALU_AND : 
 		(ekind == `XORI) ? `ALU_XOR : 
 		(ekind == `SLTI) ? `ALU_SLT : 
@@ -590,7 +590,7 @@ pff #(.BIT_WIDTH(5)) m_exc_(
 	.enable(1'b1), 
 	.rst(rst | cw_m_pff_rst), 
 	.i(
-		((ekind == `ADD || ekind == `ADDI || ekind == `SUB) && e_alu_sig_overflow == 1'b1) ? `EXC_OV : 
+		((edptype == `CAL_R || edptype == `CAL_I) && e_alu_sig_overflow == 1'b1) ? `EXC_OV : 
 		(edptype == `LOAD && e_alu_sig_overflow == 1'b1) ? `EXC_ADEL : 
 		(edptype == `STORE && e_alu_sig_overflow == 1'b1) ? `EXC_ADES : 
 		e_exc

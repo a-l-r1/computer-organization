@@ -129,8 +129,8 @@ assign sra_result =
 	num2;
 
 assign {op_invalid, result} = 
-	(op == `ALU_ADD) ? {1'b0, $unsigned(num1) + $unsigned(num2)} : 
-	(op == `ALU_SUB) ? {1'b0, $unsigned(num1) - $unsigned(num2)} : 
+	(op == `ALU_ADD || op == `ALU_ADDU) ? {1'b0, $unsigned(num1) + $unsigned(num2)} : 
+	(op == `ALU_SUB || op == `ALU_SUBU) ? {1'b0, $unsigned(num1) - $unsigned(num2)} : 
 	(op == `ALU_AND) ? {1'b0, $unsigned(num1) & $unsigned(num2)} : 
 	(op == `ALU_OR) ? {1'b0, $unsigned(num1) | $unsigned(num2)} : 
 	(op == `ALU_NOT) ? {1'b0, ~$unsigned(num1)} : 
@@ -150,7 +150,6 @@ assign {op_invalid, result} =
 
 wire [32:0] intermediate_result, sig_intermediate_result;
 
-/* TODO: is this correct? */
 assign intermediate_result = 
 	(op == `ALU_ADD) ? $unsigned(num1) + $unsigned(num2) : 
 	(op == `ALU_SUB) ? $unsigned(num1) - $unsigned(num2) : 
@@ -164,7 +163,8 @@ assign sig_intermediate_result =
 	33'b0;
 
 /* Mind the difference in bit lengths */
-assign sig_overflow = (sig_intermediate_result[32] != result[31]);
+assign sig_overflow = 
+	(op == `ALU_ADD || op == `ALU_SUB) && (sig_intermediate_result[32] != sig_intermediate_result[31]);
 
 assign cmp_result = 
 	($unsigned(num1) == $unsigned(num2)) ? `ALU_EQUAL : 
