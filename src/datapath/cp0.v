@@ -48,7 +48,7 @@ assign read_result =
 	32'b0;
 
 assign have_irq = ((hwirq & `allow_hwirq) != 0 && `g_allow_hwirq == 1'b1 && `exl == 1'b0);
-assign have_exc = (exc != `EXC_NONE && `exl == 1'b0);
+assign have_exc = (exc != `EXC_NONE);
 
 assign have2handle = (have_irq || have_exc);
 
