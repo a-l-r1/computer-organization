@@ -70,10 +70,8 @@ always @(posedge clk) begin
 	if (have2handle == 1'b1) begin
 		`exl <= 1'b1;
 		`in_bds_i <= in_bds;
-		/* NOTE: For compliance with cscore. But is changing addr in
-		 * the top-level module mips needed? */
-		`epc_i <= (in_bds == 1'b1) ? $unsigned({curr_pc[31:2], 2'b0}) - $unsigned(4) : 
-			$unsigned({curr_pc[31:2], 2'b0});
+		`epc_i <= (in_bds == 1'b1) ? $unsigned(curr_pc) - $unsigned(4) : 
+			$unsigned(curr_pc);
 
 		if (have_irq == 1'b1) begin
 			`exc_i <= `EXC_INT;

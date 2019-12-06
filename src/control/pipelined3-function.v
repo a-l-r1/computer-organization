@@ -621,12 +621,14 @@ assign cw_m_cp0_in_bds = (wdptype == `JUMP_I || wdptype == `JUMP_R || wdptype ==
 assign cw_m_cp0_exc = m_exc_final;
 
 /* There is no D level reset outside ISR, so cm_m_cp0_curr_pc must have
- * a non-zero value. */
+ * a non-zero value. 
+ * NOTE: Responsibility for aligning epc is moved here. Is changing addr in
+ * the top-level module mips needed? */
 assign cw_m_cp0_curr_pc = 
 	/* Remember the precedence! */
-	(m_pc_curr_pc != 32'b0) ? m_pc_curr_pc : 
-	(e_pc_curr_pc != 32'b0) ? e_pc_curr_pc : 
-	d_pc_curr_pc;
+	(m_pc_curr_pc != 32'b0) ? {m_pc_curr_pc[31:2], 2'b0} : 
+	(e_pc_curr_pc != 32'b0) ? {e_pc_curr_pc[31:2], 2'b0} : 
+	{d_pc_curr_pc[31:2], 2'b0};
 
 /* Exception control */
 
