@@ -87,7 +87,6 @@ assign cw_fm_m =
 	`orig;
 
 assign cw_fm_epc = 
-	(ddptype == `STORE_C0 && `RD(d_instr) == `cp0_epc && `RD(d_instr) != 0) ? `EPC_D2M_rf : 
 	(edptype == `STORE_C0 && `RD(e_instr) == `cp0_epc && `RD(e_instr) != 0) ? `EPC_E2M_rf : 
 	(mdptype == `STORE_C0 && `RD(m_instr) == `cp0_epc && `RD(m_instr) != 0) ? `EPC_M2M_rf : 
 	`orig;
