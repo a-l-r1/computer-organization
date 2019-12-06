@@ -623,7 +623,8 @@ assign cw_m_cp0_exc = m_exc_final;
 /* There is no D level reset outside ISR, so cm_m_cp0_curr_pc must have
  * a non-zero value. 
  * NOTE: Responsibility for aligning epc is moved here. Is changing addr in
- * the top-level module mips needed? */
+ * the top-level module mips needed? 
+ * NOTE: What if the CPU jumps to 32'b0? */
 assign cw_m_cp0_curr_pc = 
 	/* Remember the precedence! */
 	(m_pc_curr_pc != 32'b0) ? {m_pc_curr_pc[31:2], 2'b0} : 
