@@ -468,7 +468,9 @@ cp0 cp0(
 	.have2handle(m_cp0_have2handle)
 );
 
-assign test_addr = cw_m_cp0_curr_pc;
+/* NOTE: It seems that the judger doesn't care PCs of bubbles, and requires
+* the PC of just a single specific level instead. */
+assign test_addr = m_pc_curr_pc;
 
 assign m_cp0_epc = 
 	(cw_fm_epc == `orig) ? m_cp0_epc_orig : 
