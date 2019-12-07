@@ -7,7 +7,6 @@ Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/pff.v" into l
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/control/pipelined3-hazard.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/control/pipelined3-handler.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/control/pipelined3-forward.v" into library work
-Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/timer.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/rf.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/pc.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/npc.v" into library work
@@ -19,17 +18,16 @@ Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/cp0.v" into l
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/cmp.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/alu.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/control/pipelined3-function.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/timer.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/cpu/pipelined3-cpu.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/bridge/bridge.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/mips/mips.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../tests/cpu/pipelined3/pipelined3_tb.v" into library work
 Analyzing Verilog file "/opt/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
-WARNING:HDLCompiler:1016 - "/home/a-l-r/co/src/project/../src/cpu/pipelined3-cpu.v" Line 183: Port invalid is not connected to this instance
-WARNING:HDLCompiler:1016 - "/home/a-l-r/co/src/project/../src/cpu/pipelined3-cpu.v" Line 360: Port out is not connected to this instance
 Completed static elaboration
-Fuse Memory Usage: 83932 KB
-Fuse CPU Usage: 1020 ms
+Fuse Memory Usage: 83928 KB
+Fuse CPU Usage: 970 ms
 Compiling module kind
 Compiling module pff(BIT_WIDTH=5)
 Compiling module forward
@@ -48,15 +46,15 @@ Compiling module md
 Compiling module dm
 Compiling module cp0
 Compiling module cpu
-Compiling module timer
 Compiling module bridge
+Compiling module timer
 Compiling module mips
 Compiling module pipelined3_tb
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 3 sub-compilation(s) to finish...
+Waiting for 5 sub-compilation(s) to finish...
 Compiled 23 Verilog Units
 Built simulation executable /home/a-l-r/co/src/project/pipelined3_tb_isim_beh.exe
-Fuse Memory Usage: 1172472 KB
-Fuse CPU Usage: 1330 ms
-GCC CPU Usage: 9060 ms
+Fuse Memory Usage: 1172456 KB
+Fuse CPU Usage: 1260 ms
+GCC CPU Usage: 8090 ms
