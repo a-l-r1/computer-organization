@@ -3376,9 +3376,12 @@ CPU 和 \texttt{bridge} 的接线，以及 \ms{bridge} 和两个 \ms{timer0} 的
 \headingcellfirst{CPU 端口} & \headingcellmiddle{\texttt{bridge} 端口} & \headingcelllast{数据流动方向}\tabularnewline\hline
 
 \endhead\hiderowcolors
-\ms{dm\_mode} & \ms{dm\_mode} & CPU → \ms{bridge} \\\hline
-\ms{bridge\_valid} & \ms{valid} & \ms{bridge} → CPU \\\hline
-\ms{bridge\_stop} & \ms{stop} & CPU → \ms{bridge} \\\hline
+\ms{dm\_mode} & \ms{dm\_mode} & CPU →
+ \ms{bridge} \\\hline
+\ms{bridge\_valid} & \ms{valid} & \ms{bridge} →
+ CPU \\\hline
+\ms{bridge\_stop} & \ms{stop} & CPU →
+ \ms{bridge} \\\hline
 \texttt{cpu\_addr} & \texttt{addr} & CPU →
 \texttt{bridge}\tabularnewline\hline
 \texttt{dev\_write\_enable} & \texttt{write\_enable} & CPU →
@@ -3395,11 +3398,16 @@ CPU\tabularnewline\hline
 \hline
 \headingcellfirst{\ms{bridge} 端口} & \headingcellmiddle{\ms{timer[01]} 端口} & \headingcelllast{数据流动方向} \\\hline
 \endhead\hiderowcolors
-\ms{timer[01]\_addr} & \ms{addr} & \ms{bridge} → \ms{timer[01]} \\\hline
-\ms{timer[01]\_write\_enable} & \ms{write\_enable} & \ms{bridge} → \ms{timer[01]} \\\hline
-\ms{timer[01]\_write\_data} & \ms{write\_data} & \ms{bridge} → \ms{timer[01]} \\\hline
-\ms{timer[01]\_read\_result} & \ms{read\_result} & \ms{timer[01]} → \ms{bridge} \\\hline
-\ms{timer[01]\_irq} & \ms{irq} & \ms{timer[01]} → \ms{bridge} \\\hline
+\ms{timer[01]\_addr} & \ms{addr} & \ms{bridge} →
+ \ms{timer[01]} \\\hline
+\ms{timer[01]\_write\_enable} & \ms{write\_enable} & \ms{bridge} →
+ \ms{timer[01]} \\\hline
+\ms{timer[01]\_write\_data} & \ms{write\_data} & \ms{bridge} →
+ \ms{timer[01]} \\\hline
+\ms{timer[01]\_read\_result} & \ms{read\_result} & \ms{timer[01]} →
+ \ms{bridge} \\\hline
+\ms{timer[01]\_irq} & \ms{irq} & \ms{timer[01]} →
+ \ms{bridge} \\\hline
 \end{longtable}
 
 \ms{interrupt} 信号接入 \ms{M: bridge.test\_interrupt}，由 \ms{bridge} 把它整合进 \ms{hwirq} 中。
@@ -3468,6 +3476,1151 @@ eret
 \end{lstlisting}
 \item
 鼠标和键盘的输入信号在 USB 总线上传递，然后给 USB HCI（主机控制器接口）。HCI 相当于一个通道，本身具有一定处理数据的能力，面向 CPU 来说是一个设备，支持 MMIO。同时，也支持产生中断。这样，鼠标和键盘的输入信号就能被 CPU 知晓。对 PS/2 接口的鼠标和键盘，通常 PC 的主板上有对应的控制器用来处理输入，并提供 MMIO 与生成中断。
+\end{enumerate}
+
+\section{测试}
+
+\begin{enumerate}
+\item 
+\begin{lstlisting}[language={[mips]Assembler}]
+.text
+lui $1, 0x8000
+ori $1, 0x0000
+lui $2, 0x8000
+ori $2, 0x0001
+
+addu $3, $1, $2
+
+# exception
+add $4, $1, $2
+
+loop:
+beq $0, $0, loop
+nop
+
+.ktext 0x4180
+addu $1, $0, $0
+addu $2, $0, $0
+eret
+lui $5, 0xdead
+ori $5, 0xbeef
+\end{lstlisting}
+\begin{verbatim}
+@00003000: $ 1 <= 80000000
+@00003004: $ 1 <= 80000000
+@00003008: $ 2 <= 80000000
+@0000300c: $ 2 <= 80000001
+@00003010: $ 3 <= 00000001
+@00004180: $ 1 <= 00000000
+@00004184: $ 2 <= 00000000
+@00003014: $ 4 <= 00000000
+\end{verbatim}
+\item
+\begin{lstlisting}[language={[mips]Assembler}]
+.text
+lui $1, 0x8000
+ori $1, 0x0000
+lui $2, 0x8000
+ori $2, 0x0001
+
+addu $3, $1, $2
+
+# exception
+add $4, $1, $2
+
+loop:
+beq $0, $0, loop
+nop
+
+.ktext 0x4180
+addu $1, $0, $0
+addu $2, $0, $0
+eret
+lui $5, 0xdead
+ori $5, 0xbeef
+\end{lstlisting}
+\begin{verbatim}
+@00003000: $ 1 <= 80000000
+@00003004: $ 1 <= 80000000
+@00003008: $ 2 <= 80000000
+@0000300c: $ 2 <= 80000001
+@00003010: $ 3 <= 00000001
+@00004180: $ 1 <= 00000000
+@00004184: $ 2 <= 00000000
+@00003014: $ 4 <= 00000000
+\end{verbatim}
+\item
+\begin{lstlisting}[language={[mips]Assembler}]
+.text
+lui $1, 0x8000
+ori $1, 0x0000
+lui $2, 0x8000
+ori $2, 0x0000
+
+add $3, $1, $2
+
+loop:
+beq $0, $0, loop
+nop
+
+.text 0x4180
+mfc0 $4, $14
+addiu $4, $4, 4
+mtc0 $4, $14
+eret
+\end{lstlisting}
+\begin{verbatim}
+@00003000: $ 1 <= 80000000
+@00003004: $ 1 <= 80000000
+@00003008: $ 2 <= 80000000
+@0000300c: $ 2 <= 80000000
+@00004180: $ 4 <= 00003010
+@00004184: $ 4 <= 00003014
+\end{verbatim}
+\item
+\begin{lstlisting}[language={[mips]Assembler}]
+.text
+lui $1, 0xcafe
+ori $1, 0xbabe
+lui $2, 0x00c0
+ori $2, 0xffee
+
+addu $3, $1, $2
+
+mult $1, $2
+
+# exception at level M
+sw $0, 1($0)
+
+# STORE_Ms at level D and E
+mthi $1
+mthi $2
+
+# flush pipeline and wait for the mult to complete
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+
+# exception at level M
+sw $0, 1($0)
+
+mthi $0
+
+mfhi $9
+mflo $10
+
+# flush pipeline
+nop
+nop
+nop
+nop
+nop
+
+lui $1, 0x8000
+
+mult $1, $1
+
+# exception at level M
+add $1, $1, $1
+
+mfhi $9
+mflo $10
+
+loop:
+beq $0, $0, loop
+nop
+
+.ktext 0x4180
+mfc0 $4, $14
+addiu $4, $4, 4
+mtc0 $4, $14
+eret
+
+\end{lstlisting}
+\begin{verbatim}
+@00003000: $ 1 <= cafe0000
+@00003004: $ 1 <= cafebabe
+@00003008: $ 2 <= 00c00000
+@0000300c: $ 2 <= 00c0ffee
+@00003010: $ 3 <= cbbfbaac
+@00004180: $ 4 <= 00003018
+@00004184: $ 4 <= 0000301c
+@00004180: $ 4 <= 00003040
+@00004184: $ 4 <= 00003044
+@00003048: $ 9 <= 00000000
+@0000304c: $10 <= 8354dea4
+@00003064: $ 1 <= 80000000
+@00004180: $ 4 <= 0000306c
+@00004184: $ 4 <= 00003070
+@00003070: $ 9 <= 40000000
+@00003074: $10 <= 00000000
+\end{verbatim}
+\item
+\begin{lstlisting}[language={[mips]Assembler}]
+# NOTE: This file is not supposed to be run by MARS. 
+
+.text
+lui $1, 0x8000
+ori $1, 0x0000
+lui $2, 0x8000
+ori $2, 0x0000
+ori $3, 0x7f00
+ori $4, 0x7f10
+ori $5, 0x0005
+
+# enable all hardware interrupts
+ori $8, 0xfc01
+mtc0 $8, $12
+
+# allow_irq = 1, mode = 1, enable = 0
+ori $6, 0x000a
+sw $6, 0($3)
+
+#save the preset of timer0 and load it
+sw $5, 4($3)
+lw $7, 4($3)
+
+#enable interrupts
+ori $6, 0x000b
+sw $6, 0($3)
+
+#nop sled
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+
+#allow_irq = 1, mode = 0, enable = 1
+lui $6, 0x0000
+ori $6, 0x0009
+sw $6, 0($3)
+
+#nop sled
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+
+#allow_irq = 1, mode = 0, enable = 1
+#try to make two simers interrupt simutaneously
+sw $5, 4($3)
+addiu $5, $5, -1
+sw $5, 4($4)
+
+lui $6, 0x0000
+ori $6, 0x0009
+sw $6, 0($3)
+sw $6, 0($4)
+
+#nop sled
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+
+#stop interrupts in the middle
+lui $6, 0x0000
+ori $6, 0x0009
+sw $6, 0($3)
+
+#allow_irq = 0
+lui $6, 0x0000
+ori $6, 0x0001
+sw $6, 0($3)
+
+#nop sled
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+
+#tail loop
+loop:
+beq $0, $0, loop
+nop
+
+.text 0x4180
+#disable counter
+lui $6, 0x0000
+ori $6, 0x0000
+sw $6, 0($3)
+sw $6, 0($4)
+
+mfc0 $14, $14
+addiu $14, $14, 4
+mtc0 $14, $14
+lui $26, 0xfeed
+ori $26, 0xbeef
+eret
+
+\end{lstlisting}
+\begin{verbatim}
+@00003000: $ 1 <= 80000000
+@00003004: $ 1 <= 80000000
+@00003008: $ 2 <= 80000000
+@0000300c: $ 2 <= 80000000
+@00003010: $ 3 <= 00007f00
+@00003014: $ 4 <= 00007f10
+@00003018: $ 5 <= 00000005
+@0000301c: $ 8 <= 0000fc01
+@00003024: $ 6 <= 0000000a
+@00003030: $ 7 <= 00000005
+@00003034: $ 6 <= 0000000b
+@00004180: $ 6 <= 00000000
+@00004184: $ 6 <= 00000000
+@00004190: $14 <= 00003058
+@00004194: $14 <= 0000305c
+@0000419c: $26 <= feed0000
+@000041a0: $26 <= feedbeef
+@0000306c: $ 6 <= 00000000
+@00003070: $ 6 <= 00000009
+@00004180: $ 6 <= 00000000
+@00004184: $ 6 <= 00000000
+@00004190: $14 <= 00003094
+@00004194: $14 <= 00003098
+@0000419c: $26 <= feed0000
+@000041a0: $26 <= feedbeef
+@000030bc: $ 5 <= 00000004
+@000030c4: $ 6 <= 00000000
+@000030c8: $ 6 <= 00000009
+@00004180: $ 6 <= 00000000
+@00004184: $ 6 <= 00000000
+@00004190: $14 <= 000030d0
+@00004194: $14 <= 000030d4
+@0000419c: $26 <= feed0000
+@000041a0: $26 <= feedbeef
+@00003114: $ 6 <= 00000000
+@00003118: $ 6 <= 00000009
+@00003120: $ 6 <= 00000000
+@00003124: $ 6 <= 00000001
+\end{verbatim}
+\item
+\begin{lstlisting}[language={[mips]Assembler}]
+.ktext 0x4180
+_entry:
+	ori	$k0, $0, 0x1000
+	sw	$sp, -4($k0)
+	mfc0	$k1, $12
+	sw	$k1, -8($k0)
+	
+	addiu	$k0, $k0, -256
+	move	$sp, $k0
+	
+	j	_save_context
+	nop
+	
+_main_handler:
+	mfc0	$k0, $14
+	addu	$k0, $k0, 4
+	mtc0	$k0, $14
+	j	_restore_context
+	nop
+	
+_restore:
+	eret
+	
+_save_context:
+	sw  	$1, 4($sp)
+    	sw  	$2, 8($sp)    
+    	sw  	$3, 12($sp)    
+    	sw  	$4, 16($sp)    
+    	sw  	$5, 20($sp)    
+    	sw  	$6, 24($sp)    
+    	sw  	$7, 28($sp)    
+    	sw  	$8, 32($sp)    
+    	sw  	$9, 36($sp)    
+    	sw  	$10, 40($sp)    
+    	sw  	$11, 44($sp)    
+    	sw  	$12, 48($sp)    
+    	sw  	$13, 52($sp)    
+    	sw  	$14, 56($sp)    
+    	sw  	$15, 60($sp)    
+    	sw  	$16, 64($sp)    
+    	sw  	$17, 68($sp)    
+    	sw  	$18, 72($sp)    
+    	sw  	$19, 76($sp)    
+    	sw  	$20, 80($sp)    
+    	sw  	$21, 84($sp)    
+    	sw  	$22, 88($sp)    
+    	sw  	$23, 92($sp)    
+    	sw  	$24, 96($sp)    
+    	sw  	$25, 100($sp)    
+    	sw  	$26, 104($sp)    
+    	sw  	$27, 108($sp)    
+    	sw  	$28, 112($sp)    
+    	sw  	$29, 116($sp)    
+    	sw  	$30, 120($sp)    
+    	sw  	$31, 124($sp)
+	mfhi 	$k0
+	sw 	$k0, 128($sp)
+	mflo 	$k0
+	sw 	$k0, 132($sp)
+	j	_main_handler
+	nop
+	
+
+
+_restore_context:
+	lw 	$1, 4($sp)
+    	lw  	$2, 8($sp)    
+    	lw  	$3, 12($sp)    
+    	lw  	$4, 16($sp)    
+    	lw  	$5, 20($sp)    
+    	lw  	$6, 24($sp)    
+    	lw  	$7, 28($sp)    
+    	lw  	$8, 32($sp)    
+    	lw  	$9, 36($sp)    
+    	lw  	$10, 40($sp)    
+    	lw  	$11, 44($sp)    
+    	lw  	$12, 48($sp)    
+    	lw  	$13, 52($sp)    
+    	lw  	$14, 56($sp)    
+    	lw  	$15, 60($sp)    
+    	lw  	$16, 64($sp)    
+    	lw  	$17, 68($sp)    
+    	lw  	$18, 72($sp)    
+    	lw  	$19, 76($sp)    
+    	lw  	$20, 80($sp)    
+    	lw  	$21, 84($sp)    
+    	lw  	$22, 88($sp)    
+    	lw  	$23, 92($sp)    
+    	lw  	$24, 96($sp)    
+    	lw  	$25, 100($sp)    
+    	lw  	$26, 104($sp)    
+    	lw  	$27, 108($sp)    
+    	lw  	$28, 112($sp)    
+    	lw  	$29, 116($sp)    
+    	lw  	$30, 120($sp)    
+    	lw  	$31, 124($sp)    
+	lw 	$k0, 128($sp)
+	mthi 	$k0
+	lw 	$k0, 132($sp)
+	mtlo 	$k0
+    	j 	_restore	
+	nop	
+	
+	
+	
+	
+.text
+	ori	$28, $0, 0x0000
+	ori	$29, $0, 0x0000
+	lui	$8, 0x7fff
+	lui	$9, 0x7fff
+	add	$10, $8, $9
+	or	$10, $8, $9
+loop:
+	beq $0, $0, loop
+	nop
+
+\end{lstlisting}
+\begin{verbatim}
+@00003000: $28 <= 00000000
+@00003004: $29 <= 00000000
+@00003008: $ 8 <= 7fff0000
+@0000300c: $ 9 <= 7fff0000
+@00004180: $26 <= 00001000
+@00004184: *00000ffc <= 00000000
+@00004188: $27 <= 0000ff13
+@0000418c: *00000ff8 <= 0000ff13
+@00004190: $26 <= 00000f00
+@00004194: $29 <= 00000f00
+@000041c0: *00000f04 <= 00000000
+@000041c4: *00000f08 <= 00000000
+@000041c8: *00000f0c <= 00000000
+@000041cc: *00000f10 <= 00000000
+@000041d0: *00000f14 <= 00000000
+@000041d4: *00000f18 <= 00000000
+@000041d8: *00000f1c <= 00000000
+@000041dc: *00000f20 <= 7fff0000
+@000041e0: *00000f24 <= 7fff0000
+@000041e4: *00000f28 <= 00000000
+@000041e8: *00000f2c <= 00000000
+@000041ec: *00000f30 <= 00000000
+@000041f0: *00000f34 <= 00000000
+@000041f4: *00000f38 <= 00000000
+@000041f8: *00000f3c <= 00000000
+@000041fc: *00000f40 <= 00000000
+@00004200: *00000f44 <= 00000000
+@00004204: *00000f48 <= 00000000
+@00004208: *00000f4c <= 00000000
+@0000420c: *00000f50 <= 00000000
+@00004210: *00000f54 <= 00000000
+@00004214: *00000f58 <= 00000000
+@00004218: *00000f5c <= 00000000
+@0000421c: *00000f60 <= 00000000
+@00004220: *00000f64 <= 00000000
+@00004224: *00000f68 <= 00000f00
+@00004228: *00000f6c <= 0000ff13
+@0000422c: *00000f70 <= 00000000
+@00004230: *00000f74 <= 00000f00
+@00004234: *00000f78 <= 00000000
+@00004238: *00000f7c <= 00000000
+@0000423c: $26 <= 00000000
+@00004240: *00000f80 <= 00000000
+@00004244: $26 <= 00000000
+@00004248: *00000f84 <= 00000000
+@000041a0: $26 <= 00003010
+@000041a4: $ 1 <= 00000000
+@000041a8: $ 1 <= 00000004
+@000041ac: $26 <= 00003014
+@00004254: $ 1 <= 00000000
+@00004258: $ 2 <= 00000000
+@0000425c: $ 3 <= 00000000
+@00004260: $ 4 <= 00000000
+@00004264: $ 5 <= 00000000
+@00004268: $ 6 <= 00000000
+@0000426c: $ 7 <= 00000000
+@00004270: $ 8 <= 7fff0000
+@00004274: $ 9 <= 7fff0000
+@00004278: $10 <= 00000000
+@0000427c: $11 <= 00000000
+@00004280: $12 <= 00000000
+@00004284: $13 <= 00000000
+@00004288: $14 <= 00000000
+@0000428c: $15 <= 00000000
+@00004290: $16 <= 00000000
+@00004294: $17 <= 00000000
+@00004298: $18 <= 00000000
+@0000429c: $19 <= 00000000
+@000042a0: $20 <= 00000000
+@000042a4: $21 <= 00000000
+@000042a8: $22 <= 00000000
+@000042ac: $23 <= 00000000
+@000042b0: $24 <= 00000000
+@000042b4: $25 <= 00000000
+@000042b8: $26 <= 00000f00
+@000042bc: $27 <= 0000ff13
+@000042c0: $28 <= 00000000
+@000042c4: $29 <= 00000f00
+@000042c8: $30 <= 00000000
+@000042cc: $31 <= 00000000
+@000042d0: $26 <= 00000000
+@000042d8: $26 <= 00000000
+@00003014: $10 <= 7fff0000
+\end{verbatim}
+\item
+\begin{lstlisting}[language={[mips]Assembler}]
+.text
+lui $1, 0x8000
+ori $1, 0x0000
+lui $2, 0x8000
+ori $2, 0x0000
+
+add $3, $1, $2
+
+loop:
+beq $0, $0, loop
+nop
+
+.text 0x4180
+mfc0 $4, $14
+addiu $4, $4, 4
+mtc0 $4, $14
+eret
+lui $10, 0xdead
+
+\end{lstlisting}
+\begin{verbatim}
+@00003000: $ 1 <= 80000000
+@00003004: $ 1 <= 80000000
+@00003008: $ 2 <= 80000000
+@0000300c: $ 2 <= 80000000
+@00004180: $ 4 <= 00003010
+@00004184: $ 4 <= 00003014
+\end{verbatim}
+\end{enumerate}
+
+\hypertarget{ux6280ux5de7}{%
+\section{技巧}\label{ux6280ux5de7}}
+
+\hypertarget{ux614cux4e86ux600eux4e48ux529e}{%
+\subsection{慌了怎么办}\label{ux614cux4e86ux600eux4e48ux529e}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Don't panic! 做出来是最重要的
+\item
+  深呼吸，专心想实现和调试的事情，不要害怕干不出来
+\item
+  看看哪里的逻辑出错了，\textbf{不要逃避！}
+\item
+  用小数据、边界数据、特殊数据测试
+\item
+  踏踏实实想逻辑、定义、算法，必要的时候自己再描述一遍 /
+  写一遍，不要根据原来做出来的
+\end{enumerate}
+
+\hypertarget{ux5982ux4f55ux52a0ux65b0ux6307ux4ee4}{%
+\subsection{如何加新指令}\label{ux5982ux4f55ux52a0ux65b0ux6307ux4ee4}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  看好 RTL，把它转换成数据通路的连线
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  注意流水线分级
+\item
+  可能需要引入新的流水线寄存器
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  如果有多对一的情况，就应该用 MUX
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  MUX 是原来的值，改控制信号
+\item
+  MUX 是新的值，改控制信号，\textbf{可能要改 MUX 的位宽和对应接线的位宽}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  改好控制信号
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  对指令域进行识别
+
+  \begin{itemize}
+  \tightlist
+  \item
+    尽量把新指令归约到原来的 \texttt{dptype} 上，\textbf{可以使用
+    \texttt{\$0}，也可以利用其它特殊寄存器，毕竟控制模块里对读写寄存器的指定是
+    arbitrary 的}
+  \end{itemize}
+\item
+  如果需要一个新的 \texttt{dptype}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    计算好控制信号
+  \item
+    计算好 Tuse 和 Tnew
+  \item
+    看好如何转发、是否需要改转发路径
+  \end{itemize}
+\item
+  如果需要改转发路径
+
+  \begin{itemize}
+  \tightlist
+  \item
+    确定转发的源和目的
+  \item
+    \textbf{注意数据通路里的转发 MUX 和控制单元里的控制信号需要同时改}
+  \end{itemize}
+\item
+  如果有新的跳转规则
+
+  \begin{itemize}
+  \tightlist
+  \item
+    尽量改 \texttt{npc}，让 \texttt{npc} 基于比较结果判断
+  \item
+    如果引入了新的比较方式，就需要改 \texttt{cmp}，\textbf{注意有符号 /
+    无符号和运算溢出问题和改 \texttt{cmp} 的接口}，同时也要改数据通路和
+    \texttt{npc} 的接口
+  \item
+    如果要跟立即数比较，\textbf{先看一下立即数的扩展模式}，能用
+    \texttt{npc} 解决的尽量用 \texttt{npc} 解决，p5 有时不用改
+    \texttt{cmp}
+  \item
+    如果根据一个寄存器跳转，那么按照引入了新的比较方式处理，改
+    \texttt{cmp} 的比较方式
+  \item
+    如果跳转时涉及 \texttt{retaddr}，那么有时可以按照
+    \texttt{JUMP\_{[}IR{]}} 处理
+  \end{itemize}
+\item
+  如果有新的立即数扩展方式
+
+  \begin{itemize}
+  \tightlist
+  \item
+    如果还是 \texttt{im.result{[}15:0{]}} 改
+    \texttt{ext}，\textbf{注意有符号 / 无符号的区别}
+  \item
+    如果是 \texttt{im.result} 的其它部分，记得加 MUX
+    信号来源，\textbf{注意位宽和有符号 / 无符号的区别}
+  \end{itemize}
+\item
+  如果有新的寄存器号表示方法
+
+  \begin{itemize}
+  \tightlist
+  \item
+    加 MUX 信号来源，\textbf{记得改位宽}，控制信号用 sane defaults
+  \item
+    可以根据指令类型特判
+  \end{itemize}
+\item
+  如果 \texttt{alu} 有新的运算
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{抓好定义}，例如补码的相反数，最小的负数没有相反数
+  \item
+    \textbf{注意地址计算是无符号计算、指令给定了是不是有符号运算要注意}
+  \item
+    如果是两个输入的运算，直接写新运算
+  \item
+    如果是三个输入的运算，看看能不能省下一个运算源，\textbf{有的时候要改控制的输入}，比如条件传送指令需要根据第二个寄存器的值判断
+    \texttt{rf.we}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      如果新值能够比较快地出来，\textbf{注意改转发路径，但是为了正确定不改也可以}，比如条件传送指令
+    \end{itemize}
+  \item
+    如果是输入带附加参数的运算，可以开一个 \texttt{alu}
+    端口，然后在控制器上接过去，也可以通过正常数据通路传过去（不推荐），比如移位运算可以直接在控制器和
+    \texttt{alu} 上开端口
+
+    \begin{itemize}
+    \tightlist
+    \item
+      注意一般都有 Python，\textbf{可以自动代码生成}
+    \end{itemize}
+  \end{itemize}
+\item
+  如果 \texttt{md} 有新的运算
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{抓好定义}，比如补码的乘除法运算
+  \item
+    \textbf{注意有 / 无符号计算}
+  \item
+    \textbf{注意掌握好 \texttt{md} 的内部状态机，\texttt{md}
+    利用了时钟的下降沿}
+  \item
+    \textbf{如果需要检测特殊情况，最好在收到数据后马上检测}，比如检测除法是否除
+    0
+  \item
+    \textbf{注意暂停机制，现在是把跟 \texttt{md}
+    相关的指令串行化，但是可能有更复杂的暂停控制}
+  \end{itemize}
+\item
+  如果有新的 \texttt{dm} 存取方式
+
+  \begin{itemize}
+  \tightlist
+  \item
+    如果是特殊的读写范围，那么因为是单周期，可以在 \texttt{dm} 上开端口
+    \texttt{mode}，让控制单元控制 \texttt{mode}，注意 sane defaults
+    和\textbf{小端序}
+  \item
+    如果是同时读写，那么也可以用上面的方法，注意 \texttt{dm}
+    的读写地址端口是分开的，注意开 MUX 的端口和 sane defaults
+  \item
+    如果是根据其它来源读写，注意开 MUX 的端口和 sane defaults
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \textbf{注意这样的话转发多了一个新的消费者}
+    \end{itemize}
+  \end{itemize}
+\item
+  如果有新的 \texttt{rf} 的值
+
+  \begin{itemize}
+  \tightlist
+  \item
+    注意要接线接过来，然后加 MUX
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \textbf{注意补上每级的 \texttt{pff} 和对应的
+      \texttt{wire}，一定要声明，否则默认是 1 位的}
+    \end{itemize}
+  \item
+    如果是返回地址，\textbf{最好是先接当前 PC，然后无符号数 +8}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \textbf{一般这种指令可以归约到 \texttt{JUMP\_{[}IR{]}} 里}
+    \end{itemize}
+  \item
+    注意 \texttt{rf} 的值是否写入可以跟 \texttt{rf.we}
+    配合，\textbf{也可以妙用写入 \texttt{\$0}}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{ux5982ux4f55ux6709ux6548ux8c03ux8bd5}{%
+\subsection{如何有效调试}\label{ux5982ux4f55ux6709ux6548ux8c03ux8bd5}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  定位出错指令
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  平时可以用 \texttt{diff}
+\item
+  在考场上主要靠看数据和猜
+
+  \begin{itemize}
+  \tightlist
+  \item
+    看数据大法
+
+    \begin{itemize}
+    \tightlist
+    \item
+      前面一堆 0 位或者 1 位出错的，一般是移位指令
+    \item
+      前面数据乱了的，一般是乘除法指令
+    \item
+      数据差 1 的，一般是条件设置指令
+    \end{itemize}
+  \item
+    瞎猜大法
+
+    \begin{itemize}
+    \tightlist
+    \item
+      最近加了什么指令
+    \item
+      哪条指令原理不确定
+    \item
+      哪条指令是说了的重点
+    \item
+      哪条指令比较复杂，不好实现
+    \item
+      课下测试一直没过哪条指令
+    \end{itemize}
+  \item
+    实在不行就把感觉错了的指令都检查一遍
+  \end{itemize}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  分析每级的行为
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  先把 RTL 在心里分解成每级
+\item
+  然后比较出错指令或者觉得出错指令的差异
+\item
+  然后看转发和暂停是不是写对了
+
+  \begin{itemize}
+  \tightlist
+  \item
+    首先检查\textbf{每级得出的寄存器结果、Tuse 和 Tnew}
+  \item
+    然后检查控制器的转发是否写对
+  \item
+    然后检查数据通路的转发是否正确反映了逻辑
+  \item
+    最后检查一下转发相关的接线
+  \end{itemize}
+\item
+  然后检查每级的行为
+
+  \begin{itemize}
+  \tightlist
+  \item
+    先检查控制信号对不对，\textbf{尤其是新加的控制信号和它们对应的
+    defaults}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      如果上面检查了的话，转发和暂停检查一下 defaults
+    \end{itemize}
+  \item
+    \texttt{npc} 看与 \texttt{cmp} 的配合和 \texttt{npc}
+    模式本身的实现，注意\textbf{大小比较、有无符号数和指令取立即数的扩展}
+  \item
+    \texttt{rf} 看取寄存器号对不对，不要乱改改折了，\textbf{注意
+    MUX、数据位宽、有无符号数和扩展模式}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \textbf{检查一下对应的控制信号}
+    \end{itemize}
+  \item
+    \texttt{ext} 看扩展模式对不对，\textbf{注意扩展的是哪些位和扩展模式}
+  \item
+    \texttt{alu} 看实现的运算对不对，\textbf{要踏实地看定义以及和
+    \texttt{rf} 的配合，不要读哪个寄存器都读错了}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \textbf{如果有第三个参数，检查一下关于第三个参数的逻辑}
+    \end{itemize}
+  \item
+    \texttt{md}
+    看实现的运算对不对，\textbf{要踏实地看定义以及内部寄存器的值，注意好时钟周期}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      注意 \texttt{md} 的内部状态机和错误检测机制
+    \end{itemize}
+  \item
+    \texttt{dm}
+    看实现的读写模式和读写地址对不对，\textbf{注意端序和读写地址的对应
+    MUX，和它们与控制信号的对应关系}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      注意可能读写地址要分开转发，\textbf{这里的接线需要仔细看然后调一下}
+    \end{itemize}
+  \item
+    \texttt{rf}
+    还要看实现的钩子对不对，\textbf{尤其是根据寄存器值判断的那部分，因为需要控制器配合}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \textbf{注意要先实现钩子再转发}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  分析指令之间的关系
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  跟上一条指令之间的关系
+\item
+  如果是跳转指令，跟以前指令和对应寄存器的关系
+\item
+  如果是 L/S 指令，跟内存的关系
+\item
+  如果是乘除法指令，跟乘除法器及其串行化的关系
+\item
+  CPU 的初始状态
+\end{itemize}
+
+\hypertarget{ux5982ux4f55ux6539ux6570ux636eux901aux8def}{%
+\subsection{如何改数据通路}\label{ux5982ux4f55ux6539ux6570ux636eux901aux8def}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  分析为什么要改数据通路
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  改数据通路代价比较大
+
+  \begin{itemize}
+  \tightlist
+  \item
+    加入流水线后更是如此，\textbf{转发、暂停、流水线寄存器都要重新
+    evaluate 一遍}
+  \end{itemize}
+\item
+  必须安装新部件吗？
+
+  \begin{itemize}
+  \tightlist
+  \item
+    可能有的部件可以通过 hook 来解决
+  \item
+    有的部件可以通过改部件本身的方式来解决
+  \item
+    可能可以重新把指令的 RTL fit 到现有的数据通路里
+  \item
+    可能可以直接 hook 控制机制
+  \item
+    如果要求加新部件，那必须加，没有办法
+  \end{itemize}
+\item
+  新部件部署在哪一级？
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{直接决定转发、暂停和流水线寄存器的 evaluation}
+  \item
+    对类比同级的 MUX 和部件有帮助
+  \item
+    对分清这个部件的功能有描述
+  \end{itemize}
+\item
+  改了新部件，如何既服务好新指令，又能与原来的指令兼容？
+
+  \begin{itemize}
+  \tightlist
+  \item
+    sane defaults
+  \item
+    可能需要回退机制
+  \item
+    原来的指令可能需要在控制层面避开新部件带来的影响，不过这一点一般不大可能
+  \item
+    对 \texttt{md} 这种自带状态机的部件，弄好状态机
+  \end{itemize}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  分析怎么改数据通路
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  如果没安装新部件
+
+  \begin{itemize}
+  \tightlist
+  \item
+    如果在 \texttt{npc} 这里加上 hook 机制，记得跟 \texttt{cmp}
+    和控制配合好，\textbf{扩展指令的立即数时，源、目的和扩展哪个部分一定要注意}
+  \item
+    如果在控制加上 hook 机制，\textbf{要注意 sane defaults 和 hook
+    机制能不能方便之后修改代码}
+  \item
+    如果在 \texttt{alu\ /\ ext\ /\ md\ /\ dm}
+    加了新功能，\textbf{注意实现是否正确，要紧扣定义}
+  \end{itemize}
+\item
+  如果安装了新部件
+
+  \begin{itemize}
+  \tightlist
+  \item
+    重构一遍新指令的数据通路，\textbf{注意 sane defaults}
+  \item
+    \textbf{evaluate
+    一遍转发、暂停和流水线寄存器，并且仔细地改转发和暂停规则}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \textbf{看一下有没有多重转发，有的话可以暂停也可以多重转发，不过一般这不大可能}
+    \end{itemize}
+  \item
+    分析一下新部件的功能
+  \item
+    \textbf{看一下数据通路的更改，注意跟流水线寄存器之间的微妙的关系}
+  \item
+    如果比较有空，可以稍微测试一下
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{ux5982ux4f55ux6bd4ux8f83ux65b9ux4fbfux5730ux6539ux8bbeux8ba1}{%
+\subsection{如何比较方便地改设计}\label{ux5982ux4f55ux6bd4ux8f83ux65b9ux4fbfux5730ux6539ux8bbeux8ba1}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  可以在加 hook 机制的时候认为这是必须的
+\item
+  可以在扩展时认为这样可以简化数据通路
+\item
+  可以在部署部件时部署到比较方便实现的级
+\item
+  可以在实现内部流水线时认为这样方便调试
+\item
+  可以在暂停时认为这样可以简化设计
 \end{enumerate}
 
 \end{document}
