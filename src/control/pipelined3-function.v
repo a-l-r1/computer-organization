@@ -407,14 +407,6 @@ assign cw_e_md_op =
 	) : 
 	`MD_NONE;
 
-assign cw_e_m_hilo = 
-	(edptype == `LOAD_M) ? (
-		(ekind == `MFHI) ? 1'b0 : 
-		(ekind == `MFLO) ? 1'b1 : 
-		1'b0
-	) : 
-	1'b0;
-
 assign cw_m_m_bridge = 
 	($unsigned(m_dm_addr) >= `DM_ADDR_LB && $unsigned(m_dm_addr) <= `DM_ADDR_UB) ? 1'b0 : 
 	1'b1;

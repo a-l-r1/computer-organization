@@ -72,7 +72,7 @@ wire [31:0] e_alu_result;
 wire [31:0] e_rf_read_result1_orig, e_rf_read_result2_orig;
 wire [31:0] e_rf_read_result1, e_rf_read_result2;
 wire [31:0] e_alu_num2;
-wire [31:0] e_md_hi, e_md_lo, e_md_out;
+wire [31:0] e_md_out;
 wire e_alu_sig_overflow;
 
 /* M */
@@ -368,13 +368,12 @@ md md(
 	.restore(cw_e_md_restore), 
 	/* unused */
 	.invalid(), 
-	.hi(e_md_hi), 
-	.lo(e_md_lo)
+	/* unused */
+	.hi(), 
+	/* unused */
+	.lo(), 
+	.out(e_md_out)
 );
-
-assign e_md_out = 
-	(cw_e_m_hilo == 1'b0) ? e_md_hi : 
-	e_md_lo;
 
 /* M */
 
@@ -469,7 +468,7 @@ cp0 cp0(
 );
 
 /* NOTE: It seems that the judger doesn't care PCs of bubbles, and requires
-* the PC of just a single specific level instead. */
+ * the PC of just a single specific level instead. */
 assign test_addr = m_pc_curr_pc;
 
 assign m_cp0_epc = 
