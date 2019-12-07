@@ -7,8 +7,7 @@ module pc(
 	input rst, 
 	input [31:0] next_pc, 
 	input enable, 
-	output [31:0] curr_pc, 
-	output invalid
+	output [31:0] curr_pc
 );
 
 reg [31:0] saved_pc;
