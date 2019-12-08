@@ -31,6 +31,8 @@
          <obj_property name="ElementShortName">have2handle</obj_property>
          <obj_property name="ObjectShortName">have2handle</obj_property>
          <obj_property name="label">have2handle</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#ffaa00</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/control/cw_f_npc_jump_mode_orig" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">cw_f_npc_jump_mode_orig[3:0]</obj_property>
@@ -315,10 +317,6 @@
          <obj_property name="ElementShortName">cw_e_m_alusrc</obj_property>
          <obj_property name="ObjectShortName">cw_e_m_alusrc</obj_property>
       </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/cpu/cw_e_m_hilo" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">cw_e_m_hilo</obj_property>
-         <obj_property name="ObjectShortName">cw_e_m_hilo</obj_property>
-      </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/cw_e_md_stop" type="logic" db_ref_id="1">
          <obj_property name="ElementShortName">cw_e_md_stop</obj_property>
          <obj_property name="ObjectShortName">cw_e_md_stop</obj_property>
@@ -409,16 +407,6 @@
          <obj_property name="ObjectShortName">e_alu_result[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/cpu/e_md_hi" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">e_md_hi[31:0]</obj_property>
-         <obj_property name="ObjectShortName">e_md_hi[31:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/cpu/e_md_lo" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">e_md_lo[31:0]</obj_property>
-         <obj_property name="ObjectShortName">e_md_lo[31:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/e_md_out" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">e_md_out[31:0]</obj_property>
          <obj_property name="ObjectShortName">e_md_out[31:0]</obj_property>
@@ -435,6 +423,12 @@
       <wvobject fp_name="/pipelined3_tb/uut/cpu/cw_m_dm_write_enable" type="logic" db_ref_id="1">
          <obj_property name="ElementShortName">cw_m_dm_write_enable</obj_property>
          <obj_property name="ObjectShortName">cw_m_dm_write_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/cpu/cw_m_dm_stop" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">cw_m_dm_stop</obj_property>
+         <obj_property name="ObjectShortName">cw_m_dm_stop</obj_property>
+         <obj_property name="label">cw_m_dm_stop</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_tb/uut/cpu/cw_m_m_bridge" type="logic" db_ref_id="1">
          <obj_property name="ElementShortName">cw_m_m_bridge</obj_property>
@@ -1088,126 +1082,6 @@
          <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
    </wvobject>
-   <wvobject fp_name="group203" type="group">
-      <obj_property name="label">timer0</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0/write_enable" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">write_enable</obj_property>
-         <obj_property name="ObjectShortName">write_enable</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0/addr" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">addr[1:0]</obj_property>
-         <obj_property name="ObjectShortName">addr[1:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0/write_data" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">write_data[31:0]</obj_property>
-         <obj_property name="ObjectShortName">write_data[31:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0/read_result" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">read_result[31:0]</obj_property>
-         <obj_property name="ObjectShortName">read_result[31:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0/irq" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">irq</obj_property>
-         <obj_property name="ObjectShortName">irq</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0/ctrl" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">ctrl[31:0]</obj_property>
-         <obj_property name="ObjectShortName">ctrl[31:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0/preset" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">preset[31:0]</obj_property>
-         <obj_property name="ObjectShortName">preset[31:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0/count" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">count[31:0]</obj_property>
-         <obj_property name="ObjectShortName">count[31:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0/allow_irq" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">allow_irq</obj_property>
-         <obj_property name="ObjectShortName">allow_irq</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0/mode" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">mode[1:0]</obj_property>
-         <obj_property name="ObjectShortName">mode[1:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0/enable" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">enable</obj_property>
-         <obj_property name="ObjectShortName">enable</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer0/state" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">state[2:0]</obj_property>
-         <obj_property name="ObjectShortName">state[2:0]</obj_property>
-      </wvobject>
-   </wvobject>
-   <wvobject fp_name="group219" type="group">
-      <obj_property name="label">timer1</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1/write_enable" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">write_enable</obj_property>
-         <obj_property name="ObjectShortName">write_enable</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1/addr" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">addr[1:0]</obj_property>
-         <obj_property name="ObjectShortName">addr[1:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1/write_data" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">write_data[31:0]</obj_property>
-         <obj_property name="ObjectShortName">write_data[31:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1/read_result" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">read_result[31:0]</obj_property>
-         <obj_property name="ObjectShortName">read_result[31:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1/irq" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">irq</obj_property>
-         <obj_property name="ObjectShortName">irq</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1/ctrl" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">ctrl[31:0]</obj_property>
-         <obj_property name="ObjectShortName">ctrl[31:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1/preset" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">preset[31:0]</obj_property>
-         <obj_property name="ObjectShortName">preset[31:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1/count" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">count[31:0]</obj_property>
-         <obj_property name="ObjectShortName">count[31:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1/allow_irq" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">allow_irq</obj_property>
-         <obj_property name="ObjectShortName">allow_irq</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1/mode" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">mode[1:0]</obj_property>
-         <obj_property name="ObjectShortName">mode[1:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1/enable" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">enable</obj_property>
-         <obj_property name="ObjectShortName">enable</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1/irq_reg" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">irq_reg</obj_property>
-         <obj_property name="ObjectShortName">irq_reg</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1/state" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">state[2:0]</obj_property>
-         <obj_property name="ObjectShortName">state[2:0]</obj_property>
-      </wvobject>
-   </wvobject>
    <wvobject fp_name="group237" type="group">
       <obj_property name="label">bridge</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -1289,6 +1163,150 @@
       <wvobject fp_name="/pipelined3_tb/uut/bridge/timer1_irq" type="logic" db_ref_id="1">
          <obj_property name="ElementShortName">timer1_irq</obj_property>
          <obj_property name="ObjectShortName">timer1_irq</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group203" type="group">
+      <obj_property name="label">timer0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/pipelined3_tb/uut/timer0/addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">addr[1:0]</obj_property>
+         <obj_property name="ObjectShortName">addr[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/timer0/write_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">write_enable</obj_property>
+         <obj_property name="ObjectShortName">write_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/timer0/write_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">write_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">write_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/timer0/read_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">read_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">read_result[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#00aaff</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/timer0/state" type="array" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">state[2:0]</obj_property>
+         <obj_property name="ObjectShortName">state[2:0]</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#555500</obj_property>
+         <obj_property name="label">state[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/timer0/irq" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">irq</obj_property>
+         <obj_property name="ObjectShortName">irq</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#ffaa00</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/timer0/ctrl" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">ctrl[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ctrl[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/timer0/preset" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">preset[31:0]</obj_property>
+         <obj_property name="ObjectShortName">preset[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#00aaff</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/timer0/count" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">count[31:0]</obj_property>
+         <obj_property name="ObjectShortName">count[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/timer0/mode" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">mode[1:0]</obj_property>
+         <obj_property name="ObjectShortName">mode[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/timer0/allow_irq" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">allow_irq</obj_property>
+         <obj_property name="ObjectShortName">allow_irq</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/timer0/enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">enable</obj_property>
+         <obj_property name="ObjectShortName">enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/timer0/irq_reg" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">irq_reg</obj_property>
+         <obj_property name="ObjectShortName">irq_reg</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#ffaa00</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group219" type="group">
+      <obj_property name="label">timer1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/pipelined3_tb/uut/timer1/addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">addr[1:0]</obj_property>
+         <obj_property name="ObjectShortName">addr[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/timer1/write_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">write_enable</obj_property>
+         <obj_property name="ObjectShortName">write_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/timer1/write_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">write_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">write_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/timer1/read_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">read_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">read_result[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/timer1/state" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">state[2:0]</obj_property>
+         <obj_property name="ObjectShortName">state[2:0]</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#555500</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/timer1/irq" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">irq</obj_property>
+         <obj_property name="ObjectShortName">irq</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#ffaa00</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/timer1/ctrl" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">ctrl[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ctrl[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/timer1/preset" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">preset[31:0]</obj_property>
+         <obj_property name="ObjectShortName">preset[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#00aaff</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/timer1/count" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">count[31:0]</obj_property>
+         <obj_property name="ObjectShortName">count[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#00aaff</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/timer1/mode" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">mode[1:0]</obj_property>
+         <obj_property name="ObjectShortName">mode[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/timer1/allow_irq" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">allow_irq</obj_property>
+         <obj_property name="ObjectShortName">allow_irq</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/timer1/enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">enable</obj_property>
+         <obj_property name="ObjectShortName">enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_tb/uut/timer1/irq_reg" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">irq_reg</obj_property>
+         <obj_property name="ObjectShortName">irq_reg</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#ffaa00</obj_property>
       </wvobject>
    </wvobject>
 </wave_config>
