@@ -37,7 +37,6 @@ wire [3:0] cw_fm_d1, cw_fm_d2, cw_fm_e1, cw_fm_e2, cw_fm_m, cw_fm_epc;
 wire cw_f_pc_enable, cw_d_pff_enable;
 wire cw_d_pff_rst, cw_e_pff_rst, cw_m_pff_rst, cw_w_pff_rst;
 
-wire cw_e_m_hilo;
 wire cw_e_md_stop, cw_e_md_restore;
 
 wire cw_m_dm_write_enable, cw_m_dm_stop;
