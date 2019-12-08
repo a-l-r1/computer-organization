@@ -80,7 +80,7 @@ assign result =
 	(r && `FUNCT(instr) == 6'b001000 && rt_zero && rd_zero) ? `JR : 
 	(r && `FUNCT(instr) == 6'b001001 && rt_zero) ? `JALR : 
 
-	(r && `FUNCT(instr) == 6'b001010 && `SHAMT(instr) == 5'b00000) ? `MOVZ : 
+	/* (r && `FUNCT(instr) == 6'b001010 && `SHAMT(instr) == 5'b00000) ? `MOVZ : */
 
 	(r && `FUNCT(instr) == 6'b011000 && rd_zero && shamt_zero) ? `MULT : 
 	(r && `FUNCT(instr) == 6'b011001 && rd_zero && shamt_zero) ? `MULTU : 
