@@ -17,15 +17,15 @@ mtc0 $8, $12
 ori $6, 0x000a
 sw $6, 0($3)
 
-#save the preset of timer0 and load it
+# save the preset of timer0 and load it
 sw $5, 4($3)
 lw $7, 4($3)
 
-#enable interrupts
+# enable interrupts
 ori $6, 0x000b
 sw $6, 0($3)
 
-#nop sled
+# nop sled
 nop
 nop
 nop
@@ -39,7 +39,7 @@ nop
 nop
 nop
 
-#allow_irq = 1, mode = 0, enable = 1
+# allow_irq = 1, mode = 0, enable = 1
 lui $6, 0x0000
 ori $6, 0x0009
 sw $6, 0($3)
@@ -62,70 +62,13 @@ nop
 nop
 nop
 
-#allow_irq = 1, mode = 0, enable = 1
-#try to make two simers interrupt simutaneously
-sw $5, 4($3)
-addiu $5, $5, -1
-sw $5, 4($4)
-
-lui $6, 0x0000
-ori $6, 0x0009
-sw $6, 0($3)
-sw $6, 0($4)
-
-#nop sled
-nop
-nop
-nop
-nop
-nop
-nop
-nop
-nop
-nop
-nop
-nop
-nop
-nop
-nop
-nop
-nop
-
-#stop interrupts in the middle
-lui $6, 0x0000
-ori $6, 0x0009
-sw $6, 0($3)
-
-#allow_irq = 0
-lui $6, 0x0000
-ori $6, 0x0001
-sw $6, 0($3)
-
-#nop sled
-nop
-nop
-nop
-nop
-nop
-nop
-nop
-nop
-nop
-nop
-nop
-nop
-nop
-nop
-nop
-nop
-
-#tail loop
+# tail loop
 loop:
 beq $0, $0, loop
 nop
 
 .text 0x4180
-#disable counter
+# disable counter
 lui $6, 0x0000
 ori $6, 0x0000
 sw $6, 0($3)
