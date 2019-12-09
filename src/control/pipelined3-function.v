@@ -199,6 +199,9 @@ wire [3:0] cw_f_npc_jump_mode_orig;
 
 /* M */
 
+/* in_bds pipeline */
+wire d_in_bds, e_in_bds, m_in_bds;
+
 /* Exception ID pipeline */
 
 wire [4:0] d_exc, e_exc, m_exc, m_exc_final;
@@ -550,6 +553,38 @@ assign cw_d_pff_enable = ~stall;
 
 assign cw_e_pff_rst_orig = stall;
 
+/* in_bds pipeline */
+
+/* NOTE: d_in_bds checks for the instruction in level D but records for the
+ * instruction in level F */
+
+pff #(.BIT_WIDTH(1)) d_in_bds_(
+	.clk(clk), 
+	.enable(cw_d_pff_enable), 
+	.rst(rst | cw_d_pff_rst), 
+	.i(
+		(ddptype == `JUMP_I || ddptype == `JUMP_R || ddptype == `BRANCH) ? 1'b1 : 
+		1'b0
+	), 
+	.o(d_in_bds)
+);
+
+pff #(.BIT_WIDTH(1)) e_in_bds_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(rst | cw_e_pff_rst), 
+	.i(d_in_bds), 
+	.o(e_in_bds)
+);
+
+pff #(.BIT_WIDTH(1)) m_in_bds_(
+	.clk(clk), 
+	.enable(1'b1), 
+	.rst(rst | cw_m_pff_rst), 
+	.i(e_in_bds), 
+	.o(m_in_bds)
+);
+
 /* Exception ID pipeline */
 
 /* Remember the precedence! */
@@ -606,7 +641,9 @@ assign cw_m_cp0_write_enable_orig = (mdptype == `STORE_C0);
 assign cw_m_cp0_exit_isr = (mdptype == `JUMP_C0);
 
 /* About to go into ISR, so interrupts are considered. */
-assign cw_m_cp0_in_bds = (wdptype == `JUMP_I || wdptype == `JUMP_R || wdptype == `BRANCH);
+/* NOTE: There may be bubbles between the instruction in the branch delay slot 
+ * and the corresponding branch instruction, so use a pipeline instead. */
+assign cw_m_cp0_in_bds = m_in_bds;
 
 /* About to go into ISR when cw_m_cp0_exc != `EXC_NONE, so interrupts are
  * considered. */
