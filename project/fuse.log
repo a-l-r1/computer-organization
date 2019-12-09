@@ -26,12 +26,13 @@ Analyzing Verilog file "/home/a-l-r/co/src/project/../tests/cpu/pipelined3/pipel
 Analyzing Verilog file "/opt/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
 Completed static elaboration
-Fuse Memory Usage: 83928 KB
-Fuse CPU Usage: 1000 ms
+Fuse Memory Usage: 83932 KB
+Fuse CPU Usage: 1020 ms
 Compiling module kind
 Compiling module pff(BIT_WIDTH=5)
 Compiling module forward
 Compiling module hazard
+Compiling module pff(BIT_WIDTH=1)
 Compiling module handler
 Compiling module control
 Compiling module npc
@@ -53,8 +54,8 @@ Compiling module pipelined3_tb
 Compiling module glbl
 Time Resolution for simulation is 1ps.
 Waiting for 5 sub-compilation(s) to finish...
-Compiled 23 Verilog Units
+Compiled 24 Verilog Units
 Built simulation executable /home/a-l-r/co/src/project/pipelined3_tb_isim_beh.exe
-Fuse Memory Usage: 1172452 KB
-Fuse CPU Usage: 1300 ms
-GCC CPU Usage: 7790 ms
+Fuse Memory Usage: 1172480 KB
+Fuse CPU Usage: 1350 ms
+GCC CPU Usage: 8080 ms
