@@ -58,7 +58,7 @@ assign t_use_reg2 =
 
 assign t_new_e = 
 	(edptype == `LOAD || edptype == `LOAD_C0) ? 3'd2 : 
-	(edptype == `CAL_R || edptype == `CAL_I || edptype == `LOAD_C0) ? 3'd1 : 
+	(edptype == `CAL_R || edptype == `CAL_I) ? 3'd1 : 
 	3'd0;
 
 assign t_new_m = 
