@@ -80,28 +80,28 @@ module npc_tb;
 		/* beq with positive num */
 		#10;
 		curr_pc = 32'h00000004;
-		jump_mode = `NPC_JUMP_WHEN_EQUAL;
+		jump_mode = `NPC_EQUAL;
 		cmp_result = `ALU_EQUAL;
 		num = 16'h0008;
 		
 		/* beq with negative num */
 		#10;
 		curr_pc = 32'h00000004;
-		jump_mode = `NPC_JUMP_WHEN_EQUAL;
+		jump_mode = `NPC_EQUAL;
 		cmp_result = `ALU_EQUAL;
 		num = 16'hffff;
 		
 		/* beq with negative num and `ALU_LARGER */
 		#10;
 		curr_pc = 32'h00000004;
-		jump_mode = `NPC_JUMP_WHEN_EQUAL;
+		jump_mode = `NPC_EQUAL;
 		cmp_result = `ALU_LARGER;
 		num = 16'hffff;
 		
 		/* bne with positive num */
 		#10;
 		curr_pc = 32'h00000004;
-		jump_mode = `NPC_JUMP_WHEN_NOT_EQUAL;
+		jump_mode = `NPC_NOT_EQUAL;
 		cmp_result = `ALU_LARGER;
 		num = 16'h0008;
 		
