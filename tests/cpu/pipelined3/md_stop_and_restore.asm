@@ -68,9 +68,19 @@ sw $28, 112($k0)
 sw $29, 116($k0)
 sw $30, 120($k0)
 sw $31, 124($k0)
+
+mfhi $t0
+sw $t0, 128($k0)
+mflo $t0
+sw $t0, 132($k0)
 .end_macro
 
 .macro restore_context()
+lw $t0, 128($k0)
+mthi $t0
+lw $t0, 132($k0)
+mtlo $t0
+
 # auto-generated code restoring registers $0-$25 and $28-$31
 lw $0, 0($k0)
 lw $1, 4($k0)
@@ -134,6 +144,13 @@ ori $t0, 10
 sw $t0, 4($s0)
 sw $t0, 4($s1)
 
+# $s2: test value against e_md_restore
+# $s3: test value against e_md_stop
+lui $s2, 0x0000
+ori $s2, 0xdead
+lui $s3, 0xdead
+ori $s3, 0xbeef
+
 # enable all interrupts
 lui $t0, 0x0000
 ori $t0, 0xfc01
@@ -159,8 +176,8 @@ sll $0, $9, 0
 sll $0, $10, 0
 sll $0, $11, 0
 sll $0, $12, 0 # at level W when interrupt is hit
-sll $0, $13, 0 # at level M when interrupt is hit
-sll $0, $14, 0 # at level E when interrupt is hit
+mtlo $s2 # at level M when interrupt is hit
+mthi $s3 # at level E when interrupt is hit
 sll $0, $15, 0 # at level D when interrupt is hit
 sll $0, $16, 0 # at level F when interrupt is hit
 sll $0, $17, 0
@@ -285,3 +302,4 @@ restore_context()
 eret
 # for testing
 lui $1, 0xdead
+
