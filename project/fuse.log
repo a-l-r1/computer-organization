@@ -1,4 +1,4 @@
-Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -i /home/a-l-r/co/src/src/include -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o /home/a-l-r/co/src/project/pipelined3_tb_isim_beh.exe -prj /home/a-l-r/co/src/project/pipelined3_tb_beh.prj work.pipelined3_tb work.glbl 
+Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -i /home/a-l-r/co/src/src/include -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o /home/a-l-r/co/src/project/p7_l0_delay_mips_txt_isim_beh.exe -prj /home/a-l-r/co/src/project/p7_l0_delay_mips_txt_beh.prj work.p7_l0_delay_mips_txt work.glbl 
 ISim P.20131013 (signature 0xfbc00daa)
 Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
@@ -22,12 +22,12 @@ Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/timer.v" into 
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/cpu/pipelined3-cpu.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/bridge/bridge.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/mips/mips.v" into library work
-Analyzing Verilog file "/home/a-l-r/co/src/project/../tests/cpu/pipelined3/pipelined3_tb.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../tests/cpu/pipelined3/p7_l0_delay/P7_L0_delay/tb.v" into library work
 Analyzing Verilog file "/opt/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
 Completed static elaboration
 Fuse Memory Usage: 83932 KB
-Fuse CPU Usage: 1020 ms
+Fuse CPU Usage: 900 ms
 Compiling module kind
 Compiling module pff(BIT_WIDTH=5)
 Compiling module forward
@@ -50,12 +50,12 @@ Compiling module cpu
 Compiling module bridge
 Compiling module timer
 Compiling module mips
-Compiling module pipelined3_tb
+Compiling module p7_l0_delay_mips_txt
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 5 sub-compilation(s) to finish...
+Waiting for 3 sub-compilation(s) to finish...
 Compiled 24 Verilog Units
-Built simulation executable /home/a-l-r/co/src/project/pipelined3_tb_isim_beh.exe
-Fuse Memory Usage: 1172480 KB
-Fuse CPU Usage: 1350 ms
-GCC CPU Usage: 8080 ms
+Built simulation executable /home/a-l-r/co/src/project/p7_l0_delay_mips_txt_isim_beh.exe
+Fuse Memory Usage: 1172496 KB
+Fuse CPU Usage: 1200 ms
+GCC CPU Usage: 7950 ms
