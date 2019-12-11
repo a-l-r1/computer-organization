@@ -42,7 +42,7 @@ echo '' >> ${TMPDIR}/output
 sed -i 's/^[ ]*[0-9]*//g' ${TMPDIR}/output
 
 # simulate-mars.py
-java -jar tools/mars.jar db mc CompactDataAtZero nc ${MARS_INSTR_LIMIT} $1 > ${TMPDIR}/ref_output_orig
+java -jar tools/mars.jar db mc CompactDataAtZero nc me ${MARS_INSTR_LIMIT} $1 > ${TMPDIR}/ref_output_orig
 cp ${TMPDIR}/ref_output_orig ${TMPDIR}/ref_output
 sed -i '/^Program terminated when maximum step limit 1000000 reached./d' ${TMPDIR}/ref_output
 # delete the last line if empty
