@@ -11,6 +11,7 @@ export LMC_HOME=/opt/Xilinx/14.7/ISE_DS/ISE/smartmodel/lin64/installed_lin64
 
 TB_NAME=pipelined3
 TMPDIR=`mktemp -d -p tmp`
+MARS_INSTR_LIMIT=1000000
 
 # NOTE: mind to change testbench names and branch delay slot availability
 
@@ -41,13 +42,18 @@ echo '' >> ${TMPDIR}/output
 sed -i 's/^[ ]*[0-9]*//g' ${TMPDIR}/output
 
 # simulate-mars.py
-java -jar tools/mars.jar db mc CompactDataAtZero nc $1 > ${TMPDIR}/ref_output
+java -jar tools/mars.jar db mc CompactDataAtZero nc ${MARS_INSTR_LIMIT} $1 > ${TMPDIR}/ref_output_orig
+cp ${TMPDIR}/ref_output_orig ${TMPDIR}/ref_output
+sed -i '/^Program terminated when maximum step limit 1000000 reached./d' ${TMPDIR}/ref_output
+# delete the last line if empty
+sed -i '${/^$/d;}' ${TMPDIR}/ref_output
 
 colordiff -u ${TMPDIR}/ref_output ${TMPDIR}/output
 DIFF_EXIT_STATUS=$?
 
 if [ ${DIFF_EXIT_STATUS} -eq 0 ]; then
 	echo "[+] test passed on $1"
+	rm -rf ${TMPDIR}
 else
 	echo "[-] test failed on $1, manual inspection needed"
 	read
