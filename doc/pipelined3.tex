@@ -2953,7 +2953,7 @@ M\textsuperscript{+} & \makecell{\ms{M: dm.valid}\\\ms{M: bridge.valid}} & \make
 \hline
 \headingcellfirst{控制信号名称} & \headingcellmiddle{位宽} & \headingcelllast{产生值的规则} \\\hline
 \endhead\hiderowcolors
-\ms{cw\_m\_cp0\_in\_bds} & 1 & 指令是否在延迟槽里的流水线 M 级的值\\\hline
+\ms{cw\_m\_cp0\_in\_bds} & 1 & \makecell{若 \ms{m\_pc\_curr\_pc != 32'b0}，\\则为指令是否在延迟槽里的流水线\\M 级的值；\\否则，若 \ms{e\_pc\_curr\_pc != 32'b0}，\\则为指令是否在延迟槽里的流水线\\E 级的值；\\否则为指令是否在延迟槽里的流水线\\D 级的值}\\\hline
 \ms{cw\_m\_cp0\_curr\_pc} & 32 & \makecell{若 \ms{m\_pc\_curr\_pc != 32'b0}，\\则为 \ms{\{m\_pc\_curr\_pc[31:2], 2'b0\}}；\\否则，若 \ms{e\_pc\_curr\_pc != 32'b0}，\\则为 \ms{\{e\_pc\_curr\_pc[31:2], 2'b0\}}；\\否则为 \ms{\{d\_pc\_curr\_pc[31:2], 2'b0\}}} \\\hline
 \end{longtable}
 
@@ -2962,11 +2962,11 @@ M\textsuperscript{+} & \makecell{\ms{M: dm.valid}\\\ms{M: bridge.valid}} & \make
 \begin{enumerate}
 \tightlist
 \item
-\textbf{\ms{cp0} 需要找到当前还没有执行完的指令的 \ms{pc} 值，但 W 级的更改会被提交，所以要从 M 级找起。找的时候要忽略流水线中插入的气泡，而气泡中流水的 \ms{curr\_pc} 是 \ms{32'b0}，所以碰到气泡时需要往前找。}
+\textbf{\ms{cp0} 需要找到当前还没有执行完的指令的 \ms{pc} 值，但 W 级的更改会被提交，所以要从 M 级找起。找的时候要忽略流水线中插入的气泡，而气泡中流水的 \ms{curr\_pc} 是 \ms{32'b0}，所以碰到气泡时需要往前找。类似地，找 \ms{in\_bds} 时也需要忽略流水线中插入的气泡，找到的 \ms{in\_bds} 也类似，碰到气泡时也一样需要往前找。}
 \item
 \textbf{\ms{exl == 1'b1} 时，并不会屏蔽异常。所以，可能会有在 ISR 中，又重新进入 ISR 的情况。但是，即使在这种情况下，由于 \ms{JUMP\_C0} 不会产生异常，所以哪怕某条指令到了 M 级产生异常，\ms{cw\_m\_cp0\_curr\_pc} 也是合法的值。}
 \item
-\textbf{往前找 \ms{curr\_pc} 时，找到 D 级就可以了，因为只有 \ms{JUMP\_C0} 类指令才能把 D 级清空。}
+\textbf{往前找 \ms{curr\_pc} 和 \ms{in\_bds} 时，找到 D 级就可以了，因为只有 \ms{JUMP\_C0} 类指令才能把 D 级清空，但是那时 \ms{JUMP\_C0} 类指令在 E 级，E 级 \ms{pc} 不是 \ms{32'b0}。而且，都用流水的 \ms{curr\_pc} 回溯可以保证这两个的值是同一级指令得出来的值。}
 \item
 \textbf{\ms{cp0} 记录 \ms{epc} 时，根据第 \ref{cp0} 节，它会自动检测是否为延迟槽指令。如果是，存入的 \ms{epc} 会作为无符号数减 \ms{32'd4}。}
 \item

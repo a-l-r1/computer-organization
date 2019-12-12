@@ -135,10 +135,10 @@
 \contentsline {subsubsection}{\numberline {16.9.2}检测异常和中断}{70}{subsubsection.16.9.2}% 
 \contentsline {subsubsection}{\numberline {16.9.3}异常或中断发生时 CP0 的内部记录控制信号}{70}{subsubsection.16.9.3}% 
 \contentsline {paragraph}{注意事项}{71}{section*.7}% 
-\contentsline {subsubsection}{\numberline {16.9.4}精确异常}{71}{subsubsection.16.9.4}% 
+\contentsline {subsubsection}{\numberline {16.9.4}精确异常}{72}{subsubsection.16.9.4}% 
 \contentsline {subsubsection}{\numberline {16.9.5}进入 ISR}{72}{subsubsection.16.9.5}% 
-\contentsline {subsubsection}{\numberline {16.9.6}从 ISR 返回}{73}{subsubsection.16.9.6}% 
-\contentsline {subsubsection}{\numberline {16.9.7}系统内存空间}{74}{subsubsection.16.9.7}% 
+\contentsline {subsubsection}{\numberline {16.9.6}从 ISR 返回}{74}{subsubsection.16.9.6}% 
+\contentsline {subsubsection}{\numberline {16.9.7}系统内存空间}{75}{subsubsection.16.9.7}% 
 \contentsline {subsubsection}{\numberline {16.9.8}注意事项}{75}{subsubsection.16.9.8}% 
 \contentsline {section}{\numberline {17}转发控制模块}{76}{section.17}% 
 \contentsline {subsection}{\numberline {17.1}原理}{76}{subsection.17.1}% 
@@ -147,38 +147,38 @@
 \contentsline {subsection}{\numberline {17.4}功能}{77}{subsection.17.4}% 
 \contentsline {section}{\numberline {18}暂停控制模块}{77}{section.18}% 
 \contentsline {subsection}{\numberline {18.1}原理}{77}{subsection.18.1}% 
-\contentsline {subsection}{\numberline {18.2}端口定义}{77}{subsection.18.2}% 
+\contentsline {subsection}{\numberline {18.2}端口定义}{78}{subsection.18.2}% 
 \contentsline {subsection}{\numberline {18.3}宏定义}{78}{subsection.18.3}% 
 \contentsline {subsection}{\numberline {18.4}功能}{78}{subsection.18.4}% 
-\contentsline {section}{\numberline {19}中断和异常控制模块}{78}{section.19}% 
-\contentsline {subsection}{\numberline {19.1}原理}{78}{subsection.19.1}% 
-\contentsline {subsection}{\numberline {19.2}端口定义}{78}{subsection.19.2}% 
-\contentsline {subsection}{\numberline {19.3}宏定义}{79}{subsection.19.3}% 
+\contentsline {section}{\numberline {19}中断和异常控制模块}{79}{section.19}% 
+\contentsline {subsection}{\numberline {19.1}原理}{79}{subsection.19.1}% 
+\contentsline {subsection}{\numberline {19.2}端口定义}{79}{subsection.19.2}% 
+\contentsline {subsection}{\numberline {19.3}宏定义}{80}{subsection.19.3}% 
 \contentsline {subsection}{\numberline {19.4}功能}{80}{subsection.19.4}% 
 \contentsline {section}{\numberline {20}CPU}{80}{section.20}% 
 \contentsline {subsection}{\numberline {20.1}原理}{80}{subsection.20.1}% 
 \contentsline {subsection}{\numberline {20.2}端口定义}{80}{subsection.20.2}% 
-\contentsline {subsection}{\numberline {20.3}接线}{80}{subsection.20.3}% 
+\contentsline {subsection}{\numberline {20.3}接线}{81}{subsection.20.3}% 
 \contentsline {subsection}{\numberline {20.4}功能}{81}{subsection.20.4}% 
 \contentsline {section}{\numberline {21}计时器}{81}{section.21}% 
 \contentsline {subsection}{\numberline {21.1}原理}{81}{subsection.21.1}% 
 \contentsline {subsection}{\numberline {21.2}端口定义}{81}{subsection.21.2}% 
-\contentsline {subsection}{\numberline {21.3}宏定义}{81}{subsection.21.3}% 
+\contentsline {subsection}{\numberline {21.3}宏定义}{82}{subsection.21.3}% 
 \contentsline {subsection}{\numberline {21.4}功能}{82}{subsection.21.4}% 
 \contentsline {subsection}{\numberline {21.5}注意事项}{83}{subsection.21.5}% 
 \contentsline {section}{\numberline {22}顶层模块}{83}{section.22}% 
 \contentsline {subsection}{\numberline {22.1}原理}{83}{subsection.22.1}% 
 \contentsline {subsection}{\numberline {22.2}端口定义}{83}{subsection.22.2}% 
-\contentsline {subsection}{\numberline {22.3}接线}{83}{subsection.22.3}% 
-\contentsline {subsection}{\numberline {22.4}功能}{84}{subsection.22.4}% 
-\contentsline {section}{\numberline {23}思考题}{84}{section.23}% 
-\contentsline {subsection}{\numberline {23.1}欢迎来到玄学领域}{84}{subsection.23.1}% 
+\contentsline {subsection}{\numberline {22.3}接线}{84}{subsection.22.3}% 
+\contentsline {subsection}{\numberline {22.4}功能}{85}{subsection.22.4}% 
+\contentsline {section}{\numberline {23}思考题}{85}{section.23}% 
+\contentsline {subsection}{\numberline {23.1}欢迎来到玄学领域}{85}{subsection.23.1}% 
 \contentsline {subsection}{\numberline {23.2}沟通外部设备与计时器}{85}{subsection.23.2}% 
 \contentsline {subsection}{\numberline {23.3}异常与中断}{85}{subsection.23.3}% 
 \contentsline {section}{\numberline {24}测试}{86}{section.24}% 
-\contentsline {section}{\numberline {25}技巧}{105}{section.25}% 
-\contentsline {subsection}{\numberline {25.1}慌了怎么办}{105}{subsection.25.1}% 
+\contentsline {section}{\numberline {25}技巧}{106}{section.25}% 
+\contentsline {subsection}{\numberline {25.1}慌了怎么办}{106}{subsection.25.1}% 
 \contentsline {subsection}{\numberline {25.2}如何加新指令}{106}{subsection.25.2}% 
-\contentsline {subsection}{\numberline {25.3}如何有效调试}{108}{subsection.25.3}% 
-\contentsline {subsection}{\numberline {25.4}如何改数据通路}{110}{subsection.25.4}% 
+\contentsline {subsection}{\numberline {25.3}如何有效调试}{109}{subsection.25.3}% 
+\contentsline {subsection}{\numberline {25.4}如何改数据通路}{111}{subsection.25.4}% 
 \contentsline {subsection}{\numberline {25.5}如何比较方便地改设计}{112}{subsection.25.5}% 
