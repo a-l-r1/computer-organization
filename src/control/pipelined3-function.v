@@ -137,7 +137,6 @@ module control(
 	output cw_e_m_alusrc, 
 	output [4:0] cw_e_alu_op, 
 	output [3:0] cw_e_md_op, 
-	output cw_e_m_hilo, 
 	output cw_e_md_stop, 
 	output cw_e_md_restore, 
 

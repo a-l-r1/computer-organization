@@ -139,7 +139,6 @@ control control(
 	.cw_e_m_alusrc(cw_e_m_alusrc), 
 	.cw_e_alu_op(cw_e_alu_op), 
 	.cw_e_md_op(cw_e_md_op), 
-	.cw_e_m_hilo(cw_e_m_hilo), 
 	.cw_e_md_stop(cw_e_md_stop), 
 	.cw_e_md_restore(cw_e_md_restore), 
 
