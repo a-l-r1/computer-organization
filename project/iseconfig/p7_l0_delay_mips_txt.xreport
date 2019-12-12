@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2019-12-11T13:58:31</DateModified>
+  <DateModified>2019-12-12T19:53:54</DateModified>
   <ModuleName>p7_l0_delay_mips_txt</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
   <SavedFilePath>/home/a-l-r/co/src/project/iseconfig/p7_l0_delay_mips_txt.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>/home/a-l-r/co/src/project</ImplementationReportsDirectory>
+  <ImplementationReportsDirectory>/home/a-l-r/co/src/project/</ImplementationReportsDirectory>
   <DateInitialized>2019-12-11T13:58:31</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
