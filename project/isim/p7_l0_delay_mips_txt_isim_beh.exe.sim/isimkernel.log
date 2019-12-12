@@ -2,27 +2,27 @@ Command line:
    p7_l0_delay_mips_txt_isim_beh.exe
      -simmode  gui
      -simrunnum  0
-     -socket  58165
+     -socket  34043
 
-Wed Dec 11 16:16:29 2019
+Thu Dec 12 19:21:16 2019
 
 
  Elaboration Time: 0.03 sec
 
- Current Memory Usage: 190.46 Meg
+ Current Memory Usage: 190.464 Meg
 
- Total Signals          : 649
- Total Nets             : 2700
+ Total Signals          : 647
+ Total Nets             : 2699
  Total Signal Drivers   : 289
  Total Blocks           : 58
  Total Primitive Blocks : 54
  Total Processes        : 373
  Total Traceable Variables  : 123
- Total Scalar Nets and Variables : 202774
+ Total Scalar Nets and Variables : 202773
 
- Total Simulation Time: 0.22 sec
+ Total Simulation Time: 0.2 sec
 
- Current Memory Usage: 265.961 Meg
+ Current Memory Usage: 265.966 Meg
 
-Wed Dec 11 19:40:29 2019
+Thu Dec 12 19:22:40 2019
 
