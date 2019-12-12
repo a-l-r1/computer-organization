@@ -639,11 +639,6 @@ assign cw_m_cp0_write_enable_orig = (mdptype == `STORE_C0);
 /* In ISR, so don't consider interrupts. */
 assign cw_m_cp0_exit_isr = (mdptype == `JUMP_C0);
 
-/* About to go into ISR, so interrupts are considered. */
-/* NOTE: There may be bubbles between the instruction in the branch delay slot 
- * and the corresponding branch instruction, so use a pipeline instead. */
-assign cw_m_cp0_in_bds = m_in_bds;
-
 /* About to go into ISR when cw_m_cp0_exc != `EXC_NONE, so interrupts are
  * considered. */
 assign cw_m_cp0_exc = m_exc_final;
@@ -658,6 +653,16 @@ assign cw_m_cp0_curr_pc =
 	(m_pc_curr_pc != 32'b0) ? {m_pc_curr_pc[31:2], 2'b0} : 
 	(e_pc_curr_pc != 32'b0) ? {e_pc_curr_pc[31:2], 2'b0} : 
 	{d_pc_curr_pc[31:2], 2'b0};
+
+/* About to go into ISR, so interrupts are considered. */
+/* NOTE: There may be bubbles between the instruction in the branch delay slot 
+ * and the corresponding branch instruction, so use a pipeline instead. And 
+ * backtracking must be done in case of bubbles when interrupts come. */
+assign cw_m_cp0_in_bds = 
+	/* Remember the precedence! */
+	(m_pc_curr_pc != 32'b0) ? m_in_bds : 
+	(e_pc_curr_pc != 32'b0) ? e_in_bds : 
+	d_in_bds;
 
 /* Exception control */
 
