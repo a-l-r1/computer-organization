@@ -6,8 +6,6 @@ module buttons(
 	output [31:0] out
 );
 
-parameter BASE_ADDR = 0x7fff0100;
-
 reg [7:0] stored;
 
 initial begin
@@ -18,13 +16,11 @@ always @(posedge clk) begin
 	if (rst == 1'b1) begin
 		stored <= 0;
 	end else begin
-		stored <= input;
+		stored <= ~input_;
 	end
 end
 
-assign out = 
-	(addr == BASE_ADDR) ? {24'b0, stored} : 
-	32'b0;
+assign out = {24'b0, stored};
 
 endmodule
 

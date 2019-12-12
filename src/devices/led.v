@@ -1,9 +1,8 @@
 module led(
 	input clk, 
 	input rst, 
-	input we, 
-	input [31:0] wd, 
-	input [31:0] addr, 
+	input write_enable, 
+	input [31:0] write_data, 
 	output [31:0] led_light
 );
 
@@ -17,7 +16,7 @@ always @(posedge clk) begin
 	if (rst == 1'b1) begin
 		stored <= 0;
 	end else begin
-		if (we == 1'b1 && addr == `BASE_ADDR) begin
+		if (write_enable == 1'b1) begin
 			stored <= wd;
 		end
 	end

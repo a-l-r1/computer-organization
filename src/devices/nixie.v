@@ -1,19 +1,19 @@
+`include "nixie.h"
+
 module nixie(
 	input clk, 
 	input rst, 
-	input we, 
-	input [31:0] wd, 
-	input [31:0] addr, 
-	output [31:0] rd, 
+	input write_enable, 
+	input [31:0] write_data, 
+	input addr, 
+	output [31:0] read_result, 
 	output [7:0] digital_tube0, 
 	output [7:0] digital_tube1, 
 	output [7:0] digital_tube2, 
 	output [3:0] digital_tube_sel0, 
 	output [3:0] digital_tube_sel1, 
 	output digital_tube_sel2
-)
-
-parameter BASE_ADDR = 32'h00007f38;
+);
 
 reg [31:0] ctr;
 reg [3:0] phase;
@@ -54,10 +54,10 @@ always @(posedge clk) begin
 		tube1 <= 0;
 		tube2 <= 0;
 	end else begin
-		if (we == 1'b1) begin
-			case (wd)
-				$unsigned(BASE_ADDR) + $unsigned(0): {tube0, tube1} <= wd;
-				$unsigned(BASE_ADDR) + $unsigned(4): tube2 <= wd[7:0];
+		if (write_enable == 1'b1) begin
+			case (addr)
+				1'b0: {tube0, tube1} <= write_data;
+				1'b1: tube2 <= write_data[7:0];
 				default: begin
 				end
 			endcase
@@ -96,9 +96,9 @@ assign data1 =
 
 assign data2 = tube2[3:0];
 
-assign rd = 
-	(addr == $unsigned(BASE_ADDR) + $unsigned(0)) ? {tube1, tube0} : 
-	(addr == $unsigned(BASE_ADDR) + $unsigned(4)) ? {24'b0, tube2} : 
+assign read_result = 
+	(addr == 1'b0) ? {tube1, tube0} : 
+	(addr == 1'b1) ? {24'b0, tube2} : 
 	32'b0;
 
 endmodule
