@@ -82,10 +82,12 @@ assign result =
 
 	/* (r && `FUNCT(instr) == 6'b001010 && `SHAMT(instr) == 5'b00000) ? `MOVZ : */
 
+	/* 
 	(r && `FUNCT(instr) == 6'b011000 && rd_zero && shamt_zero) ? `MULT : 
 	(r && `FUNCT(instr) == 6'b011001 && rd_zero && shamt_zero) ? `MULTU : 
 	(r && `FUNCT(instr) == 6'b011010 && rd_zero && shamt_zero) ? `DIV : 
 	(r && `FUNCT(instr) == 6'b011011 && rd_zero && shamt_zero) ? `DIVU : 
+	*/
 
 	(r && `FUNCT(instr) == 6'b010000 && rs_zero && rt_zero && shamt_zero) ? `MFHI : 
 	(r && `FUNCT(instr) == 6'b010010 && rs_zero && rt_zero && shamt_zero) ? `MFLO : 

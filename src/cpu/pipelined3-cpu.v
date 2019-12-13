@@ -24,7 +24,7 @@ wire [2:0] cw_d_ext_mode;
 wire [4:0] cw_d_rf_read_addr1, cw_d_rf_read_addr2, cw_w_rf_write_addr;
 
 wire [4:0] cw_e_alu_op;
-wire [3:0] cw_e_md_op;
+/* wire [3:0] cw_e_md_op; */
 
 wire [2:0] cw_m_dm_mode;
 wire [4:0] cw_m_cp0_exc;
@@ -37,7 +37,7 @@ wire [3:0] cw_fm_d1, cw_fm_d2, cw_fm_e1, cw_fm_e2, cw_fm_m, cw_fm_epc;
 wire cw_f_pc_enable, cw_d_pff_enable;
 wire cw_d_pff_rst, cw_e_pff_rst, cw_m_pff_rst, cw_w_pff_rst;
 
-wire cw_e_md_stop, cw_e_md_restore;
+/* wire cw_e_md_stop, cw_e_md_restore; */
 
 wire cw_m_dm_write_enable, cw_m_dm_stop;
 wire cw_m_m_bridge;
@@ -71,7 +71,7 @@ wire [31:0] e_alu_result;
 wire [31:0] e_rf_read_result1_orig, e_rf_read_result2_orig;
 wire [31:0] e_rf_read_result1, e_rf_read_result2;
 wire [31:0] e_alu_num2;
-wire [31:0] e_md_out;
+/* wire [31:0] e_md_out; */
 wire e_alu_sig_overflow;
 
 /* M */
@@ -80,7 +80,7 @@ wire [31:0] m_pc_curr_pc;
 wire [31:0] m_retaddr;
 wire [31:0] m_im_result;
 wire [31:0] m_alu_result;
-wire [31:0] m_md_out;
+/* wire [31:0] m_md_out; */
 wire [31:0] m_rf_read_result2_orig, m_rf_read_result2;
 wire [31:0] m_dm_read_result_orig, m_dm_read_result;
 wire [31:0] m_cp0_read_result;
@@ -93,7 +93,7 @@ wire [31:0] w_pc_curr_pc;
 wire [31:0] w_retaddr;
 wire [31:0] w_im_result;
 wire [31:0] w_alu_result;
-wire [31:0] w_md_out;
+/* wire [31:0] w_md_out; */
 wire [31:0] w_dm_read_result;
 wire [31:0] w_rf_write_data;
 wire [31:0] w_cp0_read_result;
@@ -110,7 +110,9 @@ control control(
 	.w_instr(w_im_result), 
 
 	.rf_read_result2(d_rf_read_result2), 
-	.e_md_busy(e_md_busy), 
+	/* .e_md_busy(e_md_busy), */
+	/* md disabled */
+	.e_md_busy(1'b0), 
 	/* read_addr and write_addr are the same as m_alu_result */
 	.m_dm_addr(m_alu_result), 
 
@@ -138,9 +140,15 @@ control control(
 
 	.cw_e_m_alusrc(cw_e_m_alusrc), 
 	.cw_e_alu_op(cw_e_alu_op), 
-	.cw_e_md_op(cw_e_md_op), 
-	.cw_e_md_stop(cw_e_md_stop), 
-	.cw_e_md_restore(cw_e_md_restore), 
+	/* .cw_e_md_op(cw_e_md_op), */
+	/* .cw_e_md_stop(cw_e_md_stop), */
+	/* .cw_e_md_restore(cw_e_md_restore), */
+	/* unused */
+	.cw_e_md_op(), 
+	/* unused */
+	.cw_e_md_stop(), 
+	/* unused */
+	.cw_e_md_restore(), 
 
 	.cw_m_m_bridge(cw_m_m_bridge), 
 	.cw_m_dm_write_enable(cw_m_dm_write_enable), 
@@ -238,10 +246,10 @@ assign d_rf_read_result1 =
 	(cw_fm_d1 == `orig) ? d_rf_read_result1_orig : 
 	(cw_fm_d1 == `E2D_rf) ? e_rf_read_result1 : 
 	(cw_fm_d1 == `E2D_npc) ? e_retaddr : 
-	(cw_fm_d1 == `E2D_md) ? e_md_out : 
+	/* (cw_fm_d1 == `E2D_md) ? e_md_out : */
 	(cw_fm_d1 == `M2D_npc) ? m_retaddr : 
 	(cw_fm_d1 == `M2D_alu) ? m_alu_result : 
-	(cw_fm_d1 == `M2D_md) ? m_md_out : 
+	/* (cw_fm_d1 == `M2D_md) ? m_md_out : */
 	(cw_fm_d1 == `M2D_cp0) ? m_cp0_read_result : 
 	(cw_fm_d1 == `W2D_rf) ? w_rf_write_data : 
 	d_rf_read_result1_orig;
@@ -252,10 +260,10 @@ assign d_rf_read_result2 =
 	(cw_fm_d2 == `orig) ? d_rf_read_result2_orig : 
 	(cw_fm_d2 == `E2D_rf) ? e_rf_read_result1 : 
 	(cw_fm_d2 == `E2D_npc) ? e_retaddr : 
-	(cw_fm_d2 == `E2D_md) ? e_md_out : 
+	/* (cw_fm_d2 == `E2D_md) ? e_md_out : */
 	(cw_fm_d2 == `M2D_npc) ? m_retaddr : 
 	(cw_fm_d2 == `M2D_alu) ? m_alu_result : 
-	(cw_fm_d2 == `M2D_md) ? m_md_out : 
+	/* (cw_fm_d2 == `M2D_md) ? m_md_out : */
 	(cw_fm_d2 == `M2D_cp0) ? m_cp0_read_result : 
 	(cw_fm_d2 == `W2D_rf) ? w_rf_write_data : 
 	d_rf_read_result2_orig;
@@ -317,7 +325,7 @@ assign e_rf_read_result1 =
 	(cw_fm_e1 == `orig) ? e_rf_read_result1_orig : 
 	(cw_fm_e1 == `M2E_npc) ? m_retaddr : 
 	(cw_fm_e1 == `M2E_alu) ? m_alu_result : 
-	(cw_fm_e1 == `M2E_md) ? m_md_out : 
+	/* (cw_fm_e1 == `M2E_md) ? m_md_out : */
 	(cw_fm_e1 == `M2E_cp0) ? m_cp0_read_result : 
 	(cw_fm_e1 == `W2E_rf) ? w_rf_write_data : 
 	e_rf_read_result1_orig;
@@ -328,7 +336,7 @@ assign e_rf_read_result2 =
 	(cw_fm_e2 == `orig) ? e_rf_read_result2_orig : 
 	(cw_fm_e2 == `M2E_npc) ? m_retaddr : 
 	(cw_fm_e2 == `M2E_alu) ? m_alu_result : 
-	(cw_fm_e2 == `M2E_md) ? m_md_out : 
+	/* (cw_fm_e2 == `M2E_md) ? m_md_out : */
 	(cw_fm_e2 == `M2E_cp0) ? m_cp0_read_result : 
 	(cw_fm_e2 == `W2E_rf) ? w_rf_write_data : 
 	e_rf_read_result2_orig;
@@ -355,6 +363,7 @@ alu alu(
 	.op_invalid()
 );
 
+/*
 md md(
 	.clk(clk), 
 	.rst(rst), 
@@ -372,6 +381,7 @@ md md(
 	.lo(), 
 	.out(e_md_out)
 );
+*/
 
 /* M */
 
@@ -401,6 +411,7 @@ pff #(.BIT_WIDTH(32)) m_alu(
 	.o(m_alu_result)
 );
 
+/*
 pff #(.BIT_WIDTH(32)) m_md(
 	.clk(clk), 
 	.enable(1'b1), 
@@ -408,6 +419,7 @@ pff #(.BIT_WIDTH(32)) m_md(
 	.i(e_md_out), 
 	.o(m_md_out)
 );
+*/
 
 pff #(.BIT_WIDTH(32)) m_reg2(
 	.clk(clk), 
@@ -504,6 +516,7 @@ pff #(.BIT_WIDTH(32)) w_alu(
 	.o(w_alu_result)
 );
 
+/*
 pff #(.BIT_WIDTH(32)) w_md(
 	.clk(clk), 
 	.enable(1'b1), 
@@ -511,6 +524,7 @@ pff #(.BIT_WIDTH(32)) w_md(
 	.i(m_md_out), 
 	.o(w_md_out)
 );
+*/
 
 pff #(.BIT_WIDTH(32)) w_dm(
 	.clk(clk), 
@@ -533,7 +547,7 @@ assign w_rf_write_data =
 	(cw_w_m_regdata == 3'd1) ? w_alu_result : 
 	(cw_w_m_regdata == 3'd2) ? w_dm_read_result : 
 	(cw_w_m_regdata == 3'd3) ? w_retaddr : 
-	(cw_w_m_regdata == 3'd4) ? w_md_out : 
+	/* (cw_w_m_regdata == 3'd4) ? w_md_out : */
 	(cw_w_m_regdata == 3'd5) ? w_cp0_read_result : 
 	32'h0;
 
