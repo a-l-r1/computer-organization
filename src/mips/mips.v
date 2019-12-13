@@ -3,8 +3,7 @@ module mips(
 	input sys_rstn
 );
 
-wire clk;
-wire rst;
+wire clk, rst;
 assign clk = clk_in;
 assign rst = sys_rstn;
 
@@ -68,7 +67,7 @@ bridge bridge(
 	.timer1_read_result(timer1_read_result), 
 	.timer1_irq(timer1_irq), 
 
-	.test_interrupt(interrupt)
+	.test_interrupt(1'b0)
 );
 
 timer timer0 (
