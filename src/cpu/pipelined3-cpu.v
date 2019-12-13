@@ -373,11 +373,11 @@ md md(
 	.busy(e_md_busy), 
 	.stop(cw_e_md_stop), 
 	.restore(cw_e_md_restore), 
-	/* unused */
+	/ unused /
 	.invalid(), 
-	/* unused */
+	/ unused /
 	.hi(), 
-	/* unused */
+	/ unused /
 	.lo(), 
 	.out(e_md_out)
 );
