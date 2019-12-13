@@ -195,6 +195,7 @@ pc pc(
 );
 
 im im(
+	.clk(clk), 
 	.addr(f_pc_curr_pc), 
 	/* im is always enabled */
 	.enable(1'b1), 

@@ -4,6 +4,7 @@
 `define PART_NAME "im"
 
 module im(
+	input clk, 
 	input [31:0] addr, 
 	input enable, 
 	output [31:0] result, 
