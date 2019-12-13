@@ -85,7 +85,6 @@ wire [31:0] m_rf_read_result2_orig, m_rf_read_result2;
 wire [31:0] m_dm_read_result_orig, m_dm_read_result;
 wire [31:0] m_cp0_read_result;
 wire [31:0] m_cp0_epc_orig, m_cp0_epc;
-wire [31:0] test_addr;
 wire m_dm_valid, m_bridge_valid, m_cp0_have2handle;
 
 /* W */
