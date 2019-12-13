@@ -1,12 +1,12 @@
 module mips(
-	input clk, 
-	input reset, 
-	input interrupt, 
-	output [31:0] addr
+	input clk_in, 
+	input sys_rstn
 );
 
+wire clk;
 wire rst;
-assign rst = reset;
+assign clk = clk_in;
+assign rst = sys_rstn;
 
 /* cpu <-> bridge */
 
