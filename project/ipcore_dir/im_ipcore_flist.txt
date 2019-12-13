@@ -1,0 +1,16 @@
+# Output products list for <im_ipcore>
+im_ipcore/blk_mem_gen_v7_3_readme.txt
+im_ipcore/doc/blk_mem_gen_v7_3_vinfo.html
+im_ipcore/doc/pg058-blk-mem-gen.pdf
+im_ipcore.asy
+im_ipcore.gise
+im_ipcore.mif
+im_ipcore.ngc
+im_ipcore.sym
+im_ipcore.v
+im_ipcore.veo
+im_ipcore.xco
+im_ipcore.xise
+im_ipcore_flist.txt
+im_ipcore_xmdf.tcl
+summary.log

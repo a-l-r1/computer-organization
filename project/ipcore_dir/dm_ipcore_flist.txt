@@ -1,0 +1,16 @@
+# Output products list for <dm_ipcore>
+_xmsgs/pn_parser.xmsgs
+dm_ipcore/blk_mem_gen_v7_3_readme.txt
+dm_ipcore/doc/blk_mem_gen_v7_3_vinfo.html
+dm_ipcore/doc/pg058-blk-mem-gen.pdf
+dm_ipcore.asy
+dm_ipcore.gise
+dm_ipcore.ngc
+dm_ipcore.sym
+dm_ipcore.v
+dm_ipcore.veo
+dm_ipcore.xco
+dm_ipcore.xise
+dm_ipcore_flist.txt
+dm_ipcore_xmdf.tcl
+summary.log
