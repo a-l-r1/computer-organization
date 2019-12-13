@@ -1,7 +1,5 @@
 `include "rf.h"
 
-`define PART_NAME "rf"
-
 module rf(
 	input clk, 
 	input rst, 

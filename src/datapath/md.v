@@ -1,7 +1,5 @@
 `include "md.h"
 
-`define PART_NAME "md"
-
 module md(
 	input clk, 
 	input rst, 

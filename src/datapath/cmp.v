@@ -1,8 +1,6 @@
 `include "alu.h"
 `include "cmp.h"
 
-`define PART_NAME "cmp"
-
 module cmp(
 	input [31:0] reg1, 
 	input [31:0] reg2, 

@@ -1,7 +1,5 @@
 `include "pff.h"
 
-`define PART_NAME "pff"
-
 module pff(
 	input clk, 
 	input enable, 

@@ -34,7 +34,9 @@ cpu cpu(
 	.dev_write_enable(dev_write_enable), 
 	.dm_mode(dm_mode), 
 	.cpu_write_data(cpu_write_data), 
-	.test_addr(addr), 
+	/* .test_addr(dummy_test_addr), */
+	/* now unused */
+	.test_addr(), 
 	.bridge_stop(bridge_stop)
 );
 

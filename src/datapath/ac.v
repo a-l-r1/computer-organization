@@ -3,8 +3,6 @@
 `include "dm.h"
 `include "bridge.h"
 
-`define PART_NAME "ac"
-
 module ac(
 	input [31:0] addr, 
 	input [2:0] dm_mode, 

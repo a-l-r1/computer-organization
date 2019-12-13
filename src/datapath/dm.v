@@ -1,7 +1,5 @@
 `include "dm.h"
 
-`define PART_NAME "dm"
-
 module dm(
 	input clk, 
 	input rst, 

@@ -1,7 +1,5 @@
 `include "cp0.h"
 
-`define PART_NAME "cp0"
-
 module cp0(
 	input clk, 
 	input rst, 

@@ -18,27 +18,27 @@
 
 `define cp0_epc 14
 
-`define orig 0
-`define E2D_rf 1
-`define E2D_npc 2
-`define M2D_npc 3
-`define M2D_alu 4
-`define W2D_rf 5
-`define M2D_md 6
-`define E2D_md 7
-`define M2D_cp0 8
+`define orig 4'd0
+`define E2D_rf 4'd1
+`define E2D_npc 4'd2
+`define M2D_npc 4'd3
+`define M2D_alu 4'd4
+`define W2D_rf 4'd5
+`define M2D_md 4'd6
+`define E2D_md 4'd7
+`define M2D_cp0 4'd8
 
-`define M2E_npc 1
-`define M2E_alu 2
-`define W2E_rf 3
-`define M2E_md 4
-`define M2E_cp0 5
+`define M2E_npc 4'd1
+`define M2E_alu 4'd2
+`define W2E_rf 4'd3
+`define M2E_md 4'd4
+`define M2E_cp0 4'd5
 
-`define W2M_rf 1
+`define W2M_rf 4'd1
 
-`define EPC_D2M_rf 1
-`define EPC_E2M_rf 2
-`define EPC_M2M_rf 3
+`define EPC_D2M_rf 4'd1
+`define EPC_E2M_rf 4'd2
+`define EPC_M2M_rf 4'd3
 
 `endif
 

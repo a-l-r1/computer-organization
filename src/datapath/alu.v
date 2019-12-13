@@ -1,7 +1,5 @@
 `include "alu.h"
 
-`define PART_NAME "alu"
-
 module alu(
 	input [31:0] num1, 
 	input [31:0] num2, 

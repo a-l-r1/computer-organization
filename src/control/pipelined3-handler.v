@@ -44,12 +44,12 @@ module handler(
 wire [4:0] ddptype;
 wire [4:0] edptype;
 wire [4:0] mdptype;
-wire [4:0] wdptype;
+/* wire [4:0] wdptype; */
 
 assign ddptype = dkind[9:5];
 assign edptype = ekind[9:5];
 assign mdptype = mkind[9:5];
-assign wdptype = wkind[9:5];
+/* assign wdptype = wkind[9:5]; */
 
 /* Pipeline resetting */
 

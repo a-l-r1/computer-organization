@@ -1,8 +1,6 @@
 `include "im.h"
 `include "npc.h"
 
-`define PART_NAME "im"
-
 module im(
 	input clk, 
 	input [31:0] addr, 

@@ -30,7 +30,7 @@ assign ctrl = {28'b0, allow_irq, mode, enable};
 assign irq = irq_reg & allow_irq;
 
 assign read_result = 
-	(addr == 2'd0) ? {28'b0, allow_irq, mode, enable} : 
+	(addr == 2'd0) ? ctrl : 
 	(addr == 2'd1) ? preset : 
 	(addr == 2'd2) ? count : 
 	32'b0;

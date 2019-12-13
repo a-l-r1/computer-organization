@@ -29,7 +29,7 @@ module hazard(
 wire [4:0] ddptype;
 wire [4:0] edptype;
 wire [4:0] mdptype;
-wire [4:0] wdptype;
+/* wire [4:0] wdptype; */
 
 wire [2:0] t_use_reg1;
 wire [2:0] t_use_reg2;
@@ -41,7 +41,7 @@ wire stall_e2d_reg1, stall_m2d_reg1, stall_e2d_reg2, stall_m2d_reg2, stall_md_bu
 assign ddptype = dkind[9:5];
 assign edptype = ekind[9:5];
 assign mdptype = mkind[9:5];
-assign wdptype = wkind[9:5];
+/* assign wdptype = wkind[9:5]; */
 
 /* Stall control */
 

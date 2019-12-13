@@ -4,8 +4,6 @@
 `include "cmp.h"
 `include "im.h"
 
-`define PART_NAME "npc"
-
 module npc(
 	input [31:0] curr_pc, 
 	input [3:0] jump_mode, 

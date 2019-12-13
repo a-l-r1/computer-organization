@@ -10,7 +10,7 @@ module cpu(
 	output dev_write_enable, 
 	output [2:0] dm_mode, 
 	output [31:0] cpu_write_data, 
-	output [31:0] test_addr, 
+	output [31:0] test_addr,
 	output bridge_stop
 );
 
@@ -54,7 +54,7 @@ wire f_im_valid;
 /* D */
 
 wire [31:0] d_pc_curr_pc;
-wire [31:0] d_retaddr;
+/* wire [31:0] d_retaddr; */
 wire [31:0] d_im_result;
 wire [31:0] d_rf_read_result1, d_rf_read_result2;
 wire [31:0] d_rf_read_result1_orig, d_rf_read_result2_orig;
@@ -213,7 +213,7 @@ pff #(.BIT_WIDTH(32)) d_pc(
 	.o(d_pc_curr_pc)
 );
 
-assign d_retaddr = $unsigned(d_pc_curr_pc) + $unsigned(8);
+/* assign d_retaddr = $unsigned(d_pc_curr_pc) + $unsigned(8); */
 
 pff #(.BIT_WIDTH(32)) d_im(
 	.clk(clk), 
