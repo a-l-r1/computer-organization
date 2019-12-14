@@ -65,51 +65,63 @@ initial begin
 end
 
 always @(posedge clk) begin
-	if (have2handle == 1'b1) begin
-		`exl <= 1'b1;
-		`in_bds_i <= in_bds;
-		`epc_i <= (in_bds == 1'b1) ? $unsigned(curr_pc) - $unsigned(4) : 
-			$unsigned(curr_pc);
-
-		if (have_irq == 1'b1) begin
-			`exc_i <= `EXC_INT;
-		end else begin
-			if (have_exc == 1'b1) begin
-				`exc_i <= exc;
-			end
-		end
+	if (rst == 1'b1) begin
 `ifdef MARS_COMPAT
-		cause[9:8] <= 2'b0;
+		sr <= 32'h0000ff11;
+		cause <= 0;
+		epc_i <= 0;
+`else
+		sr <= 0;
+		cause <= 0;
+		epc_i <= 0;
+`endif
+	else	
+		if (have2handle == 1'b1) begin
+			`exl <= 1'b1;
+			`in_bds_i <= in_bds;
+			`epc_i <= (in_bds == 1'b1) ? $unsigned(curr_pc) - $unsigned(4) : 
+				$unsigned(curr_pc);
+
+			if (have_irq == 1'b1) begin
+				`exc_i <= `EXC_INT;
+			end else begin
+				if (have_exc == 1'b1) begin
+					`exc_i <= exc;
+				end
+			end
+`ifdef MARS_COMPAT
+			cause[9:8] <= 2'b0;
 `endif /* MARS_COMPAT */
 
-	end else begin
-		if (write_valid == 1'b1) begin
-			case (addr)
+		end else begin
+			if (write_valid == 1'b1) begin
+				case (addr)
 `ifdef MARS_COMPAT
-				5'd12: sr <= write_data;
-				5'd13: cause <= write_data;
-				5'd14: epc_i <= write_data;
+					5'd12: sr <= write_data;
+					5'd13: cause <= write_data;
+					5'd14: epc_i <= write_data;
 `else /* MARS_COMPAT */
-				5'd12: {`allow_hwirq, `exl, `g_allow_hwirq} <= {write_data[15:10], write_data[1], write_data[0]};
-				/* NOTE: for compliance with cscore */
-				/* 5'd13: {`in_bds_i, `hwirq_i, `exc_i} <= {write_data[31], write_data[15:10], write_data[6:2]}; */
-				5'd14: epc_i <= write_data;
+					5'd12: {`allow_hwirq, `exl, `g_allow_hwirq} <= {write_data[15:10], write_data[1], write_data[0]};
+					/* NOTE: for compliance with cscore */
+					/* 5'd13: {`in_bds_i, `hwirq_i, `exc_i} <= {write_data[31], write_data[15:10], write_data[6:2]}; */
+					5'd14: epc_i <= write_data;
 `endif /* MARS_COMPAT */
-				/* default omitted */
-			endcase
-		end else begin
-			if (exit_isr == 1'b1) begin
-				`exl <= 1'b0;
+					/* default omitted */
+				endcase
+			end else begin
+				if (exit_isr == 1'b1) begin
+					`exl <= 1'b0;
+				end
 			end
 		end
-	end
 
-	/* MARS doesn't even update it's hardware IRQ related bits */
+		/* MARS doesn't even update it's hardware IRQ related bits */
 `ifndef MARS_COMPAT
-	if (~(have2handle == 1'b0 && write_valid == 1'b1 && addr == 5'd13)) begin
-		`hwirq_i <= hwirq;
-	end
+		if (~(have2handle == 1'b0 && write_valid == 1'b1 && addr == 5'd13)) begin
+			`hwirq_i <= hwirq;
+		end
 `endif /* MARS_COMPAT */
+	end
 end
 
 endmodule
