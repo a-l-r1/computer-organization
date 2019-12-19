@@ -180,7 +180,7 @@ nixie nixie(
 	.clk(clk), 
 	.rst(rst), 
 
-	.addr(nixie_addr), 
+	.addr(nixie_addr[2]), 
 	.write_enable(nixie_write_enable), 
 	.write_data(nixie_write_data), 
 	.read_result(nixie_read_result), 
