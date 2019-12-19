@@ -102,7 +102,7 @@ assign data1 =
 assign data2 = tube2[3:0];
 
 assign read_result = 
-	(addr == 1'b0) ? {tube1, tube0} : 
+	(addr == 1'b0) ? {tube0, tube1} : 
 	(addr == 1'b1) ? {24'b0, tube2} : 
 	32'b0;
 
