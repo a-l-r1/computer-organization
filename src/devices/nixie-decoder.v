@@ -1,6 +1,6 @@
 module nixie_decoder(
 	input [3:0] data, 
-	output [7:0] digital_tube
+	output [7:0] out
 );
 
 wire [7:0] digital_tube_raw;
@@ -24,7 +24,7 @@ assign digital_tube_raw =
 	(data == 4'hf) ? 8'b01000111 : 
 	8'b00000000;
 
-assign digital_tube = ~digital_tube_raw;
+assign out = ~digital_tube_raw;
 
 endmodule
 

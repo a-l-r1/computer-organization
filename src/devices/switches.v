@@ -1,7 +1,13 @@
 module switches(
 	input clk, 
 	input rst, 
+
 	input addr, 
+	input write_enable, 
+	input [31:0] write_data, 
+	output [31:0] read_result, 
+	output irq, 
+
 	input [7:0] dip_switch7, 
 	input [7:0] dip_switch6, 
 	input [7:0] dip_switch5, 
@@ -9,8 +15,7 @@ module switches(
 	input [7:0] dip_switch3, 
 	input [7:0] dip_switch2, 
 	input [7:0] dip_switch1, 
-	input [7:0] dip_switch0, 
-	output [31:0] out
+	input [7:0] dip_switch0
 );
 
 reg [63:0] stored;
@@ -28,10 +33,12 @@ always @(posedge clk) begin
 	end
 end
 
-assign out = 
-	(addr = 1'b0) ? stored[31:0] : 
-	(addr = 1'b1) ? stored[63:32] : 
+assign read_result = 
+	(addr == 1'b0) ? stored[31:0] : 
+	(addr == 1'b1) ? stored[63:32] : 
 	32'b0;
+
+assign irq = 1'b0;
 
 endmodule
 

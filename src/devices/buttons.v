@@ -1,9 +1,14 @@
 module buttons(
 	input clk, 
 	input rst, 
-	input [7:0] input_, 
+
 	input [31:0] addr, 
-	output [31:0] out
+	input write_enable, 
+	input [31:0] write_data, 
+	output [31:0] read_result, 
+	output irq, 
+
+	input [7:0] user_key
 );
 
 reg [7:0] stored;
@@ -16,11 +21,12 @@ always @(posedge clk) begin
 	if (rst == 1'b1) begin
 		stored <= 0;
 	end else begin
-		stored <= ~input_;
+		stored <= ~user_key;
 	end
 end
 
-assign out = {24'b0, stored};
+assign read_result = {24'b0, stored};
+assign irq = 1'b0;
 
 endmodule
 
