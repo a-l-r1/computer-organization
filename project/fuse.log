@@ -1,4 +1,4 @@
-Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -i /home/a-l-r/co/src/src/include -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o /home/a-l-r/co/src/project/p7_l0_delay_mips_txt_isim_beh.exe -prj /home/a-l-r/co/src/project/p7_l0_delay_mips_txt_beh.prj work.p7_l0_delay_mips_txt work.glbl 
+Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -i /home/a-l-r/co/src/src/include -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o /home/a-l-r/co/src/project/pipelined3_p8_tb_isim_beh.exe -prj /home/a-l-r/co/src/project/pipelined3_p8_tb_beh.prj work.pipelined3_p8_tb work.glbl 
 ISim P.20131013 (signature 0xfbc00daa)
 Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
@@ -7,10 +7,12 @@ Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/pff.v" into l
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/control/pipelined3-hazard.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/control/pipelined3-handler.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/control/pipelined3-forward.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/ipcore_dir/im_ipcore.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/ipcore_dir/dm_ipcore.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/nixie-decoder.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/rf.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/pc.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/npc.v" into library work
-Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/md.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/im.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/ext.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/dm.v" into library work
@@ -19,14 +21,19 @@ Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/cmp.v" into l
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/alu.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/control/pipelined3-function.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/timer.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/switches.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/nixie.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/led.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/buttons.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/cpu/pipelined3-cpu.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/bridge/bridge.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/mips/mips.v" into library work
-Analyzing Verilog file "/home/a-l-r/co/src/project/../tests/cpu/pipelined3/p7_l0_delay/P7_L0_delay/tb.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/pipelined3_p8_tb.v" into library work
 Analyzing Verilog file "/opt/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
+WARNING:HDLCompiler:189 - "/home/a-l-r/co/src/project/../src/mips/mips.v" Line 183: Size mismatch in connection of port <addr>. Formal port size is 32-bit while actual signal size is 1-bit.
 Completed static elaboration
-Fuse Memory Usage: 83932 KB
+Fuse Memory Usage: 85716 KB
 Fuse CPU Usage: 970 ms
 Compiling module kind
 Compiling module pff(BIT_WIDTH=5)
@@ -37,25 +44,37 @@ Compiling module handler
 Compiling module control
 Compiling module npc
 Compiling module pc
+Compiling module BLK_MEM_GEN_V7_3_output_stage(C_...
+Compiling module BLK_MEM_GEN_V7_3_softecc_output_...
+Compiling module BLK_MEM_GEN_V7_3_mem_module(C_CO...
+Compiling module BLK_MEM_GEN_V7_3(C_FAMILY="spart...
+Compiling module im_ipcore
 Compiling module im
 Compiling module pff
 Compiling module rf
 Compiling module ext
 Compiling module cmp
 Compiling module alu
-Compiling module md
+Compiling module BLK_MEM_GEN_V7_3_mem_module(C_CO...
+Compiling module BLK_MEM_GEN_V7_3(C_FAMILY="spart...
+Compiling module dm_ipcore
 Compiling module dm
 Compiling module cp0
 Compiling module cpu
 Compiling module bridge
 Compiling module timer
+Compiling module switches
+Compiling module led
+Compiling module nixie_decoder
+Compiling module nixie
+Compiling module buttons
 Compiling module mips
-Compiling module p7_l0_delay_mips_txt
+Compiling module pipelined3_p8_tb
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 3 sub-compilation(s) to finish...
-Compiled 24 Verilog Units
-Built simulation executable /home/a-l-r/co/src/project/p7_l0_delay_mips_txt_isim_beh.exe
-Fuse Memory Usage: 1172504 KB
-Fuse CPU Usage: 1260 ms
-GCC CPU Usage: 7700 ms
+Waiting for 9 sub-compilation(s) to finish...
+Compiled 36 Verilog Units
+Built simulation executable /home/a-l-r/co/src/project/pipelined3_p8_tb_isim_beh.exe
+Fuse Memory Usage: 1174268 KB
+Fuse CPU Usage: 1350 ms
+GCC CPU Usage: 11640 ms
