@@ -1,4 +1,5 @@
 # Output products list for <im_ipcore>
+_xmsgs/pn_parser.xmsgs
 im_ipcore/blk_mem_gen_v7_3_readme.txt
 im_ipcore/doc/blk_mem_gen_v7_3_vinfo.html
 im_ipcore/doc/pg058-blk-mem-gen.pdf
