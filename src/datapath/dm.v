@@ -52,7 +52,7 @@ assign valid =
 
 assign write_bitmask = 
 	/* Remember the precedence! */
-	(valid == 1'b0 || write_enable == 1'b0) ? 4'b0000 : 
+	(valid == 1'b0 || write_enable == 1'b0 || stop == 1'b1) ? 4'b0000 : 
 	(mode == `DM_W) ? 4'b1111 : 
 	(mode == `DM_H) ? (
 		(write_addr[1] == 1'b0) ? 4'b0011 : 
