@@ -11,7 +11,7 @@
       <SelectedItems>
          <SelectedItem>mips (/home/a-l-r/co/src/src/mips/mips.v)</SelectedItem>
       </SelectedItems>
-      <ScrollbarPosition orientation="vertical" >30</ScrollbarPosition>
+      <ScrollbarPosition orientation="vertical" >33</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001fc000000020000000000000000000000000200000064ffffffff000000810000000300000002000001fc0000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
@@ -65,13 +65,13 @@
          <ClosedNode>User Constraints</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>Generate Programming File</SelectedItem>
+         <SelectedItem></SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000111000000010000000100000000000000000000000064ffffffff000000810000000000000001000001110000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem>Generate Programming File</CurrentItem>
+      <CurrentItem></CurrentItem>
    </ItemView>
    <SourceProcessView>000000ff00000000000000020000012d0000011b01000000040100000002</SourceProcessView>
    <CurrentView>Implementation</CurrentView>
@@ -80,13 +80,13 @@
          <ClosedNodesVersion>2</ClosedNodesVersion>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>im_ipcore (/home/a-l-r/co/src/project/ipcore_dir/im_ipcore.xco)</SelectedItem>
+         <SelectedItem>pipelined3_tb (/home/a-l-r/co/src/tests/cpu/pipelined3/pipelined3_tb.v)</SelectedItem>
       </SelectedItems>
-      <ScrollbarPosition orientation="vertical" >30</ScrollbarPosition>
+      <ScrollbarPosition orientation="vertical" >60</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000020200000001000000010000006400000210000000020000000000000000000000000200000064ffffffff000000810000000300000002000002100000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>im_ipcore (/home/a-l-r/co/src/project/ipcore_dir/im_ipcore.xco)</CurrentItem>
+      <CurrentItem>pipelined3_tb (/home/a-l-r/co/src/tests/cpu/pipelined3/pipelined3_tb.v)</CurrentItem>
    </ItemView>
    <ItemView engineview="BehavioralSim" sourcetype="" guiview="Process" >
       <ClosedNodes>
