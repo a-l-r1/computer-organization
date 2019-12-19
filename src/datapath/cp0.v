@@ -75,7 +75,7 @@ always @(posedge clk) begin
 		cause <= 0;
 		epc_i <= 0;
 `endif
-	else	
+	end else begin
 		if (have2handle == 1'b1) begin
 			`exl <= 1'b1;
 			`in_bds_i <= in_bds;
