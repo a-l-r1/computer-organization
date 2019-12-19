@@ -1,18 +1,15 @@
 #**************************************************************
 # systhem clock input
 #**************************************************************
-NET "clk_in"      LOC = AF13 | IOSTANDARD = LVCMOS33;
+NET "clk_in"        LOC = AF13 | IOSTANDARD = LVCMOS33;
 
-#**************************************************************
-# systhem reset input
-#**************************************************************
-NET "sys_rstn"    LOC = AC12 | IOSTANDARD = LVCMOS33;
+NET "sys_rstn"      LOC = AC12 | IOSTANDARD = LVCMOS33;
 
 #**************************************************************
 # uart interface
 #**************************************************************
-NET "uart_rxd" LOC = AF21 | IOSTANDARD = LVCMOS33;
-NET "uart_txd" LOC = AE21 | IOSTANDARD = LVCMOS33;
+NET "uart_rxd" LOC = AF21 | IOSTANDARD = LVCMOS33; 
+NET "uart_txd" LOC = AE21 | IOSTANDARD = LVCMOS33; 
 
 #**************************************************************
 # DIP switch
@@ -94,6 +91,7 @@ NET "user_key[5]" LOC = J1 | IOSTANDARD = LVCMOS33;
 NET "user_key[6]" LOC = J7 | IOSTANDARD = LVCMOS33;
 NET "user_key[7]" LOC = D3 | IOSTANDARD = LVCMOS33;
 
+
 #**************************************************************
 # LED lights
 #**************************************************************
@@ -142,7 +140,7 @@ NET "digital_tube2[2]"   LOC = B22 | IOSTANDARD = LVCMOS33;
 NET "digital_tube2[1]"   LOC = A21 | IOSTANDARD = LVCMOS33;
 NET "digital_tube2[0]"   LOC = A22 | IOSTANDARD = LVCMOS33;
 NET "digital_tube_sel2"  LOC = J17 | IOSTANDARD = LVCMOS33;
-
+      
 NET "digital_tube1[7]"      LOC = A20  | IOSTANDARD = LVCMOS33;        
 NET "digital_tube1[6]"      LOC = E19  | IOSTANDARD = LVCMOS33;        
 NET "digital_tube1[5]"      LOC = E20  | IOSTANDARD = LVCMOS33;
@@ -175,4 +173,3 @@ NET "digital_tube_sel0[3]"  LOC = G14  | IOSTANDARD = LVCMOS33;
 NET "clk_in" CLOCK_DEDICATED_ROUTE = FALSE;
 NET "clk_in" TNM_NET = "clk_in";
 TIMESPEC TS_clk_in = PERIOD "clk_in" 40 ns;
-
