@@ -4,7 +4,7 @@ module nixie(
 	input clk, 
 	input rst, 
 
-	input [31:0] addr, 
+	input addr, 
 	input write_enable, 
 	input [31:0] write_data, 
 	output [31:0] read_result, 
@@ -60,7 +60,7 @@ always @(posedge clk) begin
 
 		if (write_enable == 1'b1) begin
 			case (addr)
-				1'b0: {tube0, tube1} <= write_data;
+				1'b0: {tube1, tube0} <= write_data;
 				1'b1: tube2 <= write_data[7:0];
 				default: begin
 				end
@@ -102,7 +102,7 @@ assign data1 =
 assign data2 = tube2[3:0];
 
 assign read_result = 
-	(addr == 1'b0) ? {tube0, tube1} : 
+	(addr == 1'b0) ? {tube1, tube0} : 
 	(addr == 1'b1) ? {24'b0, tube2} : 
 	32'b0;
 
