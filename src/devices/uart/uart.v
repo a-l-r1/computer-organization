@@ -11,7 +11,7 @@
 
 `include    "uart.h"
 
-module  MiniUART( ADD_I, DAT_I, DAT_O, STB_I, WE_I, CLK_I, RST_I, ACK_O, RxD, TxD ) ;
+module  MiniUART( ADD_I, DAT_I, DAT_O, STB_I, WE_I, CLK_I, RST_I, ACK_O, IRQ_O, RxD, TxD ) ;
     // WISHBONE slave interface
     input                       CLK_I ;         // clock
     input   [31:0]              DAT_I ;         // input data
@@ -21,6 +21,7 @@ module  MiniUART( ADD_I, DAT_I, DAT_O, STB_I, WE_I, CLK_I, RST_I, ACK_O, RxD, Tx
     input                       STB_I ;         // strobe
     input                       WE_I ;          // write enable
     output                      ACK_O ;         // acknowledge
+    output                      IRQ_O ;         // interrupt request
     // Serial interface
     input                       RxD ;
     output                      TxD ;
@@ -84,5 +85,9 @@ module  MiniUART( ADD_I, DAT_I, DAT_O, STB_I, WE_I, CLK_I, RST_I, ACK_O, RxD, Tx
             load <= 0 ;
         else
             load <= !load & STB_I & WE_I & (ADD_I==`OFF_UART_DATA) ;
+
+    // When a byte has been received, raise irq. When read_over has been
+    // activated, irq would be lowered. 
+    assign  IRQ_O = rs;
 
 endmodule
