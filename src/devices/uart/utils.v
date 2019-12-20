@@ -46,6 +46,11 @@ module  counter( max, q, clk, rst ) ;
     reg                             q ;
 
     reg     [size_cnt-1:0]          cnt ;
+
+    initial begin
+	    q <= 0;
+	    cnt <= 0;
+    end
     
     //  counter ( down )
     always  @( posedge clk or posedge rst )

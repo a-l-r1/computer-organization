@@ -41,6 +41,16 @@ module  MiniUART( ADD_I, DAT_I, DAT_O, STB_I, WE_I, CLK_I, RST_I, ACK_O, IRQ_O, 
     wire                        en_rx ;         // 
     wire                        read_over ;     // flag : read register over
 
+    initial begin
+	tx_data <= 0 ;
+	ier <= 0;
+	iir <= 0;
+	lcr <= 0;
+	divr    <= `BAUD_RCV_9600 ;
+	divt    <= `BAUD_SND_9600 ;
+	load <= 0;
+    end
+
     // receive unit
     rx_unit     U_RX_UNIT( RxD, en_rx, rx_data, rs, read_over, CLK_I, RST_I ) ;
     // send unit
@@ -74,7 +84,7 @@ module  MiniUART( ADD_I, DAT_I, DAT_O, STB_I, WE_I, CLK_I, RST_I, ACK_O, IRQ_O, 
             endcase
 
     // 
-    assign  read_over = STB_I && WE_I ;             // 
+    assign  read_over = STB_I & WE_I ;             // 
     
     //
     assign  lsr = {ts, 4'b0, rs} ;

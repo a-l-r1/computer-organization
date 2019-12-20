@@ -45,6 +45,11 @@ module  ctrl_shift( en_tx, load, shift, ts, clk, rst ) ;
     wire                            rst_cnt_tx ;
     parameter   IDLE=0, SHIFT=1 ;
     reg                             fsm ;
+
+    initial begin
+	cnt_tx <= 0;
+	fsm <= 0;
+    end
     
     //  shift enable
     assign  shift   = (fsm==SHIFT) && en_tx ;
@@ -85,6 +90,11 @@ module  trans_reg( d_in, load, shift, txd, clk, rst ) ;
 
     reg     [10:0]                  t_reg ;     // transmit register
     integer                         i ;         // logic variable
+
+    initial begin
+	    t_reg <= 'h7ff;
+	    i = 0;
+    end
 
     // TxD
     assign  txd = t_reg[0] ;                    // bit 0 is always output to TxD

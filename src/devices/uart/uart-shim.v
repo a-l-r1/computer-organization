@@ -17,7 +17,7 @@ MiniUART uart(
 	.RST_I(rst), 
 
 	.ADD_I(addr[2:0]), 
-	.STB_I(write_enable), 
+	.STB_I(1'b1), 
 	.WE_I(write_enable), 
 	.DAT_I(write_data), 
 	.DAT_O(read_result), 

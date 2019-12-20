@@ -27,6 +27,15 @@ module  rx_unit ( rxd, en_rx, d_out, rs, over_read, clk, rst ) ;
 
     parameter   IDLE = 'd0, START = 'd1, BIT_RECV = 'd2, STOP = 'd3, WAIT_IDLE = 'd4 ;
 
+    initial begin
+	    byte <= 0;
+	    fsm <= 0;
+	    cnt_sample <= 0;
+	    cnt_bits <= 0;
+	    rf_av <= 0;
+	    clk_rf_av <= 0;
+    end
+
     //  CPU interface
     assign  d_out   = byte ;                        // data register
     assign  rs      = rf_av ;                       // receiver status
