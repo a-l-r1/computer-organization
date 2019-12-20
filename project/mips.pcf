@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Fri Dec 20 16:19:47 2019
+// Written by: Map P.20131013 on Fri Dec 20 20:35:50 2019
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -1308,9 +1308,9 @@ PIN clk_ipcore/pll_base_inst/PLL_ADV_pins<2> = BEL
         "clk_ipcore/pll_base_inst/PLL_ADV" PINNAME CLKIN1;
 TIMEGRP clk_in = PIN "clk_ipcore/pll_base_inst/PLL_ADV_pins<2>";
 TS_clk_in = PERIOD TIMEGRP "clk_in" 40 ns HIGH 50%;
-TS_clk_ipcore_clkout0 = PERIOD TIMEGRP "clk_ipcore_clkout0" TS_clk_in / 0.4
+TS_clk_ipcore_clkout0 = PERIOD TIMEGRP "clk_ipcore_clkout0" TS_clk_in / 1.2
         HIGH 50%;
-TS_clk_ipcore_clkout1 = PERIOD TIMEGRP "clk_ipcore_clkout1" TS_clk_in / 0.8
+TS_clk_ipcore_clkout1 = PERIOD TIMEGRP "clk_ipcore_clkout1" TS_clk_in / 2.4
         HIGH 50%;
 TS_TO_uart_shimuartU_TX_UNITU_CTRL_SHFTcnt_tx_3_LD = MAXDELAY TO TIMEGRP
         "TO_uart_shimuartU_TX_UNITU_CTRL_SHFTcnt_tx_3_LD"

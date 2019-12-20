@@ -1,0 +1,2 @@
+verilog work "../src/datapath/im.v"
+verilog work "ipcore_dir/im_ipcore.v"

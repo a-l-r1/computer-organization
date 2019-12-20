@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <symbol version="7" name="clk_ipcore">
     <symboltype>BLOCK</symboltype>
-    <timestamp>2019-12-20T10:42:24</timestamp>
+    <timestamp>2019-12-20T18:15:45</timestamp>
     <pin polarity="Input" x="0" y="80" name="clk_in1" />
     <pin polarity="Output" x="608" y="80" name="clk_out1" />
     <pin polarity="Output" x="608" y="176" name="clk_out2" />

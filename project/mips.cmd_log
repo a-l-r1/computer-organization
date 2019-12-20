@@ -151,3 +151,89 @@ bitgen -intstyle ise -f mips.ut mips.ncd
 xst -intstyle ise -ifn "/home/a-l-r/co/src/project/mips.xst" -ofn "/home/a-l-r/co/src/project/mips.syr" 
 xst -intstyle ise -ifn "/home/a-l-r/co/src/project/mips.xst" -ofn "/home/a-l-r/co/src/project/mips.syr" 
 xst -intstyle ise -ifn "/home/a-l-r/co/src/project/mips.xst" -ofn "/home/a-l-r/co/src/project/mips.syr" 
+xst -intstyle ise -ifn "/home/a-l-r/co/src/project/mips.xst" -ofn "/home/a-l-r/co/src/project/mips.syr" 
+netgen -intstyle ise -insert_glbl true -w -dir netgen/synthesis -ofmt verilog -sim mips.ngc mips_synthesis.v 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc constraints.ucf -p xc6slx100-fgg676-2 mips.ngc mips.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o mips_map.ncd mips.ngd mips.pcf 
+par -w -intstyle ise -ol high -mt off mips_map.ncd mips.ncd mips.pcf 
+bitgen -intstyle ise -f mips.ut mips.ncd 
+xst -intstyle ise -ifn "/home/a-l-r/co/src/project/mips.xst" -ofn "/home/a-l-r/co/src/project/mips.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc constraints.ucf -p xc6slx100-fgg676-2 mips.ngc mips.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o mips_map.ncd mips.ngd mips.pcf 
+par -w -intstyle ise -ol high -mt off mips_map.ncd mips.ncd mips.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml mips.twx mips.ncd -o mips.twr mips.pcf -ucf constraints.ucf 
+bitgen -intstyle ise -f mips.ut mips.ncd 
+xst -intstyle ise -ifn "/home/a-l-r/co/src/project/mips.xst" -ofn "/home/a-l-r/co/src/project/mips.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc constraints.ucf -p xc6slx100-fgg676-2 mips.ngc mips.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o mips_map.ncd mips.ngd mips.pcf 
+par -w -intstyle ise -ol high -mt off mips_map.ncd mips.ncd mips.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml mips.twx mips.ncd -o mips.twr mips.pcf -ucf constraints.ucf 
+bitgen -intstyle ise -f mips.ut mips.ncd 
+xst -intstyle ise -ifn "/home/a-l-r/co/src/project/mips.xst" -ofn "/home/a-l-r/co/src/project/mips.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc constraints.ucf -p xc6slx100-fgg676-2 mips.ngc mips.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o mips_map.ncd mips.ngd mips.pcf 
+par -w -intstyle ise -ol high -mt off mips_map.ncd mips.ncd mips.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml mips.twx mips.ncd -o mips.twr mips.pcf -ucf constraints.ucf 
+bitgen -intstyle ise -f mips.ut mips.ncd 
+xst -intstyle ise -ifn "/home/a-l-r/co/src/project/mips.xst" -ofn "/home/a-l-r/co/src/project/mips.syr" 
+xst -intstyle ise -ifn "/home/a-l-r/co/src/project/mips.xst" -ofn "/home/a-l-r/co/src/project/mips.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc constraints.ucf -p xc6slx100-fgg676-2 mips.ngc mips.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o mips_map.ncd mips.ngd mips.pcf 
+par -w -intstyle ise -ol high -mt off mips_map.ncd mips.ncd mips.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml mips.twx mips.ncd -o mips.twr mips.pcf -ucf constraints.ucf 
+bitgen -intstyle ise -f mips.ut mips.ncd 
+xst -intstyle ise -ifn "/home/a-l-r/co/src/project/mips.xst" -ofn "/home/a-l-r/co/src/project/mips.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc constraints.ucf -p xc6slx100-fgg676-2 mips.ngc mips.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o mips_map.ncd mips.ngd mips.pcf 
+par -w -intstyle ise -ol high -mt off mips_map.ncd mips.ncd mips.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml mips.twx mips.ncd -o mips.twr mips.pcf -ucf constraints.ucf 
+bitgen -intstyle ise -f mips.ut mips.ncd 
+xst -intstyle ise -ifn "/home/a-l-r/co/src/project/mips.xst" -ofn "/home/a-l-r/co/src/project/mips.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc constraints.ucf -p xc6slx100-fgg676-2 mips.ngc mips.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o mips_map.ncd mips.ngd mips.pcf 
+par -w -intstyle ise -ol high -mt off mips_map.ncd mips.ncd mips.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml mips.twx mips.ncd -o mips.twr mips.pcf -ucf constraints.ucf 
+bitgen -intstyle ise -f mips.ut mips.ncd 
+xst -intstyle ise -ifn "/home/a-l-r/co/src/project/mips.xst" -ofn "/home/a-l-r/co/src/project/mips.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc constraints.ucf -p xc6slx100-fgg676-2 mips.ngc mips.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o mips_map.ncd mips.ngd mips.pcf 
+par -w -intstyle ise -ol high -mt off mips_map.ncd mips.ncd mips.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml mips.twx mips.ncd -o mips.twr mips.pcf -ucf constraints.ucf 
+bitgen -intstyle ise -f mips.ut mips.ncd 
+xst -intstyle ise -ifn "/home/a-l-r/co/src/project/mips.xst" -ofn "/home/a-l-r/co/src/project/mips.syr" 
+xst -intstyle ise -ifn "/home/a-l-r/co/src/project/mips.xst" -ofn "/home/a-l-r/co/src/project/mips.syr" 
+xst -intstyle ise -ifn "/home/a-l-r/co/src/project/mips.xst" -ofn "/home/a-l-r/co/src/project/mips.syr" 
+xst -intstyle ise -ifn "/home/a-l-r/co/src/project/mips.xst" -ofn "/home/a-l-r/co/src/project/mips.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc constraints.ucf -p xc6slx100-fgg676-2 mips.ngc mips.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o mips_map.ncd mips.ngd mips.pcf 
+par -w -intstyle ise -ol high -mt off mips_map.ncd mips.ncd mips.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml mips.twx mips.ncd -o mips.twr mips.pcf -ucf constraints.ucf 
+bitgen -intstyle ise -f mips.ut mips.ncd 
+xst -intstyle ise -ifn "/home/a-l-r/co/src/project/mips.xst" -ofn "/home/a-l-r/co/src/project/mips.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc constraints.ucf -p xc6slx100-fgg676-2 mips.ngc mips.ngd  
+netgen -intstyle ise -insert_glbl true -w -dir netgen/synthesis -ofmt verilog -sim mips.ngc mips_synthesis.v 
+netgen -intstyle ise -insert_glbl true -w -dir netgen/translate -ofmt verilog -sim mips.ngd mips_translate.v 
+xst -intstyle ise -ifn "/home/a-l-r/co/src/project/mips.xst" -ofn "/home/a-l-r/co/src/project/mips.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc constraints.ucf -p xc6slx100-fgg676-2 mips.ngc mips.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o mips_map.ncd mips.ngd mips.pcf 
+par -w -intstyle ise -ol high -mt off mips_map.ncd mips.ncd mips.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml mips.twx mips.ncd -o mips.twr mips.pcf -ucf constraints.ucf 
+bitgen -intstyle ise -f mips.ut mips.ncd 
+xst -intstyle ise -ifn "/home/a-l-r/co/src/project/mips.xst" -ofn "/home/a-l-r/co/src/project/mips.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc constraints.ucf -p xc6slx100-fgg676-2 mips.ngc mips.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o mips_map.ncd mips.ngd mips.pcf 
+par -w -intstyle ise -ol high -mt off mips_map.ncd mips.ncd mips.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml mips.twx mips.ncd -o mips.twr mips.pcf -ucf constraints.ucf 
+bitgen -intstyle ise -f mips.ut mips.ncd 
+xst -intstyle ise -ifn "/home/a-l-r/co/src/project/mips.xst" -ofn "/home/a-l-r/co/src/project/mips.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc constraints.ucf -p xc6slx100-fgg676-2 mips.ngc mips.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o mips_map.ncd mips.ngd mips.pcf 
+par -w -intstyle ise -ol high -mt off mips_map.ncd mips.ncd mips.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml mips.twx mips.ncd -o mips.twr mips.pcf -ucf constraints.ucf 
+bitgen -intstyle ise -f mips.ut mips.ncd 
+xst -intstyle ise -ifn "/home/a-l-r/co/src/project/mips.xst" -ofn "/home/a-l-r/co/src/project/mips.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc constraints.ucf -p xc6slx100-fgg676-2 mips.ngc mips.ngd  
+map -intstyle ise -p xc6slx100-fgg676-2 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o mips_map.ncd mips.ngd mips.pcf 
+par -w -intstyle ise -ol high -mt off mips_map.ncd mips.ncd mips.pcf 
+trce -intstyle ise -v 3 -s 2 -n 3 -fastpaths -xml mips.twx mips.ncd -o mips.twr mips.pcf -ucf constraints.ucf 
+bitgen -intstyle ise -f mips.ut mips.ncd 
