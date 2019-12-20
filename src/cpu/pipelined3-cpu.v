@@ -2,6 +2,7 @@
 
 module cpu(
 	input clk, 
+	input clk_2x, 
 	input rst, 
 	input [31:0] cpu_read_result, 
 	input [7:2] hwirq, 
@@ -436,7 +437,8 @@ assign m_rf_read_result2 =
 	m_rf_read_result2_orig;
 
 dm dm(
-	.clk(clk), 
+	/* NOTE: dm has to use the clock with a doubled frequency. */
+	.clk(clk_2x), 
 	.rst(rst), 
 	.curr_pc(m_pc_curr_pc), 
 	.read_addr(m_alu_result), 

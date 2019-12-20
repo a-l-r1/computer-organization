@@ -26,8 +26,15 @@ module mips(
 	input [7:0] user_key
 );
 
-wire clk, rst;
-assign clk = clk_in;
+wire clk, clk_2x;
+
+clk_ipcore clk_ipcore(
+	.CLK_IN1(clk_in), 
+	.CLK_OUT1(clk), 
+	.CLK_OUT2(clk_2x)
+);
+
+wire rst;
 assign rst = ~sys_rstn;
 
 /* cpu <-> bridge */
@@ -61,6 +68,7 @@ wire buttons_write_enable, buttons_irq;
 
 cpu cpu(
 	.clk(clk), 
+	.clk_2x(clk_2x), 
 	.rst(rst), 
 	.cpu_read_result(cpu_read_result), 
 	.hwirq(hwirq), 
@@ -140,8 +148,19 @@ timer timer(
 	.irq(timer_irq)
 );
 
-/* TODO: uart */
-assign uart_txd = 1'b0;
+uart_shim uart_shim(
+	.clk(clk), 
+	.rst(rst), 
+
+	.addr(uart_addr[4:2]), 
+	.write_enable(uart_write_enable), 
+	.write_data(uart_write_data), 
+	.read_result(uart_read_result), 
+	.irq(uart_irq), 
+
+	.uart_rxd(uart_rxd), 
+	.uart_txd(uart_txd)
+);
 
 switches switches(
 	.clk(clk), 
