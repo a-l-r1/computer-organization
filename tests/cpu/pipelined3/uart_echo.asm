@@ -11,11 +11,6 @@ li $t0, 0x0000fc01
 mtc0 $t0, $12
 
 loop_begin:
-
-	# turn off all LEDs
-	li $t0, 0x0
-	sw $t0, 0($s4)
-
 	# no element in queue
 	beq $s0, $s1, loop_begin
 	nop
@@ -42,9 +37,6 @@ loop_end:
 
 .text 0x4180
 # NOTE: Don't clobber $t0. 
-# turn on all LEDs
-li $t1, 0xffffffff
-sw $t1, 0($s4)
 
 # turn off uart irq
 sw $0, 8($s3)
