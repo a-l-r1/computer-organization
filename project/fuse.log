@@ -31,10 +31,9 @@ Analyzing Verilog file "/home/a-l-r/co/src/project/../src/mips/mips.v" into libr
 Analyzing Verilog file "/home/a-l-r/co/src/project/pipelined3_p8_tb.v" into library work
 Analyzing Verilog file "/opt/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
-WARNING:HDLCompiler:189 - "/home/a-l-r/co/src/project/../src/mips/mips.v" Line 183: Size mismatch in connection of port <addr>. Formal port size is 32-bit while actual signal size is 1-bit.
 Completed static elaboration
 Fuse Memory Usage: 85716 KB
-Fuse CPU Usage: 970 ms
+Fuse CPU Usage: 940 ms
 Compiling module kind
 Compiling module pff(BIT_WIDTH=5)
 Compiling module forward
@@ -72,9 +71,9 @@ Compiling module mips
 Compiling module pipelined3_p8_tb
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 9 sub-compilation(s) to finish...
+Waiting for 6 sub-compilation(s) to finish...
 Compiled 36 Verilog Units
 Built simulation executable /home/a-l-r/co/src/project/pipelined3_p8_tb_isim_beh.exe
 Fuse Memory Usage: 1174268 KB
-Fuse CPU Usage: 1350 ms
-GCC CPU Usage: 11640 ms
+Fuse CPU Usage: 1340 ms
+GCC CPU Usage: 11370 ms

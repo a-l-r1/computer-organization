@@ -75,17 +75,17 @@ module pipelined3_p8_tb;
 	initial begin
 		// Initialize Inputs
 		clk_in = 0;
-		sys_rstn = 0;
+		sys_rstn = 1;
 		uart_rxd = 0;
-		dip_switch0 = 0;
-		dip_switch1 = 0;
-		dip_switch2 = 0;
-		dip_switch3 = 0;
-		dip_switch4 = 0;
-		dip_switch5 = 0;
-		dip_switch6 = 0;
-		dip_switch7 = 0;
-		user_key = 0;
+		dip_switch0 = 8'hff;
+		dip_switch1 = 8'hff;
+		dip_switch2 = 8'hff;
+		dip_switch3 = 8'hff;
+		dip_switch4 = 8'hff;
+		dip_switch5 = 8'hff;
+		dip_switch6 = 8'hff;
+		dip_switch7 = 8'hff;
+		user_key = 8'hff;
 
 		// Wait 100 ns for global reset to finish
         

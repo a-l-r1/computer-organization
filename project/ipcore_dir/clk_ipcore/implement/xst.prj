@@ -1,0 +1,2 @@
+verilog work ../../clk_ipcore.v
+verilog work ../example_design/clk_ipcore_exdes.v

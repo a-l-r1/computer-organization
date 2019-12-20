@@ -23,6 +23,8 @@
 #endif
 static const char *ng0 = "/home/a-l-r/co/src/project/pipelined3_p8_tb.v";
 static int ng1[] = {0, 0};
+static int ng2[] = {1, 0};
+static unsigned int ng3[] = {255U, 0U};
 
 
 
@@ -38,7 +40,7 @@ LAB2:    xsi_set_current_line(77, ng0);
     t2 = (t0 + 2568);
     xsi_vlogvar_assign_value(t2, t1, 0, 0, 1);
     xsi_set_current_line(78, ng0);
-    t1 = ((char*)((ng1)));
+    t1 = ((char*)((ng2)));
     t2 = (t0 + 2728);
     xsi_vlogvar_assign_value(t2, t1, 0, 0, 1);
     xsi_set_current_line(79, ng0);
@@ -46,39 +48,39 @@ LAB2:    xsi_set_current_line(77, ng0);
     t2 = (t0 + 2888);
     xsi_vlogvar_assign_value(t2, t1, 0, 0, 1);
     xsi_set_current_line(80, ng0);
-    t1 = ((char*)((ng1)));
+    t1 = ((char*)((ng3)));
     t2 = (t0 + 3048);
     xsi_vlogvar_assign_value(t2, t1, 0, 0, 8);
     xsi_set_current_line(81, ng0);
-    t1 = ((char*)((ng1)));
+    t1 = ((char*)((ng3)));
     t2 = (t0 + 3208);
     xsi_vlogvar_assign_value(t2, t1, 0, 0, 8);
     xsi_set_current_line(82, ng0);
-    t1 = ((char*)((ng1)));
+    t1 = ((char*)((ng3)));
     t2 = (t0 + 3368);
     xsi_vlogvar_assign_value(t2, t1, 0, 0, 8);
     xsi_set_current_line(83, ng0);
-    t1 = ((char*)((ng1)));
+    t1 = ((char*)((ng3)));
     t2 = (t0 + 3528);
     xsi_vlogvar_assign_value(t2, t1, 0, 0, 8);
     xsi_set_current_line(84, ng0);
-    t1 = ((char*)((ng1)));
+    t1 = ((char*)((ng3)));
     t2 = (t0 + 3688);
     xsi_vlogvar_assign_value(t2, t1, 0, 0, 8);
     xsi_set_current_line(85, ng0);
-    t1 = ((char*)((ng1)));
+    t1 = ((char*)((ng3)));
     t2 = (t0 + 3848);
     xsi_vlogvar_assign_value(t2, t1, 0, 0, 8);
     xsi_set_current_line(86, ng0);
-    t1 = ((char*)((ng1)));
+    t1 = ((char*)((ng3)));
     t2 = (t0 + 4008);
     xsi_vlogvar_assign_value(t2, t1, 0, 0, 8);
     xsi_set_current_line(87, ng0);
-    t1 = ((char*)((ng1)));
+    t1 = ((char*)((ng3)));
     t2 = (t0 + 4168);
     xsi_vlogvar_assign_value(t2, t1, 0, 0, 8);
     xsi_set_current_line(88, ng0);
-    t1 = ((char*)((ng1)));
+    t1 = ((char*)((ng3)));
     t2 = (t0 + 4328);
     xsi_vlogvar_assign_value(t2, t1, 0, 0, 8);
 

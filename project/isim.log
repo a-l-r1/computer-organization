@@ -2,7 +2,6 @@ ISim log file
 Running: /home/a-l-r/co/src/project/pipelined3_p8_tb_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb /home/a-l-r/co/src/project/pipelined3_p8_tb_isim_beh.wdb 
 ISim P.20131013 (signature 0xfbc00daa)
 This is a Full version of ISim.
-WARNING: For instance uut/nixie/, width 32 of formal port addr is not equal to width 1 of actual.
 Time resolution is 1 ps
 # onerror resume
 # wave add /
@@ -13,6 +12,12 @@ Simulator is doing circuit initialization process.
 Block Memory Generator CORE Generator module pipelined3_p8_tb.uut.cpu.im.im_ipcore.inst.\native_mem_module.blk_mem_gen_v7_3_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
 Block Memory Generator CORE Generator module pipelined3_p8_tb.uut.cpu.dm.dm_ipcore.inst.\native_mem_module.blk_mem_gen_v7_3_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
 Finished circuit initialization process.
+                  55@00003004: $ 8 <= 00000000
+                  65@00003008: $ 8 <= 00007f38
+                  75@0000300c: $ 9 <= 17370000
+                  85@00003010: $ 9 <= 17377017
+                 105@00003018: $ 9 <= 00000000
+                 115@0000301c: $ 9 <= 0000000a
 # restart
 # run 1000ns
 Simulator is doing circuit initialization process.
@@ -21,4 +26,10 @@ Simulator is doing circuit initialization process.
 Block Memory Generator CORE Generator module pipelined3_p8_tb.uut.cpu.im.im_ipcore.inst.\native_mem_module.blk_mem_gen_v7_3_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
 Block Memory Generator CORE Generator module pipelined3_p8_tb.uut.cpu.dm.dm_ipcore.inst.\native_mem_module.blk_mem_gen_v7_3_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
 Finished circuit initialization process.
+                  55@00003004: $ 8 <= 00000000
+                  65@00003008: $ 8 <= 00007f38
+                  75@0000300c: $ 9 <= 17370000
+                  85@00003010: $ 9 <= 17377017
+                 105@00003018: $ 9 <= 00000000
+                 115@0000301c: $ 9 <= 0000000a
 # exit 0

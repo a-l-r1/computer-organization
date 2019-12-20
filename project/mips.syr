@@ -12,7 +12,7 @@ Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total CPU time to Xst completion: 0.03 secs
  
 --> 
 Reading design: mips.prj
@@ -112,6 +112,19 @@ Cores Search Directories           : {"ipcore_dir"  }
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
+Analyzing Verilog file "/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v" into library work
+Parsing module <clk_ipcore>.
+Analyzing Verilog file "/home/a-l-r/co/src/src/devices/uart/utils.v" into library work
+Parsing module <divisor>.
+Parsing module <counter>.
+Analyzing Verilog file "/home/a-l-r/co/src/src/devices/uart/txd.v" into library work
+Parsing verilog file "/home/a-l-r/co/src/src/include/uart.h" included at line 14.
+Parsing module <tx_unit>.
+Parsing module <ctrl_shift>.
+Parsing module <trans_reg>.
+Analyzing Verilog file "/home/a-l-r/co/src/src/devices/uart/rxd.v" into library work
+Parsing verilog file "/home/a-l-r/co/src/src/include/uart.h" included at line 9.
+Parsing module <rx_unit>.
 Analyzing Verilog file "/home/a-l-r/co/src/src/datapath/pff.v" into library work
 Parsing verilog file "/home/a-l-r/co/src/src/include/pff.h" included at line 1.
 Parsing module <pff>.
@@ -132,6 +145,9 @@ Analyzing Verilog file "/home/a-l-r/co/src/project/ipcore_dir/im_ipcore.v" into 
 Parsing module <im_ipcore>.
 Analyzing Verilog file "/home/a-l-r/co/src/project/ipcore_dir/dm_ipcore.v" into library work
 Parsing module <dm_ipcore>.
+Analyzing Verilog file "/home/a-l-r/co/src/src/devices/uart/uart.v" into library work
+Parsing verilog file "/home/a-l-r/co/src/src/include/uart.h" included at line 12.
+Parsing module <MiniUART>.
 Analyzing Verilog file "/home/a-l-r/co/src/src/devices/nixie-decoder.v" into library work
 Parsing module <nixie_decoder>.
 Analyzing Verilog file "/home/a-l-r/co/src/src/datapath/rf.v" into library work
@@ -180,6 +196,8 @@ Parsing verilog file "/home/a-l-r/co/src/src/include/md.h" included at line 9.
 Parsing verilog file "/home/a-l-r/co/src/src/include/dm.h" included at line 10.
 Parsing module <kind>.
 Parsing module <control>.
+Analyzing Verilog file "/home/a-l-r/co/src/src/devices/uart/uart-shim.v" into library work
+Parsing module <uart_shim>.
 Analyzing Verilog file "/home/a-l-r/co/src/src/devices/timer.v" into library work
 Parsing verilog file "/home/a-l-r/co/src/src/include/timer.h" included at line 1.
 Parsing module <timer>.
@@ -207,6 +225,19 @@ Parsing module <mips>.
 =========================================================================
 
 Elaborating module <mips>.
+
+Elaborating module <clk_ipcore>.
+
+Elaborating module <IBUFG>.
+
+Elaborating module <PLL_BASE(BANDWIDTH="OPTIMIZED",CLK_FEEDBACK="CLKFBOUT",COMPENSATION="SYSTEM_SYNCHRONOUS",DIVCLK_DIVIDE=1,CLKFBOUT_MULT=16,CLKFBOUT_PHASE=0.0,CLKOUT0_DIVIDE=40,CLKOUT0_PHASE=0.0,CLKOUT0_DUTY_CYCLE=0.5,CLKOUT1_DIVIDE=20,CLKOUT1_PHASE=0.0,CLKOUT1_DUTY_CYCLE=0.5,CLKIN_PERIOD=40.0,REF_JITTER=0.01)>.
+WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v" Line 119: Assignment to clkout2_unused ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v" Line 120: Assignment to clkout3_unused ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v" Line 121: Assignment to clkout4_unused ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v" Line 122: Assignment to clkout5_unused ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v" Line 123: Assignment to locked_unused ignored, since the identifier is never used
+
+Elaborating module <BUFG>.
 
 Elaborating module <cpu>.
 
@@ -252,11 +283,32 @@ WARNING:HDLCompiler:1499 - "/home/a-l-r/co/src/project/ipcore_dir/dm_ipcore.v" L
 Elaborating module <cp0>.
 
 Elaborating module <bridge>.
-WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/src/mips/mips.v" Line 101: Assignment to uart_addr ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/src/mips/mips.v" Line 102: Assignment to uart_write_enable ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/src/mips/mips.v" Line 103: Assignment to uart_write_data ignored, since the identifier is never used
 
 Elaborating module <timer>.
+
+Elaborating module <uart_shim>.
+
+Elaborating module <MiniUART>.
+
+Elaborating module <rx_unit>.
+WARNING:HDLCompiler:413 - "/home/a-l-r/co/src/src/devices/uart/rxd.v" Line 54: Result of 32-bit expression is truncated to fit in 3-bit target.
+WARNING:HDLCompiler:413 - "/home/a-l-r/co/src/src/devices/uart/rxd.v" Line 55: Result of 32-bit expression is truncated to fit in 3-bit target.
+WARNING:HDLCompiler:413 - "/home/a-l-r/co/src/src/devices/uart/rxd.v" Line 62: Result of 32-bit expression is truncated to fit in 3-bit target.
+WARNING:HDLCompiler:413 - "/home/a-l-r/co/src/src/devices/uart/rxd.v" Line 65: Result of 32-bit expression is truncated to fit in 3-bit target.
+WARNING:HDLCompiler:413 - "/home/a-l-r/co/src/src/devices/uart/rxd.v" Line 73: Result of 32-bit expression is truncated to fit in 3-bit target.
+
+Elaborating module <tx_unit>.
+
+Elaborating module <ctrl_shift>.
+WARNING:HDLCompiler:413 - "/home/a-l-r/co/src/src/devices/uart/txd.v" Line 74: Result of 32-bit expression is truncated to fit in 4-bit target.
+
+Elaborating module <trans_reg>.
+
+Elaborating module <divisor(size_cnt_rx=16,size_cnt_tx=16)>.
+
+Elaborating module <counter(size_cnt=16)>.
+WARNING:HDLCompiler:413 - "/home/a-l-r/co/src/src/devices/uart/utils.v" Line 58: Result of 32-bit expression is truncated to fit in 16-bit target.
+WARNING:HDLCompiler:413 - "/home/a-l-r/co/src/src/devices/uart/uart.v" Line 55: Result of 39-bit expression is truncated to fit in 32-bit target.
 
 Elaborating module <switches>.
 
@@ -265,11 +317,8 @@ Elaborating module <led>.
 Elaborating module <nixie>.
 
 Elaborating module <nixie_decoder>.
-WARNING:HDLCompiler:189 - "/home/a-l-r/co/src/src/mips/mips.v" Line 183: Size mismatch in connection of port <addr>. Formal port size is 32-bit while actual signal size is 1-bit.
 
 Elaborating module <buttons>.
-WARNING:HDLCompiler:634 - "/home/a-l-r/co/src/src/mips/mips.v" Line 47: Net <uart_read_result[31]> does not have a driver.
-WARNING:HDLCompiler:634 - "/home/a-l-r/co/src/src/mips/mips.v" Line 48: Net <uart_irq> does not have a driver.
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -277,34 +326,34 @@ WARNING:HDLCompiler:634 - "/home/a-l-r/co/src/src/mips/mips.v" Line 48: Net <uar
 
 Synthesizing Unit <mips>.
     Related source file is "/home/a-l-r/co/src/src/mips/mips.v".
-WARNING:Xst:647 - Input <uart_rxd> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 62: Output port <test_addr> of the instance <cpu> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 81: Output port <uart_addr> of the instance <bridge> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 81: Output port <uart_write_data> of the instance <bridge> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 81: Output port <uart_write_enable> of the instance <bridge> is unconnected or connected to loadless signal.
-WARNING:Xst:653 - Signal <uart_read_result> is used but never assigned. This sourceless signal will be automatically connected to value GND.
-WARNING:Xst:653 - Signal <uart_irq> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 69: Output port <test_addr> of the instance <cpu> is unconnected or connected to loadless signal.
     Summary:
 	no macro.
 Unit <mips> synthesized.
 
+Synthesizing Unit <clk_ipcore>.
+    Related source file is "/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v".
+    Summary:
+	no macro.
+Unit <clk_ipcore> synthesized.
+
 Synthesizing Unit <cpu>.
     Related source file is "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v".
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 103: Output port <cw_e_md_op> of the instance <control> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 103: Output port <cw_e_md_stop> of the instance <control> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 103: Output port <cw_e_md_restore> of the instance <control> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 272: Output port <reg2_sig_cmp> of the instance <cmp> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 350: Output port <cmp_result> of the instance <alu> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 350: Output port <sig_cmp_result> of the instance <alu> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 350: Output port <overflow> of the instance <alu> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 350: Output port <op_invalid> of the instance <alu> is unconnected or connected to loadless signal.
-    Found 32-bit adder for signal <e_retaddr> created at line 291.
-    Found 32-bit adder for signal <m_retaddr> created at line 397.
-    Found 32-bit adder for signal <w_retaddr> created at line 502.
-    Found 32-bit 7-to-1 multiplexer for signal <_n0191> created at line 72.
-    Found 32-bit 7-to-1 multiplexer for signal <_n0193> created at line 72.
-    Found 32-bit 4-to-1 multiplexer for signal <_n0198> created at line 87.
-    Found 32-bit 7-to-1 multiplexer for signal <w_rf_write_data> created at line 98.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 104: Output port <cw_e_md_op> of the instance <control> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 104: Output port <cw_e_md_stop> of the instance <control> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 104: Output port <cw_e_md_restore> of the instance <control> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 273: Output port <reg2_sig_cmp> of the instance <cmp> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 351: Output port <cmp_result> of the instance <alu> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 351: Output port <sig_cmp_result> of the instance <alu> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 351: Output port <overflow> of the instance <alu> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 351: Output port <op_invalid> of the instance <alu> is unconnected or connected to loadless signal.
+    Found 32-bit adder for signal <e_retaddr> created at line 292.
+    Found 32-bit adder for signal <m_retaddr> created at line 398.
+    Found 32-bit adder for signal <w_retaddr> created at line 504.
+    Found 32-bit 7-to-1 multiplexer for signal <_n0191> created at line 73.
+    Found 32-bit 7-to-1 multiplexer for signal <_n0193> created at line 73.
+    Found 32-bit 4-to-1 multiplexer for signal <_n0198> created at line 88.
+    Found 32-bit 7-to-1 multiplexer for signal <w_rf_write_data> created at line 99.
     Summary:
 	inferred   3 Adder/Subtractor(s).
 	inferred  28 Multiplexer(s).
@@ -396,7 +445,7 @@ WARNING:Xst:647 - Input <w_instr> is never used. This port will be preserved and
     Found 5-bit comparator equal for signal <d_reg2[4]_m_regw[4]_equal_44_o> created at line 71
     Found 3-bit comparator greater for signal <t_use_reg2[2]_t_new_m[2]_LessThan_46_o> created at line 71
     Found 5-bit comparator equal for signal <e_reg2[4]_m_regw[4]_equal_55_o> created at line 80
-    Found 3-bit comparator greater for signal <GND_7_o_t_new_m[2]_LessThan_57_o> created at line 81
+    Found 3-bit comparator greater for signal <GND_11_o_t_new_m[2]_LessThan_57_o> created at line 81
     Summary:
 	inferred  10 Comparator(s).
 	inferred   4 Multiplexer(s).
@@ -427,7 +476,7 @@ Unit <handler> synthesized.
 Synthesizing Unit <npc>.
     Related source file is "/home/a-l-r/co/src/src/datapath/npc.v".
     Found 32-bit adder for signal <b_target> created at line 29.
-    Found 32-bit adder for signal <base[31]_GND_10_o_add_31_OUT> created at line 46.
+    Found 32-bit adder for signal <base[31]_GND_14_o_add_31_OUT> created at line 46.
     Summary:
 	inferred   2 Adder/Subtractor(s).
 	inferred  15 Multiplexer(s).
@@ -443,7 +492,7 @@ Unit <pc> synthesized.
 Synthesizing Unit <im>.
     Related source file is "/home/a-l-r/co/src/src/datapath/im.v".
 WARNING:Xst:647 - Input <enable> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 32-bit subtractor for signal <addr[31]_GND_12_o_sub_5_OUT> created at line 36.
+    Found 32-bit subtractor for signal <addr[31]_GND_16_o_sub_5_OUT> created at line 36.
     Found 32-bit comparator lessequal for signal <n0000> created at line 31
     Found 32-bit comparator lessequal for signal <n0002> created at line 32
     Summary:
@@ -484,8 +533,8 @@ Synthesizing Unit <cmp>.
     Found 32-bit comparator greater for signal <reg1[31]_reg2[31]_LessThan_2_o> created at line 14
     Found 32-bit comparator greater for signal <reg1[31]_reg2[31]_LessThan_5_o> created at line 18
     Found 32-bit comparator greater for signal <reg2[31]_reg1[31]_LessThan_6_o> created at line 19
-    Found 32-bit comparator greater for signal <reg2[31]_GND_17_o_LessThan_9_o> created at line 23
-    Found 32-bit comparator greater for signal <GND_17_o_reg2[31]_LessThan_10_o> created at line 24
+    Found 32-bit comparator greater for signal <reg2[31]_GND_21_o_LessThan_9_o> created at line 23
+    Found 32-bit comparator greater for signal <GND_21_o_reg2[31]_LessThan_10_o> created at line 24
     Summary:
 	inferred   6 Comparator(s).
 	inferred   3 Multiplexer(s).
@@ -494,7 +543,7 @@ Unit <cmp> synthesized.
 Synthesizing Unit <alu>.
     Related source file is "/home/a-l-r/co/src/src/datapath/alu.v".
     Found 32-bit subtractor for signal <num1[31]_num2[31]_sub_174_OUT> created at line 131.
-    Found 33-bit subtractor for signal <GND_18_o_GND_18_o_sub_215_OUT> created at line 153.
+    Found 33-bit subtractor for signal <GND_22_o_GND_22_o_sub_215_OUT> created at line 153.
     Found 33-bit subtractor for signal <num1[31]_num2[31]_sub_221_OUT> created at line 160.
     Found 33-bit adder for signal <n1375> created at line 130.
     Found 33-bit adder for signal <num1[31]_num2[31]_add_218_OUT> created at line 159.
@@ -530,9 +579,9 @@ Synthesizing Unit <dm>.
     Related source file is "/home/a-l-r/co/src/src/datapath/dm.v".
 WARNING:Xst:647 - Input <curr_pc> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 32-bit 4-to-1 multiplexer for signal <GND_19_o_dm_ipcore_read_result[7]_mux_50_OUT> created at line 149.
-    Found 32-bit 4-to-1 multiplexer for signal <GND_19_o_GND_19_o_mux_59_OUT> created at line 156.
-    Found 32-bit 8-to-1 multiplexer for signal <GND_19_o_dm_ipcore_read_result[31]_mux_64_OUT> created at line 142.
+    Found 32-bit 4-to-1 multiplexer for signal <GND_23_o_dm_ipcore_read_result[7]_mux_50_OUT> created at line 149.
+    Found 32-bit 4-to-1 multiplexer for signal <GND_23_o_GND_23_o_mux_59_OUT> created at line 156.
+    Found 32-bit 8-to-1 multiplexer for signal <GND_23_o_dm_ipcore_read_result[31]_mux_64_OUT> created at line 142.
     Found 32-bit comparator lessequal for signal <n0003> created at line 45
     Summary:
 	inferred   1 Comparator(s).
@@ -606,7 +655,7 @@ Synthesizing Unit <cp0>.
     Found 1-bit register for signal <cause<0>>.
     Found 32-bit register for signal <epc_i>.
     Found 1-bit register for signal <sr<31>>.
-    Found 32-bit subtractor for signal <curr_pc[31]_GND_21_o_sub_25_OUT> created at line 82.
+    Found 32-bit subtractor for signal <curr_pc[31]_GND_25_o_sub_25_OUT> created at line 82.
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred  96 D-type flip-flop(s).
@@ -617,12 +666,12 @@ Synthesizing Unit <bridge>.
     Related source file is "/home/a-l-r/co/src/src/bridge/bridge.v".
 WARNING:Xst:647 - Input <clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 32-bit subtractor for signal <addr[31]_GND_22_o_sub_33_OUT> created at line 103.
-    Found 32-bit subtractor for signal <addr[31]_GND_22_o_sub_41_OUT> created at line 113.
-    Found 32-bit subtractor for signal <addr[31]_GND_22_o_sub_49_OUT> created at line 123.
-    Found 32-bit subtractor for signal <addr[31]_GND_22_o_sub_57_OUT> created at line 133.
-    Found 32-bit subtractor for signal <addr[31]_GND_22_o_sub_65_OUT> created at line 143.
-    Found 32-bit subtractor for signal <addr[31]_GND_22_o_sub_73_OUT> created at line 153.
+    Found 32-bit subtractor for signal <addr[31]_GND_26_o_sub_33_OUT> created at line 103.
+    Found 32-bit subtractor for signal <addr[31]_GND_26_o_sub_41_OUT> created at line 113.
+    Found 32-bit subtractor for signal <addr[31]_GND_26_o_sub_49_OUT> created at line 123.
+    Found 32-bit subtractor for signal <addr[31]_GND_26_o_sub_57_OUT> created at line 133.
+    Found 32-bit subtractor for signal <addr[31]_GND_26_o_sub_65_OUT> created at line 143.
+    Found 32-bit subtractor for signal <addr[31]_GND_26_o_sub_73_OUT> created at line 153.
     Found 32-bit 7-to-1 multiplexer for signal <_n0130> created at line 14.
     Found 32-bit comparator lessequal for signal <n0000> created at line 57
     Found 32-bit comparator lessequal for signal <n0002> created at line 57
@@ -665,9 +714,9 @@ Synthesizing Unit <timer>.
     | Encoding           | auto                                           |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-    Found 32-bit subtractor for signal <count[31]_GND_23_o_sub_20_OUT> created at line 89.
+    Found 32-bit subtractor for signal <count[31]_GND_27_o_sub_20_OUT> created at line 89.
     Found 32-bit 4-to-1 multiplexer for signal <read_result> created at line 17.
-    Found 32-bit comparator greater for signal <GND_23_o_count[31]_LessThan_19_o> created at line 88
+    Found 32-bit comparator greater for signal <GND_27_o_count[31]_LessThan_19_o> created at line 88
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred  69 D-type flip-flop(s).
@@ -675,6 +724,103 @@ Synthesizing Unit <timer>.
 	inferred   4 Multiplexer(s).
 	inferred   1 Finite State Machine(s).
 Unit <timer> synthesized.
+
+Synthesizing Unit <uart_shim>.
+    Related source file is "/home/a-l-r/co/src/src/devices/uart/uart-shim.v".
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/devices/uart/uart-shim.v" line 15: Output port <ACK_O> of the instance <uart> is unconnected or connected to loadless signal.
+    Summary:
+	no macro.
+Unit <uart_shim> synthesized.
+
+Synthesizing Unit <MiniUART>.
+    Related source file is "/home/a-l-r/co/src/src/devices/uart/uart.v".
+WARNING:Xst:647 - Input <DAT_I<31:16>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 1-bit register for signal <load>.
+    Found 16-bit register for signal <divt>.
+    Found 8-bit register for signal <tx_data>.
+    Found 16-bit register for signal <divr>.
+    Found 39-bit 7-to-1 multiplexer for signal <n0032> created at line 55.
+    Summary:
+	inferred  41 D-type flip-flop(s).
+	inferred   1 Multiplexer(s).
+Unit <MiniUART> synthesized.
+
+Synthesizing Unit <rx_unit>.
+    Related source file is "/home/a-l-r/co/src/src/devices/uart/rxd.v".
+        IDLE = 32'b00000000000000000000000000000000
+        START = 32'b00000000000000000000000000000001
+        BIT_RECV = 32'b00000000000000000000000000000010
+        STOP = 32'b00000000000000000000000000000011
+        WAIT_IDLE = 32'b00000000000000000000000000000100
+    Found 3-bit register for signal <cnt_sample>.
+    Found 3-bit register for signal <cnt_bits>.
+    Found 3-bit register for signal <fsm>.
+    Found 8-bit register for signal <byte>.
+    Found 1-bit register for signal <clk_rf_av>.
+    Found 1-bit register for signal <rf_av>.
+    Found 3-bit subtractor for signal <GND_30_o_GND_30_o_sub_8_OUT<2:0>> created at line 62.
+    Found 3-bit subtractor for signal <GND_30_o_GND_30_o_sub_15_OUT<2:0>> created at line 73.
+    Found 3-bit 7-to-1 multiplexer for signal <fsm[2]_GND_30_o_wide_mux_16_OUT> created at line 45.
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred  19 D-type flip-flop(s).
+	inferred  10 Multiplexer(s).
+Unit <rx_unit> synthesized.
+
+Synthesizing Unit <tx_unit>.
+    Related source file is "/home/a-l-r/co/src/src/devices/uart/txd.v".
+    Summary:
+	no macro.
+Unit <tx_unit> synthesized.
+
+Synthesizing Unit <ctrl_shift>.
+    Related source file is "/home/a-l-r/co/src/src/devices/uart/txd.v".
+        IDLE = 0
+        SHIFT = 1
+    Found 4-bit register for signal <cnt_tx>.
+    Found 1-bit register for signal <fsm>.
+    Found 4-bit subtractor for signal <GND_32_o_GND_32_o_sub_6_OUT<3:0>> created at line 74.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred   5 D-type flip-flop(s).
+Unit <ctrl_shift> synthesized.
+
+Synthesizing Unit <trans_reg>.
+    Related source file is "/home/a-l-r/co/src/src/devices/uart/txd.v".
+    Found 1-bit register for signal <t_reg<9>>.
+    Found 1-bit register for signal <t_reg<8>>.
+    Found 1-bit register for signal <t_reg<7>>.
+    Found 1-bit register for signal <t_reg<6>>.
+    Found 1-bit register for signal <t_reg<5>>.
+    Found 1-bit register for signal <t_reg<4>>.
+    Found 1-bit register for signal <t_reg<3>>.
+    Found 1-bit register for signal <t_reg<2>>.
+    Found 1-bit register for signal <t_reg<1>>.
+    Found 1-bit register for signal <t_reg<0>>.
+    Summary:
+	inferred  10 D-type flip-flop(s).
+	inferred  10 Multiplexer(s).
+Unit <trans_reg> synthesized.
+
+Synthesizing Unit <divisor>.
+    Related source file is "/home/a-l-r/co/src/src/devices/uart/utils.v".
+        size_cnt_rx = 16
+        size_cnt_tx = 16
+    Summary:
+	no macro.
+Unit <divisor> synthesized.
+
+Synthesizing Unit <counter>.
+    Related source file is "/home/a-l-r/co/src/src/devices/uart/utils.v".
+        size_cnt = 16
+    Found 16-bit register for signal <cnt>.
+    Found 1-bit register for signal <q>.
+    Found 16-bit subtractor for signal <GND_37_o_GND_37_o_sub_2_OUT<15:0>> created at line 58.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  17 D-type flip-flop(s).
+	inferred   1 Multiplexer(s).
+Unit <counter> synthesized.
 
 Synthesizing Unit <switches>.
     Related source file is "/home/a-l-r/co/src/src/devices/switches.v".
@@ -715,11 +861,11 @@ Synthesizing Unit <nixie>.
     | Encoding           | auto                                           |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-    Found 32-bit subtractor for signal <ctr[31]_GND_26_o_sub_11_OUT> created at line 71.
+    Found 32-bit subtractor for signal <ctr[31]_GND_41_o_sub_8_OUT> created at line 71.
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred  72 D-type flip-flop(s).
-	inferred   8 Multiplexer(s).
+	inferred   9 Multiplexer(s).
 	inferred   1 Finite State Machine(s).
 Unit <nixie> synthesized.
 
@@ -747,18 +893,24 @@ Macro Statistics
  128x3-bit single-port Read Only RAM                   : 1
  128x5-bit single-port Read Only RAM                   : 1
  64x5-bit single-port Read Only RAM                    : 1
-# Adders/Subtractors                                   : 19
+# Adders/Subtractors                                   : 24
+ 16-bit subtractor                                     : 2
+ 3-bit subtractor                                      : 2
  32-bit adder                                          : 5
  32-bit subtractor                                     : 11
  33-bit adder                                          : 1
  33-bit addsub                                         : 2
-# Registers                                            : 110
- 1-bit register                                        : 70
+ 4-bit subtractor                                      : 1
+# Registers                                            : 136
+ 1-bit register                                        : 86
+ 16-bit register                                       : 4
  2-bit register                                        : 1
+ 3-bit register                                        : 3
  32-bit register                                       : 23
+ 4-bit register                                        : 1
  5-bit register                                        : 12
  64-bit register                                       : 1
- 8-bit register                                        : 2
+ 8-bit register                                        : 4
  992-bit register                                      : 1
 # Comparators                                          : 48
  1-bit comparator not equal                            : 1
@@ -767,9 +919,9 @@ Macro Statistics
  32-bit comparator greater                             : 10
  32-bit comparator lessequal                           : 15
  5-bit comparator equal                                : 16
-# Multiplexers                                         : 599
+# Multiplexers                                         : 623
  1-bit 17-to-1 multiplexer                             : 1
- 1-bit 2-to-1 multiplexer                              : 154
+ 1-bit 2-to-1 multiplexer                              : 164
  1-bit 21-to-1 multiplexer                             : 2
  1-bit 22-to-1 multiplexer                             : 2
  1-bit 24-to-1 multiplexer                             : 2
@@ -779,15 +931,18 @@ Macro Statistics
  1-bit 31-to-1 multiplexer                             : 2
  1-bit 32-to-1 multiplexer                             : 1
  10-bit 2-to-1 multiplexer                             : 188
+ 16-bit 2-to-1 multiplexer                             : 2
  2-bit 2-to-1 multiplexer                              : 5
- 3-bit 2-to-1 multiplexer                              : 18
- 32-bit 2-to-1 multiplexer                             : 97
+ 3-bit 2-to-1 multiplexer                              : 27
+ 3-bit 7-to-1 multiplexer                              : 1
+ 32-bit 2-to-1 multiplexer                             : 98
  32-bit 31-to-1 multiplexer                            : 2
  32-bit 32-to-1 multiplexer                            : 2
  32-bit 4-to-1 multiplexer                             : 5
  32-bit 7-to-1 multiplexer                             : 4
  32-bit 8-to-1 multiplexer                             : 1
  33-bit 2-to-1 multiplexer                             : 19
+ 39-bit 7-to-1 multiplexer                             : 1
  4-bit 2-to-1 multiplexer                              : 62
  5-bit 2-to-1 multiplexer                              : 24
  7-bit 2-to-1 multiplexer                              : 2
@@ -812,6 +967,7 @@ WARNING:Xst:1290 - Hierarchical block <w_reg1_> is unconnected in block <control
    It will be removed from the design.
 WARNING:Xst:1290 - Hierarchical block <w_reg2_> is unconnected in block <control>.
    It will be removed from the design.
+WARNING:Xst:1293 - FF/Latch <cause_27> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <cause_29> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <cause_28> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <cause_26> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
@@ -835,7 +991,6 @@ WARNING:Xst:1293 - FF/Latch <cause_14> has a constant value of 0 in block <cp0>.
 WARNING:Xst:1293 - FF/Latch <cause_15> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <cause_13> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <cause_12> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <cause_11> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <sr_30> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <sr_29> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <sr_28> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
@@ -860,7 +1015,6 @@ WARNING:Xst:1293 - FF/Latch <sr_4> has a constant value of 0 in block <cp0>. Thi
 WARNING:Xst:1293 - FF/Latch <sr_3> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <sr_2> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <cause_30> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <cause_27> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 
 Synthesizing (advanced) Unit <control>.
 INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n0592> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
@@ -898,9 +1052,21 @@ INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n0598> will be implemented on LUTs 
     -----------------------------------------------------------------------
 Unit <control> synthesized (advanced).
 
+Synthesizing (advanced) Unit <counter>.
+The following registers are absorbed into counter <cnt>: 1 register on signal <cnt>.
+Unit <counter> synthesized (advanced).
+
+Synthesizing (advanced) Unit <ctrl_shift>.
+The following registers are absorbed into counter <cnt_tx>: 1 register on signal <cnt_tx>.
+Unit <ctrl_shift> synthesized (advanced).
+
 Synthesizing (advanced) Unit <nixie>.
 The following registers are absorbed into counter <ctr>: 1 register on signal <ctr>.
 Unit <nixie> synthesized (advanced).
+
+Synthesizing (advanced) Unit <rx_unit>.
+The following registers are absorbed into counter <cnt_bits>: 1 register on signal <cnt_bits>.
+Unit <rx_unit> synthesized (advanced).
 
 =========================================================================
 Advanced HDL Synthesis Report
@@ -910,14 +1076,18 @@ Macro Statistics
  128x3-bit single-port distributed Read Only RAM       : 1
  128x5-bit single-port distributed Read Only RAM       : 1
  64x5-bit single-port distributed Read Only RAM        : 1
-# Adders/Subtractors                                   : 18
+# Adders/Subtractors                                   : 19
+ 3-bit subtractor                                      : 1
  32-bit adder                                          : 6
  32-bit subtractor                                     : 10
  33-bit addsub                                         : 2
-# Counters                                             : 1
+# Counters                                             : 5
+ 16-bit down counter                                   : 2
+ 3-bit down counter                                    : 1
  32-bit down counter                                   : 1
-# Registers                                            : 1908
- Flip-Flops                                            : 1908
+ 4-bit down counter                                    : 1
+# Registers                                            : 1978
+ Flip-Flops                                            : 1978
 # Comparators                                          : 48
  1-bit comparator not equal                            : 1
  3-bit comparator greater                              : 5
@@ -925,9 +1095,9 @@ Macro Statistics
  32-bit comparator greater                             : 10
  32-bit comparator lessequal                           : 15
  5-bit comparator equal                                : 16
-# Multiplexers                                         : 709
+# Multiplexers                                         : 761
  1-bit 17-to-1 multiplexer                             : 1
- 1-bit 2-to-1 multiplexer                              : 274
+ 1-bit 2-to-1 multiplexer                              : 316
  1-bit 21-to-1 multiplexer                             : 2
  1-bit 22-to-1 multiplexer                             : 2
  1-bit 24-to-1 multiplexer                             : 2
@@ -938,7 +1108,8 @@ Macro Statistics
  1-bit 32-to-1 multiplexer                             : 1
  10-bit 2-to-1 multiplexer                             : 188
  2-bit 2-to-1 multiplexer                              : 5
- 3-bit 2-to-1 multiplexer                              : 18
+ 3-bit 2-to-1 multiplexer                              : 26
+ 3-bit 7-to-1 multiplexer                              : 1
  32-bit 2-to-1 multiplexer                             : 93
  32-bit 31-to-1 multiplexer                            : 2
  32-bit 32-to-1 multiplexer                            : 2
@@ -946,6 +1117,7 @@ Macro Statistics
  32-bit 7-to-1 multiplexer                             : 4
  32-bit 8-to-1 multiplexer                             : 1
  33-bit 2-to-1 multiplexer                             : 19
+ 39-bit 7-to-1 multiplexer                             : 1
  4-bit 2-to-1 multiplexer                              : 56
  5-bit 2-to-1 multiplexer                              : 24
  7-bit 2-to-1 multiplexer                              : 2
@@ -1029,6 +1201,7 @@ WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <d_exc_/data_4> has 
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <d_exc_/data_3> has a constant value of 0 in block <control>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <d_exc_/data_1> has a constant value of 0 in block <control>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <d_exc_/data_0> has a constant value of 0 in block <control>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:1901 - Instance clk_ipcore/pll_base_inst in unit clk_ipcore/pll_base_inst of type PLL_BASE has been replaced by PLL_ADV
 INFO:Xst:2261 - The FF/Latch <e_exc_/data_3> in Unit <control> is equivalent to the following FF/Latch, which will be removed : <e_exc_/data_1> 
 
 Optimizing unit <pc> ...
@@ -1041,6 +1214,16 @@ Optimizing unit <switches> ...
 
 Optimizing unit <buttons> ...
 
+Optimizing unit <MiniUART> ...
+
+Optimizing unit <rx_unit> ...
+
+Optimizing unit <trans_reg> ...
+
+Optimizing unit <ctrl_shift> ...
+
+Optimizing unit <bridge> ...
+
 Optimizing unit <cpu> ...
 
 Optimizing unit <cp0> ...
@@ -1052,3 +1235,420 @@ Optimizing unit <kind> ...
 Optimizing unit <forward> ...
 
 Optimizing unit <hazard> ...
+
+Optimizing unit <im> ...
+
+Optimizing unit <rf> ...
+
+Optimizing unit <dm> ...
+
+Optimizing unit <npc> ...
+
+Optimizing unit <alu> ...
+
+Optimizing unit <cmp> ...
+
+Optimizing unit <timer> ...
+
+Optimizing unit <led> ...
+
+Optimizing unit <nixie> ...
+WARNING:Xst:1293 - FF/Latch <cpu/cp0/cause_6> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <cpu/cp0/cause_12> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <cpu/cp0/cause_13> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <cpu/cp0/cause_15> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <cpu/cp0/cause_14> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <cpu/control/m_reg1_/data_0> of sequential type is unconnected in block <mips>.
+WARNING:Xst:2677 - Node <cpu/control/m_reg1_/data_1> of sequential type is unconnected in block <mips>.
+WARNING:Xst:2677 - Node <cpu/control/m_reg1_/data_2> of sequential type is unconnected in block <mips>.
+WARNING:Xst:2677 - Node <cpu/control/m_reg1_/data_3> of sequential type is unconnected in block <mips>.
+WARNING:Xst:2677 - Node <cpu/control/m_reg1_/data_4> of sequential type is unconnected in block <mips>.
+WARNING:Xst:2677 - Node <cpu/control/w_reg1_/data_0> of sequential type is unconnected in block <mips>.
+WARNING:Xst:2677 - Node <cpu/control/w_reg1_/data_1> of sequential type is unconnected in block <mips>.
+WARNING:Xst:2677 - Node <cpu/control/w_reg1_/data_2> of sequential type is unconnected in block <mips>.
+WARNING:Xst:2677 - Node <cpu/control/w_reg1_/data_3> of sequential type is unconnected in block <mips>.
+WARNING:Xst:2677 - Node <cpu/control/w_reg1_/data_4> of sequential type is unconnected in block <mips>.
+WARNING:Xst:2677 - Node <cpu/control/w_reg2_/data_0> of sequential type is unconnected in block <mips>.
+WARNING:Xst:2677 - Node <cpu/control/w_reg2_/data_1> of sequential type is unconnected in block <mips>.
+WARNING:Xst:2677 - Node <cpu/control/w_reg2_/data_2> of sequential type is unconnected in block <mips>.
+WARNING:Xst:2677 - Node <cpu/control/w_reg2_/data_3> of sequential type is unconnected in block <mips>.
+WARNING:Xst:2677 - Node <cpu/control/w_reg2_/data_4> of sequential type is unconnected in block <mips>.
+WARNING:Xst:1293 - FF/Latch <nixie/ctr_15> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <nixie/ctr_16> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <nixie/ctr_17> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <nixie/ctr_18> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <nixie/ctr_19> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <nixie/ctr_20> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <nixie/ctr_21> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <nixie/ctr_22> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <nixie/ctr_23> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <nixie/ctr_24> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <nixie/ctr_25> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <nixie/ctr_26> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <nixie/ctr_27> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <nixie/ctr_28> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <nixie/ctr_29> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <nixie/ctr_30> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <nixie/ctr_31> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block mips, actual ratio is 9.
+FlipFlop cpu/d_im/data_0 has been replicated 2 time(s)
+FlipFlop cpu/d_im/data_1 has been replicated 2 time(s)
+FlipFlop cpu/d_im/data_15 has been replicated 1 time(s)
+FlipFlop cpu/d_im/data_16 has been replicated 2 time(s)
+FlipFlop cpu/d_im/data_17 has been replicated 2 time(s)
+FlipFlop cpu/d_im/data_18 has been replicated 1 time(s)
+FlipFlop cpu/d_im/data_19 has been replicated 1 time(s)
+FlipFlop cpu/d_im/data_2 has been replicated 3 time(s)
+FlipFlop cpu/d_im/data_20 has been replicated 1 time(s)
+FlipFlop cpu/d_im/data_26 has been replicated 3 time(s)
+FlipFlop cpu/d_im/data_27 has been replicated 3 time(s)
+FlipFlop cpu/d_im/data_28 has been replicated 2 time(s)
+FlipFlop cpu/d_im/data_29 has been replicated 3 time(s)
+FlipFlop cpu/d_im/data_3 has been replicated 3 time(s)
+FlipFlop cpu/d_im/data_30 has been replicated 3 time(s)
+FlipFlop cpu/d_im/data_31 has been replicated 4 time(s)
+FlipFlop cpu/d_im/data_4 has been replicated 2 time(s)
+FlipFlop cpu/d_im/data_5 has been replicated 3 time(s)
+FlipFlop cpu/e_im/data_26 has been replicated 1 time(s)
+FlipFlop cpu/e_im/data_27 has been replicated 1 time(s)
+FlipFlop cpu/e_im/data_28 has been replicated 1 time(s)
+FlipFlop cpu/e_im/data_29 has been replicated 1 time(s)
+FlipFlop cpu/e_im/data_30 has been replicated 1 time(s)
+FlipFlop cpu/e_im/data_31 has been replicated 1 time(s)
+FlipFlop cpu/e_im/data_6 has been replicated 1 time(s)
+FlipFlop cpu/m_alu/data_3 has been replicated 1 time(s)
+FlipFlop cpu/m_im/data_26 has been replicated 1 time(s)
+FlipFlop cpu/m_im/data_27 has been replicated 1 time(s)
+FlipFlop cpu/m_im/data_28 has been replicated 1 time(s)
+FlipFlop cpu/m_im/data_29 has been replicated 1 time(s)
+FlipFlop cpu/m_im/data_30 has been replicated 1 time(s)
+FlipFlop cpu/m_im/data_31 has been replicated 1 time(s)
+FlipFlop cpu/w_im/data_27 has been replicated 1 time(s)
+FlipFlop cpu/w_im/data_28 has been replicated 1 time(s)
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 2021
+ Flip-Flops                                            : 2021
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : mips.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 6741
+#      GND                         : 3
+#      INV                         : 190
+#      LUT1                        : 121
+#      LUT2                        : 161
+#      LUT3                        : 1364
+#      LUT4                        : 471
+#      LUT5                        : 934
+#      LUT6                        : 2459
+#      MUXCY                       : 522
+#      MUXF7                       : 186
+#      VCC                         : 3
+#      XORCY                       : 327
+# FlipFlops/Latches                : 2025
+#      FD                          : 98
+#      FDC                         : 35
+#      FDCE                        : 48
+#      FDE                         : 4
+#      FDPE                        : 24
+#      FDR                         : 81
+#      FDRE                        : 1733
+#      FDSE                        : 2
+# RAMS                             : 32
+#      RAMB16BWER                  : 32
+# Clock Buffers                    : 3
+#      BUFG                        : 3
+# IO Buffers                       : 141
+#      IBUF                        : 74
+#      IBUFG                       : 1
+#      OBUF                        : 66
+# Others                           : 1
+#      PLL_ADV                     : 1
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx100fgg676-2 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:            2025  out of  126576     1%  
+ Number of Slice LUTs:                 5700  out of  63288     9%  
+    Number used as Logic:              5700  out of  63288     9%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:   6189
+   Number with an unused Flip Flop:    4164  out of   6189    67%  
+   Number with an unused LUT:           489  out of   6189     7%  
+   Number of fully used LUT-FF pairs:  1536  out of   6189    24%  
+   Number of unique control sets:        32
+
+IO Utilization: 
+ Number of IOs:                         141
+ Number of bonded IOBs:                 141  out of    480    29%  
+
+Specific Feature Utilization:
+ Number of Block RAM/FIFO:               32  out of    268    11%  
+    Number using Block RAM only:         32
+ Number of BUFG/BUFGCTRLs:                3  out of     16    18%  
+ Number of PLL_ADVs:                      1  out of      6    16%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)                                                                                                                        | Load  |
+-----------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+-------+
+clk_ipcore/pll_base_inst/CLKOUT0   | BUFG                                                                                                                                         | 2038  |
+uart_shim/uart/U_RX_UNIT/clk_rf_av | NONE(uart_shim/uart/U_RX_UNIT/rf_av)                                                                                                         | 1     |
+cpu/im/im_ipcore/N1                | NONE(cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram)  | 16    |
+clk_ipcore/pll_base_inst/CLKOUT1   | BUFG                                                                                                                                         | 18    |
+cpu/dm/dm_ipcore/N1                | NONE(cpu/dm/dm_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s6_noinit.ram/SP.SIMPLE_PRIM18.ram)| 16    |
+-----------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -2
+
+   Minimum period: 22.256ns (Maximum Frequency: 44.932MHz)
+   Minimum input arrival time before clock: 6.420ns
+   Maximum output required time after clock: 7.394ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_ipcore/pll_base_inst/CLKOUT0'
+  Clock period: 22.256ns (frequency: 44.932MHz)
+  Total number of paths / destination ports: 32553061561 / 3998
+-------------------------------------------------------------------------
+Delay:               22.256ns (Levels of Logic = 31)
+  Source:            cpu/d_im/data_10 (FF)
+  Destination:       cpu/pc/saved_pc_31 (FF)
+  Source Clock:      clk_ipcore/pll_base_inst/CLKOUT0 rising
+  Destination Clock: clk_ipcore/pll_base_inst/CLKOUT0 rising
+
+  Data Path: cpu/d_im/data_10 to cpu/pc/saved_pc_31
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               8   0.525   1.374  cpu/d_im/data_10 (cpu/d_im/data_10)
+     LUT5:I0->O           15   0.254   1.155  cpu/control/_dkind/cop0_instr[31]_AND_62_o11 (cpu/control/_dkind/cop0_instr[31]_AND_62_o1)
+     LUT6:I5->O           19   0.254   1.261  cpu/control/_dkind/Mmux_result4311 (cpu/control/_dkind/Mmux_result431)
+     LUT6:I5->O           19   0.254   1.261  cpu/control/_dkind/Mmux_result924 (cpu/control/_dkind/Mmux_result92)
+     LUT6:I5->O           13   0.254   1.098  cpu/control/_dkind/Mmux_result94_1 (cpu/control/_dkind/Mmux_result941)
+     LUT6:I5->O           17   0.254   1.209  cpu/control/dkind[9]_GND_7_o_equal_214_o<4>11 (cpu/control/dkind[9]_GND_7_o_equal_214_o<4>1)
+     LUT6:I5->O            5   0.254   1.117  cpu/control/forward/d_reg2[4]_GND_10_o_AND_92_o1 (cpu/control/forward/d_reg2[4]_GND_10_o_AND_92_o2)
+     LUT6:I2->O           17   0.254   1.209  cpu/control/forward/d_reg2[4]_GND_10_o_AND_92_o4_1 (cpu/control/forward/d_reg2[4]_GND_10_o_AND_92_o41)
+     LUT6:I5->O            7   0.254   0.910  cpu/control/forward/Mmux_cw_fm_d212 (cpu/control/forward/Mmux_cw_fm_d211)
+     LUT5:I4->O           17   0.254   1.209  cpu/control/forward/Mmux_cw_fm_d214_3 (cpu/control/forward/Mmux_cw_fm_d2142)
+     LUT6:I5->O            1   0.254   0.790  cpu/Mmux_d_rf_read_result221 (cpu/Mmux_d_rf_read_result22)
+     LUT6:I4->O           11   0.250   1.315  cpu/Mmux_d_rf_read_result224 (cpu/d_rf_read_result2<0>)
+     LUT4:I0->O            1   0.254   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_lut<0> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_lut<0>)
+     MUXCY:S->O            1   0.215   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<0> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<0>)
+     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<1> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<1>)
+     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<2> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<2>)
+     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<3> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<3>)
+     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<4> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<4>)
+     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<5> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<5>)
+     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<6> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<6>)
+     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<7> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<7>)
+     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<8> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<8>)
+     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<9> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<9>)
+     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<10> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<10>)
+     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<11> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<11>)
+     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<12> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<12>)
+     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<13> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<13>)
+     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<14> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<14>)
+     MUXCY:CI->O           2   0.235   0.834  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<15> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<15>)
+     LUT6:I4->O           15   0.250   1.155  cpu/npc/Mmux_next_pc10011_1 (cpu/npc/Mmux_next_pc10011)
+     LUT6:I5->O           16   0.254   1.182  cpu/npc/Mmux_next_pc10231 (cpu/npc/Mmux_next_pc1023)
+     LUT4:I3->O            1   0.254   0.000  cpu/npc/Mmux_next_pc984 (cpu/f_npc_next_pc<31>)
+     FDRE:D                    0.074          cpu/pc/saved_pc_31
+    ----------------------------------------
+    Total                     22.256ns (5.177ns logic, 17.079ns route)
+                                       (23.3% logic, 76.7% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'uart_shim/uart/U_RX_UNIT/clk_rf_av'
+  Clock period: 7.867ns (frequency: 127.118MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               7.867ns (Levels of Logic = 4)
+  Source:            uart_shim/uart/U_RX_UNIT/rf_av (FF)
+  Destination:       uart_shim/uart/U_RX_UNIT/rf_av (FF)
+  Source Clock:      uart_shim/uart/U_RX_UNIT/clk_rf_av rising
+  Destination Clock: uart_shim/uart/U_RX_UNIT/clk_rf_av rising
+
+  Data Path: uart_shim/uart/U_RX_UNIT/rf_av to uart_shim/uart/U_RX_UNIT/rf_av
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              3   0.525   0.874  uart_shim/uart/U_RX_UNIT/rf_av (uart_shim/uart/U_RX_UNIT/rf_av)
+     LUT6:I4->O            9   0.250   1.204  cpu/cp0/have_irq1 (cpu/cp0/have_irq)
+     LUT5:I2->O           97   0.235   2.186  cpu/cp0/_n0334_inv11 (cpu/m_cp0_have2handle)
+     LUT6:I5->O            5   0.254   0.949  bridge/uart_write_enable1 (uart_write_enable)
+     LUT2:I0->O            1   0.250   0.681  uart_shim/uart/U_RX_UNIT/rst_over_read_OR_299_o1 (uart_shim/uart/U_RX_UNIT/rst_over_read_OR_299_o)
+     FDC:CLR                   0.459          uart_shim/uart/U_RX_UNIT/rf_av
+    ----------------------------------------
+    Total                      7.867ns (1.973ns logic, 5.894ns route)
+                                       (25.1% logic, 74.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_ipcore/pll_base_inst/CLKOUT0'
+  Total number of paths / destination ports: 2091 / 2091
+-------------------------------------------------------------------------
+Offset:              6.420ns (Levels of Logic = 2)
+  Source:            sys_rstn (PAD)
+  Destination:       cpu/control/m_in_bds_/data_0 (FF)
+  Destination Clock: clk_ipcore/pll_base_inst/CLKOUT0 rising
+
+  Data Path: sys_rstn to cpu/control/m_in_bds_/data_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            30   1.328   1.942  sys_rstn_IBUF (sys_rstn_IBUF)
+     LUT6:I0->O          317   0.254   2.438  cpu/control/cw_m_pff_rst1 (cpu/cw_m_pff_rst)
+     FDRE:R                    0.459          cpu/control/m_exc_/data_0
+    ----------------------------------------
+    Total                      6.420ns (2.041ns logic, 4.379ns route)
+                                       (31.8% logic, 68.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'uart_shim/uart/U_RX_UNIT/clk_rf_av'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              4.209ns (Levels of Logic = 2)
+  Source:            sys_rstn (PAD)
+  Destination:       uart_shim/uart/U_RX_UNIT/rf_av (FF)
+  Destination Clock: uart_shim/uart/U_RX_UNIT/clk_rf_av rising
+
+  Data Path: sys_rstn to uart_shim/uart/U_RX_UNIT/rf_av
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            30   1.328   1.487  sys_rstn_IBUF (sys_rstn_IBUF)
+     LUT2:I1->O            1   0.254   0.681  uart_shim/uart/U_RX_UNIT/rst_over_read_OR_299_o1 (uart_shim/uart/U_RX_UNIT/rst_over_read_OR_299_o)
+     FDC:CLR                   0.459          uart_shim/uart/U_RX_UNIT/rf_av
+    ----------------------------------------
+    Total                      4.209ns (2.041ns logic, 2.168ns route)
+                                       (48.5% logic, 51.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_ipcore/pll_base_inst/CLKOUT0'
+  Total number of paths / destination ports: 413 / 62
+-------------------------------------------------------------------------
+Offset:              7.394ns (Levels of Logic = 3)
+  Source:            nixie/phase_FSM_FFd1 (FF)
+  Destination:       digital_tube0<6> (PAD)
+  Source Clock:      clk_ipcore/pll_base_inst/CLKOUT0 rising
+
+  Data Path: nixie/phase_FSM_FFd1 to digital_tube0<6>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q             14   0.525   1.582  nixie/phase_FSM_FFd1 (nixie/phase_FSM_FFd1)
+     LUT6:I0->O            7   0.254   1.186  nixie/mux711 (nixie/data1<3>)
+     LUT4:I0->O            1   0.254   0.681  nixie/decoder1/out<0>1 (digital_tube1_0_OBUF)
+     OBUF:I->O                 2.912          digital_tube1_0_OBUF (digital_tube1<0>)
+    ----------------------------------------
+    Total                      7.394ns (3.945ns logic, 3.449ns route)
+                                       (53.4% logic, 46.6% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk_ipcore/pll_base_inst/CLKOUT0
+----------------------------------+---------+---------+---------+---------+
+                                  | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock                      |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+----------------------------------+---------+---------+---------+---------+
+clk_ipcore/pll_base_inst/CLKOUT0  |   22.256|         |         |         |
+clk_ipcore/pll_base_inst/CLKOUT1  |    7.489|         |         |         |
+uart_shim/uart/U_RX_UNIT/clk_rf_av|    9.199|         |         |         |
+----------------------------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock clk_ipcore/pll_base_inst/CLKOUT1
+----------------------------------+---------+---------+---------+---------+
+                                  | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock                      |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+----------------------------------+---------+---------+---------+---------+
+clk_ipcore/pll_base_inst/CLKOUT0  |   20.662|         |         |         |
+uart_shim/uart/U_RX_UNIT/clk_rf_av|    8.803|         |         |         |
+----------------------------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock uart_shim/uart/U_RX_UNIT/clk_rf_av
+----------------------------------+---------+---------+---------+---------+
+                                  | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock                      |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+----------------------------------+---------+---------+---------+---------+
+clk_ipcore/pll_base_inst/CLKOUT0  |   19.726|         |         |         |
+uart_shim/uart/U_RX_UNIT/clk_rf_av|    7.867|         |         |         |
+----------------------------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 54.00 secs
+Total CPU time to Xst completion: 53.83 secs
+ 
+--> 
+
+
+Total memory usage is 427280 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  206 (   0 filtered)
+Number of infos    :   17 (   0 filtered)
+
