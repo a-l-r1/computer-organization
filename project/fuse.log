@@ -1,14 +1,19 @@
-Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -i /home/a-l-r/co/src/src/include -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o /home/a-l-r/co/src/project/pipelined3_p8_tb_isim_beh.exe -prj /home/a-l-r/co/src/project/pipelined3_p8_tb_beh.prj work.pipelined3_p8_tb work.glbl 
+Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -i /home/a-l-r/co/src/src/include -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o /home/a-l-r/co/src/project/pipelined3_p8uart_tb_isim_beh.exe -prj /home/a-l-r/co/src/project/pipelined3_p8uart_tb_beh.prj work.pipelined3_p8uart_tb work.glbl 
 ISim P.20131013 (signature 0xfbc00daa)
 Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
 Determining compilation order of HDL files
+Analyzing Verilog file "/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/uart/utils.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/uart/txd.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/uart/rxd.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/pff.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/control/pipelined3-hazard.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/control/pipelined3-handler.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/control/pipelined3-forward.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/ipcore_dir/im_ipcore.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/ipcore_dir/dm_ipcore.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/uart/uart.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/nixie-decoder.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/rf.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/pc.v" into library work
@@ -20,6 +25,7 @@ Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/cp0.v" into l
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/cmp.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/alu.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/control/pipelined3-function.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/uart/uart-shim.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/timer.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/switches.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/nixie.v" into library work
@@ -28,12 +34,17 @@ Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/buttons.v" int
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/cpu/pipelined3-cpu.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/bridge/bridge.v" into library work
 Analyzing Verilog file "/home/a-l-r/co/src/project/../src/mips/mips.v" into library work
-Analyzing Verilog file "/home/a-l-r/co/src/project/pipelined3_p8_tb.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../tests/cpu/pipelined3/pipelined3_p8uart_tb.v" into library work
 Analyzing Verilog file "/opt/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
 Completed static elaboration
-Fuse Memory Usage: 85716 KB
-Fuse CPU Usage: 940 ms
+Fuse Memory Usage: 87848 KB
+Fuse CPU Usage: 910 ms
+Compiling module IBUFG
+Compiling module PLL_ADV(BANDWIDTH="OPTIMIZED",CL...
+Compiling module PLL_BASE(CLKFBOUT_MULT=16,CLKIN_...
+Compiling module BUFG
+Compiling module clk_ipcore
 Compiling module kind
 Compiling module pff(BIT_WIDTH=5)
 Compiling module forward
@@ -62,18 +73,26 @@ Compiling module cp0
 Compiling module cpu
 Compiling module bridge
 Compiling module timer
+Compiling module rx_unit
+Compiling module ctrl_shift
+Compiling module trans_reg
+Compiling module tx_unit
+Compiling module counter(size_cnt=16)
+Compiling module divisor(size_cnt_rx=16,size_cnt_...
+Compiling module MiniUART
+Compiling module uart_shim
 Compiling module switches
 Compiling module led
 Compiling module nixie_decoder
 Compiling module nixie
 Compiling module buttons
 Compiling module mips
-Compiling module pipelined3_p8_tb
+Compiling module pipelined3_p8uart_tb
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 6 sub-compilation(s) to finish...
-Compiled 36 Verilog Units
-Built simulation executable /home/a-l-r/co/src/project/pipelined3_p8_tb_isim_beh.exe
-Fuse Memory Usage: 1174268 KB
-Fuse CPU Usage: 1340 ms
-GCC CPU Usage: 11370 ms
+Waiting for 16 sub-compilation(s) to finish...
+Compiled 49 Verilog Units
+Built simulation executable /home/a-l-r/co/src/project/pipelined3_p8uart_tb_isim_beh.exe
+Fuse Memory Usage: 1184468 KB
+Fuse CPU Usage: 1460 ms
+GCC CPU Usage: 15930 ms

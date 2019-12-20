@@ -22,7 +22,7 @@
 #define alloca _alloca
 #endif
 static const char *ng0 = "/home/a-l-r/co/src/src/devices/nixie.v";
-static unsigned int ng1[] = {25000U, 0U};
+static unsigned int ng1[] = {10000U, 0U};
 static unsigned int ng2[] = {8U, 0U};
 static int ng3[] = {0, 0};
 static unsigned int ng4[] = {1U, 0U};

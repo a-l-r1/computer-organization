@@ -426,7 +426,7 @@ LAB31:    t32 = (t30 + 4);
 LAB33:    xsi_set_current_line(33, ng0);
 
 LAB36:    xsi_set_current_line(34, ng0);
-    t34 = xsi_vlog_time(t62, 1000.0000000000000, 1000.0000000000000);
+    t34 = xsi_vlog_time(t62, 1000.0000000000000, 1.0000000000000000);
     t35 = (t0 + 1368U);
     t36 = *((char **)t35);
     t35 = (t0 + 1848U);
