@@ -1,11 +1,11 @@
 set -tmpdir "xst/projnav.tmp"
 set -xsthdpdir "xst"
 run
--ifn mips.prj
--ofn mips
+-ifn pipelined3_p8_at_tb.prj
+-ofn pipelined3_p8_at_tb
 -ofmt NGC
 -p xc6slx100-2-fgg676
--top mips
+-top pipelined3_p8_at_tb
 -opt_mode Speed
 -opt_level 1
 -power NO

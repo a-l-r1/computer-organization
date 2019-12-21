@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Xst" timeStamp="Sat Dec 21 21:22:40 2019">
+  <application stringID="Xst" timeStamp="Sat Dec 21 21:21:37 2019">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -49,16 +49,16 @@
         <column stringID="speed"/>
         <row stringID="row" value="0">
           <item stringID="arch" value="Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz"/>
-          <item stringID="speed" value="2063.364 MHz"/>
+          <item stringID="speed" value="3511.518 MHz"/>
         </row>
       </table>
     </section>
     <section stringID="XST_OPTION_SUMMARY">
-      <item DEFAULT="" label="-ifn" stringID="XST_IFN" value="mips.prj"/>
-      <item DEFAULT="" label="-ofn" stringID="XST_OFN" value="mips"/>
+      <item DEFAULT="" label="-ifn" stringID="XST_IFN" value="pipelined3_p8_at_tb.prj"/>
+      <item DEFAULT="" label="-ofn" stringID="XST_OFN" value="pipelined3_p8_at_tb"/>
       <item DEFAULT="NGC" label="-ofmt" stringID="XST_OFMT" value="NGC"/>
       <item DEFAULT="" label="-p" stringID="XST_P" value="xc6slx100-2-fgg676"/>
-      <item DEFAULT="" label="-top" stringID="XST_TOP" value="mips"/>
+      <item DEFAULT="" label="-top" stringID="XST_TOP" value="pipelined3_p8_at_tb"/>
       <item DEFAULT="Speed" label="-opt_mode" stringID="XST_OPTMODE" value="Speed"/>
       <item DEFAULT="1" label="-opt_level" stringID="XST_OPTLEVEL" value="1"/>
       <item DEFAULT="No" label="-power" stringID="XST_POWER" value="NO"/>
@@ -109,7 +109,7 @@
     </section>
     <section stringID="XST_ERRORS_STATISTICS">
       <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_ERRORS" value="3"/>
-      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_WARNINGS" value="14"/>
+      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_WARNINGS" value="23"/>
       <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_INFOS" value="0"/>
     </section>
   </application>

@@ -15,7 +15,7 @@ Total REAL time to Xst completion: 0.00 secs
 Total CPU time to Xst completion: 0.04 secs
  
 --> 
-Reading design: mips.prj
+Reading design: pipelined3_p8_at_tb.prj
 
 TABLE OF CONTENTS
   1) Synthesis Options Summary
@@ -43,17 +43,17 @@ TABLE OF CONTENTS
 *                      Synthesis Options Summary                        *
 =========================================================================
 ---- Source Parameters
-Input File Name                    : "mips.prj"
+Input File Name                    : "pipelined3_p8_at_tb.prj"
 Ignore Synthesis Constraint File   : NO
 Verilog Include Directory          : { "/home/a-l-r/co/src/src/include" }
 
 ---- Target Parameters
-Output File Name                   : "mips"
+Output File Name                   : "pipelined3_p8_at_tb"
 Output Format                      : NGC
 Target Device                      : xc6slx100-2-fgg676
 
 ---- Source Options
-Top Module Name                    : mips
+Top Module Name                    : pipelined3_p8_at_tb
 Automatic FSM Extraction           : YES
 FSM Encoding Algorithm             : Auto
 Safe Implementation                : No
@@ -222,10 +222,16 @@ Analyzing Verilog file "/home/a-l-r/co/src/project/course-materials/P8_BLACKBOX.
 Parsing module <wrapper>.
 Analyzing Verilog file "/home/a-l-r/co/src/src/mips/mips.v" into library work
 Parsing module <mips>.
+Analyzing Verilog file "/home/a-l-r/co/src/tests/cpu/pipelined3/course-materials/mips_test.v" into library work
+Parsing module <pipelined3_p8_at_tb>.
 
 =========================================================================
 *                            HDL Elaboration                            *
 =========================================================================
+WARNING:HDLCompiler:1016 - "/home/a-l-r/co/src/tests/cpu/pipelined3/course-materials/mips_test.v" Line 39: Port uart_rxd is not connected to this instance
+
+Elaborating module <pipelined3_p8_at_tb>.
+WARNING:HDLCompiler:872 - "/home/a-l-r/co/src/tests/cpu/pipelined3/course-materials/mips_test.v" Line 60: Using initial value of reset since it is never assigned
 WARNING:HDLCompiler:25 - "/home/a-l-r/co/src/src/mips/mips.v" Line 108: Module <wrapper> does not have a port named <M_Wdata>.
 WARNING:HDLCompiler:25 - "/home/a-l-r/co/src/src/mips/mips.v" Line 109: Module <wrapper> does not have a port named <M_Rdata>.
 WARNING:HDLCompiler:25 - "/home/a-l-r/co/src/src/mips/mips.v" Line 120: Module <wrapper> does not have a port named <txd>.
@@ -297,12 +303,19 @@ ERROR:HDLCompiler:267 - "/home/a-l-r/co/src/src/mips/mips.v" Line 109: Cannot fi
 ERROR:HDLCompiler:267 - "/home/a-l-r/co/src/src/mips/mips.v" Line 120: Cannot find port txd on this module
 Module mips remains a blackbox, due to errors in its contents
 WARNING:HDLCompiler:1499 - "/home/a-l-r/co/src/src/mips/mips.v" Line 1: Empty module <mips> remains a black box.
+WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/tests/cpu/pipelined3/course-materials/mips_test.v" Line 51: Assignment to led_light ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/tests/cpu/pipelined3/course-materials/mips_test.v" Line 52: Assignment to digital_tube2 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/tests/cpu/pipelined3/course-materials/mips_test.v" Line 53: Assignment to digital_tube_sel2 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/tests/cpu/pipelined3/course-materials/mips_test.v" Line 54: Assignment to digital_tube1 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/tests/cpu/pipelined3/course-materials/mips_test.v" Line 55: Assignment to digital_tube_sel1 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/tests/cpu/pipelined3/course-materials/mips_test.v" Line 56: Assignment to digital_tube0 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/tests/cpu/pipelined3/course-materials/mips_test.v" Line 57: Assignment to digital_tube_sel0 ignored, since the identifier is never used
 --> 
 
 
-Total memory usage is 320708 kilobytes
+Total memory usage is 320888 kilobytes
 
 Number of errors   :    3 (   0 filtered)
-Number of warnings :   14 (   0 filtered)
+Number of warnings :   23 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 
