@@ -90,7 +90,10 @@ module pipelined3_p8_tb;
 		// Wait 100 ns for global reset to finish
         
 		// Add stimulus here
-
+		#300;
+		dip_switch0 = 8'b11111011;
+		dip_switch1 = 8'b11111011;
+		user_key = 8'b11111110;
 	end
 	
 	always #5 clk_in = ~clk_in;

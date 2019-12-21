@@ -2,27 +2,27 @@ Command line:
    pipelined3_p8_tb_isim_translate.exe
      -simmode  gui
      -simrunnum  0
-     -socket  37519
+     -socket  44303
 
-Fri Dec 20 19:48:49 2019
+Sat Dec 21 09:35:25 2019
 
 
- Elaboration Time: 1.93 sec
+ Elaboration Time: 1.62 sec
 
- Current Memory Usage: 753.082 Meg
+ Current Memory Usage: 729.993 Meg
 
- Total Signals          : 204309
- Total Nets             : 129169
- Total Signal Drivers   : 123052
- Total Blocks           : 21654
- Total Primitive Blocks : 11885
- Total Processes        : 168413
- Total Traceable Variables  : 61325
- Total Scalar Nets and Variables : 3043859
+ Total Signals          : 201655
+ Total Nets             : 125088
+ Total Signal Drivers   : 121880
+ Total Blocks           : 21292
+ Total Primitive Blocks : 11786
+ Total Processes        : 163427
+ Total Traceable Variables  : 57383
+ Total Scalar Nets and Variables : 2314298
 
- Total Simulation Time: 3.58 sec
+ Total Simulation Time: 2.21 sec
 
- Current Memory Usage: 828.584 Meg
+ Current Memory Usage: 805.495 Meg
 
-Fri Dec 20 19:50:04 2019
+Sat Dec 21 09:36:54 2019
 

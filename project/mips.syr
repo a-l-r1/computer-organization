@@ -342,14 +342,14 @@ Synthesizing Unit <cpu>.
 INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 104: Output port <cw_e_md_op> of the instance <control> is unconnected or connected to loadless signal.
 INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 104: Output port <cw_e_md_stop> of the instance <control> is unconnected or connected to loadless signal.
 INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 104: Output port <cw_e_md_restore> of the instance <control> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 273: Output port <reg2_sig_cmp> of the instance <cmp> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 351: Output port <cmp_result> of the instance <alu> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 351: Output port <sig_cmp_result> of the instance <alu> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 351: Output port <overflow> of the instance <alu> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 351: Output port <op_invalid> of the instance <alu> is unconnected or connected to loadless signal.
-    Found 32-bit adder for signal <e_retaddr> created at line 292.
-    Found 32-bit adder for signal <m_retaddr> created at line 398.
-    Found 32-bit adder for signal <w_retaddr> created at line 504.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 274: Output port <reg2_sig_cmp> of the instance <cmp> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 352: Output port <cmp_result> of the instance <alu> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 352: Output port <sig_cmp_result> of the instance <alu> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 352: Output port <overflow> of the instance <alu> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 352: Output port <op_invalid> of the instance <alu> is unconnected or connected to loadless signal.
+    Found 32-bit adder for signal <e_retaddr> created at line 293.
+    Found 32-bit adder for signal <m_retaddr> created at line 399.
+    Found 32-bit adder for signal <w_retaddr> created at line 505.
     Found 32-bit 7-to-1 multiplexer for signal <_n0191> created at line 73.
     Found 32-bit 7-to-1 multiplexer for signal <_n0193> created at line 73.
     Found 32-bit 4-to-1 multiplexer for signal <_n0198> created at line 88.
@@ -1262,9 +1262,9 @@ Optimizing unit <forward> ...
 
 Optimizing unit <hazard> ...
 
-Optimizing unit <im> ...
-
 Optimizing unit <rf> ...
+
+Optimizing unit <im> ...
 
 Optimizing unit <dm> ...
 
@@ -1299,7 +1299,6 @@ WARNING:Xst:2677 - Node <cpu/control/w_reg2_/data_1> of sequential type is uncon
 WARNING:Xst:2677 - Node <cpu/control/w_reg2_/data_2> of sequential type is unconnected in block <mips>.
 WARNING:Xst:2677 - Node <cpu/control/w_reg2_/data_3> of sequential type is unconnected in block <mips>.
 WARNING:Xst:2677 - Node <cpu/control/w_reg2_/data_4> of sequential type is unconnected in block <mips>.
-WARNING:Xst:1293 - FF/Latch <nixie/ctr_14> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <nixie/ctr_15> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <nixie/ctr_16> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <nixie/ctr_17> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
@@ -1369,8 +1368,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 2036
- Flip-Flops                                            : 2036
+# Registers                                            : 2037
+ Flip-Flops                                            : 2037
 
 =========================================================================
 
@@ -1393,27 +1392,27 @@ Top Level Output File Name         : mips.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 6777
+# BELS                             : 6782
 #      GND                         : 3
-#      INV                         : 189
+#      INV                         : 190
 #      LUT1                        : 121
 #      LUT2                        : 162
 #      LUT3                        : 1373
-#      LUT4                        : 475
-#      LUT5                        : 947
+#      LUT4                        : 474
+#      LUT5                        : 950
 #      LUT6                        : 2466
-#      MUXCY                       : 521
+#      MUXCY                       : 522
 #      MUXF7                       : 191
 #      VCC                         : 3
-#      XORCY                       : 326
-# FlipFlops/Latches                : 2041
-#      FD                          : 102
+#      XORCY                       : 327
+# FlipFlops/Latches                : 2042
+#      FD                          : 104
 #      FDC                         : 35
 #      FDCE                        : 51
 #      FDE                         : 6
 #      FDPE                        : 21
 #      FDR                         : 81
-#      FDRE                        : 1742
+#      FDRE                        : 1741
 #      FDSE                        : 2
 #      LD                          : 1
 # RAMS                             : 32
@@ -1434,15 +1433,15 @@ Selected Device : 6slx100fgg676-2
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:            2041  out of  126576     1%  
- Number of Slice LUTs:                 5733  out of  63288     9%  
-    Number used as Logic:              5733  out of  63288     9%  
+ Number of Slice Registers:            2042  out of  126576     1%  
+ Number of Slice LUTs:                 5736  out of  63288     9%  
+    Number used as Logic:              5736  out of  63288     9%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   6205
-   Number with an unused Flip Flop:    4164  out of   6205    67%  
-   Number with an unused LUT:           472  out of   6205     7%  
-   Number of fully used LUT-FF pairs:  1569  out of   6205    25%  
+ Number of LUT Flip Flop pairs used:   6201
+   Number with an unused Flip Flop:    4159  out of   6201    67%  
+   Number with an unused LUT:           465  out of   6201     7%  
+   Number of fully used LUT-FF pairs:  1577  out of   6201    25%  
    Number of unique control sets:        34
 
 IO Utilization: 
@@ -1476,10 +1475,10 @@ Clock Information:
 ----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+-------+
 Clock Signal                            | Clock buffer(FF name)                                                                                                                        | Load  |
 ----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+-------+
-clk_ipcore/pll_base_inst/CLKOUT0        | BUFG                                                                                                                                         | 2053  |
+clk_ipcore/pll_base_inst/CLKOUT0        | BUFG                                                                                                                                         | 2036  |
 uart_shim/uart/U_RX_UNIT/clk_rf_av      | NONE(uart_shim/uart/U_RX_UNIT/rf_av)                                                                                                         | 1     |
+clk_ipcore/pll_base_inst/CLKOUT1        | BUFG                                                                                                                                         | 36    |
 cpu/im/im_ipcore/N1                     | NONE(cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram)  | 16    |
-clk_ipcore/pll_base_inst/CLKOUT1        | BUFG                                                                                                                                         | 18    |
 cpu/dm/dm_ipcore/N1                     | NONE(cpu/dm/dm_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s6_noinit.ram/SP.SIMPLE_PRIM18.ram)| 16    |
 uart_shim/uart/U_TX_UNIT/U_CTRL_SHFT/fsm| NONE(uart_shim/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_3_LD)                                                                                       | 1     |
 ----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+-------+
@@ -1494,7 +1493,7 @@ Timing Summary:
 Speed Grade: -2
 
    Minimum period: 22.022ns (Maximum Frequency: 45.410MHz)
-   Minimum input arrival time before clock: 6.404ns
+   Minimum input arrival time before clock: 6.438ns
    Maximum output required time after clock: 7.394ns
    Maximum combinational path delay: No path found
 
@@ -1505,7 +1504,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_ipcore/pll_base_inst/CLKOUT0'
   Clock period: 22.022ns (frequency: 45.410MHz)
-  Total number of paths / destination ports: 32449716901 / 4024
+  Total number of paths / destination ports: 32449674769 / 3829
 -------------------------------------------------------------------------
 Delay:               22.022ns (Levels of Logic = 32)
   Source:            cpu/d_im/data_10 (FF)
@@ -1523,7 +1522,7 @@ Delay:               22.022ns (Levels of Logic = 32)
      LUT3:I0->O            3   0.235   0.766  cpu/control/_dkind/cop0_instr[10]_AND_59_o11 (cpu/control/_dkind/cop0_instr[10]_AND_59_o_mmx_out)
      LUT6:I5->O            8   0.254   0.944  cpu/control/_dkind/Mmux_result87_SW0 (N148)
      LUT6:I5->O            9   0.254   0.976  cpu/control/_dkind/Mmux_result88_1 (cpu/control/_dkind/Mmux_result88)
-     LUT5:I4->O            2   0.254   0.834  cpu/control/Mmux_d_reg2111_SW4 (N865)
+     LUT5:I4->O            2   0.254   0.834  cpu/control/Mmux_d_reg2111_SW4 (N863)
      LUT6:I4->O            6   0.250   0.984  cpu/control/forward/d_reg2[4]_GND_10_o_AND_92_o2 (cpu/control/forward/d_reg2[4]_GND_10_o_AND_92_o3)
      LUT6:I4->O           17   0.250   1.209  cpu/control/forward/d_reg2[4]_GND_10_o_AND_92_o4_1 (cpu/control/forward/d_reg2[4]_GND_10_o_AND_92_o41)
      LUT6:I5->O            7   0.254   0.910  cpu/control/forward/Mmux_cw_fm_d212 (cpu/control/forward/Mmux_cw_fm_d211)
@@ -1582,9 +1581,9 @@ Delay:               7.867ns (Levels of Logic = 4)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_ipcore/pll_base_inst/CLKOUT0'
-  Total number of paths / destination ports: 2104 / 2104
+  Total number of paths / destination ports: 2105 / 2105
 -------------------------------------------------------------------------
-Offset:              6.404ns (Levels of Logic = 2)
+Offset:              6.438ns (Levels of Logic = 2)
   Source:            sys_rstn (PAD)
   Destination:       cpu/control/m_in_bds_/data_0 (FF)
   Destination Clock: clk_ipcore/pll_base_inst/CLKOUT0 rising
@@ -1593,18 +1592,18 @@ Offset:              6.404ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            29   1.328   1.925  sys_rstn_IBUF (sys_rstn_IBUF)
+     IBUF:I->O            31   1.328   1.958  sys_rstn_IBUF (sys_rstn_IBUF)
      LUT6:I0->O          325   0.254   2.438  cpu/control/cw_m_pff_rst1 (cpu/cw_m_pff_rst)
      FDRE:R                    0.459          cpu/control/m_exc_/data_0
     ----------------------------------------
-    Total                      6.404ns (2.041ns logic, 4.363ns route)
-                                       (31.9% logic, 68.1% route)
+    Total                      6.438ns (2.041ns logic, 4.397ns route)
+                                       (31.7% logic, 68.3% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'uart_shim/uart/U_RX_UNIT/clk_rf_av'
   Total number of paths / destination ports: 1 / 1
 -------------------------------------------------------------------------
-Offset:              4.192ns (Levels of Logic = 2)
+Offset:              4.225ns (Levels of Logic = 2)
   Source:            sys_rstn (PAD)
   Destination:       uart_shim/uart/U_RX_UNIT/rf_av (FF)
   Destination Clock: uart_shim/uart/U_RX_UNIT/clk_rf_av rising
@@ -1613,12 +1612,12 @@ Offset:              4.192ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            29   1.328   1.470  sys_rstn_IBUF (sys_rstn_IBUF)
+     IBUF:I->O            31   1.328   1.503  sys_rstn_IBUF (sys_rstn_IBUF)
      LUT2:I1->O            1   0.254   0.681  uart_shim/uart/U_RX_UNIT/rst_over_read_OR_299_o1 (uart_shim/uart/U_RX_UNIT/rst_over_read_OR_299_o)
      FDC:CLR                   0.459          uart_shim/uart/U_RX_UNIT/rf_av
     ----------------------------------------
-    Total                      4.192ns (2.041ns logic, 2.151ns route)
-                                       (48.7% logic, 51.3% route)
+    Total                      4.225ns (2.041ns logic, 2.184ns route)
+                                       (48.3% logic, 51.7% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_ipcore/pll_base_inst/CLKOUT0'
@@ -1678,15 +1677,15 @@ uart_shim/uart/U_RX_UNIT/clk_rf_av|    7.867|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 55.00 secs
-Total CPU time to Xst completion: 55.01 secs
+Total REAL time to Xst completion: 56.00 secs
+Total CPU time to Xst completion: 56.05 secs
  
 --> 
 
 
-Total memory usage is 427288 kilobytes
+Total memory usage is 427552 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  209 (   0 filtered)
+Number of warnings :  208 (   0 filtered)
 Number of infos    :   17 (   0 filtered)
 

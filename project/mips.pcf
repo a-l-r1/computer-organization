@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Fri Dec 20 20:35:50 2019
+// Written by: Map P.20131013 on Sat Dec 21 11:54:48 2019
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -147,6 +147,86 @@ COMP "uart_rxd" LOCATE = SITE "AF21" LEVEL 1;
 COMP "uart_txd" LOCATE = SITE "AE21" LEVEL 1;
 COMP "sys_rstn" LOCATE = SITE "AC12" LEVEL 1;
 PIN
+        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
+        = BEL
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
+        PINNAME CLKA;
+PIN
+        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[14].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
+        = BEL
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[14].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
+        PINNAME CLKA;
+PIN
+        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[13].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
+        = BEL
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[13].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
+        PINNAME CLKA;
+PIN
+        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[12].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
+        = BEL
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[12].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
+        PINNAME CLKA;
+PIN
+        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[11].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
+        = BEL
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[11].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
+        PINNAME CLKA;
+PIN
+        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[10].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
+        = BEL
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[10].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
+        PINNAME CLKA;
+PIN
+        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[9].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
+        = BEL
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[9].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
+        PINNAME CLKA;
+PIN
+        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
+        = BEL
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
+        PINNAME CLKA;
+PIN
+        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
+        = BEL
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
+        PINNAME CLKA;
+PIN
+        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
+        = BEL
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
+        PINNAME CLKA;
+PIN
+        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
+        = BEL
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
+        PINNAME CLKA;
+PIN
+        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
+        = BEL
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
+        PINNAME CLKA;
+PIN
+        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
+        = BEL
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
+        PINNAME CLKA;
+PIN
+        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
+        = BEL
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
+        PINNAME CLKA;
+PIN
+        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
+        = BEL
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
+        PINNAME CLKA;
+PIN
+        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
+        = BEL
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
+        PINNAME CLKA;
+PIN
         cpu/dm/dm_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s6_noinit.ram/SP.SIMPLE_PRIM18.ram_pins<28>
         = BEL
         "cpu/dm/dm_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s6_noinit.ram/SP.SIMPLE_PRIM18.ram"
@@ -227,6 +307,42 @@ PIN
         "cpu/dm/dm_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_noinit.ram/SP.SIMPLE_PRIM18.ram"
         PINNAME CLKA;
 TIMEGRP clk_ipcore_clkout1 = BEL "clk_ipcore/clkout2_buf" BEL
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/sel_pipe_1"
+        BEL
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/sel_pipe_2"
+        PIN
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
+        PIN
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[14].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
+        PIN
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[13].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
+        PIN
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[12].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
+        PIN
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[11].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
+        PIN
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[10].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
+        PIN
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[9].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
+        PIN
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
+        PIN
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
+        PIN
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
+        PIN
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
+        PIN
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
+        PIN
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
+        PIN
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
+        PIN
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
+        PIN
+        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
+        BEL
         "cpu/dm/dm_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/sel_pipe_1"
         BEL
         "cpu/dm/dm_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/sel_pipe_2"
@@ -262,86 +378,6 @@ TIMEGRP clk_ipcore_clkout1 = BEL "clk_ipcore/clkout2_buf" BEL
         "cpu/dm/dm_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/s6_noinit.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
         PIN
         "cpu/dm/dm_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_noinit.ram/SP.SIMPLE_PRIM18.ram_pins<28>";
-PIN
-        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
-        = BEL
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
-        PINNAME CLKA;
-PIN
-        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[14].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
-        = BEL
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[14].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
-        PINNAME CLKA;
-PIN
-        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[13].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
-        = BEL
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[13].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
-        PINNAME CLKA;
-PIN
-        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[12].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
-        = BEL
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[12].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
-        PINNAME CLKA;
-PIN
-        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[11].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
-        = BEL
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[11].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
-        PINNAME CLKA;
-PIN
-        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[10].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
-        = BEL
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[10].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
-        PINNAME CLKA;
-PIN
-        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[9].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
-        = BEL
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[9].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
-        PINNAME CLKA;
-PIN
-        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
-        = BEL
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
-        PINNAME CLKA;
-PIN
-        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
-        = BEL
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
-        PINNAME CLKA;
-PIN
-        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
-        = BEL
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
-        PINNAME CLKA;
-PIN
-        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
-        = BEL
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
-        PINNAME CLKA;
-PIN
-        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
-        = BEL
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
-        PINNAME CLKA;
-PIN
-        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
-        = BEL
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
-        PINNAME CLKA;
-PIN
-        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
-        = BEL
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
-        PINNAME CLKA;
-PIN
-        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
-        = BEL
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
-        PINNAME CLKA;
-PIN
-        cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>
-        = BEL
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram"
-        PINNAME CLKA;
 TIMEGRP clk_ipcore_clkout0 = BEL "clk_ipcore/clkout1_buf" BEL
         "switches/stored_63" BEL "switches/stored_62" BEL "switches/stored_61"
         BEL "switches/stored_60" BEL "switches/stored_59" BEL
@@ -1197,43 +1233,43 @@ TIMEGRP clk_ipcore_clkout0 = BEL "clk_ipcore/clkout1_buf" BEL
         "led/stored_9" BEL "led/stored_8" BEL "led/stored_7" BEL
         "led/stored_6" BEL "led/stored_5" BEL "led/stored_4" BEL
         "led/stored_3" BEL "led/stored_2" BEL "led/stored_1" BEL
-        "led/stored_0" BEL "nixie/phase_FSM_FFd1" BEL "nixie/ctr_12" BEL
-        "nixie/ctr_11" BEL "nixie/ctr_7" BEL "nixie/ctr_6" BEL "nixie/ctr_5"
-        BEL "nixie/ctr_3" BEL "nixie/ctr_2" BEL "nixie/ctr_1" BEL
-        "nixie/ctr_0" BEL "nixie/phase_FSM_FFd2" BEL "nixie/tube1_15" BEL
-        "nixie/tube1_14" BEL "nixie/tube1_13" BEL "nixie/tube1_12" BEL
-        "nixie/tube1_11" BEL "nixie/tube1_10" BEL "nixie/tube1_9" BEL
-        "nixie/tube1_8" BEL "nixie/tube1_7" BEL "nixie/tube1_6" BEL
-        "nixie/tube1_5" BEL "nixie/tube1_4" BEL "nixie/tube1_3" BEL
-        "nixie/tube1_2" BEL "nixie/tube1_1" BEL "nixie/tube1_0" BEL
-        "nixie/tube0_15" BEL "nixie/tube0_14" BEL "nixie/tube0_13" BEL
-        "nixie/tube0_12" BEL "nixie/tube0_11" BEL "nixie/tube0_10" BEL
-        "nixie/tube0_9" BEL "nixie/tube0_8" BEL "nixie/tube0_7" BEL
-        "nixie/tube0_6" BEL "nixie/tube0_5" BEL "nixie/tube0_4" BEL
-        "nixie/tube0_3" BEL "nixie/tube0_2" BEL "nixie/tube0_1" BEL
-        "nixie/tube0_0" BEL "nixie/tube2_7" BEL "nixie/tube2_6" BEL
-        "nixie/tube2_5" BEL "nixie/tube2_4" BEL "nixie/tube2_3" BEL
-        "nixie/tube2_2" BEL "nixie/tube2_1" BEL "nixie/tube2_0" BEL
-        "cpu/cp0/sr_1" BEL "nixie/ctr_13" BEL "nixie/ctr_10" BEL "nixie/ctr_9"
-        BEL "nixie/ctr_8" BEL "nixie/ctr_4" BEL "cpu/control/e_exc_/data_2"
-        BEL "cpu/e_ext/data_15" BEL "cpu/e_ext/data_14" BEL
-        "cpu/e_ext/data_13" BEL "cpu/e_ext/data_12" BEL "cpu/e_ext/data_11"
-        BEL "cpu/e_ext/data_10" BEL "cpu/e_ext/data_9" BEL "cpu/e_ext/data_8"
-        BEL "cpu/e_ext/data_7" BEL "cpu/e_ext/data_6" BEL "cpu/e_ext/data_5"
-        BEL "cpu/e_ext/data_4" BEL "cpu/e_ext/data_3" BEL "cpu/e_ext/data_2"
-        BEL "cpu/e_ext/data_1" BEL "cpu/e_ext/data_0" BEL "cpu/d_im/data_31"
-        BEL "cpu/d_im/data_30" BEL "cpu/d_im/data_29" BEL "cpu/d_im/data_28"
-        BEL "cpu/d_im/data_27" BEL "cpu/d_im/data_26" BEL "cpu/d_im/data_25"
-        BEL "cpu/d_im/data_24" BEL "cpu/d_im/data_23" BEL "cpu/d_im/data_22"
-        BEL "cpu/d_im/data_21" BEL "cpu/d_im/data_20" BEL "cpu/d_im/data_19"
-        BEL "cpu/d_im/data_18" BEL "cpu/d_im/data_17" BEL "cpu/d_im/data_16"
-        BEL "cpu/d_im/data_15" BEL "cpu/d_im/data_14" BEL "cpu/d_im/data_13"
-        BEL "cpu/d_im/data_12" BEL "cpu/d_im/data_11" BEL "cpu/d_im/data_10"
-        BEL "cpu/d_im/data_9" BEL "cpu/d_im/data_8" BEL "cpu/d_im/data_7" BEL
-        "cpu/d_im/data_6" BEL "cpu/d_im/data_5" BEL "cpu/d_im/data_4" BEL
-        "cpu/d_im/data_3" BEL "cpu/d_im/data_2" BEL "cpu/d_im/data_1" BEL
-        "cpu/d_im/data_0" BEL "cpu/cp0/epc_i_1" BEL "cpu/cp0/epc_i_0" BEL
-        "timer/irq_reg" BEL "timer/enable" BEL
+        "led/stored_0" BEL "nixie/phase_FSM_FFd1" BEL "nixie/ctr_11" BEL
+        "nixie/ctr_9" BEL "nixie/ctr_7" BEL "nixie/ctr_6" BEL "nixie/ctr_3"
+        BEL "nixie/ctr_2" BEL "nixie/ctr_1" BEL "nixie/ctr_0" BEL
+        "nixie/phase_FSM_FFd2" BEL "nixie/tube1_15" BEL "nixie/tube1_14" BEL
+        "nixie/tube1_13" BEL "nixie/tube1_12" BEL "nixie/tube1_11" BEL
+        "nixie/tube1_10" BEL "nixie/tube1_9" BEL "nixie/tube1_8" BEL
+        "nixie/tube1_7" BEL "nixie/tube1_6" BEL "nixie/tube1_5" BEL
+        "nixie/tube1_4" BEL "nixie/tube1_3" BEL "nixie/tube1_2" BEL
+        "nixie/tube1_1" BEL "nixie/tube1_0" BEL "nixie/tube0_15" BEL
+        "nixie/tube0_14" BEL "nixie/tube0_13" BEL "nixie/tube0_12" BEL
+        "nixie/tube0_11" BEL "nixie/tube0_10" BEL "nixie/tube0_9" BEL
+        "nixie/tube0_8" BEL "nixie/tube0_7" BEL "nixie/tube0_6" BEL
+        "nixie/tube0_5" BEL "nixie/tube0_4" BEL "nixie/tube0_3" BEL
+        "nixie/tube0_2" BEL "nixie/tube0_1" BEL "nixie/tube0_0" BEL
+        "nixie/tube2_7" BEL "nixie/tube2_6" BEL "nixie/tube2_5" BEL
+        "nixie/tube2_4" BEL "nixie/tube2_3" BEL "nixie/tube2_2" BEL
+        "nixie/tube2_1" BEL "nixie/tube2_0" BEL "cpu/cp0/sr_1" BEL
+        "nixie/ctr_14" BEL "nixie/ctr_13" BEL "nixie/ctr_12" BEL
+        "nixie/ctr_10" BEL "nixie/ctr_8" BEL "nixie/ctr_5" BEL "nixie/ctr_4"
+        BEL "cpu/control/e_exc_/data_2" BEL "cpu/e_ext/data_15" BEL
+        "cpu/e_ext/data_14" BEL "cpu/e_ext/data_13" BEL "cpu/e_ext/data_12"
+        BEL "cpu/e_ext/data_11" BEL "cpu/e_ext/data_10" BEL "cpu/e_ext/data_9"
+        BEL "cpu/e_ext/data_8" BEL "cpu/e_ext/data_7" BEL "cpu/e_ext/data_6"
+        BEL "cpu/e_ext/data_5" BEL "cpu/e_ext/data_4" BEL "cpu/e_ext/data_3"
+        BEL "cpu/e_ext/data_2" BEL "cpu/e_ext/data_1" BEL "cpu/e_ext/data_0"
+        BEL "cpu/d_im/data_31" BEL "cpu/d_im/data_30" BEL "cpu/d_im/data_29"
+        BEL "cpu/d_im/data_28" BEL "cpu/d_im/data_27" BEL "cpu/d_im/data_26"
+        BEL "cpu/d_im/data_25" BEL "cpu/d_im/data_24" BEL "cpu/d_im/data_23"
+        BEL "cpu/d_im/data_22" BEL "cpu/d_im/data_21" BEL "cpu/d_im/data_20"
+        BEL "cpu/d_im/data_19" BEL "cpu/d_im/data_18" BEL "cpu/d_im/data_17"
+        BEL "cpu/d_im/data_16" BEL "cpu/d_im/data_15" BEL "cpu/d_im/data_14"
+        BEL "cpu/d_im/data_13" BEL "cpu/d_im/data_12" BEL "cpu/d_im/data_11"
+        BEL "cpu/d_im/data_10" BEL "cpu/d_im/data_9" BEL "cpu/d_im/data_8" BEL
+        "cpu/d_im/data_7" BEL "cpu/d_im/data_6" BEL "cpu/d_im/data_5" BEL
+        "cpu/d_im/data_4" BEL "cpu/d_im/data_3" BEL "cpu/d_im/data_2" BEL
+        "cpu/d_im/data_1" BEL "cpu/d_im/data_0" BEL "cpu/cp0/epc_i_1" BEL
+        "cpu/cp0/epc_i_0" BEL "timer/irq_reg" BEL "timer/enable" BEL
         "uart_shim/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_3_C_3" BEL
         "uart_shim/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_3_P_3" BEL
         "uart_shim/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_1_C_1" BEL
@@ -1266,51 +1302,16 @@ TIMEGRP clk_ipcore_clkout0 = BEL "clk_ipcore/clkout1_buf" BEL
         BEL "cpu/m_im/data_29_2" BEL "cpu/d_im/data_3_4" BEL
         "cpu/d_im/data_2_4" BEL "cpu/m_im/data_26_2" BEL "cpu/d_im/data_26_4"
         BEL "cpu/d_im/data_1_3" BEL "cpu/d_im/data_30_4" BEL
-        "cpu/d_im/data_31_3" BEL
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/sel_pipe_1"
-        BEL
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/sel_pipe_2"
-        PIN
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
-        PIN
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[14].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
-        PIN
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[13].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
-        PIN
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[12].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
-        PIN
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[11].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
-        PIN
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[10].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
-        PIN
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[9].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
-        PIN
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
-        PIN
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
-        PIN
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
-        PIN
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
-        PIN
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
-        PIN
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
-        PIN
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
-        PIN
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>"
-        PIN
-        "cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram_pins<28>";
+        "cpu/d_im/data_31_3";
 TIMEGRP TO_uart_shimuartU_TX_UNITU_CTRL_SHFTcnt_tx_3_LD = BEL
         "uart_shim/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_3_LD";
 PIN clk_ipcore/pll_base_inst/PLL_ADV_pins<2> = BEL
         "clk_ipcore/pll_base_inst/PLL_ADV" PINNAME CLKIN1;
 TIMEGRP clk_in = PIN "clk_ipcore/pll_base_inst/PLL_ADV_pins<2>";
 TS_clk_in = PERIOD TIMEGRP "clk_in" 40 ns HIGH 50%;
-TS_clk_ipcore_clkout0 = PERIOD TIMEGRP "clk_ipcore_clkout0" TS_clk_in / 1.2
-        HIGH 50%;
 TS_clk_ipcore_clkout1 = PERIOD TIMEGRP "clk_ipcore_clkout1" TS_clk_in / 2.4
+        HIGH 50%;
+TS_clk_ipcore_clkout0 = PERIOD TIMEGRP "clk_ipcore_clkout0" TS_clk_in / 1.2
         HIGH 50%;
 TS_TO_uart_shimuartU_TX_UNITU_CTRL_SHFTcnt_tx_3_LD = MAXDELAY TO TIMEGRP
         "TO_uart_shimuartU_TX_UNITU_CTRL_SHFTcnt_tx_3_LD"

@@ -1,93 +1,98 @@
-Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -i /home/a-l-r/co/src/src/include -lib simprims_ver -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o /home/a-l-r/co/src/project/pipelined3_p8uart_tb_isim_translate.exe -prj /home/a-l-r/co/src/project/pipelined3_p8uart_tb_translate.prj work.pipelined3_p8uart_tb work.glbl 
+Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -i /home/a-l-r/co/src/src/include -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o /home/a-l-r/co/src/project/pipelined3_p8_tb_isim_beh.exe -prj /home/a-l-r/co/src/project/pipelined3_p8_tb_beh.prj work.pipelined3_p8_tb work.glbl 
 ISim P.20131013 (signature 0xfbc00daa)
 Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
 Determining compilation order of HDL files
-Analyzing Verilog file "/home/a-l-r/co/src/project/netgen/translate/mips_translate.v" into library work
-Analyzing Verilog file "/home/a-l-r/co/src/project/../tests/cpu/pipelined3/pipelined3_p8uart_tb.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/uart/utils.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/uart/txd.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/uart/rxd.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/pff.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/control/pipelined3-hazard.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/control/pipelined3-handler.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/control/pipelined3-forward.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/ipcore_dir/im_ipcore.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/ipcore_dir/dm_ipcore.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/uart/uart.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/nixie-decoder.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/rf.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/pc.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/npc.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/im.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/ext.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/dm.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/cp0.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/cmp.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/datapath/alu.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/control/pipelined3-function.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/uart/uart-shim.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/timer.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/switches.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/nixie.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/led.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/devices/buttons.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/cpu/pipelined3-cpu.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/bridge/bridge.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/../src/mips/mips.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/pipelined3_p8_tb.v" into library work
+Analyzing Verilog file "/opt/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1692: Element index 1 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1707: Element index 1 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1711: Element index 2 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1715: Element index 3 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1779: Element index 1 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1794: Element index 1 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1798: Element index 2 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1802: Element index 3 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1847: Element index 1 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1858: Element index 1 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1859: Element index 2 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1860: Element index 3 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1899: Element index 1 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1910: Element index 1 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1911: Element index 2 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1912: Element index 3 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1980: Element index 15 into mem is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1981: Element index 1 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 2001: Element index 15 into mem is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 2002: Element index 1 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 2007: Element index 23 into mem is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 2008: Element index 2 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 2013: Element index 31 into mem is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 2014: Element index 3 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 2090: Element index 15 into mem is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 2091: Element index 1 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 2111: Element index 15 into mem is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 2112: Element index 1 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 2117: Element index 23 into mem is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 2118: Element index 2 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 2123: Element index 31 into mem is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 2124: Element index 3 into memp is out of bounds
 Completed static elaboration
-Fuse Memory Usage: 173576 KB
-Fuse CPU Usage: 1930 ms
-Compiling module X_ZERO
-Compiling module X_ONE
-Compiling module X_CKBUF
-Compiling module sffsrce
-Compiling module X_SFF
-Compiling module X_XOR2
-Compiling module mux
-Compiling module X_MUX2
-Compiling module ffsrce
-Compiling module X_FF
-Compiling module X_FF(INIT=1'b1)
-Compiling module X_LUT5(INIT=32'b01)
-Compiling module X_LUT4(INIT=16'b0111111111111111...
-Compiling module x_lut2_mux4
-Compiling module X_LUT2(INIT=4'b0101)
-Compiling module x_lut3_mux4
-Compiling module X_LUT3(INIT=8'b01111111)
-Compiling module X_SFF(INIT=1'b1)
-Compiling module X_LUT6(INIT=64'b1111000011110000...
-Compiling module X_BUF
-Compiling module latchsre
-Compiling module X_LATCHE
-Compiling module X_INV
-Compiling module X_IPAD
-Compiling module X_OPAD
-Compiling module X_PLL_ADV(CLKFBOUT_MULT=24,CLKIN...
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1519: Element index 1 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1534: Element index 1 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1538: Element index 2 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1542: Element index 3 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1605: Element index 1 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1620: Element index 1 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1624: Element index 2 into memp is out of bounds
-WARNING:HDLCompiler:1007 - "/build/xfndry10/P.20131013/rtf/verilog/src/simprims/X_RAMB16BWER.v" Line 1628: Element index 3 into memp is out of bounds
-Compiling module X_RAMB16BWER(DATA_WIDTH_A=9,DATA...
-Compiling module X_RAMB16BWER(DATA_WIDTH_A=9,DATA...
-Compiling module X_RAMB16BWER(DATA_WIDTH_A=9,DATA...
-Compiling module X_RAMB16BWER(DATA_WIDTH_A=9,DATA...
-Compiling module X_RAMB16BWER(DATA_WIDTH_A=9,DATA...
-Compiling module X_OBUF
+Fuse Memory Usage: 87856 KB
+Fuse CPU Usage: 920 ms
+Compiling module IBUFG
+Compiling module PLL_ADV(BANDWIDTH="OPTIMIZED",CL...
+Compiling module PLL_BASE(CLKFBOUT_MULT=24,CLKIN_...
+Compiling module BUFG
+Compiling module clk_ipcore
+Compiling module kind
+Compiling module pff(BIT_WIDTH=5)
+Compiling module forward
+Compiling module hazard
+Compiling module pff(BIT_WIDTH=1)
+Compiling module handler
+Compiling module control
+Compiling module npc
+Compiling module pc
+Compiling module BLK_MEM_GEN_V7_3_output_stage(C_...
+Compiling module BLK_MEM_GEN_V7_3_softecc_output_...
+Compiling module BLK_MEM_GEN_V7_3_mem_module(C_CO...
+Compiling module BLK_MEM_GEN_V7_3(C_FAMILY="spart...
+Compiling module im_ipcore
+Compiling module im
+Compiling module pff
+Compiling module rf
+Compiling module ext
+Compiling module cmp
+Compiling module alu
+Compiling module BLK_MEM_GEN_V7_3_mem_module(C_CO...
+Compiling module BLK_MEM_GEN_V7_3(C_FAMILY="spart...
+Compiling module dm_ipcore
+Compiling module dm
+Compiling module cp0
+Compiling module cpu
+Compiling module bridge
+Compiling module timer
+Compiling module rx_unit
+Compiling module ctrl_shift
+Compiling module trans_reg
+Compiling module tx_unit
+Compiling module counter(size_cnt=16)
+Compiling module divisor(size_cnt_rx=16,size_cnt_...
+Compiling module MiniUART
+Compiling module uart_shim
+Compiling module switches
+Compiling module led
+Compiling module nixie_decoder
+Compiling module nixie
+Compiling module buttons
 Compiling module mips
-Compiling module pipelined3_p8uart_tb
+Compiling module pipelined3_p8_tb
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 1 sub-compilation(s) to finish...
-Compiled 1111 Verilog Units
-Built simulation executable /home/a-l-r/co/src/project/pipelined3_p8uart_tb_isim_translate.exe
-Fuse Memory Usage: 1289120 KB
-Fuse CPU Usage: 6150 ms
-GCC CPU Usage: 51310 ms
+Waiting for 14 sub-compilation(s) to finish...
+Compiled 49 Verilog Units
+Built simulation executable /home/a-l-r/co/src/project/pipelined3_p8_tb_isim_beh.exe
+Fuse Memory Usage: 1184440 KB
+Fuse CPU Usage: 1480 ms
+GCC CPU Usage: 16120 ms
