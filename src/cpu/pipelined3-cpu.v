@@ -463,12 +463,23 @@ dm dm(
 );
 
 /* NOTE: For automatic testing. Not for synthesis. */
+/* NOTE: Wait for the bram to fully update and make it update in sync
+ * with register updates. Let the data stabilize and display them on the
+ * appropriate occasion. */
+
+integer saved_m_pc_curr_pc;
+integer saved_test_m_addr;
+integer saved_test_m_wdata;
+
 always @(negedge clk) begin
-	/* NOTE: Wait for the bram to fully update and make it update in sync
-	 * with register updates. */
 	if (test_m_we == 1'b1) begin
-		#4;
-		$display(`DM_OUTPUT_FORMAT, $time, m_pc_curr_pc, test_m_addr, test_m_wdata);
+		#1;
+		saved_m_pc_curr_pc = m_pc_curr_pc;
+		saved_test_m_addr = test_m_addr;
+		saved_test_m_wdata = test_m_wdata;
+
+		#3;
+		$display(`DM_OUTPUT_FORMAT, $time, saved_m_pc_curr_pc, saved_test_m_addr, saved_test_m_wdata);
 	end
 end
 
