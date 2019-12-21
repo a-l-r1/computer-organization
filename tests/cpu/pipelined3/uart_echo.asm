@@ -1,4 +1,10 @@
 .text
+nop
+nop
+nop
+nop
+nop
+
 li $s0, 0x00001000 # queue head
 li $s1, 0x00001000 # queue tail
 li $s2, 0x00000020 # transmission ready bitmask
@@ -11,6 +17,10 @@ li $t0, 0x0000fc01
 mtc0 $t0, $12
 
 loop_begin:
+	# turn off led
+	li $t0, 0x0
+	sw $t0, 0($s4)
+
 	# no element in queue
 	beq $s0, $s1, loop_begin
 	nop
@@ -37,6 +47,10 @@ loop_end:
 
 .text 0x4180
 # NOTE: Don't clobber $t0. 
+
+# turn on led
+li $t0, 0xffffffff
+sw $t0, 0($s4)
 
 # turn off uart irq
 sw $0, 8($s3)
