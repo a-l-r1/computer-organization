@@ -5,14 +5,14 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.05 secs
+Total CPU time to Xst completion: 0.06 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.05 secs
+Total CPU time to Xst completion: 0.06 secs
  
 --> 
 Reading design: mips.prj
@@ -849,19 +849,19 @@ Synthesizing Unit <nixie>.
     Found 32-bit register for signal <ctr>.
     Found finite state machine <FSM_1> for signal <phase>.
     -----------------------------------------------------------------------
-    | States             | 4                                              |
-    | Transitions        | 16                                             |
-    | Inputs             | 4                                              |
+    | States             | 5                                              |
+    | Transitions        | 15                                             |
+    | Inputs             | 3                                              |
     | Outputs            | 8                                              |
     | Clock              | clk (rising_edge)                              |
     | Reset              | rst (positive)                                 |
     | Reset type         | synchronous                                    |
-    | Reset State        | 1000                                           |
-    | Power Up State     | 1000                                           |
+    | Reset State        | 1111                                           |
+    | Power Up State     | 1111                                           |
     | Encoding           | auto                                           |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-    Found 32-bit subtractor for signal <ctr[31]_GND_41_o_sub_8_OUT> created at line 71.
+    Found 32-bit subtractor for signal <ctr[31]_GND_41_o_sub_8_OUT> created at line 77.
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred  72 D-type flip-flop(s).
@@ -1185,14 +1185,15 @@ Optimizing FSM <timer/FSM_0> on signal <state[1:2]> with sequential encoding.
  011   | 11
 -------------------
 Analyzing FSM <MFsm> for best encoding.
-Optimizing FSM <nixie/FSM_1> on signal <phase[1:2]> with gray encoding.
+Optimizing FSM <nixie/FSM_1> on signal <phase[1:4]> with user encoding.
 -------------------
  State | Encoding
 -------------------
- 1000  | 00
- 0100  | 01
- 0010  | 11
- 0001  | 10
+ 1111  | 1111
+ 1000  | 1000
+ 0100  | 0100
+ 0010  | 0010
+ 0001  | 0001
 -------------------
 WARNING:Xst:1293 - FF/Latch <m_exc_/data_4> has a constant value of 0 in block <control>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <e_exc_/data_4> has a constant value of 0 in block <control>. This FF/Latch will be trimmed during the optimization process.
@@ -1368,8 +1369,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 2037
- Flip-Flops                                            : 2037
+# Registers                                            : 2039
+ Flip-Flops                                            : 2039
 
 =========================================================================
 
@@ -1392,27 +1393,28 @@ Top Level Output File Name         : mips.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 6782
+# BELS                             : 6791
 #      GND                         : 3
 #      INV                         : 190
 #      LUT1                        : 121
-#      LUT2                        : 162
+#      LUT2                        : 158
 #      LUT3                        : 1373
-#      LUT4                        : 474
-#      LUT5                        : 950
-#      LUT6                        : 2466
+#      LUT4                        : 481
+#      LUT5                        : 953
+#      LUT6                        : 2469
 #      MUXCY                       : 522
 #      MUXF7                       : 191
 #      VCC                         : 3
 #      XORCY                       : 327
-# FlipFlops/Latches                : 2042
-#      FD                          : 104
+# FlipFlops/Latches                : 2044
+#      FD                          : 97
 #      FDC                         : 35
 #      FDCE                        : 51
 #      FDE                         : 6
 #      FDPE                        : 21
-#      FDR                         : 81
+#      FDR                         : 86
 #      FDRE                        : 1741
+#      FDS                         : 4
 #      FDSE                        : 2
 #      LD                          : 1
 # RAMS                             : 32
@@ -1433,15 +1435,15 @@ Selected Device : 6slx100fgg676-2
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:            2042  out of  126576     1%  
- Number of Slice LUTs:                 5736  out of  63288     9%  
-    Number used as Logic:              5736  out of  63288     9%  
+ Number of Slice Registers:            2044  out of  126576     1%  
+ Number of Slice LUTs:                 5745  out of  63288     9%  
+    Number used as Logic:              5745  out of  63288     9%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   6201
-   Number with an unused Flip Flop:    4159  out of   6201    67%  
-   Number with an unused LUT:           465  out of   6201     7%  
-   Number of fully used LUT-FF pairs:  1577  out of   6201    25%  
+ Number of LUT Flip Flop pairs used:   6208
+   Number with an unused Flip Flop:    4164  out of   6208    67%  
+   Number with an unused LUT:           463  out of   6208     7%  
+   Number of fully used LUT-FF pairs:  1581  out of   6208    25%  
    Number of unique control sets:        34
 
 IO Utilization: 
@@ -1475,7 +1477,7 @@ Clock Information:
 ----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+-------+
 Clock Signal                            | Clock buffer(FF name)                                                                                                                        | Load  |
 ----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+-------+
-clk_ipcore/pll_base_inst/CLKOUT0        | BUFG                                                                                                                                         | 2036  |
+clk_ipcore/pll_base_inst/CLKOUT0        | BUFG                                                                                                                                         | 2038  |
 uart_shim/uart/U_RX_UNIT/clk_rf_av      | NONE(uart_shim/uart/U_RX_UNIT/rf_av)                                                                                                         | 1     |
 clk_ipcore/pll_base_inst/CLKOUT1        | BUFG                                                                                                                                         | 36    |
 cpu/im/im_ipcore/N1                     | NONE(cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram)  | 16    |
@@ -1493,8 +1495,8 @@ Timing Summary:
 Speed Grade: -2
 
    Minimum period: 22.022ns (Maximum Frequency: 45.410MHz)
-   Minimum input arrival time before clock: 6.438ns
-   Maximum output required time after clock: 7.394ns
+   Minimum input arrival time before clock: 6.314ns
+   Maximum output required time after clock: 8.291ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -1504,7 +1506,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_ipcore/pll_base_inst/CLKOUT0'
   Clock period: 22.022ns (frequency: 45.410MHz)
-  Total number of paths / destination ports: 32449674769 / 3829
+  Total number of paths / destination ports: 32449715053 / 3831
 -------------------------------------------------------------------------
 Delay:               22.022ns (Levels of Logic = 32)
   Source:            cpu/d_im/data_10 (FF)
@@ -1581,9 +1583,9 @@ Delay:               7.867ns (Levels of Logic = 4)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_ipcore/pll_base_inst/CLKOUT0'
-  Total number of paths / destination ports: 2105 / 2105
+  Total number of paths / destination ports: 2107 / 2107
 -------------------------------------------------------------------------
-Offset:              6.438ns (Levels of Logic = 2)
+Offset:              6.314ns (Levels of Logic = 2)
   Source:            sys_rstn (PAD)
   Destination:       cpu/control/m_in_bds_/data_0 (FF)
   Destination Clock: clk_ipcore/pll_base_inst/CLKOUT0 rising
@@ -1592,18 +1594,18 @@ Offset:              6.438ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            31   1.328   1.958  sys_rstn_IBUF (sys_rstn_IBUF)
+     IBUF:I->O            24   1.328   1.835  sys_rstn_IBUF (sys_rstn_IBUF)
      LUT6:I0->O          325   0.254   2.438  cpu/control/cw_m_pff_rst1 (cpu/cw_m_pff_rst)
      FDRE:R                    0.459          cpu/control/m_exc_/data_0
     ----------------------------------------
-    Total                      6.438ns (2.041ns logic, 4.397ns route)
-                                       (31.7% logic, 68.3% route)
+    Total                      6.314ns (2.041ns logic, 4.273ns route)
+                                       (32.3% logic, 67.7% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'uart_shim/uart/U_RX_UNIT/clk_rf_av'
   Total number of paths / destination ports: 1 / 1
 -------------------------------------------------------------------------
-Offset:              4.225ns (Levels of Logic = 2)
+Offset:              4.102ns (Levels of Logic = 2)
   Source:            sys_rstn (PAD)
   Destination:       uart_shim/uart/U_RX_UNIT/rf_av (FF)
   Destination Clock: uart_shim/uart/U_RX_UNIT/clk_rf_av rising
@@ -1612,33 +1614,34 @@ Offset:              4.225ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            31   1.328   1.503  sys_rstn_IBUF (sys_rstn_IBUF)
+     IBUF:I->O            24   1.328   1.380  sys_rstn_IBUF (sys_rstn_IBUF)
      LUT2:I1->O            1   0.254   0.681  uart_shim/uart/U_RX_UNIT/rst_over_read_OR_299_o1 (uart_shim/uart/U_RX_UNIT/rst_over_read_OR_299_o)
      FDC:CLR                   0.459          uart_shim/uart/U_RX_UNIT/rf_av
     ----------------------------------------
-    Total                      4.225ns (2.041ns logic, 2.184ns route)
-                                       (48.3% logic, 51.7% route)
+    Total                      4.102ns (2.041ns logic, 2.061ns route)
+                                       (49.8% logic, 50.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_ipcore/pll_base_inst/CLKOUT0'
-  Total number of paths / destination ports: 413 / 62
+  Total number of paths / destination ports: 629 / 62
 -------------------------------------------------------------------------
-Offset:              7.394ns (Levels of Logic = 3)
-  Source:            nixie/phase_FSM_FFd1 (FF)
+Offset:              8.291ns (Levels of Logic = 4)
+  Source:            nixie/phase_FSM_FFd4 (FF)
   Destination:       digital_tube0<6> (PAD)
   Source Clock:      clk_ipcore/pll_base_inst/CLKOUT0 rising
 
-  Data Path: nixie/phase_FSM_FFd1 to digital_tube0<6>
+  Data Path: nixie/phase_FSM_FFd4 to digital_tube0<6>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q             14   0.525   1.582  nixie/phase_FSM_FFd1 (nixie/phase_FSM_FFd1)
-     LUT6:I0->O            7   0.254   1.186  nixie/mux711 (nixie/data1<3>)
-     LUT4:I0->O            1   0.254   0.681  nixie/decoder1/out<0>1 (digital_tube1_0_OBUF)
-     OBUF:I->O                 2.912          digital_tube1_0_OBUF (digital_tube1<0>)
+     FDS:C->Q             22   0.525   1.562  nixie/phase_FSM_FFd4 (nixie/phase_FSM_FFd4)
+     LUT6:I3->O            1   0.235   0.682  nixie/mux2111 (nixie/mux211)
+     LUT5:I4->O            7   0.254   1.186  nixie/mux2112 (nixie/data0<2>)
+     LUT4:I0->O            1   0.254   0.681  nixie/decoder0/out<5>1 (digital_tube0_5_OBUF)
+     OBUF:I->O                 2.912          digital_tube0_5_OBUF (digital_tube0<5>)
     ----------------------------------------
-    Total                      7.394ns (3.945ns logic, 3.449ns route)
-                                       (53.4% logic, 46.6% route)
+    Total                      8.291ns (4.180ns logic, 4.111ns route)
+                                       (50.4% logic, 49.6% route)
 
 =========================================================================
 
@@ -1677,13 +1680,13 @@ uart_shim/uart/U_RX_UNIT/clk_rf_av|    7.867|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 56.00 secs
-Total CPU time to Xst completion: 56.05 secs
+Total REAL time to Xst completion: 63.00 secs
+Total CPU time to Xst completion: 63.34 secs
  
 --> 
 
 
-Total memory usage is 427552 kilobytes
+Total memory usage is 427448 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  208 (   0 filtered)

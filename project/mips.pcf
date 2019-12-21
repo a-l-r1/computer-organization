@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Sat Dec 21 11:54:48 2019
+// Written by: Map P.20131013 on Sat Dec 21 14:57:48 2019
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -1236,7 +1236,8 @@ TIMEGRP clk_ipcore_clkout0 = BEL "clk_ipcore/clkout1_buf" BEL
         "led/stored_0" BEL "nixie/phase_FSM_FFd1" BEL "nixie/ctr_11" BEL
         "nixie/ctr_9" BEL "nixie/ctr_7" BEL "nixie/ctr_6" BEL "nixie/ctr_3"
         BEL "nixie/ctr_2" BEL "nixie/ctr_1" BEL "nixie/ctr_0" BEL
-        "nixie/phase_FSM_FFd2" BEL "nixie/tube1_15" BEL "nixie/tube1_14" BEL
+        "nixie/phase_FSM_FFd2" BEL "nixie/phase_FSM_FFd3" BEL
+        "nixie/phase_FSM_FFd4" BEL "nixie/tube1_15" BEL "nixie/tube1_14" BEL
         "nixie/tube1_13" BEL "nixie/tube1_12" BEL "nixie/tube1_11" BEL
         "nixie/tube1_10" BEL "nixie/tube1_9" BEL "nixie/tube1_8" BEL
         "nixie/tube1_7" BEL "nixie/tube1_6" BEL "nixie/tube1_5" BEL
@@ -1250,9 +1251,7 @@ TIMEGRP clk_ipcore_clkout0 = BEL "clk_ipcore/clkout1_buf" BEL
         "nixie/tube2_7" BEL "nixie/tube2_6" BEL "nixie/tube2_5" BEL
         "nixie/tube2_4" BEL "nixie/tube2_3" BEL "nixie/tube2_2" BEL
         "nixie/tube2_1" BEL "nixie/tube2_0" BEL "cpu/cp0/sr_1" BEL
-        "nixie/ctr_14" BEL "nixie/ctr_13" BEL "nixie/ctr_12" BEL
-        "nixie/ctr_10" BEL "nixie/ctr_8" BEL "nixie/ctr_5" BEL "nixie/ctr_4"
-        BEL "cpu/control/e_exc_/data_2" BEL "cpu/e_ext/data_15" BEL
+        "cpu/control/e_exc_/data_2" BEL "cpu/e_ext/data_15" BEL
         "cpu/e_ext/data_14" BEL "cpu/e_ext/data_13" BEL "cpu/e_ext/data_12"
         BEL "cpu/e_ext/data_11" BEL "cpu/e_ext/data_10" BEL "cpu/e_ext/data_9"
         BEL "cpu/e_ext/data_8" BEL "cpu/e_ext/data_7" BEL "cpu/e_ext/data_6"
@@ -1270,7 +1269,9 @@ TIMEGRP clk_ipcore_clkout0 = BEL "clk_ipcore/clkout1_buf" BEL
         "cpu/d_im/data_4" BEL "cpu/d_im/data_3" BEL "cpu/d_im/data_2" BEL
         "cpu/d_im/data_1" BEL "cpu/d_im/data_0" BEL "cpu/cp0/epc_i_1" BEL
         "cpu/cp0/epc_i_0" BEL "timer/irq_reg" BEL "timer/enable" BEL
-        "uart_shim/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_3_C_3" BEL
+        "nixie/ctr_14" BEL "nixie/ctr_13" BEL "nixie/ctr_12" BEL
+        "nixie/ctr_10" BEL "nixie/ctr_8" BEL "nixie/ctr_5" BEL "nixie/ctr_4"
+        BEL "uart_shim/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_3_C_3" BEL
         "uart_shim/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_3_P_3" BEL
         "uart_shim/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_1_C_1" BEL
         "uart_shim/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_1_P_1" BEL
