@@ -196,7 +196,8 @@ pc pc(
 );
 
 im im(
-	.clk(clk), 
+	/* NOTE: im is made of bram, so it has to use clk_2x too. */
+	.clk(clk_2x), 
 	.addr(f_pc_curr_pc), 
 	/* im is always enabled */
 	.enable(1'b1), 
