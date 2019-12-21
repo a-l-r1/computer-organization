@@ -198,76 +198,11 @@
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputAdded"/>
       <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="InputRemoved"/>
       <status xil_pn:value="OutputChanged"/>
-      <outfile xil_pn:name="../src/bridge/bridge.v"/>
-      <outfile xil_pn:name="../src/control/pipelined3-forward.v"/>
-      <outfile xil_pn:name="../src/control/pipelined3-function.v"/>
-      <outfile xil_pn:name="../src/control/pipelined3-handler.v"/>
-      <outfile xil_pn:name="../src/control/pipelined3-hazard.v"/>
-      <outfile xil_pn:name="../src/cpu/pipelined3-cpu.v"/>
-      <outfile xil_pn:name="../src/datapath/ac.v"/>
-      <outfile xil_pn:name="../src/datapath/alu.v"/>
-      <outfile xil_pn:name="../src/datapath/cmp.v"/>
-      <outfile xil_pn:name="../src/datapath/cp0.v"/>
-      <outfile xil_pn:name="../src/datapath/dm.v"/>
-      <outfile xil_pn:name="../src/datapath/ext.v"/>
-      <outfile xil_pn:name="../src/datapath/im.v"/>
-      <outfile xil_pn:name="../src/datapath/md.v"/>
-      <outfile xil_pn:name="../src/datapath/mux.v"/>
-      <outfile xil_pn:name="../src/datapath/npc.v"/>
-      <outfile xil_pn:name="../src/datapath/pc.v"/>
-      <outfile xil_pn:name="../src/datapath/pff.v"/>
-      <outfile xil_pn:name="../src/datapath/rf.v"/>
-      <outfile xil_pn:name="../src/devices/buttons.v"/>
-      <outfile xil_pn:name="../src/devices/led.v"/>
-      <outfile xil_pn:name="../src/devices/nixie-decoder.v"/>
-      <outfile xil_pn:name="../src/devices/nixie.v"/>
-      <outfile xil_pn:name="../src/devices/switches.v"/>
-      <outfile xil_pn:name="../src/devices/timer-example.v"/>
-      <outfile xil_pn:name="../src/devices/timer.v"/>
-      <outfile xil_pn:name="../src/devices/uart/rxd.v"/>
-      <outfile xil_pn:name="../src/devices/uart/txd.v"/>
-      <outfile xil_pn:name="../src/devices/uart/uart-shim.v"/>
-      <outfile xil_pn:name="../src/devices/uart/uart.v"/>
-      <outfile xil_pn:name="../src/devices/uart/utils.v"/>
-      <outfile xil_pn:name="../src/include/ac.h"/>
-      <outfile xil_pn:name="../src/include/alu.h"/>
-      <outfile xil_pn:name="../src/include/bridge.h"/>
-      <outfile xil_pn:name="../src/include/cmp.h"/>
-      <outfile xil_pn:name="../src/include/cp0.h"/>
-      <outfile xil_pn:name="../src/include/debug/debug.h"/>
-      <outfile xil_pn:name="../src/include/dm.h"/>
-      <outfile xil_pn:name="../src/include/ext.h"/>
-      <outfile xil_pn:name="../src/include/im.h"/>
-      <outfile xil_pn:name="../src/include/instr-id.h"/>
-      <outfile xil_pn:name="../src/include/md.h"/>
-      <outfile xil_pn:name="../src/include/mux.h"/>
-      <outfile xil_pn:name="../src/include/nixie.h"/>
-      <outfile xil_pn:name="../src/include/npc.h"/>
-      <outfile xil_pn:name="../src/include/pc.h"/>
-      <outfile xil_pn:name="../src/include/pff.h"/>
-      <outfile xil_pn:name="../src/include/pipelined3.h"/>
-      <outfile xil_pn:name="../src/include/rf.h"/>
-      <outfile xil_pn:name="../src/include/timer.h"/>
-      <outfile xil_pn:name="../src/include/uart.h"/>
-      <outfile xil_pn:name="../src/mips/mips.v"/>
-      <outfile xil_pn:name="../tests/bridge/bridge_tb.v"/>
-      <outfile xil_pn:name="../tests/cpu/pipelined3/pipelined3_p8uart_tb.v"/>
-      <outfile xil_pn:name="../tests/cpu/pipelined3/pipelined3_tb.v"/>
-      <outfile xil_pn:name="../tests/datapath/ac_tb.v"/>
-      <outfile xil_pn:name="../tests/datapath/alu_tb.v"/>
-      <outfile xil_pn:name="../tests/datapath/cmp_tb.v"/>
-      <outfile xil_pn:name="../tests/datapath/cp0_tb.v"/>
-      <outfile xil_pn:name="../tests/datapath/dm_tb.v"/>
-      <outfile xil_pn:name="../tests/datapath/ext_tb.v"/>
-      <outfile xil_pn:name="../tests/datapath/im_tb.v"/>
-      <outfile xil_pn:name="../tests/datapath/md_tb.v"/>
-      <outfile xil_pn:name="../tests/datapath/npc_tb.v"/>
-      <outfile xil_pn:name="../tests/datapath/pc_tb.v"/>
-      <outfile xil_pn:name="../tests/datapath/rf_tb.v"/>
-      <outfile xil_pn:name="../tests/debug/debug-print-test.v"/>
-      <outfile xil_pn:name="pipelined3_p8_tb.v"/>
+      <status xil_pn:value="OutputRemoved"/>
     </transform>
     <transform xil_pn:end_ts="1576921019" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="1353495358973078816" xil_pn:start_ts="1576921019">
       <status xil_pn:value="SuccessfullyRun"/>
@@ -293,78 +228,9 @@
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="InputRemoved"/>
       <status xil_pn:value="OutputChanged"/>
       <status xil_pn:value="OutputRemoved"/>
-      <outfile xil_pn:name="../src/bridge/bridge.v"/>
-      <outfile xil_pn:name="../src/control/pipelined3-forward.v"/>
-      <outfile xil_pn:name="../src/control/pipelined3-function.v"/>
-      <outfile xil_pn:name="../src/control/pipelined3-handler.v"/>
-      <outfile xil_pn:name="../src/control/pipelined3-hazard.v"/>
-      <outfile xil_pn:name="../src/cpu/pipelined3-cpu.v"/>
-      <outfile xil_pn:name="../src/datapath/ac.v"/>
-      <outfile xil_pn:name="../src/datapath/alu.v"/>
-      <outfile xil_pn:name="../src/datapath/cmp.v"/>
-      <outfile xil_pn:name="../src/datapath/cp0.v"/>
-      <outfile xil_pn:name="../src/datapath/dm.v"/>
-      <outfile xil_pn:name="../src/datapath/ext.v"/>
-      <outfile xil_pn:name="../src/datapath/im.v"/>
-      <outfile xil_pn:name="../src/datapath/md.v"/>
-      <outfile xil_pn:name="../src/datapath/mux.v"/>
-      <outfile xil_pn:name="../src/datapath/npc.v"/>
-      <outfile xil_pn:name="../src/datapath/pc.v"/>
-      <outfile xil_pn:name="../src/datapath/pff.v"/>
-      <outfile xil_pn:name="../src/datapath/rf.v"/>
-      <outfile xil_pn:name="../src/devices/buttons.v"/>
-      <outfile xil_pn:name="../src/devices/led.v"/>
-      <outfile xil_pn:name="../src/devices/nixie-decoder.v"/>
-      <outfile xil_pn:name="../src/devices/nixie.v"/>
-      <outfile xil_pn:name="../src/devices/switches.v"/>
-      <outfile xil_pn:name="../src/devices/timer-example.v"/>
-      <outfile xil_pn:name="../src/devices/timer.v"/>
-      <outfile xil_pn:name="../src/devices/uart/rxd.v"/>
-      <outfile xil_pn:name="../src/devices/uart/txd.v"/>
-      <outfile xil_pn:name="../src/devices/uart/uart-shim.v"/>
-      <outfile xil_pn:name="../src/devices/uart/uart.v"/>
-      <outfile xil_pn:name="../src/devices/uart/utils.v"/>
-      <outfile xil_pn:name="../src/include/ac.h"/>
-      <outfile xil_pn:name="../src/include/alu.h"/>
-      <outfile xil_pn:name="../src/include/bridge.h"/>
-      <outfile xil_pn:name="../src/include/cmp.h"/>
-      <outfile xil_pn:name="../src/include/cp0.h"/>
-      <outfile xil_pn:name="../src/include/debug/debug.h"/>
-      <outfile xil_pn:name="../src/include/dm.h"/>
-      <outfile xil_pn:name="../src/include/ext.h"/>
-      <outfile xil_pn:name="../src/include/im.h"/>
-      <outfile xil_pn:name="../src/include/instr-id.h"/>
-      <outfile xil_pn:name="../src/include/md.h"/>
-      <outfile xil_pn:name="../src/include/mux.h"/>
-      <outfile xil_pn:name="../src/include/nixie.h"/>
-      <outfile xil_pn:name="../src/include/npc.h"/>
-      <outfile xil_pn:name="../src/include/pc.h"/>
-      <outfile xil_pn:name="../src/include/pff.h"/>
-      <outfile xil_pn:name="../src/include/pipelined3.h"/>
-      <outfile xil_pn:name="../src/include/rf.h"/>
-      <outfile xil_pn:name="../src/include/timer.h"/>
-      <outfile xil_pn:name="../src/include/uart.h"/>
-      <outfile xil_pn:name="../src/mips/mips.v"/>
-      <outfile xil_pn:name="../tests/bridge/bridge_tb.v"/>
-      <outfile xil_pn:name="../tests/cpu/pipelined3/pipelined3_p8uart_tb.v"/>
-      <outfile xil_pn:name="../tests/cpu/pipelined3/pipelined3_tb.v"/>
-      <outfile xil_pn:name="../tests/datapath/ac_tb.v"/>
-      <outfile xil_pn:name="../tests/datapath/alu_tb.v"/>
-      <outfile xil_pn:name="../tests/datapath/cmp_tb.v"/>
-      <outfile xil_pn:name="../tests/datapath/cp0_tb.v"/>
-      <outfile xil_pn:name="../tests/datapath/dm_tb.v"/>
-      <outfile xil_pn:name="../tests/datapath/ext_tb.v"/>
-      <outfile xil_pn:name="../tests/datapath/im_tb.v"/>
-      <outfile xil_pn:name="../tests/datapath/md_tb.v"/>
-      <outfile xil_pn:name="../tests/datapath/npc_tb.v"/>
-      <outfile xil_pn:name="../tests/datapath/pc_tb.v"/>
-      <outfile xil_pn:name="../tests/datapath/rf_tb.v"/>
-      <outfile xil_pn:name="../tests/debug/debug-print-test.v"/>
-      <outfile xil_pn:name="ipcore_dir/clk_ipcore.v"/>
-      <outfile xil_pn:name="ipcore_dir/dm_ipcore.v"/>
-      <outfile xil_pn:name="pipelined3_p8_tb.v"/>
     </transform>
     <transform xil_pn:end_ts="1576928702" xil_pn:in_ck="-6041686279942417052" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-1626511630402132667" xil_pn:start_ts="1576928697">
       <status xil_pn:value="SuccessfullyRun"/>
@@ -438,7 +304,10 @@
     <transform xil_pn:end_ts="1576866783" xil_pn:in_ck="-158889993202767398" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="123229027435936603" xil_pn:start_ts="1576866783">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="InputAdded"/>
+      <status xil_pn:value="InputRemoved"/>
     </transform>
     <transform xil_pn:end_ts="1576940180" xil_pn:in_ck="-4522935335265774378" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="-4328106819089673976" xil_pn:start_ts="1576940173">
       <status xil_pn:value="SuccessfullyRun"/>
@@ -452,26 +321,28 @@
     </transform>
     <transform xil_pn:end_ts="1576940271" xil_pn:in_ck="-2514159973614440764" xil_pn:name="TRANEXT_map_spartan6" xil_pn:prop_ck="-7652178189112552503" xil_pn:start_ts="1576940180">
       <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="NotReadyToRun"/>
+      <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputAdded"/>
       <status xil_pn:value="InputRemoved"/>
       <status xil_pn:value="OutputRemoved"/>
     </transform>
     <transform xil_pn:end_ts="1576940399" xil_pn:in_ck="7474799171544498141" xil_pn:name="TRANEXT_par_spartan6" xil_pn:prop_ck="8313326105510903995" xil_pn:start_ts="1576940271">
       <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="NotReadyToRun"/>
+      <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputAdded"/>
       <status xil_pn:value="InputRemoved"/>
       <status xil_pn:value="OutputRemoved"/>
     </transform>
     <transform xil_pn:end_ts="1576940426" xil_pn:in_ck="4785535742428" xil_pn:name="TRANEXT_bitFile_spartan6" xil_pn:prop_ck="5017394210571468131" xil_pn:start_ts="1576940399">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
-      <status xil_pn:value="NotReadyToRun"/>
+      <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
@@ -480,16 +351,17 @@
     </transform>
     <transform xil_pn:end_ts="1576940399" xil_pn:in_ck="-2514159973614440896" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416184" xil_pn:start_ts="1576940378">
       <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="NotReadyToRun"/>
+      <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputAdded"/>
       <status xil_pn:value="InputRemoved"/>
       <status xil_pn:value="OutputRemoved"/>
     </transform>
     <transform xil_pn:end_ts="1576920909" xil_pn:in_ck="4785535742560" xil_pn:name="TRAN_postXlateSimModel" xil_pn:prop_ck="-7980875713396914041" xil_pn:start_ts="1576920906">
       <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="NotReadyToRun"/>
+      <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
