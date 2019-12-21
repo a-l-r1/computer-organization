@@ -95,7 +95,6 @@ cpu cpu(
 	.test_m_wdata(test_m_wdata)
 );
 
-/*
 wrapper wrapper(
 	.clk(clk), 
 	.reset(rst), 
@@ -122,7 +121,6 @@ wrapper wrapper(
 
 	.txd_buffer()
 );
-*/
 
 /* NOTE: timer[01]_addr are formal addresses (32-bit). Address slicing is done
  * at the declarations of the corresponding input ports of timer[01]. */
