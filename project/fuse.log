@@ -37,12 +37,13 @@ Analyzing Verilog file "/home/a-l-r/co/src/project/../src/mips/mips.v" into libr
 Analyzing Verilog file "/home/a-l-r/co/src/project/pipelined3_p8_tb.v" into library work
 Analyzing Verilog file "/opt/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
+WARNING:HDLCompiler:1016 - "/home/a-l-r/co/src/project/pipelined3_p8_tb.v" Line 52: Port uart_rxd2 is not connected to this instance
 Completed static elaboration
-Fuse Memory Usage: 87856 KB
-Fuse CPU Usage: 920 ms
+Fuse Memory Usage: 87868 KB
+Fuse CPU Usage: 1500 ms
 Compiling module IBUFG
 Compiling module PLL_ADV(BANDWIDTH="OPTIMIZED",CL...
-Compiling module PLL_BASE(CLKFBOUT_MULT=24,CLKIN_...
+Compiling module PLL_BASE(CLKFBOUT_MULT=16,CLKIN_...
 Compiling module BUFG
 Compiling module clk_ipcore
 Compiling module kind
@@ -90,9 +91,9 @@ Compiling module mips
 Compiling module pipelined3_p8_tb
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 14 sub-compilation(s) to finish...
+Waiting for 15 sub-compilation(s) to finish...
 Compiled 49 Verilog Units
 Built simulation executable /home/a-l-r/co/src/project/pipelined3_p8_tb_isim_beh.exe
-Fuse Memory Usage: 1184440 KB
-Fuse CPU Usage: 1480 ms
-GCC CPU Usage: 16120 ms
+Fuse Memory Usage: 1184452 KB
+Fuse CPU Usage: 2050 ms
+GCC CPU Usage: 16000 ms

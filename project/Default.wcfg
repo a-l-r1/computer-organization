@@ -10,7 +10,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="17" />
+   <WVObjectSize size="18" />
    <wvobject fp_name="group4" type="group">
       <obj_property name="label">Clock</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -18,6 +18,10 @@
    <wvobject fp_name="/pipelined3_p8_tb/uut/clk" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/pipelined3_p8_tb/uut/clk_2x" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk_2x</obj_property>
+      <obj_property name="ObjectShortName">clk_2x</obj_property>
    </wvobject>
    <wvobject fp_name="group57" type="group">
       <obj_property name="label">Control Internal</obj_property>
@@ -173,14 +177,17 @@
       <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/control/d_pc_curr_pc" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">d_pc_curr_pc[31:0]</obj_property>
          <obj_property name="ObjectShortName">d_pc_curr_pc[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/control/e_pc_curr_pc" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">e_pc_curr_pc[31:0]</obj_property>
          <obj_property name="ObjectShortName">e_pc_curr_pc[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/control/m_pc_curr_pc" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">m_pc_curr_pc[31:0]</obj_property>
          <obj_property name="ObjectShortName">m_pc_curr_pc[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/control/have2handle" type="logic" db_ref_id="1">
          <obj_property name="ElementShortName">have2handle</obj_property>
@@ -807,6 +814,90 @@
    <wvobject fp_name="group246" type="group">
       <obj_property name="label">dm</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/dm/clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/dm/rst" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/dm/curr_pc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">curr_pc[31:0]</obj_property>
+         <obj_property name="ObjectShortName">curr_pc[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/dm/read_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">read_addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">read_addr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/dm/write_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">write_addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">write_addr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/dm/write_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">write_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">write_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/dm/write_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">write_enable</obj_property>
+         <obj_property name="ObjectShortName">write_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/dm/mode" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">mode[2:0]</obj_property>
+         <obj_property name="ObjectShortName">mode[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/dm/stop" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">stop</obj_property>
+         <obj_property name="ObjectShortName">stop</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/dm/read_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">read_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">read_result[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/dm/valid" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">valid</obj_property>
+         <obj_property name="ObjectShortName">valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/dm/test_m_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">test_m_addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">test_m_addr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/dm/test_m_we" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">test_m_we</obj_property>
+         <obj_property name="ObjectShortName">test_m_we</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/dm/test_m_wdata" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">test_m_wdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">test_m_wdata[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/dm/op_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">op_addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">op_addr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/dm/dm_ipcore_write_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dm_ipcore_write_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">dm_ipcore_write_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/dm/dm_ipcore_read_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dm_ipcore_read_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">dm_ipcore_read_result[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/dm/write_bitmask" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">write_bitmask[3:0]</obj_property>
+         <obj_property name="ObjectShortName">write_bitmask[3:0]</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#555500</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject fp_name="group185" type="group">
       <obj_property name="label">cp0</obj_property>
