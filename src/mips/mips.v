@@ -40,6 +40,11 @@ clk_ipcore clk_ipcore(
 wire rst;
 assign rst = ~sys_rstn;
 
+/* cpu <-> wrapper */
+
+wire [31:0] test_m_addr, test_m_wdata;
+wire test_m_we;
+
 /* cpu <-> bridge */
 
 wire [31:0] cpu_addr;
@@ -83,8 +88,41 @@ cpu cpu(
 	/* .test_addr(dummy_test_addr), */
 	/* now unused */
 	.test_addr(), 
-	.bridge_stop(bridge_stop)
+	.bridge_stop(bridge_stop), 
+
+	.test_m_addr(test_m_addr), 
+	.test_m_we(test_m_we), 
+	.test_m_wdata(test_m_wdata)
 );
+
+/*
+wrapper wrapper(
+	.clk(clk), 
+	.reset(rst), 
+
+	.F_addr(0), 
+	.F_instr(0), 
+
+	.M_addr(test_m_addr), 
+	.M_WE(test_m_we), 
+	.M_RE(0), 
+	.M_Wdata(test_m_wdata), 
+	.M_Rdata(0), 
+
+	.user_F_addr(), 
+	.user_F_instr(), 
+	.user_M_addr(), 
+	.user_M_WE(), 
+	.user_M_RE(), 
+	.user_M_WData(), 
+	.user_M_RData(), 
+
+	.rxd(uart_rxd2), 
+	.txd(uart_txd2), 
+
+	.txd_buffer()
+);
+*/
 
 /* NOTE: timer[01]_addr are formal addresses (32-bit). Address slicing is done
  * at the declarations of the corresponding input ports of timer[01]. */
