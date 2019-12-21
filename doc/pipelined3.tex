@@ -291,14 +291,12 @@ PC 的值不变。
 \end{enumerate}
 
 \hypertarget{ux7a0bux5e8fux5b58ux50a8ux5668}{%
-\section{程序存储器}\label{ux7a0bux5e8fux5b58ux50a8ux5668}}
+\section{指令存储器}\label{ux7a0bux5e8fux5b58ux50a8ux5668}}
 
 \hypertarget{ux539fux7406-2}{%
 \subsection{原理}\label{ux539fux7406-2}}
 
-程序存储器是存储程序指令的地方。为了加载程序指令，它可以通过系统任务读取编译后的指令内容。
-
-为了简便，程序存储器由许多寄存器实现。
+指令存储器是存储程序指令的地方。
 
 \hypertarget{ux7aefux53e3ux5b9aux4e49-1}{%
 \subsection{端口定义}\label{ux7aefux53e3ux5b9aux4e49-1}}
@@ -346,12 +344,7 @@ IM 使能\tabularnewline\hline
 \subsection{功能}\label{ux529fux80fd-2}}
 
 有 \texttt{IM\_SIZE} 个 32
-位存储器，代表其中存储的指令。它们初值应该使用加载文件的系统任务加载。加载文件名由
-\texttt{IM\_CODE\_FILENAME} 指定。\texttt{im} 同样存储
-ISR，也是用加载文件的系统任务加载，加载文件名由
-\texttt{IM\_ISR\_FILENAME} 指定，加载地址由
-\texttt{(\$unsigned(IM\_ISR\_START\_ADDRESS)\ -\ \$unsigned(IM\_START\_ADDRESS))\ \textgreater{}\textgreater{}\ \$unsigned(2)}
-指定，一共加载 2047 个字。
+位存储器，代表其中存储的指令。内部使用 Block RAM，已经加载好了初值。
 
 无论什么时候，若地址在范围里且对齐，则 \ms{valid = 1'b1}，否则 \ms{valid = 1'b0}。
 
@@ -378,6 +371,8 @@ ISR，也是用加载文件的系统任务加载，加载文件名由
   \ms{valid == 0} 已经过滤了不合法的情况，所以可以直接取地址的一部分，用这个来找字。
 \item
   \ms{valid == 0} 时，有地址不对齐的情况，这时输出 \ms{nop}。这主要是为了帮助中止流水线，也是对取指不对齐异常处理的一部分。等到地址不对齐的那条指令（\textbf{取到的是 \ms{nop}}）进入 M 级，就会被 \ms{cp0} 检测到，然后进入 ISR。
+\item
+  \textbf{\ms{im} 使用 Block RAM，所以使用二倍频时钟信号。}
 \end{enumerate}
 
 \hypertarget{ux5bc4ux5b58ux5668ux5806}{%
@@ -732,128 +727,6 @@ ALU 是运算控制单元的意思，负责两个 32
   31{]}，那么切片结果是原来的标量
 \end{enumerate}
 
-\hypertarget{ux4e58ux9664ux6cd5ux5668}{%
-\section{乘除法器}\label{ux4e58ux9664ux6cd5ux5668}}
-
-\hypertarget{ux539fux7406-6}{%
-\subsection{原理}\label{ux539fux7406-6}}
-
-乘除法器是 MIPS 体系结构中运算代价比较高的部件，需要多个时钟周期进行运算。因此，它必须要有
-\texttt{busy} 信号指定它是不是忙，通过是不是忙来让控制模块决定暂停和转发。
-
-两个 32 位数的乘法结果是 64 位，所以需要两个 32
-位寄存器。同样地，除法有商和余数，所以也需要两个 32
-位寄存器。总结起来，乘除法器需要两个 32
-位寄存器。乘法有高低位的区别，把它们叫做 \texttt{HI} 和 \texttt{LO}
-寄存器能区分过来。
-
-乘除法需要多个周期，但是模拟时乘除法只要一个周期。因此，需要在乘除法器内部设定一个计时器，模拟需要多个周期乘除法的行为。还没有准备好时，就在
-\texttt{HI} 和 \texttt{LO} 寄存器输出代替的值。
-
-乘除法在中断流水线时需要中止原来的运算、避免写入新值。如果还有 \ms{STORE\_M} 类指令在 M 级，还需要恢复乘除法器原来保存的值。因此，乘除法器需要有停止和恢复功能。
-
-\hypertarget{ux7aefux53e3ux5b9aux4e49-4}{%
-\subsection{端口定义}\label{ux7aefux53e3ux5b9aux4e49-4}}
-
-\begin{longtable}[]{@{}|l|l|l|l|@{}}
-\hline
-\headingcellfirst{端口} & \headingcellmiddle{类型} & \headingcellmiddle{位宽} & \headingcelllast{功能}\tabularnewline\hline
-
-\endhead\hiderowcolors
-\ms{clk} & 输入 & 1 & 时钟信号\tabularnewline\hline
-\ms{rst} & 输入 & 1 & 同步复位信号\tabularnewline\hline
-\ms{dh} & 输入 & 32 & 第一个输入的数据\tabularnewline\hline
-\ms{dl} & 输入 & 32 & 第二个输入的数据\tabularnewline\hline
-\ms{op} & 输入 & 4 & 需要的操作\tabularnewline\hline
-\ms{stop} & 输入 & 1 & 停止当前运算\\\hline
-\ms{restore} & 输入 & 1 & 恢复 \ms{HI} 和 \ms{LO} 寄存器原来的值\\\hline
-\ms{busy} & 输出 & 1 & 乘除法器是否繁忙\tabularnewline\hline
-\ms{invalid} & 输出 & 1 & 乘除法操作是否非法\tabularnewline\hline
-\ms{hi} & 输出 & 32 & \texttt{HI} 寄存器的值\tabularnewline\hline
-\ms{lo} & 输出 & 32 & \texttt{LO} 寄存器的值\tabularnewline\hline
-\ms{out} & 输出 & 32 & 乘除法模块要输出的值\tabularnewline\hline
-
-\end{longtable}
-
-\hypertarget{ux5b8fux5b9aux4e49-7}{%
-\subsection{宏定义}\label{ux5b8fux5b9aux4e49-7}}
-
-各宏的意义如果是对应的操作，就省略。
-
-\begin{longtable}[]{@{}|l|l|l|l|@{}}
-\hline
-\headingcellfirst{类别} & \headingcellmiddle{定义} & \headingcellmiddle{值} & \headingcelllast{意义}\tabularnewline\hline
-
-\endhead\hiderowcolors
-\texttt{op} & \texttt{MD\_NONE} & \texttt{4\textquotesingle{}d0000}
-& 无操作 \tabularnewline\hline
-\texttt{op} & \texttt{MD\_MFHI} & \texttt{4\textquotesingle{}d0001}
-&\tabularnewline\hline
-\texttt{op} & \texttt{MD\_MFLO} & \texttt{4\textquotesingle{}d0010}
-&\tabularnewline\hline
-\texttt{op} & \texttt{MD\_MTHI} & \texttt{4\textquotesingle{}d0011}
-&\tabularnewline\hline
-\texttt{op} & \texttt{MD\_MTLO} & \texttt{4\textquotesingle{}d0100}
-&\tabularnewline\hline
-\texttt{op} & \texttt{MD\_MULT} & \texttt{4\textquotesingle{}d0101}
-&\tabularnewline\hline
-\texttt{op} & \texttt{MD\_MULTU} & \texttt{4\textquotesingle{}d0110}
-&\tabularnewline\hline
-\texttt{op} & \texttt{MD\_DIV} & \texttt{4\textquotesingle{}d0111}
-&\tabularnewline\hline
-\texttt{op} & \texttt{MD\_DIVU} & \texttt{4\textquotesingle{}d1000}
-&\tabularnewline\hline
-
-\end{longtable}
-
-\hypertarget{ux529fux80fd-8}{%
-\subsection{功能}\label{ux529fux80fd-8}}
-
-该部件为时序部件，所有寄存器初值为 0.
-
-有一个 4 位宽的计时器 \texttt{ctr}。
-
-无论什么时候，\texttt{hi} 和 \texttt{lo} 都分别是 \texttt{hi\_reg} 和
-\texttt{lo\_reg} 的内容。
-
-无论什么时候，\texttt{busy} 都是 \texttt{ctr} 作为无符号数大于 0 时为 \texttt{1\textquotesingle{}b1}，否则为
-\texttt{1\textquotesingle{}b0}。\texttt{invalid} 都是
-\texttt{(op\_i\ ==\ MD\_DIV\ \textbar{}\textbar{}\ op\_i\ ==\ MD\_DIVU)\ \&\&\ dl\_i\ ==\ 32\textquotesingle{}b0} 时为 1'b1，否则为 1'b0。
-
-无论什么时候，\texttt{out} 都是 \texttt{op == MD\_MFHI} 时为 \texttt{hi\_reg} 的内容，\texttt{op == MD\_MFLO} 时为 \texttt{lo\_reg} 的内容，否则为 \texttt{32'b0}。
-
-检查内部寄存器是因为内部寄存器才是 \texttt{md} 内保存的真正状态，而且在一个时钟周期内检查来得及。
-
-每个时钟上升沿，首先处理同步复位。然后，若 \ms{stop == 1'b1}，则令 \texttt{ctr = 0}，\texttt{op\_i = MD\_NONE}。若 \ms{restore = 1'b1}，则恢复 \ms{HI} 和 \ms{LO} 寄存器的旧值。
-
-若同步复位信号没有激活，而且 \ms{stop} 和 \ms{restore} 都是 \ms{1'b0}，则进行以下步骤。
-
-若 \texttt{op == MD\_MULT || op == MD\_MULTU || op == MD\_DIV || op == MD\_DIVU}，则令 \texttt{dh\_i <= dh, dl\_i <= dl, op\_i <= op}，\texttt{ctr} 为对应操作的延迟周期数。乘法操作是 5，除法操作是 10。
-
-若 \texttt{op == MD\_MTHI} 或 \texttt{op == MD\_MTLO}，则把 \texttt{dh} 写入对应的内部寄存器，同时保存 \ms{HI} 和 \ms{LO} 寄存器原来的值作为旧值，因为 \ms{restore} 信号激活时可能用到。
-
-若 \texttt{op == MD\_NONE}，则若计时器 \texttt{ctr} 的值作为无符号数大于等于 1，则把 \texttt{ctr} 减 1。否则，若 \texttt{ctr} 的值作为无符号数等于 0，则令 \texttt{hi\_reg} 和 \texttt{lo\_reg} 分别为 \texttt{dh\_i} 和 \texttt{dl\_i} 寄存器在 \texttt{op\_i} 对应运算下的结果，同时令 \texttt{op\_i <= MD\_NONE}。否则，什么也不做。
-
-\hypertarget{ux6ce8ux610fux4e8bux9879-5}{%
-\subsection{注意事项}\label{ux6ce8ux610fux4e8bux9879-5}}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \texttt{md} 这样设计比标准的实现会慢一个周期，但是暂停的考虑简化了。而且，这种设计主要把 \texttt{md} 的地位降低，设计成了一个从属部件，所以可以在执行连续两条乘除法指令时放弃第一条运算的结果，起到加速的作用。但是，由于课上评测机的要求，没有使用这种方式。
-\item
-  \textbf{除法是把 \texttt{dh} 当被除数，\texttt{dl}
-  当除数。但结果表示的时候，\texttt{hi} 当余数，\texttt{lo} 当商。若
-  \texttt{dl\ ==\ 32\textquotesingle{}b0}，则不生成新的结果，\texttt{hi}
-  和 \texttt{lo} 保持原来的结果，这是为了跟 MARS
-  兼容。}
-\item
-  \ms{restore} 信号负责恢复原来的 \ms{HI} 和 \ms{LO} 寄存器，是在 \ms{STORE\_M} 类指令到 M 级，但发生了异常的情况使用的，用来撤销这条指令的效果。
-\item
-  \ms{stop} 信号是在 \ms{CAL\_M} 类指令在 E 级或 M 级使用的，用来撤销这条指令的效果、终止运算。这是因为这种情况下运算一定由这条指令开始，而且正在进行。否则，要么运算需要 2 个或者更少的周期，要么这类指令被挡在 D 级。另一种情况是在 \ms{STORE\_M} 类指令在 E 级使用，用来挡住它对 \ms{HI} 或 \ms{LO} 寄存器的写入。
-\end{enumerate}
-
 \hypertarget{ux6570ux636eux5b58ux50a8ux5668}{%
 \section{数据存储器}\label{ux6570ux636eux5b58ux50a8ux5668}}
 
@@ -861,8 +734,6 @@ ALU 是运算控制单元的意思，负责两个 32
 \subsection{原理}\label{ux539fux7406-7}}
 
 数据存储器是存储数据的地方。
-
-为了简便，数据存储器由许多寄存器实现。
 
 \hypertarget{ux7aefux53e3ux5b9aux4e49-5}{%
 \subsection{端口定义}\label{ux7aefux53e3ux5b9aux4e49-5}}
@@ -911,7 +782,7 @@ ALU 是运算控制单元的意思，负责两个 32
 读取一个字节，按无符号数读取\tabularnewline\hline
 \texttt{.*\_addr} & \texttt{DM\_ADDR\_WIDTH} & 8 & \texttt{.*\_addr}
 的位宽\tabularnewline\hline
-指令存储器 & \texttt{DM\_SIZE} & 64 & 能存储 32
+数据存储器 & \texttt{DM\_SIZE} & 64 & 能存储 32
 位字的个数\tabularnewline\hline
 地址范围 & \texttt{DM\_ADDR\_UB} & 32 & \texttt{dm}
 的地址上界\tabularnewline\hline
@@ -925,19 +796,10 @@ ALU 是运算控制单元的意思，负责两个 32
 
 该部件为时序部件。
 
-有 \texttt{DM\_SIZE} 个 32 位存储器，代表其中存储的指令。它们初值都为
-\texttt{32\textquotesingle{}b0}。
-
 首先得出操作地址 \texttt{op\_addr}。若
 \texttt{write\_enable\ ==\ DM\_ENABLED}，则操作地址为写地址，否则操作地址为读地址。
 
 然后确定操作是否合法。若 \ms{mode == DM\_NONE}，或者地址在 \ms{DM\_ADDR\_LB} 和 \ms{DM\_ADDR\_UB} 形成的闭区间内，且满足对应模式的对齐要求，则操作合法，否则操作不合法。合法性由 \ms{valid} 信号表示。
-
-在每个时钟上升沿，若
-\texttt{write\_enable\ ==\ DM\_ENABLED\ \&\&\ valid == 1'b1 \&\& stop == 1'b0}，则根据操作模式写入相应地址对应的数据。写入半个字和字节分别取
-\texttt{write\_data} 的低 16 位和低 8 位。同时，打印当前 PC
-的值、\texttt{write\_addr}
-对应的字和它对应字的新值。如果是写入半个字或者字节，也打印对应的整个字的新值。
 
 任何时候，若 \texttt{valid\ ==\ 1'b0}，则
 \texttt{read\_result\ ==\ 32\textquotesingle{}b0}。否则，若
@@ -946,6 +808,8 @@ ALU 是运算控制单元的意思，负责两个 32
 为其它 \texttt{dm} 宏的值，则按照相应宏的意义读出数据，读到
 \texttt{read\_result} 中。若 \texttt{mode} 为其他值，则
 \texttt{read\_result\ ==\ 32\textquotesingle{}b0}。
+
+\ms{dm} 内部使用 Block RAM。
 
 \hypertarget{ux6ce8ux610fux4e8bux9879-6}{%
 \subsection{注意事项}\label{ux6ce8ux610fux4e8bux9879-6}}
@@ -965,6 +829,8 @@ ALU 是运算控制单元的意思，负责两个 32
   \textbf{CPU 是小端序的。}
 \item
   为了能打印出写到的字的值，可以把值提前用组合电路算出来。
+\item
+  \textbf{\ms{DM} 使用 Block RAM，所以使用二倍频时钟信号。}
 \end{enumerate}
 
 \hypertarget{ux8bbeux5907ux6865}{%
@@ -997,12 +863,11 @@ ALU 是运算控制单元的意思，负责两个 32
 \texttt{write\_data} & 输入 & 32 & CPU 要写入的数据\tabularnewline\hline
 \texttt{read\_result} & 输出 & 32 & CPU 读取的数据\tabularnewline\hline
 \texttt{hwirq} & 输出 & 6\textsuperscript{[1]} & 硬件中断请求输出\tabularnewline\hline
-\ms{timer[01]\_addr} & 输出 & 32 & \ms{timer[01]} 的读写地址 \\\hline
-\ms{timer[01]\_write\_enable} & 输出 & 32 & \ms{timer[01]} 的写使能 \\\hline
-\ms{timer[01]\_write\_data} & 输出 & 32 & \ms{timer[01]} 要写入的数据 \\\hline
-\ms{timer[01]\_read\_result} & 输出 & 32 & \ms{timer[01]} 的读取结果 \\\hline
-\ms{timer[01]\_irq} & 输出 & 32 & \ms{timer[01]} 的中断请求信号 \\\hline
-\ms{test\_interrupt} & 输入 & 1 & 测试用中断的输入\\\hline
+\ms{\textit{device-name}\_addr}\textsuperscript{[2]} & 输出 & 32 & \ms{\textit{device-name}} 的读写地址 \\\hline
+\ms{\textit{device-name}\_write\_enable} & 输出 & 32 & \ms{\textit{device-name}} 的写使能 \\\hline
+\ms{\textit{device-name}\_write\_data} & 输出 & 32 & \ms{\textit{device-name}} 要写入的数据 \\\hline
+\ms{\textit{device-name}\_read\_result} & 输出 & 32 & \ms{\textit{device-name}} 的读取结果 \\\hline
+\ms{\textit{device-name}\_irq} & 输出 & 32\textsuperscript{[3]} & \ms{\textit{device-name}} 的中断请求信号 \\\hline
 \end{longtable}
 
 注：
@@ -1011,34 +876,26 @@ ALU 是运算控制单元的意思，负责两个 32
 \tightlist
 \item
   下标是 \ms{[7:2]}，这是为了跟课下要求兼容。
+\item
+  合法的设备名有：\ms{timer, uart, switches, led, nixie, buttons}。它们视情况可以以全大写或全小写的方式代替 \textit{device-name}。
+\item
+  \textbf{在顶层模块中可以对设备地址有适当的截取，\ms{bridge} 不截取。}
 \end{enumerate}
 
 \hypertarget{ux5b8fux5b9aux4e49-9}{%
 \subsection{宏定义}\label{ux5b8fux5b9aux4e49-9}}
-
+、
 \begin{longtable}[]{@{}|l|l|l|l|@{}}
 \hline
 \headingcellfirst{类别} & \headingcellmiddle{定义} & \headingcellmiddle{值} & \headingcelllast{意义}\tabularnewline\hline
 
 \endhead\hiderowcolors
-设备地址 & \texttt{BRIDGE\_TIMER0\_LB} &
-\texttt{32\textquotesingle{}h00007f00} & 第一个 \texttt{timer}
+设备地址 & \texttt{BRIDGE\_\textit{device-name}\_LB} &
+\texttt{32\textquotesingle{}h00007f00} & \textit{device-name}
 的地址下界\tabularnewline\hline
-设备地址 & \texttt{BRIDGE\_TIMER0\_UB} &
-\texttt{32\textquotesingle{}h00007f0b} & 第一个 \texttt{timer}
+设备地址 & \texttt{BRIDGE\_\textit{device-name}\_UB} &
+\texttt{32\textquotesingle{}h00007f0b} & \textit{device-name}
 的地址上界\tabularnewline\hline
-设备地址 & \texttt{BRIDGE\_TIMER1\_LB} &
-\texttt{32\textquotesingle{}h00007f10} & 第二个 \texttt{timer}
-的地址下界\tabularnewline\hline
-设备地址 & \texttt{BRIDGE\_TIMER1\_UB} &
-\texttt{32\textquotesingle{}h00007f1b} & 第二个 \texttt{timer}
-的地址上界\tabularnewline\hline
-设备地址 & \texttt{BRIDGE\_TIMER0\_BASE} &
-\texttt{32\textquotesingle{}h00007f00} & 第一个 \texttt{timer}
-的基址\tabularnewline\hline
-设备地址 & \texttt{BRIDGE\_TIMER0\_BASE} &
-\texttt{32\textquotesingle{}h00007f10} & 第二个 \texttt{timer}
-的基址\tabularnewline\hline
 
 \end{longtable}
 
@@ -1047,19 +904,15 @@ ALU 是运算控制单元的意思，负责两个 32
 
 首先确定当前设备。如果地址落在某个设备的地址范围内部，就确定了是哪个设备。
 
-然后确定读写操作合法性，由 \ms{valid} 信号表示。若 \ms{dm\_mode == DM\_NONE}，或读写的是两个 \ms{timer} 里的一个且 \ms{dm\_mode == DM\_W} 且地址按字对齐且不是写入 \ms{timer} 的 \ms{count} 寄存器对应的地址，则读写操作合法，否则读写操作不合法。
+然后确定读写操作合法性，由 \ms{valid} 信号表示。若 \ms{dm\_mode == DM\_NONE}，或读写的是两个 \ms{timer} 里的一个且 \ms{dm\_mode == DM\_W} 且地址按字对齐且不是写入 \ms{timer} 的 \ms{count} 寄存器对应的地址，或读写地址在其它设备地址范围内，则读写操作合法，否则读写操作不合法。
 
-如果 \ms{valid == 1'b1} 且 \ms{write\_enable == 1'b1} 且 \ms{stop == 1'b0} 且地址落在某个 \texttt{timer} 的地址范围内，就令这个 \texttt{timer} 的写使能激活，它的
-\texttt{read\_result} 为要输出的 \ms{read\_result}，它的内部地址为 \ms{addr} 作为无符号数减去对应的基址。其余的 \texttt{timer} 屏蔽写使能，内部地址为 \ms{0}，\ms{read\_result} 丢弃。
+如果 \ms{valid == 1'b1} 且 \ms{write\_enable == 1'b1} 且 \ms{stop == 1'b0} 且地址落在 \textit{device-name} 的地址范围内，就令 \textit{device-name} 的写使能激活，它的 \texttt{read\_result} 为要输出的 \ms{read\_result}，它的内部地址为 \ms{addr} 作为无符号数减去对应的基址。其余的设备屏蔽写使能，内部地址为 \ms{0}，\ms{read\_result} 丢弃。
 
 否则，\texttt{read\_result} 为 \texttt{32\textquotesingle{}b0}。
 
-无论什么时候，\texttt{clk} 、\texttt{rst} 和 \ms{write\_data} 的值都接入每个
-\texttt{timer}。这是为了方便整体时钟信号同步和复位，和简化写入数据的接线。
+无论什么时候，\texttt{clk} 、\texttt{rst} 和 \ms{write\_data} 的值都接入每个设备。这是为了方便整体时钟信号同步和复位，和简化写入数据的接线。
 
-无论什么时候，\texttt{hwirq}
-的最低位为第一个 \texttt{timer} 的 \texttt{irq}，倒数第二低位为第二个
-\texttt{timer} 的 \texttt{irq}，倒数第三低位为 \ms{test\_interrupt}。
+无论什么时候，\texttt{hwirq = \{buttons\_irq, nixie\_irq, led\_irq, switches\_irq, uart\_irq, timer\_irq\}}。
 
 \hypertarget{ux6ce8ux610fux4e8bux9879-7}{%
 \subsection{注意事项}\label{ux6ce8ux610fux4e8bux9879-7}}
@@ -2831,15 +2684,6 @@ $ T_{use} $ 是指指令到 D 级以后还剩最晚多少个时钟周期就需�
 
 暂停的具体实现是关闭 F 级 \ms{pc} 使能，关闭 D 级流水线寄存器使能，使 E 级流水线寄存器复位。这样就能实现在 E 级插入气泡，同时 F 级和 D 级的指令被堵住，起到暂停的作用。
 
-\subsubsection{乘除法器的暂停机制}
-
-乘除法器的乘除法操作，需要多个周期才能完成，用 \ms{E: md.busy} 表示。所以，\texttt{e\_md\_busy\ ==\ 1\textquotesingle{}b1} 时，会一直暂停，直到
-\texttt{e\_md\_busy\ ==\ 1\textquotesingle{}b0}。这里还有一种情况，就是两个 \ms{CAL\_M} 类指令同时进入的情况。此时，按照 \ms{md} 的功能，前一条指令进入 E 级时，\ms{E: md.busy == 1'b1}。所以，不需要配合 \ms{E: md.op} 判断，后一条指令直接就能暂停。
-
-而且，\texttt{CAL\_M} 类指令虽然进行计算，但不写普通寄存器，所以跟其它指令没有转发解决不了的数据冒险，所以不停地插入气泡这种方式是可以解决数据冒险的。
-
-而且，跟 \texttt{dm} 类似，\texttt{md} 的 \texttt{HI} 和 \texttt{LO} 寄存器之间也没有数据冒险。因此，乘除法相关指令和其它指令之间，可以看成解决了需要暂停的问题，虽然 \texttt{md} 需要多个周期运行。
-
 \subsubsection{\ms{epc} 的暂停机制}
 
 由于 \texttt{epc} 只有一种需要转发的情况，所以暂停不需要通过 $ T_{use} $ 和 $ T_{new} $ 机制来实现，太复杂了。
@@ -3036,12 +2880,15 @@ F & \ms{cw\_f\_npc\_jump\_mode} & 超驰成 \ms{NPC\_ISR} & \makecell{以便跳�
 \hline
 \headingcellfirst{设备} & \headingcellmiddle{地址下界} & \headingcellmiddle{地址上界} & \headingcellfirst{可读写} & \headingcelllast{允许的访问模式} \\\hline
 \endhead\hiderowcolors
-\ms{dm} & \ms{32'h00000000} & \ms{32'h00002fff} & 读写 & \makecell{按字访问（地址字对齐）、\\按半字访问（地址半字对齐）、\\按字节访问} \\\hline
+\ms{dm} & \ms{32'h00000000} & \ms{32'h00001fff} & 读写 & \makecell{按字访问（地址字对齐）、\\按半字访问（地址半字对齐）、\\按字节访问} \\\hline
 \ms{im} & \ms{32'h00003000} & \ms{32'h00004fff} & 读写 & 按字访问（地址按字对齐） \\\hline
-\ms{bridge} & \ms{32'h00007f00} & \ms{32'h00007f07} & 读写 & 按字访问（地址按字对齐） \\\hline
-\ms{bridge} & \ms{32'h00007f08} & \ms{32'h00007f0b} & 只读 & 按字访问（地址按字对齐） \\\hline
-\ms{bridge} & \ms{32'h00007f10} & \ms{32'h00007f17} & 读写 & 按字访问（地址按字对齐） \\\hline
-\ms{bridge} & \ms{32'h00007f18} & \ms{32'h00007f1b} & 只读 & 按字访问（地址按字对齐） \\\hline
+\ms{timer} & \ms{32'h00007f00} & \ms{32'h00007f07} & 读写 & 按字访问（地址按字对齐） \\\hline
+\ms{timer} & \ms{32'h00007f08} & \ms{32'h00007f0b} & 只读 & 按字访问（地址按字对齐） \\\hline
+\ms{uart} & \ms{32'h00007f10} & \ms{32'h00007f2b} & 读写 & 按字访问（地址按字对齐） \\\hline
+\ms{switches} & \ms{32'h00007f2c} & \ms{32'h00007f33} & 只读 & 按字访问（地址按字对齐）\\\hline
+\ms{led} & \ms{32'h00007f34} & \ms{32'h00007f37} & 读写 & 按字访问（地址按字对齐）\\\hline
+\ms{nixie} & \ms{32'h00007f38} & \ms{32'h00007f3f} & 读写 & 按字访问（地址按字对齐）\\\hline
+\ms{buttons} & \ms{32'h00007f40} & \ms{32'h00007f43} & 只读 & 按字访问（地址按字对齐)\\\hline
 \end{longtable}
 
 按照不允许的访问模式访问对应的设备，就会让对应设备的 \ms{valid == 1'b0}。
@@ -3211,6 +3058,7 @@ CPU 是宏观部件，主要连接起数据通路和控制。该部件主要起�
 
 \endhead\hiderowcolors
 \texttt{clk} & 输入 & 1 & 时钟信号\tabularnewline\hline
+\ms{clk\_2x} & 输入 & 1 & 二倍频时钟信号\\\hline
 \texttt{rst} & 输入 & 1 & 复位信号\tabularnewline\hline
 \texttt{cpu\_read\_result} & 输入 & 32 & CPU
 从设备得到的读取结果\tabularnewline\hline
@@ -3229,7 +3077,7 @@ CPU 是宏观部件，主要连接起数据通路和控制。该部件主要起�
 \hypertarget{ux63a5ux7ebf}{%
 \subsection{接线}\label{ux63a5ux7ebf}}
 
-按照数据通路和控制部分的定义进行接线。数据通路中的接线方式在数据通路部分的文档中描述，控制部分按照控制部分的文档中描述。控制部分控制数据通路的哪部分，在控制部分的文档中。
+按照数据通路和控制部分的定义进行接线。数据通路中的接线方式在数据通路部分的文档中描述，控制部分按照控制部分的文档中描述。控制部分控制数据通路的哪部分，在控制部分的文档中有描述。
 
 \hypertarget{ux529fux80fd-17}{%
 \subsection{功能}\label{ux529fux80fd-17}}
@@ -3344,13 +3192,392 @@ CPU 负责指令的执行和与设备交互。
   \textbf{写不该写的寄存器和写的模式错误时，写使能信号会被 \texttt{cpu} 屏蔽，所以不用担心误写。}
 \end{enumerate}
 
+\hypertarget{ux6309ux94aeux6a21ux5757}{%
+\section{按钮模块}\label{ux6309ux94aeux6a21ux5757}}
+
+\hypertarget{ux539fux7406}{%
+\subsection{原理}\label{ux539fux7406}}
+
+按钮模块通过捕获外部输入的 8 个信号，把它转换成相应的硬件中断。输入会自动经过防抖处理，因此在模块内不考虑防抖的问题。由于按钮只是输入，没有输出，所以不考虑向设备内寄存器写入数据的问题。
+
+\hypertarget{ux7aefux53e3ux5b9aux4e49}{%
+\subsection{端口定义}\label{ux7aefux53e3ux5b9aux4e49}}
+
+\begin{longtable}[]{@{}|l|l|l|l|@{}}
+\hline
+\headingcellfirst{端口} & \headingcellmiddle{类型} & \headingcellmiddle{位宽} & \headingcelllast{功能}\tabularnewline\hline
+
+\endhead\hiderowcolors
+\texttt{clk} & 输入 & 1 & 时钟信号\tabularnewline\hline
+\texttt{rst} & 输入 & 1 & 复位信号\tabularnewline\hline
+\texttt{addr} & 输入 & 32 & 地址信号\tabularnewline\hline
+\ms{write\_enable} & 输入 & 1 & 写使能信号\\\hline
+\ms{write\_data} & 输入 & 32 & 要写入的数据\\\hline
+\ms{read\_result} & 输出 & 32 & 读取结果\\\hline
+\ms{irq} & 输出 & 1 & 中断请求\\\hline
+\ms{user\_key} & 输入 & 8 & 8 个用户开关的信号值\\\hline
+
+\end{longtable}
+
+\hypertarget{ux5b8fux5b9aux4e49}{%
+\subsection{宏定义}\label{ux5b8fux5b9aux4e49}}
+
+暂无
+
+\hypertarget{ux529fux80fd}{%
+\subsection{功能}\label{ux529fux80fd}}
+
+该部件为时序部件，所有寄存器初值均为 0。
+
+该部件维护一个 8 位寄存器
+\texttt{stored}，负责存储在这个时钟周期中用户的输入。
+
+每个时钟上升沿，若 \texttt{rst\ ==\ 1\textquotesingle{}b1}，则
+\texttt{stored\ \textless{}=\ 0}。否则，\texttt{stored\ \textless{}=\ \textasciitilde{}user\_key}。
+
+无论什么时候 \ms{read\_result = \{24'b0, stored\}}。\ms{write\_enable}、\ms{write\_data}、\ms{addr}、\ms{irq} 被忽略。
+
+\hypertarget{led-ux63a7ux5236ux6a21ux5757}{%
+\section{LED 控制模块}\label{led-ux63a7ux5236ux6a21ux5757}}
+
+\hypertarget{ux539fux7406-1}{%
+\subsection{原理}\label{ux539fux7406-1}}
+
+一共有 32 个 LED，能够使用写入的方式控制。为了能够使高电平持续从而使 LED
+常亮，LED 的控制都是采用寄存器保存当前 LED 开关的数值的。
+
+\hypertarget{ux7aefux53e3ux5b9aux4e49-1}{%
+\subsection{端口定义}\label{ux7aefux53e3ux5b9aux4e49-1}}
+
+\begin{longtable}[]{@{}|l|l|l|l|@{}}
+\hline
+\headingcellfirst{端口} & \headingcellmiddle{类型} & \headingcellmiddle{位宽} & \headingcelllast{功能}\tabularnewline\hline
+
+\endhead\hiderowcolors
+\texttt{clk} & 输入 & 1 & 时钟信号\tabularnewline\hline
+\texttt{rst} & 输入 & 1 & 复位信号\tabularnewline\hline
+\texttt{write\_enable} & 输入 & 1 & 写使能信号\tabularnewline\hline
+\texttt{write\_data} & 输入 & 32 & 要写入的数据\tabularnewline\hline
+\ms{read\_result} & 输出 & 32 & 读取结果\\\hline
+\texttt{addr} & 输入 & 32 & 地址信号\tabularnewline\hline
+\texttt{led\_light} & 输出 & 32 & 输出的当前 LED 开关数值\tabularnewline\hline
+\ms{irq} & 输出 & 1 & 中断请求\\\hline
+
+\end{longtable}
+
+\hypertarget{ux5b8fux5b9aux4e49-1}{%
+\subsection{宏定义}\label{ux5b8fux5b9aux4e49-1}}
+
+暂无
+
+\hypertarget{ux529fux80fd-1}{%
+\subsection{功能}\label{ux529fux80fd-1}}
+
+该部件为时序部件，所有寄存器初值均为 0。
+
+维护一个 32 位的 \texttt{stored} 寄存器，保存当前 LED 开关状态。
+
+每个时钟上升沿，若 \texttt{rst\ ==\ 1\textquotesingle{}b1}，则
+\texttt{stored\ \textless{}=\ 0}。否则，若
+\texttt{(we\ ==\ 1\textquotesingle{}b1)}，则  
+\texttt{stored\ \textless{}=\ wd}。
+
+无论什么时候，\texttt{led\_light\ =\ \textasciitilde{}stored}。
+
+\ms{addr}、\ms{read\_result} 和 \ms{irq} 被忽略。
+
+\hypertarget{ux4e03ux6bb5ux6570ux7801ux7ba1ux63a7ux5236}{%
+\section{七段数码管控制}\label{ux4e03ux6bb5ux6570ux7801ux7ba1ux63a7ux5236}}
+
+\hypertarget{ux539fux7406-2}{%
+\subsection{原理}\label{ux539fux7406-2}}
+
+七段数码管通过向内部的 5 个寄存器写入值，来实现对七段数码管的控制。5 个寄存器对应 5 个数码管，每个寄存器有 8 位，让数码管分别显示
+0-f。这样，它对外就有两个暴露出来的寄存器。
+
+由于数码管分组，每组只有统一的段选信号和开关，所以需要通过隔一段时间刷新信号的方式进行控制，这样能显示出稳定的图像。对应的内部寄存器具体分组如下：
+
+\begin{longtable}[]{@{}|l|l|l|l|l|@{}}
+\hline
+\headingcellfirst{结构} & \headingcellmiddle{数据位置} & \headingcellmiddle{对应数码管} & \headingcellmiddle{对应段选信号} & \headingcelllast{对应值}\tabularnewline\hline
+
+\endhead\hiderowcolors
+
+\texttt{\{24\textquotesingle{}b0,\ tube2\}} & \texttt{tube2{[}3:0{]}} &
+\texttt{digital\_tube2} & \texttt{digital\_tube\_sel2} &
+\texttt{1\textquotesingle{}b1}\tabularnewline\hline
+\texttt{\{tube1,\ tube0\}} &
+\texttt{tube1{[}15:12{]}} & \texttt{digital\_tube1} & \texttt{digital\_tube\_sel1} &
+\texttt{4\textquotesingle{}b1000}\tabularnewline\hline
+\texttt{\{tube1,\ tube0\}} &
+\texttt{tube1{[}11:8{]}} & \texttt{digital\_tube1} &
+\texttt{digital\_tube\_sel1} &
+\texttt{4\textquotesingle{}b0100}\tabularnewline\hline
+ \texttt{\{tube1,\ tube0\}} &
+\texttt{tube1{[}7:4{]}} & \texttt{digital\_tube1} &
+\texttt{digital\_tube\_sel1} &
+\texttt{4\textquotesingle{}b0010}\tabularnewline\hline
+ \texttt{\{tube1,\ tube0\}} &
+\texttt{tube1{[}3:0{]}} & \texttt{digital\_tube1} &
+\texttt{digital\_tube\_sel1} &
+\texttt{4\textquotesingle{}b0001}\tabularnewline\hline
+ \texttt{\{tube1,\ tube0\}} &
+\texttt{tube0{[}15:12{]}} & \texttt{digital\_tube0} &
+\texttt{digital\_tube\_sel0} &
+\texttt{4\textquotesingle{}b1000}\tabularnewline\hline
+ \texttt{\{tube1,\ tube0\}} &
+\texttt{tube0{[}11:8{]}} & \texttt{digital\_tube0} &
+\texttt{digital\_tube\_sel0} &
+\texttt{4\textquotesingle{}b0100}\tabularnewline\hline
+ \texttt{\{tube1,\ tube0\}} &
+\texttt{tube0{[}7:4{]}} & \texttt{digital\_tube0} &
+\texttt{digital\_tube\_sel0} &
+\texttt{4\textquotesingle{}b0010}\tabularnewline\hline
+ \texttt{\{tube1,\ tube0\}} &
+\texttt{tube0{[}3:0{]}} & \texttt{digital\_tube0} &
+\texttt{digital\_tube\_sel0} &
+\texttt{4\textquotesingle{}b0001}\tabularnewline\hline
+
+\end{longtable}
+
+\hypertarget{ux7aefux53e3ux5b9aux4e49-2}{%
+\subsection{端口定义}\label{ux7aefux53e3ux5b9aux4e49-2}}
+
+\begin{longtable}[]{@{}|l|l|l|l|@{}}
+\hline
+\headingcellfirst{端口} & \headingcellmiddle{类型} & \headingcellmiddle{位宽} & \headingcelllast{功能}\tabularnewline\hline
+
+\endhead\hiderowcolors
+\texttt{clk} & 输入 & 1 & 时钟信号\tabularnewline\hline
+\texttt{rst} & 输入 & 1 & 复位信号\tabularnewline\hline
+\texttt{addr} & 输入 & 32 & 要读写的地址\tabularnewline\hline
+\texttt{write\_enable} & 输入 & 1 & 写使能\tabularnewline\hline
+\texttt{write\_data} & 输入 & 32 & 要写入的数据\tabularnewline\hline
+\texttt{read\_result} & 输出 & 32 & 读取的数据\tabularnewline\hline
+\ms{irq} & 输出 & 1 & 中断请求\\\hline
+\texttt{digital\_tube{[}0-2{]}} & 输出 & 8 & 第 \texttt{{[}0=2{]}}
+个数码管的控制信号\tabularnewline\hline
+\texttt{digital\_tube\_sel{[}01{]}} & 输出 & 4 & 第 \texttt{{[}01{]}}
+个数码管的段选信号\tabularnewline\hline
+\texttt{digital\_tube\_sel2} & 输出 & 1 & 第 2
+个数码管的段选信号\tabularnewline\hline
+
+\end{longtable}
+
+\hypertarget{ux5b8fux5b9aux4e49-2}{%
+\subsection{宏定义}\label{ux5b8fux5b9aux4e49-2}}
+
+\begin{longtable}[]{@{}|l|l|l|l|@{}}
+\hline
+\headingcellfirst{类别} & \headingcellmiddle{定义} & \headingcellmiddle{值} & \headingcelllast{意义}\tabularnewline\hline
+
+\endhead\hiderowcolors
+计数器 & \texttt{NIXIE\_CTR} & \texttt{32\textquotesingle{}d30000} &
+计数器初值，决定数码管刷新周期\tabularnewline\hline
+
+\end{longtable}
+
+\hypertarget{ux529fux80fd-2}{%
+\subsection{功能}\label{ux529fux80fd-2}}
+
+该部件为时序部件，所有寄存器若未说明，则初值均为 0。
+
+维护一个 32 位的寄存器 \texttt{ctr} 和一个 4 位的寄存器
+\texttt{phase}，以及一个 8 位的寄存器 \texttt{tube0} 和两个 16
+位的寄存器 \texttt{tube1} 和 \texttt{tube2}。\texttt{ctr} 和
+\texttt{phase} 初值分别为 \texttt{0} 和
+\texttt{4\textquotesingle{}b1111}。
+
+每个时钟上升沿，若
+\texttt{rst\ ==\ 1\textquotesingle{}b1}，则所有寄存器恢复初值。否则，若
+\texttt{write\_enable\ ==\ 1\textquotesingle{}b1} 且 \texttt{addr} 属于上表中提到的地址之一，则把上表中对应的寄存器写入 \texttt{addr}
+对应位置的内容。否则，若
+\texttt{\$unsigned(ctr)\ \textgreater{}\ \$unsigned(0)}，则
+\texttt{ctr\ \textless{}=\ \$unsigned(ctr)\ -\ \$unsigned(1)}。否则，\texttt{ctr\ \textless{}=\ NIXIE\_CTR}，\texttt{phase}
+按照下表变换。
+
+\begin{longtable}[]{@{}|l|l|@{}}
+\hline
+\headingcellfirst{\texttt{phase} 原值} & \headingcelllast{\texttt{phase} 新值}\tabularnewline\hline
+
+\endhead\hiderowcolors
+\texttt{4\textquotesingle{}b1000} &
+\texttt{4\textquotesingle{}b0100}\tabularnewline\hline
+\texttt{4\textquotesingle{}b0100} &
+\texttt{4\textquotesingle{}b0010}\tabularnewline\hline
+\texttt{4\textquotesingle{}b0010} &
+\texttt{4\textquotesingle{}b0001}\tabularnewline\hline
+\texttt{4\textquotesingle{}b0001} &
+\texttt{4\textquotesingle{}b1000}\tabularnewline\hline
+（其它） & \texttt{4\textquotesingle{}b1000}\tabularnewline\hline
+
+\end{longtable}
+
+无论什么时候，\texttt{digital\_tube\_sel2\ =\ 1\textquotesingle{}b1}，\texttt{digital\_tube\_sel{[}10{]}\ =\ phase}。令三个
+4 位的 \texttt{wire} 变量 \texttt{data{[}210{]}}
+为按照段选信号和对应的数码管序号得到的内部寄存器 \texttt{tube{[}210{]}}
+的相应部分。把 \texttt{data{[}210{]}} 转换后的相应结果输出到对应的
+\texttt{digital\_tube{[}210{]}} 中。具体的转换逻辑使用数码管译码器实现。
+
+无论什么时候，若 \texttt{addr} 为合法的输入地址，则 \texttt{rd}
+为相应的结果。否则，\texttt{rd\ =\ 32\textquotesingle{}b0}。
+
+\ms{irq} 被忽略。
+
+\hypertarget{ux6ce8ux610fux4e8bux9879}{%
+\subsection{注意事项}\label{ux6ce8ux610fux4e8bux9879}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  译码器用单独的模块实现，这样能增强模块化。
+\item
+  \textbf{地址计算和比较用无符号数。}
+\item
+  \textbf{复位时 \ms{phase} 设成 \ms{4'b1111} 能强行把所有数码管都设成 0，更合理。}
+\end{enumerate}
+
+\hypertarget{ux5f00ux5173ux6a21ux5757}{%
+\section{开关模块}\label{ux5f00ux5173ux6a21ux5757}}
+
+\hypertarget{ux539fux7406-3}{%
+\subsection{原理}\label{ux539fux7406-3}}
+
+开关模块负责控制 FPGA 上 64 个开关，并以一定的形式输出。由于 FPGA 上 64
+个开关分成 8
+组，每组代表的高低位不同，所以应该按组输入模块，以使模块的接线与 FPGA
+的接线相对应。
+
+由于一共有 64 个开关，所以一共有 64 位，分成两个 32 位寄存器读取。
+
+\hypertarget{ux7aefux53e3ux5b9aux4e49-3}{%
+\subsection{端口定义}\label{ux7aefux53e3ux5b9aux4e49-3}}
+
+\begin{longtable}[]{@{}|l|l|l|l|@{}}
+\hline
+\headingcellfirst{端口} & \headingcellmiddle{类型} & \headingcellmiddle{位宽} & \headingcelllast{功能}\tabularnewline\hline
+
+\endhead\hiderowcolors
+\texttt{clk} & 输入 & 1 & 时钟信号\tabularnewline\hline
+\texttt{rst} & 输入 & 1 & 同步复位信号\tabularnewline\hline
+\texttt{addr} & 输入 & 1 & 读取地址\tabularnewline\hline
+\ms{write\_enable} & 输出 & 1 & 写使能信号\\\hline
+\ms{write\_data} & 输入 & 32 & 要写入的数据\\\hline
+\ms{read\_result} & 输出 & 32 & 读取结果\\\hline
+\ms{irq} & 输出 & 1 & 中断请求\\\hline
+\texttt{dip\_switch{[}0-7{]}} & 输入 & 8 & 8 组开关\tabularnewline\hline
+
+\end{longtable}
+
+\hypertarget{ux5b8fux5b9aux4e49-3}{%
+\section{宏定义}\label{ux5b8fux5b9aux4e49-3}}
+
+暂无
+
+\hypertarget{ux529fux80fd-3}{%
+\subsection{功能}\label{ux529fux80fd-3}}
+
+该部件为时序部件，所有寄存器初值为 0。
+
+维护一个内部寄存器 \texttt{stored}，为 64 位，存储
+\texttt{\{dip\_switch3,\ dip\_switch2,\ ...,\ dip\_switch0,\ dip\_switch7,\ ...,\ dip\_switch4\}}。
+
+每个时钟上升沿，若
+\texttt{rst\ ==\ 1\textquotesingle{}b1}，\texttt{stored\ \textless{}=\ 0}。否则，\texttt{stored <= \\~{}{dip\_switch3,\ dip\_switch2,\ ...,\ dip\_switch0,\ dip\_switch7,\ ...,\ dip\_switch4\}}}。
+
+若 \ms{addr == 1'b0}，则读出 \ms{stored} 的低 32 位。若 \ms{addr == 1'b1}，则读出 \ms{stored} 的高 32 位。否则，读出 \ms{32'b0}。
+
+\subsection{注意事项}
+
+\begin{enumerate}
+\tightlist
+\item \textbf{地址较低的字对应的是上面那排开关。}
+\end{enumerate}
+
+\section{UART 模块}
+
+\subsection{原理}
+
+UART 模块通过包装已有的 UART 模块并进行微调，使它能够符合 CPU 的接口标准。在这之上建立 UART 通信机制。
+
+\subsection{端口定义}
+
+\begin{longtable}[]{@{}|l|l|l|l|@{}}
+\hline
+\headingcellfirst{端口} & \headingcellmiddle{类型} & \headingcellmiddle{位宽} & \headingcelllast{功能}\\\hline
+\endhead\hiderowcolors
+
+\ms{clk} & 输入 & 1 & 时钟信号\\\hline
+\ms{rst} & 输出 & 1 & 复位信号\\\hline
+
+\ms{addr} & 输入 & 3 & 操作地址\\\hline
+\ms{write\_enable} & 输入 & 1 & 写使能\\\hline
+\ms{write\_data} & 输入 & 32 & 要写入的数据\\\hline
+\ms{read\_result} & 输入 & 32 & 读取结果\\\hline
+\ms{irq} & 输入 & 1 & 中断请求\\\hline
+
+\ms{uart\_rxd} & 输入 & 1 & UART 接收信号\\\hline
+\ms{uart\_txd} & 输出 & 1 & UART 发送信号\\\hline
+\end{longtable}
+
+\subsection{功能}
+
+UART 模块通过包装已有的 UART 模块存在，是它的兼容层。端口对应表如下。
+
+\begin{longtable}[]{@{}|l|l|@{}}
+\hline
+\headingcellfirst{原 UART 模块端口名称} & \headingcelllast{对外接线}\\\hline
+\ms{CLK\_I} & \ms{clk}\\\hline
+\ms{RST\_I} & \ms{rst}\\\hline
+
+\ms{ADD\_I} & \ms{addr[2:0]}\\\hline
+\ms{STB\_I} & \ms{1'b1}\\\hline
+\ms{WE\_I} & \ms{write\_enable}\\\hline
+\ms{DAT\_I} & \ms{write\_data}\\\hline
+\ms{DAT\_O} & \ms{read\_result}\\\hline
+
+\ms{ACK\_O} & （无）\\\hline
+
+\ms{RxD} & \ms{uart\_rxd}\\\hline
+\ms{TxD} & \ms{uart\_txd}\\\hline
+\end{longtable}
+
+然后，为了支持中断功能，在原有的 UART 模块中加入了输出信号 \ms{IRQ\_O}，连接到 UART 模块的 \ms{irq}。\ms{IRQ\_O} 的值直接就是原有 UART 模块的 \ms{rs} 寄存器，这样就能实现收到一个完整的字符即可中断的功能。
+
+收到中断并进入 ISR 后，若想关闭中断，可以向偏移为 8 的寄存器写值。这样 \ms{rs} 会变成 0，也就关闭中断了。
+
+由于该模块包装的是原来的 UART 模块，所以详细功能和寄存器定义见原来 UART 模块的文档。
+
+\section{时钟分频器模块}
+
+\subsection{原理}
+
+时钟分频器模块是利用 Clock Generator IP 核，把原来 FPGA 25MHz 的时钟变成设定好的时钟频率的。
+
+\subsection{端口定义}
+
+\begin{longtable}[]{@{}|l|l|l|l|@{}}
+\hline
+\headingcellfirst{端口} & \headingcellmiddle{类型} & \headingcellmiddle{位宽} & \headingcelllast{功能}\\\hline
+\endhead\hiderowcolors
+
+\ms{CLK\_IN} & 输入 & 1 & 输入的时钟信号\\\hline
+\ms{CLK\_OUT1} & 输出 & 1 & 输出的 30MHz 时钟信号\\\hline
+\ms{CLK\_OUT2} & 输出 & 1 & 输出的 60MHz 时钟信号\\\hline
+\end{longtable}
+
+\subsection{功能}
+
+时钟分频器调整时钟频率，同时使时钟频率稳定。
+
 \hypertarget{ux9876ux5c42ux6a21ux5757}{%
 \section{顶层模块}\label{ux9876ux5c42ux6a21ux5757}}
 
 \hypertarget{ux539fux7406-17}{%
 \subsection{原理}\label{ux539fux7406-17}}
 
-顶层模块是整个工程的顶层模块，负责把用到的所有电路综合起来。顶层模块包括 CPU、 \texttt{bridge} 和两个 \ms{timer}，把它们接在一起，形成综合的模块。
+顶层模块是整个工程的顶层模块，负责把用到的所有电路综合起来。顶层模块包括 CPU、 \texttt{bridge} 和各个设备，把它们接在一起，形成综合的模块。
 
 \hypertarget{ux7aefux53e3ux5b9aux4e49-15}{%
 \subsection{端口定义}\label{ux7aefux53e3ux5b9aux4e49-15}}
@@ -3360,17 +3587,38 @@ CPU 负责指令的执行和与设备交互。
 \headingcellfirst{端口} & \headingcellmiddle{类型} & \headingcellmiddle{位宽} & \headingcelllast{功能}\tabularnewline\hline
 
 \endhead\hiderowcolors
-\texttt{clk} & 输入 & 1 & 时钟信号\tabularnewline\hline
-\texttt{rst} & 输入 & 1 & 复位信号\tabularnewline\hline
-\ms{interrupt} & 输入 & 1 & 测试中断输入 \\\hline
-\ms{addr} & 输出 & 32 & 输出 \ms{M: pc.curr\_pc} \\\hline
+\texttt{clk\_in} & 输入 & 1 & FPGA 时钟信号\tabularnewline\hline
+\texttt{sys\_rstn} & 输入 & 1 & 复位信号\tabularnewline\hline
 
+\ms{uart\_rxd} & 输入 & 1 & UART 接收信号\\\hline
+\ms{uart\_txd} & 输出 & 1 & UART 发送信号\\\hline
+
+\ms{dip\_switch0} & 输入 & 8 & 开关信号\\\hline
+\ms{dip\_switch1} & 输入 & 8 & 开关信号\\\hline
+\ms{dip\_switch2} & 输入 & 8 & 开关信号\\\hline
+\ms{dip\_switch3} & 输入 & 8 & 开关信号\\\hline
+\ms{dip\_switch4} & 输入 & 8 & 开关信号\\\hline
+\ms{dip\_switch5} & 输入 & 8 & 开关信号\\\hline
+\ms{dip\_switch6} & 输入 & 8 & 开关信号\\\hline
+\ms{dip\_switch7} & 输入 & 8 & 开关信号\\\hline
+
+\ms{led\_light} & 输出 & 32 & LED 灯光信号\\\hline
+
+\ms{digital\_tube[012]} & 输出 & 8 & 数码管输出信号\\\hline
+\ms{digital\_tube\_sel[01]} & 输出 & 4 & 数码管片选信号\\\hline
+\ms{digital\_tube\_sel2} & 输出 & 1 & 数码管片选信号\\\hline
+
+\ms{user\_key} & 输入 & 8 & 用户按键\\\hline
 \end{longtable}
 
 \hypertarget{ux63a5ux7ebf-1}{%
 \subsection{接线}\label{ux63a5ux7ebf-1}}
 
-CPU 和 \texttt{bridge} 的接线，以及 \ms{bridge} 和两个 \ms{timer0} 的接线，除了 \texttt{clk}、\texttt{rst} 和 \ms{interrupt} 之外都是可以对应的。所以，可以列出对应关系表。
+CPU 和 \texttt{bridge} 的接线，以及 \ms{bridge} 和各个设备的接线，都是可以对应的。所以，可以列出对应关系表。
+
+\ms{clk\_in} 通过时钟分频器模块后，变成 \ms{clk} 和 \ms{clk\_2x} 信号，分别代表时钟和双倍频时钟。它们都接入 CPU，CPU 中指令存储器和数据存储器都需要用到 \ms{clk\_2x}。
+
+\ms{sys\_rstn} 由于是反相过后的信号，所以要在顶层模块内把它再反相一遍，然后再接入各个模块。
 
 \begin{longtable}[]{@{}|l|l|l|@{}}
 \hline
@@ -3397,86 +3645,76 @@ CPU\tabularnewline\hline
 
 \begin{longtable}[]{@{}|l|l|l|@{}}
 \hline
-\headingcellfirst{\ms{bridge} 端口} & \headingcellmiddle{\ms{timer[01]} 端口} & \headingcelllast{数据流动方向} \\\hline
+\headingcellfirst{\ms{bridge} 端口} & \headingcellmiddle{\ms{\textit{device-name}} 端口} & \headingcelllast{数据流动方向} \\\hline
 \endhead\hiderowcolors
-\ms{timer[01]\_addr} & \ms{addr} & \ms{bridge} →
- \ms{timer[01]} \\\hline
-\ms{timer[01]\_write\_enable} & \ms{write\_enable} & \ms{bridge} →
- \ms{timer[01]} \\\hline
-\ms{timer[01]\_write\_data} & \ms{write\_data} & \ms{bridge} →
- \ms{timer[01]} \\\hline
-\ms{timer[01]\_read\_result} & \ms{read\_result} & \ms{timer[01]} →
+\ms{\textit{device-name}\_addr} & \ms{addr} & \ms{bridge} →
+ \ms{\textit{device-name}} \\\hline
+\ms{\textit{device-name}\_write\_enable} & \ms{write\_enable} & \ms{bridge} →
+ \ms{\textit{device-name}} \\\hline
+\ms{\textit{device-name}\_write\_data} & \ms{write\_data} & \ms{bridge} →
+ \ms{\textit{device-name}} \\\hline
+\ms{\textit{device-name}\_read\_result} & \ms{read\_result} & \ms{\textit{device-name}} →
  \ms{bridge} \\\hline
-\ms{timer[01]\_irq} & \ms{irq} & \ms{timer[01]} →
+\ms{\textit{device-name}\_irq} & \ms{irq} & \ms{\textit{device-name}} →
  \ms{bridge} \\\hline
 \end{longtable}
 
-\ms{interrupt} 信号接入 \ms{M: bridge.test\_interrupt}，由 \ms{bridge} 把它整合进 \ms{hwirq} 中。
+对应设备中没有提到的端口，直接接入顶层模块中同名的端口。
 
 \hypertarget{ux529fux80fd-19}{%
 \subsection{功能}\label{ux529fux80fd-19}}
 
-顶层模块按照接线连接起 CPU 和 \texttt{bridge}，通过这种方式确定 CPU 和
+顶层模块按照接线连接起 CPU 和 \texttt{bridge}，以及 \ms{bridge} 和各种设备，通过这种方式确定 CPU 和
 \texttt{bridge} 之间数据流的流向。
 
 \section{思考题}
 
-\subsection{欢迎来到玄学领域}
+\subsection{欢迎来到 P8}
 
 \begin{enumerate}
-\tightlist
-\item
-硬件/软件接口是硬件和软件用来交换信息的公用边界。硬件和软件通过接口交互，组成完整的计算机系统。具体的硬件/软件接口包括指令集、内存访问模式和中断异常相关接口等等。
+\item FPGA 是一种集成电路，设计出来是为了被消费者或者设计者在制造以后配置，所以才会有“现场可编程“这一说。FPGA 是由一组可编程逻辑块构成，也有一些可以配置的互联网络，使得逻辑块可以被接在一起。逻辑块可以被综合在一起，形成更复杂的组合逻辑电路。FPGA 里一般也有寄存器或者内存块这种逻辑块。
+
+好处；适合并行处理数据、在特定任务（如音视频处理）上性能可以比通用处理器高、用户可以决定硬件架构。
+
+缺陷：通用性一般较低、一般不适合程序性控制。
 \end{enumerate}
 
-\subsection{沟通外部设备与计时器}
+\subsection{联结 ISE 工程与 FPGA}
 
 \begin{enumerate}
 \tightlist
 \item
-在现代计算机中，\ms{DM} 位于各级缓存后，CPU 通过访问内存的总线与其交换数据。
+问题：CPU 行为怪异、指令行为不符合预期。解决过程：把 IM 接入二倍频时钟。
 \item
-不是。对于那些只能按整个字读写其内部寄存器的部件（比如 \ms{timer}），就是不必要的。
+问题：Timing Score 过高，提示有的时间限制无法满足。解决过程：降低频率。
 \item
-两种中断模式差别在 \ms{TIMER\_INT} 状态上，剩下的状态，状态转换都相同。没有对 \ms{timer} 内部寄存器的写入时，\ms{mode == 2'b00} 时，\ms{timer} 停止使能，会在 \ms{TIMER\_IDLE} 状态中一直停留。否则，\ms{timer} 使能不变，在不屏蔽中断时  \ms{irq} 只保留一个周期。下个周期又进入 \ms{TIMER\_IDLE} 状态，进行循环。
-两种模式的状态转移图，见计时器说明文档。
+问题：删除 \ms{im} 的 IP 核对应的所有文件以后，新建新的 IP 核，ISE 仍然无法找到。解决过程：再删除一遍，ISE 弹出找不到 IP 核相关对话框时勾选意为找不到对应的文件删除的多选框，然后直接新建同名的 \ms{im} IP 核。
+\item
+问题：综合过程报出一大堆警告。解决过程：仔细查看 Synthesis Report，确定警告都无害再继续。
+\item
+问题：CPU 无反应。解决过程：把 \ms{sys\_rstn} 反相，再当成 \ms{rst}。
+\item
+问题：乘除法单元无法综合。解决过程：删除乘除法单元。
+\item
+问题：\ms{bitgen} 提示有些引脚没有在顶层模块中体现，Generate Programming File 失败。解决过程：在顶层模块中体现出所有引脚再生成。
 \end{enumerate}
 
-\subsection{异常与中断}
+\subsection{串口通信}
 
 \begin{enumerate}
-\tightlist
 \item
-程序如下，只使用一个定时器。
-\begin{lstlisting}[language={[mips]Assembler}]
-.text
-# initialize cp0
-li $t0, 0x0000fc03
-mtc0 $t0, $12
+直接把原有的 UART 模块中的 \ms{rs} 信号（标志着已经读取完整一个字节）当做中断信号。同时，若进入 ISR 后想要关闭 UART 中断，则写入偏移为 8 的内部寄存器。因为它能够使 UART 顶层模块认为已经读取了它接收的数据，\ms{rs} 信号也会变回 \ms{1'b0}，从而关闭中断。
+\end{enumerate}
 
-# initialize timer0
-# preset
-li $t0, 0x0000002a
-li $t1, 0x00007f00
-sw $t0, 0x4($t1)
+\subsection{挑战：MMU 与 TLB（选做）}
 
-# ctrl
-li $t0, 0x00000009
-sw $t0, 0($t1)
-
-# dead loop, waiting for interrupt
-loop:
-beq $0, $0, loop
-nop
-
-.text 0x4180
-# re-initialize timer0
-# preset
-sw $t0, 0($t1)
-eret
-\end{lstlisting}
+\begin{enumerate}
 \item
-鼠标和键盘的输入信号在 USB 总线上传递，然后给 USB HCI（主机控制器接口）。HCI 相当于一个通道，本身具有一定处理数据的能力，面向 CPU 来说是一个设备，支持 MMIO。同时，也支持产生中断。这样，鼠标和键盘的输入信号就能被 CPU 知晓。对 PS/2 接口的鼠标和键盘，通常 PC 的主板上有对应的控制器用来处理输入，并提供 MMIO 与生成中断。
+硬件与软件接口有软硬件之间交换信息的协定这一意义。软件可以通过指令操纵 TLB，这是按照一种标准来进行的。
+
+它也有硬件给软件提供平台、软件赋予硬件功能的意义。硬件通过 MMU 提供的地址转换机制，给软件实现页式虚拟内存。软件通过 TLB 操作（尤其是通过 ISR 进行 TLB 异常处理），赋予了硬件完整的功能。
+
+同时，它也相当于一种标准或者说约定。TLB 指令、MMU 行为规范和标准 TLB 的规范，都直接体现着联结软件和硬件的一种标准或约定。没有这种约定，硬件和软件的开发者的沟通成本会加大，计算通用性和兼容性也会减弱。
 \end{enumerate}
 
 \section{测试}

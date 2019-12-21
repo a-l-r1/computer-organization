@@ -1,184 +1,208 @@
-\contentsline {section}{\numberline {1}NPC}{8}{section.1}% 
-\contentsline {subsection}{\numberline {1.1}原理}{8}{subsection.1.1}% 
-\contentsline {subsection}{\numberline {1.2}接口定义}{8}{subsection.1.2}% 
-\contentsline {subsection}{\numberline {1.3}宏定义}{8}{subsection.1.3}% 
-\contentsline {subsection}{\numberline {1.4}功能}{9}{subsection.1.4}% 
-\contentsline {subsection}{\numberline {1.5}注意事项}{10}{subsection.1.5}% 
-\contentsline {section}{\numberline {2}PC}{10}{section.2}% 
-\contentsline {subsection}{\numberline {2.1}原理}{10}{subsection.2.1}% 
-\contentsline {subsection}{\numberline {2.2}端口定义}{10}{subsection.2.2}% 
-\contentsline {subsection}{\numberline {2.3}宏定义}{11}{subsection.2.3}% 
-\contentsline {subsection}{\numberline {2.4}功能}{11}{subsection.2.4}% 
-\contentsline {subsection}{\numberline {2.5}注意事项}{11}{subsection.2.5}% 
-\contentsline {section}{\numberline {3}程序存储器}{12}{section.3}% 
-\contentsline {subsection}{\numberline {3.1}原理}{12}{subsection.3.1}% 
-\contentsline {subsection}{\numberline {3.2}端口定义}{12}{subsection.3.2}% 
-\contentsline {subsection}{\numberline {3.3}宏定义}{12}{subsection.3.3}% 
-\contentsline {subsection}{\numberline {3.4}功能}{13}{subsection.3.4}% 
-\contentsline {subsection}{\numberline {3.5}注意事项}{13}{subsection.3.5}% 
-\contentsline {section}{\numberline {4}寄存器堆}{13}{section.4}% 
-\contentsline {subsection}{\numberline {4.1}原理}{13}{subsection.4.1}% 
-\contentsline {subsection}{\numberline {4.2}端口定义}{14}{subsection.4.2}% 
-\contentsline {subsection}{\numberline {4.3}宏定义}{14}{subsection.4.3}% 
-\contentsline {subsection}{\numberline {4.4}功能}{15}{subsection.4.4}% 
-\contentsline {subsection}{\numberline {4.5}注意事项}{15}{subsection.4.5}% 
-\contentsline {section}{\numberline {5}比较模块}{15}{section.5}% 
-\contentsline {subsection}{\numberline {5.1}原理}{15}{subsection.5.1}% 
-\contentsline {subsection}{\numberline {5.2}接口定义}{15}{subsection.5.2}% 
-\contentsline {subsection}{\numberline {5.3}宏定义}{16}{subsection.5.3}% 
-\contentsline {subsection}{\numberline {5.4}功能}{16}{subsection.5.4}% 
-\contentsline {section}{\numberline {6}扩展器}{16}{section.6}% 
-\contentsline {subsection}{\numberline {6.1}功能}{16}{subsection.6.1}% 
-\contentsline {subsection}{\numberline {6.2}接口定义}{16}{subsection.6.2}% 
-\contentsline {subsection}{\numberline {6.3}宏定义}{17}{subsection.6.3}% 
-\contentsline {subsection}{\numberline {6.4}功能}{17}{subsection.6.4}% 
-\contentsline {section}{\numberline {7}ALU}{17}{section.7}% 
-\contentsline {subsection}{\numberline {7.1}原理}{17}{subsection.7.1}% 
-\contentsline {subsection}{\numberline {7.2}端口定义}{17}{subsection.7.2}% 
-\contentsline {subsection}{\numberline {7.3}宏定义}{18}{subsection.7.3}% 
-\contentsline {subsection}{\numberline {7.4}功能}{20}{subsection.7.4}% 
-\contentsline {subsection}{\numberline {7.5}注意事项}{21}{subsection.7.5}% 
-\contentsline {section}{\numberline {8}乘除法器}{21}{section.8}% 
-\contentsline {subsection}{\numberline {8.1}原理}{21}{subsection.8.1}% 
-\contentsline {subsection}{\numberline {8.2}端口定义}{21}{subsection.8.2}% 
+\contentsline {section}{\numberline {1}NPC}{9}{section.1}% 
+\contentsline {subsection}{\numberline {1.1}原理}{9}{subsection.1.1}% 
+\contentsline {subsection}{\numberline {1.2}接口定义}{9}{subsection.1.2}% 
+\contentsline {subsection}{\numberline {1.3}宏定义}{9}{subsection.1.3}% 
+\contentsline {subsection}{\numberline {1.4}功能}{10}{subsection.1.4}% 
+\contentsline {subsection}{\numberline {1.5}注意事项}{11}{subsection.1.5}% 
+\contentsline {section}{\numberline {2}PC}{11}{section.2}% 
+\contentsline {subsection}{\numberline {2.1}原理}{11}{subsection.2.1}% 
+\contentsline {subsection}{\numberline {2.2}端口定义}{11}{subsection.2.2}% 
+\contentsline {subsection}{\numberline {2.3}宏定义}{12}{subsection.2.3}% 
+\contentsline {subsection}{\numberline {2.4}功能}{12}{subsection.2.4}% 
+\contentsline {subsection}{\numberline {2.5}注意事项}{12}{subsection.2.5}% 
+\contentsline {section}{\numberline {3}指令存储器}{13}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}原理}{13}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {3.2}端口定义}{13}{subsection.3.2}% 
+\contentsline {subsection}{\numberline {3.3}宏定义}{13}{subsection.3.3}% 
+\contentsline {subsection}{\numberline {3.4}功能}{14}{subsection.3.4}% 
+\contentsline {subsection}{\numberline {3.5}注意事项}{14}{subsection.3.5}% 
+\contentsline {section}{\numberline {4}寄存器堆}{14}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}原理}{14}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {4.2}端口定义}{15}{subsection.4.2}% 
+\contentsline {subsection}{\numberline {4.3}宏定义}{15}{subsection.4.3}% 
+\contentsline {subsection}{\numberline {4.4}功能}{16}{subsection.4.4}% 
+\contentsline {subsection}{\numberline {4.5}注意事项}{16}{subsection.4.5}% 
+\contentsline {section}{\numberline {5}比较模块}{16}{section.5}% 
+\contentsline {subsection}{\numberline {5.1}原理}{16}{subsection.5.1}% 
+\contentsline {subsection}{\numberline {5.2}接口定义}{16}{subsection.5.2}% 
+\contentsline {subsection}{\numberline {5.3}宏定义}{17}{subsection.5.3}% 
+\contentsline {subsection}{\numberline {5.4}功能}{17}{subsection.5.4}% 
+\contentsline {section}{\numberline {6}扩展器}{17}{section.6}% 
+\contentsline {subsection}{\numberline {6.1}功能}{17}{subsection.6.1}% 
+\contentsline {subsection}{\numberline {6.2}接口定义}{17}{subsection.6.2}% 
+\contentsline {subsection}{\numberline {6.3}宏定义}{18}{subsection.6.3}% 
+\contentsline {subsection}{\numberline {6.4}功能}{18}{subsection.6.4}% 
+\contentsline {section}{\numberline {7}ALU}{18}{section.7}% 
+\contentsline {subsection}{\numberline {7.1}原理}{18}{subsection.7.1}% 
+\contentsline {subsection}{\numberline {7.2}端口定义}{18}{subsection.7.2}% 
+\contentsline {subsection}{\numberline {7.3}宏定义}{19}{subsection.7.3}% 
+\contentsline {subsection}{\numberline {7.4}功能}{21}{subsection.7.4}% 
+\contentsline {subsection}{\numberline {7.5}注意事项}{22}{subsection.7.5}% 
+\contentsline {section}{\numberline {8}数据存储器}{22}{section.8}% 
+\contentsline {subsection}{\numberline {8.1}原理}{22}{subsection.8.1}% 
+\contentsline {subsection}{\numberline {8.2}端口定义}{22}{subsection.8.2}% 
 \contentsline {subsection}{\numberline {8.3}宏定义}{22}{subsection.8.3}% 
-\contentsline {subsection}{\numberline {8.4}功能}{22}{subsection.8.4}% 
-\contentsline {subsection}{\numberline {8.5}注意事项}{23}{subsection.8.5}% 
-\contentsline {section}{\numberline {9}数据存储器}{24}{section.9}% 
+\contentsline {subsection}{\numberline {8.4}功能}{23}{subsection.8.4}% 
+\contentsline {subsection}{\numberline {8.5}注意事项}{24}{subsection.8.5}% 
+\contentsline {section}{\numberline {9}设备桥}{24}{section.9}% 
 \contentsline {subsection}{\numberline {9.1}原理}{24}{subsection.9.1}% 
-\contentsline {subsection}{\numberline {9.2}端口定义}{24}{subsection.9.2}% 
+\contentsline {subsection}{\numberline {9.2}端口定义}{25}{subsection.9.2}% 
 \contentsline {subsection}{\numberline {9.3}宏定义}{25}{subsection.9.3}% 
-\contentsline {subsection}{\numberline {9.4}功能}{25}{subsection.9.4}% 
+\contentsline {subsection}{\numberline {9.4}功能}{26}{subsection.9.4}% 
 \contentsline {subsection}{\numberline {9.5}注意事项}{26}{subsection.9.5}% 
-\contentsline {section}{\numberline {10}设备桥}{26}{section.10}% 
-\contentsline {subsection}{\numberline {10.1}原理}{26}{subsection.10.1}% 
+\contentsline {section}{\numberline {10}CP0}{27}{section.10}% 
+\contentsline {subsection}{\numberline {10.1}原理}{27}{subsection.10.1}% 
 \contentsline {subsection}{\numberline {10.2}端口定义}{27}{subsection.10.2}% 
 \contentsline {subsection}{\numberline {10.3}宏定义}{27}{subsection.10.3}% 
 \contentsline {subsection}{\numberline {10.4}功能}{28}{subsection.10.4}% 
-\contentsline {subsection}{\numberline {10.5}注意事项}{28}{subsection.10.5}% 
-\contentsline {section}{\numberline {11}CP0}{29}{section.11}% 
-\contentsline {subsection}{\numberline {11.1}原理}{29}{subsection.11.1}% 
-\contentsline {subsection}{\numberline {11.2}端口定义}{29}{subsection.11.2}% 
-\contentsline {subsection}{\numberline {11.3}宏定义}{29}{subsection.11.3}% 
-\contentsline {subsection}{\numberline {11.4}功能}{30}{subsection.11.4}% 
-\contentsline {subsection}{\numberline {11.5}注意事项}{32}{subsection.11.5}% 
-\contentsline {section}{\numberline {12}流水线寄存器}{33}{section.12}% 
-\contentsline {subsection}{\numberline {12.1}原理}{33}{subsection.12.1}% 
-\contentsline {subsection}{\numberline {12.2}端口定义}{33}{subsection.12.2}% 
-\contentsline {subsection}{\numberline {12.3}参数定义}{33}{subsection.12.3}% 
-\contentsline {subsection}{\numberline {12.4}宏定义}{33}{subsection.12.4}% 
-\contentsline {subsection}{\numberline {12.5}功能}{34}{subsection.12.5}% 
-\contentsline {subsection}{\numberline {12.6}注意事项}{34}{subsection.12.6}% 
-\contentsline {section}{\numberline {13}MUX}{34}{section.13}% 
-\contentsline {subsection}{\numberline {13.1}功能}{34}{subsection.13.1}% 
-\contentsline {subsection}{\numberline {13.2}类别}{34}{subsection.13.2}% 
-\contentsline {subsection}{\numberline {13.3}命名}{34}{subsection.13.3}% 
-\contentsline {subsection}{\numberline {13.4}宏定义}{34}{subsection.13.4}% 
-\contentsline {subsection}{\numberline {13.5}参数定义}{35}{subsection.13.5}% 
-\contentsline {subsection}{\numberline {13.6}端口定义}{35}{subsection.13.6}% 
-\contentsline {subsection}{\numberline {13.7}功能}{35}{subsection.13.7}% 
-\contentsline {subsection}{\numberline {13.8}注意事项}{35}{subsection.13.8}% 
-\contentsline {section}{\numberline {14}流水线 CPU 数据通路}{36}{section.14}% 
-\contentsline {subsection}{\numberline {14.1}原理}{36}{subsection.14.1}% 
-\contentsline {subsection}{\numberline {14.2}分析}{36}{subsection.14.2}% 
-\contentsline {subsubsection}{\numberline {14.2.1}F 级（IF）}{38}{subsubsection.14.2.1}% 
-\contentsline {subsubsection}{\numberline {14.2.2}D 级（ID）}{38}{subsubsection.14.2.2}% 
-\contentsline {subsubsection}{\numberline {14.2.3}E 级（EX）}{39}{subsubsection.14.2.3}% 
-\contentsline {subsubsection}{\numberline {14.2.4}M 级（MEM）}{39}{subsubsection.14.2.4}% 
-\contentsline {subsubsection}{\numberline {14.2.5}W 级（WB）}{40}{subsubsection.14.2.5}% 
-\contentsline {subsubsection}{\numberline {14.2.6}流水线寄存器}{41}{subsubsection.14.2.6}% 
-\contentsline {subsubsection}{\numberline {14.2.7}数据通路 MUX}{42}{subsubsection.14.2.7}% 
-\contentsline {subsubsection}{\numberline {14.2.8}注意事项}{43}{subsubsection.14.2.8}% 
-\contentsline {subsection}{\numberline {14.3}转发}{43}{subsection.14.3}% 
-\contentsline {subsubsection}{\numberline {14.3.1}注意事项}{44}{subsubsection.14.3.1}% 
-\contentsline {subsection}{\numberline {14.4}暂停}{45}{subsection.14.4}% 
-\contentsline {subsection}{\numberline {14.5}异常处理}{45}{subsection.14.5}% 
-\contentsline {section}{\numberline {15}指令识别机制}{46}{section.15}% 
-\contentsline {subsection}{\numberline {15.1}原理}{46}{subsection.15.1}% 
-\contentsline {subsection}{\numberline {15.2}宏定义}{46}{subsection.15.2}% 
-\contentsline {subsection}{\numberline {15.3}端口定义}{46}{subsection.15.3}% 
-\contentsline {subsection}{\numberline {15.4}功能}{46}{subsection.15.4}% 
-\contentsline {subsection}{\numberline {15.5}宏定义}{47}{subsection.15.5}% 
-\contentsline {subsection}{\numberline {15.6}指令字段}{47}{subsection.15.6}% 
-\contentsline {subsubsection}{\numberline {15.6.1}指令类型}{47}{subsubsection.15.6.1}% 
-\contentsline {subsection}{\numberline {15.7}注意}{50}{subsection.15.7}% 
-\contentsline {section}{\numberline {16}控制}{50}{section.16}% 
-\contentsline {subsection}{\numberline {16.1}原理}{50}{subsection.16.1}% 
-\contentsline {subsection}{\numberline {16.2}端口定义}{50}{subsection.16.2}% 
-\contentsline {subsection}{\numberline {16.3}总体结构}{53}{subsection.16.3}% 
-\contentsline {subsection}{\numberline {16.4}数据通路和功能控制信号}{54}{subsection.16.4}% 
-\contentsline {subsubsection}{\numberline {16.4.1}F 级}{55}{subsubsection.16.4.1}% 
-\contentsline {paragraph}{注意事项}{55}{section*.2}% 
-\contentsline {subsubsection}{\numberline {16.4.2}D 级（ID）}{55}{subsubsection.16.4.2}% 
-\contentsline {paragraph}{注意事项}{56}{section*.3}% 
-\contentsline {subsubsection}{\numberline {16.4.3}E 级（EX）}{56}{subsubsection.16.4.3}% 
-\contentsline {subsubsection}{\numberline {16.4.4}M 级（MEM）}{58}{subsubsection.16.4.4}% 
-\contentsline {paragraph}{注意事项}{59}{section*.4}% 
-\contentsline {subsubsection}{\numberline {16.4.5}W 级（WB）}{59}{subsubsection.16.4.5}% 
-\contentsline {subsubsection}{\numberline {16.4.6}指令读写寄存器识别}{60}{subsubsection.16.4.6}% 
-\contentsline {paragraph}{注意事项}{61}{section*.5}% 
-\contentsline {subsection}{\numberline {16.5}转发控制信号}{61}{subsection.16.5}% 
-\contentsline {subsubsection}{\numberline {16.5.1}注意事项}{64}{subsubsection.16.5.1}% 
-\contentsline {subsection}{\numberline {16.6}暂停控制信号}{64}{subsection.16.6}% 
-\contentsline {subsubsection}{\numberline {16.6.1}通用寄存器的暂停机制}{65}{subsubsection.16.6.1}% 
-\contentsline {subsubsection}{\numberline {16.6.2}乘除法器的暂停机制}{67}{subsubsection.16.6.2}% 
-\contentsline {subsubsection}{\numberline {16.6.3}\texttt {epc} 的暂停机制}{67}{subsubsection.16.6.3}% 
-\contentsline {subsubsection}{\numberline {16.6.4}注意事项}{68}{subsubsection.16.6.4}% 
-\contentsline {subsection}{\numberline {16.7}寄存器地址控制信号}{68}{subsection.16.7}% 
-\contentsline {subsection}{\numberline {16.8}设备访问}{68}{subsection.16.8}% 
-\contentsline {subsubsection}{\numberline {16.8.1}设备读写}{68}{subsubsection.16.8.1}% 
-\contentsline {subsubsection}{\numberline {16.8.2}控制读入结果}{68}{subsubsection.16.8.2}% 
-\contentsline {subsubsection}{\numberline {16.8.3}注意事项}{69}{subsubsection.16.8.3}% 
-\contentsline {subsection}{\numberline {16.9}异常和中断处理}{69}{subsection.16.9}% 
-\contentsline {subsubsection}{\numberline {16.9.1}异常 ID 流水线}{69}{subsubsection.16.9.1}% 
-\contentsline {paragraph}{注意事项}{70}{section*.6}% 
-\contentsline {subsubsection}{\numberline {16.9.2}检测异常和中断}{70}{subsubsection.16.9.2}% 
-\contentsline {subsubsection}{\numberline {16.9.3}异常或中断发生时 CP0 的内部记录控制信号}{70}{subsubsection.16.9.3}% 
-\contentsline {paragraph}{注意事项}{71}{section*.7}% 
-\contentsline {subsubsection}{\numberline {16.9.4}精确异常}{72}{subsubsection.16.9.4}% 
-\contentsline {subsubsection}{\numberline {16.9.5}进入 ISR}{72}{subsubsection.16.9.5}% 
-\contentsline {subsubsection}{\numberline {16.9.6}从 ISR 返回}{74}{subsubsection.16.9.6}% 
-\contentsline {subsubsection}{\numberline {16.9.7}系统内存空间}{75}{subsubsection.16.9.7}% 
-\contentsline {subsubsection}{\numberline {16.9.8}注意事项}{75}{subsubsection.16.9.8}% 
-\contentsline {section}{\numberline {17}转发控制模块}{76}{section.17}% 
-\contentsline {subsection}{\numberline {17.1}原理}{76}{subsection.17.1}% 
-\contentsline {subsection}{\numberline {17.2}端口定义}{76}{subsection.17.2}% 
-\contentsline {subsection}{\numberline {17.3}宏定义}{77}{subsection.17.3}% 
-\contentsline {subsection}{\numberline {17.4}功能}{77}{subsection.17.4}% 
-\contentsline {section}{\numberline {18}暂停控制模块}{77}{section.18}% 
-\contentsline {subsection}{\numberline {18.1}原理}{77}{subsection.18.1}% 
-\contentsline {subsection}{\numberline {18.2}端口定义}{78}{subsection.18.2}% 
-\contentsline {subsection}{\numberline {18.3}宏定义}{78}{subsection.18.3}% 
-\contentsline {subsection}{\numberline {18.4}功能}{78}{subsection.18.4}% 
-\contentsline {section}{\numberline {19}中断和异常控制模块}{79}{section.19}% 
-\contentsline {subsection}{\numberline {19.1}原理}{79}{subsection.19.1}% 
-\contentsline {subsection}{\numberline {19.2}端口定义}{79}{subsection.19.2}% 
-\contentsline {subsection}{\numberline {19.3}宏定义}{80}{subsection.19.3}% 
-\contentsline {subsection}{\numberline {19.4}功能}{80}{subsection.19.4}% 
-\contentsline {section}{\numberline {20}CPU}{80}{section.20}% 
-\contentsline {subsection}{\numberline {20.1}原理}{80}{subsection.20.1}% 
-\contentsline {subsection}{\numberline {20.2}端口定义}{80}{subsection.20.2}% 
-\contentsline {subsection}{\numberline {20.3}接线}{81}{subsection.20.3}% 
-\contentsline {subsection}{\numberline {20.4}功能}{81}{subsection.20.4}% 
-\contentsline {section}{\numberline {21}计时器}{81}{section.21}% 
+\contentsline {subsection}{\numberline {10.5}注意事项}{30}{subsection.10.5}% 
+\contentsline {section}{\numberline {11}流水线寄存器}{31}{section.11}% 
+\contentsline {subsection}{\numberline {11.1}原理}{31}{subsection.11.1}% 
+\contentsline {subsection}{\numberline {11.2}端口定义}{31}{subsection.11.2}% 
+\contentsline {subsection}{\numberline {11.3}参数定义}{31}{subsection.11.3}% 
+\contentsline {subsection}{\numberline {11.4}宏定义}{31}{subsection.11.4}% 
+\contentsline {subsection}{\numberline {11.5}功能}{32}{subsection.11.5}% 
+\contentsline {subsection}{\numberline {11.6}注意事项}{32}{subsection.11.6}% 
+\contentsline {section}{\numberline {12}MUX}{32}{section.12}% 
+\contentsline {subsection}{\numberline {12.1}功能}{32}{subsection.12.1}% 
+\contentsline {subsection}{\numberline {12.2}类别}{32}{subsection.12.2}% 
+\contentsline {subsection}{\numberline {12.3}命名}{32}{subsection.12.3}% 
+\contentsline {subsection}{\numberline {12.4}宏定义}{32}{subsection.12.4}% 
+\contentsline {subsection}{\numberline {12.5}参数定义}{33}{subsection.12.5}% 
+\contentsline {subsection}{\numberline {12.6}端口定义}{33}{subsection.12.6}% 
+\contentsline {subsection}{\numberline {12.7}功能}{33}{subsection.12.7}% 
+\contentsline {subsection}{\numberline {12.8}注意事项}{33}{subsection.12.8}% 
+\contentsline {section}{\numberline {13}流水线 CPU 数据通路}{34}{section.13}% 
+\contentsline {subsection}{\numberline {13.1}原理}{34}{subsection.13.1}% 
+\contentsline {subsection}{\numberline {13.2}分析}{34}{subsection.13.2}% 
+\contentsline {subsubsection}{\numberline {13.2.1}F 级（IF）}{36}{subsubsection.13.2.1}% 
+\contentsline {subsubsection}{\numberline {13.2.2}D 级（ID）}{36}{subsubsection.13.2.2}% 
+\contentsline {subsubsection}{\numberline {13.2.3}E 级（EX）}{37}{subsubsection.13.2.3}% 
+\contentsline {subsubsection}{\numberline {13.2.4}M 级（MEM）}{37}{subsubsection.13.2.4}% 
+\contentsline {subsubsection}{\numberline {13.2.5}W 级（WB）}{38}{subsubsection.13.2.5}% 
+\contentsline {subsubsection}{\numberline {13.2.6}流水线寄存器}{39}{subsubsection.13.2.6}% 
+\contentsline {subsubsection}{\numberline {13.2.7}数据通路 MUX}{40}{subsubsection.13.2.7}% 
+\contentsline {subsubsection}{\numberline {13.2.8}注意事项}{41}{subsubsection.13.2.8}% 
+\contentsline {subsection}{\numberline {13.3}转发}{41}{subsection.13.3}% 
+\contentsline {subsubsection}{\numberline {13.3.1}注意事项}{42}{subsubsection.13.3.1}% 
+\contentsline {subsection}{\numberline {13.4}暂停}{43}{subsection.13.4}% 
+\contentsline {subsection}{\numberline {13.5}异常处理}{43}{subsection.13.5}% 
+\contentsline {section}{\numberline {14}指令识别机制}{44}{section.14}% 
+\contentsline {subsection}{\numberline {14.1}原理}{44}{subsection.14.1}% 
+\contentsline {subsection}{\numberline {14.2}宏定义}{44}{subsection.14.2}% 
+\contentsline {subsection}{\numberline {14.3}端口定义}{44}{subsection.14.3}% 
+\contentsline {subsection}{\numberline {14.4}功能}{44}{subsection.14.4}% 
+\contentsline {subsection}{\numberline {14.5}宏定义}{45}{subsection.14.5}% 
+\contentsline {subsection}{\numberline {14.6}指令字段}{45}{subsection.14.6}% 
+\contentsline {subsubsection}{\numberline {14.6.1}指令类型}{45}{subsubsection.14.6.1}% 
+\contentsline {subsection}{\numberline {14.7}注意}{48}{subsection.14.7}% 
+\contentsline {section}{\numberline {15}控制}{48}{section.15}% 
+\contentsline {subsection}{\numberline {15.1}原理}{48}{subsection.15.1}% 
+\contentsline {subsection}{\numberline {15.2}端口定义}{48}{subsection.15.2}% 
+\contentsline {subsection}{\numberline {15.3}总体结构}{51}{subsection.15.3}% 
+\contentsline {subsection}{\numberline {15.4}数据通路和功能控制信号}{52}{subsection.15.4}% 
+\contentsline {subsubsection}{\numberline {15.4.1}F 级}{53}{subsubsection.15.4.1}% 
+\contentsline {paragraph}{注意事项}{53}{section*.2}% 
+\contentsline {subsubsection}{\numberline {15.4.2}D 级（ID）}{53}{subsubsection.15.4.2}% 
+\contentsline {paragraph}{注意事项}{54}{section*.3}% 
+\contentsline {subsubsection}{\numberline {15.4.3}E 级（EX）}{54}{subsubsection.15.4.3}% 
+\contentsline {subsubsection}{\numberline {15.4.4}M 级（MEM）}{56}{subsubsection.15.4.4}% 
+\contentsline {paragraph}{注意事项}{57}{section*.4}% 
+\contentsline {subsubsection}{\numberline {15.4.5}W 级（WB）}{57}{subsubsection.15.4.5}% 
+\contentsline {subsubsection}{\numberline {15.4.6}指令读写寄存器识别}{58}{subsubsection.15.4.6}% 
+\contentsline {paragraph}{注意事项}{59}{section*.5}% 
+\contentsline {subsection}{\numberline {15.5}转发控制信号}{59}{subsection.15.5}% 
+\contentsline {subsubsection}{\numberline {15.5.1}注意事项}{62}{subsubsection.15.5.1}% 
+\contentsline {subsection}{\numberline {15.6}暂停控制信号}{62}{subsection.15.6}% 
+\contentsline {subsubsection}{\numberline {15.6.1}通用寄存器的暂停机制}{63}{subsubsection.15.6.1}% 
+\contentsline {subsubsection}{\numberline {15.6.2}\texttt {epc} 的暂停机制}{65}{subsubsection.15.6.2}% 
+\contentsline {subsubsection}{\numberline {15.6.3}注意事项}{65}{subsubsection.15.6.3}% 
+\contentsline {subsection}{\numberline {15.7}寄存器地址控制信号}{65}{subsection.15.7}% 
+\contentsline {subsection}{\numberline {15.8}设备访问}{66}{subsection.15.8}% 
+\contentsline {subsubsection}{\numberline {15.8.1}设备读写}{66}{subsubsection.15.8.1}% 
+\contentsline {subsubsection}{\numberline {15.8.2}控制读入结果}{66}{subsubsection.15.8.2}% 
+\contentsline {subsubsection}{\numberline {15.8.3}注意事项}{66}{subsubsection.15.8.3}% 
+\contentsline {subsection}{\numberline {15.9}异常和中断处理}{66}{subsection.15.9}% 
+\contentsline {subsubsection}{\numberline {15.9.1}异常 ID 流水线}{66}{subsubsection.15.9.1}% 
+\contentsline {paragraph}{注意事项}{67}{section*.6}% 
+\contentsline {subsubsection}{\numberline {15.9.2}检测异常和中断}{67}{subsubsection.15.9.2}% 
+\contentsline {subsubsection}{\numberline {15.9.3}异常或中断发生时 CP0 的内部记录控制信号}{68}{subsubsection.15.9.3}% 
+\contentsline {paragraph}{注意事项}{69}{section*.7}% 
+\contentsline {subsubsection}{\numberline {15.9.4}精确异常}{69}{subsubsection.15.9.4}% 
+\contentsline {subsubsection}{\numberline {15.9.5}进入 ISR}{70}{subsubsection.15.9.5}% 
+\contentsline {subsubsection}{\numberline {15.9.6}从 ISR 返回}{71}{subsubsection.15.9.6}% 
+\contentsline {subsubsection}{\numberline {15.9.7}系统内存空间}{72}{subsubsection.15.9.7}% 
+\contentsline {subsubsection}{\numberline {15.9.8}注意事项}{73}{subsubsection.15.9.8}% 
+\contentsline {section}{\numberline {16}转发控制模块}{74}{section.16}% 
+\contentsline {subsection}{\numberline {16.1}原理}{74}{subsection.16.1}% 
+\contentsline {subsection}{\numberline {16.2}端口定义}{74}{subsection.16.2}% 
+\contentsline {subsection}{\numberline {16.3}宏定义}{75}{subsection.16.3}% 
+\contentsline {subsection}{\numberline {16.4}功能}{75}{subsection.16.4}% 
+\contentsline {section}{\numberline {17}暂停控制模块}{75}{section.17}% 
+\contentsline {subsection}{\numberline {17.1}原理}{75}{subsection.17.1}% 
+\contentsline {subsection}{\numberline {17.2}端口定义}{75}{subsection.17.2}% 
+\contentsline {subsection}{\numberline {17.3}宏定义}{76}{subsection.17.3}% 
+\contentsline {subsection}{\numberline {17.4}功能}{76}{subsection.17.4}% 
+\contentsline {section}{\numberline {18}中断和异常控制模块}{76}{section.18}% 
+\contentsline {subsection}{\numberline {18.1}原理}{76}{subsection.18.1}% 
+\contentsline {subsection}{\numberline {18.2}端口定义}{76}{subsection.18.2}% 
+\contentsline {subsection}{\numberline {18.3}宏定义}{77}{subsection.18.3}% 
+\contentsline {subsection}{\numberline {18.4}功能}{77}{subsection.18.4}% 
+\contentsline {section}{\numberline {19}CPU}{78}{section.19}% 
+\contentsline {subsection}{\numberline {19.1}原理}{78}{subsection.19.1}% 
+\contentsline {subsection}{\numberline {19.2}端口定义}{78}{subsection.19.2}% 
+\contentsline {subsection}{\numberline {19.3}接线}{78}{subsection.19.3}% 
+\contentsline {subsection}{\numberline {19.4}功能}{78}{subsection.19.4}% 
+\contentsline {section}{\numberline {20}计时器}{79}{section.20}% 
+\contentsline {subsection}{\numberline {20.1}原理}{79}{subsection.20.1}% 
+\contentsline {subsection}{\numberline {20.2}端口定义}{79}{subsection.20.2}% 
+\contentsline {subsection}{\numberline {20.3}宏定义}{79}{subsection.20.3}% 
+\contentsline {subsection}{\numberline {20.4}功能}{79}{subsection.20.4}% 
+\contentsline {subsection}{\numberline {20.5}注意事项}{80}{subsection.20.5}% 
+\contentsline {section}{\numberline {21}按钮模块}{81}{section.21}% 
 \contentsline {subsection}{\numberline {21.1}原理}{81}{subsection.21.1}% 
 \contentsline {subsection}{\numberline {21.2}端口定义}{81}{subsection.21.2}% 
-\contentsline {subsection}{\numberline {21.3}宏定义}{82}{subsection.21.3}% 
+\contentsline {subsection}{\numberline {21.3}宏定义}{81}{subsection.21.3}% 
 \contentsline {subsection}{\numberline {21.4}功能}{82}{subsection.21.4}% 
-\contentsline {subsection}{\numberline {21.5}注意事项}{83}{subsection.21.5}% 
-\contentsline {section}{\numberline {22}顶层模块}{83}{section.22}% 
-\contentsline {subsection}{\numberline {22.1}原理}{83}{subsection.22.1}% 
-\contentsline {subsection}{\numberline {22.2}端口定义}{83}{subsection.22.2}% 
-\contentsline {subsection}{\numberline {22.3}接线}{84}{subsection.22.3}% 
-\contentsline {subsection}{\numberline {22.4}功能}{85}{subsection.22.4}% 
-\contentsline {section}{\numberline {23}思考题}{85}{section.23}% 
-\contentsline {subsection}{\numberline {23.1}欢迎来到玄学领域}{85}{subsection.23.1}% 
-\contentsline {subsection}{\numberline {23.2}沟通外部设备与计时器}{85}{subsection.23.2}% 
-\contentsline {subsection}{\numberline {23.3}异常与中断}{85}{subsection.23.3}% 
-\contentsline {section}{\numberline {24}测试}{86}{section.24}% 
-\contentsline {section}{\numberline {25}技巧}{106}{section.25}% 
-\contentsline {subsection}{\numberline {25.1}慌了怎么办}{106}{subsection.25.1}% 
-\contentsline {subsection}{\numberline {25.2}如何加新指令}{106}{subsection.25.2}% 
-\contentsline {subsection}{\numberline {25.3}如何有效调试}{109}{subsection.25.3}% 
-\contentsline {subsection}{\numberline {25.4}如何改数据通路}{111}{subsection.25.4}% 
-\contentsline {subsection}{\numberline {25.5}如何比较方便地改设计}{112}{subsection.25.5}% 
+\contentsline {section}{\numberline {22}LED 控制模块}{82}{section.22}% 
+\contentsline {subsection}{\numberline {22.1}原理}{82}{subsection.22.1}% 
+\contentsline {subsection}{\numberline {22.2}端口定义}{82}{subsection.22.2}% 
+\contentsline {subsection}{\numberline {22.3}宏定义}{82}{subsection.22.3}% 
+\contentsline {subsection}{\numberline {22.4}功能}{83}{subsection.22.4}% 
+\contentsline {section}{\numberline {23}七段数码管控制}{83}{section.23}% 
+\contentsline {subsection}{\numberline {23.1}原理}{83}{subsection.23.1}% 
+\contentsline {subsection}{\numberline {23.2}端口定义}{84}{subsection.23.2}% 
+\contentsline {subsection}{\numberline {23.3}宏定义}{84}{subsection.23.3}% 
+\contentsline {subsection}{\numberline {23.4}功能}{84}{subsection.23.4}% 
+\contentsline {subsection}{\numberline {23.5}注意事项}{85}{subsection.23.5}% 
+\contentsline {section}{\numberline {24}开关模块}{85}{section.24}% 
+\contentsline {subsection}{\numberline {24.1}原理}{85}{subsection.24.1}% 
+\contentsline {subsection}{\numberline {24.2}端口定义}{86}{subsection.24.2}% 
+\contentsline {section}{\numberline {25}宏定义}{86}{section.25}% 
+\contentsline {subsection}{\numberline {25.1}功能}{86}{subsection.25.1}% 
+\contentsline {subsection}{\numberline {25.2}注意事项}{86}{subsection.25.2}% 
+\contentsline {section}{\numberline {26}UART 模块}{87}{section.26}% 
+\contentsline {subsection}{\numberline {26.1}原理}{87}{subsection.26.1}% 
+\contentsline {subsection}{\numberline {26.2}端口定义}{87}{subsection.26.2}% 
+\contentsline {subsection}{\numberline {26.3}功能}{87}{subsection.26.3}% 
+\contentsline {section}{\numberline {27}时钟分频器模块}{88}{section.27}% 
+\contentsline {subsection}{\numberline {27.1}原理}{88}{subsection.27.1}% 
+\contentsline {subsection}{\numberline {27.2}端口定义}{88}{subsection.27.2}% 
+\contentsline {subsection}{\numberline {27.3}功能}{88}{subsection.27.3}% 
+\contentsline {section}{\numberline {28}顶层模块}{89}{section.28}% 
+\contentsline {subsection}{\numberline {28.1}原理}{89}{subsection.28.1}% 
+\contentsline {subsection}{\numberline {28.2}端口定义}{89}{subsection.28.2}% 
+\contentsline {subsection}{\numberline {28.3}接线}{89}{subsection.28.3}% 
+\contentsline {subsection}{\numberline {28.4}功能}{90}{subsection.28.4}% 
+\contentsline {section}{\numberline {29}思考题}{91}{section.29}% 
+\contentsline {subsection}{\numberline {29.1}欢迎来到 P8}{91}{subsection.29.1}% 
+\contentsline {subsection}{\numberline {29.2}联结 ISE 工程与 FPGA}{91}{subsection.29.2}% 
+\contentsline {subsection}{\numberline {29.3}串口通信}{92}{subsection.29.3}% 
+\contentsline {subsection}{\numberline {29.4}挑战：MMU 与 TLB（选做）}{92}{subsection.29.4}% 
+\contentsline {section}{\numberline {30}测试}{92}{section.30}% 
+\contentsline {section}{\numberline {31}技巧}{112}{section.31}% 
+\contentsline {subsection}{\numberline {31.1}慌了怎么办}{112}{subsection.31.1}% 
+\contentsline {subsection}{\numberline {31.2}如何加新指令}{112}{subsection.31.2}% 
+\contentsline {subsection}{\numberline {31.3}如何有效调试}{115}{subsection.31.3}% 
+\contentsline {subsection}{\numberline {31.4}如何改数据通路}{116}{subsection.31.4}% 
+\contentsline {subsection}{\numberline {31.5}如何比较方便地改设计}{118}{subsection.31.5}% 
