@@ -1,5 +1,7 @@
 `include "pipelined3.h"
 
+`include "dm.h"
+
 module cpu(
 	input clk, 
 	input clk_2x, 
@@ -12,7 +14,11 @@ module cpu(
 	output [2:0] dm_mode, 
 	output [31:0] cpu_write_data, 
 	output [31:0] test_addr,
-	output bridge_stop
+	output bridge_stop, 
+
+	output [31:0] test_m_addr, 
+	output test_m_we, 
+	output [31:0] test_m_wdata
 );
 
 /* Wire definitions */
@@ -449,8 +455,22 @@ dm dm(
 	.mode(cw_m_dm_mode), 
 	.stop(cw_m_dm_stop), 
 	.read_result(m_dm_read_result_orig), 
-	.valid(m_dm_valid)
+	.valid(m_dm_valid), 
+
+	.test_m_addr(test_m_addr), 
+	.test_m_we(test_m_we), 
+	.test_m_wdata(test_m_wdata)
 );
+
+/* NOTE: For automatic testing. Not for synthesis. */
+always @(negedge clk) begin
+	/* NOTE: Wait for the bram to fully update and make it update in sync
+	 * with register updates. */
+	if (test_m_we == 1'b1) begin
+		#13;
+		$display(`DM_OUTPUT_FORMAT, $time, m_pc_curr_pc, test_m_addr, test_m_wdata);
+	end
+end
 
 /* for bridge */
 
