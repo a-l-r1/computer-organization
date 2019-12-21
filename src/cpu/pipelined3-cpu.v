@@ -467,6 +467,7 @@ dm dm(
  * with register updates. Let the data stabilize and display them on the
  * appropriate occasion. */
 
+/*
 integer saved_m_pc_curr_pc;
 integer saved_test_m_addr;
 integer saved_test_m_wdata;
@@ -482,6 +483,7 @@ always @(negedge clk) begin
 		$display(`DM_OUTPUT_FORMAT, $time, saved_m_pc_curr_pc, saved_test_m_addr, saved_test_m_wdata);
 	end
 end
+*/
 
 /* for bridge */
 
