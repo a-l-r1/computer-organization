@@ -1,13 +1,19 @@
 .text
+nop
+nop
+nop
+nop
+nop
+
 ori $s0, $0, 0x7f2c # switches base address
 ori $s1, $0, 0x7f38 # nixie base address
 ori $s2, $0, 0x7f40 # buttons base address
 
 loop:
 
-	lw $s3, 0($t0) # switch group 1
-	lw $s4, 4($t0) # switch group 2
-	lw $s5, 0($t2) # buttons
+	lw $s3, 0($s0) # switch group 1
+	lw $s4, 4($s0) # switch group 2
+	lw $s5, 0($s2) # buttons
 
 	ori $t0, $0, 0x0001
 	beq $s5, $t0, case_0
@@ -38,7 +44,7 @@ loop:
 	nop
 
 	ori $t0, $0, 0x0080
-	beq $s5, $0, case_7
+	beq $s5, $t0, case_7
 	nop
 
 beq $0, $0, loop

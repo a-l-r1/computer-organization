@@ -11,6 +11,7 @@ li $s2, 0x00000020 # transmission ready bitmask
 li $s3, 0x00007f10 # uart base
 li $s4, 0x00007f34 # led base
 li $s5, 0x00007f38 # nixie base
+li $s6, 0x00001ffc # bitmask for modular operations
 
 # enable uart irqs
 li $t0, 0x0000fc01
@@ -34,6 +35,7 @@ loop_begin:
 	# dequeue
 	lw $t0, 0($s1)
 	addiu $s1, $s1, 4
+	and $s1, $s1, $s6
 
 	# send
 	sw $t0, 0($s3)
@@ -61,6 +63,7 @@ lw $t1, 0($s3)
 # enqueue
 sw $t1, 0($s0)
 addiu $s0, $s0, 4
+and $s0, $s0, $s6
 
 eret
 

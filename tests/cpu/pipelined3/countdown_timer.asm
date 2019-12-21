@@ -1,4 +1,10 @@
 .text
+nop
+nop
+nop
+nop
+nop
+
 li $s0, 0x00007f00 # timer base
 li $s1, 0x00007f2c # switches base
 li $s2, 0x00007f38 # nixie base
@@ -15,11 +21,11 @@ nop
 nop
 
 # load switches
-lw $s3, 0($s1)
+lw $s3, 4($s1)
 
 # save 30M to preset
 li $t0, 30000000
-sw $t0, 0($s0)
+sw $t0, 4($s0)
 
 # save to nixie
 sw $s3, 0($s2)
@@ -31,7 +37,7 @@ sw $t0, 0($s0)
 loop:
 
 	# check if switch value has changed
-	lw $t0, 0($s1)
+	lw $t0, 4($s1)
 	bne $t0, $s3, reload
 	nop
 
