@@ -1,0 +1,804 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="/home/a-l-r/co/src/project/pipelined3_p8_at_tb_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="pipelined3_p8_at_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="10" />
+   <wvobject fp_name="group239" type="group">
+      <obj_property name="label">Clock</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/clk_2x" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk_2x</obj_property>
+         <obj_property name="ObjectShortName">clk_2x</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group38" type="group">
+      <obj_property name="label">Control Internal</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/have2handle" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">have2handle</obj_property>
+         <obj_property name="ObjectShortName">have2handle</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#ff5500</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/d_instr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">d_instr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">d_instr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#aaaaff</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/e_instr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">e_instr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">e_instr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#aaaaff</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/m_instr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">m_instr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">m_instr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#aaaaff</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/w_instr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">w_instr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">w_instr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#aaaaff</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/rf_read_result2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">rf_read_result2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">rf_read_result2[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/e_md_busy" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">e_md_busy</obj_property>
+         <obj_property name="ObjectShortName">e_md_busy</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/m_dm_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">m_dm_addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">m_dm_addr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/f_im_valid" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">f_im_valid</obj_property>
+         <obj_property name="ObjectShortName">f_im_valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/e_alu_sig_overflow" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">e_alu_sig_overflow</obj_property>
+         <obj_property name="ObjectShortName">e_alu_sig_overflow</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/m_dm_valid" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">m_dm_valid</obj_property>
+         <obj_property name="ObjectShortName">m_dm_valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/m_bridge_valid" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">m_bridge_valid</obj_property>
+         <obj_property name="ObjectShortName">m_bridge_valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/d_pc_curr_pc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">d_pc_curr_pc[31:0]</obj_property>
+         <obj_property name="ObjectShortName">d_pc_curr_pc[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#ffaa00</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/e_pc_curr_pc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">e_pc_curr_pc[31:0]</obj_property>
+         <obj_property name="ObjectShortName">e_pc_curr_pc[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#ffaa00</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/m_pc_curr_pc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">m_pc_curr_pc[31:0]</obj_property>
+         <obj_property name="ObjectShortName">m_pc_curr_pc[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#ffaa00</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/cw_f_pc_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_f_pc_enable</obj_property>
+         <obj_property name="ObjectShortName">cw_f_pc_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/dkind" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dkind[9:0]</obj_property>
+         <obj_property name="ObjectShortName">dkind[9:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/ekind" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">ekind[9:0]</obj_property>
+         <obj_property name="ObjectShortName">ekind[9:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/mkind" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">mkind[9:0]</obj_property>
+         <obj_property name="ObjectShortName">mkind[9:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/wkind" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">wkind[9:0]</obj_property>
+         <obj_property name="ObjectShortName">wkind[9:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/ddptype" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">ddptype[4:0]</obj_property>
+         <obj_property name="ObjectShortName">ddptype[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/edptype" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">edptype[4:0]</obj_property>
+         <obj_property name="ObjectShortName">edptype[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/mdptype" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">mdptype[4:0]</obj_property>
+         <obj_property name="ObjectShortName">mdptype[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/wdptype" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">wdptype[4:0]</obj_property>
+         <obj_property name="ObjectShortName">wdptype[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/d_reg1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">d_reg1[4:0]</obj_property>
+         <obj_property name="ObjectShortName">d_reg1[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/d_reg2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">d_reg2[4:0]</obj_property>
+         <obj_property name="ObjectShortName">d_reg2[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/d_regw" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">d_regw[4:0]</obj_property>
+         <obj_property name="ObjectShortName">d_regw[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/e_reg1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">e_reg1[4:0]</obj_property>
+         <obj_property name="ObjectShortName">e_reg1[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/e_reg2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">e_reg2[4:0]</obj_property>
+         <obj_property name="ObjectShortName">e_reg2[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/e_regw" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">e_regw[4:0]</obj_property>
+         <obj_property name="ObjectShortName">e_regw[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/m_reg1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">m_reg1[4:0]</obj_property>
+         <obj_property name="ObjectShortName">m_reg1[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/m_reg2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">m_reg2[4:0]</obj_property>
+         <obj_property name="ObjectShortName">m_reg2[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/m_regw" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">m_regw[4:0]</obj_property>
+         <obj_property name="ObjectShortName">m_regw[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/w_reg1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">w_reg1[4:0]</obj_property>
+         <obj_property name="ObjectShortName">w_reg1[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/w_reg2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">w_reg2[4:0]</obj_property>
+         <obj_property name="ObjectShortName">w_reg2[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/w_regw" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">w_regw[4:0]</obj_property>
+         <obj_property name="ObjectShortName">w_regw[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/stall" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">stall</obj_property>
+         <obj_property name="ObjectShortName">stall</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/cw_f_npc_jump_mode_orig" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_f_npc_jump_mode_orig[3:0]</obj_property>
+         <obj_property name="ObjectShortName">cw_f_npc_jump_mode_orig[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/d_in_bds" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">d_in_bds</obj_property>
+         <obj_property name="ObjectShortName">d_in_bds</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/e_in_bds" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">e_in_bds</obj_property>
+         <obj_property name="ObjectShortName">e_in_bds</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/m_in_bds" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">m_in_bds</obj_property>
+         <obj_property name="ObjectShortName">m_in_bds</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/d_exc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">d_exc[4:0]</obj_property>
+         <obj_property name="ObjectShortName">d_exc[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/e_exc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">e_exc[4:0]</obj_property>
+         <obj_property name="ObjectShortName">e_exc[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/m_exc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">m_exc[4:0]</obj_property>
+         <obj_property name="ObjectShortName">m_exc[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/m_exc_final" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">m_exc_final[4:0]</obj_property>
+         <obj_property name="ObjectShortName">m_exc_final[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/cw_f_pc_enable_orig" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_f_pc_enable_orig</obj_property>
+         <obj_property name="ObjectShortName">cw_f_pc_enable_orig</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/cw_e_pff_rst_orig" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_e_pff_rst_orig</obj_property>
+         <obj_property name="ObjectShortName">cw_e_pff_rst_orig</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/control/cw_m_cp0_write_enable_orig" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_m_cp0_write_enable_orig</obj_property>
+         <obj_property name="ObjectShortName">cw_m_cp0_write_enable_orig</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group155" type="group">
+      <obj_property name="label">F</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/f_im_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">f_im_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">f_im_result[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/f_im_valid" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">f_im_valid</obj_property>
+         <obj_property name="ObjectShortName">f_im_valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/f_npc_next_pc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">f_npc_next_pc[31:0]</obj_property>
+         <obj_property name="ObjectShortName">f_npc_next_pc[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/f_pc_curr_pc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">f_pc_curr_pc[31:0]</obj_property>
+         <obj_property name="ObjectShortName">f_pc_curr_pc[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_f_npc_jump_mode" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_f_npc_jump_mode[3:0]</obj_property>
+         <obj_property name="ObjectShortName">cw_f_npc_jump_mode[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_f_pc_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_f_pc_enable</obj_property>
+         <obj_property name="ObjectShortName">cw_f_pc_enable</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group156" type="group">
+      <obj_property name="label">D</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/d_cmp_cmp" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">d_cmp_cmp[1:0]</obj_property>
+         <obj_property name="ObjectShortName">d_cmp_cmp[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/d_cmp_sig_cmp" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">d_cmp_sig_cmp[1:0]</obj_property>
+         <obj_property name="ObjectShortName">d_cmp_sig_cmp[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/d_ext_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">d_ext_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">d_ext_result[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/d_im_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">d_im_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">d_im_result[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/d_pc_curr_pc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">d_pc_curr_pc[31:0]</obj_property>
+         <obj_property name="ObjectShortName">d_pc_curr_pc[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/d_rf_read_result1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">d_rf_read_result1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">d_rf_read_result1[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/d_rf_read_result1_orig" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">d_rf_read_result1_orig[31:0]</obj_property>
+         <obj_property name="ObjectShortName">d_rf_read_result1_orig[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/d_rf_read_result2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">d_rf_read_result2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">d_rf_read_result2[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/d_rf_read_result2_orig" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">d_rf_read_result2_orig[31:0]</obj_property>
+         <obj_property name="ObjectShortName">d_rf_read_result2_orig[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_d_ext_mode" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_d_ext_mode[2:0]</obj_property>
+         <obj_property name="ObjectShortName">cw_d_ext_mode[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_d_pff_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_d_pff_enable</obj_property>
+         <obj_property name="ObjectShortName">cw_d_pff_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_d_pff_rst" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_d_pff_rst</obj_property>
+         <obj_property name="ObjectShortName">cw_d_pff_rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_d_rf_read_addr1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_d_rf_read_addr1[4:0]</obj_property>
+         <obj_property name="ObjectShortName">cw_d_rf_read_addr1[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_d_rf_read_addr2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_d_rf_read_addr2[4:0]</obj_property>
+         <obj_property name="ObjectShortName">cw_d_rf_read_addr2[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_fm_d1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_fm_d1[3:0]</obj_property>
+         <obj_property name="ObjectShortName">cw_fm_d1[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_fm_d2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_fm_d2[3:0]</obj_property>
+         <obj_property name="ObjectShortName">cw_fm_d2[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_fm_epc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_fm_epc[3:0]</obj_property>
+         <obj_property name="ObjectShortName">cw_fm_epc[3:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group157" type="group">
+      <obj_property name="label">E</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/e_alu_num2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">e_alu_num2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">e_alu_num2[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/e_alu_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">e_alu_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">e_alu_result[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/e_alu_sig_overflow" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">e_alu_sig_overflow</obj_property>
+         <obj_property name="ObjectShortName">e_alu_sig_overflow</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/e_ext_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">e_ext_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">e_ext_result[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/e_im_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">e_im_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">e_im_result[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/e_pc_curr_pc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">e_pc_curr_pc[31:0]</obj_property>
+         <obj_property name="ObjectShortName">e_pc_curr_pc[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/e_retaddr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">e_retaddr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">e_retaddr[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/e_rf_read_result1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">e_rf_read_result1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">e_rf_read_result1[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/e_rf_read_result1_orig" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">e_rf_read_result1_orig[31:0]</obj_property>
+         <obj_property name="ObjectShortName">e_rf_read_result1_orig[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/e_rf_read_result2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">e_rf_read_result2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">e_rf_read_result2[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/e_rf_read_result2_orig" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">e_rf_read_result2_orig[31:0]</obj_property>
+         <obj_property name="ObjectShortName">e_rf_read_result2_orig[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_fm_e1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_fm_e1[3:0]</obj_property>
+         <obj_property name="ObjectShortName">cw_fm_e1[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_fm_e2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_fm_e2[3:0]</obj_property>
+         <obj_property name="ObjectShortName">cw_fm_e2[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_e_alu_op" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_e_alu_op[4:0]</obj_property>
+         <obj_property name="ObjectShortName">cw_e_alu_op[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_e_m_alusrc" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_e_m_alusrc</obj_property>
+         <obj_property name="ObjectShortName">cw_e_m_alusrc</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_e_pff_rst" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_e_pff_rst</obj_property>
+         <obj_property name="ObjectShortName">cw_e_pff_rst</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group158" type="group">
+      <obj_property name="label">M</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/hwirq" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">hwirq[7:2]</obj_property>
+         <obj_property name="ObjectShortName">hwirq[7:2]</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#ff5500</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/m_alu_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">m_alu_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">m_alu_result[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/m_bridge_valid" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">m_bridge_valid</obj_property>
+         <obj_property name="ObjectShortName">m_bridge_valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/m_cp0_epc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">m_cp0_epc[31:0]</obj_property>
+         <obj_property name="ObjectShortName">m_cp0_epc[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/m_cp0_epc_orig" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">m_cp0_epc_orig[31:0]</obj_property>
+         <obj_property name="ObjectShortName">m_cp0_epc_orig[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/m_cp0_have2handle" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">m_cp0_have2handle</obj_property>
+         <obj_property name="ObjectShortName">m_cp0_have2handle</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/m_cp0_read_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">m_cp0_read_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">m_cp0_read_result[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/m_dm_read_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">m_dm_read_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">m_dm_read_result[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/m_dm_read_result_orig" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">m_dm_read_result_orig[31:0]</obj_property>
+         <obj_property name="ObjectShortName">m_dm_read_result_orig[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/m_dm_valid" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">m_dm_valid</obj_property>
+         <obj_property name="ObjectShortName">m_dm_valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/m_im_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">m_im_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">m_im_result[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/m_pc_curr_pc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">m_pc_curr_pc[31:0]</obj_property>
+         <obj_property name="ObjectShortName">m_pc_curr_pc[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/m_retaddr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">m_retaddr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">m_retaddr[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/m_rf_read_result2_orig" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">m_rf_read_result2_orig[31:0]</obj_property>
+         <obj_property name="ObjectShortName">m_rf_read_result2_orig[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/m_rf_read_result2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">m_rf_read_result2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">m_rf_read_result2[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#00aaff</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_m_cp0_curr_pc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_m_cp0_curr_pc[31:0]</obj_property>
+         <obj_property name="ObjectShortName">cw_m_cp0_curr_pc[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_m_cp0_exc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_m_cp0_exc[4:0]</obj_property>
+         <obj_property name="ObjectShortName">cw_m_cp0_exc[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_m_cp0_exit_isr" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_m_cp0_exit_isr</obj_property>
+         <obj_property name="ObjectShortName">cw_m_cp0_exit_isr</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_m_cp0_in_bds" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_m_cp0_in_bds</obj_property>
+         <obj_property name="ObjectShortName">cw_m_cp0_in_bds</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_m_cp0_write_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_m_cp0_write_enable</obj_property>
+         <obj_property name="ObjectShortName">cw_m_cp0_write_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_m_dm_mode" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_m_dm_mode[2:0]</obj_property>
+         <obj_property name="ObjectShortName">cw_m_dm_mode[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_m_dm_stop" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_m_dm_stop</obj_property>
+         <obj_property name="ObjectShortName">cw_m_dm_stop</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_m_dm_write_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_m_dm_write_enable</obj_property>
+         <obj_property name="ObjectShortName">cw_m_dm_write_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_m_m_bridge" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_m_m_bridge</obj_property>
+         <obj_property name="ObjectShortName">cw_m_m_bridge</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_m_pff_rst" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_m_pff_rst</obj_property>
+         <obj_property name="ObjectShortName">cw_m_pff_rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_fm_m" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_fm_m[3:0]</obj_property>
+         <obj_property name="ObjectShortName">cw_fm_m[3:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group159" type="group">
+      <obj_property name="label">W</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/w_alu_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">w_alu_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">w_alu_result[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/w_cp0_read_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">w_cp0_read_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">w_cp0_read_result[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/w_dm_read_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">w_dm_read_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">w_dm_read_result[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/w_im_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">w_im_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">w_im_result[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/w_pc_curr_pc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">w_pc_curr_pc[31:0]</obj_property>
+         <obj_property name="ObjectShortName">w_pc_curr_pc[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/w_retaddr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">w_retaddr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">w_retaddr[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/w_rf_write_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">w_rf_write_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">w_rf_write_data[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_w_m_regdata" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_w_m_regdata[2:0]</obj_property>
+         <obj_property name="ObjectShortName">cw_w_m_regdata[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_w_pff_rst" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_w_pff_rst</obj_property>
+         <obj_property name="ObjectShortName">cw_w_pff_rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_w_rf_write_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_w_rf_write_addr[4:0]</obj_property>
+         <obj_property name="ObjectShortName">cw_w_rf_write_addr[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/cw_w_rf_write_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cw_w_rf_write_enable</obj_property>
+         <obj_property name="ObjectShortName">cw_w_rf_write_enable</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group142" type="group">
+      <obj_property name="label">rf</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/rf/clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/rf/rst" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/rf/curr_pc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">curr_pc[31:0]</obj_property>
+         <obj_property name="ObjectShortName">curr_pc[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/rf/read_addr1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">read_addr1[4:0]</obj_property>
+         <obj_property name="ObjectShortName">read_addr1[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/rf/read_addr2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">read_addr2[4:0]</obj_property>
+         <obj_property name="ObjectShortName">read_addr2[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/rf/write_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">write_addr[4:0]</obj_property>
+         <obj_property name="ObjectShortName">write_addr[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/rf/write_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">write_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">write_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/rf/write_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">write_enable</obj_property>
+         <obj_property name="ObjectShortName">write_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/rf/read_result1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">read_result1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">read_result1[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/rf/read_result2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">read_result2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">read_result2[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/rf/registers" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">registers[31:1,31:0]</obj_property>
+         <obj_property name="ObjectShortName">registers[31:1,31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#00aaff</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/rf/i" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">i[31:0]</obj_property>
+         <obj_property name="ObjectShortName">i[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group121" type="group">
+      <obj_property name="label">dm</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/dm/clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/dm/rst" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/dm/curr_pc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">curr_pc[31:0]</obj_property>
+         <obj_property name="ObjectShortName">curr_pc[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/dm/read_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">read_addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">read_addr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/dm/write_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">write_addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">write_addr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/dm/write_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">write_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">write_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/dm/write_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">write_enable</obj_property>
+         <obj_property name="ObjectShortName">write_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/dm/mode" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">mode[2:0]</obj_property>
+         <obj_property name="ObjectShortName">mode[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/dm/stop" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">stop</obj_property>
+         <obj_property name="ObjectShortName">stop</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/dm/read_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">read_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">read_result[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/dm/valid" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">valid</obj_property>
+         <obj_property name="ObjectShortName">valid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/dm/test_m_we" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">test_m_we</obj_property>
+         <obj_property name="ObjectShortName">test_m_we</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#555500</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/dm/test_m_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">test_m_addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">test_m_addr[31:0]</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#555500</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/dm/test_m_wdata" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">test_m_wdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">test_m_wdata[31:0]</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#555500</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/dm/op_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">op_addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">op_addr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/dm/write_bitmask" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">write_bitmask[3:0]</obj_property>
+         <obj_property name="ObjectShortName">write_bitmask[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/dm/dm_ipcore_read_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dm_ipcore_read_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">dm_ipcore_read_result[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/uut/cpu/dm/dm_ipcore_write_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dm_ipcore_write_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">dm_ipcore_write_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group19" type="group">
+      <obj_property name="label">Top-level Signals</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/pipelined3_p8_at_tb/digital_tube2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">digital_tube2[7:0]</obj_property>
+         <obj_property name="ObjectShortName">digital_tube2[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/digital_tube1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">digital_tube1[7:0]</obj_property>
+         <obj_property name="ObjectShortName">digital_tube1[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/digital_tube0" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">digital_tube0[7:0]</obj_property>
+         <obj_property name="ObjectShortName">digital_tube0[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/digital_tube_sel1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">digital_tube_sel1[3:0]</obj_property>
+         <obj_property name="ObjectShortName">digital_tube_sel1[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/digital_tube_sel0" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">digital_tube_sel0[3:0]</obj_property>
+         <obj_property name="ObjectShortName">digital_tube_sel0[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/digital_tube_sel2" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">digital_tube_sel2</obj_property>
+         <obj_property name="ObjectShortName">digital_tube_sel2</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/led_light" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">led_light[31:0]</obj_property>
+         <obj_property name="ObjectShortName">led_light[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/reset" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">reset</obj_property>
+         <obj_property name="ObjectShortName">reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/dip_switch0" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dip_switch0[7:0]</obj_property>
+         <obj_property name="ObjectShortName">dip_switch0[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/dip_switch1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dip_switch1[7:0]</obj_property>
+         <obj_property name="ObjectShortName">dip_switch1[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/dip_switch2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dip_switch2[7:0]</obj_property>
+         <obj_property name="ObjectShortName">dip_switch2[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/dip_switch3" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dip_switch3[7:0]</obj_property>
+         <obj_property name="ObjectShortName">dip_switch3[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/dip_switch4" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dip_switch4[7:0]</obj_property>
+         <obj_property name="ObjectShortName">dip_switch4[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/dip_switch5" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dip_switch5[7:0]</obj_property>
+         <obj_property name="ObjectShortName">dip_switch5[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/dip_switch6" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dip_switch6[7:0]</obj_property>
+         <obj_property name="ObjectShortName">dip_switch6[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/dip_switch7" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">dip_switch7[7:0]</obj_property>
+         <obj_property name="ObjectShortName">dip_switch7[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_at_tb/user_key" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">user_key[7:0]</obj_property>
+         <obj_property name="ObjectShortName">user_key[7:0]</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

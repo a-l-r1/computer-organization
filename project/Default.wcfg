@@ -863,19 +863,25 @@
          <obj_property name="ElementShortName">valid</obj_property>
          <obj_property name="ObjectShortName">valid</obj_property>
       </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/dm/test_m_we" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">test_m_we</obj_property>
+         <obj_property name="ObjectShortName">test_m_we</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#00aa7f</obj_property>
+      </wvobject>
       <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/dm/test_m_addr" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">test_m_addr[31:0]</obj_property>
          <obj_property name="ObjectShortName">test_m_addr[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/dm/test_m_we" type="logic" db_ref_id="1">
-         <obj_property name="ElementShortName">test_m_we</obj_property>
-         <obj_property name="ObjectShortName">test_m_we</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#00aa7f</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/dm/test_m_wdata" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">test_m_wdata[31:0]</obj_property>
          <obj_property name="ObjectShortName">test_m_wdata[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#00aa7f</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/dm/op_addr" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">op_addr[31:0]</obj_property>
