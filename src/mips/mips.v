@@ -1,7 +1,7 @@
 module mips(
 	input clk_in, 
 	input sys_rstn, 
-	
+
 	input uart_rxd, 
 	output uart_txd, 
 
