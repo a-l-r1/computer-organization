@@ -5,6 +5,9 @@ module mips(
 	input uart_rxd, 
 	output uart_txd, 
 
+	input uart_rxd2, 
+	output uart_txd2, 
+
 	input [7:0] dip_switch0,
 	input [7:0] dip_switch1,
 	input [7:0] dip_switch2,
