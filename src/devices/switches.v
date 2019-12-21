@@ -28,8 +28,8 @@ always @(posedge clk) begin
 	if (rst == 1'b1) begin
 		stored <= 0;
 	end else begin
-		stored <= ~{dip_switch7, dip_switch6, dip_switch5, dip_switch4, 
-			dip_switch3, dip_switch2, dip_switch1, dip_switch0};
+		stored <= ~{dip_switch3, dip_switch2, dip_switch1, dip_switch0, 
+			dip_switch7, dip_switch6, dip_switch5, dip_switch4};
 	end
 end
 
