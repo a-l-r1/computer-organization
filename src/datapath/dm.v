@@ -11,7 +11,11 @@ module dm(
 	input [2:0] mode, 
 	input stop, 
 	output [31:0] read_result, 
-	output valid
+	output valid, 
+
+	output [31:0] test_m_addr, 
+	output test_m_we, 
+	output [31:0] test_m_wdata
 );
 
 /*
@@ -25,6 +29,7 @@ wire [31:0] op_addr;
 wire [31:0] new_word;
 wire [31:0] dm_ipcore_read_result;
 wire [3:0] write_bitmask;
+wire [31:0] dm_ipcore_write_data;
 
 integer i;
 
@@ -68,6 +73,17 @@ assign write_bitmask =
 	) : 
 	4'b0000;
 
+/* NOTE: The bram just applies the masks on bytes, preserving the
+ * corresponding locations between write_bitmask and dm_ipcore_write_data. So
+ * tweaks on bytes of write_bitmask are needed. */
+assign dm_ipcore_write_data = 
+	/* Remember the precedence! */
+	(valid == 1'b0 || write_enable == 1'b0 || stop == 1'b1) ? 32'b0 : 
+	(mode == `DM_W) ? write_data : 
+	(mode == `DM_H) ? {write_data[15:0], write_data[15:0]} : 
+	(mode == `DM_B) ? {write_data[7:0], write_data[7:0], write_data[7:0], write_data[7:0]} : 
+	32'b0;
+
 /*
 assign new_word = 
 	/ Remember the precedence! /
@@ -97,12 +113,17 @@ always @(posedge clk) begin
 end
 */
 
+assign test_m_addr = {op_addr[31:2], 2'b0};
+/* TODO: What to do if write_enable is stopped or invalid condition? */
+assign test_m_we = (write_enable == 1'b1 && valid == 1'b1 && stop == 1'b0);
+assign test_m_wdata = dm_ipcore_read_result;
+
 /* NOTE: Use doubled frequency clock and hardcoded address width. */
 dm_ipcore dm_ipcore(
 	.clka(clk), 
 	.wea(write_bitmask), 
 	.addra(op_addr[14:2]), 
-	.dina(write_data), 
+	.dina(dm_ipcore_write_data), 
 	.douta(dm_ipcore_read_result)
 );
 
