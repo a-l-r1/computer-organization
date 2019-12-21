@@ -467,7 +467,7 @@ always @(negedge clk) begin
 	/* NOTE: Wait for the bram to fully update and make it update in sync
 	 * with register updates. */
 	if (test_m_we == 1'b1) begin
-		#13;
+		#4;
 		$display(`DM_OUTPUT_FORMAT, $time, m_pc_curr_pc, test_m_addr, test_m_wdata);
 	end
 end
