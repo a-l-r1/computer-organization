@@ -27,8 +27,13 @@ reg [15:0] tube1, tube0;
 wire [3:0] data0, data1, data2;
 
 initial begin
-	ctr <= `NIXIE_CTR;
-	phase <= 4'b1000;
+	/* NOTE: Setting phase to 4'b1111 in order to forcibly set all nixie
+	 * tubes to 0. Otherwise only some of the tubes would be cleared.
+	 * Setting ctr to 0 so phase would be changed to a sane value after
+	 * reset as soon as possible, which is also a sane value to set when
+	 * resetting. */
+	ctr <= 0;
+	phase <= 4'b1111;
 	tube0 <= 0;
 	tube1 <= 0;
 	tube2 <= 0;
@@ -51,8 +56,9 @@ nixie_decoder decoder2(
 
 always @(posedge clk) begin
 	if (rst == 1'b1) begin
+		/* NOTE: See above. */
 		ctr <= 0;
-		phase <= 4'b1000;
+		phase <= 4'b1111;
 		tube0 <= 0;
 		tube1 <= 0;
 		tube2 <= 0;
