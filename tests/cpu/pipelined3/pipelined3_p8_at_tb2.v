@@ -84,7 +84,7 @@ module pipelined3_p8_at_tb2;
 		uart_rxd2 = 1;
 		
 		user_key = ~0;
-		#600
+		#1000
 		sys_rstn = 1;
 
 		#1000
@@ -125,7 +125,9 @@ module pipelined3_p8_at_tb2;
 		user_key = 8'b11111111;
 		
 	end
-	always #1 clk_in = ~clk_in;
+	
+	/* 25MHz raw clock */
+	always #20 clk_in = ~clk_in;
       
 endmodule
 
