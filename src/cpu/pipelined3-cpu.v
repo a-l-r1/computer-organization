@@ -461,7 +461,6 @@ dm dm(
 	.test_m_we(test_m_we), 
 	.test_m_wdata(test_m_wdata)
 );
-
 /* NOTE: For automatic testing. Not for synthesis. */
 /* NOTE: Wait for the bram to fully update and make it update in sync
  * with register updates. Let the data stabilize and display them on the
