@@ -1,0 +1,2 @@
+verilog isim_temp "netgen/translate/mips_translate.v"
+verilog isim_temp "pipelined3_p8_tb.v"

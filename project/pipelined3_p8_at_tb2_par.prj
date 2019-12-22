@@ -1,0 +1,2 @@
+verilog work "netgen/par/mips_timesim.v"
+verilog work "../tests/cpu/pipelined3/pipelined3_p8_at_tb2.v"

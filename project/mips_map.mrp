@@ -10,40 +10,40 @@ Target Device  : xc6slx100
 Target Package : fgg676
 Target Speed   : -2
 Mapper Version : spartan6 -- $Revision: 1.55 $
-Mapped Date    : Sat Dec 21 14:56:21 2019
+Mapped Date    : Sun Dec 22 10:00:00 2019
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:    1
 Slice Logic Utilization:
-  Number of Slice Registers:                 2,044 out of 126,576    1%
-    Number used as Flip Flops:               2,043
+  Number of Slice Registers:                 2,047 out of 126,576    1%
+    Number used as Flip Flops:               2,046
     Number used as Latches:                      1
     Number used as Latch-thrus:                  0
     Number used as AND/OR logics:                0
-  Number of Slice LUTs:                      4,834 out of  63,288    7%
-    Number used as logic:                    4,809 out of  63,288    7%
-      Number using O6 output only:           3,692
+  Number of Slice LUTs:                      4,871 out of  63,288    7%
+    Number used as logic:                    4,854 out of  63,288    7%
+      Number using O6 output only:           3,735
       Number using O5 output only:             115
-      Number using O5 and O6:                1,002
+      Number using O5 and O6:                1,004
       Number used as ROM:                        0
     Number used as Memory:                       0 out of  15,616    0%
-    Number used exclusively as route-thrus:     25
-      Number with same-slice register load:     19
+    Number used exclusively as route-thrus:     17
+      Number with same-slice register load:     11
       Number with same-slice carry load:         6
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                 1,683 out of  15,822   10%
+  Number of occupied Slices:                 1,635 out of  15,822   10%
   Number of MUXCYs used:                       596 out of  31,644    1%
-  Number of LUT Flip Flop pairs used:        5,072
-    Number with an unused Flip Flop:         3,582 out of   5,072   70%
-    Number with an unused LUT:                 238 out of   5,072    4%
-    Number of fully used LUT-FF pairs:       1,252 out of   5,072   24%
+  Number of LUT Flip Flop pairs used:        5,060
+    Number with an unused Flip Flop:         3,558 out of   5,060   70%
+    Number with an unused LUT:                 189 out of   5,060    3%
+    Number of fully used LUT-FF pairs:       1,313 out of   5,060   25%
     Number of unique control sets:              32
     Number of slice register sites lost
-      to control set restrictions:             108 out of 126,576    1%
+      to control set restrictions:             105 out of 126,576    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -53,13 +53,16 @@ Slice Logic Distribution:
 
 IO Utilization:
   Number of bonded IOBs:                       141 out of     480   29%
-    Number of LOCed IOBs:                      141 out of     141  100%
 
 Specific Feature Utilization:
   Number of RAMB16BWERs:                        32 out of     268   11%
   Number of RAMB8BWERs:                          0 out of     536    0%
-  Number of BUFIO2/BUFIO2_2CLKs:                 0 out of      32    0%
-  Number of BUFIO2FB/BUFIO2FB_2CLKs:             0 out of      32    0%
+  Number of BUFIO2/BUFIO2_2CLKs:                 1 out of      32    3%
+    Number used as BUFIO2s:                      1
+    Number used as BUFIO2_2CLKs:                 0
+  Number of BUFIO2FB/BUFIO2FB_2CLKs:             1 out of      32    3%
+    Number used as BUFIO2FBs:                    1
+    Number used as BUFIO2FB_2CLKs:               0
   Number of BUFG/BUFGMUXs:                       3 out of      16   18%
     Number used as BUFGs:                        3
     Number used as BUFGMUX:                      0
@@ -80,11 +83,11 @@ Specific Feature Utilization:
   Number of STARTUPs:                            0 out of       1    0%
   Number of SUSPEND_SYNCs:                       0 out of       1    0%
 
-Average Fanout of Non-Clock Nets:                4.67
+Average Fanout of Non-Clock Nets:                4.68
 
-Peak Memory Usage:  943 MB
-Total REAL time to MAP completion:  1 mins 28 secs 
-Total CPU time to MAP completion:   1 mins 28 secs 
+Peak Memory Usage:  941 MB
+Total REAL time to MAP completion:  1 mins 25 secs 
+Total CPU time to MAP completion:   1 mins 24 secs 
 
 Table of Contents
 -----------------
@@ -113,6 +116,16 @@ WARNING:PhysDesignRules:372 - Gated clock. Clock net uart_shim/uart/ts is
 
 Section 3 - Informational
 -------------------------
+INFO:LIT:243 - Logical network uart_rxd has no load.
+INFO:LIT:395 - The above info message is repeated 4 more times for the following
+   (max. 5 shown):
+   uart_txd,
+   wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg_0,
+   wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_s
+   ync_fifo.gl0.wr/gwss.wsts/ram_full_i,
+   wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_s
+   ync_fifo.gl0.rd/grss.rsts/ram_empty_i
+   To see the details of these info messages, please use the -detail switch.
 INFO:MapLib:562 - No environment variables are currently set.
 INFO:LIT:244 - All of the single ended outputs in this design are using slew
    rate limited output drivers. The delay on speed critical single ended outputs
@@ -127,8 +140,9 @@ INFO:Pack:1650 - Map created a placed design.
 
 Section 4 - Removed Logic Summary
 ---------------------------------
+ 412 block(s) removed
    6 block(s) optimized away
-   2 signal(s) removed
+ 474 signal(s) removed
 
 Section 5 - Removed Logic
 -------------------------
@@ -143,8 +157,1700 @@ To quickly locate the original cause for the removal of a chain of logic, look
 above the place where that logic is listed in the trimming report, then locate
 the lines that are least indented (begin at the leftmost edge).
 
+The signal "wrapper/uart/tx_data<7>" is sourceless and has been removed.
+ Sourceless block
+"wrapper/uart/U_TX_UNIT/U_TRANS_REG/Mmux_t_reg[10]_PWR_9_o_mux_0_OUT<9>11" (ROM)
+removed.
+  The signal "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg[10]_PWR_9_o_mux_0_OUT<9>"
+is sourceless and has been removed.
+   Sourceless block "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg_9" (FF) removed.
+    The signal "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg_9" is sourceless and has
+been removed.
+     Sourceless block
+"wrapper/uart/U_TX_UNIT/U_TRANS_REG/Mmux_t_reg[10]_PWR_9_o_mux_0_OUT<8>11" (ROM)
+removed.
+      The signal "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg[10]_PWR_9_o_mux_0_OUT<8>"
+is sourceless and has been removed.
+       Sourceless block "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg_8" (FF) removed.
+        The signal "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg_8" is sourceless and has
+been removed.
+         Sourceless block
+"wrapper/uart/U_TX_UNIT/U_TRANS_REG/Mmux_t_reg[10]_PWR_9_o_mux_0_OUT<7>11" (ROM)
+removed.
+          The signal "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg[10]_PWR_9_o_mux_0_OUT<7>"
+is sourceless and has been removed.
+           Sourceless block "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg_7" (FF) removed.
+            The signal "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg_7" is sourceless and has
+been removed.
+             Sourceless block
+"wrapper/uart/U_TX_UNIT/U_TRANS_REG/Mmux_t_reg[10]_PWR_9_o_mux_0_OUT<6>11" (ROM)
+removed.
+              The signal "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg[10]_PWR_9_o_mux_0_OUT<6>"
+is sourceless and has been removed.
+               Sourceless block "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg_6" (FF) removed.
+                The signal "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg_6" is sourceless and has
+been removed.
+                 Sourceless block
+"wrapper/uart/U_TX_UNIT/U_TRANS_REG/Mmux_t_reg[10]_PWR_9_o_mux_0_OUT<5>11" (ROM)
+removed.
+                  The signal "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg[10]_PWR_9_o_mux_0_OUT<5>"
+is sourceless and has been removed.
+                   Sourceless block "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg_5" (FF) removed.
+                    The signal "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg_5" is sourceless and has
+been removed.
+                     Sourceless block
+"wrapper/uart/U_TX_UNIT/U_TRANS_REG/Mmux_t_reg[10]_PWR_9_o_mux_0_OUT<4>11" (ROM)
+removed.
+                      The signal "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg[10]_PWR_9_o_mux_0_OUT<4>"
+is sourceless and has been removed.
+                       Sourceless block "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg_4" (FF) removed.
+                        The signal "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg_4" is sourceless and has
+been removed.
+                         Sourceless block
+"wrapper/uart/U_TX_UNIT/U_TRANS_REG/Mmux_t_reg[10]_PWR_9_o_mux_0_OUT<3>11" (ROM)
+removed.
+                          The signal "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg[10]_PWR_9_o_mux_0_OUT<3>"
+is sourceless and has been removed.
+                           Sourceless block "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg_3" (FF) removed.
+                            The signal "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg_3" is sourceless and has
+been removed.
+                             Sourceless block
+"wrapper/uart/U_TX_UNIT/U_TRANS_REG/Mmux_t_reg[10]_PWR_9_o_mux_0_OUT<2>11" (ROM)
+removed.
+                              The signal "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg[10]_PWR_9_o_mux_0_OUT<2>"
+is sourceless and has been removed.
+                               Sourceless block "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg_2" (FF) removed.
+                                The signal "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg_2" is sourceless and has
+been removed.
+                                 Sourceless block
+"wrapper/uart/U_TX_UNIT/U_TRANS_REG/Mmux_t_reg[10]_PWR_9_o_mux_0_OUT<1>11" (ROM)
+removed.
+                                  The signal "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg[10]_PWR_9_o_mux_0_OUT<1>"
+is sourceless and has been removed.
+                                   Sourceless block "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg_1" (FF) removed.
+                                    The signal "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg_1" is sourceless and has
+been removed.
+                                     Sourceless block
+"wrapper/uart/U_TX_UNIT/U_TRANS_REG/Mmux_t_reg[10]_PWR_9_o_mux_0_OUT<0>11" (ROM)
+removed.
+                                      The signal "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg[10]_PWR_9_o_mux_0_OUT<0>"
+is sourceless and has been removed.
+                                       Sourceless block "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg_0" (FF) removed.
+                                        The signal "wrapper/uart/U_TX_UNIT/U_TRANS_REG/t_reg_0" is sourceless and has
+been removed.
+The signal "wrapper/uart/tx_data<6>" is sourceless and has been removed.
+The signal "wrapper/uart/tx_data<5>" is sourceless and has been removed.
+The signal "wrapper/uart/tx_data<4>" is sourceless and has been removed.
+The signal "wrapper/uart/tx_data<3>" is sourceless and has been removed.
+The signal "wrapper/uart/tx_data<2>" is sourceless and has been removed.
+The signal "wrapper/uart/tx_data<1>" is sourceless and has been removed.
+The signal "wrapper/uart/tx_data<0>" is sourceless and has been removed.
+The signal "wrapper/STB_I" is sourceless and has been removed.
+ Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_cy<9>" (MUX)
+removed.
+  The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_cy<9>" is sourceless and
+has been removed.
+   Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_xor<10>" (XOR)
+removed.
+    The signal "wrapper/uart/Result<10>" is sourceless and has been removed.
+     Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_eqn_101" (ROM)
+removed.
+      The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_eqn_10" is sourceless and
+has been removed.
+       Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/cnt_10" (FF) removed.
+        The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/cnt<10>" is sourceless and has been
+removed.
+         Sourceless block
+"wrapper/uart/U_DIVISOR/U_CNT_TX/GND_11_o_GND_11_o_equal_1_o<15>1" (ROM)
+removed.
+          The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/GND_11_o_GND_11_o_equal_1_o<15>1" is
+sourceless and has been removed.
+           Sourceless block
+"wrapper/uart/U_DIVISOR/U_CNT_TX/GND_11_o_GND_11_o_equal_6_o<15>1" (ROM)
+removed.
+            The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/GND_11_o_GND_11_o_equal_6_o" is
+sourceless and has been removed.
+             Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/q" (FF) removed.
+              The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/q" is sourceless and has been
+removed.
+               Sourceless block "wrapper/uart/U_TX_UNIT/U_CTRL_SHFT/shift1" (ROM) removed.
+                The signal "wrapper/uart/U_TX_UNIT/shift" is sourceless and has been removed.
+                 Sourceless block "wrapper/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_3" (FF) removed.
+                  The signal "wrapper/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx<3>" is sourceless and has
+been removed.
+                   Sourceless block "wrapper/uart/U_TX_UNIT/U_CTRL_SHFT/Mcount_cnt_tx_xor<3>11"
+(ROM) removed.
+                    The signal "wrapper/uart/U_TX_UNIT/U_CTRL_SHFT/Result<3>" is sourceless and has
+been removed.
+                   Sourceless block "wrapper/uart/U_TX_UNIT/U_CTRL_SHFT/fsm_rstpot" (ROM) removed.
+                    The signal "wrapper/uart/U_TX_UNIT/U_CTRL_SHFT/fsm_rstpot" is sourceless and has
+been removed.
+                     Sourceless block "wrapper/uart/U_TX_UNIT/U_CTRL_SHFT/fsm" (FF) removed.
+                      The signal "wrapper/uart/U_TX_UNIT/U_CTRL_SHFT/fsm" is sourceless and has been
+removed.
+                       Sourceless block "wrapper/cnt_FSM_FFd4-In11" (ROM) removed.
+                        The signal "wrapper/cnt_FSM_FFd4-In1" is sourceless and has been removed.
+                         Sourceless block "wrapper/cnt_FSM_FFd1-In1" (ROM) removed.
+                          The signal "wrapper/cnt_FSM_FFd1-In" is sourceless and has been removed.
+                           Sourceless block "wrapper/cnt_FSM_FFd1" (FF) removed.
+                            The signal "wrapper/cnt_FSM_FFd1" is sourceless and has been removed.
+                             Sourceless block "wrapper/cnt_FSM_FFd4-In41" (ROM) removed.
+                              The signal "wrapper/cnt_FSM_FFd4-In4" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_0" (FF) removed.
+                                The signal "wrapper/add_data<0>" is sourceless and has been removed.
+                                 Sourceless block "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT22" (ROM)
+removed.
+                                  The signal "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT21" is sourceless
+and has been removed.
+                                   Sourceless block "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT23" (ROM)
+removed.
+                                    The signal "wrapper/cnt[3]_uart_Data[31]_wide_mux_48_OUT<0>" is sourceless and
+has been removed.
+                                     Sourceless block "wrapper/uart_Data_0" (FF) removed.
+                                      The signal "wrapper/uart_Data<0>" is sourceless and has been removed.
+                                       Sourceless block "wrapper/uart/tx_data_0" (FF) removed.
+                               Sourceless block "wrapper/add_data_1" (FF) removed.
+                                The signal "wrapper/add_data<1>" is sourceless and has been removed.
+                                 Sourceless block "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT42" (ROM)
+removed.
+                                  The signal "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT41" is sourceless
+and has been removed.
+                                   Sourceless block "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT43" (ROM)
+removed.
+                                    The signal "wrapper/cnt[3]_uart_Data[31]_wide_mux_48_OUT<1>" is sourceless and
+has been removed.
+                                     Sourceless block "wrapper/uart_Data_1" (FF) removed.
+                                      The signal "wrapper/uart_Data<1>" is sourceless and has been removed.
+                                       Sourceless block "wrapper/uart/tx_data_1" (FF) removed.
+                               Sourceless block "wrapper/add_data_2" (FF) removed.
+                                The signal "wrapper/add_data<2>" is sourceless and has been removed.
+                                 Sourceless block "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT62" (ROM)
+removed.
+                                  The signal "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT61" is sourceless
+and has been removed.
+                                   Sourceless block "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT63" (ROM)
+removed.
+                                    The signal "wrapper/cnt[3]_uart_Data[31]_wide_mux_48_OUT<2>" is sourceless and
+has been removed.
+                                     Sourceless block "wrapper/uart_Data_2" (FF) removed.
+                                      The signal "wrapper/uart_Data<2>" is sourceless and has been removed.
+                                       Sourceless block "wrapper/uart/tx_data_2" (FF) removed.
+                               Sourceless block "wrapper/add_data_3" (FF) removed.
+                                The signal "wrapper/add_data<3>" is sourceless and has been removed.
+                                 Sourceless block "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT82" (ROM)
+removed.
+                                  The signal "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT81" is sourceless
+and has been removed.
+                                   Sourceless block "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT83" (ROM)
+removed.
+                                    The signal "wrapper/cnt[3]_uart_Data[31]_wide_mux_48_OUT<3>" is sourceless and
+has been removed.
+                                     Sourceless block "wrapper/uart_Data_3" (FF) removed.
+                                      The signal "wrapper/uart_Data<3>" is sourceless and has been removed.
+                                       Sourceless block "wrapper/uart/tx_data_3" (FF) removed.
+                               Sourceless block "wrapper/add_data_4" (FF) removed.
+                                The signal "wrapper/add_data<4>" is sourceless and has been removed.
+                                 Sourceless block "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT102" (ROM)
+removed.
+                                  The signal "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT101" is sourceless
+and has been removed.
+                                   Sourceless block "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT103" (ROM)
+removed.
+                                    The signal "wrapper/cnt[3]_uart_Data[31]_wide_mux_48_OUT<4>" is sourceless and
+has been removed.
+                                     Sourceless block "wrapper/uart_Data_4" (FF) removed.
+                                      The signal "wrapper/uart_Data<4>" is sourceless and has been removed.
+                                       Sourceless block "wrapper/uart/tx_data_4" (FF) removed.
+                               Sourceless block "wrapper/add_data_5" (FF) removed.
+                                The signal "wrapper/add_data<5>" is sourceless and has been removed.
+                                 Sourceless block "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT122" (ROM)
+removed.
+                                  The signal "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT121" is sourceless
+and has been removed.
+                                   Sourceless block "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT123" (ROM)
+removed.
+                                    The signal "wrapper/cnt[3]_uart_Data[31]_wide_mux_48_OUT<5>" is sourceless and
+has been removed.
+                                     Sourceless block "wrapper/uart_Data_5" (FF) removed.
+                                      The signal "wrapper/uart_Data<5>" is sourceless and has been removed.
+                                       Sourceless block "wrapper/uart/tx_data_5" (FF) removed.
+                               Sourceless block "wrapper/add_data_6" (FF) removed.
+                                The signal "wrapper/add_data<6>" is sourceless and has been removed.
+                                 Sourceless block "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT142" (ROM)
+removed.
+                                  The signal "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT141" is sourceless
+and has been removed.
+                                   Sourceless block "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT143" (ROM)
+removed.
+                                    The signal "wrapper/cnt[3]_uart_Data[31]_wide_mux_48_OUT<6>" is sourceless and
+has been removed.
+                                     Sourceless block "wrapper/uart_Data_6" (FF) removed.
+                                      The signal "wrapper/uart_Data<6>" is sourceless and has been removed.
+                                       Sourceless block "wrapper/uart/tx_data_6" (FF) removed.
+                               Sourceless block "wrapper/add_data_7" (FF) removed.
+                                The signal "wrapper/add_data<7>" is sourceless and has been removed.
+                                 Sourceless block "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT162" (ROM)
+removed.
+                                  The signal "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT161" is sourceless
+and has been removed.
+                                   Sourceless block "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT163" (ROM)
+removed.
+                                    The signal "wrapper/cnt[3]_uart_Data[31]_wide_mux_48_OUT<7>" is sourceless and
+has been removed.
+                                     Sourceless block "wrapper/uart_Data_7" (FF) removed.
+                                      The signal "wrapper/uart_Data<7>" is sourceless and has been removed.
+                                       Sourceless block "wrapper/uart/tx_data_7" (FF) removed.
+                               Sourceless block "wrapper/add_data_8" (FF) removed.
+                                The signal "wrapper/add_data<8>" is sourceless and has been removed.
+                                 Sourceless block "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT21" (ROM)
+removed.
+                                  The signal "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT2" is sourceless
+and has been removed.
+                               Sourceless block "wrapper/add_data_9" (FF) removed.
+                                The signal "wrapper/add_data<9>" is sourceless and has been removed.
+                                 Sourceless block "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT41" (ROM)
+removed.
+                                  The signal "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT4" is sourceless
+and has been removed.
+                               Sourceless block "wrapper/add_data_10" (FF) removed.
+                                The signal "wrapper/add_data<10>" is sourceless and has been removed.
+                                 Sourceless block "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT61" (ROM)
+removed.
+                                  The signal "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT6" is sourceless
+and has been removed.
+                               Sourceless block "wrapper/add_data_11" (FF) removed.
+                                The signal "wrapper/add_data<11>" is sourceless and has been removed.
+                                 Sourceless block "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT81" (ROM)
+removed.
+                                  The signal "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT8" is sourceless
+and has been removed.
+                               Sourceless block "wrapper/add_data_12" (FF) removed.
+                                The signal "wrapper/add_data<12>" is sourceless and has been removed.
+                                 Sourceless block "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT101" (ROM)
+removed.
+                                  The signal "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT10" is sourceless
+and has been removed.
+                               Sourceless block "wrapper/add_data_13" (FF) removed.
+                                The signal "wrapper/add_data<13>" is sourceless and has been removed.
+                                 Sourceless block "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT121" (ROM)
+removed.
+                                  The signal "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT12" is sourceless
+and has been removed.
+                               Sourceless block "wrapper/add_data_14" (FF) removed.
+                                The signal "wrapper/add_data<14>" is sourceless and has been removed.
+                                 Sourceless block "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT141" (ROM)
+removed.
+                                  The signal "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT14" is sourceless
+and has been removed.
+                               Sourceless block "wrapper/add_data_15" (FF) removed.
+                                The signal "wrapper/add_data<15>" is sourceless and has been removed.
+                                 Sourceless block "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT161" (ROM)
+removed.
+                                  The signal "wrapper/Mmux_cnt[3]_uart_Data[31]_wide_mux_48_OUT16" is sourceless
+and has been removed.
+                               Sourceless block "wrapper/add_data_16" (FF) removed.
+                                The signal "wrapper/add_data<16>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_17" (FF) removed.
+                                The signal "wrapper/add_data<17>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_18" (FF) removed.
+                                The signal "wrapper/add_data<18>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_19" (FF) removed.
+                                The signal "wrapper/add_data<19>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_20" (FF) removed.
+                                The signal "wrapper/add_data<20>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_21" (FF) removed.
+                                The signal "wrapper/add_data<21>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_22" (FF) removed.
+                                The signal "wrapper/add_data<22>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_23" (FF) removed.
+                                The signal "wrapper/add_data<23>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_24" (FF) removed.
+                                The signal "wrapper/add_data<24>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_25" (FF) removed.
+                                The signal "wrapper/add_data<25>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_26" (FF) removed.
+                                The signal "wrapper/add_data<26>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_27" (FF) removed.
+                                The signal "wrapper/add_data<27>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_28" (FF) removed.
+                                The signal "wrapper/add_data<28>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_29" (FF) removed.
+                                The signal "wrapper/add_data<29>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_30" (FF) removed.
+                                The signal "wrapper/add_data<30>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_31" (FF) removed.
+                                The signal "wrapper/add_data<31>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_32" (FF) removed.
+                                The signal "wrapper/add_data<32>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_33" (FF) removed.
+                                The signal "wrapper/add_data<33>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_34" (FF) removed.
+                                The signal "wrapper/add_data<34>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_35" (FF) removed.
+                                The signal "wrapper/add_data<35>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_36" (FF) removed.
+                                The signal "wrapper/add_data<36>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_37" (FF) removed.
+                                The signal "wrapper/add_data<37>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_38" (FF) removed.
+                                The signal "wrapper/add_data<38>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_39" (FF) removed.
+                                The signal "wrapper/add_data<39>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_40" (FF) removed.
+                                The signal "wrapper/add_data<40>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_41" (FF) removed.
+                                The signal "wrapper/add_data<41>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_42" (FF) removed.
+                                The signal "wrapper/add_data<42>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_43" (FF) removed.
+                                The signal "wrapper/add_data<43>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_44" (FF) removed.
+                                The signal "wrapper/add_data<44>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_45" (FF) removed.
+                                The signal "wrapper/add_data<45>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_46" (FF) removed.
+                                The signal "wrapper/add_data<46>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_47" (FF) removed.
+                                The signal "wrapper/add_data<47>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_48" (FF) removed.
+                                The signal "wrapper/add_data<48>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_49" (FF) removed.
+                                The signal "wrapper/add_data<49>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_50" (FF) removed.
+                                The signal "wrapper/add_data<50>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_51" (FF) removed.
+                                The signal "wrapper/add_data<51>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_52" (FF) removed.
+                                The signal "wrapper/add_data<52>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_53" (FF) removed.
+                                The signal "wrapper/add_data<53>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_54" (FF) removed.
+                                The signal "wrapper/add_data<54>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_55" (FF) removed.
+                                The signal "wrapper/add_data<55>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_56" (FF) removed.
+                                The signal "wrapper/add_data<56>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_57" (FF) removed.
+                                The signal "wrapper/add_data<57>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_58" (FF) removed.
+                                The signal "wrapper/add_data<58>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_59" (FF) removed.
+                                The signal "wrapper/add_data<59>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_60" (FF) removed.
+                                The signal "wrapper/add_data<60>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_61" (FF) removed.
+                                The signal "wrapper/add_data<61>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_62" (FF) removed.
+                                The signal "wrapper/add_data<62>" is sourceless and has been removed.
+                               Sourceless block "wrapper/add_data_63" (FF) removed.
+                                The signal "wrapper/add_data<63>" is sourceless and has been removed.
+                             Sourceless block "wrapper/_n0277_inv1" (ROM) removed.
+                              The signal "wrapper/_n0277_inv" is sourceless and has been removed.
+                               Sourceless block "wrapper/stall" (FF) removed.
+                                The signal "wrapper/stall" is sourceless and has been removed.
+                                 Sourceless block "wrapper/WE_I_rstpot_SW0" (ROM) removed.
+                                  The signal "wrapper/N34" is sourceless and has been removed.
+                                   Sourceless block "wrapper/WE_I_rstpot" (ROM) removed.
+                                    The signal "wrapper/WE_I_rstpot" is sourceless and has been removed.
+                                     Sourceless block "wrapper/WE_I" (FF) removed.
+                                      The signal "wrapper/WE_I" is sourceless and has been removed.
+                                       Sourceless block "wrapper/uart/load_GND_3_o_AND_13_o1" (ROM) removed.
+                                        The signal "wrapper/uart/load_GND_3_o_AND_13_o" is sourceless and has been
+removed.
+                                         Sourceless block "wrapper/uart/load" (FF) removed.
+                                          The signal "wrapper/uart/load" is sourceless and has been removed.
+                                           Sourceless block "wrapper/uart/U_TX_UNIT/U_TRANS_REG/_n0040_inv1" (ROM) removed.
+                                            The signal "wrapper/uart/U_TX_UNIT/U_TRANS_REG/_n0040_inv" is sourceless and has
+been removed.
+                                       Sourceless block "wrapper/cnt_FSM_FFd3-In1" (ROM) removed.
+                                        The signal "wrapper/cnt_FSM_FFd3-In" is sourceless and has been removed.
+                                         Sourceless block "wrapper/cnt_FSM_FFd3" (FF) removed.
+                                          The signal "wrapper/cnt_FSM_FFd3" is sourceless and has been removed.
+                                           Sourceless block "wrapper/_n0366_inv_SW0" (ROM) removed.
+                                            The signal "wrapper/N0" is sourceless and has been removed.
+                                             Sourceless block "wrapper/fnsh_rstpot" (ROM) removed.
+                                              The signal "wrapper/fnsh_rstpot" is sourceless and has been removed.
+                                               Sourceless block "wrapper/fnsh" (FF) removed.
+                                                The signal "wrapper/fnsh" is sourceless and has been removed.
+                                                 Sourceless block "wrapper/FIFO_wrapper/_n0042_inv1" (ROM) removed.
+*The signal "wrapper/FIFO_wrapper/_n0042_inv" is sourceless and has been removed.
+* Sourceless block "wrapper/FIFO_wrapper/cnt_10" (FF) removed.
+*  The signal "wrapper/FIFO_wrapper/cnt<10>" is sourceless and has been removed.
+*   Sourceless block "wrapper/FIFO_wrapper/_n00421_SW1" (ROM) removed.
+*    The signal "wrapper/N6" is sourceless and has been removed.
+*     Sourceless block "wrapper/FIFO_wrapper/is_empty<10>1" (ROM) removed.
+*      The signal "wrapper/is_empty" is sourceless and has been removed.
+*     Sourceless block "wrapper/fnsh_is_empty_AND_17_o1" (ROM) removed.
+*      The signal "wrapper/fnsh_is_empty_AND_17_o" is sourceless and has been removed.
+*       Sourceless block "wrapper/rd_en_next" (FF) removed.
+*        The signal "wrapper/rd_en_next" is sourceless and has been removed.
+*         Sourceless block "wrapper/cnt_FSM_FFd4-In1" (ROM) removed.
+*          The signal "wrapper/cnt_FSM_FFd4-In" is sourceless and has been removed.
+*           Sourceless block "wrapper/cnt_FSM_FFd4" (FF) removed.
+*            The signal "wrapper/cnt_FSM_FFd4" is sourceless and has been removed.
+*             Sourceless block "wrapper/cnt_FSM_FFd2-In1" (ROM) removed.
+*              The signal "wrapper/cnt_FSM_FFd2-In" is sourceless and has been removed.
+*               Sourceless block "wrapper/cnt_FSM_FFd2" (FF) removed.
+*                The signal "wrapper/cnt_FSM_FFd2" is sourceless and has been removed.
+*       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/ram_rd_en_i1" (ROM) removed.
+*        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/ram_rd_en"
+is sourceless and has been removed.
+*         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_d1_9" (FF) removed.
+*          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_d1<9>" is sourceless and has been removed.
+*           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c0/v1<4>1" (ROM) removed.
+*            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c0/v1<4>" is sourceless and has been removed.
+*             Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c0/gmux.gm[4].gms.ms" (MUX) removed.
+*              The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/comp0" is sourceless and has been removed.
+*               Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/ram_full_comb" (ROM) removed.
+*                The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/ram_full_comb" is sourceless and has been removed.
+*                 Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/ram_full_i" (FF) removed.
+*                  The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/ram_full_i" is sourceless and has been removed.
+*                 Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/ram_full_fb_i" (FF) removed.
+*                  The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/ram_full_fb_i" is sourceless and has been removed.
+*                   Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/ram_wr_en_i1" (ROM) removed.
+*                    The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/ram_wr_en"
+is sourceless and has been removed.
+*                     Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_9" (FF) removed.
+*                      The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count<9>" is sourceless and has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c1/v1<4>1" (ROM) removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c1/v1<4>" is sourceless and has been removed.
+*                         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c1/gmux.gm[4].gms.ms" (MUX) removed.
+*                          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/comp1" is sourceless and has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/Madd_gcc0.gc0.count[9]_GND_292_o_add_0_OUT_xor<9>11" (ROM)
+removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count[9]_GND_292_o_add_0_OUT<9>" is sourceless and
+has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_9_dpot" (ROM) removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_9_dpot" is sourceless and has been
+removed.
+*                         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_9" (FF) removed.
+*                          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1<9>" is sourceless and has been removed.
+*                           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c1/v1<4>1" (ROM) removed.
+*                            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c1/v1<4>" is sourceless and has been removed.
+*                             Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c1/gmux.gm[4].gms.ms" (MUX) removed.
+*                              The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/comp0" is sourceless and has been removed.
+*                               Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/going_empty_leaving_empty_OR_6_o1" (ROM) removed.
+*                                The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/going_empty_leaving_empty_OR_6_o" is sourceless and has
+been removed.
+*                                 Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/ram_empty_i" (FF) removed.
+*                                  The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/ram_empty_i" is sourceless and has been removed.
+*                                 Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/ram_empty_fb_i" (FF) removed.
+*                                  The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/ram_empty_fb_i" is sourceless and has been removed.
+*                                   Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.mem/tmp_ram_rd_en1" (ROM) removed.
+*                                    The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.mem/tmp_ram_rd_en" is sourceless and has been removed.
+*                           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c2/v1<4>1" (ROM) removed.
+*                            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c2/v1<4>" is sourceless and has been removed.
+*                             Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c2/gmux.gm[4].gms.ms" (MUX) removed.
+*                              The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/comp1" is sourceless and has been removed.
+*                     Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_8" (FF) removed.
+*                      The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count<8>" is sourceless and has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_8" (FF) removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1<8>" is sourceless and has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/Madd_gcc0.gc0.count[9]_GND_292_o_add_0_OUT_xor<8>11" (ROM)
+removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count[9]_GND_292_o_add_0_OUT<8>" is sourceless and
+has been removed.
+*                     Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_7" (FF) removed.
+*                      The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count<7>" is sourceless and has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_7" (FF) removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1<7>" is sourceless and has been removed.
+*                         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c0/v1<3>1" (ROM) removed.
+*                          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c0/v1<3>" is sourceless and has been removed.
+*                           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c0/gmux.gm[3].gms.ms" (MUX) removed.
+*                            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c0/gmux.carrynet<3>" is sourceless and has been removed.
+*                         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c1/v1<3>1" (ROM) removed.
+*                          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c1/v1<3>" is sourceless and has been removed.
+*                           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c1/gmux.gm[3].gms.ms" (MUX) removed.
+*                            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c1/gmux.carrynet<3>" is sourceless and has been removed.
+*                         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c2/v1<3>1" (ROM) removed.
+*                          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c2/v1<3>" is sourceless and has been removed.
+*                           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c2/gmux.gm[3].gms.ms" (MUX) removed.
+*                            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c2/gmux.carrynet<3>" is sourceless and has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c1/v1<3>1" (ROM) removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c1/v1<3>" is sourceless and has been removed.
+*                         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c1/gmux.gm[3].gms.ms" (MUX) removed.
+*                          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c1/gmux.carrynet<3>" is sourceless and has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/Madd_gcc0.gc0.count[9]_GND_292_o_add_0_OUT_xor<7>11" (ROM)
+removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count[9]_GND_292_o_add_0_OUT<7>" is sourceless and
+has been removed.
+*                     Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_6" (FF) removed.
+*                      The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count<6>" is sourceless and has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_6" (FF) removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1<6>" is sourceless and has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/Madd_gcc0.gc0.count[9]_GND_292_o_add_0_OUT_xor<6>11" (ROM)
+removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count[9]_GND_292_o_add_0_OUT<6>" is sourceless and
+has been removed.
+*                     Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_5" (FF) removed.
+*                      The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count<5>" is sourceless and has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_5" (FF) removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1<5>" is sourceless and has been removed.
+*                         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c0/v1<2>1" (ROM) removed.
+*                          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c0/v1<2>" is sourceless and has been removed.
+*                           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c0/gmux.gm[2].gms.ms" (MUX) removed.
+*                            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c0/gmux.carrynet<2>" is sourceless and has been removed.
+*                         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c1/v1<2>1" (ROM) removed.
+*                          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c1/v1<2>" is sourceless and has been removed.
+*                           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c1/gmux.gm[2].gms.ms" (MUX) removed.
+*                            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c1/gmux.carrynet<2>" is sourceless and has been removed.
+*                         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c2/v1<2>1" (ROM) removed.
+*                          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c2/v1<2>" is sourceless and has been removed.
+*                           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c2/gmux.gm[2].gms.ms" (MUX) removed.
+*                            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c2/gmux.carrynet<2>" is sourceless and has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c1/v1<2>1" (ROM) removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c1/v1<2>" is sourceless and has been removed.
+*                         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c1/gmux.gm[2].gms.ms" (MUX) removed.
+*                          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c1/gmux.carrynet<2>" is sourceless and has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/Madd_gcc0.gc0.count[9]_GND_292_o_add_0_OUT_xor<6>111" (ROM)
+removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/Madd_gcc0.gc0.count[9]_GND_292_o_add_0_OUT_xor<6>11" is
+sourceless and has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/Madd_gcc0.gc0.count[9]_GND_292_o_add_0_OUT_xor<5>11" (ROM)
+removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count[9]_GND_292_o_add_0_OUT<5>" is sourceless and
+has been removed.
+*                     Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_4" (FF) removed.
+*                      The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count<4>" is sourceless and has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_4" (FF) removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1<4>" is sourceless and has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/Madd_gcc0.gc0.count[9]_GND_292_o_add_0_OUT_xor<4>11" (ROM)
+removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count[9]_GND_292_o_add_0_OUT<4>" is sourceless and
+has been removed.
+*                     Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_3" (FF) removed.
+*                      The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count<3>" is sourceless and has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_3" (FF) removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1<3>" is sourceless and has been removed.
+*                         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c0/v1<1>1" (ROM) removed.
+*                          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c0/v1<1>" is sourceless and has been removed.
+*                           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c0/gmux.gm[1].gms.ms" (MUX) removed.
+*                            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c0/gmux.carrynet<1>" is sourceless and has been removed.
+*                         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c1/v1<1>1" (ROM) removed.
+*                          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c1/v1<1>" is sourceless and has been removed.
+*                           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c1/gmux.gm[1].gms.ms" (MUX) removed.
+*                            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c1/gmux.carrynet<1>" is sourceless and has been removed.
+*                         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c2/v1<1>1" (ROM) removed.
+*                          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c2/v1<1>" is sourceless and has been removed.
+*                           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c2/gmux.gm[1].gms.ms" (MUX) removed.
+*                            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c2/gmux.carrynet<1>" is sourceless and has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c1/v1<1>1" (ROM) removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c1/v1<1>" is sourceless and has been removed.
+*                         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c1/gmux.gm[1].gms.ms" (MUX) removed.
+*                          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c1/gmux.carrynet<1>" is sourceless and has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/Madd_gcc0.gc0.count[9]_GND_292_o_add_0_OUT_xor<3>11" (ROM)
+removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count[9]_GND_292_o_add_0_OUT<3>" is sourceless and
+has been removed.
+*                     Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_2" (FF) removed.
+*                      The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count<2>" is sourceless and has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_2" (FF) removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1<2>" is sourceless and has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/Madd_gcc0.gc0.count[9]_GND_292_o_add_0_OUT_xor<2>11" (ROM)
+removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count[9]_GND_292_o_add_0_OUT<2>" is sourceless and
+has been removed.
+*                     Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_1" (FF) removed.
+*                      The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count<1>" is sourceless and has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_1" (FF) removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1<1>" is sourceless and has been removed.
+*                         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c2/v1<0>1" (ROM) removed.
+*                          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c2/v1<0>" is sourceless and has been removed.
+*                           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c2/gmux.gm[0].gm1.m1" (MUX) removed.
+*                            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c2/gmux.carrynet<0>" is sourceless and has been removed.
+*                         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c0/v1<0>1" (ROM) removed.
+*                          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c0/v1<0>" is sourceless and has been removed.
+*                           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c0/gmux.gm[0].gm1.m1" (MUX) removed.
+*                            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c0/gmux.carrynet<0>" is sourceless and has been removed.
+*                         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c1/v1<0>1" (ROM) removed.
+*                          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c1/v1<0>" is sourceless and has been removed.
+*                           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c1/gmux.gm[0].gm1.m1" (MUX) removed.
+*                            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/grss.rsts/c1/gmux.carrynet<0>" is sourceless and has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c1/v1<0>1" (ROM) removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c1/v1<0>" is sourceless and has been removed.
+*                         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c1/gmux.gm[0].gm1.m1" (MUX) removed.
+*                          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/gwss.wsts/c1/gmux.carrynet<0>" is sourceless and has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/Madd_gcc0.gc0.count[9]_GND_292_o_add_0_OUT_xor<1>11" (ROM)
+removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count[9]_GND_292_o_add_0_OUT<1>" is sourceless and
+has been removed.
+*                   Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/ram_wr_en_i1_1" (ROM) removed.
+*                    The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/ram_wr_en_i1" is sourceless and has been removed.
+*                   Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/ram_wr_en_i1_cepot_INV_0" (BUF) removed.
+*                    The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/ram_wr_en_i1_cepot" is sourceless and has been removed.
+*                     Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_0" (FF) removed.
+*                      The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1<0>" is sourceless and has been removed.
+*                       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_0_dpot" (ROM) removed.
+*                        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.wr/wpntr/gcc0.gc0.count_d1_0_dpot" is sourceless and has been
+removed.
+*         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_d1_8" (FF) removed.
+*          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_d1<8>" is sourceless and has been removed.
+*         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_d1_7" (FF) removed.
+*          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_d1<7>" is sourceless and has been removed.
+*         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_d1_6" (FF) removed.
+*          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_d1<6>" is sourceless and has been removed.
+*         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_d1_5" (FF) removed.
+*          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_d1<5>" is sourceless and has been removed.
+*         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_d1_4" (FF) removed.
+*          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_d1<4>" is sourceless and has been removed.
+*         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_d1_3" (FF) removed.
+*          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_d1<3>" is sourceless and has been removed.
+*         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_d1_2" (FF) removed.
+*          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_d1<2>" is sourceless and has been removed.
+*         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_d1_1" (FF) removed.
+*          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_d1<1>" is sourceless and has been removed.
+*         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_9" (FF) removed.
+*          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count<9>" is sourceless and has been removed.
+*           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/Madd_gc0.count[9]_GND_281_o_add_0_OUT_xor<9>11" (ROM)
+removed.
+*            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count[9]_GND_281_o_add_0_OUT<9>" is sourceless and has
+been removed.
+*         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_8" (FF) removed.
+*          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count<8>" is sourceless and has been removed.
+*           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/Madd_gc0.count[9]_GND_281_o_add_0_OUT_xor<8>11" (ROM)
+removed.
+*            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count[9]_GND_281_o_add_0_OUT<8>" is sourceless and has
+been removed.
+*         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_7" (FF) removed.
+*          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count<7>" is sourceless and has been removed.
+*           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/Madd_gc0.count[9]_GND_281_o_add_0_OUT_xor<7>11" (ROM)
+removed.
+*            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count[9]_GND_281_o_add_0_OUT<7>" is sourceless and has
+been removed.
+*         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_6" (FF) removed.
+*          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count<6>" is sourceless and has been removed.
+*           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/Madd_gc0.count[9]_GND_281_o_add_0_OUT_xor<6>11" (ROM)
+removed.
+*            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count[9]_GND_281_o_add_0_OUT<6>" is sourceless and has
+been removed.
+*         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_5" (FF) removed.
+*          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count<5>" is sourceless and has been removed.
+*           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/Madd_gc0.count[9]_GND_281_o_add_0_OUT_xor<5>11" (ROM)
+removed.
+*            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count[9]_GND_281_o_add_0_OUT<5>" is sourceless and has
+been removed.
+*           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/Madd_gc0.count[9]_GND_281_o_add_0_OUT_xor<6>111" (ROM)
+removed.
+*            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/Madd_gc0.count[9]_GND_281_o_add_0_OUT_xor<6>11" is
+sourceless and has been removed.
+*         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_4" (FF) removed.
+*          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count<4>" is sourceless and has been removed.
+*           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/Madd_gc0.count[9]_GND_281_o_add_0_OUT_xor<4>11" (ROM)
+removed.
+*            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count[9]_GND_281_o_add_0_OUT<4>" is sourceless and has
+been removed.
+*         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_3" (FF) removed.
+*          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count<3>" is sourceless and has been removed.
+*           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/Madd_gc0.count[9]_GND_281_o_add_0_OUT_xor<3>11" (ROM)
+removed.
+*            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count[9]_GND_281_o_add_0_OUT<3>" is sourceless and has
+been removed.
+*         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_2" (FF) removed.
+*          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count<2>" is sourceless and has been removed.
+*           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/Madd_gc0.count[9]_GND_281_o_add_0_OUT_xor<2>11" (ROM)
+removed.
+*            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count[9]_GND_281_o_add_0_OUT<2>" is sourceless and has
+been removed.
+*         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_1" (FF) removed.
+*          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count<1>" is sourceless and has been removed.
+*           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/Madd_gc0.count[9]_GND_281_o_add_0_OUT_xor<1>11" (ROM)
+removed.
+*            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count[9]_GND_281_o_add_0_OUT<1>" is sourceless and has
+been removed.
+*         Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count_0" (FF) removed.
+*          The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/gc0.count<0>" is sourceless and has been removed.
+*           Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rpntr/Madd_gc0.count[9]_GND_281_o_add_0_OUT_xor<0>11_INV_0" (BUF)
+removed.
+*            The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.gl0.rd/rd_pntr_plus1<0>_inv" is sourceless and has been removed.
+*   Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_lut<0>" (ROM) removed.
+*    The signal "wrapper/FIFO_wrapper/Mcount_cnt_lut<0>" is sourceless and has been
+removed.
+*     Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_xor<0>" (XOR) removed.
+*      The signal "wrapper/FIFO_wrapper/Result<0>" is sourceless and has been removed.
+*       Sourceless block "wrapper/FIFO_wrapper/cnt_0" (FF) removed.
+*        The signal "wrapper/FIFO_wrapper/cnt<0>" is sourceless and has been removed.
+*         Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_cy<0>" (MUX) removed.
+*          The signal "wrapper/FIFO_wrapper/Mcount_cnt_cy<0>" is sourceless and has been
+removed.
+*           Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_xor<1>" (XOR) removed.
+*            The signal "wrapper/FIFO_wrapper/Result<1>" is sourceless and has been removed.
+*             Sourceless block "wrapper/FIFO_wrapper/cnt_1" (FF) removed.
+*              The signal "wrapper/FIFO_wrapper/cnt<1>" is sourceless and has been removed.
+*               Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_cy<1>" (MUX) removed.
+*                The signal "wrapper/FIFO_wrapper/Mcount_cnt_cy<1>" is sourceless and has been
+removed.
+*                 Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_xor<2>" (XOR) removed.
+*                  The signal "wrapper/FIFO_wrapper/Result<2>" is sourceless and has been removed.
+*                   Sourceless block "wrapper/FIFO_wrapper/cnt_2" (FF) removed.
+*                    The signal "wrapper/FIFO_wrapper/cnt<2>" is sourceless and has been removed.
+*                     Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_cy<2>" (MUX) removed.
+*                      The signal "wrapper/FIFO_wrapper/Mcount_cnt_cy<2>" is sourceless and has been
+removed.
+*                       Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_xor<3>" (XOR) removed.
+*                        The signal "wrapper/FIFO_wrapper/Result<3>" is sourceless and has been removed.
+*                         Sourceless block "wrapper/FIFO_wrapper/cnt_3" (FF) removed.
+*                          The signal "wrapper/FIFO_wrapper/cnt<3>" is sourceless and has been removed.
+*                           Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_cy<3>" (MUX) removed.
+*                            The signal "wrapper/FIFO_wrapper/Mcount_cnt_cy<3>" is sourceless and has been
+removed.
+*                             Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_xor<4>" (XOR) removed.
+*                              The signal "wrapper/FIFO_wrapper/Result<4>" is sourceless and has been removed.
+*                               Sourceless block "wrapper/FIFO_wrapper/cnt_4" (FF) removed.
+*                                The signal "wrapper/FIFO_wrapper/cnt<4>" is sourceless and has been removed.
+*                                 Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_cy<4>" (MUX) removed.
+*                                  The signal "wrapper/FIFO_wrapper/Mcount_cnt_cy<4>" is sourceless and has been
+removed.
+*                                   Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_xor<5>" (XOR) removed.
+*                                    The signal "wrapper/FIFO_wrapper/Result<5>" is sourceless and has been removed.
+*                                     Sourceless block "wrapper/FIFO_wrapper/cnt_5" (FF) removed.
+*                                      The signal "wrapper/FIFO_wrapper/cnt<5>" is sourceless and has been removed.
+*                                       Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_cy<5>" (MUX) removed.
+*                                        The signal "wrapper/FIFO_wrapper/Mcount_cnt_cy<5>" is sourceless and has been
+removed.
+*                                         Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_xor<6>" (XOR) removed.
+*                                          The signal "wrapper/FIFO_wrapper/Result<6>" is sourceless and has been removed.
+*                                           Sourceless block "wrapper/FIFO_wrapper/cnt_6" (FF) removed.
+*                                            The signal "wrapper/FIFO_wrapper/cnt<6>" is sourceless and has been removed.
+*                                             Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_cy<6>" (MUX) removed.
+*                                              The signal "wrapper/FIFO_wrapper/Mcount_cnt_cy<6>" is sourceless and has been
+removed.
+*                                               Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_xor<7>" (XOR) removed.
+*                                                The signal "wrapper/FIFO_wrapper/Result<7>" is sourceless and has been removed.
+*                                                 Sourceless block "wrapper/FIFO_wrapper/cnt_7" (FF) removed.
+**The signal "wrapper/FIFO_wrapper/cnt<7>" is sourceless and has been removed.
+** Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_cy<7>" (MUX) removed.
+**  The signal "wrapper/FIFO_wrapper/Mcount_cnt_cy<7>" is sourceless and has been
+removed.
+**   Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_xor<8>" (XOR) removed.
+**    The signal "wrapper/FIFO_wrapper/Result<8>" is sourceless and has been removed.
+**     Sourceless block "wrapper/FIFO_wrapper/cnt_8" (FF) removed.
+**      The signal "wrapper/FIFO_wrapper/cnt<8>" is sourceless and has been removed.
+**       Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_cy<8>" (MUX) removed.
+**        The signal "wrapper/FIFO_wrapper/Mcount_cnt_cy<8>" is sourceless and has been
+removed.
+**         Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_xor<9>" (XOR) removed.
+**          The signal "wrapper/FIFO_wrapper/Result<9>" is sourceless and has been removed.
+**           Sourceless block "wrapper/FIFO_wrapper/cnt_9" (FF) removed.
+**            The signal "wrapper/FIFO_wrapper/cnt<9>" is sourceless and has been removed.
+**             Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_cy<9>" (MUX) removed.
+**              The signal "wrapper/FIFO_wrapper/Mcount_cnt_cy<9>" is sourceless and has been
+removed.
+**               Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_xor<10>" (XOR) removed.
+**                The signal "wrapper/FIFO_wrapper/Result<10>" is sourceless and has been removed.
+**             Sourceless block "wrapper/FIFO_wrapper/_n00421_SW0" (ROM) removed.
+**              The signal "wrapper/N4" is sourceless and has been removed.
+**               Sourceless block "wrapper/FIFO_wrapper/_n00421" (ROM) removed.
+**                The signal "wrapper/FIFO_wrapper/_n00421" is sourceless and has been removed.
+**               Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_lut<1>" (ROM) removed.
+**                The signal "wrapper/FIFO_wrapper/Mcount_cnt_lut<1>" is sourceless and has been
+removed.
+**               Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_lut<2>" (ROM) removed.
+**                The signal "wrapper/FIFO_wrapper/Mcount_cnt_lut<2>" is sourceless and has been
+removed.
+**               Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_lut<3>" (ROM) removed.
+**                The signal "wrapper/FIFO_wrapper/Mcount_cnt_lut<3>" is sourceless and has been
+removed.
+**               Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_lut<4>" (ROM) removed.
+**                The signal "wrapper/FIFO_wrapper/Mcount_cnt_lut<4>" is sourceless and has been
+removed.
+**               Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_lut<5>" (ROM) removed.
+**                The signal "wrapper/FIFO_wrapper/Mcount_cnt_lut<5>" is sourceless and has been
+removed.
+**               Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_lut<6>" (ROM) removed.
+**                The signal "wrapper/FIFO_wrapper/Mcount_cnt_lut<6>" is sourceless and has been
+removed.
+**               Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_lut<7>" (ROM) removed.
+**                The signal "wrapper/FIFO_wrapper/Mcount_cnt_lut<7>" is sourceless and has been
+removed.
+**               Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_lut<8>" (ROM) removed.
+**                The signal "wrapper/FIFO_wrapper/Mcount_cnt_lut<8>" is sourceless and has been
+removed.
+**               Sourceless block "wrapper/FIFO_wrapper/wr_en_GND_13_o_AND_15_o_inv2" (ROM)
+removed.
+**                The signal "wrapper/FIFO_wrapper/wr_en_GND_13_o_AND_15_o_inv" is sourceless and
+has been removed.
+**               Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_lut<9>" (ROM) removed.
+**                The signal "wrapper/FIFO_wrapper/Mcount_cnt_lut<9>" is sourceless and has been
+removed.
+**               Sourceless block "wrapper/FIFO_wrapper/Mcount_cnt_lut<10>" (ROM) removed.
+**                The signal "wrapper/FIFO_wrapper/Mcount_cnt_lut<10>" is sourceless and has been
+removed.
+** Sourceless block "wrapper/FIFO_wrapper/_n00421_SW2" (ROM) removed.
+**  The signal "wrapper/N10" is sourceless and has been removed.
+** Sourceless block "wrapper/FIFO_wrapper/_n00421_SW3" (ROM) removed.
+**  The signal "wrapper/N12" is sourceless and has been removed.
+** Sourceless block "wrapper/FIFO_wrapper/_n00421_SW5" (ROM) removed.
+**  The signal "wrapper/N16" is sourceless and has been removed.
+** Sourceless block "wrapper/FIFO_wrapper/_n00421_SW8" (ROM) removed.
+**  The signal "wrapper/N22" is sourceless and has been removed.
+*                                             Sourceless block "wrapper/FIFO_wrapper/_n00421_SW9" (ROM) removed.
+*                                              The signal "wrapper/N24" is sourceless and has been removed.
+*                     Sourceless block "wrapper/FIFO_wrapper/is_empty<10>1_SW0" (ROM) removed.
+*                      The signal "wrapper/N8" is sourceless and has been removed.
+                                 Sourceless block "wrapper/stall_INV_56_o1_INV_0" (BUF) removed.
+                                  The signal "wrapper/stall_INV_56_o" is sourceless and has been removed.
+                       Sourceless block "wrapper/uart/U_TX_UNIT/U_CTRL_SHFT/fsm_inv1_INV_0" (BUF)
+removed.
+                        The signal "wrapper/ts" is sourceless and has been removed.
+                         Sourceless block "wrapper/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_2" (FF) removed.
+                          The signal "wrapper/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx<2>" is sourceless and has
+been removed.
+                           Sourceless block "wrapper/uart/U_TX_UNIT/U_CTRL_SHFT/Mcount_cnt_tx_xor<2>11"
+(ROM) removed.
+                            The signal "wrapper/uart/U_TX_UNIT/U_CTRL_SHFT/Result<2>" is sourceless and has
+been removed.
+                         Sourceless block "wrapper/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_0" (FF) removed.
+                          The signal "wrapper/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx<0>" is sourceless and has
+been removed.
+                           Sourceless block "wrapper/uart/U_TX_UNIT/U_CTRL_SHFT/Mcount_cnt_tx_xor<1>11"
+(ROM) removed.
+                            The signal "wrapper/uart/U_TX_UNIT/U_CTRL_SHFT/Result<1>" is sourceless and has
+been removed.
+                             Sourceless block "wrapper/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_1" (FF) removed.
+                              The signal "wrapper/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx<1>" is sourceless and has
+been removed.
+                           Sourceless block
+"wrapper/uart/U_TX_UNIT/U_CTRL_SHFT/Mcount_cnt_tx_xor<0>11_INV_0" (BUF) removed.
+                            The signal "wrapper/uart/U_TX_UNIT/U_CTRL_SHFT/Result<0>" is sourceless and has
+been removed.
+           Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_eqn_91" (ROM)
+removed.
+            The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_eqn_9" is sourceless and
+has been removed.
+             Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/cnt_9" (FF) removed.
+              The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/cnt<9>" is sourceless and has been
+removed.
+               Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_lut<9>_INV_0" (BUF)
+removed.
+                The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_lut<9>" is sourceless and
+has been removed.
+                 Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_xor<9>" (XOR)
+removed.
+                  The signal "wrapper/uart/Result<9>" is sourceless and has been removed.
+           Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_eqn_81" (ROM)
+removed.
+            The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_eqn_8" is sourceless and
+has been removed.
+             Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/cnt_8" (FF) removed.
+              The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/cnt<8>" is sourceless and has been
+removed.
+               Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_lut<8>_INV_0" (BUF)
+removed.
+                The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_lut<8>" is sourceless and
+has been removed.
+                 Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_xor<8>" (XOR)
+removed.
+                  The signal "wrapper/uart/Result<8>" is sourceless and has been removed.
+                 Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_cy<8>" (MUX)
+removed.
+                  The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_cy<8>" is sourceless and
+has been removed.
+           Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_eqn_71" (ROM)
+removed.
+            The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_eqn_7" is sourceless and
+has been removed.
+             Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/cnt_7" (FF) removed.
+              The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/cnt<7>" is sourceless and has been
+removed.
+               Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_lut<7>_INV_0" (BUF)
+removed.
+                The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_lut<7>" is sourceless and
+has been removed.
+                 Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_xor<7>" (XOR)
+removed.
+                  The signal "wrapper/uart/Result<7>" is sourceless and has been removed.
+                 Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_cy<7>" (MUX)
+removed.
+                  The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_cy<7>" is sourceless and
+has been removed.
+           Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_eqn_61" (ROM)
+removed.
+            The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_eqn_6" is sourceless and
+has been removed.
+             Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/cnt_6" (FF) removed.
+              The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/cnt<6>" is sourceless and has been
+removed.
+               Sourceless block
+"wrapper/uart/U_DIVISOR/U_CNT_TX/GND_11_o_GND_11_o_equal_1_o<15>1_SW0" (ROM)
+removed.
+                The signal "wrapper/N2" is sourceless and has been removed.
+               Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_lut<6>_INV_0" (BUF)
+removed.
+                The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_lut<6>" is sourceless and
+has been removed.
+                 Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_xor<6>" (XOR)
+removed.
+                  The signal "wrapper/uart/Result<6>" is sourceless and has been removed.
+                 Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_cy<6>" (MUX)
+removed.
+                  The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_cy<6>" is sourceless and
+has been removed.
+           Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_eqn_51" (ROM)
+removed.
+            The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_eqn_5" is sourceless and
+has been removed.
+             Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/cnt_5" (FF) removed.
+              The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/cnt<5>" is sourceless and has been
+removed.
+               Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_lut<5>_INV_0" (BUF)
+removed.
+                The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_lut<5>" is sourceless and
+has been removed.
+                 Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_xor<5>" (XOR)
+removed.
+                  The signal "wrapper/uart/Result<5>" is sourceless and has been removed.
+                 Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_cy<5>" (MUX)
+removed.
+                  The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_cy<5>" is sourceless and
+has been removed.
+           Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_eqn_41" (ROM)
+removed.
+            The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_eqn_4" is sourceless and
+has been removed.
+             Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/cnt_4" (FF) removed.
+              The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/cnt<4>" is sourceless and has been
+removed.
+               Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_lut<4>_INV_0" (BUF)
+removed.
+                The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_lut<4>" is sourceless and
+has been removed.
+                 Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_xor<4>" (XOR)
+removed.
+                  The signal "wrapper/uart/Result<4>" is sourceless and has been removed.
+                 Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_cy<4>" (MUX)
+removed.
+                  The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_cy<4>" is sourceless and
+has been removed.
+           Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_eqn_31" (ROM)
+removed.
+            The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_eqn_3" is sourceless and
+has been removed.
+             Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/cnt_3" (FF) removed.
+              The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/cnt<3>" is sourceless and has been
+removed.
+               Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_lut<3>_INV_0" (BUF)
+removed.
+                The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_lut<3>" is sourceless and
+has been removed.
+                 Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_xor<3>" (XOR)
+removed.
+                  The signal "wrapper/uart/Result<3>" is sourceless and has been removed.
+                 Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_cy<3>" (MUX)
+removed.
+                  The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_cy<3>" is sourceless and
+has been removed.
+           Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_eqn_21" (ROM)
+removed.
+            The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_eqn_2" is sourceless and
+has been removed.
+             Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/cnt_2" (FF) removed.
+              The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/cnt<2>" is sourceless and has been
+removed.
+               Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_lut<2>_INV_0" (BUF)
+removed.
+                The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_lut<2>" is sourceless and
+has been removed.
+                 Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_xor<2>" (XOR)
+removed.
+                  The signal "wrapper/uart/Result<2>" is sourceless and has been removed.
+                 Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_cy<2>" (MUX)
+removed.
+                  The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_cy<2>" is sourceless and
+has been removed.
+           Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_eqn_11" (ROM)
+removed.
+            The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_eqn_1" is sourceless and
+has been removed.
+             Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/cnt_1" (FF) removed.
+              The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/cnt<1>" is sourceless and has been
+removed.
+               Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_lut<1>_INV_0" (BUF)
+removed.
+                The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_lut<1>" is sourceless and
+has been removed.
+                 Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_xor<1>" (XOR)
+removed.
+                  The signal "wrapper/uart/Result<1>" is sourceless and has been removed.
+                 Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_cy<1>" (MUX)
+removed.
+                  The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_cy<1>" is sourceless and
+has been removed.
+           Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_eqn_01" (ROM)
+removed.
+            The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_eqn_0" is sourceless and
+has been removed.
+             Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/cnt_0" (FF) removed.
+              The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/cnt<0>" is sourceless and has been
+removed.
+               Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_cy<0>_rt" (ROM)
+removed.
+                The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_cy<0>_rt" is sourceless
+and has been removed.
+                 Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_xor<0>" (XOR)
+removed.
+                  The signal "wrapper/uart/Result<0>" is sourceless and has been removed.
+                 Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_cy<0>" (MUX)
+removed.
+                  The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_cy<0>" is sourceless and
+has been removed.
+         Sourceless block "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_lut<10>_INV_0"
+(BUF) removed.
+          The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/Mcount_cnt_lut<10>" is sourceless
+and has been removed.
+The signal "wrapper/uart/U_DIVISOR/U_CNT_TX/cnt<11>" is sourceless and has been
+removed.
+The signal "wrapper/w_fifo_dout<0>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<1>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<2>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<3>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<4>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<5>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<6>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<7>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<8>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<9>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<10>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<11>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<12>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<13>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<14>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<15>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<16>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<17>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<18>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<19>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<20>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<21>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<22>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<23>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<24>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<25>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<26>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<27>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<28>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<29>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<30>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<31>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<32>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<33>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<34>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<35>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<36>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<37>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<38>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<39>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<40>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<41>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<42>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<43>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<44>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<45>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<46>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<47>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<48>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<49>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<50>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<51>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<52>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<53>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<54>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<55>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<56>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<57>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<58>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<59>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<60>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<61>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<62>" is sourceless and has been removed.
+The signal "wrapper/w_fifo_dout<63>" is sourceless and has been removed.
+The signal "wrapper/FIFO_wrapper/fifo/N0" is sourceless and has been removed.
+The signal "wrapper/FIFO_wrapper/fifo/N1" is sourceless and has been removed.
+ Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwr
+drst.grst.rd_rst_reg_2" (FF) removed.
+  The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwr
+drst.grst.rd_rst_reg<2>" is sourceless and has been removed.
+ Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwr
+drst.grst.rd_rst_reg_0" (FF) removed.
+  The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwr
+drst.grst.rd_rst_reg<0>" is sourceless and has been removed.
+ Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwr
+drst.grst.wr_rst_reg_1" (FF) removed.
+  The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/ngwr
+drst.grst.wr_rst_reg<1>" is sourceless and has been removed.
+ Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/grst
+d1.grst_full.rst_d1" (FF) removed.
+  The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/grst
+d1.grst_full.rst_d1" is sourceless and has been removed.
+   Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/grst
+d1.grst_full.rst_d2" (FF) removed.
+    The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/grst
+d1.grst_full.rst_d2" is sourceless and has been removed.
+     Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/grst
+d1.grst_full.rst_d3" (FF) removed.
+      The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/grst
+d1.grst_full.rst_d3" is sourceless and has been removed.
+       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/RST_
+FULL_GEN" (FF) removed.
+        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/RST_
+FULL_GEN" is sourceless and has been removed.
+The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_r
+st_asreg_GND_12_o_MUX_2_o" is sourceless and has been removed.
+ Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_r
+st_asreg" (FF) removed.
+  The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_r
+st_asreg" is sourceless and has been removed.
+   Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_r
+st_asreg_d1" (FF) removed.
+    The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_r
+st_asreg_d1" is sourceless and has been removed.
+     Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_r
+st_asreg_d2" (FF) removed.
+      The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_r
+st_asreg_d2" is sourceless and has been removed.
+       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_r
+st_comb1" (ROM) removed.
+        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_r
+st_comb" is sourceless and has been removed.
+     Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/Mmux
+_rd_rst_asreg_GND_12_o_MUX_2_o11" (ROM) removed.
+The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_r
+st_asreg_GND_12_o_MUX_1_o" is sourceless and has been removed.
+ Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_r
+st_asreg" (FF) removed.
+  The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_r
+st_asreg" is sourceless and has been removed.
+   Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_r
+st_asreg_d1" (FF) removed.
+    The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_r
+st_asreg_d1" is sourceless and has been removed.
+     Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_r
+st_asreg_d2" (FF) removed.
+      The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_r
+st_asreg_d2" is sourceless and has been removed.
+       Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_r
+st_comb1" (ROM) removed.
+        The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_r
+st_comb" is sourceless and has been removed.
+     Sourceless block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/Mmux
+_wr_rst_asreg_GND_12_o_MUX_1_o11" (ROM) removed.
+The signal
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/DBI
+TERR" is sourceless and has been removed.
 The signal "cpu/im/im_ipcore/N0" is sourceless and has been removed.
 The signal "cpu/dm/dm_ipcore/N0" is sourceless and has been removed.
+
+The trimmed logic reported below is either:
+   1. part of a cycle
+   2. part of disabled logic
+   3. a side-effect of other trimmed logic
+
+The signal "test_m_we" is unused and has been removed.
+ Unused block "cpu/dm/test_m_we1" (ROM) removed.
+Unused block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/XST
+_GND" (ZERO) removed.
+Unused block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ram
+loop[0].ram.r/s6_noinit.ram/SDP.SIMPLE_PRIM18.ram" (RAMB16BWER) removed.
+Unused block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ram
+loop[1].ram.r/s6_noinit.ram/SDP.SIMPLE_PRIM18.ram" (RAMB16BWER) removed.
+Unused block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ram
+loop[2].ram.r/s6_noinit.ram/SDP.SIMPLE_PRIM18.ram" (RAMB16BWER) removed.
+Unused block
+"wrapper/FIFO_wrapper/fifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_syn
+c_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ram
+loop[3].ram.r/s6_noinit.ram/SDP.SIMPLE_PRIM18.ram" (RAMB16BWER) removed.
+Unused block "wrapper/FIFO_wrapper/fifo/XST_GND" (ZERO) removed.
+Unused block "wrapper/FIFO_wrapper/fifo/XST_VCC" (ONE) removed.
+Unused block "wrapper/XST_GND" (ZERO) removed.
+Unused block "wrapper/XST_VCC" (ONE) removed.
 
 Optimized Block(s):
 TYPE 		BLOCK
@@ -165,147 +1871,147 @@ Section 6 - IOB Properties
 | IOB Name                           | Type             | Direction | IO Standard          | Diff  | Drive    | Slew | Reg (s)      | Resistor | IOB      |
 |                                    |                  |           |                      | Term  | Strength | Rate |              |          | Delay    |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| clk_in                             | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| digital_tube0<0>                   | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube0<1>                   | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube0<2>                   | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube0<3>                   | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube0<4>                   | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube0<5>                   | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube0<6>                   | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube0<7>                   | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube1<0>                   | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube1<1>                   | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube1<2>                   | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube1<3>                   | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube1<4>                   | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube1<5>                   | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube1<6>                   | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube1<7>                   | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube2<0>                   | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube2<1>                   | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube2<2>                   | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube2<3>                   | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube2<4>                   | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube2<5>                   | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube2<6>                   | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube2<7>                   | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube_sel2                  | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube_sel0<0>               | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube_sel0<1>               | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube_sel0<2>               | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube_sel0<3>               | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube_sel1<0>               | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube_sel1<1>               | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube_sel1<2>               | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| digital_tube_sel1<3>               | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| dip_switch0<0>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch0<1>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch0<2>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch0<3>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch0<4>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch0<5>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch0<6>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch0<7>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch1<0>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch1<1>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch1<2>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch1<3>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch1<4>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch1<5>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch1<6>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch1<7>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch2<0>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch2<1>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch2<2>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch2<3>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch2<4>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch2<5>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch2<6>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch2<7>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch3<0>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch3<1>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch3<2>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch3<3>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch3<4>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch3<5>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch3<6>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch3<7>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch4<0>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch4<1>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch4<2>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch4<3>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch4<4>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch4<5>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch4<6>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch4<7>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch5<0>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch5<1>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch5<2>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch5<3>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch5<4>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch5<5>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch5<6>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch5<7>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch6<0>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch6<1>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch6<2>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch6<3>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch6<4>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch6<5>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch6<6>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch6<7>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch7<0>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch7<1>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch7<2>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch7<3>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch7<4>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch7<5>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch7<6>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| dip_switch7<7>                     | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| led_light<0>                       | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<1>                       | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<2>                       | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<3>                       | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<4>                       | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<5>                       | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<6>                       | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<7>                       | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<8>                       | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<9>                       | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<10>                      | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<11>                      | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<12>                      | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<13>                      | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<14>                      | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<15>                      | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<16>                      | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<17>                      | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<18>                      | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<19>                      | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<20>                      | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<21>                      | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<22>                      | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<23>                      | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<24>                      | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<25>                      | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<26>                      | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<27>                      | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<28>                      | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<29>                      | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<30>                      | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| led_light<31>                      | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| sys_rstn                           | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| uart_rxd                           | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| uart_txd                           | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
-| user_key<0>                        | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| user_key<1>                        | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| user_key<2>                        | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| user_key<3>                        | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| user_key<4>                        | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| user_key<5>                        | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| user_key<6>                        | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
-| user_key<7>                        | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
+| clk_in                             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| digital_tube0<0>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube0<1>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube0<2>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube0<3>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube0<4>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube0<5>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube0<6>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube0<7>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube1<0>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube1<1>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube1<2>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube1<3>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube1<4>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube1<5>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube1<6>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube1<7>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube2<0>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube2<1>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube2<2>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube2<3>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube2<4>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube2<5>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube2<6>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube2<7>                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube_sel2                  | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube_sel0<0>               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube_sel0<1>               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube_sel0<2>               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube_sel0<3>               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube_sel1<0>               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube_sel1<1>               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube_sel1<2>               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| digital_tube_sel1<3>               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| dip_switch0<0>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch0<1>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch0<2>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch0<3>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch0<4>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch0<5>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch0<6>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch0<7>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch1<0>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch1<1>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch1<2>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch1<3>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch1<4>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch1<5>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch1<6>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch1<7>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch2<0>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch2<1>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch2<2>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch2<3>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch2<4>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch2<5>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch2<6>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch2<7>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch3<0>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch3<1>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch3<2>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch3<3>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch3<4>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch3<5>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch3<6>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch3<7>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch4<0>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch4<1>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch4<2>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch4<3>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch4<4>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch4<5>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch4<6>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch4<7>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch5<0>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch5<1>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch5<2>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch5<3>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch5<4>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch5<5>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch5<6>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch5<7>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch6<0>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch6<1>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch6<2>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch6<3>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch6<4>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch6<5>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch6<6>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch6<7>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch7<0>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch7<1>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch7<2>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch7<3>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch7<4>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch7<5>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch7<6>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| dip_switch7<7>                     | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| led_light<0>                       | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<1>                       | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<2>                       | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<3>                       | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<4>                       | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<5>                       | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<6>                       | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<7>                       | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<8>                       | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<9>                       | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<10>                      | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<11>                      | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<12>                      | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<13>                      | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<14>                      | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<15>                      | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<16>                      | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<17>                      | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<18>                      | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<19>                      | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<20>                      | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<21>                      | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<22>                      | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<23>                      | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<24>                      | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<25>                      | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<26>                      | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<27>                      | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<28>                      | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<29>                      | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<30>                      | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| led_light<31>                      | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| sys_rstn                           | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| uart_rxd2                          | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| uart_txd2                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| user_key<0>                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| user_key<1>                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| user_key<2>                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| user_key<3>                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| user_key<4>                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| user_key<5>                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| user_key<6>                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| user_key<7>                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Section 7 - RPMs

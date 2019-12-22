@@ -1,0 +1,28 @@
+Command line:
+   wrapper_postsynthesis_tb_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  37563
+
+Sun Dec 22 09:33:27 2019
+
+
+ Elaboration Time: 0.01 sec
+
+ Current Memory Usage: 185.897 Meg
+
+ Total Signals          : 41
+ Total Nets             : 349
+ Total Signal Drivers   : 15
+ Total Blocks           : 3
+ Total Primitive Blocks : 2
+ Total Processes        : 18
+ Total Traceable Variables  : 28
+ Total Scalar Nets and Variables : 594
+
+ Total Simulation Time: 0.07 sec
+
+ Current Memory Usage: 261.399 Meg
+
+Sun Dec 22 09:33:32 2019
+

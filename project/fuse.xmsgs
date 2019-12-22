@@ -5,7 +5,7 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="1016" delta="unknown" >"/home/a-l-r/co/src/project/../tests/cpu/pipelined3/course-materials/mips_test.v" Line 39: Port <arg fmt="%s" index="1">uart_rxd</arg> is not connected to this instance
+<msg type="error" file="Simulator" num="702" delta="unknown" >Can not find design unit <arg fmt="%s" index="1">work.glbl</arg> in library <arg fmt="%s" index="2">work</arg> located at <arg fmt="%s" index="3">isim/work</arg> 
 </msg>
 
 </messages>
