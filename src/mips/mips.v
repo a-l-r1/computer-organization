@@ -105,8 +105,8 @@ wrapper wrapper(
 	.M_addr(test_m_addr), 
 	.M_WE(test_m_we), 
 	.M_RE(0), 
-	.M_Wdata(test_m_wdata), 
-	.M_Rdata(0), 
+	.M_WData(test_m_wdata), 
+	.M_RData(0), 
 
 	.user_F_addr(), 
 	.user_F_instr(), 
@@ -117,7 +117,7 @@ wrapper wrapper(
 	.user_M_RData(), 
 
 	.rxd(uart_rxd2), 
-	.txd(uart_txd2), 
+	.TxD(uart_txd2), 
 
 	.txd_buffer()
 );
