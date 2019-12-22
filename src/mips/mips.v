@@ -26,19 +26,25 @@ module mips(
 	output [7:0] digital_tube2, 
 	output digital_tube_sel2, 
 
-	input [7:0] user_key
+	input [7:0] user_key,
+	
+	output [31:0] debug_test_m_addr, 
+	output debug_test_m_we, 
+	output [31:0] debug_test_m_wdata, 
+	output [7:0] debug_txd_buffer
 );
 
 wire clk, clk_2x;
 
+wire rst;
+assign rst = ~sys_rstn;
+
 clk_ipcore clk_ipcore(
 	.CLK_IN1(clk_in), 
 	.CLK_OUT1(clk), 
-	.CLK_OUT2(clk_2x)
+	.CLK_OUT2(clk_2x), 
+	.RESET(1'b0)
 );
-
-wire rst;
-assign rst = ~sys_rstn;
 
 /* cpu <-> wrapper */
 
@@ -95,6 +101,10 @@ cpu cpu(
 	.test_m_wdata(test_m_wdata)
 );
 
+assign debug_test_m_addr = test_m_addr;
+assign debug_test_m_we = test_m_we;
+assign debug_test_m_wdata = test_m_wdata;
+
 wrapper wrapper(
 	.clk(clk), 
 	.reset(rst), 
@@ -119,7 +129,7 @@ wrapper wrapper(
 	.rxd(uart_rxd2), 
 	.TxD(uart_txd2), 
 
-	.txd_buffer()
+	.txd_buffer(debug_txd_buffer)
 );
 
 /* NOTE: timer[01]_addr are formal addresses (32-bit). Address slicing is done
