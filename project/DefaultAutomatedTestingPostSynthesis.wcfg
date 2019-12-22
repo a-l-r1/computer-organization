@@ -49,6 +49,8 @@
       <wvobject fp_name="/pipelined3_p8_at_tb2/uut/uart_txd2" type="logic" db_ref_id="1">
          <obj_property name="ElementShortName">uart_txd2</obj_property>
          <obj_property name="ObjectShortName">uart_txd2</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#555500</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_p8_at_tb2/uut/digital_tube_sel2" type="logic" db_ref_id="1">
          <obj_property name="ElementShortName">digital_tube_sel2</obj_property>

@@ -1,0 +1,2 @@
+verilog work "netgen/translate/mips_translate.v"
+verilog work "../tests/cpu/pipelined3/pipelined3_p8_at_tb2.v"

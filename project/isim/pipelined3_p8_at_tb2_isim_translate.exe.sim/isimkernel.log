@@ -1,0 +1,10 @@
+Command line:
+   pipelined3_p8_at_tb2_isim_translate.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  51741
+
+Sun Dec 22 10:44:45 2019
+
+
+ Elaboration Time: 1.89 sec

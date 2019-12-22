@@ -7,7 +7,7 @@
 // \   \   \/     Version: P.20131013
 //  \   \         Application: netgen
 //  /   /         Filename: mips_synthesis.v
-// /___/   /\     Timestamp: Sat Dec 21 22:00:08 2019
+// /___/   /\     Timestamp: Sun Dec 22 10:27:17 2019
 // \   \  /  \ 
 //  \___\/\___\
 //             
@@ -7511,13 +7511,13 @@ dip_switch5, dip_switch6, dip_switch7, user_key, led_light, digital_tube0, digit
     .D(cpu_write_data[9]),
     .Q(\uart_shim/uart/divr [9])
   );
-  FDPE #(
-    .INIT ( 1'b1 ))
+  FDCE #(
+    .INIT ( 1'b0 ))
   \uart_shim/uart/divr_8  (
     .C(clk),
     .CE(\uart_shim/uart/_n0092_inv ),
+    .CLR(rst),
     .D(cpu_write_data[8]),
-    .PRE(rst),
     .Q(\uart_shim/uart/divr [8])
   );
   FDPE #(
@@ -7565,13 +7565,13 @@ dip_switch5, dip_switch6, dip_switch7, user_key, led_light, digital_tube0, digit
     .D(cpu_write_data[3]),
     .Q(\uart_shim/uart/divr [3])
   );
-  FDPE #(
-    .INIT ( 1'b1 ))
+  FDCE #(
+    .INIT ( 1'b0 ))
   \uart_shim/uart/divr_2  (
     .C(clk),
     .CE(\uart_shim/uart/_n0092_inv ),
+    .CLR(rst),
     .D(cpu_write_data[2]),
-    .PRE(rst),
     .Q(\uart_shim/uart/divr [2])
   );
   FDCE #(
@@ -7700,13 +7700,13 @@ dip_switch5, dip_switch6, dip_switch7, user_key, led_light, digital_tube0, digit
     .D(cpu_write_data[12]),
     .Q(\uart_shim/uart/divt [12])
   );
-  FDPE #(
-    .INIT ( 1'b1 ))
+  FDCE #(
+    .INIT ( 1'b0 ))
   \uart_shim/uart/divt_11  (
     .C(clk),
     .CE(\uart_shim/uart/_n0084_inv ),
+    .CLR(rst),
     .D(cpu_write_data[11]),
-    .PRE(rst),
     .Q(\uart_shim/uart/divt [11])
   );
   FDPE #(
@@ -7754,13 +7754,13 @@ dip_switch5, dip_switch6, dip_switch7, user_key, led_light, digital_tube0, digit
     .D(cpu_write_data[6]),
     .Q(\uart_shim/uart/divt [6])
   );
-  FDPE #(
-    .INIT ( 1'b1 ))
+  FDCE #(
+    .INIT ( 1'b0 ))
   \uart_shim/uart/divt_5  (
     .C(clk),
     .CE(\uart_shim/uart/_n0084_inv ),
+    .CLR(rst),
     .D(cpu_write_data[5]),
-    .PRE(rst),
     .Q(\uart_shim/uart/divt [5])
   );
   FDPE #(
@@ -7781,13 +7781,13 @@ dip_switch5, dip_switch6, dip_switch7, user_key, led_light, digital_tube0, digit
     .D(cpu_write_data[3]),
     .Q(\uart_shim/uart/divt [3])
   );
-  FDPE #(
-    .INIT ( 1'b1 ))
+  FDCE #(
+    .INIT ( 1'b0 ))
   \uart_shim/uart/divt_2  (
     .C(clk),
     .CE(\uart_shim/uart/_n0084_inv ),
+    .CLR(rst),
     .D(cpu_write_data[2]),
-    .PRE(rst),
     .Q(\uart_shim/uart/divt [2])
   );
   FDCE #(

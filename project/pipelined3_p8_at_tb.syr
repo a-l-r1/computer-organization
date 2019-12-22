@@ -104,7 +104,7 @@ Auto BRAM Packing                  : NO
 Slice Utilization Ratio Delta      : 5
 
 ---- Other Options
-Cores Search Directories           : {"ipcore_dir" "course-materials"  }
+Cores Search Directories           : {"ipcore_dir"  }
 
 =========================================================================
 
@@ -218,7 +218,7 @@ Analyzing Verilog file "/home/a-l-r/co/src/src/bridge/bridge.v" into library wor
 Parsing verilog file "/home/a-l-r/co/src/src/include/bridge.h" included at line 1.
 Parsing verilog file "/home/a-l-r/co/src/src/include/dm.h" included at line 2.
 Parsing module <bridge>.
-Analyzing Verilog file "/home/a-l-r/co/src/project/course-materials/P8_BLACKBOX.v" into library work
+Analyzing Verilog file "/home/a-l-r/co/src/project/P8_BLACKBOX.v" into library work
 Parsing module <wrapper>.
 Analyzing Verilog file "/home/a-l-r/co/src/src/mips/mips.v" into library work
 Parsing module <mips>.
@@ -296,7 +296,7 @@ WARNING:HDLCompiler:1499 - "/home/a-l-r/co/src/project/ipcore_dir/dm_ipcore.v" L
 Elaborating module <cp0>.
 
 Elaborating module <wrapper>.
-WARNING:HDLCompiler:1499 - "/home/a-l-r/co/src/project/course-materials/P8_BLACKBOX.v" Line 21: Empty module <wrapper> remains a black box.
+WARNING:HDLCompiler:1499 - "/home/a-l-r/co/src/project/P8_BLACKBOX.v" Line 21: Empty module <wrapper> remains a black box.
 WARNING:HDLCompiler:189 - "/home/a-l-r/co/src/src/mips/mips.v" Line 107: Size mismatch in connection of port <M_RE>. Formal port size is 1-bit while actual signal size is 32-bit.
 ERROR:HDLCompiler:267 - "/home/a-l-r/co/src/src/mips/mips.v" Line 108: Cannot find port M_Wdata on this module
 ERROR:HDLCompiler:267 - "/home/a-l-r/co/src/src/mips/mips.v" Line 109: Cannot find port M_Rdata on this module
@@ -313,7 +313,7 @@ WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/tests/cpu/pipelined3/course-mater
 --> 
 
 
-Total memory usage is 320888 kilobytes
+Total memory usage is 320892 kilobytes
 
 Number of errors   :    3 (   0 filtered)
 Number of warnings :   23 (   0 filtered)

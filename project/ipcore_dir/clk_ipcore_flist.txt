@@ -1,9 +1,9 @@
 # Output products list for <clk_ipcore>
 _xmsgs/pn_parser.xmsgs
-clk_ipcore/clk_wiz_v3_6_readme.txt
-clk_ipcore/doc/clk_wiz_v3_6_readme.txt
-clk_ipcore/doc/clk_wiz_v3_6_vinfo.html
-clk_ipcore/doc/pg065_clk_wiz.pdf
+clk_ipcore/clk_wiz_v3_5_readme.txt
+clk_ipcore/doc/clk_wiz_gsg521.pdf
+clk_ipcore/doc/clk_wiz_v3_5_readme.txt
+clk_ipcore/doc/clk_wiz_v3_5_vinfo.html
 clk_ipcore/example_design/clk_ipcore_exdes.ucf
 clk_ipcore/example_design/clk_ipcore_exdes.v
 clk_ipcore/example_design/clk_ipcore_exdes.xdc

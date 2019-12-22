@@ -5,14 +5,14 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.02 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 Reading design: mips.prj
@@ -114,6 +114,8 @@ Cores Search Directories           : {"ipcore_dir"  }
 =========================================================================
 Analyzing Verilog file "/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v" into library work
 Parsing module <clk_ipcore>.
+Analyzing Verilog file "/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore/example_design/clk_ipcore_exdes.v" into library work
+Parsing module <clk_ipcore_exdes>.
 Analyzing Verilog file "/home/a-l-r/co/src/src/devices/uart/utils.v" into library work
 Parsing module <divisor>.
 Parsing module <counter>.
@@ -287,7 +289,7 @@ Elaborating module <cp0>.
 
 Elaborating module <wrapper>.
 WARNING:HDLCompiler:1499 - "/home/a-l-r/co/src/project/P8_BLACKBOX.v" Line 21: Empty module <wrapper> remains a black box.
-WARNING:HDLCompiler:189 - "/home/a-l-r/co/src/src/mips/mips.v" Line 108: Size mismatch in connection of port <M_RE>. Formal port size is 1-bit while actual signal size is 32-bit.
+WARNING:HDLCompiler:189 - "/home/a-l-r/co/src/src/mips/mips.v" Line 107: Size mismatch in connection of port <M_RE>. Formal port size is 1-bit while actual signal size is 32-bit.
 
 Elaborating module <bridge>.
 
@@ -326,7 +328,6 @@ Elaborating module <nixie>.
 Elaborating module <nixie_decoder>.
 
 Elaborating module <buttons>.
-WARNING:HDLCompiler:552 - "/home/a-l-r/co/src/src/mips/mips.v" Line 99: Input port rxd is not connected on this instance
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -334,17 +335,15 @@ WARNING:HDLCompiler:552 - "/home/a-l-r/co/src/src/mips/mips.v" Line 99: Input po
 
 Synthesizing Unit <mips>.
     Related source file is "/home/a-l-r/co/src/src/mips/mips.v".
-WARNING:Xst:647 - Input <uart_rxd> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 78: Output port <test_addr> of the instance <cpu> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 99: Output port <user_F_addr> of the instance <wrapper> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 99: Output port <user_F_instr> of the instance <wrapper> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 99: Output port <user_M_addr> of the instance <wrapper> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 99: Output port <user_M_WData> of the instance <wrapper> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 99: Output port <user_M_RData> of the instance <wrapper> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 99: Output port <txd_buffer> of the instance <wrapper> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 99: Output port <user_M_WE> of the instance <wrapper> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 99: Output port <user_M_RE> of the instance <wrapper> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 99: Output port <TxD> of the instance <wrapper> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 77: Output port <test_addr> of the instance <cpu> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 98: Output port <user_F_addr> of the instance <wrapper> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 98: Output port <user_F_instr> of the instance <wrapper> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 98: Output port <user_M_addr> of the instance <wrapper> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 98: Output port <user_M_WData> of the instance <wrapper> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 98: Output port <user_M_RData> of the instance <wrapper> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 98: Output port <txd_buffer> of the instance <wrapper> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 98: Output port <user_M_WE> of the instance <wrapper> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 98: Output port <user_M_RE> of the instance <wrapper> is unconnected or connected to loadless signal.
     Summary:
 	no macro.
 Unit <mips> synthesized.
@@ -902,7 +901,6 @@ WARNING:Xst:647 - Input <write_enable> is never used. This port will be preserve
     Found 8-bit register for signal <stored>.
     Summary:
 	inferred   9 D-type flip-flop(s).
-	inferred   1 Multiplexer(s).
 Unit <buttons> synthesized.
 
 =========================================================================
@@ -939,9 +937,9 @@ Macro Statistics
  32-bit comparator greater                             : 10
  32-bit comparator lessequal                           : 15
  5-bit comparator equal                                : 16
-# Multiplexers                                         : 631
+# Multiplexers                                         : 630
  1-bit 17-to-1 multiplexer                             : 1
- 1-bit 2-to-1 multiplexer                              : 165
+ 1-bit 2-to-1 multiplexer                              : 164
  1-bit 21-to-1 multiplexer                             : 2
  1-bit 22-to-1 multiplexer                             : 2
  1-bit 24-to-1 multiplexer                             : 2
@@ -1429,8 +1427,8 @@ Primitive and Black Box Usage:
 #      INV                         : 205
 #      LUT1                        : 122
 #      LUT2                        : 180
-#      LUT3                        : 1406
-#      LUT4                        : 512
+#      LUT3                        : 1407
+#      LUT4                        : 511
 #      LUT5                        : 1000
 #      LUT6                        : 2526
 #      MUXCY                       : 562
@@ -1453,10 +1451,10 @@ Primitive and Black Box Usage:
 #      RAMB16BWER                  : 36
 # Clock Buffers                    : 3
 #      BUFG                        : 3
-# IO Buffers                       : 141
-#      IBUF                        : 74
+# IO Buffers                       : 143
+#      IBUF                        : 75
 #      IBUFG                       : 1
-#      OBUF                        : 66
+#      OBUF                        : 67
 # Others                           : 1
 #      PLL_ADV                     : 1
 
@@ -1480,7 +1478,7 @@ Slice Logic Distribution:
 
 IO Utilization: 
  Number of IOs:                         143
- Number of bonded IOBs:                 141  out of    480    29%  
+ Number of bonded IOBs:                 143  out of    480    29%  
 
 Specific Feature Utilization:
  Number of Block RAM/FIFO:               36  out of    268    13%  
@@ -1538,7 +1536,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_ipcore/pll_base_inst/CLKOUT0'
   Clock period: 22.022ns (frequency: 45.410MHz)
-  Total number of paths / destination ports: 32455034598 / 4345
+  Total number of paths / destination ports: 32455034597 / 4344
 -------------------------------------------------------------------------
 Delay:               22.022ns (Levels of Logic = 32)
   Source:            cpu/d_im/data_10 (FF)
@@ -1656,7 +1654,7 @@ Offset:              4.102ns (Levels of Logic = 2)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_ipcore/pll_base_inst/CLKOUT0'
-  Total number of paths / destination ports: 629 / 62
+  Total number of paths / destination ports: 630 / 63
 -------------------------------------------------------------------------
 Offset:              8.291ns (Levels of Logic = 4)
   Source:            nixie/phase_FSM_FFd4 (FF)
@@ -1713,15 +1711,15 @@ uart_shim/uart/U_RX_UNIT/clk_rf_av|    8.871|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 57.00 secs
-Total CPU time to Xst completion: 56.26 secs
+Total REAL time to Xst completion: 62.00 secs
+Total CPU time to Xst completion: 61.20 secs
  
 --> 
 
 
-Total memory usage is 416512 kilobytes
+Total memory usage is 416608 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  210 (   0 filtered)
-Number of infos    :   35 (   0 filtered)
+Number of warnings :  208 (   0 filtered)
+Number of infos    :   34 (   0 filtered)
 

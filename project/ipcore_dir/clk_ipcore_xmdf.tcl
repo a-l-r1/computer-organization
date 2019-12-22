@@ -40,12 +40,20 @@ utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path clk_ipcore/c
 utilities_xmdf::xmdfSetData $instance FileSet $fcount type Ignore
 incr fcount
 
+utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path clk_ipcore/example_design/clk_ipcore_exdes.ucf
+utilities_xmdf::xmdfSetData $instance FileSet $fcount type ucf
+incr fcount
+
 utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path clk_ipcore/doc/clk_wiz_ds709.pdf
 utilities_xmdf::xmdfSetData $instance FileSet $fcount type Ignore
 incr fcount
 
 utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path clk_ipcore/doc/clk_wiz_gsg521.pdf
 utilities_xmdf::xmdfSetData $instance FileSet $fcount type Ignore
+incr fcount
+
+utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path clk_ipcore/example_design/clk_ipcore_exdes.v
+utilities_xmdf::xmdfSetData $instance FileSet $fcount type verilog
 incr fcount
 
 utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path clk_ipcore/implement/implement.bat
@@ -110,10 +118,6 @@ incr fcount
 
 utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path clk_ipcore.ejp
 utilities_xmdf::xmdfSetData $instance FileSet $fcount type AnyView
-incr fcount
-
-utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path clk_ipcore.ucf
-utilities_xmdf::xmdfSetData $instance FileSet $fcount type ucf
 incr fcount
 
 utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path clk_ipcore.v

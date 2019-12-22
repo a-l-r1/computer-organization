@@ -1,4 +1,5 @@
 verilog work "ipcore_dir/clk_ipcore.v"
+verilog work "ipcore_dir/clk_ipcore/example_design/clk_ipcore_exdes.v"
 verilog work "../src/devices/uart/utils.v"
 verilog work "../src/devices/uart/txd.v"
 verilog work "../src/devices/uart/rxd.v"

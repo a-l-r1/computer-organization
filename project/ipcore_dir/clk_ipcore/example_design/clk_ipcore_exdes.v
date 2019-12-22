@@ -73,6 +73,7 @@ module clk_ipcore_exdes
   //-------------------------------
   // Counter width
   localparam    C_W       = 16;
+  // Number of counters
   localparam    NUM_C     = 2;
   genvar        count_gen;
   // Create reset for the counters
@@ -86,7 +87,6 @@ module clk_ipcore_exdes
 
   // Declare the clocks and counters
   wire [NUM_C:1] clk_int;
-  wire [NUM_C:1] clk_n;
   wire [NUM_C:1] clk;
   reg [C_W-1:0]  counter [NUM_C:1];
 
@@ -99,24 +99,7 @@ module clk_ipcore_exdes
     .CLK_OUT1           (clk_int[1]),
     .CLK_OUT2           (clk_int[2]));
 
-genvar clk_out_pins;
-
-generate 
-  for (clk_out_pins = 1; clk_out_pins <= NUM_C; clk_out_pins = clk_out_pins + 1) 
-  begin: gen_outclk_oddr
-  assign clk_n[clk_out_pins] = ~clk[clk_out_pins];
-
-  ODDR2 clkout_oddr
-   (.Q  (CLK_OUT[clk_out_pins]),
-    .C0 (clk[clk_out_pins]),
-    .C1 (clk_n[clk_out_pins]),
-    .CE (1'b1),
-    .D0 (1'b1),
-    .D1 (1'b0),
-    .R  (1'b0),
-    .S  (1'b0));
-  end
-endgenerate
+  assign CLK_OUT =  clk_int;
 
   // Connect the output clocks to the design
   //-----------------------------------------

@@ -1,3 +1,5 @@
 xst -intstyle ise -ifn "/home/a-l-r/co/src/project/pipelined3_p8_at_tb.xst" -ofn "/home/a-l-r/co/src/project/pipelined3_p8_at_tb.syr" 
 vhdtdtfi -lib work /home/a-l-r/co/src/tests/cpu/pipelined3/course-materials/mips_test.v -lang verilog -prj cpu -o pipelined3_p8_at_tb.spl -module pipelined3_p8_at_tb -template /opt/Xilinx/14.7/ISE_DS/ISE//data/splveri.tft -deleteonerror 
 spl2sym -intstyle ise -family spartan6 pipelined3_p8_at_tb.spl /home/a-l-r/co/src/project/pipelined3_p8_at_tb.sym 
+xst -intstyle ise -ifn "/home/a-l-r/co/src/project/pipelined3_p8_at_tb.xst" -ofn "/home/a-l-r/co/src/project/pipelined3_p8_at_tb.syr" 
+xst -intstyle ise -ifn "/home/a-l-r/co/src/project/pipelined3_p8_at_tb.xst" -ofn "/home/a-l-r/co/src/project/pipelined3_p8_at_tb.syr" 
