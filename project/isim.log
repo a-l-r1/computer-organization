@@ -1,6 +1,6 @@
 ISim log file
-Running: /home/a-l-r/co/src/project/pipelined3_p8_at_tb2_isim_translate.exe -intstyle ise -gui -tclbatch isim.cmd -wdb /home/a-l-r/co/src/project/pipelined3_p8_at_tb2_isim_translate.wdb 
-ISim P.20131013 (signature 0xfbc00daa)
+Running: C:\cygwin64\home\A-l-r\co\src\project\pipelined3_p8_at_tb2_isim_translate.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/cygwin64/home/A-l-r/co/src/project/pipelined3_p8_at_tb2_isim_translate.wdb 
+ISim P.20131013 (signature 0x7708f090)
 This is a Full version of ISim.
 Time resolution is 1 ps
 # onerror resume
@@ -9,9 +9,19 @@ Time resolution is 1 ps
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
 # restart
-# cls
 # run 1000ns
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
 # run 1000ns
-# exit 0
+# restart
+# run 1000ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# restart
+# run 1000ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# restart
+# run 1000ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.

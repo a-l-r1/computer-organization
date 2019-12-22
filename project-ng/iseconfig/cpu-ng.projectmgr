@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--This is an ISE project configuration file.-->
+<!--It holds project specific layout data for the projectmgr plugin.-->
+<!--Copyright (c) 1995-2009 Xilinx, Inc.  All rights reserved.-->
+<Project version="2" owner="projectmgr" name="cpu-ng" >
+   <!--This is an ISE project configuration file.-->
+   <ItemView engineview="SynthesisOnly" guiview="Source" compilemode="AutoCompile" >
+      <ClosedNodes>
+         <ClosedNodesVersion>2</ClosedNodesVersion>
+         <ClosedNode>/Automatic `includes</ClosedNode>
+         <ClosedNode>/control C:|cygwin64|home|A-l-r|co|src|src|control|pipelined3-function.v</ClosedNode>
+         <ClosedNode>/cpu C:|cygwin64|home|A-l-r|co|src|src|cpu|pipelined3-cpu.v</ClosedNode>
+         <ClosedNode>/mips C:|cygwin64|home|A-l-r|co|src|src|mips|mips.v/cpu - cpu</ClosedNode>
+         <ClosedNode>/mips C:|cygwin64|home|A-l-r|co|src|src|mips|mips.v/nixie - nixie</ClosedNode>
+         <ClosedNode>/mips C:|cygwin64|home|A-l-r|co|src|src|mips|mips.v/uart_shim - uart_shim</ClosedNode>
+         <ClosedNode>/nixie C:|cygwin64|home|A-l-r|co|src|src|devices|nixie.v</ClosedNode>
+         <ClosedNode>/pipelined3_p8_at_tb2 C:|cygwin64|home|A-l-r|co|src|tests|cpu|pipelined3|pipelined3_p8_at_tb2.v/uut - mips/cpu - cpu</ClosedNode>
+         <ClosedNode>/uart_shim C:|cygwin64|home|A-l-r|co|src|src|devices|uart|uart-shim.v</ClosedNode>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem>uut - mips (C:/cygwin64/home/A-l-r/co/src/src/mips/mips.v)</SelectedItem>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001ee000000020000000000000000000000000200000064ffffffff000000810000000300000002000001ee0000000100000003000000000000000100000003</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
+      <CurrentItem>uut - mips (C:/cygwin64/home/A-l-r/co/src/src/mips/mips.v)</CurrentItem>
+   </ItemView>
+   <ItemView engineview="SynthesisOnly" sourcetype="" guiview="Process" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+         <ClosedNode>Design Utilities</ClosedNode>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem></SelectedItem>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000001a8000000010000000100000000000000000000000064ffffffff000000810000000000000001000001a80000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem></CurrentItem>
+   </ItemView>
+   <ItemView guiview="File" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+      </ClosedNodes>
+      <SelectedItems/>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000000000000010000000000000000000000000000000000000389000000040101000100000000000000000000000064ffffffff0000008100000000000000040000004f0000000100000000000000300000000100000000000000a80000000100000000000002620000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem></CurrentItem>
+   </ItemView>
+   <ItemView guiview="Library" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+         <ClosedNode>work</ClosedNode>
+      </ClosedNodes>
+      <SelectedItems/>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000000000000001000000000000000000000000000000000000019a000000010001000100000000000000000000000064ffffffff0000008100000000000000010000019a0000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem>work</CurrentItem>
+   </ItemView>
+   <ItemView engineview="SynthesisOnly" sourcetype="DESUT_VERILOG" guiview="Process" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+         <ClosedNode>Configure Target Device</ClosedNode>
+         <ClosedNode>Design Utilities</ClosedNode>
+         <ClosedNode>Implement Design</ClosedNode>
+         <ClosedNode>User Constraints</ClosedNode>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem>Synthesize - XST</SelectedItem>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000000000000000000018e000000010000000100000000000000000000000064ffffffff0000008100000000000000010000018e0000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem>Synthesize - XST</CurrentItem>
+   </ItemView>
+   <ItemView engineview="SynthesisOnly" sourcetype="DESUT_XCO" guiview="Process" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem></SelectedItem>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000001a8000000010000000100000000000000000000000064ffffffff000000810000000000000001000001a80000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem></CurrentItem>
+   </ItemView>
+   <ItemView engineview="BehavioralSim" guiview="Source" compilemode="AutoCompile" >
+      <ClosedNodes>
+         <ClosedNodesVersion>2</ClosedNodesVersion>
+         <ClosedNode>/mips C:|cygwin64|home|A-l-r|co|src|src|mips|mips.v</ClosedNode>
+         <ClosedNode>/mips C:|cygwin64|home|A-l-r|co|src|src|mips|mips.v/cpu - cpu</ClosedNode>
+         <ClosedNode>/mips C:|cygwin64|home|A-l-r|co|src|src|mips|mips.v/nixie - nixie</ClosedNode>
+         <ClosedNode>/mips C:|cygwin64|home|A-l-r|co|src|src|mips|mips.v/uart_shim - uart_shim</ClosedNode>
+         <ClosedNode>/pipelined3_p8_at_tb2 C:|cygwin64|home|A-l-r|co|src|tests|cpu|pipelined3|pipelined3_p8_at_tb2.v/uut - mips/cpu - cpu</ClosedNode>
+         <ClosedNode>/pipelined3_p8_at_tb2 C:|cygwin64|home|A-l-r|co|src|tests|cpu|pipelined3|pipelined3_p8_at_tb2.v/uut - mips/nixie - nixie</ClosedNode>
+         <ClosedNode>/pipelined3_p8_at_tb2 C:|cygwin64|home|A-l-r|co|src|tests|cpu|pipelined3|pipelined3_p8_at_tb2.v/uut - mips/uart_shim - uart_shim</ClosedNode>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem>uut - mips (C:/cygwin64/home/A-l-r/co/src/src/mips/mips.v)</SelectedItem>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001d8000000020000000000000000000000000200000064ffffffff000000810000000300000002000001d80000000100000003000000000000000100000003</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem>uut - mips (C:/cygwin64/home/A-l-r/co/src/src/mips/mips.v)</CurrentItem>
+   </ItemView>
+   <ItemView engineview="BehavioralSim" sourcetype="" guiview="Process" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+         <ClosedNode>Design Utilities</ClosedNode>
+         <ClosedNode>ISim Simulator</ClosedNode>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem/>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000001a8000000010000000100000000000000000000000064ffffffff000000810000000000000001000001a80000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem/>
+   </ItemView>
+   <ItemView engineview="BehavioralSim" sourcetype="DESUT_VERILOG" guiview="Process" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem>Simulate Behavioral Model</SelectedItem>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000001a8000000010000000100000000000000000000000064ffffffff000000810000000000000001000001a80000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem>Simulate Behavioral Model</CurrentItem>
+   </ItemView>
+   <SourceProcessView>000000ff0000000000000002000001950000011b01000000050100000002</SourceProcessView>
+   <CurrentView>Implementation</CurrentView>
+</Project>

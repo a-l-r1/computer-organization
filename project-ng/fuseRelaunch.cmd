@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -i "C:/cygwin64/home/A-l-r/co/src/src/include" -lib "simprims_ver" -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "C:/cygwin64/home/A-l-r/co/src/project-ng/pipelined3_p8_at_ng2_tb_isim_par.exe" -prj "C:/cygwin64/home/A-l-r/co/src/project-ng/pipelined3_p8_at_ng2_tb_par.prj" "work.pipelined3_p8_at_ng2_tb" "work.glbl" 

@@ -384,3 +384,6 @@ netgen -intstyle ise -insert_glbl true -w -dir netgen/translate -ofmt verilog -s
 xst -intstyle ise -ifn "/home/a-l-r/co/src/project/mips.xst" -ofn "/home/a-l-r/co/src/project/mips.syr" 
 ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -i -p xc6slx100-fgg676-2 mips.ngc mips.ngd  
 netgen -intstyle ise -insert_glbl true -w -dir netgen/translate -ofmt verilog -sim mips.ngd mips_translate.v 
+xst -intstyle ise -ifn "C:/cygwin64/home/A-l-r/co/src/project/mips.xst" -ofn "C:/cygwin64/home/A-l-r/co/src/project/mips.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -i -p xc6slx100-fgg676-2 mips.ngc mips.ngd  
+netgen -intstyle ise -insert_glbl true -w -dir netgen/translate -ofmt verilog -sim mips.ngd mips_translate.v 

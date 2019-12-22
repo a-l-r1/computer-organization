@@ -1,21 +1,18 @@
-Release 14.7 - xst P.20131013 (lin64)
+Release 14.7 - xst P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
---> 
-Parameter TMPDIR set to xst/projnav.tmp
+--> Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total CPU time to Xst completion: 0.08 secs
  
---> 
-Parameter xsthdpdir set to xst
+--> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total CPU time to Xst completion: 0.08 secs
  
---> 
-Reading design: mips.prj
+--> Reading design: mips.prj
 
 TABLE OF CONTENTS
   1) Synthesis Options Summary
@@ -45,7 +42,7 @@ TABLE OF CONTENTS
 ---- Source Parameters
 Input File Name                    : "mips.prj"
 Ignore Synthesis Constraint File   : NO
-Verilog Include Directory          : { "/home/a-l-r/co/src/src/include" }
+Verilog Include Directory          : { "C:/cygwin64/home/A-l-r/co/src/src/include" }
 
 ---- Target Parameters
 Output File Name                   : "mips"
@@ -112,117 +109,115 @@ Cores Search Directories           : {"ipcore_dir"  }
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Analyzing Verilog file "/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v" into library work
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\project\ipcore_dir\clk_ipcore.v" into library work
 Parsing module <clk_ipcore>.
-Analyzing Verilog file "/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore/example_design/clk_ipcore_exdes.v" into library work
-Parsing module <clk_ipcore_exdes>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/devices/uart/utils.v" into library work
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\devices\uart\utils.v" into library work
 Parsing module <divisor>.
 Parsing module <counter>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/devices/uart/txd.v" into library work
-Parsing verilog file "/home/a-l-r/co/src/src/include/uart.h" included at line 14.
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\devices\uart\txd.v" into library work
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/uart.h" included at line 14.
 Parsing module <tx_unit>.
 Parsing module <ctrl_shift>.
 Parsing module <trans_reg>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/devices/uart/rxd.v" into library work
-Parsing verilog file "/home/a-l-r/co/src/src/include/uart.h" included at line 9.
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\devices\uart\rxd.v" into library work
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/uart.h" included at line 9.
 Parsing module <rx_unit>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/datapath/pff.v" into library work
-Parsing verilog file "/home/a-l-r/co/src/src/include/pff.h" included at line 1.
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\datapath\pff.v" into library work
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/pff.h" included at line 1.
 Parsing module <pff>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/control/pipelined3-hazard.v" into library work
-Parsing verilog file "/home/a-l-r/co/src/src/include/instr-id.h" included at line 1.
-Parsing verilog file "/home/a-l-r/co/src/src/include/pipelined3.h" included at line 2.
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\control\pipelined3-hazard.v" into library work
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/instr-id.h" included at line 1.
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/pipelined3.h" included at line 2.
 Parsing module <hazard>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/control/pipelined3-handler.v" into library work
-Parsing verilog file "/home/a-l-r/co/src/src/include/pipelined3.h" included at line 1.
-Parsing verilog file "/home/a-l-r/co/src/src/include/instr-id.h" included at line 2.
-Parsing verilog file "/home/a-l-r/co/src/src/include/npc.h" included at line 4.
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\control\pipelined3-handler.v" into library work
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/pipelined3.h" included at line 1.
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/instr-id.h" included at line 2.
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/npc.h" included at line 4.
 Parsing module <handler>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/control/pipelined3-forward.v" into library work
-Parsing verilog file "/home/a-l-r/co/src/src/include/instr-id.h" included at line 1.
-Parsing verilog file "/home/a-l-r/co/src/src/include/pipelined3.h" included at line 2.
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\control\pipelined3-forward.v" into library work
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/instr-id.h" included at line 1.
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/pipelined3.h" included at line 2.
 Parsing module <forward>.
-Analyzing Verilog file "/home/a-l-r/co/src/project/ipcore_dir/im_ipcore.v" into library work
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\project\ipcore_dir\im_ipcore.v" into library work
 Parsing module <im_ipcore>.
-Analyzing Verilog file "/home/a-l-r/co/src/project/ipcore_dir/dm_ipcore.v" into library work
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\project\ipcore_dir\dm_ipcore.v" into library work
 Parsing module <dm_ipcore>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/devices/uart/uart.v" into library work
-Parsing verilog file "/home/a-l-r/co/src/src/include/uart.h" included at line 12.
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\devices\uart\uart.v" into library work
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/uart.h" included at line 12.
 Parsing module <MiniUART>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/devices/nixie-decoder.v" into library work
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\devices\nixie-decoder.v" into library work
 Parsing module <nixie_decoder>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/datapath/rf.v" into library work
-Parsing verilog file "/home/a-l-r/co/src/src/include/rf.h" included at line 1.
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\datapath\rf.v" into library work
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/rf.h" included at line 1.
 Parsing module <rf>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/datapath/pc.v" into library work
-Parsing verilog file "/home/a-l-r/co/src/src/include/pc.h" included at line 1.
-Parsing verilog file "/home/a-l-r/co/src/src/include/im.h" included at line 3.
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\datapath\pc.v" into library work
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/pc.h" included at line 1.
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/im.h" included at line 3.
 Parsing module <pc>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/datapath/npc.v" into library work
-Parsing verilog file "/home/a-l-r/co/src/src/include/npc.h" included at line 1.
-Parsing verilog file "/home/a-l-r/co/src/src/include/alu.h" included at line 3.
-Parsing verilog file "/home/a-l-r/co/src/src/include/cmp.h" included at line 4.
-Parsing verilog file "/home/a-l-r/co/src/src/include/alu.h" included at line 4.
-Parsing verilog file "/home/a-l-r/co/src/src/include/im.h" included at line 5.
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\datapath\npc.v" into library work
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/npc.h" included at line 1.
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/alu.h" included at line 3.
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/cmp.h" included at line 4.
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/alu.h" included at line 4.
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/im.h" included at line 5.
 Parsing module <npc>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/datapath/im.v" into library work
-Parsing verilog file "/home/a-l-r/co/src/src/include/im.h" included at line 1.
-Parsing verilog file "/home/a-l-r/co/src/src/include/npc.h" included at line 2.
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\datapath\im.v" into library work
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/im.h" included at line 1.
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/npc.h" included at line 2.
 Parsing module <im>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/datapath/ext.v" into library work
-Parsing verilog file "/home/a-l-r/co/src/src/include/ext.h" included at line 1.
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\datapath\ext.v" into library work
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/ext.h" included at line 1.
 Parsing module <ext>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/datapath/dm.v" into library work
-Parsing verilog file "/home/a-l-r/co/src/src/include/dm.h" included at line 1.
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\datapath\dm.v" into library work
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/dm.h" included at line 1.
 Parsing module <dm>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/datapath/cp0.v" into library work
-Parsing verilog file "/home/a-l-r/co/src/src/include/cp0.h" included at line 1.
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\datapath\cp0.v" into library work
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/cp0.h" included at line 1.
 Parsing module <cp0>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/datapath/cmp.v" into library work
-Parsing verilog file "/home/a-l-r/co/src/src/include/alu.h" included at line 1.
-Parsing verilog file "/home/a-l-r/co/src/src/include/cmp.h" included at line 2.
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\datapath\cmp.v" into library work
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/alu.h" included at line 1.
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/cmp.h" included at line 2.
 Parsing module <cmp>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/datapath/alu.v" into library work
-Parsing verilog file "/home/a-l-r/co/src/src/include/alu.h" included at line 1.
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\datapath\alu.v" into library work
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/alu.h" included at line 1.
 Parsing module <alu>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/control/pipelined3-function.v" into library work
-Parsing verilog file "/home/a-l-r/co/src/src/include/instr-id.h" included at line 1.
-Parsing verilog file "/home/a-l-r/co/src/src/include/pipelined3.h" included at line 2.
-Parsing verilog file "/home/a-l-r/co/src/src/include/alu.h" included at line 4.
-Parsing verilog file "/home/a-l-r/co/src/src/include/ac.h" included at line 5.
-Parsing verilog file "/home/a-l-r/co/src/src/include/ext.h" included at line 6.
-Parsing verilog file "/home/a-l-r/co/src/src/include/cp0.h" included at line 7.
-Parsing verilog file "/home/a-l-r/co/src/src/include/npc.h" included at line 8.
-Parsing verilog file "/home/a-l-r/co/src/src/include/md.h" included at line 9.
-Parsing verilog file "/home/a-l-r/co/src/src/include/dm.h" included at line 10.
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\control\pipelined3-function.v" into library work
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/instr-id.h" included at line 1.
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/pipelined3.h" included at line 2.
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/alu.h" included at line 4.
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/ac.h" included at line 5.
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/ext.h" included at line 6.
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/cp0.h" included at line 7.
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/npc.h" included at line 8.
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/md.h" included at line 9.
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/dm.h" included at line 10.
 Parsing module <kind>.
 Parsing module <control>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/devices/uart/uart-shim.v" into library work
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\devices\uart\uart-shim.v" into library work
 Parsing module <uart_shim>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/devices/timer.v" into library work
-Parsing verilog file "/home/a-l-r/co/src/src/include/timer.h" included at line 1.
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\devices\timer.v" into library work
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/timer.h" included at line 1.
 Parsing module <timer>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/devices/switches.v" into library work
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\devices\switches.v" into library work
 Parsing module <switches>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/devices/nixie.v" into library work
-Parsing verilog file "/home/a-l-r/co/src/src/include/nixie.h" included at line 1.
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\devices\nixie.v" into library work
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/nixie.h" included at line 1.
 Parsing module <nixie>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/devices/led.v" into library work
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\devices\led.v" into library work
 Parsing module <led>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/devices/buttons.v" into library work
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\devices\buttons.v" into library work
 Parsing module <buttons>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" into library work
-Parsing verilog file "/home/a-l-r/co/src/src/include/pipelined3.h" included at line 1.
-Parsing verilog file "/home/a-l-r/co/src/src/include/dm.h" included at line 3.
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\cpu\pipelined3-cpu.v" into library work
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/pipelined3.h" included at line 1.
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/dm.h" included at line 3.
 Parsing module <cpu>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/bridge/bridge.v" into library work
-Parsing verilog file "/home/a-l-r/co/src/src/include/bridge.h" included at line 1.
-Parsing verilog file "/home/a-l-r/co/src/src/include/dm.h" included at line 2.
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\bridge\bridge.v" into library work
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/bridge.h" included at line 1.
+Parsing verilog file "C:/cygwin64/home/A-l-r/co/src/src/include/dm.h" included at line 2.
 Parsing module <bridge>.
-Analyzing Verilog file "/home/a-l-r/co/src/project/P8_BLACKBOX.v" into library work
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\project\P8_BLACKBOX.v" into library work
 Parsing module <wrapper>.
-Analyzing Verilog file "/home/a-l-r/co/src/src/mips/mips.v" into library work
+Analyzing Verilog file "C:\cygwin64\home\A-l-r\co\src\src\mips\mips.v" into library work
 Parsing module <mips>.
 
 =========================================================================
@@ -236,11 +231,11 @@ Elaborating module <clk_ipcore>.
 Elaborating module <IBUFG>.
 
 Elaborating module <PLL_BASE(BANDWIDTH="OPTIMIZED",CLK_FEEDBACK="CLKFBOUT",COMPENSATION="SYSTEM_SYNCHRONOUS",DIVCLK_DIVIDE=1,CLKFBOUT_MULT=16,CLKFBOUT_PHASE=0.0,CLKOUT0_DIVIDE=40,CLKOUT0_PHASE=0.0,CLKOUT0_DUTY_CYCLE=0.5,CLKOUT1_DIVIDE=20,CLKOUT1_PHASE=0.0,CLKOUT1_DUTY_CYCLE=0.5,CLKIN_PERIOD=40.0,REF_JITTER=0.01)>.
-WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v" Line 119: Assignment to clkout2_unused ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v" Line 120: Assignment to clkout3_unused ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v" Line 121: Assignment to clkout4_unused ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v" Line 122: Assignment to clkout5_unused ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v" Line 123: Assignment to locked_unused ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\cygwin64\home\A-l-r\co\src\project\ipcore_dir\clk_ipcore.v" Line 119: Assignment to clkout2_unused ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\cygwin64\home\A-l-r\co\src\project\ipcore_dir\clk_ipcore.v" Line 120: Assignment to clkout3_unused ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\cygwin64\home\A-l-r\co\src\project\ipcore_dir\clk_ipcore.v" Line 121: Assignment to clkout4_unused ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\cygwin64\home\A-l-r\co\src\project\ipcore_dir\clk_ipcore.v" Line 122: Assignment to clkout5_unused ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\cygwin64\home\A-l-r\co\src\project\ipcore_dir\clk_ipcore.v" Line 123: Assignment to locked_unused ignored, since the identifier is never used
 
 Elaborating module <BUFG>.
 
@@ -267,12 +262,12 @@ Elaborating module <pc>.
 Elaborating module <im>.
 
 Elaborating module <im_ipcore>.
-WARNING:HDLCompiler:1499 - "/home/a-l-r/co/src/project/ipcore_dir/im_ipcore.v" Line 39: Empty module <im_ipcore> remains a black box.
+WARNING:HDLCompiler:1499 - "C:\cygwin64\home\A-l-r\co\src\project\ipcore_dir\im_ipcore.v" Line 39: Empty module <im_ipcore> remains a black box.
 
 Elaborating module <pff(BIT_WIDTH=32)>.
 
 Elaborating module <rf>.
-"/home/a-l-r/co/src/src/datapath/rf.v" Line 34. $display  32'b................................ 5'b..... 32'b................................
+"C:\cygwin64\home\A-l-r\co\src\src\datapath\rf.v" Line 34. $display  32'b................................ 5'b..... 32'b................................
 
 Elaborating module <ext>.
 
@@ -283,13 +278,13 @@ Elaborating module <alu>.
 Elaborating module <dm>.
 
 Elaborating module <dm_ipcore>.
-WARNING:HDLCompiler:1499 - "/home/a-l-r/co/src/project/ipcore_dir/dm_ipcore.v" Line 39: Empty module <dm_ipcore> remains a black box.
+WARNING:HDLCompiler:1499 - "C:\cygwin64\home\A-l-r\co\src\project\ipcore_dir\dm_ipcore.v" Line 39: Empty module <dm_ipcore> remains a black box.
 
 Elaborating module <cp0>.
 
 Elaborating module <wrapper>.
-WARNING:HDLCompiler:1499 - "/home/a-l-r/co/src/project/P8_BLACKBOX.v" Line 21: Empty module <wrapper> remains a black box.
-WARNING:HDLCompiler:189 - "/home/a-l-r/co/src/src/mips/mips.v" Line 107: Size mismatch in connection of port <M_RE>. Formal port size is 1-bit while actual signal size is 32-bit.
+WARNING:HDLCompiler:1499 - "C:\cygwin64\home\A-l-r\co\src\project\P8_BLACKBOX.v" Line 21: Empty module <wrapper> remains a black box.
+WARNING:HDLCompiler:189 - "C:\cygwin64\home\A-l-r\co\src\src\mips\mips.v" Line 107: Size mismatch in connection of port <M_RE>. Formal port size is 1-bit while actual signal size is 32-bit.
 
 Elaborating module <bridge>.
 
@@ -300,24 +295,24 @@ Elaborating module <uart_shim>.
 Elaborating module <MiniUART>.
 
 Elaborating module <rx_unit>.
-WARNING:HDLCompiler:413 - "/home/a-l-r/co/src/src/devices/uart/rxd.v" Line 63: Result of 32-bit expression is truncated to fit in 3-bit target.
-WARNING:HDLCompiler:413 - "/home/a-l-r/co/src/src/devices/uart/rxd.v" Line 64: Result of 32-bit expression is truncated to fit in 3-bit target.
-WARNING:HDLCompiler:413 - "/home/a-l-r/co/src/src/devices/uart/rxd.v" Line 71: Result of 32-bit expression is truncated to fit in 3-bit target.
-WARNING:HDLCompiler:413 - "/home/a-l-r/co/src/src/devices/uart/rxd.v" Line 74: Result of 32-bit expression is truncated to fit in 3-bit target.
-WARNING:HDLCompiler:413 - "/home/a-l-r/co/src/src/devices/uart/rxd.v" Line 82: Result of 32-bit expression is truncated to fit in 3-bit target.
+WARNING:HDLCompiler:413 - "C:\cygwin64\home\A-l-r\co\src\src\devices\uart\rxd.v" Line 63: Result of 32-bit expression is truncated to fit in 3-bit target.
+WARNING:HDLCompiler:413 - "C:\cygwin64\home\A-l-r\co\src\src\devices\uart\rxd.v" Line 64: Result of 32-bit expression is truncated to fit in 3-bit target.
+WARNING:HDLCompiler:413 - "C:\cygwin64\home\A-l-r\co\src\src\devices\uart\rxd.v" Line 71: Result of 32-bit expression is truncated to fit in 3-bit target.
+WARNING:HDLCompiler:413 - "C:\cygwin64\home\A-l-r\co\src\src\devices\uart\rxd.v" Line 74: Result of 32-bit expression is truncated to fit in 3-bit target.
+WARNING:HDLCompiler:413 - "C:\cygwin64\home\A-l-r\co\src\src\devices\uart\rxd.v" Line 82: Result of 32-bit expression is truncated to fit in 3-bit target.
 
 Elaborating module <tx_unit>.
 
 Elaborating module <ctrl_shift>.
-WARNING:HDLCompiler:413 - "/home/a-l-r/co/src/src/devices/uart/txd.v" Line 79: Result of 32-bit expression is truncated to fit in 4-bit target.
+WARNING:HDLCompiler:413 - "C:\cygwin64\home\A-l-r\co\src\src\devices\uart\txd.v" Line 79: Result of 32-bit expression is truncated to fit in 4-bit target.
 
 Elaborating module <trans_reg>.
 
 Elaborating module <divisor(size_cnt_rx=16,size_cnt_tx=16)>.
 
 Elaborating module <counter(size_cnt=16)>.
-WARNING:HDLCompiler:413 - "/home/a-l-r/co/src/src/devices/uart/utils.v" Line 63: Result of 32-bit expression is truncated to fit in 16-bit target.
-WARNING:HDLCompiler:413 - "/home/a-l-r/co/src/src/devices/uart/uart.v" Line 65: Result of 39-bit expression is truncated to fit in 32-bit target.
+WARNING:HDLCompiler:413 - "C:\cygwin64\home\A-l-r\co\src\src\devices\uart\utils.v" Line 63: Result of 32-bit expression is truncated to fit in 16-bit target.
+WARNING:HDLCompiler:413 - "C:\cygwin64\home\A-l-r\co\src\src\devices\uart\uart.v" Line 65: Result of 39-bit expression is truncated to fit in 32-bit target.
 
 Elaborating module <switches>.
 
@@ -334,36 +329,36 @@ Elaborating module <buttons>.
 =========================================================================
 
 Synthesizing Unit <mips>.
-    Related source file is "/home/a-l-r/co/src/src/mips/mips.v".
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 77: Output port <test_addr> of the instance <cpu> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 98: Output port <user_F_addr> of the instance <wrapper> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 98: Output port <user_F_instr> of the instance <wrapper> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 98: Output port <user_M_addr> of the instance <wrapper> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 98: Output port <user_M_WData> of the instance <wrapper> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 98: Output port <user_M_RData> of the instance <wrapper> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 98: Output port <txd_buffer> of the instance <wrapper> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 98: Output port <user_M_WE> of the instance <wrapper> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/mips/mips.v" line 98: Output port <user_M_RE> of the instance <wrapper> is unconnected or connected to loadless signal.
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\mips\mips.v".
+INFO:Xst:3210 - "C:\cygwin64\home\A-l-r\co\src\src\mips\mips.v" line 77: Output port <test_addr> of the instance <cpu> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\cygwin64\home\A-l-r\co\src\src\mips\mips.v" line 98: Output port <user_F_addr> of the instance <wrapper> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\cygwin64\home\A-l-r\co\src\src\mips\mips.v" line 98: Output port <user_F_instr> of the instance <wrapper> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\cygwin64\home\A-l-r\co\src\src\mips\mips.v" line 98: Output port <user_M_addr> of the instance <wrapper> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\cygwin64\home\A-l-r\co\src\src\mips\mips.v" line 98: Output port <user_M_WData> of the instance <wrapper> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\cygwin64\home\A-l-r\co\src\src\mips\mips.v" line 98: Output port <user_M_RData> of the instance <wrapper> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\cygwin64\home\A-l-r\co\src\src\mips\mips.v" line 98: Output port <txd_buffer> of the instance <wrapper> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\cygwin64\home\A-l-r\co\src\src\mips\mips.v" line 98: Output port <user_M_WE> of the instance <wrapper> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\cygwin64\home\A-l-r\co\src\src\mips\mips.v" line 98: Output port <user_M_RE> of the instance <wrapper> is unconnected or connected to loadless signal.
     Summary:
 	no macro.
 Unit <mips> synthesized.
 
 Synthesizing Unit <clk_ipcore>.
-    Related source file is "/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\project\ipcore_dir\clk_ipcore.v".
     Summary:
 	no macro.
 Unit <clk_ipcore> synthesized.
 
 Synthesizing Unit <cpu>.
-    Related source file is "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v".
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 110: Output port <cw_e_md_op> of the instance <control> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 110: Output port <cw_e_md_stop> of the instance <control> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 110: Output port <cw_e_md_restore> of the instance <control> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 280: Output port <reg2_sig_cmp> of the instance <cmp> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 358: Output port <cmp_result> of the instance <alu> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 358: Output port <sig_cmp_result> of the instance <alu> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 358: Output port <overflow> of the instance <alu> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 358: Output port <op_invalid> of the instance <alu> is unconnected or connected to loadless signal.
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\cpu\pipelined3-cpu.v".
+INFO:Xst:3210 - "C:\cygwin64\home\A-l-r\co\src\src\cpu\pipelined3-cpu.v" line 110: Output port <cw_e_md_op> of the instance <control> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\cygwin64\home\A-l-r\co\src\src\cpu\pipelined3-cpu.v" line 110: Output port <cw_e_md_stop> of the instance <control> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\cygwin64\home\A-l-r\co\src\src\cpu\pipelined3-cpu.v" line 110: Output port <cw_e_md_restore> of the instance <control> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\cygwin64\home\A-l-r\co\src\src\cpu\pipelined3-cpu.v" line 280: Output port <reg2_sig_cmp> of the instance <cmp> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\cygwin64\home\A-l-r\co\src\src\cpu\pipelined3-cpu.v" line 358: Output port <cmp_result> of the instance <alu> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\cygwin64\home\A-l-r\co\src\src\cpu\pipelined3-cpu.v" line 358: Output port <sig_cmp_result> of the instance <alu> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\cygwin64\home\A-l-r\co\src\src\cpu\pipelined3-cpu.v" line 358: Output port <overflow> of the instance <alu> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\cygwin64\home\A-l-r\co\src\src\cpu\pipelined3-cpu.v" line 358: Output port <op_invalid> of the instance <alu> is unconnected or connected to loadless signal.
     Found 32-bit adder for signal <e_retaddr> created at line 299.
     Found 32-bit adder for signal <m_retaddr> created at line 405.
     Found 32-bit adder for signal <w_retaddr> created at line 538.
@@ -377,7 +372,7 @@ INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 358: Output p
 Unit <cpu> synthesized.
 
 Synthesizing Unit <control>.
-    Related source file is "/home/a-l-r/co/src/src/control/pipelined3-function.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\control\pipelined3-function.v".
 WARNING:Xst:647 - Input <d_pc_curr_pc<1:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 128x3-bit Read Only RAM for signal <_n0592>
     Found 64x5-bit Read Only RAM for signal <_n0595>
@@ -390,13 +385,13 @@ WARNING:Xst:647 - Input <d_pc_curr_pc<1:0>> is never used. This port will be pre
 Unit <control> synthesized.
 
 Synthesizing Unit <kind>.
-    Related source file is "/home/a-l-r/co/src/src/control/pipelined3-function.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\control\pipelined3-function.v".
     Summary:
 	inferred  47 Multiplexer(s).
 Unit <kind> synthesized.
 
 Synthesizing Unit <pff_1>.
-    Related source file is "/home/a-l-r/co/src/src/datapath/pff.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\datapath\pff.v".
         BIT_WIDTH = 5
     Found 5-bit register for signal <data>.
     Summary:
@@ -404,7 +399,7 @@ Synthesizing Unit <pff_1>.
 Unit <pff_1> synthesized.
 
 Synthesizing Unit <forward>.
-    Related source file is "/home/a-l-r/co/src/src/control/pipelined3-forward.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\control\pipelined3-forward.v".
 WARNING:Xst:647 - Input <dkind> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <ekind<4:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <mkind<4:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -436,7 +431,7 @@ WARNING:Xst:647 - Input <w_instr> is never used. This port will be preserved and
 Unit <forward> synthesized.
 
 Synthesizing Unit <hazard>.
-    Related source file is "/home/a-l-r/co/src/src/control/pipelined3-hazard.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\control\pipelined3-hazard.v".
 WARNING:Xst:647 - Input <dkind<4:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <ekind<4:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <mkind<4:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -469,7 +464,7 @@ WARNING:Xst:647 - Input <w_instr> is never used. This port will be preserved and
 Unit <hazard> synthesized.
 
 Synthesizing Unit <pff_2>.
-    Related source file is "/home/a-l-r/co/src/src/datapath/pff.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\datapath\pff.v".
         BIT_WIDTH = 1
     Found 1-bit register for signal <data>.
     Summary:
@@ -477,7 +472,7 @@ Synthesizing Unit <pff_2>.
 Unit <pff_2> synthesized.
 
 Synthesizing Unit <handler>.
-    Related source file is "/home/a-l-r/co/src/src/control/pipelined3-handler.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\control\pipelined3-handler.v".
 WARNING:Xst:647 - Input <dkind<4:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <ekind<4:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <mkind<4:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -491,7 +486,7 @@ WARNING:Xst:647 - Input <m_exc_final> is never used. This port will be preserved
 Unit <handler> synthesized.
 
 Synthesizing Unit <npc>.
-    Related source file is "/home/a-l-r/co/src/src/datapath/npc.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\datapath\npc.v".
     Found 32-bit adder for signal <b_target> created at line 29.
     Found 32-bit adder for signal <base[31]_GND_14_o_add_31_OUT> created at line 46.
     Summary:
@@ -500,14 +495,14 @@ Synthesizing Unit <npc>.
 Unit <npc> synthesized.
 
 Synthesizing Unit <pc>.
-    Related source file is "/home/a-l-r/co/src/src/datapath/pc.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\datapath\pc.v".
     Found 32-bit register for signal <saved_pc>.
     Summary:
 	inferred  32 D-type flip-flop(s).
 Unit <pc> synthesized.
 
 Synthesizing Unit <im>.
-    Related source file is "/home/a-l-r/co/src/src/datapath/im.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\datapath\im.v".
 WARNING:Xst:647 - Input <enable> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 32-bit subtractor for signal <addr[31]_GND_16_o_sub_5_OUT> created at line 36.
     Found 32-bit comparator lessequal for signal <n0000> created at line 31
@@ -519,7 +514,7 @@ WARNING:Xst:647 - Input <enable> is never used. This port will be preserved and 
 Unit <im> synthesized.
 
 Synthesizing Unit <pff_3>.
-    Related source file is "/home/a-l-r/co/src/src/datapath/pff.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\datapath\pff.v".
         BIT_WIDTH = 32
     Found 32-bit register for signal <data>.
     Summary:
@@ -527,7 +522,7 @@ Synthesizing Unit <pff_3>.
 Unit <pff_3> synthesized.
 
 Synthesizing Unit <rf>.
-    Related source file is "/home/a-l-r/co/src/src/datapath/rf.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\datapath\rf.v".
 WARNING:Xst:647 - Input <curr_pc> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 992-bit register for signal <n0055[991:0]>.
     Found 32-bit 31-to-1 multiplexer for signal <read_addr1[4]_registers[31][31]_wide_mux_41_OUT> created at line 41.
@@ -538,14 +533,14 @@ WARNING:Xst:647 - Input <curr_pc> is never used. This port will be preserved and
 Unit <rf> synthesized.
 
 Synthesizing Unit <ext>.
-    Related source file is "/home/a-l-r/co/src/src/datapath/ext.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\datapath\ext.v".
     Found 32-bit 4-to-1 multiplexer for signal <_n0018> created at line 6.
     Summary:
 	inferred   1 Multiplexer(s).
 Unit <ext> synthesized.
 
 Synthesizing Unit <cmp>.
-    Related source file is "/home/a-l-r/co/src/src/datapath/cmp.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\datapath\cmp.v".
     Found 32-bit comparator greater for signal <reg2[31]_reg1[31]_LessThan_1_o> created at line 13
     Found 32-bit comparator greater for signal <reg1[31]_reg2[31]_LessThan_2_o> created at line 14
     Found 32-bit comparator greater for signal <reg1[31]_reg2[31]_LessThan_5_o> created at line 18
@@ -558,7 +553,7 @@ Synthesizing Unit <cmp>.
 Unit <cmp> synthesized.
 
 Synthesizing Unit <alu>.
-    Related source file is "/home/a-l-r/co/src/src/datapath/alu.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\datapath\alu.v".
     Found 32-bit subtractor for signal <num1[31]_num2[31]_sub_174_OUT> created at line 131.
     Found 33-bit subtractor for signal <GND_22_o_GND_22_o_sub_215_OUT> created at line 153.
     Found 33-bit subtractor for signal <num1[31]_num2[31]_sub_221_OUT> created at line 160.
@@ -593,7 +588,7 @@ Synthesizing Unit <alu>.
 Unit <alu> synthesized.
 
 Synthesizing Unit <dm>.
-    Related source file is "/home/a-l-r/co/src/src/datapath/dm.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\datapath\dm.v".
 WARNING:Xst:647 - Input <curr_pc> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 32-bit 4-to-1 multiplexer for signal <GND_23_o_dm_ipcore_read_result[7]_mux_65_OUT> created at line 170.
@@ -606,7 +601,7 @@ WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and lef
 Unit <dm> synthesized.
 
 Synthesizing Unit <cp0>.
-    Related source file is "/home/a-l-r/co/src/src/datapath/cp0.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\datapath\cp0.v".
     Found 1-bit register for signal <sr<30>>.
     Found 1-bit register for signal <sr<29>>.
     Found 1-bit register for signal <sr<28>>.
@@ -680,7 +675,7 @@ Synthesizing Unit <cp0>.
 Unit <cp0> synthesized.
 
 Synthesizing Unit <bridge>.
-    Related source file is "/home/a-l-r/co/src/src/bridge/bridge.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\bridge\bridge.v".
 WARNING:Xst:647 - Input <clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 32-bit subtractor for signal <addr[31]_GND_27_o_sub_33_OUT> created at line 103.
@@ -709,7 +704,7 @@ WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and lef
 Unit <bridge> synthesized.
 
 Synthesizing Unit <timer>.
-    Related source file is "/home/a-l-r/co/src/src/devices/timer.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\devices\timer.v".
     Found 32-bit register for signal <count>.
     Found 1-bit register for signal <allow_irq>.
     Found 2-bit register for signal <mode>.
@@ -743,14 +738,14 @@ Synthesizing Unit <timer>.
 Unit <timer> synthesized.
 
 Synthesizing Unit <uart_shim>.
-    Related source file is "/home/a-l-r/co/src/src/devices/uart/uart-shim.v".
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/devices/uart/uart-shim.v" line 15: Output port <ACK_O> of the instance <uart> is unconnected or connected to loadless signal.
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\devices\uart\uart-shim.v".
+INFO:Xst:3210 - "C:\cygwin64\home\A-l-r\co\src\src\devices\uart\uart-shim.v" line 15: Output port <ACK_O> of the instance <uart> is unconnected or connected to loadless signal.
     Summary:
 	no macro.
 Unit <uart_shim> synthesized.
 
 Synthesizing Unit <MiniUART>.
-    Related source file is "/home/a-l-r/co/src/src/devices/uart/uart.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\devices\uart\uart.v".
 WARNING:Xst:647 - Input <DAT_I<31:16>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 1-bit register for signal <load>.
     Found 16-bit register for signal <divt>.
@@ -763,7 +758,7 @@ WARNING:Xst:647 - Input <DAT_I<31:16>> is never used. This port will be preserve
 Unit <MiniUART> synthesized.
 
 Synthesizing Unit <rx_unit>.
-    Related source file is "/home/a-l-r/co/src/src/devices/uart/rxd.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\devices\uart\rxd.v".
         IDLE = 32'b00000000000000000000000000000000
         START = 32'b00000000000000000000000000000001
         BIT_RECV = 32'b00000000000000000000000000000010
@@ -785,13 +780,13 @@ Synthesizing Unit <rx_unit>.
 Unit <rx_unit> synthesized.
 
 Synthesizing Unit <tx_unit>.
-    Related source file is "/home/a-l-r/co/src/src/devices/uart/txd.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\devices\uart\txd.v".
     Summary:
 	no macro.
 Unit <tx_unit> synthesized.
 
 Synthesizing Unit <ctrl_shift>.
-    Related source file is "/home/a-l-r/co/src/src/devices/uart/txd.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\devices\uart\txd.v".
         IDLE = 0
         SHIFT = 1
     Found 4-bit register for signal <cnt_tx>.
@@ -803,7 +798,7 @@ Synthesizing Unit <ctrl_shift>.
 Unit <ctrl_shift> synthesized.
 
 Synthesizing Unit <trans_reg>.
-    Related source file is "/home/a-l-r/co/src/src/devices/uart/txd.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\devices\uart\txd.v".
     Found 1-bit register for signal <t_reg<9>>.
     Found 1-bit register for signal <t_reg<8>>.
     Found 1-bit register for signal <t_reg<7>>.
@@ -820,7 +815,7 @@ Synthesizing Unit <trans_reg>.
 Unit <trans_reg> synthesized.
 
 Synthesizing Unit <divisor>.
-    Related source file is "/home/a-l-r/co/src/src/devices/uart/utils.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\devices\uart\utils.v".
         size_cnt_rx = 16
         size_cnt_tx = 16
     Summary:
@@ -828,7 +823,7 @@ Synthesizing Unit <divisor>.
 Unit <divisor> synthesized.
 
 Synthesizing Unit <counter>.
-    Related source file is "/home/a-l-r/co/src/src/devices/uart/utils.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\devices\uart\utils.v".
         size_cnt = 16
     Found 16-bit register for signal <cnt>.
     Found 1-bit register for signal <q>.
@@ -840,7 +835,7 @@ Synthesizing Unit <counter>.
 Unit <counter> synthesized.
 
 Synthesizing Unit <switches>.
-    Related source file is "/home/a-l-r/co/src/src/devices/switches.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\devices\switches.v".
 WARNING:Xst:647 - Input <write_data> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <write_enable> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 64-bit register for signal <stored>.
@@ -850,7 +845,7 @@ WARNING:Xst:647 - Input <write_enable> is never used. This port will be preserve
 Unit <switches> synthesized.
 
 Synthesizing Unit <led>.
-    Related source file is "/home/a-l-r/co/src/src/devices/led.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\devices\led.v".
 WARNING:Xst:647 - Input <addr> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 32-bit register for signal <stored>.
     Summary:
@@ -858,7 +853,7 @@ WARNING:Xst:647 - Input <addr> is never used. This port will be preserved and le
 Unit <led> synthesized.
 
 Synthesizing Unit <nixie>.
-    Related source file is "/home/a-l-r/co/src/src/devices/nixie.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\devices\nixie.v".
     Found 4-bit register for signal <phase>.
     Found 16-bit register for signal <tube0>.
     Found 16-bit register for signal <tube1>.
@@ -887,13 +882,13 @@ Synthesizing Unit <nixie>.
 Unit <nixie> synthesized.
 
 Synthesizing Unit <nixie_decoder>.
-    Related source file is "/home/a-l-r/co/src/src/devices/nixie-decoder.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\devices\nixie-decoder.v".
     Summary:
 	no macro.
 Unit <nixie_decoder> synthesized.
 
 Synthesizing Unit <buttons>.
-    Related source file is "/home/a-l-r/co/src/src/devices/buttons.v".
+    Related source file is "C:\cygwin64\home\A-l-r\co\src\src\devices\buttons.v".
 WARNING:Xst:647 - Input <addr> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <write_data> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <write_enable> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -1711,13 +1706,12 @@ uart_shim/uart/U_RX_UNIT/clk_rf_av|    8.871|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 62.00 secs
-Total CPU time to Xst completion: 61.20 secs
+Total REAL time to Xst completion: 58.00 secs
+Total CPU time to Xst completion: 57.94 secs
  
 --> 
 
-
-Total memory usage is 416608 kilobytes
+Total memory usage is 4638100 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  208 (   0 filtered)

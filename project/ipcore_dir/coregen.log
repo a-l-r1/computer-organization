@@ -2,44 +2,38 @@ INFO:sim:172 - Generating IP...
 Resolving generics for 'clk_ipcore'...
 Applying external generics to 'clk_ipcore'...
 Delivering associated files for 'clk_ipcore'...
-WARNING:sim - Component clk_wiz_v3_5 does not have a valid model name for
+WARNING:sim - Component clk_wiz_v3_6 does not have a valid model name for
    Verilog synthesis
 Delivering EJava files for 'clk_ipcore'...
 Delivered 3 files into directory
-/home/a-l-r/co/src/project/ipcore_dir/tmp/_cg/clk_ipcore
+C:/cygwin64/home/A-l-r/co/src/project/ipcore_dir/tmp/_cg/clk_ipcore
 Delivered 1 file into directory
-/home/a-l-r/co/src/project/ipcore_dir/tmp/_cg/clk_ipcore
+C:/cygwin64/home/A-l-r/co/src/project/ipcore_dir/tmp/_cg/clk_ipcore
 Generating ASY schematic symbol...
 Loading device for application Rf_Device from file '6slx100.nph' in environment
-/opt/Xilinx/14.7/ISE_DS/ISE/.
+C:\Xilinx\14.7\ISE_DS\ISE\.
 INFO:sim:949 - Finished generation of ASY schematic symbol.
 Generating SYM schematic symbol for 'clk_ipcore'...
 Generating ISE project...
 XCO file found: clk_ipcore.xco
 XMDF file found: clk_ipcore_xmdf.tcl
-Adding
-/home/a-l-r/co/src/project/ipcore_dir/tmp/_cg/clk_ipcore/example_design/clk_ipco
-re_exdes.ucf -view all -origin_type created
-Adding
-/home/a-l-r/co/src/project/ipcore_dir/tmp/_cg/clk_ipcore/example_design/clk_ipco
-re_exdes.v -view all -origin_type created
-WARNING: zh_CN is not supported as a language.  Using usenglish.
+Adding C:/cygwin64/home/A-l-r/co/src/project/ipcore_dir/tmp/_cg/clk_ipcore.asy
+-view all -origin_type imported
+Adding C:/cygwin64/home/A-l-r/co/src/project/ipcore_dir/tmp/_cg/clk_ipcore.ucf
+-view all -origin_type created
+Adding C:/cygwin64/home/A-l-r/co/src/project/ipcore_dir/tmp/_cg/clk_ipcore.v
+-view all -origin_type created
 INFO:HDLCompiler:1845 - Analyzing Verilog file
-   "/home/a-l-r/co/src/project/ipcore_dir/tmp/_cg/clk_ipcore/example_design/clk_
-   ipcore_exdes.v" into library work
+   "C:/cygwin64/home/A-l-r/co/src/project/ipcore_dir/tmp/_cg/clk_ipcore.v" into
+   library work
 INFO:ProjectMgmt - Parsing design hierarchy completed successfully.
-Adding /home/a-l-r/co/src/project/ipcore_dir/tmp/_cg/clk_ipcore.asy -view all
--origin_type imported
-Adding /home/a-l-r/co/src/project/ipcore_dir/tmp/_cg/clk_ipcore.v -view all
--origin_type created
-INFO:HDLCompiler:1845 - Analyzing Verilog file
-   "/home/a-l-r/co/src/project/ipcore_dir/tmp/_cg/clk_ipcore.v" into library
-   work
-INFO:ProjectMgmt - Parsing design hierarchy completed successfully.
-Adding /home/a-l-r/co/src/project/ipcore_dir/tmp/_cg/clk_ipcore.veo -view all
--origin_type imported
-WARNING: This core does not have a top level called "/clk_ipcore"
-WARNING: Top level has been set to "/clk_ipcore_exdes"
+Adding C:/cygwin64/home/A-l-r/co/src/project/ipcore_dir/tmp/_cg/clk_ipcore.veo
+-view all -origin_type imported
+INFO:TclTasksC:2116 - The automatic calculation of top has been turned-off.
+   Please set the new top explicitly by running the "project set top" command.
+   To re-calculate the new top automatically, set the "Auto Implementation Top"
+   property to true.
+Top level has been set to "/clk_ipcore"
 Generating README file...
 Generating FLIST file...
 INFO:sim:948 - Finished FLIST file generation.

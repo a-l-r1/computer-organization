@@ -5,106 +5,106 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v" Line 119: Assignment to <arg fmt="%s" index="1">clkout2_unused</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"C:\cygwin64\home\A-l-r\co\src\project\ipcore_dir\clk_ipcore.v" Line 119: Assignment to <arg fmt="%s" index="1">clkout2_unused</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v" Line 120: Assignment to <arg fmt="%s" index="1">clkout3_unused</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"C:\cygwin64\home\A-l-r\co\src\project\ipcore_dir\clk_ipcore.v" Line 120: Assignment to <arg fmt="%s" index="1">clkout3_unused</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v" Line 121: Assignment to <arg fmt="%s" index="1">clkout4_unused</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"C:\cygwin64\home\A-l-r\co\src\project\ipcore_dir\clk_ipcore.v" Line 121: Assignment to <arg fmt="%s" index="1">clkout4_unused</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v" Line 122: Assignment to <arg fmt="%s" index="1">clkout5_unused</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"C:\cygwin64\home\A-l-r\co\src\project\ipcore_dir\clk_ipcore.v" Line 122: Assignment to <arg fmt="%s" index="1">clkout5_unused</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v" Line 123: Assignment to <arg fmt="%s" index="1">locked_unused</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"C:\cygwin64\home\A-l-r\co\src\project\ipcore_dir\clk_ipcore.v" Line 123: Assignment to <arg fmt="%s" index="1">locked_unused</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1499" delta="old" >"/home/a-l-r/co/src/project/ipcore_dir/im_ipcore.v" Line 39: Empty module &lt;<arg fmt="%s" index="1">im_ipcore</arg>&gt; remains a black box.
+<msg type="warning" file="HDLCompiler" num="1499" delta="old" >"C:\cygwin64\home\A-l-r\co\src\project\ipcore_dir\im_ipcore.v" Line 39: Empty module &lt;<arg fmt="%s" index="1">im_ipcore</arg>&gt; remains a black box.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1499" delta="old" >"/home/a-l-r/co/src/project/ipcore_dir/dm_ipcore.v" Line 39: Empty module &lt;<arg fmt="%s" index="1">dm_ipcore</arg>&gt; remains a black box.
+<msg type="warning" file="HDLCompiler" num="1499" delta="old" >"C:\cygwin64\home\A-l-r\co\src\project\ipcore_dir\dm_ipcore.v" Line 39: Empty module &lt;<arg fmt="%s" index="1">dm_ipcore</arg>&gt; remains a black box.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1499" delta="old" >"/home/a-l-r/co/src/project/P8_BLACKBOX.v" Line 21: Empty module &lt;<arg fmt="%s" index="1">wrapper</arg>&gt; remains a black box.
+<msg type="warning" file="HDLCompiler" num="1499" delta="old" >"C:\cygwin64\home\A-l-r\co\src\project\P8_BLACKBOX.v" Line 21: Empty module &lt;<arg fmt="%s" index="1">wrapper</arg>&gt; remains a black box.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="189" delta="old" >"/home/a-l-r/co/src/src/mips/mips.v" Line 107: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">M_RE</arg>&gt;. Formal port size is <arg fmt="%d" index="2">1</arg>-bit while actual signal size is <arg fmt="%d" index="1">32</arg>-bit.
+<msg type="warning" file="HDLCompiler" num="189" delta="old" >"C:\cygwin64\home\A-l-r\co\src\src\mips\mips.v" Line 107: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">M_RE</arg>&gt;. Formal port size is <arg fmt="%d" index="2">1</arg>-bit while actual signal size is <arg fmt="%d" index="1">32</arg>-bit.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"/home/a-l-r/co/src/src/devices/uart/rxd.v" Line 63: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">3</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"C:\cygwin64\home\A-l-r\co\src\src\devices\uart\rxd.v" Line 63: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">3</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"/home/a-l-r/co/src/src/devices/uart/rxd.v" Line 64: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">3</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"C:\cygwin64\home\A-l-r\co\src\src\devices\uart\rxd.v" Line 64: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">3</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"/home/a-l-r/co/src/src/devices/uart/rxd.v" Line 71: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">3</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"C:\cygwin64\home\A-l-r\co\src\src\devices\uart\rxd.v" Line 71: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">3</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"/home/a-l-r/co/src/src/devices/uart/rxd.v" Line 74: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">3</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"C:\cygwin64\home\A-l-r\co\src\src\devices\uart\rxd.v" Line 74: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">3</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"/home/a-l-r/co/src/src/devices/uart/rxd.v" Line 82: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">3</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"C:\cygwin64\home\A-l-r\co\src\src\devices\uart\rxd.v" Line 82: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">3</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"/home/a-l-r/co/src/src/devices/uart/txd.v" Line 79: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">4</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"C:\cygwin64\home\A-l-r\co\src\src\devices\uart\txd.v" Line 79: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">4</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"/home/a-l-r/co/src/src/devices/uart/utils.v" Line 63: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">16</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"C:\cygwin64\home\A-l-r\co\src\src\devices\uart\utils.v" Line 63: Result of <arg fmt="%d" index="1">32</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">16</arg>-bit target.
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="413" delta="old" >"/home/a-l-r/co/src/src/devices/uart/uart.v" Line 65: Result of <arg fmt="%d" index="1">39</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">32</arg>-bit target.
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"C:\cygwin64\home\A-l-r\co\src\src\devices\uart\uart.v" Line 65: Result of <arg fmt="%d" index="1">39</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">32</arg>-bit target.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/mips/mips.v</arg>&quot; line <arg fmt="%s" index="2">77</arg>: Output port &lt;<arg fmt="%s" index="3">test_addr</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">cpu</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\cygwin64\home\A-l-r\co\src\src\mips\mips.v</arg>&quot; line <arg fmt="%s" index="2">77</arg>: Output port &lt;<arg fmt="%s" index="3">test_addr</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">cpu</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/mips/mips.v</arg>&quot; line <arg fmt="%s" index="2">98</arg>: Output port &lt;<arg fmt="%s" index="3">user_F_addr</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">wrapper</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\cygwin64\home\A-l-r\co\src\src\mips\mips.v</arg>&quot; line <arg fmt="%s" index="2">98</arg>: Output port &lt;<arg fmt="%s" index="3">user_F_addr</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">wrapper</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/mips/mips.v</arg>&quot; line <arg fmt="%s" index="2">98</arg>: Output port &lt;<arg fmt="%s" index="3">user_F_instr</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">wrapper</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\cygwin64\home\A-l-r\co\src\src\mips\mips.v</arg>&quot; line <arg fmt="%s" index="2">98</arg>: Output port &lt;<arg fmt="%s" index="3">user_F_instr</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">wrapper</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/mips/mips.v</arg>&quot; line <arg fmt="%s" index="2">98</arg>: Output port &lt;<arg fmt="%s" index="3">user_M_addr</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">wrapper</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\cygwin64\home\A-l-r\co\src\src\mips\mips.v</arg>&quot; line <arg fmt="%s" index="2">98</arg>: Output port &lt;<arg fmt="%s" index="3">user_M_addr</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">wrapper</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/mips/mips.v</arg>&quot; line <arg fmt="%s" index="2">98</arg>: Output port &lt;<arg fmt="%s" index="3">user_M_WData</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">wrapper</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\cygwin64\home\A-l-r\co\src\src\mips\mips.v</arg>&quot; line <arg fmt="%s" index="2">98</arg>: Output port &lt;<arg fmt="%s" index="3">user_M_WData</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">wrapper</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/mips/mips.v</arg>&quot; line <arg fmt="%s" index="2">98</arg>: Output port &lt;<arg fmt="%s" index="3">user_M_RData</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">wrapper</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\cygwin64\home\A-l-r\co\src\src\mips\mips.v</arg>&quot; line <arg fmt="%s" index="2">98</arg>: Output port &lt;<arg fmt="%s" index="3">user_M_RData</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">wrapper</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/mips/mips.v</arg>&quot; line <arg fmt="%s" index="2">98</arg>: Output port &lt;<arg fmt="%s" index="3">txd_buffer</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">wrapper</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\cygwin64\home\A-l-r\co\src\src\mips\mips.v</arg>&quot; line <arg fmt="%s" index="2">98</arg>: Output port &lt;<arg fmt="%s" index="3">txd_buffer</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">wrapper</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/mips/mips.v</arg>&quot; line <arg fmt="%s" index="2">98</arg>: Output port &lt;<arg fmt="%s" index="3">user_M_WE</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">wrapper</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\cygwin64\home\A-l-r\co\src\src\mips\mips.v</arg>&quot; line <arg fmt="%s" index="2">98</arg>: Output port &lt;<arg fmt="%s" index="3">user_M_WE</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">wrapper</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/mips/mips.v</arg>&quot; line <arg fmt="%s" index="2">98</arg>: Output port &lt;<arg fmt="%s" index="3">user_M_RE</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">wrapper</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\cygwin64\home\A-l-r\co\src\src\mips\mips.v</arg>&quot; line <arg fmt="%s" index="2">98</arg>: Output port &lt;<arg fmt="%s" index="3">user_M_RE</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">wrapper</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v</arg>&quot; line <arg fmt="%s" index="2">110</arg>: Output port &lt;<arg fmt="%s" index="3">cw_e_md_op</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">control</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\cygwin64\home\A-l-r\co\src\src\cpu\pipelined3-cpu.v</arg>&quot; line <arg fmt="%s" index="2">110</arg>: Output port &lt;<arg fmt="%s" index="3">cw_e_md_op</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">control</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v</arg>&quot; line <arg fmt="%s" index="2">110</arg>: Output port &lt;<arg fmt="%s" index="3">cw_e_md_stop</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">control</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\cygwin64\home\A-l-r\co\src\src\cpu\pipelined3-cpu.v</arg>&quot; line <arg fmt="%s" index="2">110</arg>: Output port &lt;<arg fmt="%s" index="3">cw_e_md_stop</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">control</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v</arg>&quot; line <arg fmt="%s" index="2">110</arg>: Output port &lt;<arg fmt="%s" index="3">cw_e_md_restore</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">control</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\cygwin64\home\A-l-r\co\src\src\cpu\pipelined3-cpu.v</arg>&quot; line <arg fmt="%s" index="2">110</arg>: Output port &lt;<arg fmt="%s" index="3">cw_e_md_restore</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">control</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v</arg>&quot; line <arg fmt="%s" index="2">280</arg>: Output port &lt;<arg fmt="%s" index="3">reg2_sig_cmp</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">cmp</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\cygwin64\home\A-l-r\co\src\src\cpu\pipelined3-cpu.v</arg>&quot; line <arg fmt="%s" index="2">280</arg>: Output port &lt;<arg fmt="%s" index="3">reg2_sig_cmp</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">cmp</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v</arg>&quot; line <arg fmt="%s" index="2">358</arg>: Output port &lt;<arg fmt="%s" index="3">cmp_result</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">alu</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\cygwin64\home\A-l-r\co\src\src\cpu\pipelined3-cpu.v</arg>&quot; line <arg fmt="%s" index="2">358</arg>: Output port &lt;<arg fmt="%s" index="3">cmp_result</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">alu</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v</arg>&quot; line <arg fmt="%s" index="2">358</arg>: Output port &lt;<arg fmt="%s" index="3">sig_cmp_result</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">alu</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\cygwin64\home\A-l-r\co\src\src\cpu\pipelined3-cpu.v</arg>&quot; line <arg fmt="%s" index="2">358</arg>: Output port &lt;<arg fmt="%s" index="3">sig_cmp_result</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">alu</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v</arg>&quot; line <arg fmt="%s" index="2">358</arg>: Output port &lt;<arg fmt="%s" index="3">overflow</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">alu</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\cygwin64\home\A-l-r\co\src\src\cpu\pipelined3-cpu.v</arg>&quot; line <arg fmt="%s" index="2">358</arg>: Output port &lt;<arg fmt="%s" index="3">overflow</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">alu</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v</arg>&quot; line <arg fmt="%s" index="2">358</arg>: Output port &lt;<arg fmt="%s" index="3">op_invalid</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">alu</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\cygwin64\home\A-l-r\co\src\src\cpu\pipelined3-cpu.v</arg>&quot; line <arg fmt="%s" index="2">358</arg>: Output port &lt;<arg fmt="%s" index="3">op_invalid</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">alu</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
 <msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">d_pc_curr_pc&lt;1:0&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -242,7 +242,7 @@
 <msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">rst</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
-<msg type="info" file="Xst" num="3210" delta="old" >&quot;<arg fmt="%s" index="1">/home/a-l-r/co/src/src/devices/uart/uart-shim.v</arg>&quot; line <arg fmt="%s" index="2">15</arg>: Output port &lt;<arg fmt="%s" index="3">ACK_O</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">uart</arg>&gt; is unconnected or connected to loadless signal.
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\cygwin64\home\A-l-r\co\src\src\devices\uart\uart-shim.v</arg>&quot; line <arg fmt="%s" index="2">15</arg>: Output port &lt;<arg fmt="%s" index="3">ACK_O</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">uart</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
 <msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">DAT_I&lt;31:16&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.

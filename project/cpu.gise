@@ -136,8 +136,8 @@
     <file xil_pn:branch="PostRouteSimulation" xil_pn:fileType="FILE_NETGEN_REPORT" xil_pn:name="netgen/par/mips_timesim.nlf"/>
     <file xil_pn:branch="PostRouteSimulation" xil_pn:fileType="FILE_SDF" xil_pn:name="netgen/par/mips_timesim.sdf"/>
     <file xil_pn:branch="PostRouteSimulation" xil_pn:fileType="FILE_VERILOG" xil_pn:name="netgen/par/mips_timesim.v"/>
-    <file xil_pn:branch="PostSynthSim" xil_pn:fileType="FILE_NETGEN_REPORT" xil_pn:name="netgen/synthesis/mips_synthesis.nlf"/>
-    <file xil_pn:branch="PostSynthSim" xil_pn:fileType="FILE_VERILOG" xil_pn:name="netgen/synthesis/mips_synthesis.v"/>
+    <file xil_pn:fileType="FILE_NETGEN_REPORT" xil_pn:name="netgen/synthesis/mips_synthesis.nlf"/>
+    <file xil_pn:fileType="FILE_VERILOG" xil_pn:name="netgen/synthesis/mips_synthesis.v"/>
     <file xil_pn:branch="PostTranslateSimulation" xil_pn:fileType="FILE_NETGEN_REPORT" xil_pn:name="netgen/translate/mips_translate.nlf"/>
     <file xil_pn:branch="PostTranslateSimulation" xil_pn:fileType="FILE_VERILOG" xil_pn:name="netgen/translate/mips_translate.v"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="npc_isim_beh.exe"/>
@@ -312,16 +312,18 @@
     <transform xil_pn:end_ts="1577011374" xil_pn:in_ck="6452431051094279929" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="-4307240307545364505" xil_pn:start_ts="1577011374">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="ipcore_dir/clk_ipcore.v"/>
-      <outfile xil_pn:name="ipcore_dir/clk_ipcore/example_design/clk_ipcore_exdes.v"/>
-      <outfile xil_pn:name="ipcore_dir/dm_ipcore.ngc"/>
-      <outfile xil_pn:name="ipcore_dir/dm_ipcore.v"/>
-      <outfile xil_pn:name="ipcore_dir/im_ipcore.ngc"/>
-      <outfile xil_pn:name="ipcore_dir/im_ipcore.v"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputAdded"/>
+      <status xil_pn:value="InputRemoved"/>
+      <status xil_pn:value="OutputRemoved"/>
     </transform>
     <transform xil_pn:end_ts="1577011374" xil_pn:in_ck="1850368422913035136" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1577011374">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputRemoved"/>
       <outfile xil_pn:name="../src/bridge/bridge.v"/>
       <outfile xil_pn:name="../src/control/pipelined3-forward.v"/>
       <outfile xil_pn:name="../src/control/pipelined3-function.v"/>
@@ -392,8 +394,6 @@
       <outfile xil_pn:name="../tests/datapath/rf_tb.v"/>
       <outfile xil_pn:name="../tests/debug/debug-print-test.v"/>
       <outfile xil_pn:name="P8_BLACKBOX.v"/>
-      <outfile xil_pn:name="ipcore_dir/clk_ipcore.v"/>
-      <outfile xil_pn:name="ipcore_dir/clk_ipcore/example_design/clk_ipcore_exdes.v"/>
       <outfile xil_pn:name="ipcore_dir/dm_ipcore.v"/>
       <outfile xil_pn:name="ipcore_dir/im_ipcore.v"/>
       <outfile xil_pn:name="pipelined3_p8_tb.v"/>
@@ -402,23 +402,23 @@
     <transform xil_pn:end_ts="1577011379" xil_pn:in_ck="1850368422913035136" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-4302974910537404335" xil_pn:start_ts="1577011374">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputAdded"/>
+      <status xil_pn:value="InputRemoved"/>
       <status xil_pn:value="OutputChanged"/>
-      <outfile xil_pn:name="fuse.log"/>
-      <outfile xil_pn:name="isim"/>
-      <outfile xil_pn:name="isim.log"/>
-      <outfile xil_pn:name="pipelined3_p8_at_tb2_beh.prj"/>
-      <outfile xil_pn:name="pipelined3_p8_at_tb2_isim_beh.exe"/>
-      <outfile xil_pn:name="xilinxsim.ini"/>
+      <status xil_pn:value="OutputRemoved"/>
     </transform>
     <transform xil_pn:end_ts="1577011379" xil_pn:in_ck="-1405387316218972014" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="6885297318299493838" xil_pn:start_ts="1577011379">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputRemoved"/>
       <status xil_pn:value="OutputChanged"/>
-      <outfile xil_pn:name="isim.cmd"/>
-      <outfile xil_pn:name="isim.log"/>
-      <outfile xil_pn:name="pipelined3_p8_at_tb2_isim_beh.wdb"/>
+      <status xil_pn:value="OutputRemoved"/>
     </transform>
     <transform xil_pn:end_ts="1577006275" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1577006275">
       <status xil_pn:value="SuccessfullyRun"/>
@@ -428,11 +428,10 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1577011392" xil_pn:in_ck="6452431051094279929" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="-4307240307545364505" xil_pn:start_ts="1577011392">
+    <transform xil_pn:end_ts="1577013009" xil_pn:in_ck="6452431051094279929" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="-4307240307545364505" xil_pn:start_ts="1577013009">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="ipcore_dir/clk_ipcore.v"/>
-      <outfile xil_pn:name="ipcore_dir/clk_ipcore/example_design/clk_ipcore_exdes.v"/>
       <outfile xil_pn:name="ipcore_dir/dm_ipcore.ngc"/>
       <outfile xil_pn:name="ipcore_dir/dm_ipcore.v"/>
       <outfile xil_pn:name="ipcore_dir/im_ipcore.ngc"/>
@@ -454,7 +453,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1577011455" xil_pn:in_ck="1428753604572557991" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="3774572645976226748" xil_pn:start_ts="1577011392">
+    <transform xil_pn:end_ts="1577013069" xil_pn:in_ck="-6786364632236243645" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="3774572645976226748" xil_pn:start_ts="1577013009">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
@@ -471,11 +470,11 @@
       <outfile xil_pn:name="webtalk_pn.xml"/>
       <outfile xil_pn:name="xst"/>
     </transform>
-    <transform xil_pn:end_ts="1577011455" xil_pn:in_ck="6613121478752310830" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="123229027435936603" xil_pn:start_ts="1577011455">
+    <transform xil_pn:end_ts="1577013069" xil_pn:in_ck="-4435422469269054632" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="123229027435936603" xil_pn:start_ts="1577013069">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1577011461" xil_pn:in_ck="-6540142125629454700" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="-4328106819089673976" xil_pn:start_ts="1577011455">
+    <transform xil_pn:end_ts="1577013076" xil_pn:in_ck="-6540142125629454700" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="-4328106819089673976" xil_pn:start_ts="1577013069">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="_ngo"/>
@@ -510,14 +509,14 @@
       <status xil_pn:value="OutOfDateForced"/>
       <status xil_pn:value="InputRemoved"/>
     </transform>
-    <transform xil_pn:end_ts="1577011464" xil_pn:in_ck="4785535742560" xil_pn:name="TRAN_postXlateSimModel" xil_pn:prop_ck="-7980875713396914041" xil_pn:start_ts="1577011461">
+    <transform xil_pn:end_ts="1577013079" xil_pn:in_ck="4785535742560" xil_pn:name="TRAN_postXlateSimModel" xil_pn:prop_ck="-7980875713396914041" xil_pn:start_ts="1577013076">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="netgen"/>
       <outfile xil_pn:name="netgen/translate/mips_translate.nlf"/>
       <outfile xil_pn:name="netgen/translate/mips_translate.v"/>
     </transform>
-    <transform xil_pn:end_ts="1577011464" xil_pn:in_ck="7863512952839385744" xil_pn:name="TRAN_copyPost-TranslateAbstractToPreSimulation" xil_pn:start_ts="1577011464">
+    <transform xil_pn:end_ts="1577013079" xil_pn:in_ck="7863512952839385744" xil_pn:name="TRAN_copyPost-TranslateAbstractToPreSimulation" xil_pn:start_ts="1577013079">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="../tests/bridge/bridge_tb.v"/>
@@ -539,7 +538,7 @@
       <outfile xil_pn:name="pipelined3_p8_tb.v"/>
       <outfile xil_pn:name="wrapper_postsynthesis_tb.v"/>
     </transform>
-    <transform xil_pn:end_ts="1577011482" xil_pn:in_ck="7863512952839385744" xil_pn:name="TRAN_ISimulatePostTranslateModelRunFuse" xil_pn:prop_ck="-2848718930498849039" xil_pn:start_ts="1577011464">
+    <transform xil_pn:end_ts="1577013099" xil_pn:in_ck="7863512952839385744" xil_pn:name="TRAN_ISimulatePostTranslateModelRunFuse" xil_pn:prop_ck="-2848718930498849039" xil_pn:start_ts="1577013079">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
@@ -551,9 +550,11 @@
       <outfile xil_pn:name="pipelined3_p8_at_tb2_translate.prj"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1577011482" xil_pn:in_ck="6801798813964374471" xil_pn:name="TRAN_ISimulatePostTranslateModel" xil_pn:prop_ck="-7289348155625244167" xil_pn:start_ts="1577011482">
+    <transform xil_pn:end_ts="1577013099" xil_pn:in_ck="6801798813964374471" xil_pn:name="TRAN_ISimulatePostTranslateModel" xil_pn:prop_ck="-7289348155625244167" xil_pn:start_ts="1577013099">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="isim.cmd"/>
       <outfile xil_pn:name="isim.log"/>
       <outfile xil_pn:name="pipelined3_p8_at_tb2_isim_translate.wdb"/>

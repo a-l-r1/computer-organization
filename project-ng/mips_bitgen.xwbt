@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\cygwin64\home\A-l-r\co\src\project-ng\mips.ncd
+OUTFILE=C:\cygwin64\home\A-l-r\co\src\project-ng\mips.bit
+FAMILY=Spartan6
+PART=xc6slx100-2fgg676
+WORKINGDIR=C:\cygwin64\home\A-l-r\co\src\project-ng
+LICENSE=ISE
+USER_INFO=__0_0_0

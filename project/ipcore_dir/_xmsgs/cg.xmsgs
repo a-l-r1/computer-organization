@@ -8,7 +8,7 @@
 <msg type="info" file="sim" num="172" delta="old" >Generating IP...
 </msg>
 
-<msg type="warning" file="sim" num="0" delta="new" ><arg fmt="%s" index="1">Component clk_wiz_v3_5 does not have a valid model name for Verilog synthesis</arg>
+<msg type="warning" file="sim" num="0" delta="new" ><arg fmt="%s" index="1">Component clk_wiz_v3_6 does not have a valid model name for Verilog synthesis</arg>
 </msg>
 
 <msg type="info" file="sim" num="949" delta="old" >Finished generation of ASY schematic symbol.

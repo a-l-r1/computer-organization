@@ -1,0 +1,2 @@
+verilog isim_temp "netgen/par/mips_timesim.v"
+verilog isim_temp "pipelined3_at_ng2_tb.v"

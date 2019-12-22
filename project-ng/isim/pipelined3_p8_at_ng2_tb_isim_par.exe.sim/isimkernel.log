@@ -1,0 +1,28 @@
+Command line:
+   pipelined3_p8_at_ng2_tb_isim_par.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  50289
+
+Mon Dec 23 00:42:28 2019
+
+
+ Elaboration Time: 3.71875 sec
+
+ Current Memory Usage: 5866.67 Meg
+
+ Total Signals          : 214622
+ Total Nets             : 148406
+ Total Signal Drivers   : 140485
+ Total Blocks           : 25116
+ Total Primitive Blocks : 14655
+ Total Processes        : 191581
+ Total Traceable Variables  : 82844
+ Total Scalar Nets and Variables : 4180679
+
+ Total Simulation Time: 42.0313 sec
+
+ Current Memory Usage: 5577.2 Meg
+
+Mon Dec 23 00:44:46 2019
+
