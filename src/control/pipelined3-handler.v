@@ -2,6 +2,7 @@
 `include "instr-id.h"
 
 `include "npc.h"
+`include "cp0.h"
 
 module handler(
 	input [9:0] dkind, 
@@ -37,19 +38,19 @@ module handler(
 
 	output cw_m_dm_stop, 
 
-	input cw_m_cp0_write_enable_orig, 
-	output cw_m_cp0_write_enable
+	input [3:0] cw_m_cp0_op_orig, 
+	output [3:0] cw_m_cp0_op
 );
 
 wire [4:0] ddptype;
 wire [4:0] edptype;
 wire [4:0] mdptype;
-/* wire [4:0] wdptype; */
+wire [4:0] wdptype;
 
 assign ddptype = dkind[9:5];
 assign edptype = ekind[9:5];
 assign mdptype = mkind[9:5];
-/* assign wdptype = wkind[9:5]; */
+assign wdptype = wkind[9:5];
 
 /* Pipeline resetting */
 
@@ -101,9 +102,9 @@ assign cw_e_md_stop =
 assign cw_m_dm_stop = (have2handle == 1'b1);
 
 /* Stop commiting to cp0 when having to handle interrupts. */
-assign cw_m_cp0_write_enable = 
-	(have2handle == 1'b0) && 
-	(cw_m_cp0_write_enable_orig == 1'b1);
+assign cw_m_cp0_op = 
+	(have2handle == 1'b1) ? `CP0_NONE : 
+	cw_m_cp0_op_orig;
 
 endmodule
 
