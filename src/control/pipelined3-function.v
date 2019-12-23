@@ -99,6 +99,10 @@ assign result =
 	(cop0 && `RS(instr) == 5'b00100 && instr[10:3] == 8'b00000000) ? `MTC0 : 
 	(cop0 && instr == 32'h42000018) ? `ERET : 
 
+	(cop0 && instr == 32'h42000001) ? `TLBR : 
+	(cop0 && instr == 32'h42000002) ? `TLBWI : 
+	(cop0 && instr == 32'h42000008) ? `TLBP : 
+
 	`UNKNOWN;
 endmodule
 
@@ -123,6 +127,8 @@ module control(
 	input [31:0] m_pc_curr_pc, 
 	input have2handle, 
 
+	output cw_mmu_write_enable, 
+
 	output cw_f_pc_enable, 
 	output cw_d_pff_enable, 
 	output cw_d_pff_rst, 
@@ -146,8 +152,7 @@ module control(
 	output cw_m_dm_write_enable, 
 	output cw_m_dm_stop, 
 	output [2:0] cw_m_dm_mode, 
-	output cw_m_cp0_write_enable, 
-	output cw_m_cp0_exit_isr, 
+	output [3:0] cw_m_cp0_op, 
 	output cw_m_cp0_in_bds, 
 	output [4:0] cw_m_cp0_exc, 
 	output [31:0] cw_m_cp0_curr_pc, 
@@ -202,6 +207,8 @@ wire [3:0] cw_f_npc_jump_mode_orig;
 
 /* in_bds pipeline */
 wire d_in_bds, e_in_bds, m_in_bds;
+
+wire [3:0] cw_m_cp0_op_orig;
 
 /* Exception ID pipeline */
 
@@ -607,6 +614,7 @@ pff #(.BIT_WIDTH(5)) e_exc_(
 	.enable(1'b1), 
 	.rst(rst | cw_e_pff_rst), 
 	.i(
+		(d_exc != `EXC_NONE) ? d_exc : 
 		(dkind == `UNKNOWN) ? `EXC_RI : 
 		d_exc
 	), 
@@ -618,6 +626,7 @@ pff #(.BIT_WIDTH(5)) m_exc_(
 	.enable(1'b1), 
 	.rst(rst | cw_m_pff_rst), 
 	.i(
+		(e_exc != `EXC_NONE) ? e_exc : 
 		((edptype == `CAL_R || edptype == `CAL_I) && e_alu_sig_overflow == 1'b1) ? `EXC_OV : 
 		(edptype == `LOAD && e_alu_sig_overflow == 1'b1) ? `EXC_ADEL : 
 		(edptype == `STORE && e_alu_sig_overflow == 1'b1) ? `EXC_ADES : 
@@ -627,6 +636,7 @@ pff #(.BIT_WIDTH(5)) m_exc_(
 );
 
 assign m_exc_final = 
+	(m_exc != `EXC_NONE) ? m_exc : 
 	(m_dm_valid == 1'b0 && m_bridge_valid == 1'b0) ? (
 		/* DM_NONEs are always valid */
 		(cw_m_dm_write_enable == 1'b0) ? `EXC_ADEL : 
@@ -634,12 +644,23 @@ assign m_exc_final =
 	) : 
 	m_exc;
 
+/* MMU control signals */
+
+/* Currently only used in STORE_TLB instructions. */
+assign cw_mmu_write_enable = 
+	(mdptype == `STORE_TLB) ? 1'b1 : 
+	1'b0;
+
 /* Coprocessor 0 control signals */
 
-assign cw_m_cp0_write_enable_orig = (mdptype == `STORE_C0);
-
-/* In ISR, so don't consider interrupts. */
-assign cw_m_cp0_exit_isr = (mdptype == `JUMP_C0);
+assign cw_m_cp0_op_orig = 
+	(mdptype == `STORE_C0) ? `CP0_MTC0 : 
+	/* In ISR, so don't consider interrupts. Exceptions won't reach level
+	 * M when this signal would be emitted. */
+	(mdptype == `JUMP_C0) ? `CP0_EXIT_ISR : 
+	(mdptype == `LOAD_TLB) ? `CP0_TLBR : 
+	(mdptype == `PROBE_TLB) ? `CP0_TLBP : 
+	`CP0_NONE;
 
 /* About to go into ISR when cw_m_cp0_exc != `EXC_NONE, so interrupts are
  * considered. */
@@ -702,8 +723,8 @@ handler handler(
 
 	.cw_m_dm_stop(cw_m_dm_stop), 
 
-	.cw_m_cp0_write_enable_orig(cw_m_cp0_write_enable_orig), 
-	.cw_m_cp0_write_enable(cw_m_cp0_write_enable)
+	.cw_m_cp0_op_orig(cw_m_cp0_op_orig), 
+	.cw_m_cp0_op(cw_m_cp0_op)
 );
 
 endmodule
