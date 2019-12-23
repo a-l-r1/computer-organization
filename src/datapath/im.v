@@ -9,20 +9,18 @@ module im(
 	output valid
 );
 
-/* reg [31:0] memory [`IM_SIZE - 1:0]; */
+reg [31:0] memory [`IM_SIZE - 1:0];
 
 integer i;
 
-/*
 initial begin
 	for (i = 0; i < `IM_SIZE; i = i + 1) begin
 		memory[i] = 32'b0;
 	end
 
 	$readmemh(`IM_CODE_FILENAME, memory, 0);
-	$readmemh(`IM_ISR_CODE_FILENAME, memory, ($unsigned(`IM_ISR_ADDRESS) - $unsigned(`IM_START_ADDRESS)) >> $unsigned(2), 2047);
+	$readmemh(`IM_ISR_CODE_FILENAME, memory, ($unsigned(`IM_ISR_ADDRESS) - $unsigned(`IM_START_ADDRESS)) >> $unsigned(2), 4095);
 end
-*/
 
 wire [31:0] im_calculated_address;
 wire [31:0] im_ipcore_result;
@@ -36,6 +34,7 @@ assign im_calculated_address =
 	(valid == 1'b1) ? $unsigned(addr) - $unsigned(`IM_START_ADDRESS) : 
 	32'b0;
 
+/*
 im_ipcore im_ipcore(
 	.clka(clk), 
 	.wea(4'b0), 
@@ -43,11 +42,12 @@ im_ipcore im_ipcore(
 	.dina(32'b0), 
 	.douta(im_ipcore_result)
 );
+*/
 
 assign result = 
 	/* Remember the precedence! */
 	(valid == 1'b0) ? 32'b0 : 
-	im_ipcore_result;
+	memory[im_calculated_address[`IM_ADDR_WIDTH:2]];
 
 endmodule
 
