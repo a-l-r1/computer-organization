@@ -197,7 +197,8 @@ wire [4:0] w_reg1;
 wire [4:0] w_reg2;
 wire [4:0] w_regw;
 
-wire stall;
+wire stall_f, stall_d;
+wire cw_f_pc_enable_orig, cw_d_pff_rst_orig, cw_e_pff_rst_orig;
 
 /* F */
 
@@ -552,14 +553,14 @@ hazard hazard(
 	.e_instr(e_instr), 
 	.m_instr(m_instr), 
 	.w_instr(w_instr), 
-	.stall(stall)
+
+	.stall_f(stall_f), 
+	.stall_d(stall_d), 
+	.cw_f_pc_enable_orig(cw_f_pc_enable_orig), 
+	.cw_d_pff_enable(cw_d_pff_enable), 
+	.cw_d_pff_rst_orig(cw_d_pff_rst_orig), 
+	.cw_e_pff_rst_orig(cw_e_pff_rst_orig)
 );
-
-assign cw_f_pc_enable_orig = ~stall;
-
-assign cw_d_pff_enable = ~stall;
-
-assign cw_e_pff_rst_orig = stall;
 
 /* in_bds pipeline */
 
@@ -702,9 +703,10 @@ handler handler(
 
 	.rst(rst), 
 	.have2handle(have2handle), 
-	.stall(stall), 
+	.stall_f(stall_f), 
+	.stall_d(stall_d), 
 
-	.cw_d_pff_rst(cw_d_pff_rst), 
+	/* cw_d_pff_rst omitted */
 	/* cw_e_pff_rst omitted */
 	.cw_m_pff_rst(cw_m_pff_rst), 
 	.cw_w_pff_rst(cw_w_pff_rst), 
@@ -714,10 +716,13 @@ handler handler(
 
 	.cw_f_pc_enable_orig(cw_f_pc_enable_orig), 
 	.cw_f_pc_enable(cw_f_pc_enable), 
-	
+
+	.cw_d_pff_rst_orig(cw_d_pff_rst_orig), 
+	.cw_d_pff_rst(cw_d_pff_rst), 
+
 	.cw_e_pff_rst_orig(cw_e_pff_rst_orig), 
 	.cw_e_pff_rst(cw_e_pff_rst), 
-	
+
 	.cw_e_md_restore(cw_e_md_restore), 
 	.cw_e_md_stop(cw_e_md_stop), 
 

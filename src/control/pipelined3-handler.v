@@ -17,9 +17,10 @@ module handler(
 
 	input rst, 
 	input have2handle, 
-	input stall, 
+	input stall_f, 
+	input stall_d, 
 
-	output cw_d_pff_rst, 
+	/* cw_d_pff_rst omitted because of need for stall management */
 	/* cw_e_pff_rst omitted because of need for stall management */
 	output cw_m_pff_rst, 
 	output cw_w_pff_rst, 
@@ -29,6 +30,9 @@ module handler(
 
 	input cw_f_pc_enable_orig, 
 	output cw_f_pc_enable, 
+
+	input cw_d_pff_rst_orig, 
+	output cw_d_pff_rst, 
 
 	input cw_e_pff_rst_orig, 
 	output cw_e_pff_rst, 
@@ -54,15 +58,19 @@ assign wdptype = wkind[9:5];
 
 /* Pipeline resetting */
 
-/* Unconditionally reset level D pipeline registers when stalling isn't
- * needed. This effectively blocks execution of the possible instruction
- * following eret. */
+/* Unconditionally reset level D pipeline registers when stalling level
+ * F isn't needed This effectively blocks execution of the possible 
+ * instruction following eret. */
 assign cw_d_pff_rst = 
 	(rst == 1'b1) || 
 	(have2handle == 1'b1) || 
-	(ddptype == `JUMP_C0 && stall == 1'b0);
+	(cw_d_pff_rst_orig == 1'b1) || 
+	(ddptype == `JUMP_C0 && stall_d == 1'b0);
 
-/* cw_e_pff_rst omitted */
+assign cw_e_pff_rst = 
+	(rst == 1'b1) || 
+	(have2handle == 1'b1) || 
+	(cw_e_pff_rst_orig == 1'b1);
 
 assign cw_m_pff_rst = 
 	(rst == 1'b1) || 
@@ -82,11 +90,6 @@ assign cw_f_pc_enable =
 assign cw_f_npc_jump_mode = 
 	(have2handle == 1'b1) ? `NPC_ISR : 
 	cw_f_npc_jump_mode_orig;
-
-assign cw_e_pff_rst = 
-	(rst == 1'b1) || 
-	(have2handle == 1'b1) || 
-	(cw_e_pff_rst_orig == 1'b1);
 
 /* Restore old values of d_h and / or d_l. */
 assign cw_e_md_restore = 

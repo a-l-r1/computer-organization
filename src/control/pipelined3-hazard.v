@@ -23,13 +23,19 @@ module hazard(
 	input [31:0] e_instr, 
 	input [31:0] m_instr, 
 	input [31:0] w_instr, 
-	output stall
+
+	output stall_f, 
+	output stall_d, 
+	output cw_f_pc_enable_orig, 
+	output cw_d_pff_enable, 
+	output cw_d_pff_rst_orig, 
+	output cw_e_pff_rst_orig
 );
 
 wire [4:0] ddptype;
 wire [4:0] edptype;
 wire [4:0] mdptype;
-/* wire [4:0] wdptype; */
+wire [4:0] wdptype;
 
 wire [2:0] t_use_reg1;
 wire [2:0] t_use_reg2;
@@ -41,7 +47,7 @@ wire stall_e2d_reg1, stall_m2d_reg1, stall_e2d_reg2, stall_m2d_reg2, stall_md_bu
 assign ddptype = dkind[9:5];
 assign edptype = ekind[9:5];
 assign mdptype = mkind[9:5];
-/* assign wdptype = wkind[9:5]; */
+assign wdptype = wkind[9:5];
 
 /* Stall control */
 
@@ -80,7 +86,15 @@ assign stall_tnew_mtc0_eret =
 	(`fwable(e_reg2, m_regw)) && 
 	($unsigned(t_new_m) > $unsigned(0));
 
-assign stall = stall_e2d_reg1 | stall_m2d_reg1 | stall_e2d_reg2 | stall_m2d_reg2 | stall_md_busy | stall_tnew_mtc0_eret;
+assign stall_d = stall_e2d_reg1 | stall_m2d_reg1 | stall_e2d_reg2 | stall_m2d_reg2 | stall_md_busy | stall_tnew_mtc0_eret;
+
+assign stall_f = (ddptype == `STORE_TLB || edptype == `STORE_TLB || mdptype == `STORE_TLB);
+
+assign {cw_f_pc_enable_orig, cw_d_pff_enable, cw_d_pff_rst_orig, cw_e_pff_rst_orig} = 
+	/* Remember the precedence! */
+	(stall_f == 1'b1) ? {1'b0, 1'b0, 1'b1, 1'b0} : 
+	(stall_d == 1'b1) ? {1'b0, 1'b0, 1'b0, 1'b1} : 
+	{1'b1, 1'b1, 1'b0, 1'b0};
 
 endmodule
 
