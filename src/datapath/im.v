@@ -19,7 +19,7 @@ initial begin
 	end
 
 	$readmemh(`IM_CODE_FILENAME, memory, 0);
-	$readmemh(`IM_ISR_CODE_FILENAME, memory, ($unsigned(`IM_ISR_ADDRESS) - $unsigned(`IM_START_ADDRESS)) >> $unsigned(2), 4095);
+	$readmemh(`IM_ISR_CODE_FILENAME, memory, ($unsigned(`IM_ISR_ADDRESS) - $unsigned(`IM_ADDR_LB)) >> $unsigned(2), 4095);
 end
 
 wire [31:0] im_calculated_address;
@@ -31,7 +31,7 @@ assign valid =
 	(addr[1:0] == 2'b0);
 
 assign im_calculated_address = 
-	(valid == 1'b1) ? $unsigned(addr) - $unsigned(`IM_START_ADDRESS) : 
+	(valid == 1'b1) ? $unsigned(addr) - $unsigned(`IM_ADDR_LB) : 
 	32'b0;
 
 /*
