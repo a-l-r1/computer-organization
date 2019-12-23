@@ -10,6 +10,12 @@
 
 `define CP0_PRID 32'h00000000
 
+`define CP0_NONE 4'b0000
+`define CP0_MTC0 4'b0001
+`define CP0_EXIT_ISR 4'b0010
+`define CP0_TLBR 4'b0011
+`define CP0_TLBP 4'b0100
+
 `undef MARS_COMPAT
 
 `endif
