@@ -15,7 +15,7 @@
    You must understand its frequency is too low so that only 9600 BAUD
    could be supported!!!*/
 //`define CLK_FRQ             500000      // 500KHz : system clock
-`define CLK_FRQ             30000000
+`define CLK_FRQ             10000000
 `define CYCLE               (1000000000/`CLK_FRQ)
 
 `define     SAMPLE_FREQUENCE        8
