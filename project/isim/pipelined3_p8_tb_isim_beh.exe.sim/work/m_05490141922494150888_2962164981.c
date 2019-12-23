@@ -23,7 +23,7 @@
 #endif
 static const char *ng0 = "/home/a-l-r/co/src/src/devices/uart/uart.v";
 static int ng1[] = {0, 0};
-static int ng2[] = {30000000, 0};
+static int ng2[] = {10000000, 0};
 static int ng3[] = {9600, 0};
 static int ng4[] = {8, 0};
 static int ng5[] = {1, 0};

@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Mon Dec 23 21:09:32 2019
+// Written by: Map P.20131013 on Mon Dec 23 22:04:19 2019
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -525,17 +525,18 @@ TIMEGRP clk_ipcore_clkout0 = BEL "clk_ipcore/clkout1_buf" BEL
         "cpu/cp0/entrylo0_10" BEL "cpu/cp0/entrylo0_9" BEL
         "cpu/cp0/entrylo0_8" BEL "cpu/cp0/entrylo0_7" BEL "cpu/cp0/entrylo0_6"
         BEL "cpu/cp0/entrylo0_2" BEL "cpu/cp0/entrylo0_1" BEL
-        "cpu/cp0/entrylo0_0" BEL "cpu/cp0/entryhi_26" BEL "cpu/cp0/entryhi_25"
-        BEL "cpu/cp0/entryhi_24" BEL "cpu/cp0/entryhi_23" BEL
-        "cpu/cp0/entryhi_22" BEL "cpu/cp0/entryhi_21" BEL "cpu/cp0/entryhi_20"
-        BEL "cpu/cp0/entryhi_19" BEL "cpu/cp0/entryhi_18" BEL
-        "cpu/cp0/entryhi_17" BEL "cpu/cp0/entryhi_16" BEL "cpu/cp0/entryhi_15"
-        BEL "cpu/cp0/entryhi_14" BEL "cpu/cp0/entryhi_13" BEL
-        "cpu/cp0/entryhi_12" BEL "cpu/cp0/entryhi_11" BEL "cpu/cp0/entryhi_10"
-        BEL "cpu/cp0/entryhi_9" BEL "cpu/cp0/entryhi_8" BEL
-        "cpu/cp0/entryhi_7" BEL "cpu/cp0/entryhi_6" BEL "cpu/cp0/entryhi_5"
-        BEL "cpu/cp0/entryhi_4" BEL "cpu/cp0/entryhi_3" BEL
-        "cpu/cp0/entryhi_2" BEL "cpu/cp0/entryhi_1" BEL "cpu/cp0/entryhi_0"
+        "cpu/cp0/entrylo0_0" BEL "cpu/cp0/cause_10" BEL "cpu/cp0/entryhi_26"
+        BEL "cpu/cp0/entryhi_25" BEL "cpu/cp0/entryhi_24" BEL
+        "cpu/cp0/entryhi_23" BEL "cpu/cp0/entryhi_22" BEL "cpu/cp0/entryhi_21"
+        BEL "cpu/cp0/entryhi_20" BEL "cpu/cp0/entryhi_19" BEL
+        "cpu/cp0/entryhi_18" BEL "cpu/cp0/entryhi_17" BEL "cpu/cp0/entryhi_16"
+        BEL "cpu/cp0/entryhi_15" BEL "cpu/cp0/entryhi_14" BEL
+        "cpu/cp0/entryhi_13" BEL "cpu/cp0/entryhi_12" BEL "cpu/cp0/entryhi_11"
+        BEL "cpu/cp0/entryhi_10" BEL "cpu/cp0/entryhi_9" BEL
+        "cpu/cp0/entryhi_8" BEL "cpu/cp0/entryhi_7" BEL "cpu/cp0/entryhi_6"
+        BEL "cpu/cp0/entryhi_5" BEL "cpu/cp0/entryhi_4" BEL
+        "cpu/cp0/entryhi_3" BEL "cpu/cp0/entryhi_2" BEL "cpu/cp0/entryhi_1"
+        BEL "cpu/cp0/entryhi_0" BEL "cpu/cp0/cause_11" BEL "cpu/cp0/cause_15"
         BEL "cpu/cp0/cause_31" BEL "cpu/cp0/sr_10" BEL "cpu/cp0/sr_11" BEL
         "cpu/cp0/sr_0" BEL "cpu/cp0/sr_13" BEL "cpu/cp0/sr_14" BEL
         "cpu/cp0/sr_12" BEL "cpu/cp0/sr_15" BEL "cpu/mmu/entryhi_0_122" BEL
@@ -1192,32 +1193,45 @@ TIMEGRP clk_ipcore_clkout0 = BEL "clk_ipcore/clkout1_buf" BEL
         "cpu/rf/registers_1_4" BEL "cpu/rf/registers_1_3" BEL
         "cpu/rf/registers_1_2" BEL "cpu/rf/registers_1_1" BEL
         "cpu/rf/registers_1_0" BEL "timer/state_FSM_FFd1" BEL
-        "timer/state_FSM_FFd2" BEL "timer/mode_1" BEL "timer/mode_0" BEL
-        "timer/allow_irq" BEL "timer/preset_31" BEL "timer/preset_30" BEL
-        "timer/preset_29" BEL "timer/preset_28" BEL "timer/preset_27" BEL
-        "timer/preset_26" BEL "timer/preset_25" BEL "timer/preset_24" BEL
-        "timer/preset_23" BEL "timer/preset_22" BEL "timer/preset_21" BEL
-        "timer/preset_20" BEL "timer/preset_19" BEL "timer/preset_18" BEL
-        "timer/preset_17" BEL "timer/preset_16" BEL "timer/preset_15" BEL
-        "timer/preset_14" BEL "timer/preset_13" BEL "timer/preset_12" BEL
-        "timer/preset_11" BEL "timer/preset_10" BEL "timer/preset_9" BEL
-        "timer/preset_8" BEL "timer/preset_7" BEL "timer/preset_6" BEL
-        "timer/preset_5" BEL "timer/preset_4" BEL "timer/preset_3" BEL
-        "timer/preset_2" BEL "timer/preset_1" BEL "timer/preset_0" BEL
-        "led/stored_31" BEL "led/stored_30" BEL "led/stored_29" BEL
-        "led/stored_28" BEL "led/stored_27" BEL "led/stored_26" BEL
-        "led/stored_25" BEL "led/stored_24" BEL "led/stored_23" BEL
-        "led/stored_22" BEL "led/stored_21" BEL "led/stored_20" BEL
-        "led/stored_19" BEL "led/stored_18" BEL "led/stored_17" BEL
-        "led/stored_16" BEL "led/stored_15" BEL "led/stored_14" BEL
-        "led/stored_13" BEL "led/stored_12" BEL "led/stored_11" BEL
-        "led/stored_10" BEL "led/stored_9" BEL "led/stored_8" BEL
-        "led/stored_7" BEL "led/stored_6" BEL "led/stored_5" BEL
-        "led/stored_4" BEL "led/stored_3" BEL "led/stored_2" BEL
-        "led/stored_1" BEL "led/stored_0" BEL "nixie/phase_FSM_FFd1" BEL
-        "nixie/phase_FSM_FFd2" BEL "nixie/phase_FSM_FFd3" BEL
-        "nixie/phase_FSM_FFd4" BEL "nixie/tube1_15" BEL "nixie/tube1_14" BEL
-        "nixie/tube1_13" BEL "nixie/tube1_12" BEL "nixie/tube1_11" BEL
+        "timer/state_FSM_FFd2" BEL "timer/count_31" BEL "timer/count_30" BEL
+        "timer/count_29" BEL "timer/count_28" BEL "timer/count_27" BEL
+        "timer/count_26" BEL "timer/count_25" BEL "timer/count_24" BEL
+        "timer/count_23" BEL "timer/count_22" BEL "timer/count_21" BEL
+        "timer/count_20" BEL "timer/count_19" BEL "timer/count_18" BEL
+        "timer/count_17" BEL "timer/count_16" BEL "timer/count_15" BEL
+        "timer/count_14" BEL "timer/count_13" BEL "timer/count_12" BEL
+        "timer/count_11" BEL "timer/count_10" BEL "timer/count_9" BEL
+        "timer/count_8" BEL "timer/count_7" BEL "timer/count_6" BEL
+        "timer/count_5" BEL "timer/count_4" BEL "timer/count_3" BEL
+        "timer/count_2" BEL "timer/count_1" BEL "timer/count_0" BEL
+        "timer/mode_1" BEL "timer/mode_0" BEL "timer/allow_irq" BEL
+        "timer/preset_31" BEL "timer/preset_30" BEL "timer/preset_29" BEL
+        "timer/preset_28" BEL "timer/preset_27" BEL "timer/preset_26" BEL
+        "timer/preset_25" BEL "timer/preset_24" BEL "timer/preset_23" BEL
+        "timer/preset_22" BEL "timer/preset_21" BEL "timer/preset_20" BEL
+        "timer/preset_19" BEL "timer/preset_18" BEL "timer/preset_17" BEL
+        "timer/preset_16" BEL "timer/preset_15" BEL "timer/preset_14" BEL
+        "timer/preset_13" BEL "timer/preset_12" BEL "timer/preset_11" BEL
+        "timer/preset_10" BEL "timer/preset_9" BEL "timer/preset_8" BEL
+        "timer/preset_7" BEL "timer/preset_6" BEL "timer/preset_5" BEL
+        "timer/preset_4" BEL "timer/preset_3" BEL "timer/preset_2" BEL
+        "timer/preset_1" BEL "timer/preset_0" BEL "led/stored_31" BEL
+        "led/stored_30" BEL "led/stored_29" BEL "led/stored_28" BEL
+        "led/stored_27" BEL "led/stored_26" BEL "led/stored_25" BEL
+        "led/stored_24" BEL "led/stored_23" BEL "led/stored_22" BEL
+        "led/stored_21" BEL "led/stored_20" BEL "led/stored_19" BEL
+        "led/stored_18" BEL "led/stored_17" BEL "led/stored_16" BEL
+        "led/stored_15" BEL "led/stored_14" BEL "led/stored_13" BEL
+        "led/stored_12" BEL "led/stored_11" BEL "led/stored_10" BEL
+        "led/stored_9" BEL "led/stored_8" BEL "led/stored_7" BEL
+        "led/stored_6" BEL "led/stored_5" BEL "led/stored_4" BEL
+        "led/stored_3" BEL "led/stored_2" BEL "led/stored_1" BEL
+        "led/stored_0" BEL "nixie/phase_FSM_FFd1" BEL "nixie/ctr_12" BEL
+        "nixie/ctr_11" BEL "nixie/ctr_7" BEL "nixie/ctr_6" BEL "nixie/ctr_5"
+        BEL "nixie/ctr_3" BEL "nixie/ctr_2" BEL "nixie/ctr_1" BEL
+        "nixie/ctr_0" BEL "nixie/phase_FSM_FFd2" BEL "nixie/phase_FSM_FFd3"
+        BEL "nixie/phase_FSM_FFd4" BEL "nixie/tube1_15" BEL "nixie/tube1_14"
+        BEL "nixie/tube1_13" BEL "nixie/tube1_12" BEL "nixie/tube1_11" BEL
         "nixie/tube1_10" BEL "nixie/tube1_9" BEL "nixie/tube1_8" BEL
         "nixie/tube1_7" BEL "nixie/tube1_6" BEL "nixie/tube1_5" BEL
         "nixie/tube1_4" BEL "nixie/tube1_3" BEL "nixie/tube1_2" BEL
@@ -1236,262 +1250,248 @@ TIMEGRP clk_ipcore_clkout0 = BEL "clk_ipcore/clkout1_buf" BEL
         BEL "cpu/e_ext/data_7" BEL "cpu/e_ext/data_6" BEL "cpu/e_ext/data_5"
         BEL "cpu/e_ext/data_4" BEL "cpu/e_ext/data_3" BEL "cpu/e_ext/data_2"
         BEL "cpu/e_ext/data_1" BEL "cpu/e_ext/data_0" BEL "timer/irq_reg" BEL
-        "timer/enable" BEL "nixie/ctr_14" BEL "nixie/ctr_13" BEL
-        "nixie/ctr_12" BEL "nixie/ctr_10" BEL "nixie/ctr_8" BEL "nixie/ctr_5"
-        BEL "nixie/ctr_4" BEL "cpu/control/m_in_bds_/data_0" BEL
-        "cpu/control/m_reg2_/data_0" BEL "cpu/control/m_reg2_/data_1" BEL
-        "cpu/control/m_reg2_/data_2" BEL "cpu/control/m_reg2_/data_3" BEL
-        "cpu/control/m_reg2_/data_4" BEL "cpu/control/m_regw_/data_0" BEL
-        "cpu/control/m_regw_/data_1" BEL "cpu/control/m_regw_/data_2" BEL
-        "cpu/control/m_regw_/data_3" BEL "cpu/control/m_regw_/data_4" BEL
-        "cpu/control/w_regw_/data_0" BEL "cpu/control/w_regw_/data_1" BEL
-        "cpu/control/w_regw_/data_2" BEL "cpu/control/w_regw_/data_3" BEL
-        "cpu/control/w_regw_/data_4" BEL "cpu/control/e_exc_/data_3" BEL
-        "cpu/control/m_exc_/data_1" BEL "cpu/w_cp0/data_14" BEL
-        "cpu/w_cp0/data_13" BEL "cpu/w_cp0/data_12" BEL "cpu/w_cp0/data_2" BEL
-        "cpu/w_alu/data_31" BEL "cpu/w_alu/data_30" BEL "cpu/w_alu/data_29"
-        BEL "cpu/w_alu/data_28" BEL "cpu/w_alu/data_27" BEL
-        "cpu/w_alu/data_26" BEL "cpu/w_alu/data_25" BEL "cpu/w_alu/data_24"
-        BEL "cpu/w_alu/data_23" BEL "cpu/w_alu/data_22" BEL
-        "cpu/w_alu/data_21" BEL "cpu/w_alu/data_20" BEL "cpu/w_alu/data_19"
-        BEL "cpu/w_alu/data_18" BEL "cpu/w_alu/data_17" BEL
-        "cpu/w_alu/data_16" BEL "cpu/w_alu/data_15" BEL "cpu/w_alu/data_14"
-        BEL "cpu/w_alu/data_13" BEL "cpu/w_alu/data_12" BEL
-        "cpu/w_alu/data_11" BEL "cpu/w_alu/data_10" BEL "cpu/w_alu/data_9" BEL
-        "cpu/w_alu/data_8" BEL "cpu/w_alu/data_7" BEL "cpu/w_alu/data_6" BEL
-        "cpu/w_alu/data_5" BEL "cpu/w_alu/data_4" BEL "cpu/w_alu/data_3" BEL
-        "cpu/w_alu/data_2" BEL "cpu/w_alu/data_1" BEL "cpu/w_alu/data_0" BEL
-        "cpu/w_im/data_31" BEL "cpu/w_im/data_30" BEL "cpu/w_im/data_29" BEL
-        "cpu/w_im/data_28" BEL "cpu/w_im/data_27" BEL "cpu/w_im/data_26" BEL
-        "cpu/w_im/data_25" BEL "cpu/w_im/data_24" BEL "cpu/w_im/data_23" BEL
-        "cpu/w_im/data_22" BEL "cpu/w_im/data_21" BEL "cpu/w_im/data_20" BEL
-        "cpu/w_im/data_19" BEL "cpu/w_im/data_18" BEL "cpu/w_im/data_17" BEL
-        "cpu/w_im/data_16" BEL "cpu/w_im/data_15" BEL "cpu/w_im/data_14" BEL
-        "cpu/w_im/data_13" BEL "cpu/w_im/data_12" BEL "cpu/w_im/data_11" BEL
-        "cpu/w_im/data_10" BEL "cpu/w_im/data_9" BEL "cpu/w_im/data_8" BEL
-        "cpu/w_im/data_7" BEL "cpu/w_im/data_6" BEL "cpu/w_im/data_5" BEL
-        "cpu/w_im/data_4" BEL "cpu/w_im/data_3" BEL "cpu/w_im/data_2" BEL
-        "cpu/w_im/data_1" BEL "cpu/w_im/data_0" BEL "cpu/w_pc/data_31" BEL
-        "cpu/w_pc/data_30" BEL "cpu/w_pc/data_29" BEL "cpu/w_pc/data_28" BEL
-        "cpu/w_pc/data_27" BEL "cpu/w_pc/data_26" BEL "cpu/w_pc/data_25" BEL
-        "cpu/w_pc/data_24" BEL "cpu/w_pc/data_23" BEL "cpu/w_pc/data_22" BEL
-        "cpu/w_pc/data_21" BEL "cpu/w_pc/data_20" BEL "cpu/w_pc/data_19" BEL
-        "cpu/w_pc/data_18" BEL "cpu/w_pc/data_17" BEL "cpu/w_pc/data_16" BEL
-        "cpu/w_pc/data_15" BEL "cpu/w_pc/data_14" BEL "cpu/w_pc/data_13" BEL
-        "cpu/w_pc/data_12" BEL "cpu/w_pc/data_11" BEL "cpu/w_pc/data_10" BEL
-        "cpu/w_pc/data_9" BEL "cpu/w_pc/data_8" BEL "cpu/w_pc/data_7" BEL
-        "cpu/w_pc/data_6" BEL "cpu/w_pc/data_5" BEL "cpu/w_pc/data_4" BEL
-        "cpu/w_pc/data_3" BEL "cpu/w_pc/data_2" BEL "cpu/w_pc/data_1" BEL
-        "cpu/w_pc/data_0" BEL "cpu/m_im/data_31" BEL "cpu/m_im/data_30" BEL
-        "cpu/m_im/data_29" BEL "cpu/m_im/data_28" BEL "cpu/m_im/data_27" BEL
-        "cpu/m_im/data_26" BEL "cpu/m_im/data_25" BEL "cpu/m_im/data_24" BEL
-        "cpu/m_im/data_23" BEL "cpu/m_im/data_22" BEL "cpu/m_im/data_21" BEL
-        "cpu/m_im/data_20" BEL "cpu/m_im/data_19" BEL "cpu/m_im/data_18" BEL
-        "cpu/m_im/data_17" BEL "cpu/m_im/data_16" BEL "cpu/m_im/data_15" BEL
-        "cpu/m_im/data_14" BEL "cpu/m_im/data_13" BEL "cpu/m_im/data_12" BEL
-        "cpu/m_im/data_11" BEL "cpu/m_im/data_10" BEL "cpu/m_im/data_9" BEL
-        "cpu/m_im/data_8" BEL "cpu/m_im/data_7" BEL "cpu/m_im/data_6" BEL
-        "cpu/m_im/data_5" BEL "cpu/m_im/data_4" BEL "cpu/m_im/data_3" BEL
-        "cpu/m_im/data_2" BEL "cpu/m_im/data_1" BEL "cpu/m_im/data_0" BEL
-        "cpu/m_pc/data_31" BEL "cpu/m_pc/data_30" BEL "cpu/m_pc/data_29" BEL
-        "cpu/m_pc/data_28" BEL "cpu/m_pc/data_27" BEL "cpu/m_pc/data_26" BEL
-        "cpu/m_pc/data_25" BEL "cpu/m_pc/data_24" BEL "cpu/m_pc/data_23" BEL
-        "cpu/m_pc/data_22" BEL "cpu/m_pc/data_21" BEL "cpu/m_pc/data_20" BEL
-        "cpu/m_pc/data_19" BEL "cpu/m_pc/data_18" BEL "cpu/m_pc/data_17" BEL
-        "cpu/m_pc/data_16" BEL "cpu/m_pc/data_15" BEL "cpu/m_pc/data_14" BEL
-        "cpu/m_pc/data_13" BEL "cpu/m_pc/data_12" BEL "cpu/m_pc/data_11" BEL
-        "cpu/m_pc/data_10" BEL "cpu/m_pc/data_9" BEL "cpu/m_pc/data_8" BEL
-        "cpu/m_pc/data_7" BEL "cpu/m_pc/data_6" BEL "cpu/m_pc/data_5" BEL
-        "cpu/m_pc/data_4" BEL "cpu/m_pc/data_3" BEL "cpu/m_pc/data_2" BEL
-        "cpu/m_pc/data_1" BEL "cpu/m_pc/data_0" BEL "cpu/e_ext/data_31" BEL
+        "timer/enable" BEL "nixie/ctr_13" BEL "nixie/ctr_10" BEL "nixie/ctr_9"
+        BEL "nixie/ctr_8" BEL "nixie/ctr_4" BEL
+        "uart_shim/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_3_C_3" BEL
+        "uart_shim/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_3_P_3" BEL
+        "uart_shim/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_1_C_1" BEL
+        "uart_shim/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_1_P_1" BEL
+        "cpu/control/m_in_bds_/data_0" BEL "cpu/control/m_reg2_/data_0" BEL
+        "cpu/control/m_reg2_/data_1" BEL "cpu/control/m_reg2_/data_2" BEL
+        "cpu/control/m_reg2_/data_3" BEL "cpu/control/m_reg2_/data_4" BEL
+        "cpu/control/m_regw_/data_0" BEL "cpu/control/m_regw_/data_1" BEL
+        "cpu/control/m_regw_/data_2" BEL "cpu/control/m_regw_/data_3" BEL
+        "cpu/control/m_regw_/data_4" BEL "cpu/control/w_regw_/data_0" BEL
+        "cpu/control/w_regw_/data_1" BEL "cpu/control/w_regw_/data_2" BEL
+        "cpu/control/w_regw_/data_3" BEL "cpu/control/w_regw_/data_4" BEL
+        "cpu/control/m_exc_/data_0" BEL "cpu/control/m_exc_/data_1" BEL
+        "cpu/control/m_exc_/data_2" BEL "cpu/control/m_exc_/data_3" BEL
+        "cpu/w_cp0/data_31" BEL "cpu/w_cp0/data_30" BEL "cpu/w_cp0/data_29"
+        BEL "cpu/w_cp0/data_28" BEL "cpu/w_cp0/data_27" BEL
+        "cpu/w_cp0/data_26" BEL "cpu/w_cp0/data_25" BEL "cpu/w_cp0/data_24"
+        BEL "cpu/w_cp0/data_23" BEL "cpu/w_cp0/data_22" BEL
+        "cpu/w_cp0/data_21" BEL "cpu/w_cp0/data_20" BEL "cpu/w_cp0/data_19"
+        BEL "cpu/w_cp0/data_18" BEL "cpu/w_cp0/data_17" BEL
+        "cpu/w_cp0/data_16" BEL "cpu/w_cp0/data_15" BEL "cpu/w_cp0/data_14"
+        BEL "cpu/w_cp0/data_13" BEL "cpu/w_cp0/data_12" BEL
+        "cpu/w_cp0/data_11" BEL "cpu/w_cp0/data_10" BEL "cpu/w_cp0/data_9" BEL
+        "cpu/w_cp0/data_8" BEL "cpu/w_cp0/data_7" BEL "cpu/w_cp0/data_6" BEL
+        "cpu/w_cp0/data_5" BEL "cpu/w_cp0/data_4" BEL "cpu/w_cp0/data_3" BEL
+        "cpu/w_cp0/data_2" BEL "cpu/w_cp0/data_1" BEL "cpu/w_cp0/data_0" BEL
+        "cpu/w_dm/data_31" BEL "cpu/w_dm/data_30" BEL "cpu/w_dm/data_29" BEL
+        "cpu/w_dm/data_28" BEL "cpu/w_dm/data_27" BEL "cpu/w_dm/data_26" BEL
+        "cpu/w_dm/data_25" BEL "cpu/w_dm/data_24" BEL "cpu/w_dm/data_23" BEL
+        "cpu/w_dm/data_22" BEL "cpu/w_dm/data_21" BEL "cpu/w_dm/data_20" BEL
+        "cpu/w_dm/data_19" BEL "cpu/w_dm/data_18" BEL "cpu/w_dm/data_17" BEL
+        "cpu/w_dm/data_16" BEL "cpu/w_dm/data_15" BEL "cpu/w_dm/data_14" BEL
+        "cpu/w_dm/data_13" BEL "cpu/w_dm/data_12" BEL "cpu/w_dm/data_11" BEL
+        "cpu/w_dm/data_10" BEL "cpu/w_dm/data_9" BEL "cpu/w_dm/data_8" BEL
+        "cpu/w_dm/data_7" BEL "cpu/w_dm/data_6" BEL "cpu/w_dm/data_5" BEL
+        "cpu/w_dm/data_4" BEL "cpu/w_dm/data_3" BEL "cpu/w_dm/data_2" BEL
+        "cpu/w_dm/data_1" BEL "cpu/w_dm/data_0" BEL "cpu/w_alu/data_31" BEL
+        "cpu/w_alu/data_30" BEL "cpu/w_alu/data_29" BEL "cpu/w_alu/data_28"
+        BEL "cpu/w_alu/data_27" BEL "cpu/w_alu/data_26" BEL
+        "cpu/w_alu/data_25" BEL "cpu/w_alu/data_24" BEL "cpu/w_alu/data_23"
+        BEL "cpu/w_alu/data_22" BEL "cpu/w_alu/data_21" BEL
+        "cpu/w_alu/data_20" BEL "cpu/w_alu/data_19" BEL "cpu/w_alu/data_18"
+        BEL "cpu/w_alu/data_17" BEL "cpu/w_alu/data_16" BEL
+        "cpu/w_alu/data_15" BEL "cpu/w_alu/data_14" BEL "cpu/w_alu/data_13"
+        BEL "cpu/w_alu/data_12" BEL "cpu/w_alu/data_11" BEL
+        "cpu/w_alu/data_10" BEL "cpu/w_alu/data_9" BEL "cpu/w_alu/data_8" BEL
+        "cpu/w_alu/data_7" BEL "cpu/w_alu/data_6" BEL "cpu/w_alu/data_5" BEL
+        "cpu/w_alu/data_4" BEL "cpu/w_alu/data_3" BEL "cpu/w_alu/data_2" BEL
+        "cpu/w_alu/data_1" BEL "cpu/w_alu/data_0" BEL "cpu/w_im/data_31" BEL
+        "cpu/w_im/data_30" BEL "cpu/w_im/data_29" BEL "cpu/w_im/data_28" BEL
+        "cpu/w_im/data_27" BEL "cpu/w_im/data_26" BEL "cpu/w_im/data_25" BEL
+        "cpu/w_im/data_24" BEL "cpu/w_im/data_23" BEL "cpu/w_im/data_22" BEL
+        "cpu/w_im/data_21" BEL "cpu/w_im/data_20" BEL "cpu/w_im/data_19" BEL
+        "cpu/w_im/data_18" BEL "cpu/w_im/data_17" BEL "cpu/w_im/data_16" BEL
+        "cpu/w_im/data_15" BEL "cpu/w_im/data_14" BEL "cpu/w_im/data_13" BEL
+        "cpu/w_im/data_12" BEL "cpu/w_im/data_11" BEL "cpu/w_im/data_10" BEL
+        "cpu/w_im/data_9" BEL "cpu/w_im/data_8" BEL "cpu/w_im/data_7" BEL
+        "cpu/w_im/data_6" BEL "cpu/w_im/data_5" BEL "cpu/w_im/data_4" BEL
+        "cpu/w_im/data_3" BEL "cpu/w_im/data_2" BEL "cpu/w_im/data_1" BEL
+        "cpu/w_im/data_0" BEL "cpu/w_pc/data_31" BEL "cpu/w_pc/data_30" BEL
+        "cpu/w_pc/data_29" BEL "cpu/w_pc/data_28" BEL "cpu/w_pc/data_27" BEL
+        "cpu/w_pc/data_26" BEL "cpu/w_pc/data_25" BEL "cpu/w_pc/data_24" BEL
+        "cpu/w_pc/data_23" BEL "cpu/w_pc/data_22" BEL "cpu/w_pc/data_21" BEL
+        "cpu/w_pc/data_20" BEL "cpu/w_pc/data_19" BEL "cpu/w_pc/data_18" BEL
+        "cpu/w_pc/data_17" BEL "cpu/w_pc/data_16" BEL "cpu/w_pc/data_15" BEL
+        "cpu/w_pc/data_14" BEL "cpu/w_pc/data_13" BEL "cpu/w_pc/data_12" BEL
+        "cpu/w_pc/data_11" BEL "cpu/w_pc/data_10" BEL "cpu/w_pc/data_9" BEL
+        "cpu/w_pc/data_8" BEL "cpu/w_pc/data_7" BEL "cpu/w_pc/data_6" BEL
+        "cpu/w_pc/data_5" BEL "cpu/w_pc/data_4" BEL "cpu/w_pc/data_3" BEL
+        "cpu/w_pc/data_2" BEL "cpu/w_pc/data_1" BEL "cpu/w_pc/data_0" BEL
+        "cpu/m_reg2/data_31" BEL "cpu/m_reg2/data_30" BEL "cpu/m_reg2/data_29"
+        BEL "cpu/m_reg2/data_28" BEL "cpu/m_reg2/data_27" BEL
+        "cpu/m_reg2/data_26" BEL "cpu/m_reg2/data_25" BEL "cpu/m_reg2/data_24"
+        BEL "cpu/m_reg2/data_23" BEL "cpu/m_reg2/data_22" BEL
+        "cpu/m_reg2/data_21" BEL "cpu/m_reg2/data_20" BEL "cpu/m_reg2/data_19"
+        BEL "cpu/m_reg2/data_18" BEL "cpu/m_reg2/data_17" BEL
+        "cpu/m_reg2/data_16" BEL "cpu/m_reg2/data_15" BEL "cpu/m_reg2/data_14"
+        BEL "cpu/m_reg2/data_13" BEL "cpu/m_reg2/data_12" BEL
+        "cpu/m_reg2/data_11" BEL "cpu/m_reg2/data_10" BEL "cpu/m_reg2/data_9"
+        BEL "cpu/m_reg2/data_8" BEL "cpu/m_reg2/data_7" BEL
+        "cpu/m_reg2/data_6" BEL "cpu/m_reg2/data_5" BEL "cpu/m_reg2/data_4"
+        BEL "cpu/m_reg2/data_3" BEL "cpu/m_reg2/data_2" BEL
+        "cpu/m_reg2/data_1" BEL "cpu/m_reg2/data_0" BEL "cpu/m_alu/data_31"
+        BEL "cpu/m_alu/data_30" BEL "cpu/m_alu/data_29" BEL
+        "cpu/m_alu/data_28" BEL "cpu/m_alu/data_27" BEL "cpu/m_alu/data_26"
+        BEL "cpu/m_alu/data_25" BEL "cpu/m_alu/data_24" BEL
+        "cpu/m_alu/data_23" BEL "cpu/m_alu/data_22" BEL "cpu/m_alu/data_21"
+        BEL "cpu/m_alu/data_20" BEL "cpu/m_alu/data_19" BEL
+        "cpu/m_alu/data_18" BEL "cpu/m_alu/data_17" BEL "cpu/m_alu/data_16"
+        BEL "cpu/m_alu/data_15" BEL "cpu/m_alu/data_14" BEL
+        "cpu/m_alu/data_13" BEL "cpu/m_alu/data_12" BEL "cpu/m_alu/data_11"
+        BEL "cpu/m_alu/data_10" BEL "cpu/m_alu/data_9" BEL "cpu/m_alu/data_8"
+        BEL "cpu/m_alu/data_7" BEL "cpu/m_alu/data_6" BEL "cpu/m_alu/data_5"
+        BEL "cpu/m_alu/data_4" BEL "cpu/m_alu/data_3" BEL "cpu/m_alu/data_2"
+        BEL "cpu/m_alu/data_1" BEL "cpu/m_alu/data_0" BEL "cpu/m_im/data_31"
+        BEL "cpu/m_im/data_30" BEL "cpu/m_im/data_29" BEL "cpu/m_im/data_28"
+        BEL "cpu/m_im/data_27" BEL "cpu/m_im/data_26" BEL "cpu/m_im/data_25"
+        BEL "cpu/m_im/data_24" BEL "cpu/m_im/data_23" BEL "cpu/m_im/data_22"
+        BEL "cpu/m_im/data_21" BEL "cpu/m_im/data_20" BEL "cpu/m_im/data_19"
+        BEL "cpu/m_im/data_18" BEL "cpu/m_im/data_17" BEL "cpu/m_im/data_16"
+        BEL "cpu/m_im/data_15" BEL "cpu/m_im/data_14" BEL "cpu/m_im/data_13"
+        BEL "cpu/m_im/data_12" BEL "cpu/m_im/data_11" BEL "cpu/m_im/data_10"
+        BEL "cpu/m_im/data_9" BEL "cpu/m_im/data_8" BEL "cpu/m_im/data_7" BEL
+        "cpu/m_im/data_6" BEL "cpu/m_im/data_5" BEL "cpu/m_im/data_4" BEL
+        "cpu/m_im/data_3" BEL "cpu/m_im/data_2" BEL "cpu/m_im/data_1" BEL
+        "cpu/m_im/data_0" BEL "cpu/m_pc/data_31" BEL "cpu/m_pc/data_30" BEL
+        "cpu/m_pc/data_29" BEL "cpu/m_pc/data_28" BEL "cpu/m_pc/data_27" BEL
+        "cpu/m_pc/data_26" BEL "cpu/m_pc/data_25" BEL "cpu/m_pc/data_24" BEL
+        "cpu/m_pc/data_23" BEL "cpu/m_pc/data_22" BEL "cpu/m_pc/data_21" BEL
+        "cpu/m_pc/data_20" BEL "cpu/m_pc/data_19" BEL "cpu/m_pc/data_18" BEL
+        "cpu/m_pc/data_17" BEL "cpu/m_pc/data_16" BEL "cpu/m_pc/data_15" BEL
+        "cpu/m_pc/data_14" BEL "cpu/m_pc/data_13" BEL "cpu/m_pc/data_12" BEL
+        "cpu/m_pc/data_11" BEL "cpu/m_pc/data_10" BEL "cpu/m_pc/data_9" BEL
+        "cpu/m_pc/data_8" BEL "cpu/m_pc/data_7" BEL "cpu/m_pc/data_6" BEL
+        "cpu/m_pc/data_5" BEL "cpu/m_pc/data_4" BEL "cpu/m_pc/data_3" BEL
+        "cpu/m_pc/data_2" BEL "cpu/m_pc/data_1" BEL "cpu/m_pc/data_0" BEL
+        "cpu/control/e_in_bds_/data_0" BEL "cpu/control/e_reg1_/data_0" BEL
+        "cpu/control/e_reg1_/data_1" BEL "cpu/control/e_reg1_/data_2" BEL
+        "cpu/control/e_reg1_/data_3" BEL "cpu/control/e_reg1_/data_4" BEL
+        "cpu/control/e_reg2_/data_0" BEL "cpu/control/e_reg2_/data_1" BEL
+        "cpu/control/e_reg2_/data_2" BEL "cpu/control/e_reg2_/data_3" BEL
+        "cpu/control/e_reg2_/data_4" BEL "cpu/control/e_regw_/data_0" BEL
+        "cpu/control/e_regw_/data_1" BEL "cpu/control/e_regw_/data_2" BEL
+        "cpu/control/e_regw_/data_3" BEL "cpu/control/e_regw_/data_4" BEL
+        "cpu/control/e_exc_/data_2" BEL "cpu/control/e_exc_/data_3" BEL
+        "cpu/e_reg2/data_31" BEL "cpu/e_reg2/data_30" BEL "cpu/e_reg2/data_29"
+        BEL "cpu/e_reg2/data_28" BEL "cpu/e_reg2/data_27" BEL
+        "cpu/e_reg2/data_26" BEL "cpu/e_reg2/data_25" BEL "cpu/e_reg2/data_24"
+        BEL "cpu/e_reg2/data_23" BEL "cpu/e_reg2/data_22" BEL
+        "cpu/e_reg2/data_21" BEL "cpu/e_reg2/data_20" BEL "cpu/e_reg2/data_19"
+        BEL "cpu/e_reg2/data_18" BEL "cpu/e_reg2/data_17" BEL
+        "cpu/e_reg2/data_16" BEL "cpu/e_reg2/data_15" BEL "cpu/e_reg2/data_14"
+        BEL "cpu/e_reg2/data_13" BEL "cpu/e_reg2/data_12" BEL
+        "cpu/e_reg2/data_11" BEL "cpu/e_reg2/data_10" BEL "cpu/e_reg2/data_9"
+        BEL "cpu/e_reg2/data_8" BEL "cpu/e_reg2/data_7" BEL
+        "cpu/e_reg2/data_6" BEL "cpu/e_reg2/data_5" BEL "cpu/e_reg2/data_4"
+        BEL "cpu/e_reg2/data_3" BEL "cpu/e_reg2/data_2" BEL
+        "cpu/e_reg2/data_1" BEL "cpu/e_reg2/data_0" BEL "cpu/e_reg1/data_31"
+        BEL "cpu/e_reg1/data_30" BEL "cpu/e_reg1/data_29" BEL
+        "cpu/e_reg1/data_28" BEL "cpu/e_reg1/data_27" BEL "cpu/e_reg1/data_26"
+        BEL "cpu/e_reg1/data_25" BEL "cpu/e_reg1/data_24" BEL
+        "cpu/e_reg1/data_23" BEL "cpu/e_reg1/data_22" BEL "cpu/e_reg1/data_21"
+        BEL "cpu/e_reg1/data_20" BEL "cpu/e_reg1/data_19" BEL
+        "cpu/e_reg1/data_18" BEL "cpu/e_reg1/data_17" BEL "cpu/e_reg1/data_16"
+        BEL "cpu/e_reg1/data_15" BEL "cpu/e_reg1/data_14" BEL
+        "cpu/e_reg1/data_13" BEL "cpu/e_reg1/data_12" BEL "cpu/e_reg1/data_11"
+        BEL "cpu/e_reg1/data_10" BEL "cpu/e_reg1/data_9" BEL
+        "cpu/e_reg1/data_8" BEL "cpu/e_reg1/data_7" BEL "cpu/e_reg1/data_6"
+        BEL "cpu/e_reg1/data_5" BEL "cpu/e_reg1/data_4" BEL
+        "cpu/e_reg1/data_3" BEL "cpu/e_reg1/data_2" BEL "cpu/e_reg1/data_1"
+        BEL "cpu/e_reg1/data_0" BEL "cpu/e_ext/data_31" BEL
         "cpu/e_ext/data_30" BEL "cpu/e_ext/data_29" BEL "cpu/e_ext/data_28"
         BEL "cpu/e_ext/data_27" BEL "cpu/e_ext/data_26" BEL
         "cpu/e_ext/data_25" BEL "cpu/e_ext/data_24" BEL "cpu/e_ext/data_23"
         BEL "cpu/e_ext/data_22" BEL "cpu/e_ext/data_21" BEL
         "cpu/e_ext/data_20" BEL "cpu/e_ext/data_19" BEL "cpu/e_ext/data_18"
-        BEL "cpu/e_ext/data_17" BEL "cpu/e_ext/data_16" BEL "cpu/d_im/data_31"
-        BEL "cpu/d_im/data_30" BEL "cpu/d_im/data_29" BEL "cpu/d_im/data_28"
-        BEL "cpu/d_im/data_27" BEL "cpu/d_im/data_26" BEL "cpu/d_im/data_25"
-        BEL "cpu/d_im/data_24" BEL "cpu/d_im/data_23" BEL "cpu/d_im/data_22"
-        BEL "cpu/d_im/data_21" BEL "cpu/d_im/data_20" BEL "timer/count_31" BEL
-        "timer/count_30" BEL "timer/count_29" BEL "timer/count_28" BEL
-        "timer/count_27" BEL "timer/count_26" BEL "timer/count_25" BEL
-        "timer/count_24" BEL "timer/count_23" BEL "timer/count_22" BEL
-        "timer/count_21" BEL "timer/count_20" BEL "timer/count_19" BEL
-        "timer/count_18" BEL "timer/count_17" BEL "timer/count_16" BEL
-        "timer/count_15" BEL "timer/count_14" BEL "timer/count_13" BEL
-        "timer/count_12" BEL "timer/count_11" BEL "timer/count_10" BEL
-        "timer/count_9" BEL "timer/count_8" BEL "timer/count_7" BEL
-        "timer/count_6" BEL "timer/count_5" BEL "timer/count_4" BEL
-        "timer/count_3" BEL "timer/count_2" BEL "timer/count_1" BEL
-        "timer/count_0" BEL "nixie/ctr_11" BEL "nixie/ctr_9" BEL "nixie/ctr_7"
-        BEL "nixie/ctr_6" BEL "nixie/ctr_3" BEL "nixie/ctr_2" BEL
-        "nixie/ctr_1" BEL "nixie/ctr_0" BEL "cpu/cp0/cause_10" BEL
-        "cpu/cp0/cause_11" BEL "cpu/cp0/cause_15" BEL
-        "uart_shim/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_3_C_3" BEL
-        "uart_shim/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_3_P_3" BEL
-        "uart_shim/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_1_C_1" BEL
-        "uart_shim/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_1_P_1" BEL
-        "cpu/control/m_exc_/data_0" BEL "cpu/control/m_exc_/data_2" BEL
-        "cpu/control/m_exc_/data_3" BEL "cpu/w_cp0/data_31" BEL
-        "cpu/w_cp0/data_30" BEL "cpu/w_cp0/data_29" BEL "cpu/w_cp0/data_28"
-        BEL "cpu/w_cp0/data_27" BEL "cpu/w_cp0/data_26" BEL
-        "cpu/w_cp0/data_25" BEL "cpu/w_cp0/data_24" BEL "cpu/w_cp0/data_23"
-        BEL "cpu/w_cp0/data_22" BEL "cpu/w_cp0/data_21" BEL
-        "cpu/w_cp0/data_20" BEL "cpu/w_cp0/data_19" BEL "cpu/w_cp0/data_18"
-        BEL "cpu/w_cp0/data_17" BEL "cpu/w_cp0/data_16" BEL
-        "cpu/w_cp0/data_15" BEL "cpu/w_cp0/data_11" BEL "cpu/w_cp0/data_10"
-        BEL "cpu/w_cp0/data_9" BEL "cpu/w_cp0/data_8" BEL "cpu/w_cp0/data_7"
-        BEL "cpu/w_cp0/data_6" BEL "cpu/w_cp0/data_5" BEL "cpu/w_cp0/data_4"
-        BEL "cpu/w_cp0/data_3" BEL "cpu/w_cp0/data_1" BEL "cpu/w_cp0/data_0"
-        BEL "cpu/w_dm/data_31" BEL "cpu/w_dm/data_30" BEL "cpu/w_dm/data_29"
-        BEL "cpu/w_dm/data_28" BEL "cpu/w_dm/data_27" BEL "cpu/w_dm/data_26"
-        BEL "cpu/w_dm/data_25" BEL "cpu/w_dm/data_24" BEL "cpu/w_dm/data_23"
-        BEL "cpu/w_dm/data_22" BEL "cpu/w_dm/data_21" BEL "cpu/w_dm/data_20"
-        BEL "cpu/w_dm/data_19" BEL "cpu/w_dm/data_18" BEL "cpu/w_dm/data_17"
-        BEL "cpu/w_dm/data_16" BEL "cpu/w_dm/data_15" BEL "cpu/w_dm/data_14"
-        BEL "cpu/w_dm/data_13" BEL "cpu/w_dm/data_12" BEL "cpu/w_dm/data_11"
-        BEL "cpu/w_dm/data_10" BEL "cpu/w_dm/data_9" BEL "cpu/w_dm/data_8" BEL
-        "cpu/w_dm/data_7" BEL "cpu/w_dm/data_6" BEL "cpu/w_dm/data_5" BEL
-        "cpu/w_dm/data_4" BEL "cpu/w_dm/data_3" BEL "cpu/w_dm/data_2" BEL
-        "cpu/w_dm/data_1" BEL "cpu/w_dm/data_0" BEL "cpu/m_reg2/data_31" BEL
-        "cpu/m_reg2/data_30" BEL "cpu/m_reg2/data_29" BEL "cpu/m_reg2/data_28"
-        BEL "cpu/m_reg2/data_27" BEL "cpu/m_reg2/data_26" BEL
-        "cpu/m_reg2/data_25" BEL "cpu/m_reg2/data_24" BEL "cpu/m_reg2/data_23"
-        BEL "cpu/m_reg2/data_22" BEL "cpu/m_reg2/data_21" BEL
-        "cpu/m_reg2/data_20" BEL "cpu/m_reg2/data_19" BEL "cpu/m_reg2/data_18"
-        BEL "cpu/m_reg2/data_17" BEL "cpu/m_reg2/data_16" BEL
-        "cpu/m_reg2/data_15" BEL "cpu/m_reg2/data_14" BEL "cpu/m_reg2/data_13"
-        BEL "cpu/m_reg2/data_12" BEL "cpu/m_reg2/data_11" BEL
-        "cpu/m_reg2/data_10" BEL "cpu/m_reg2/data_9" BEL "cpu/m_reg2/data_8"
-        BEL "cpu/m_reg2/data_7" BEL "cpu/m_reg2/data_6" BEL
-        "cpu/m_reg2/data_5" BEL "cpu/m_reg2/data_4" BEL "cpu/m_reg2/data_3"
-        BEL "cpu/m_reg2/data_2" BEL "cpu/m_reg2/data_1" BEL
-        "cpu/m_reg2/data_0" BEL "cpu/m_alu/data_31" BEL "cpu/m_alu/data_30"
-        BEL "cpu/m_alu/data_29" BEL "cpu/m_alu/data_28" BEL
-        "cpu/m_alu/data_27" BEL "cpu/m_alu/data_26" BEL "cpu/m_alu/data_25"
-        BEL "cpu/m_alu/data_24" BEL "cpu/m_alu/data_23" BEL
-        "cpu/m_alu/data_22" BEL "cpu/m_alu/data_21" BEL "cpu/m_alu/data_20"
-        BEL "cpu/m_alu/data_19" BEL "cpu/m_alu/data_18" BEL
-        "cpu/m_alu/data_17" BEL "cpu/m_alu/data_16" BEL "cpu/m_alu/data_15"
-        BEL "cpu/m_alu/data_14" BEL "cpu/m_alu/data_13" BEL
-        "cpu/m_alu/data_12" BEL "cpu/m_alu/data_11" BEL "cpu/m_alu/data_10"
-        BEL "cpu/m_alu/data_9" BEL "cpu/m_alu/data_8" BEL "cpu/m_alu/data_7"
-        BEL "cpu/m_alu/data_6" BEL "cpu/m_alu/data_5" BEL "cpu/m_alu/data_4"
-        BEL "cpu/m_alu/data_3" BEL "cpu/m_alu/data_2" BEL "cpu/m_alu/data_1"
-        BEL "cpu/m_alu/data_0" BEL "cpu/control/e_in_bds_/data_0" BEL
-        "cpu/control/e_reg1_/data_0" BEL "cpu/control/e_reg1_/data_1" BEL
-        "cpu/control/e_reg1_/data_2" BEL "cpu/control/e_reg1_/data_3" BEL
-        "cpu/control/e_reg1_/data_4" BEL "cpu/control/e_reg2_/data_0" BEL
-        "cpu/control/e_reg2_/data_1" BEL "cpu/control/e_reg2_/data_2" BEL
-        "cpu/control/e_reg2_/data_3" BEL "cpu/control/e_reg2_/data_4" BEL
-        "cpu/control/e_exc_/data_2" BEL "cpu/e_reg2/data_31" BEL
-        "cpu/e_reg2/data_30" BEL "cpu/e_reg2/data_29" BEL "cpu/e_reg2/data_28"
-        BEL "cpu/e_reg2/data_27" BEL "cpu/e_reg2/data_26" BEL
-        "cpu/e_reg2/data_25" BEL "cpu/e_reg2/data_24" BEL "cpu/e_reg2/data_23"
-        BEL "cpu/e_reg2/data_22" BEL "cpu/e_reg2/data_21" BEL
-        "cpu/e_reg2/data_20" BEL "cpu/e_reg2/data_19" BEL "cpu/e_reg2/data_18"
-        BEL "cpu/e_reg2/data_17" BEL "cpu/e_reg2/data_16" BEL
-        "cpu/e_reg2/data_15" BEL "cpu/e_reg2/data_14" BEL "cpu/e_reg2/data_13"
-        BEL "cpu/e_reg2/data_12" BEL "cpu/e_reg2/data_11" BEL
-        "cpu/e_reg2/data_10" BEL "cpu/e_reg2/data_9" BEL "cpu/e_reg2/data_8"
-        BEL "cpu/e_reg2/data_7" BEL "cpu/e_reg2/data_6" BEL
-        "cpu/e_reg2/data_5" BEL "cpu/e_reg2/data_4" BEL "cpu/e_reg2/data_3"
-        BEL "cpu/e_reg2/data_2" BEL "cpu/e_reg2/data_1" BEL
-        "cpu/e_reg2/data_0" BEL "cpu/e_reg1/data_31" BEL "cpu/e_reg1/data_30"
-        BEL "cpu/e_reg1/data_29" BEL "cpu/e_reg1/data_28" BEL
-        "cpu/e_reg1/data_27" BEL "cpu/e_reg1/data_26" BEL "cpu/e_reg1/data_25"
-        BEL "cpu/e_reg1/data_24" BEL "cpu/e_reg1/data_23" BEL
-        "cpu/e_reg1/data_22" BEL "cpu/e_reg1/data_21" BEL "cpu/e_reg1/data_20"
-        BEL "cpu/e_reg1/data_19" BEL "cpu/e_reg1/data_18" BEL
-        "cpu/e_reg1/data_17" BEL "cpu/e_reg1/data_16" BEL "cpu/e_reg1/data_15"
-        BEL "cpu/e_reg1/data_14" BEL "cpu/e_reg1/data_13" BEL
-        "cpu/e_reg1/data_12" BEL "cpu/e_reg1/data_11" BEL "cpu/e_reg1/data_10"
-        BEL "cpu/e_reg1/data_9" BEL "cpu/e_reg1/data_8" BEL
-        "cpu/e_reg1/data_7" BEL "cpu/e_reg1/data_6" BEL "cpu/e_reg1/data_5"
-        BEL "cpu/e_reg1/data_4" BEL "cpu/e_reg1/data_3" BEL
-        "cpu/e_reg1/data_2" BEL "cpu/e_reg1/data_1" BEL "cpu/e_reg1/data_0"
-        BEL "cpu/e_im/data_31" BEL "cpu/e_im/data_30" BEL "cpu/e_im/data_29"
-        BEL "cpu/e_im/data_28" BEL "cpu/e_im/data_27" BEL "cpu/e_im/data_26"
-        BEL "cpu/e_im/data_25" BEL "cpu/e_im/data_24" BEL "cpu/e_im/data_23"
-        BEL "cpu/e_im/data_22" BEL "cpu/e_im/data_21" BEL "cpu/e_im/data_20"
-        BEL "cpu/e_im/data_19" BEL "cpu/e_im/data_18" BEL "cpu/e_im/data_17"
-        BEL "cpu/e_im/data_16" BEL "cpu/e_im/data_15" BEL "cpu/e_im/data_14"
-        BEL "cpu/e_im/data_13" BEL "cpu/e_im/data_12" BEL "cpu/e_im/data_11"
-        BEL "cpu/e_im/data_10" BEL "cpu/e_im/data_9" BEL "cpu/e_im/data_8" BEL
-        "cpu/e_im/data_7" BEL "cpu/e_im/data_6" BEL "cpu/e_im/data_5" BEL
-        "cpu/e_im/data_4" BEL "cpu/e_im/data_3" BEL "cpu/e_im/data_2" BEL
-        "cpu/e_im/data_1" BEL "cpu/e_im/data_0" BEL "cpu/e_pc/data_31" BEL
-        "cpu/e_pc/data_30" BEL "cpu/e_pc/data_29" BEL "cpu/e_pc/data_28" BEL
-        "cpu/e_pc/data_27" BEL "cpu/e_pc/data_26" BEL "cpu/e_pc/data_25" BEL
-        "cpu/e_pc/data_24" BEL "cpu/e_pc/data_23" BEL "cpu/e_pc/data_22" BEL
-        "cpu/e_pc/data_21" BEL "cpu/e_pc/data_20" BEL "cpu/e_pc/data_19" BEL
-        "cpu/e_pc/data_18" BEL "cpu/e_pc/data_17" BEL "cpu/e_pc/data_16" BEL
-        "cpu/e_pc/data_15" BEL "cpu/e_pc/data_14" BEL "cpu/e_pc/data_13" BEL
-        "cpu/e_pc/data_12" BEL "cpu/e_pc/data_11" BEL "cpu/e_pc/data_10" BEL
-        "cpu/e_pc/data_9" BEL "cpu/e_pc/data_8" BEL "cpu/e_pc/data_7" BEL
-        "cpu/e_pc/data_6" BEL "cpu/e_pc/data_5" BEL "cpu/e_pc/data_4" BEL
-        "cpu/e_pc/data_3" BEL "cpu/e_pc/data_2" BEL "cpu/e_pc/data_1" BEL
-        "cpu/e_pc/data_0" BEL "cpu/control/e_regw_/data_0" BEL
-        "cpu/control/e_regw_/data_1" BEL "cpu/control/e_regw_/data_2" BEL
-        "cpu/control/e_regw_/data_3" BEL "cpu/control/e_regw_/data_4" BEL
-        "cpu/m_im/data_12_1" BEL "cpu/m_im/data_13_1" BEL "cpu/m_im/data_11_1"
-        BEL "cpu/m_im/data_28_1" BEL "cpu/m_im/data_29_1" BEL
-        "cpu/m_im/data_26_1" BEL "cpu/m_im/data_27_1" BEL "cpu/m_im/data_31_1"
-        BEL "cpu/m_im/data_30_1" BEL "cpu/control/d_in_bds_/data_0" BEL
-        "cpu/control/d_exc_/data_2" BEL "cpu/d_im/data_19" BEL
-        "cpu/d_im/data_18" BEL "cpu/d_im/data_17" BEL "cpu/d_im/data_16" BEL
-        "cpu/d_im/data_15" BEL "cpu/d_im/data_14" BEL "cpu/d_im/data_13" BEL
-        "cpu/d_im/data_12" BEL "cpu/d_im/data_11" BEL "cpu/d_im/data_10" BEL
-        "cpu/d_im/data_9" BEL "cpu/d_im/data_8" BEL "cpu/d_im/data_7" BEL
-        "cpu/d_im/data_6" BEL "cpu/d_im/data_5" BEL "cpu/d_im/data_4" BEL
-        "cpu/d_im/data_3" BEL "cpu/d_im/data_2" BEL "cpu/d_im/data_1" BEL
-        "cpu/d_im/data_0" BEL "cpu/d_pc/data_31" BEL "cpu/d_pc/data_30" BEL
-        "cpu/d_pc/data_29" BEL "cpu/d_pc/data_28" BEL "cpu/d_pc/data_27" BEL
-        "cpu/d_pc/data_26" BEL "cpu/d_pc/data_25" BEL "cpu/d_pc/data_24" BEL
-        "cpu/d_pc/data_23" BEL "cpu/d_pc/data_22" BEL "cpu/d_pc/data_21" BEL
-        "cpu/d_pc/data_20" BEL "cpu/d_pc/data_19" BEL "cpu/d_pc/data_18" BEL
-        "cpu/d_pc/data_17" BEL "cpu/d_pc/data_16" BEL "cpu/d_pc/data_15" BEL
-        "cpu/d_pc/data_14" BEL "cpu/d_pc/data_13" BEL "cpu/d_pc/data_12" BEL
-        "cpu/d_pc/data_11" BEL "cpu/d_pc/data_10" BEL "cpu/d_pc/data_9" BEL
-        "cpu/d_pc/data_8" BEL "cpu/d_pc/data_7" BEL "cpu/d_pc/data_6" BEL
-        "cpu/d_pc/data_5" BEL "cpu/d_pc/data_4" BEL "cpu/d_pc/data_3" BEL
-        "cpu/d_pc/data_2" BEL "cpu/d_pc/data_1" BEL "cpu/d_pc/data_0" BEL
-        "cpu/m_im/data_28_2" BEL "cpu/m_im/data_26_2" BEL "cpu/m_im/data_29_2"
-        BEL "cpu/m_im/data_30_2" BEL "cpu/m_im/data_27_2" BEL
-        "cpu/m_im/data_31_2" BEL "cpu/m_im/data_1_1" BEL "cpu/m_im/data_5_1"
-        BEL "cpu/m_im/data_3_1" BEL "cpu/m_im/data_14_1" BEL
-        "cpu/m_im/data_30_3" BEL "cpu/m_im/data_0_1" BEL "cpu/m_im/data_1_2"
-        BEL "cpu/m_im/data_3_2" BEL "cpu/d_im/data_17_1" BEL
-        "cpu/d_im/data_16_1" BEL "cpu/m_im/data_15_1" BEL "cpu/d_im/data_26_1"
-        BEL "cpu/d_im/data_29_1" BEL "cpu/d_im/data_28_1" BEL
-        "cpu/d_im/data_27_1" BEL "cpu/d_im/data_30_1" BEL "cpu/d_im/data_31_1"
-        BEL "cpu/m_im/data_0_2" BEL "cpu/d_im/data_20_1" BEL
-        "cpu/e_im/data_6_1" BEL "cpu/e_im/data_7_1" BEL "cpu/d_im/data_15_1"
-        BEL "cpu/d_im/data_27_2" BEL "cpu/d_im/data_29_2" BEL
-        "cpu/d_im/data_28_2" BEL "cpu/d_im/data_26_2" BEL "cpu/d_im/data_5_1"
-        BEL "cpu/d_im/data_30_2" BEL "cpu/d_im/data_3_1" BEL
-        "cpu/d_im/data_4_1" BEL "cpu/d_im/data_1_1" BEL "cpu/d_im/data_0_1"
-        BEL "cpu/d_im/data_19_1" BEL "cpu/d_im/data_2_1" BEL
-        "cpu/e_im/data_0_1" BEL "cpu/e_im/data_28_1" BEL "cpu/e_im/data_8_1"
-        BEL "cpu/e_im/data_29_1" BEL "cpu/e_im/data_27_1" BEL
-        "cpu/e_im/data_26_1" BEL "cpu/e_im/data_5_1" BEL "cpu/e_im/data_1_1"
-        BEL "cpu/e_im/data_30_1" BEL "cpu/e_im/data_31_1" BEL
-        "cpu/d_im/data_1_2" BEL "cpu/e_im/data_3_1" BEL "cpu/e_im/data_4_1"
-        BEL "cpu/m_im/data_31_3" BEL "cpu/m_im/data_29_3" BEL
-        "cpu/m_im/data_28_3" BEL "cpu/m_im/data_27_3" BEL "cpu/m_im/data_30_4"
-        BEL "cpu/m_im/data_1_3" BEL "cpu/m_im/data_4_1" BEL
-        "cpu/m_im/data_0_3" BEL "cpu/m_im/data_5_2" BEL "cpu/m_im/data_2_1"
-        BEL "cpu/m_im/data_0_4";
+        BEL "cpu/e_ext/data_17" BEL "cpu/e_ext/data_16" BEL "cpu/e_im/data_31"
+        BEL "cpu/e_im/data_30" BEL "cpu/e_im/data_29" BEL "cpu/e_im/data_28"
+        BEL "cpu/e_im/data_27" BEL "cpu/e_im/data_26" BEL "cpu/e_im/data_25"
+        BEL "cpu/e_im/data_24" BEL "cpu/e_im/data_23" BEL "cpu/e_im/data_22"
+        BEL "cpu/e_im/data_21" BEL "cpu/e_im/data_20" BEL "cpu/e_im/data_19"
+        BEL "cpu/e_im/data_18" BEL "cpu/e_im/data_17" BEL "cpu/e_im/data_16"
+        BEL "cpu/e_im/data_15" BEL "cpu/e_im/data_14" BEL "cpu/e_im/data_13"
+        BEL "cpu/e_im/data_12" BEL "cpu/e_im/data_11" BEL "cpu/e_im/data_10"
+        BEL "cpu/e_im/data_9" BEL "cpu/e_im/data_8" BEL "cpu/e_im/data_7" BEL
+        "cpu/e_im/data_6" BEL "cpu/e_im/data_5" BEL "cpu/e_im/data_4" BEL
+        "cpu/e_im/data_3" BEL "cpu/e_im/data_2" BEL "cpu/e_im/data_1" BEL
+        "cpu/e_im/data_0" BEL "cpu/e_pc/data_31" BEL "cpu/e_pc/data_30" BEL
+        "cpu/e_pc/data_29" BEL "cpu/e_pc/data_28" BEL "cpu/e_pc/data_27" BEL
+        "cpu/e_pc/data_26" BEL "cpu/e_pc/data_25" BEL "cpu/e_pc/data_24" BEL
+        "cpu/e_pc/data_23" BEL "cpu/e_pc/data_22" BEL "cpu/e_pc/data_21" BEL
+        "cpu/e_pc/data_20" BEL "cpu/e_pc/data_19" BEL "cpu/e_pc/data_18" BEL
+        "cpu/e_pc/data_17" BEL "cpu/e_pc/data_16" BEL "cpu/e_pc/data_15" BEL
+        "cpu/e_pc/data_14" BEL "cpu/e_pc/data_13" BEL "cpu/e_pc/data_12" BEL
+        "cpu/e_pc/data_11" BEL "cpu/e_pc/data_10" BEL "cpu/e_pc/data_9" BEL
+        "cpu/e_pc/data_8" BEL "cpu/e_pc/data_7" BEL "cpu/e_pc/data_6" BEL
+        "cpu/e_pc/data_5" BEL "cpu/e_pc/data_4" BEL "cpu/e_pc/data_3" BEL
+        "cpu/e_pc/data_2" BEL "cpu/e_pc/data_1" BEL "cpu/e_pc/data_0" BEL
+        "cpu/control/d_in_bds_/data_0" BEL "cpu/control/d_exc_/data_2" BEL
+        "cpu/d_im/data_31" BEL "cpu/d_im/data_30" BEL "cpu/d_im/data_29" BEL
+        "cpu/d_im/data_28" BEL "cpu/d_im/data_27" BEL "cpu/d_im/data_26" BEL
+        "cpu/d_im/data_25" BEL "cpu/d_im/data_24" BEL "cpu/d_im/data_23" BEL
+        "cpu/d_im/data_22" BEL "cpu/d_im/data_21" BEL "cpu/d_im/data_20" BEL
+        "cpu/d_im/data_19" BEL "cpu/d_im/data_18" BEL "cpu/d_im/data_17" BEL
+        "cpu/d_im/data_16" BEL "cpu/d_im/data_15" BEL "cpu/d_im/data_14" BEL
+        "cpu/d_im/data_13" BEL "cpu/d_im/data_12" BEL "cpu/d_im/data_11" BEL
+        "cpu/d_im/data_10" BEL "cpu/d_im/data_9" BEL "cpu/d_im/data_8" BEL
+        "cpu/d_im/data_7" BEL "cpu/d_im/data_6" BEL "cpu/d_im/data_5" BEL
+        "cpu/d_im/data_4" BEL "cpu/d_im/data_3" BEL "cpu/d_im/data_2" BEL
+        "cpu/d_im/data_1" BEL "cpu/d_im/data_0" BEL "cpu/d_pc/data_31" BEL
+        "cpu/d_pc/data_30" BEL "cpu/d_pc/data_29" BEL "cpu/d_pc/data_28" BEL
+        "cpu/d_pc/data_27" BEL "cpu/d_pc/data_26" BEL "cpu/d_pc/data_25" BEL
+        "cpu/d_pc/data_24" BEL "cpu/d_pc/data_23" BEL "cpu/d_pc/data_22" BEL
+        "cpu/d_pc/data_21" BEL "cpu/d_pc/data_20" BEL "cpu/d_pc/data_19" BEL
+        "cpu/d_pc/data_18" BEL "cpu/d_pc/data_17" BEL "cpu/d_pc/data_16" BEL
+        "cpu/d_pc/data_15" BEL "cpu/d_pc/data_14" BEL "cpu/d_pc/data_13" BEL
+        "cpu/d_pc/data_12" BEL "cpu/d_pc/data_11" BEL "cpu/d_pc/data_10" BEL
+        "cpu/d_pc/data_9" BEL "cpu/d_pc/data_8" BEL "cpu/d_pc/data_7" BEL
+        "cpu/d_pc/data_6" BEL "cpu/d_pc/data_5" BEL "cpu/d_pc/data_4" BEL
+        "cpu/d_pc/data_3" BEL "cpu/d_pc/data_2" BEL "cpu/d_pc/data_1" BEL
+        "cpu/d_pc/data_0" BEL "cpu/m_im/data_13_1" BEL "cpu/m_im/data_28_1"
+        BEL "cpu/m_im/data_27_1" BEL "cpu/m_im/data_31_1" BEL
+        "cpu/m_im/data_30_1" BEL "cpu/m_im/data_26_1" BEL "cpu/m_im/data_29_1"
+        BEL "cpu/m_im/data_1_1" BEL "cpu/m_im/data_5_1" BEL
+        "cpu/m_im/data_0_1" BEL "cpu/m_im/data_4_1" BEL "cpu/m_im/data_3_1"
+        BEL "cpu/m_im/data_15_1" BEL "cpu/m_im/data_14_1" BEL
+        "cpu/m_im/data_12_1" BEL "cpu/m_im/data_11_1" BEL "cpu/m_im/data_28_2"
+        BEL "cpu/m_im/data_27_2" BEL "cpu/m_im/data_31_2" BEL
+        "cpu/m_im/data_26_2" BEL "cpu/m_im/data_30_2" BEL "cpu/m_im/data_29_2"
+        BEL "cpu/m_im/data_5_2" BEL "cpu/m_im/data_1_2" BEL
+        "cpu/e_im/data_6_1" BEL "cpu/e_im/data_7_1" BEL "cpu/d_im/data_17_1"
+        BEL "cpu/d_im/data_26_1" BEL "cpu/d_im/data_28_1" BEL
+        "cpu/d_im/data_30_1" BEL "cpu/d_im/data_29_1" BEL "cpu/d_im/data_27_1"
+        BEL "cpu/e_im/data_8_1" BEL "cpu/e_im/data_2_1" BEL
+        "cpu/d_im/data_16_1" BEL "cpu/d_im/data_28_2" BEL "cpu/e_im/data_30_1"
+        BEL "cpu/e_im/data_28_1" BEL "cpu/e_im/data_26_1" BEL
+        "cpu/e_im/data_29_1" BEL "cpu/e_im/data_27_1" BEL "cpu/d_im/data_31_1"
+        BEL "cpu/d_im/data_5_1" BEL "cpu/e_im/data_0_1" BEL
+        "cpu/e_im/data_31_1" BEL "cpu/d_im/data_3_1" BEL "cpu/d_im/data_20_1"
+        BEL "cpu/d_im/data_19_1" BEL "cpu/d_im/data_0_1" BEL
+        "cpu/d_im/data_4_1" BEL "cpu/e_im/data_1_1" BEL "cpu/d_im/data_1_1"
+        BEL "cpu/e_im/data_5_1" BEL "cpu/d_im/data_2_1" BEL
+        "cpu/e_im/data_3_1" BEL "cpu/d_im/data_15_1" BEL "cpu/d_im/data_30_2"
+        BEL "cpu/d_im/data_26_2" BEL "cpu/d_im/data_0_2" BEL
+        "cpu/m_im/data_26_3" BEL "cpu/d_im/data_1_2" BEL "cpu/m_im/data_30_3"
+        BEL "cpu/m_im/data_29_3" BEL "cpu/d_im/data_2_2" BEL
+        "cpu/d_im/data_27_2" BEL "cpu/m_im/data_1_3" BEL "cpu/m_im/data_27_3"
+        BEL "cpu/m_im/data_31_3" BEL "cpu/m_im/data_5_3" BEL
+        "cpu/m_im/data_0_2" BEL "cpu/m_im/data_4_2" BEL "cpu/d_im/data_16_2"
+        BEL "cpu/d_im/data_17_2" BEL "cpu/d_im/data_26_3" BEL
+        "cpu/d_im/data_19_2" BEL "cpu/d_im/data_18_1";
 TIMEGRP TO_uart_shimuartU_TX_UNITU_CTRL_SHFTcnt_tx_3_LD = BEL
         "uart_shim/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_3_LD";
 PIN clk_ipcore/pll_base_inst/PLL_ADV_pins<2> = BEL
         "clk_ipcore/pll_base_inst/PLL_ADV" PINNAME CLKIN1;
 TIMEGRP clk_in = PIN "clk_ipcore/pll_base_inst/PLL_ADV_pins<2>";
 TS_clk_in = PERIOD TIMEGRP "clk_in" 40 ns HIGH 50%;
-TS_clk_ipcore_clkout1 = PERIOD TIMEGRP "clk_ipcore_clkout1" TS_clk_in / 2.4
+TS_clk_ipcore_clkout1 = PERIOD TIMEGRP "clk_ipcore_clkout1" TS_clk_in / 0.8
         HIGH 50%;
-TS_clk_ipcore_clkout0 = PERIOD TIMEGRP "clk_ipcore_clkout0" TS_clk_in / 1.2
+TS_clk_ipcore_clkout0 = PERIOD TIMEGRP "clk_ipcore_clkout0" TS_clk_in / 0.4
         HIGH 50%;
 TS_TO_uart_shimuartU_TX_UNITU_CTRL_SHFTcnt_tx_3_LD = MAXDELAY TO TIMEGRP
         "TO_uart_shimuartU_TX_UNITU_CTRL_SHFTcnt_tx_3_LD"

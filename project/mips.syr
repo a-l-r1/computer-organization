@@ -240,7 +240,7 @@ Elaborating module <clk_ipcore>.
 
 Elaborating module <IBUFG>.
 
-Elaborating module <PLL_BASE(BANDWIDTH="OPTIMIZED",CLK_FEEDBACK="CLKFBOUT",COMPENSATION="SYSTEM_SYNCHRONOUS",DIVCLK_DIVIDE=1,CLKFBOUT_MULT=24,CLKFBOUT_PHASE=0.0,CLKOUT0_DIVIDE=20,CLKOUT0_PHASE=0.0,CLKOUT0_DUTY_CYCLE=0.5,CLKOUT1_DIVIDE=10,CLKOUT1_PHASE=0.0,CLKOUT1_DUTY_CYCLE=0.5,CLKIN_PERIOD=40.0,REF_JITTER=0.01)>.
+Elaborating module <PLL_BASE(BANDWIDTH="OPTIMIZED",CLK_FEEDBACK="CLKFBOUT",COMPENSATION="SYSTEM_SYNCHRONOUS",DIVCLK_DIVIDE=1,CLKFBOUT_MULT=16,CLKFBOUT_PHASE=0.0,CLKOUT0_DIVIDE=40,CLKOUT0_PHASE=0.0,CLKOUT0_DUTY_CYCLE=0.5,CLKOUT1_DIVIDE=20,CLKOUT1_PHASE=0.0,CLKOUT1_DUTY_CYCLE=0.5,CLKIN_PERIOD=40.0,REF_JITTER=0.01)>.
 WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v" Line 119: Assignment to clkout2_unused ignored, since the identifier is never used
 WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v" Line 120: Assignment to clkout3_unused ignored, since the identifier is never used
 WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/project/ipcore_dir/clk_ipcore.v" Line 121: Assignment to clkout4_unused ignored, since the identifier is never used
@@ -1580,6 +1580,7 @@ WARNING:Xst:2677 - Node <cpu/control/w_reg2_/data_1> of sequential type is uncon
 WARNING:Xst:2677 - Node <cpu/control/w_reg2_/data_2> of sequential type is unconnected in block <mips>.
 WARNING:Xst:2677 - Node <cpu/control/w_reg2_/data_3> of sequential type is unconnected in block <mips>.
 WARNING:Xst:2677 - Node <cpu/control/w_reg2_/data_4> of sequential type is unconnected in block <mips>.
+WARNING:Xst:1293 - FF/Latch <nixie/ctr_14> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <nixie/ctr_15> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <nixie/ctr_16> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <nixie/ctr_17> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
@@ -1607,18 +1608,19 @@ Building and optimizing final netlist ...
 Found area constraint ratio of 100 (+ 5) on block mips, actual ratio is 11.
 WARNING:Xst:1426 - The value init of the FF/Latch uart_shim/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_3_LD hinder the constant cleaning in the block mips.
    You should achieve better results by setting this init to 1.
-FlipFlop cpu/d_im/data_0 has been replicated 1 time(s)
+FlipFlop cpu/d_im/data_0 has been replicated 2 time(s)
 FlipFlop cpu/d_im/data_1 has been replicated 2 time(s)
 FlipFlop cpu/d_im/data_15 has been replicated 1 time(s)
-FlipFlop cpu/d_im/data_16 has been replicated 1 time(s)
-FlipFlop cpu/d_im/data_17 has been replicated 1 time(s)
-FlipFlop cpu/d_im/data_19 has been replicated 1 time(s)
-FlipFlop cpu/d_im/data_2 has been replicated 1 time(s)
+FlipFlop cpu/d_im/data_16 has been replicated 2 time(s)
+FlipFlop cpu/d_im/data_17 has been replicated 2 time(s)
+FlipFlop cpu/d_im/data_18 has been replicated 1 time(s)
+FlipFlop cpu/d_im/data_19 has been replicated 2 time(s)
+FlipFlop cpu/d_im/data_2 has been replicated 2 time(s)
 FlipFlop cpu/d_im/data_20 has been replicated 1 time(s)
-FlipFlop cpu/d_im/data_26 has been replicated 2 time(s)
+FlipFlop cpu/d_im/data_26 has been replicated 3 time(s)
 FlipFlop cpu/d_im/data_27 has been replicated 2 time(s)
 FlipFlop cpu/d_im/data_28 has been replicated 2 time(s)
-FlipFlop cpu/d_im/data_29 has been replicated 2 time(s)
+FlipFlop cpu/d_im/data_29 has been replicated 1 time(s)
 FlipFlop cpu/d_im/data_3 has been replicated 1 time(s)
 FlipFlop cpu/d_im/data_30 has been replicated 2 time(s)
 FlipFlop cpu/d_im/data_31 has been replicated 1 time(s)
@@ -1626,6 +1628,7 @@ FlipFlop cpu/d_im/data_4 has been replicated 1 time(s)
 FlipFlop cpu/d_im/data_5 has been replicated 1 time(s)
 FlipFlop cpu/e_im/data_0 has been replicated 1 time(s)
 FlipFlop cpu/e_im/data_1 has been replicated 1 time(s)
+FlipFlop cpu/e_im/data_2 has been replicated 1 time(s)
 FlipFlop cpu/e_im/data_26 has been replicated 1 time(s)
 FlipFlop cpu/e_im/data_27 has been replicated 1 time(s)
 FlipFlop cpu/e_im/data_28 has been replicated 1 time(s)
@@ -1633,28 +1636,26 @@ FlipFlop cpu/e_im/data_29 has been replicated 1 time(s)
 FlipFlop cpu/e_im/data_3 has been replicated 1 time(s)
 FlipFlop cpu/e_im/data_30 has been replicated 1 time(s)
 FlipFlop cpu/e_im/data_31 has been replicated 1 time(s)
-FlipFlop cpu/e_im/data_4 has been replicated 1 time(s)
 FlipFlop cpu/e_im/data_5 has been replicated 1 time(s)
 FlipFlop cpu/e_im/data_6 has been replicated 1 time(s)
 FlipFlop cpu/e_im/data_7 has been replicated 1 time(s)
 FlipFlop cpu/e_im/data_8 has been replicated 1 time(s)
-FlipFlop cpu/m_im/data_0 has been replicated 4 time(s)
+FlipFlop cpu/m_im/data_0 has been replicated 2 time(s)
 FlipFlop cpu/m_im/data_1 has been replicated 3 time(s)
 FlipFlop cpu/m_im/data_11 has been replicated 1 time(s)
 FlipFlop cpu/m_im/data_12 has been replicated 1 time(s)
 FlipFlop cpu/m_im/data_13 has been replicated 1 time(s)
 FlipFlop cpu/m_im/data_14 has been replicated 1 time(s)
 FlipFlop cpu/m_im/data_15 has been replicated 1 time(s)
-FlipFlop cpu/m_im/data_2 has been replicated 1 time(s)
-FlipFlop cpu/m_im/data_26 has been replicated 2 time(s)
+FlipFlop cpu/m_im/data_26 has been replicated 3 time(s)
 FlipFlop cpu/m_im/data_27 has been replicated 3 time(s)
-FlipFlop cpu/m_im/data_28 has been replicated 3 time(s)
+FlipFlop cpu/m_im/data_28 has been replicated 2 time(s)
 FlipFlop cpu/m_im/data_29 has been replicated 3 time(s)
-FlipFlop cpu/m_im/data_3 has been replicated 2 time(s)
-FlipFlop cpu/m_im/data_30 has been replicated 4 time(s)
+FlipFlop cpu/m_im/data_3 has been replicated 1 time(s)
+FlipFlop cpu/m_im/data_30 has been replicated 3 time(s)
 FlipFlop cpu/m_im/data_31 has been replicated 3 time(s)
-FlipFlop cpu/m_im/data_4 has been replicated 1 time(s)
-FlipFlop cpu/m_im/data_5 has been replicated 2 time(s)
+FlipFlop cpu/m_im/data_4 has been replicated 2 time(s)
+FlipFlop cpu/m_im/data_5 has been replicated 3 time(s)
 
 Final Macro Processing ...
 
@@ -1662,8 +1663,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 2407
- Flip-Flops                                            : 2407
+# Registers                                            : 2409
+ Flip-Flops                                            : 2409
 
 =========================================================================
 
@@ -1686,27 +1687,27 @@ Top Level Output File Name         : mips.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 8733
+# BELS                             : 8681
 #      GND                         : 3
-#      INV                         : 187
-#      LUT1                        : 120
-#      LUT2                        : 173
-#      LUT3                        : 1390
-#      LUT4                        : 1314
-#      LUT5                        : 1033
-#      LUT6                        : 3405
-#      MUXCY                       : 628
-#      MUXF7                       : 151
+#      INV                         : 186
+#      LUT1                        : 119
+#      LUT2                        : 163
+#      LUT3                        : 1727
+#      LUT4                        : 978
+#      LUT5                        : 1028
+#      LUT6                        : 3362
+#      MUXCY                       : 623
+#      MUXF7                       : 164
 #      VCC                         : 3
-#      XORCY                       : 326
-# FlipFlops/Latches                : 2412
-#      FD                          : 635
+#      XORCY                       : 325
+# FlipFlops/Latches                : 2414
+#      FD                          : 630
 #      FDC                         : 35
-#      FDCE                        : 51
+#      FDCE                        : 56
 #      FDE                         : 6
-#      FDPE                        : 21
-#      FDR                         : 120
-#      FDRE                        : 1528
+#      FDPE                        : 16
+#      FDR                         : 83
+#      FDRE                        : 1572
 #      FDS                         : 4
 #      FDSE                        : 11
 #      LD                          : 1
@@ -1728,16 +1729,16 @@ Selected Device : 6slx100fgg676-2
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:            2412  out of  126576     1%  
- Number of Slice LUTs:                 7622  out of  63288    12%  
-    Number used as Logic:              7622  out of  63288    12%  
+ Number of Slice Registers:            2414  out of  126576     1%  
+ Number of Slice LUTs:                 7563  out of  63288    11%  
+    Number used as Logic:              7563  out of  63288    11%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   7779
-   Number with an unused Flip Flop:    5367  out of   7779    68%  
-   Number with an unused LUT:           157  out of   7779     2%  
-   Number of fully used LUT-FF pairs:  2255  out of   7779    28%  
-   Number of unique control sets:        26
+ Number of LUT Flip Flop pairs used:   7712
+   Number with an unused Flip Flop:    5298  out of   7712    68%  
+   Number with an unused LUT:           149  out of   7712     1%  
+   Number of fully used LUT-FF pairs:  2265  out of   7712    29%  
+   Number of unique control sets:        30
 
 IO Utilization: 
  Number of IOs:                         141
@@ -1770,7 +1771,7 @@ Clock Information:
 ----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+-------+
 Clock Signal                            | Clock buffer(FF name)                                                                                                                        | Load  |
 ----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+-------+
-clk_ipcore/pll_base_inst/CLKOUT0        | BUFG                                                                                                                                         | 2406  |
+clk_ipcore/pll_base_inst/CLKOUT0        | BUFG                                                                                                                                         | 2408  |
 uart_shim/uart/U_RX_UNIT/clk_rf_av      | NONE(uart_shim/uart/U_RX_UNIT/rf_av)                                                                                                         | 1     |
 clk_ipcore/pll_base_inst/CLKOUT1        | BUFG                                                                                                                                         | 36    |
 cpu/im/im_ipcore/N1                     | NONE(cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram)  | 16    |
@@ -1787,8 +1788,8 @@ Timing Summary:
 ---------------
 Speed Grade: -2
 
-   Minimum period: 23.439ns (Maximum Frequency: 42.664MHz)
-   Minimum input arrival time before clock: 7.092ns
+   Minimum period: 23.229ns (Maximum Frequency: 43.050MHz)
+   Minimum input arrival time before clock: 7.292ns
    Maximum output required time after clock: 8.315ns
    Maximum combinational path delay: No path found
 
@@ -1798,50 +1799,49 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_ipcore/pll_base_inst/CLKOUT0'
-  Clock period: 23.439ns (frequency: 42.664MHz)
-  Total number of paths / destination ports: 123363800486 / 3954
+  Clock period: 23.229ns (frequency: 43.050MHz)
+  Total number of paths / destination ports: 135854637806 / 4008
 -------------------------------------------------------------------------
-Delay:               23.439ns (Levels of Logic = 19)
-  Source:            cpu/m_im/data_23 (FF)
-  Destination:       cpu/pc/saved_pc_31 (FF)
+Delay:               23.229ns (Levels of Logic = 18)
+  Source:            cpu/m_im/data_30_1 (FF)
+  Destination:       cpu/pc/saved_pc_30 (FF)
   Source Clock:      clk_ipcore/pll_base_inst/CLKOUT0 rising
   Destination Clock: clk_ipcore/pll_base_inst/CLKOUT0 rising
 
-  Data Path: cpu/m_im/data_23 to cpu/pc/saved_pc_31
+  Data Path: cpu/m_im/data_30_1 to cpu/pc/saved_pc_30
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               5   0.525   1.271  cpu/m_im/data_23 (cpu/m_im/data_23)
-     LUT5:I0->O            8   0.254   1.052  cpu/control/_mkind/rs_zero<25>1 (cpu/control/_mkind/rs_zero)
-     LUT6:I4->O            7   0.250   1.138  cpu/control/_mkind/r_rs_zero_AND_10_o11 (cpu/control/_mkind/r_rs_zero_AND_10_o1)
+     FD:C->Q               1   0.525   1.137  cpu/m_im/data_30_1 (cpu/m_im/data_30_1)
+     LUT6:I0->O           15   0.254   1.155  cpu/control/_mkind/r<31>1 (cpu/control/_mkind/r)
+     LUT6:I5->O            7   0.254   1.138  cpu/control/_mkind/r_rs_zero_AND_10_o11 (cpu/control/_mkind/r_rs_zero_AND_10_o1)
      LUT6:I3->O            3   0.235   0.766  cpu/control/_mkind/Mmux_result1023_SW0 (N354)
-     LUT6:I5->O            6   0.254   0.876  cpu/control/_mkind/Mmux_result1023 (cpu/control/_mkind/Mmux_result102)
-     LUT6:I5->O            8   0.254   1.172  cpu/control/_mkind/Mmux_result91_1 (cpu/control/_mkind/Mmux_result91)
-     LUT6:I3->O           18   0.235   1.343  cpu/mmu/tlb_hit_checker_dm2/is_hit3_1 (cpu/mmu/tlb_hit_checker_dm2/is_hit3)
-     LUT6:I4->O            2   0.250   0.726  cpu/mmu/Mmux_n0063374 (cpu/mmu/Mmux_n0063373)
-     LUT6:I5->O           18   0.254   1.665  cpu/mmu/Mmux_n0063375 (cpu_addr<22>)
+     LUT6:I5->O            7   0.254   0.910  cpu/control/_mkind/Mmux_result1023 (cpu/control/_mkind/Mmux_result102)
+     LUT6:I5->O            9   0.254   1.204  cpu/control/_mkind/Mmux_result91_1 (cpu/control/_mkind/Mmux_result91)
+     LUT6:I3->O           16   0.235   1.410  cpu/mmu/tlb_hit_checker_dm2/is_hit3_1 (cpu/mmu/tlb_hit_checker_dm2/is_hit3)
+     LUT6:I3->O            2   0.235   0.726  cpu/mmu/Mmux_n0063494 (cpu/mmu/Mmux_n0063493)
+     LUT6:I5->O            9   0.254   1.406  cpu/mmu/Mmux_n0063495_1 (cpu/mmu/Mmux_n0063495)
      LUT5:I0->O            1   0.254   0.000  bridge/Mcompar_addr[31]_GND_30_o_LessThan_2_o_lut<4> (bridge/Mcompar_addr[31]_GND_30_o_LessThan_2_o_lut<4>)
      MUXCY:S->O            1   0.215   0.000  bridge/Mcompar_addr[31]_GND_30_o_LessThan_2_o_cy<4> (bridge/Mcompar_addr[31]_GND_30_o_LessThan_2_o_cy<4>)
-     MUXCY:CI->O          42   0.235   1.687  bridge/Mcompar_addr[31]_GND_30_o_LessThan_2_o_cy<5> (bridge/addr[31]_GND_30_o_LessThan_2_o)
-     LUT2:I1->O            4   0.254   0.804  bridge/GND_30_o_addr[31]_AND_297_o1_1 (bridge/GND_30_o_addr[31]_AND_297_o1)
-     LUT6:I5->O            1   0.254   0.958  bridge/Mmux_curr_dev11_1 (bridge/Mmux_curr_dev11)
-     LUT6:I2->O            9   0.254   0.976  bridge/valid1 (bridge/valid)
-     LUT6:I5->O            3   0.254   0.874  cpu/control/Mmux_m_exc_final31_2 (cpu/control/Mmux_m_exc_final31_1)
-     LUT6:I4->O           17   0.250   1.437  cpu/control/handler/Mmux_cw_f_npc_jump_mode3 (cpu/cw_f_npc_jump_mode<2>)
-     LUT6:I3->O            1   0.235   0.000  cpu/npc/Mmux_next_pc10214_F (N2460)
-     MUXF7:I0->O          30   0.163   1.487  cpu/npc/Mmux_next_pc10214 (cpu/npc/Mmux_next_pc1021)
-     LUT6:I5->O            1   0.254   0.000  cpu/npc/Mmux_next_pc944 (cpu/f_npc_next_pc<30>)
+     MUXCY:CI->O          37   0.235   1.712  bridge/Mcompar_addr[31]_GND_30_o_LessThan_2_o_cy<5> (bridge/addr[31]_GND_30_o_LessThan_2_o)
+     LUT2:I0->O            4   0.250   0.804  bridge/GND_30_o_addr[31]_AND_297_o1_1 (bridge/GND_30_o_addr[31]_AND_297_o1)
+     LUT6:I5->O            1   0.254   0.958  bridge/Mmux_curr_dev2_1 (bridge/Mmux_curr_dev2)
+     LUT6:I2->O           12   0.254   1.069  bridge/valid1 (bridge/valid)
+     LUT6:I5->O           19   0.254   1.261  cpu/control/Mmux_m_exc_final1_2 (cpu/control/Mmux_m_exc_final11)
+     LUT6:I5->O           16   0.254   1.182  cpu/control/handler/Mmux_cw_f_npc_jump_mode4 (cpu/cw_f_npc_jump_mode<3>)
+     LUT6:I5->O           18   0.254   1.343  cpu/npc/Mmux_next_pc10221 (cpu/npc/Mmux_next_pc1022)
+     LUT6:I4->O            1   0.250   0.000  cpu/npc/Mmux_next_pc944 (cpu/f_npc_next_pc<30>)
      FDRE:D                    0.074          cpu/pc/saved_pc_30
     ----------------------------------------
-    Total                     23.439ns (5.207ns logic, 18.232ns route)
-                                       (22.2% logic, 77.8% route)
+    Total                     23.229ns (5.048ns logic, 18.181ns route)
+                                       (21.7% logic, 78.3% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'uart_shim/uart/U_RX_UNIT/clk_rf_av'
-  Clock period: 7.628ns (frequency: 131.094MHz)
+  Clock period: 8.650ns (frequency: 115.601MHz)
   Total number of paths / destination ports: 1 / 1
 -------------------------------------------------------------------------
-Delay:               7.628ns (Levels of Logic = 4)
+Delay:               8.650ns (Levels of Logic = 4)
   Source:            uart_shim/uart/U_RX_UNIT/rf_av (FF)
   Destination:       uart_shim/uart/U_RX_UNIT/rf_av (FF)
   Source Clock:      uart_shim/uart/U_RX_UNIT/clk_rf_av rising
@@ -1851,43 +1851,41 @@ Delay:               7.628ns (Levels of Logic = 4)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDC:C->Q              3   0.525   0.766  uart_shim/uart/U_RX_UNIT/rf_av (uart_shim/uart/U_RX_UNIT/rf_av)
-     LUT5:I4->O            4   0.254   0.804  cpu/cp0/have_irq_SW1 (N2724)
-     LUT5:I4->O           46   0.254   1.982  cpu/cp0/have_irq (cpu/cp0/have_irq)
-     LUT6:I3->O           21   0.235   1.418  cpu/cp0/have2handle1 (cpu/m_cp0_have2handle)
+     FDC:C->Q              3   0.525   0.874  uart_shim/uart/U_RX_UNIT/rf_av (uart_shim/uart/U_RX_UNIT/rf_av)
+     LUT4:I2->O            4   0.250   0.804  cpu/cp0/have_irq_SW0 (N224)
+     LUT6:I5->O           33   0.254   1.765  cpu/cp0/have_irq (cpu/cp0/have_irq)
+     LUT6:I3->O          387   0.235   2.554  cpu/cp0/have2handle1 (cpu/m_cp0_have2handle)
      LUT5:I3->O            1   0.250   0.681  uart_shim/uart/U_RX_UNIT/rst_over_read_OR_335_o1 (uart_shim/uart/U_RX_UNIT/rst_over_read_OR_335_o)
      FDC:CLR                   0.459          uart_shim/uart/U_RX_UNIT/rf_av
     ----------------------------------------
-    Total                      7.628ns (1.977ns logic, 5.651ns route)
-                                       (25.9% logic, 74.1% route)
+    Total                      8.650ns (1.973ns logic, 6.677ns route)
+                                       (22.8% logic, 77.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_ipcore/pll_base_inst/CLKOUT0'
-  Total number of paths / destination ports: 2523 / 2476
+  Total number of paths / destination ports: 2517 / 2478
 -------------------------------------------------------------------------
-Offset:              7.092ns (Levels of Logic = 4)
+Offset:              7.292ns (Levels of Logic = 2)
   Source:            sys_rstn (PAD)
-  Destination:       cpu/d_im/data_31 (FF)
+  Destination:       switches/stored_63 (FF)
   Destination Clock: clk_ipcore/pll_base_inst/CLKOUT0 rising
 
-  Data Path: sys_rstn to cpu/d_im/data_31
+  Data Path: sys_rstn to switches/stored_63
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            39   1.328   2.092  sys_rstn_IBUF (sys_rstn_IBUF)
-     LUT6:I0->O            1   0.254   0.910  cpu/cp0/have2handle1_SW6 (N2234)
-     LUT6:I3->O           66   0.235   1.945  cpu/rst_cw_d_pff_rst_OR_221_o1 (cpu/rst_cw_d_pff_rst_OR_221_o)
-     LUT6:I5->O            2   0.254   0.000  cpu/d_im/data_31_rstpot (cpu/d_im/data_31_rstpot)
-     FD:D                      0.074          cpu/d_im/data_31
+     IBUF:I->O           341   1.328   2.440  sys_rstn_IBUF (sys_rstn_IBUF)
+     INV:I->O           1759   0.255   2.810  rst1_INV_0 (rst)
+     FDR:R                     0.459          switches/stored_0
     ----------------------------------------
-    Total                      7.092ns (2.145ns logic, 4.947ns route)
-                                       (30.2% logic, 69.8% route)
+    Total                      7.292ns (2.042ns logic, 5.250ns route)
+                                       (28.0% logic, 72.0% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'uart_shim/uart/U_RX_UNIT/clk_rf_av'
   Total number of paths / destination ports: 1 / 1
 -------------------------------------------------------------------------
-Offset:              4.359ns (Levels of Logic = 2)
+Offset:              5.163ns (Levels of Logic = 2)
   Source:            sys_rstn (PAD)
   Destination:       uart_shim/uart/U_RX_UNIT/rf_av (FF)
   Destination Clock: uart_shim/uart/U_RX_UNIT/clk_rf_av rising
@@ -1896,12 +1894,12 @@ Offset:              4.359ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            39   1.328   1.637  sys_rstn_IBUF (sys_rstn_IBUF)
+     IBUF:I->O           341   1.328   2.441  sys_rstn_IBUF (sys_rstn_IBUF)
      LUT5:I4->O            1   0.254   0.681  uart_shim/uart/U_RX_UNIT/rst_over_read_OR_335_o1 (uart_shim/uart/U_RX_UNIT/rst_over_read_OR_335_o)
      FDC:CLR                   0.459          uart_shim/uart/U_RX_UNIT/rf_av
     ----------------------------------------
-    Total                      4.359ns (2.041ns logic, 2.318ns route)
-                                       (46.8% logic, 53.2% route)
+    Total                      5.163ns (2.041ns logic, 3.122ns route)
+                                       (39.5% logic, 60.5% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_ipcore/pll_base_inst/CLKOUT0'
@@ -1935,9 +1933,9 @@ Clock to Setup on destination clock clk_ipcore/pll_base_inst/CLKOUT0
                                         | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock                            |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ----------------------------------------+---------+---------+---------+---------+
-clk_ipcore/pll_base_inst/CLKOUT0        |   23.439|         |         |         |
+clk_ipcore/pll_base_inst/CLKOUT0        |   23.229|         |         |         |
 clk_ipcore/pll_base_inst/CLKOUT1        |   10.128|         |         |         |
-uart_shim/uart/U_RX_UNIT/clk_rf_av      |   10.888|         |         |         |
+uart_shim/uart/U_RX_UNIT/clk_rf_av      |   11.171|         |         |         |
 uart_shim/uart/U_TX_UNIT/U_CTRL_SHFT/fsm|    4.080|         |         |         |
 ----------------------------------------+---------+---------+---------+---------+
 
@@ -1946,8 +1944,8 @@ Clock to Setup on destination clock clk_ipcore/pll_base_inst/CLKOUT1
                                   | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock                      |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ----------------------------------+---------+---------+---------+---------+
-clk_ipcore/pll_base_inst/CLKOUT0  |   25.611|         |         |         |
-uart_shim/uart/U_RX_UNIT/clk_rf_av|    9.659|         |         |         |
+clk_ipcore/pll_base_inst/CLKOUT0  |   25.710|         |         |         |
+uart_shim/uart/U_RX_UNIT/clk_rf_av|   10.681|         |         |         |
 ----------------------------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock uart_shim/uart/U_RX_UNIT/clk_rf_av
@@ -1955,22 +1953,22 @@ Clock to Setup on destination clock uart_shim/uart/U_RX_UNIT/clk_rf_av
                                   | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock                      |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ----------------------------------+---------+---------+---------+---------+
-clk_ipcore/pll_base_inst/CLKOUT0  |   23.580|         |         |         |
-uart_shim/uart/U_RX_UNIT/clk_rf_av|    7.628|         |         |         |
+clk_ipcore/pll_base_inst/CLKOUT0  |   23.679|         |         |         |
+uart_shim/uart/U_RX_UNIT/clk_rf_av|    8.650|         |         |         |
 ----------------------------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 65.00 secs
-Total CPU time to Xst completion: 65.35 secs
+Total REAL time to Xst completion: 60.00 secs
+Total CPU time to Xst completion: 60.12 secs
  
 --> 
 
 
-Total memory usage is 424712 kilobytes
+Total memory usage is 440472 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  377 (   0 filtered)
+Number of warnings :  378 (   0 filtered)
 Number of infos    :   23 (   0 filtered)
 

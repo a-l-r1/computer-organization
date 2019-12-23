@@ -55,8 +55,8 @@
 // "Output    Output      Phase     Duty      Pk-to-Pk        Phase"
 // "Clock    Freq (MHz) (degrees) Cycle (%) Jitter (ps)  Error (ps)"
 //----------------------------------------------------------------------------
-// CLK_OUT1____30.000______0.000______50.0______426.867____232.464
-// CLK_OUT2____60.000______0.000______50.0______360.617____232.464
+// CLK_OUT1____10.000______0.000______50.0______551.631____283.048
+// CLK_OUT2____20.000______0.000______50.0______475.119____283.048
 //
 //----------------------------------------------------------------------------
 // "Input Clock   Freq (MHz)    Input Jitter (UI)"
@@ -65,7 +65,7 @@
 
 `timescale 1ps/1ps
 
-(* CORE_GENERATION_INFO = "clk_ipcore,clk_wiz_v3_6,{component_name=clk_ipcore,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,feedback_source=FDBK_AUTO,primtype_sel=PLL_BASE,num_out_clk=2,clkin1_period=40.000,clkin2_period=40.000,use_power_down=false,use_reset=false,use_locked=false,use_inclk_stopped=false,use_status=false,use_freeze=false,use_clk_valid=false,feedback_type=SINGLE,clock_mgr_type=AUTO,manual_override=false}" *)
+(* CORE_GENERATION_INFO = "clk_ipcore,clk_wiz_v3_6,{component_name=clk_ipcore,use_phase_alignment=true,use_min_o_jitter=false,use_max_i_jitter=false,use_dyn_phase_shift=false,use_inclk_switchover=false,use_dyn_reconfig=false,feedback_source=FDBK_AUTO,primtype_sel=PLL_BASE,num_out_clk=2,clkin1_period=40.0,clkin2_period=40.0,use_power_down=false,use_reset=false,use_locked=false,use_inclk_stopped=false,use_status=false,use_freeze=false,use_clk_valid=false,feedback_type=SINGLE,clock_mgr_type=AUTO,manual_override=false}" *)
 module clk_ipcore
  (// Clock in ports
   input         CLK_IN1,
@@ -101,15 +101,15 @@ module clk_ipcore
     .CLK_FEEDBACK           ("CLKFBOUT"),
     .COMPENSATION           ("SYSTEM_SYNCHRONOUS"),
     .DIVCLK_DIVIDE          (1),
-    .CLKFBOUT_MULT          (24),
+    .CLKFBOUT_MULT          (16),
     .CLKFBOUT_PHASE         (0.000),
-    .CLKOUT0_DIVIDE         (20),
+    .CLKOUT0_DIVIDE         (40),
     .CLKOUT0_PHASE          (0.000),
     .CLKOUT0_DUTY_CYCLE     (0.500),
-    .CLKOUT1_DIVIDE         (10),
+    .CLKOUT1_DIVIDE         (20),
     .CLKOUT1_PHASE          (0.000),
     .CLKOUT1_DUTY_CYCLE     (0.500),
-    .CLKIN_PERIOD           (40.000),
+    .CLKIN_PERIOD           (40.0),
     .REF_JITTER             (0.010))
   pll_base_inst
     // Output clocks
