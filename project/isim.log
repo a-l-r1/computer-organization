@@ -7,79 +7,16 @@ Time resolution is 1 ps
 # wave add /
 # run 1000 ns
 Simulator is doing circuit initialization process.
- Block Memory Generator CORE Generator module loading initial data...
- Block Memory Generator data initialization complete.
-Block Memory Generator CORE Generator module pipelined3_p8_tb.uut.cpu.im.im_ipcore.inst.\native_mem_module.blk_mem_gen_v7_3_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
 Block Memory Generator CORE Generator module pipelined3_p8_tb.uut.cpu.dm.dm_ipcore.inst.\native_mem_module.blk_mem_gen_v7_3_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
 Finished circuit initialization process.
-                 302@00003014: $16 <= 00007f00
-                 310@00003018: $17 <= 00007f2c
-                 318@0000301c: $18 <= 00007f38
-                 327@00003020: $ 8 <= 00000401
-                 377@00003038: $19 <= 00000404
-                 385@0000303c: $ 1 <= 01c90000
-                 393@00003040: $ 8 <= 01c9c380
-                 418@0000304c: $ 8 <= 0000000b
-                 435@00003054: $ 8 <= 00000404
-                 493@00003054: $ 8 <= 00000404
-                 552@00003054: $ 8 <= 00000404
-                 610@00003054: $ 8 <= 00000404
-                 668@00003054: $ 8 <= 00000404
-                 727@00003054: $ 8 <= 00000404
-                 785@00003054: $ 8 <= 00000404
-                 843@00003054: $ 8 <= 00000404
-                 902@00003054: $ 8 <= 00000404
-                 960@00003054: $ 8 <= 00000404
-# restart
 # run 1000ns
-Simulator is doing circuit initialization process.
- Block Memory Generator CORE Generator module loading initial data...
- Block Memory Generator data initialization complete.
-Block Memory Generator CORE Generator module pipelined3_p8_tb.uut.cpu.im.im_ipcore.inst.\native_mem_module.blk_mem_gen_v7_3_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
-Block Memory Generator CORE Generator module pipelined3_p8_tb.uut.cpu.dm.dm_ipcore.inst.\native_mem_module.blk_mem_gen_v7_3_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
-Finished circuit initialization process.
-                 302@00003014: $16 <= 00007f00
-                 310@00003018: $17 <= 00007f2c
-                 318@0000301c: $18 <= 00007f38
-                 327@00003020: $ 8 <= 00000401
-                 377@00003038: $19 <= 00000404
-                 385@0000303c: $ 1 <= 01c90000
-                 393@00003040: $ 8 <= 01c9c380
-                 418@0000304c: $ 8 <= 0000000b
-                 435@00003054: $ 8 <= 00000404
-                 493@00003054: $ 8 <= 00000404
-                 552@00003054: $ 8 <= 00000404
-                 610@00003054: $ 8 <= 00000404
-                 668@00003054: $ 8 <= 00000404
-                 727@00003054: $ 8 <= 00000404
-                 785@00003054: $ 8 <= 00000404
-                 843@00003054: $ 8 <= 00000404
-                 902@00003054: $ 8 <= 00000404
-                 960@00003054: $ 8 <= 00000404
+# cls
 # restart
-# run 1000ns
+# restart
+# restart
+# run 100ns
 Simulator is doing circuit initialization process.
- Block Memory Generator CORE Generator module loading initial data...
- Block Memory Generator data initialization complete.
-Block Memory Generator CORE Generator module pipelined3_p8_tb.uut.cpu.im.im_ipcore.inst.\native_mem_module.blk_mem_gen_v7_3_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
 Block Memory Generator CORE Generator module pipelined3_p8_tb.uut.cpu.dm.dm_ipcore.inst.\native_mem_module.blk_mem_gen_v7_3_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
 Finished circuit initialization process.
-                 302@00003014: $16 <= 00007f00
-                 310@00003018: $17 <= 00007f2c
-                 318@0000301c: $18 <= 00007f38
-                 327@00003020: $ 8 <= 00000401
-                 377@00003038: $19 <= 00000404
-                 385@0000303c: $ 1 <= 01c90000
-                 393@00003040: $ 8 <= 01c9c380
-                 418@0000304c: $ 8 <= 0000000b
-                 435@00003054: $ 8 <= 00000404
-                 493@00003054: $ 8 <= 00000404
-                 552@00003054: $ 8 <= 00000404
-                 610@00003054: $ 8 <= 00000404
-                 668@00003054: $ 8 <= 00000404
-                 727@00003054: $ 8 <= 00000404
-                 785@00003054: $ 8 <= 00000404
-                 843@00003054: $ 8 <= 00000404
-                 902@00003054: $ 8 <= 00000404
-                 960@00003054: $ 8 <= 00000404
+# run 1000ns
 # exit 0
