@@ -41,7 +41,7 @@ assign next_pc =
 	(jump_mode == `NPC_SIG_SMALLER_OR_EQUAL && (cmp_sig_result == `CMP_SMALLER || cmp_sig_result == `CMP_EQUAL)) ? b_target : 
 	(jump_mode == `NPC_REG) ? reg_ : 
 	(jump_mode == `NPC_J) ? {base[31:28], jnum, 2'b0} : 
-	(jump_mode == `NPC_ISR) ? `IM_ISR_ADDRESS : 
+	(jump_mode == `NPC_ISR) ? `NPC_ISR_ADDRESS : 
 	(jump_mode == `NPC_EPC) ? epc : 
 	$unsigned(base) + $unsigned(4);
 

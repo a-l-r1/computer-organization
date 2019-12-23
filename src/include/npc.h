@@ -21,5 +21,7 @@
 `define NPC_ISR 4'b1101
 `define NPC_EPC 4'b1100
 
+`define NPC_ISR_ADDRESS 32'hbfc04180
+
 `endif
 
