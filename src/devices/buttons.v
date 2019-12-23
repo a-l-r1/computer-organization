@@ -26,11 +26,13 @@ always @(posedge clk) begin
 	end else begin
 		stored <= ~user_key;
 
-		/* NOTE: Have to declare truly separate conditions. */
-		if (&stored == 1'b0 && write_enable == 1'b0) begin
+		/* Some of the switches has just been raised. */
+		if ((&user_key) == 1'b0 && stored != ~user_key) begin
 			irq_reg <= 1'b1;
 		end
-		if (write_enable == 1'b1) begin
+
+		/* Keep irq on for only one cycle. */
+		if (irq_reg == 1'b1) begin
 			irq_reg <= 1'b0;
 		end
 	end
