@@ -72,6 +72,9 @@
 `define MFC0 10'b01100_00000
 `define MTC0 10'b01101_00000
 `define ERET 10'b01110_00000
+`define TLBR 10'b01111_00000
+`define TLBWI 10'b10000_00000
+`define TLBP 10'b10001_00000
 
 `define UNKNOWN_TYPE 5'b00000
 `define UNK_TYPE `UNKNOWN_TYPE
@@ -89,6 +92,9 @@
 `define LOAD_C0 5'b01100
 `define STORE_C0 5'b01101
 `define JUMP_C0 5'b01110
+`define LOAD_TLB 5'b01111
+`define STORE_TLB 5'b10000
+`define PROBE_TLB 5'b10001
 
 `endif
 
