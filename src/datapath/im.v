@@ -1,4 +1,5 @@
 `include "im.h"
+`include "pc.h"
 `include "npc.h"
 
 module im(
@@ -18,7 +19,10 @@ initial begin
 		memory[i] = 32'b0;
 	end
 
-	$readmemh(`IM_CODE_FILENAME, memory, 0);
+	/* NOTE: Assume initial PC to be directly mapped. Have to use bitmask
+	 * since ISE is really capable to seemingly dismiss all other sensible
+	 * solutions. */
+	$readmemh(`IM_CODE_FILENAME, memory, ($unsigned(`PC_START_ADDRESS) - $unsigned(`IM_ADDR_LB) >> $unsigned(2)) & 32'h0000ffff);
 	$readmemh(`IM_ISR_CODE_FILENAME, memory, ($unsigned(`IM_ISR_ADDRESS) - $unsigned(`IM_ADDR_LB)) >> $unsigned(2), 4095);
 end
 
