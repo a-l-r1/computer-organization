@@ -22,8 +22,11 @@ initial begin
 	/* NOTE: Assume initial PC to be directly mapped. Have to use bitmask
 	 * since ISE is really capable to seemingly dismiss all other sensible
 	 * solutions. */
-	$readmemh(`IM_CODE_FILENAME, memory, ($unsigned(`PC_START_ADDRESS) - $unsigned(`IM_ADDR_LB) >> $unsigned(2)) & 32'h0000ffff);
-	$readmemh(`IM_ISR_CODE_FILENAME, memory, ($unsigned(`IM_ISR_ADDRESS) - $unsigned(`IM_ADDR_LB)) >> $unsigned(2), 4095);
+	$readmemh(`IM_CODE_FILENAME, memory, ($unsigned(`PC_START_ADDRESS) - $unsigned(`IM_ADDR_LB) >> $unsigned(2)) & 32'h0000ffff, `IM_SIZE - 1);
+	$readmemh(`IM_ISR_CODE_FILENAME, memory, ($unsigned(`IM_ISR_ADDRESS) - $unsigned(`IM_ADDR_LB)) >> $unsigned(2), `IM_SIZE - 1);
+
+	$readmemh(`IM_PROG0_FILENAME, memory, ($unsigned(`IM_PROG0_ADDRESS) - $unsigned(`IM_ADDR_LB)) >> $unsigned(2), `IM_SIZE - 1);
+	$readmemh(`IM_PROG1_FILENAME, memory, ($unsigned(`IM_PROG1_ADDRESS) - $unsigned(`IM_ADDR_LB)) >> $unsigned(2), `IM_SIZE - 1);
 end
 
 wire [31:0] im_calculated_address;
