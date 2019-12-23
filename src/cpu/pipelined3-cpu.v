@@ -1,5 +1,7 @@
 `include "pipelined3.h"
 
+`include "mmu.h"
+
 module cpu(
 	input clk, 
 	input clk_2x, 
@@ -19,6 +21,8 @@ module cpu(
 
 /* Control */
 
+wire cw_mmu_write_enable;
+
 wire [3:0] cw_f_npc_jump_mode;
 
 wire [2:0] cw_d_ext_mode;
@@ -30,6 +34,7 @@ wire [4:0] cw_e_alu_op;
 wire [2:0] cw_m_dm_mode;
 wire [4:0] cw_m_cp0_exc;
 wire [31:0] cw_m_cp0_curr_pc;
+wire [3:0] cw_m_cp0_op;
 
 wire [2:0] cw_w_m_regdata;
 
@@ -45,6 +50,13 @@ wire cw_m_m_bridge;
 wire cw_m_cp0_write_enable, cw_m_cp0_exit_isr, cw_m_cp0_in_bds;
 
 wire cw_w_rf_write_enable;
+
+/* MMU */
+
+wire [31:0] mmu_im_paddr, mmu_dm_paddr;
+wire [31:0] mmu_entryhi, mmu_entrylo0, mmu_entrylo1;
+wire [`TLB_ADDR_WIDTH - 1:0] mmu_hit_cp0_index;
+wire mmu_hit_cp0;
 
 /* F */
 
@@ -86,6 +98,8 @@ wire [31:0] m_rf_read_result2_orig, m_rf_read_result2;
 wire [31:0] m_dm_read_result_orig, m_dm_read_result;
 wire [31:0] m_cp0_read_result;
 wire [31:0] m_cp0_epc_orig, m_cp0_epc;
+wire [31:0] m_cp0_entryhi, m_cp0_entrylo0, m_cp0_entrylo1;
+wire [`TLB_ADDR_WIDTH - 1:0] m_cp0_tlb_index;
 wire m_dm_valid, m_bridge_valid, m_cp0_have2handle;
 
 /* W */
@@ -126,6 +140,8 @@ control control(
 	.m_pc_curr_pc(m_pc_curr_pc), 
 	.have2handle(m_cp0_have2handle), 
 
+	.cw_mmu_write_enable(cw_mmu_write_enable), 
+
 	.cw_f_pc_enable(cw_f_pc_enable), 
 	.cw_d_pff_enable(cw_d_pff_enable), 
 	.cw_d_pff_rst(cw_d_pff_rst), 
@@ -155,8 +171,7 @@ control control(
 	.cw_m_dm_write_enable(cw_m_dm_write_enable), 
 	.cw_m_dm_stop(cw_m_dm_stop), 
 	.cw_m_dm_mode(cw_m_dm_mode), 
-	.cw_m_cp0_write_enable(cw_m_cp0_write_enable), 
-	.cw_m_cp0_exit_isr(cw_m_cp0_exit_isr), 
+	.cw_m_cp0_op(cw_m_cp0_op), 
 	.cw_m_cp0_in_bds(cw_m_cp0_in_bds), 
 	.cw_m_cp0_exc(cw_m_cp0_exc), 
 	.cw_m_cp0_curr_pc(cw_m_cp0_curr_pc), 
@@ -171,6 +186,37 @@ control control(
 	.cw_fm_e2(cw_fm_e2), 
 	.cw_fm_m(cw_fm_m), 
 	.cw_fm_epc(cw_fm_epc)
+);
+
+/* MMU */
+
+mmu mmu(
+	.clk(clk), 
+	.rst(rst), 
+
+	.im_vaddr(f_pc_curr_pc), 
+	.dm_vaddr(m_alu_result), 
+	/* im is read-only */
+	.im_write_enable(1'b0), 
+	.dm_write_enable(cw_m_dm_write_enable), 
+	.im_paddr(mmu_im_paddr), 
+	.dm_paddr(mmu_dm_paddr), 
+	/* unused */
+	.mmu_hit_im(), 
+	/* unused */
+	.mmu_hit_dm(), 
+
+	.write_enable(cw_mmu_write_enable), 
+	.cp0_tlb_index(m_cp0_tlb_index), 
+	.cp0_entryhi(m_cp0_entryhi), 
+	.cp0_entrylo0(m_cp0_entrylo0), 
+	.cp0_entrylo1(m_cp0_entrylo1), 
+	.mmu_entryhi(mmu_entryhi), 
+	.mmu_entrylo0(mmu_entrylo0), 
+	.mmu_entrylo1(mmu_entrylo1), 
+
+	.mmu_hit_cp0(mmu_hit_cp0), 
+	.mmu_hit_cp0_index(mmu_hit_cp0_index)
 );
 
 /* F */
@@ -198,7 +244,7 @@ pc pc(
 im im(
 	/* NOTE: im is made of bram, so it has to use clk_2x too. */
 	.clk(clk_2x), 
-	.addr(f_pc_curr_pc), 
+	.addr(mmu_im_paddr), 
 	/* im is always enabled */
 	.enable(1'b1), 
 	.result(f_im_result), 
@@ -442,8 +488,8 @@ dm dm(
 	.clk(clk_2x), 
 	.rst(rst), 
 	.curr_pc(m_pc_curr_pc), 
-	.read_addr(m_alu_result), 
-	.write_addr(m_alu_result), 
+	.read_addr(mmu_dm_paddr), 
+	.write_addr(mmu_dm_paddr), 
 	.write_data(m_rf_read_result2), 
 	.write_enable(cw_m_dm_write_enable), 
 	.mode(cw_m_dm_mode), 
@@ -455,7 +501,7 @@ dm dm(
 /* for bridge */
 
 assign m_bridge_valid = bridge_valid;
-assign cpu_addr = m_alu_result;
+assign cpu_addr = mmu_dm_paddr;
 assign cpu_write_data = m_rf_read_result2;
 assign dev_write_enable = cw_m_dm_write_enable;
 assign dm_mode = cw_m_dm_mode;
@@ -468,17 +514,29 @@ assign m_dm_read_result =
 cp0 cp0(
 	.clk(clk), 
 	.rst(rst), 
+
+	.op(cw_m_cp0_op), 
 	.addr(m_im_result[15:11]), 
-	.write_enable(cw_m_cp0_write_enable), 
 	.write_data(m_rf_read_result2), 
-	.exit_isr(cw_m_cp0_exit_isr), 
+	.read_result(m_cp0_read_result), 
+
 	.in_bds(cw_m_cp0_in_bds), 
 	.hwirq(hwirq[7:2]), 
 	.exc(cw_m_cp0_exc), 
 	.curr_pc(cw_m_cp0_curr_pc), 
-	.read_result(m_cp0_read_result), 
 	.epc(m_cp0_epc_orig), 
-	.have2handle(m_cp0_have2handle)
+	.have2handle(m_cp0_have2handle), 
+
+	.mmu_entryhi(mmu_entryhi), 
+	.mmu_entrylo0(mmu_entrylo0), 
+	.mmu_entrylo1(mmu_entrylo1), 
+	.cp0_tlb_index(m_cp0_tlb_index), 
+	.cp0_entryhi(m_cp0_entryhi), 
+	.cp0_entrylo0(m_cp0_entrylo0), 
+	.cp0_entrylo1(m_cp0_entrylo1), 
+
+	.mmu_hit_cp0(mmu_hit_cp0), 
+	.mmu_hit_cp0_index(mmu_hit_cp0_index)
 );
 
 /* NOTE: It seems that the judger doesn't care PCs of bubbles, and requires
