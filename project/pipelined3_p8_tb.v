@@ -75,7 +75,7 @@ module pipelined3_p8_tb;
 	initial begin
 		// Initialize Inputs
 		clk_in = 0;
-		sys_rstn = 1;
+		sys_rstn = 0;
 		uart_rxd = 0;
 		dip_switch0 = 8'hff;
 		dip_switch1 = 8'hff;
@@ -91,9 +91,19 @@ module pipelined3_p8_tb;
         
 		// Add stimulus here
 		#300;
-		dip_switch0 = 8'b11111011;
-		dip_switch1 = 8'b11111011;
-		user_key = 8'b11111110;
+		sys_rstn = 1;
+		
+		#700;
+		user_key = 8'hfe;
+		
+		#100;
+		user_key = 8'hff;
+		
+		#500;
+		user_key = 8'hfe;
+		
+		#100;
+		user_key = 8'hff;
 	end
 	
 	always #5 clk_in = ~clk_in;

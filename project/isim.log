@@ -7,16 +7,89 @@ Time resolution is 1 ps
 # wave add /
 # run 1000 ns
 Simulator is doing circuit initialization process.
+ Block Memory Generator CORE Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator CORE Generator module pipelined3_p8_tb.uut.cpu.im.im_ipcore.inst.\native_mem_module.blk_mem_gen_v7_3_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
 Block Memory Generator CORE Generator module pipelined3_p8_tb.uut.cpu.dm.dm_ipcore.inst.\native_mem_module.blk_mem_gen_v7_3_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
 Finished circuit initialization process.
-# run 1000ns
-# cls
+                 335@bfc03000: $ 8 <= 00000000
+                 343@bfc03004: $ 8 <= 00000000
+                 360@bfc0300c: $ 8 <= 00000000
+                 368@bfc03010: $ 8 <= 00000000
+                 385@bfc03018: $ 8 <= 00000000
+                 393@bfc0301c: $ 8 <= 00000007
+                 410@bfc03024: $ 8 <= 00000000
+                 418@bfc03028: $ 8 <= 00000047
+                 468@bfc03034: $ 8 <= 00000000
+                 477@bfc03038: $ 8 <= 00000001
+                 493@bfc03040: $ 8 <= 00000000
+                 502@bfc03044: $ 8 <= 00000100
+                 518@bfc0304c: $ 8 <= 00000000
+                 527@bfc03050: $ 8 <= 00000001
+                 543@bfc03058: $ 8 <= 00000000
+                 552@bfc0305c: $ 8 <= 00000083
+                 602@bfc03068: $ 8 <= 00000000
+                 610@bfc0306c: $ 8 <= 00008001
+                 627@bfc03074: $ 8 <= 00000000
+                 635@bfc03078: $ 8 <= 00003000
+                 668@00003000: $ 8 <= 00000000
+                 677@00003004: $ 8 <= 000000ff
+                 685@00003008: $ 9 <= bfc00000
+                 693@0000300c: $ 9 <= bfc07f34
 # restart
-# restart
-# restart
-# run 100ns
+# run 2000ns
 Simulator is doing circuit initialization process.
+ Block Memory Generator CORE Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator CORE Generator module pipelined3_p8_tb.uut.cpu.im.im_ipcore.inst.\native_mem_module.blk_mem_gen_v7_3_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
 Block Memory Generator CORE Generator module pipelined3_p8_tb.uut.cpu.dm.dm_ipcore.inst.\native_mem_module.blk_mem_gen_v7_3_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
 Finished circuit initialization process.
-# run 1000ns
+                 335@bfc03000: $ 8 <= 00000000
+                 343@bfc03004: $ 8 <= 00000000
+                 360@bfc0300c: $ 8 <= 00000000
+                 368@bfc03010: $ 8 <= 00000000
+                 385@bfc03018: $ 8 <= 00000000
+                 393@bfc0301c: $ 8 <= 00000007
+                 410@bfc03024: $ 8 <= 00000000
+                 418@bfc03028: $ 8 <= 00000047
+                 468@bfc03034: $ 8 <= 00000000
+                 477@bfc03038: $ 8 <= 00000001
+                 493@bfc03040: $ 8 <= 00000000
+                 502@bfc03044: $ 8 <= 00000100
+                 518@bfc0304c: $ 8 <= 00000000
+                 527@bfc03050: $ 8 <= 00000001
+                 543@bfc03058: $ 8 <= 00000000
+                 552@bfc0305c: $ 8 <= 00000083
+                 602@bfc03068: $ 8 <= 00000000
+                 610@bfc0306c: $ 8 <= 00008001
+                 627@bfc03074: $ 8 <= 00000000
+                 635@bfc03078: $ 8 <= 00003000
+                 668@00003000: $ 8 <= 00000000
+                 677@00003004: $ 8 <= 000000ff
+                 685@00003008: $ 9 <= bfc00000
+                 693@0000300c: $ 9 <= bfc07f34
+                1052@bfc04180: $24 <= bfc00000
+                1060@bfc04184: $24 <= bfc07f40
+                1077@bfc0418c: $24 <= 00000000
+                1085@bfc04190: $24 <= 00000001
+                1110@bfc0419c: $24 <= 00000083
+                1127@bfc041a0: $24 <= 00000143
+                1177@bfc041ac: $24 <= 00000000
+                1185@bfc041b0: $24 <= 00003000
+                1218@00003000: $ 8 <= 00000000
+                1227@00003004: $ 8 <= 0000ff00
+                1235@00003008: $ 9 <= bfc00000
+                1243@0000300c: $ 9 <= bfc07f34
+                1652@bfc04180: $24 <= bfc00000
+                1660@bfc04184: $24 <= bfc07f40
+                1677@bfc0418c: $24 <= 00000000
+                1685@bfc04190: $24 <= 00000001
+                1710@bfc0419c: $24 <= 00000143
+                1727@bfc041a0: $24 <= 00000083
+                1777@bfc041ac: $24 <= 00000000
+                1785@bfc041b0: $24 <= 00003000
+                1818@00003000: $ 8 <= 00000000
+                1827@00003004: $ 8 <= 000000ff
+                1835@00003008: $ 9 <= bfc00000
+                1843@0000300c: $ 9 <= bfc07f34
 # exit 0

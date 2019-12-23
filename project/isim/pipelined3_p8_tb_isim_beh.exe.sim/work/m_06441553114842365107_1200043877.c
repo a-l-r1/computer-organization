@@ -3804,7 +3804,7 @@ LAB0:    t1 = (t0 + 25552U);
 LAB3:    goto *t2;
 
 LAB2:    xsi_set_current_line(504, ng0);
-    t2 = (t0 + 13368U);
+    t2 = (t0 + 8088U);
     t3 = *((char **)t2);
     t2 = (t0 + 37488);
     t4 = (t2 + 56U);

@@ -5,14 +5,14 @@ Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.06 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.06 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 Reading design: mips.prj
@@ -136,6 +136,7 @@ Analyzing Verilog file "/home/a-l-r/co/src/src/control/pipelined3-handler.v" int
 Parsing verilog file "/home/a-l-r/co/src/src/include/pipelined3.h" included at line 1.
 Parsing verilog file "/home/a-l-r/co/src/src/include/instr-id.h" included at line 2.
 Parsing verilog file "/home/a-l-r/co/src/src/include/npc.h" included at line 4.
+Parsing verilog file "/home/a-l-r/co/src/src/include/cp0.h" included at line 5.
 Parsing module <handler>.
 Analyzing Verilog file "/home/a-l-r/co/src/src/control/pipelined3-forward.v" into library work
 Parsing verilog file "/home/a-l-r/co/src/src/include/instr-id.h" included at line 1.
@@ -164,9 +165,16 @@ Parsing verilog file "/home/a-l-r/co/src/src/include/cmp.h" included at line 4.
 Parsing verilog file "/home/a-l-r/co/src/src/include/alu.h" included at line 4.
 Parsing verilog file "/home/a-l-r/co/src/src/include/im.h" included at line 5.
 Parsing module <npc>.
+Analyzing Verilog file "/home/a-l-r/co/src/src/datapath/mmu.v" into library work
+Parsing verilog file "/home/a-l-r/co/src/src/include/mmu.h" included at line 1.
+Parsing module <tlb_hit_checker>.
+Parsing module <paddr_translator>.
+Parsing module <tlb_hit_cp0_checker>.
+Parsing module <mmu>.
 Analyzing Verilog file "/home/a-l-r/co/src/src/datapath/im.v" into library work
 Parsing verilog file "/home/a-l-r/co/src/src/include/im.h" included at line 1.
-Parsing verilog file "/home/a-l-r/co/src/src/include/npc.h" included at line 2.
+Parsing verilog file "/home/a-l-r/co/src/src/include/pc.h" included at line 2.
+Parsing verilog file "/home/a-l-r/co/src/src/include/npc.h" included at line 3.
 Parsing module <im>.
 Analyzing Verilog file "/home/a-l-r/co/src/src/datapath/ext.v" into library work
 Parsing verilog file "/home/a-l-r/co/src/src/include/ext.h" included at line 1.
@@ -176,6 +184,7 @@ Parsing verilog file "/home/a-l-r/co/src/src/include/dm.h" included at line 1.
 Parsing module <dm>.
 Analyzing Verilog file "/home/a-l-r/co/src/src/datapath/cp0.v" into library work
 Parsing verilog file "/home/a-l-r/co/src/src/include/cp0.h" included at line 1.
+Parsing verilog file "/home/a-l-r/co/src/src/include/mmu.h" included at line 3.
 Parsing module <cp0>.
 Analyzing Verilog file "/home/a-l-r/co/src/src/datapath/cmp.v" into library work
 Parsing verilog file "/home/a-l-r/co/src/src/include/alu.h" included at line 1.
@@ -212,6 +221,7 @@ Analyzing Verilog file "/home/a-l-r/co/src/src/devices/buttons.v" into library w
 Parsing module <buttons>.
 Analyzing Verilog file "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" into library work
 Parsing verilog file "/home/a-l-r/co/src/src/include/pipelined3.h" included at line 1.
+Parsing verilog file "/home/a-l-r/co/src/src/include/mmu.h" included at line 3.
 Parsing module <cpu>.
 Analyzing Verilog file "/home/a-l-r/co/src/src/bridge/bridge.v" into library work
 Parsing verilog file "/home/a-l-r/co/src/src/include/bridge.h" included at line 1.
@@ -248,12 +258,24 @@ Elaborating module <kind>.
 Elaborating module <pff(BIT_WIDTH=5)>.
 
 Elaborating module <forward>.
+WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/src/control/pipelined3-forward.v" Line 38: Assignment to ddptype ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/src/control/pipelined3-forward.v" Line 41: Assignment to wdptype ignored, since the identifier is never used
 
 Elaborating module <hazard>.
+WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/src/control/pipelined3-hazard.v" Line 50: Assignment to wdptype ignored, since the identifier is never used
 
 Elaborating module <pff(BIT_WIDTH=1)>.
 
 Elaborating module <handler>.
+WARNING:HDLCompiler:1127 - "/home/a-l-r/co/src/src/control/pipelined3-handler.v" Line 57: Assignment to wdptype ignored, since the identifier is never used
+
+Elaborating module <mmu>.
+
+Elaborating module <tlb_hit_checker>.
+
+Elaborating module <paddr_translator>.
+
+Elaborating module <tlb_hit_cp0_checker>.
 
 Elaborating module <npc>.
 
@@ -339,21 +361,23 @@ Unit <clk_ipcore> synthesized.
 
 Synthesizing Unit <cpu>.
     Related source file is "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v".
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 104: Output port <cw_e_md_op> of the instance <control> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 104: Output port <cw_e_md_stop> of the instance <control> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 104: Output port <cw_e_md_restore> of the instance <control> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 274: Output port <reg2_sig_cmp> of the instance <cmp> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 352: Output port <cmp_result> of the instance <alu> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 352: Output port <sig_cmp_result> of the instance <alu> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 352: Output port <overflow> of the instance <alu> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 352: Output port <op_invalid> of the instance <alu> is unconnected or connected to loadless signal.
-    Found 32-bit adder for signal <e_retaddr> created at line 293.
-    Found 32-bit adder for signal <m_retaddr> created at line 399.
-    Found 32-bit adder for signal <w_retaddr> created at line 505.
-    Found 32-bit 7-to-1 multiplexer for signal <_n0191> created at line 73.
-    Found 32-bit 7-to-1 multiplexer for signal <_n0193> created at line 73.
-    Found 32-bit 4-to-1 multiplexer for signal <_n0198> created at line 88.
-    Found 32-bit 7-to-1 multiplexer for signal <w_rf_write_data> created at line 99.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 118: Output port <cw_e_md_op> of the instance <control> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 118: Output port <cw_e_md_stop> of the instance <control> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 118: Output port <cw_e_md_restore> of the instance <control> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 193: Output port <mmu_hit_im> of the instance <mmu> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 193: Output port <mmu_hit_dm> of the instance <mmu> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 320: Output port <reg2_sig_cmp> of the instance <cmp> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 398: Output port <cmp_result> of the instance <alu> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 398: Output port <sig_cmp_result> of the instance <alu> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 398: Output port <overflow> of the instance <alu> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/a-l-r/co/src/src/cpu/pipelined3-cpu.v" line 398: Output port <op_invalid> of the instance <alu> is unconnected or connected to loadless signal.
+    Found 32-bit adder for signal <e_retaddr> created at line 339.
+    Found 32-bit adder for signal <m_retaddr> created at line 445.
+    Found 32-bit adder for signal <w_retaddr> created at line 563.
+    Found 32-bit 7-to-1 multiplexer for signal <_n0202> created at line 85.
+    Found 32-bit 7-to-1 multiplexer for signal <_n0204> created at line 85.
+    Found 32-bit 4-to-1 multiplexer for signal <_n0209> created at line 100.
+    Found 32-bit 7-to-1 multiplexer for signal <w_rf_write_data> created at line 113.
     Summary:
 	inferred   3 Adder/Subtractor(s).
 	inferred  28 Multiplexer(s).
@@ -362,20 +386,20 @@ Unit <cpu> synthesized.
 Synthesizing Unit <control>.
     Related source file is "/home/a-l-r/co/src/src/control/pipelined3-function.v".
 WARNING:Xst:647 - Input <d_pc_curr_pc<1:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 128x3-bit Read Only RAM for signal <_n0592>
-    Found 64x5-bit Read Only RAM for signal <_n0595>
-    Found 128x5-bit Read Only RAM for signal <_n0598>
-    Found 32-bit comparator greater for signal <cw_m_m_bridge> created at line 415
+    Found 128x3-bit Read Only RAM for signal <_n0629>
+    Found 64x5-bit Read Only RAM for signal <_n0632>
+    Found 128x5-bit Read Only RAM for signal <_n0635>
+    Found 32-bit comparator greater for signal <cw_m_m_bridge> created at line 423
     Summary:
 	inferred   3 RAM(s).
 	inferred   1 Comparator(s).
-	inferred  63 Multiplexer(s).
+	inferred  69 Multiplexer(s).
 Unit <control> synthesized.
 
 Synthesizing Unit <kind>.
     Related source file is "/home/a-l-r/co/src/src/control/pipelined3-function.v".
     Summary:
-	inferred  47 Multiplexer(s).
+	inferred  50 Multiplexer(s).
 Unit <kind> synthesized.
 
 Synthesizing Unit <pff_1>.
@@ -402,17 +426,17 @@ WARNING:Xst:647 - Input <e_instr<31:16>> is never used. This port will be preser
 WARNING:Xst:647 - Input <m_instr<10:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <m_instr<31:16>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <w_instr> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 5-bit comparator equal for signal <d_reg1[4]_e_regw[4]_equal_10_o> created at line 48
-    Found 5-bit comparator equal for signal <d_reg1[4]_m_regw[4]_equal_25_o> created at line 52
-    Found 5-bit comparator equal for signal <d_reg1[4]_w_regw[4]_equal_28_o> created at line 53
-    Found 5-bit comparator equal for signal <e_reg1[4]_m_regw[4]_equal_50_o> created at line 60
-    Found 5-bit comparator equal for signal <e_reg1[4]_w_regw[4]_equal_53_o> created at line 61
-    Found 5-bit comparator equal for signal <d_reg2[4]_e_regw[4]_equal_67_o> created at line 69
-    Found 5-bit comparator equal for signal <d_reg2[4]_m_regw[4]_equal_82_o> created at line 73
-    Found 5-bit comparator equal for signal <d_reg2[4]_w_regw[4]_equal_85_o> created at line 74
-    Found 5-bit comparator equal for signal <e_reg2[4]_m_regw[4]_equal_107_o> created at line 81
-    Found 5-bit comparator equal for signal <e_reg2[4]_w_regw[4]_equal_110_o> created at line 82
-    Found 5-bit comparator equal for signal <m_reg2[4]_w_regw[4]_equal_117_o> created at line 86
+    Found 5-bit comparator equal for signal <d_reg1[4]_e_regw[4]_equal_12_o> created at line 48
+    Found 5-bit comparator equal for signal <d_reg1[4]_m_regw[4]_equal_27_o> created at line 52
+    Found 5-bit comparator equal for signal <d_reg1[4]_w_regw[4]_equal_30_o> created at line 53
+    Found 5-bit comparator equal for signal <e_reg1[4]_m_regw[4]_equal_52_o> created at line 60
+    Found 5-bit comparator equal for signal <e_reg1[4]_w_regw[4]_equal_55_o> created at line 61
+    Found 5-bit comparator equal for signal <d_reg2[4]_e_regw[4]_equal_69_o> created at line 69
+    Found 5-bit comparator equal for signal <d_reg2[4]_m_regw[4]_equal_84_o> created at line 73
+    Found 5-bit comparator equal for signal <d_reg2[4]_w_regw[4]_equal_87_o> created at line 74
+    Found 5-bit comparator equal for signal <e_reg2[4]_m_regw[4]_equal_109_o> created at line 81
+    Found 5-bit comparator equal for signal <e_reg2[4]_w_regw[4]_equal_112_o> created at line 82
+    Found 5-bit comparator equal for signal <m_reg2[4]_w_regw[4]_equal_119_o> created at line 86
     Summary:
 	inferred  11 Comparator(s).
 	inferred  23 Multiplexer(s).
@@ -436,19 +460,19 @@ WARNING:Xst:647 - Input <e_instr<10:0>> is never used. This port will be preserv
 WARNING:Xst:647 - Input <e_instr<31:21>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <m_instr> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <w_instr> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 5-bit comparator equal for signal <d_reg1[4]_e_regw[4]_equal_35_o> created at line 68
-    Found 3-bit comparator greater for signal <t_use_reg1[2]_t_new_e[2]_LessThan_37_o> created at line 68
-    Found 5-bit comparator equal for signal <d_reg1[4]_m_regw[4]_equal_38_o> created at line 69
-    Found 3-bit comparator greater for signal <t_use_reg1[2]_t_new_m[2]_LessThan_40_o> created at line 69
-    Found 5-bit comparator equal for signal <d_reg2[4]_e_regw[4]_equal_41_o> created at line 70
-    Found 3-bit comparator greater for signal <t_use_reg2[2]_t_new_e[2]_LessThan_43_o> created at line 70
-    Found 5-bit comparator equal for signal <d_reg2[4]_m_regw[4]_equal_44_o> created at line 71
-    Found 3-bit comparator greater for signal <t_use_reg2[2]_t_new_m[2]_LessThan_46_o> created at line 71
-    Found 5-bit comparator equal for signal <e_reg2[4]_m_regw[4]_equal_55_o> created at line 80
-    Found 3-bit comparator greater for signal <GND_11_o_t_new_m[2]_LessThan_57_o> created at line 81
+    Found 5-bit comparator equal for signal <d_reg1[4]_e_regw[4]_equal_36_o> created at line 74
+    Found 3-bit comparator greater for signal <t_use_reg1[2]_t_new_e[2]_LessThan_38_o> created at line 74
+    Found 5-bit comparator equal for signal <d_reg1[4]_m_regw[4]_equal_39_o> created at line 75
+    Found 3-bit comparator greater for signal <t_use_reg1[2]_t_new_m[2]_LessThan_41_o> created at line 75
+    Found 5-bit comparator equal for signal <d_reg2[4]_e_regw[4]_equal_42_o> created at line 76
+    Found 3-bit comparator greater for signal <t_use_reg2[2]_t_new_e[2]_LessThan_44_o> created at line 76
+    Found 5-bit comparator equal for signal <d_reg2[4]_m_regw[4]_equal_45_o> created at line 77
+    Found 3-bit comparator greater for signal <t_use_reg2[2]_t_new_m[2]_LessThan_47_o> created at line 77
+    Found 5-bit comparator equal for signal <e_reg2[4]_m_regw[4]_equal_56_o> created at line 86
+    Found 3-bit comparator greater for signal <GND_11_o_t_new_m[2]_LessThan_58_o> created at line 87
     Summary:
 	inferred  10 Comparator(s).
-	inferred   4 Multiplexer(s).
+	inferred   5 Multiplexer(s).
 Unit <hazard> synthesized.
 
 Synthesizing Unit <pff_2>.
@@ -469,14 +493,72 @@ WARNING:Xst:647 - Input <d_exc> is never used. This port will be preserved and l
 WARNING:Xst:647 - Input <e_exc> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <m_exc> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <m_exc_final> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <stall_f> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Summary:
-	inferred   1 Multiplexer(s).
+	inferred   2 Multiplexer(s).
 Unit <handler> synthesized.
+
+Synthesizing Unit <mmu>.
+    Related source file is "/home/a-l-r/co/src/src/datapath/mmu.v".
+WARNING:Xst:647 - Input <cp0_entrylo0<5:3>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <cp0_entrylo0<31:26>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <cp0_entrylo1<5:3>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <cp0_entrylo1<31:26>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 128-bit register for signal <n0073[127:0]>.
+    Found 128-bit register for signal <n0074[127:0]>.
+    Found 128-bit register for signal <n0072[127:0]>.
+    Found 32-bit 4-to-1 multiplexer for signal <mmu_entryhi> created at line 151.
+    Found 32-bit 4-to-1 multiplexer for signal <mmu_entrylo0> created at line 152.
+    Found 32-bit 4-to-1 multiplexer for signal <mmu_entrylo1> created at line 153.
+    Found 32-bit comparator lessequal for signal <n0027> created at line 303
+    Found 32-bit comparator lessequal for signal <n0029> created at line 304
+    Found 32-bit comparator lessequal for signal <n0041> created at line 316
+    Found 32-bit comparator lessequal for signal <n0043> created at line 317
+    Summary:
+	inferred 384 D-type flip-flop(s).
+	inferred   4 Comparator(s).
+	inferred  28 Multiplexer(s).
+Unit <mmu> synthesized.
+
+Synthesizing Unit <tlb_hit_checker>.
+    Related source file is "/home/a-l-r/co/src/src/datapath/mmu.v".
+WARNING:Xst:647 - Input <vaddr<11:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <cp0_entryhi<31:8>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <entryhi<31:27>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <entrylo1<31:3>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <entrylo0<31:3>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 19-bit comparator equal for signal <vaddr[31]_entryhi[26]_equal_1_o> created at line 15
+    Found 8-bit comparator equal for signal <entryhi[7]_cp0_entryhi[7]_equal_2_o> created at line 17
+    Summary:
+	inferred   2 Comparator(s).
+Unit <tlb_hit_checker> synthesized.
+
+Synthesizing Unit <paddr_translator>.
+    Related source file is "/home/a-l-r/co/src/src/datapath/mmu.v".
+WARNING:Xst:647 - Input <vaddr<31:13>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <entryhi> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <entrylo1<5:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <entrylo1<31:26>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <entrylo0<5:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <entrylo0<31:26>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Summary:
+	inferred   2 Multiplexer(s).
+Unit <paddr_translator> synthesized.
+
+Synthesizing Unit <tlb_hit_cp0_checker>.
+    Related source file is "/home/a-l-r/co/src/src/datapath/mmu.v".
+WARNING:Xst:647 - Input <cp0_entryhi<31:27>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <entryhi<31:27>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 19-bit comparator equal for signal <cp0_entryhi[26]_entryhi[26]_equal_1_o> created at line 60
+    Found 8-bit comparator equal for signal <cp0_entryhi[7]_entryhi[7]_equal_2_o> created at line 61
+    Summary:
+	inferred   2 Comparator(s).
+Unit <tlb_hit_cp0_checker> synthesized.
 
 Synthesizing Unit <npc>.
     Related source file is "/home/a-l-r/co/src/src/datapath/npc.v".
     Found 32-bit adder for signal <b_target> created at line 29.
-    Found 32-bit adder for signal <base[31]_GND_14_o_add_31_OUT> created at line 46.
+    Found 32-bit adder for signal <base[31]_GND_18_o_add_31_OUT> created at line 46.
     Summary:
 	inferred   2 Adder/Subtractor(s).
 	inferred  15 Multiplexer(s).
@@ -492,9 +574,9 @@ Unit <pc> synthesized.
 Synthesizing Unit <im>.
     Related source file is "/home/a-l-r/co/src/src/datapath/im.v".
 WARNING:Xst:647 - Input <enable> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 32-bit subtractor for signal <addr[31]_GND_16_o_sub_5_OUT> created at line 36.
-    Found 32-bit comparator lessequal for signal <n0000> created at line 31
-    Found 32-bit comparator lessequal for signal <n0002> created at line 32
+    Found 32-bit subtractor for signal <addr[31]_GND_20_o_sub_5_OUT> created at line 45.
+    Found 32-bit comparator lessequal for signal <n0000> created at line 40
+    Found 32-bit comparator lessequal for signal <n0002> created at line 41
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred   2 Comparator(s).
@@ -533,8 +615,8 @@ Synthesizing Unit <cmp>.
     Found 32-bit comparator greater for signal <reg1[31]_reg2[31]_LessThan_2_o> created at line 14
     Found 32-bit comparator greater for signal <reg1[31]_reg2[31]_LessThan_5_o> created at line 18
     Found 32-bit comparator greater for signal <reg2[31]_reg1[31]_LessThan_6_o> created at line 19
-    Found 32-bit comparator greater for signal <reg2[31]_GND_21_o_LessThan_9_o> created at line 23
-    Found 32-bit comparator greater for signal <GND_21_o_reg2[31]_LessThan_10_o> created at line 24
+    Found 32-bit comparator greater for signal <reg2[31]_GND_25_o_LessThan_9_o> created at line 23
+    Found 32-bit comparator greater for signal <GND_25_o_reg2[31]_LessThan_10_o> created at line 24
     Summary:
 	inferred   6 Comparator(s).
 	inferred   3 Multiplexer(s).
@@ -543,7 +625,7 @@ Unit <cmp> synthesized.
 Synthesizing Unit <alu>.
     Related source file is "/home/a-l-r/co/src/src/datapath/alu.v".
     Found 32-bit subtractor for signal <num1[31]_num2[31]_sub_174_OUT> created at line 131.
-    Found 33-bit subtractor for signal <GND_22_o_GND_22_o_sub_215_OUT> created at line 153.
+    Found 33-bit subtractor for signal <GND_26_o_GND_26_o_sub_215_OUT> created at line 153.
     Found 33-bit subtractor for signal <num1[31]_num2[31]_sub_221_OUT> created at line 160.
     Found 33-bit adder for signal <n1375> created at line 130.
     Found 33-bit adder for signal <num1[31]_num2[31]_add_218_OUT> created at line 159.
@@ -579,9 +661,9 @@ Synthesizing Unit <dm>.
     Related source file is "/home/a-l-r/co/src/src/datapath/dm.v".
 WARNING:Xst:647 - Input <curr_pc> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 32-bit 4-to-1 multiplexer for signal <GND_23_o_dm_ipcore_read_result[7]_mux_50_OUT> created at line 149.
-    Found 32-bit 4-to-1 multiplexer for signal <GND_23_o_GND_23_o_mux_59_OUT> created at line 156.
-    Found 32-bit 8-to-1 multiplexer for signal <GND_23_o_dm_ipcore_read_result[31]_mux_64_OUT> created at line 142.
+    Found 32-bit 4-to-1 multiplexer for signal <GND_27_o_dm_ipcore_read_result[7]_mux_50_OUT> created at line 149.
+    Found 32-bit 4-to-1 multiplexer for signal <GND_27_o_GND_27_o_mux_59_OUT> created at line 156.
+    Found 32-bit 8-to-1 multiplexer for signal <GND_27_o_dm_ipcore_read_result[31]_mux_64_OUT> created at line 142.
     Found 32-bit comparator lessequal for signal <n0003> created at line 45
     Summary:
 	inferred   1 Comparator(s).
@@ -590,6 +672,11 @@ Unit <dm> synthesized.
 
 Synthesizing Unit <cp0>.
     Related source file is "/home/a-l-r/co/src/src/datapath/cp0.v".
+WARNING:Xst:647 - Input <mmu_entryhi<31:27>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <mmu_entrylo0<5:3>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <mmu_entrylo0<31:26>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <mmu_entrylo1<5:3>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <mmu_entrylo1<31:26>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 1-bit register for signal <sr<30>>.
     Found 1-bit register for signal <sr<29>>.
     Found 1-bit register for signal <sr<28>>.
@@ -654,24 +741,59 @@ Synthesizing Unit <cp0>.
     Found 1-bit register for signal <cause<1>>.
     Found 1-bit register for signal <cause<0>>.
     Found 32-bit register for signal <epc_i>.
+    Found 32-bit register for signal <entryhi>.
+    Found 32-bit register for signal <entrylo0>.
+    Found 32-bit register for signal <entrylo1>.
+    Found 1-bit register for signal <index<31>>.
+    Found 1-bit register for signal <index<30>>.
+    Found 1-bit register for signal <index<29>>.
+    Found 1-bit register for signal <index<28>>.
+    Found 1-bit register for signal <index<27>>.
+    Found 1-bit register for signal <index<26>>.
+    Found 1-bit register for signal <index<25>>.
+    Found 1-bit register for signal <index<24>>.
+    Found 1-bit register for signal <index<23>>.
+    Found 1-bit register for signal <index<22>>.
+    Found 1-bit register for signal <index<21>>.
+    Found 1-bit register for signal <index<20>>.
+    Found 1-bit register for signal <index<19>>.
+    Found 1-bit register for signal <index<18>>.
+    Found 1-bit register for signal <index<17>>.
+    Found 1-bit register for signal <index<16>>.
+    Found 1-bit register for signal <index<15>>.
+    Found 1-bit register for signal <index<14>>.
+    Found 1-bit register for signal <index<13>>.
+    Found 1-bit register for signal <index<12>>.
+    Found 1-bit register for signal <index<11>>.
+    Found 1-bit register for signal <index<10>>.
+    Found 1-bit register for signal <index<9>>.
+    Found 1-bit register for signal <index<8>>.
+    Found 1-bit register for signal <index<7>>.
+    Found 1-bit register for signal <index<6>>.
+    Found 1-bit register for signal <index<5>>.
+    Found 1-bit register for signal <index<4>>.
+    Found 1-bit register for signal <index<3>>.
+    Found 1-bit register for signal <index<2>>.
+    Found 1-bit register for signal <index<1>>.
+    Found 1-bit register for signal <index<0>>.
     Found 1-bit register for signal <sr<31>>.
-    Found 32-bit subtractor for signal <curr_pc[31]_GND_25_o_sub_25_OUT> created at line 82.
+    Found 32-bit subtractor for signal <curr_pc[31]_GND_29_o_sub_37_OUT> created at line 123.
     Summary:
 	inferred   1 Adder/Subtractor(s).
-	inferred  96 D-type flip-flop(s).
-	inferred   6 Multiplexer(s).
+	inferred 224 D-type flip-flop(s).
+	inferred  21 Multiplexer(s).
 Unit <cp0> synthesized.
 
 Synthesizing Unit <bridge>.
     Related source file is "/home/a-l-r/co/src/src/bridge/bridge.v".
 WARNING:Xst:647 - Input <clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 32-bit subtractor for signal <addr[31]_GND_26_o_sub_33_OUT> created at line 103.
-    Found 32-bit subtractor for signal <addr[31]_GND_26_o_sub_41_OUT> created at line 113.
-    Found 32-bit subtractor for signal <addr[31]_GND_26_o_sub_49_OUT> created at line 123.
-    Found 32-bit subtractor for signal <addr[31]_GND_26_o_sub_57_OUT> created at line 133.
-    Found 32-bit subtractor for signal <addr[31]_GND_26_o_sub_65_OUT> created at line 143.
-    Found 32-bit subtractor for signal <addr[31]_GND_26_o_sub_73_OUT> created at line 153.
+    Found 32-bit subtractor for signal <addr[31]_GND_30_o_sub_33_OUT> created at line 103.
+    Found 32-bit subtractor for signal <addr[31]_GND_30_o_sub_41_OUT> created at line 113.
+    Found 32-bit subtractor for signal <addr[31]_GND_30_o_sub_49_OUT> created at line 123.
+    Found 32-bit subtractor for signal <addr[31]_GND_30_o_sub_57_OUT> created at line 133.
+    Found 32-bit subtractor for signal <addr[31]_GND_30_o_sub_65_OUT> created at line 143.
+    Found 32-bit subtractor for signal <addr[31]_GND_30_o_sub_73_OUT> created at line 153.
     Found 32-bit 7-to-1 multiplexer for signal <_n0130> created at line 14.
     Found 32-bit comparator lessequal for signal <n0000> created at line 57
     Found 32-bit comparator lessequal for signal <n0002> created at line 57
@@ -714,9 +836,9 @@ Synthesizing Unit <timer>.
     | Encoding           | auto                                           |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-    Found 32-bit subtractor for signal <count[31]_GND_27_o_sub_20_OUT> created at line 89.
+    Found 32-bit subtractor for signal <count[31]_GND_31_o_sub_20_OUT> created at line 89.
     Found 32-bit 4-to-1 multiplexer for signal <read_result> created at line 17.
-    Found 32-bit comparator greater for signal <GND_27_o_count[31]_LessThan_19_o> created at line 88
+    Found 32-bit comparator greater for signal <GND_31_o_count[31]_LessThan_19_o> created at line 88
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred  69 D-type flip-flop(s).
@@ -758,9 +880,9 @@ Synthesizing Unit <rx_unit>.
     Found 8-bit register for signal <byte>.
     Found 1-bit register for signal <clk_rf_av>.
     Found 1-bit register for signal <rf_av>.
-    Found 3-bit subtractor for signal <GND_30_o_GND_30_o_sub_8_OUT<2:0>> created at line 71.
-    Found 3-bit subtractor for signal <GND_30_o_GND_30_o_sub_15_OUT<2:0>> created at line 82.
-    Found 3-bit 7-to-1 multiplexer for signal <fsm[2]_GND_30_o_wide_mux_16_OUT> created at line 54.
+    Found 3-bit subtractor for signal <GND_34_o_GND_34_o_sub_8_OUT<2:0>> created at line 71.
+    Found 3-bit subtractor for signal <GND_34_o_GND_34_o_sub_15_OUT<2:0>> created at line 82.
+    Found 3-bit 7-to-1 multiplexer for signal <fsm[2]_GND_34_o_wide_mux_16_OUT> created at line 54.
     Summary:
 	inferred   2 Adder/Subtractor(s).
 	inferred  19 D-type flip-flop(s).
@@ -779,7 +901,7 @@ Synthesizing Unit <ctrl_shift>.
         SHIFT = 1
     Found 4-bit register for signal <cnt_tx>.
     Found 1-bit register for signal <fsm>.
-    Found 4-bit subtractor for signal <GND_32_o_GND_32_o_sub_6_OUT<3:0>> created at line 79.
+    Found 4-bit subtractor for signal <GND_36_o_GND_36_o_sub_6_OUT<3:0>> created at line 79.
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred   5 D-type flip-flop(s).
@@ -815,7 +937,7 @@ Synthesizing Unit <counter>.
         size_cnt = 16
     Found 16-bit register for signal <cnt>.
     Found 1-bit register for signal <q>.
-    Found 16-bit subtractor for signal <GND_37_o_GND_37_o_sub_2_OUT<15:0>> created at line 63.
+    Found 16-bit subtractor for signal <GND_41_o_GND_41_o_sub_2_OUT<15:0>> created at line 63.
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred  17 D-type flip-flop(s).
@@ -861,7 +983,7 @@ Synthesizing Unit <nixie>.
     | Encoding           | auto                                           |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-    Found 32-bit subtractor for signal <ctr[31]_GND_41_o_sub_8_OUT> created at line 77.
+    Found 32-bit subtractor for signal <ctr[31]_GND_45_o_sub_8_OUT> created at line 77.
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred  72 D-type flip-flop(s).
@@ -880,9 +1002,12 @@ Synthesizing Unit <buttons>.
 WARNING:Xst:647 - Input <addr> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <write_data> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <write_enable> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 1-bit register for signal <irq_reg>.
     Found 8-bit register for signal <stored>.
+    Found 8-bit comparator not equal for signal <n0004> created at line 30
     Summary:
-	inferred   8 D-type flip-flop(s).
+	inferred   9 D-type flip-flop(s).
+	inferred   1 Comparator(s).
 Unit <buttons> synthesized.
 
 =========================================================================
@@ -901,27 +1026,31 @@ Macro Statistics
  33-bit adder                                          : 1
  33-bit addsub                                         : 2
  4-bit subtractor                                      : 1
-# Registers                                            : 136
- 1-bit register                                        : 86
+# Registers                                            : 144
+ 1-bit register                                        : 87
+ 128-bit register                                      : 3
  16-bit register                                       : 4
  2-bit register                                        : 1
  3-bit register                                        : 3
- 32-bit register                                       : 23
+ 32-bit register                                       : 27
  4-bit register                                        : 1
  5-bit register                                        : 12
  64-bit register                                       : 1
  8-bit register                                        : 4
  992-bit register                                      : 1
-# Comparators                                          : 48
+# Comparators                                          : 77
  1-bit comparator not equal                            : 1
+ 19-bit comparator equal                               : 12
  3-bit comparator greater                              : 5
  32-bit comparator equal                               : 1
  32-bit comparator greater                             : 10
- 32-bit comparator lessequal                           : 15
+ 32-bit comparator lessequal                           : 19
  5-bit comparator equal                                : 16
-# Multiplexers                                         : 623
+ 8-bit comparator equal                                : 12
+ 8-bit comparator not equal                            : 1
+# Multiplexers                                         : 702
  1-bit 17-to-1 multiplexer                             : 1
- 1-bit 2-to-1 multiplexer                              : 164
+ 1-bit 2-to-1 multiplexer                              : 166
  1-bit 21-to-1 multiplexer                             : 2
  1-bit 22-to-1 multiplexer                             : 2
  1-bit 24-to-1 multiplexer                             : 2
@@ -930,21 +1059,22 @@ Macro Statistics
  1-bit 29-to-1 multiplexer                             : 2
  1-bit 31-to-1 multiplexer                             : 2
  1-bit 32-to-1 multiplexer                             : 1
- 10-bit 2-to-1 multiplexer                             : 188
+ 10-bit 2-to-1 multiplexer                             : 200
  16-bit 2-to-1 multiplexer                             : 2
  2-bit 2-to-1 multiplexer                              : 5
- 3-bit 2-to-1 multiplexer                              : 27
+ 20-bit 2-to-1 multiplexer                             : 16
+ 3-bit 2-to-1 multiplexer                              : 30
  3-bit 7-to-1 multiplexer                              : 1
- 32-bit 2-to-1 multiplexer                             : 98
+ 32-bit 2-to-1 multiplexer                             : 123
  32-bit 31-to-1 multiplexer                            : 2
  32-bit 32-to-1 multiplexer                            : 2
- 32-bit 4-to-1 multiplexer                             : 5
+ 32-bit 4-to-1 multiplexer                             : 8
  32-bit 7-to-1 multiplexer                             : 4
  32-bit 8-to-1 multiplexer                             : 1
- 33-bit 2-to-1 multiplexer                             : 19
+ 33-bit 2-to-1 multiplexer                             : 29
  39-bit 7-to-1 multiplexer                             : 1
- 4-bit 2-to-1 multiplexer                              : 62
- 5-bit 2-to-1 multiplexer                              : 24
+ 4-bit 2-to-1 multiplexer                              : 67
+ 5-bit 2-to-1 multiplexer                              : 27
  7-bit 2-to-1 multiplexer                              : 2
 # FSMs                                                 : 2
 # Xors                                                 : 1
@@ -967,57 +1097,56 @@ WARNING:Xst:1290 - Hierarchical block <w_reg1_> is unconnected in block <control
    It will be removed from the design.
 WARNING:Xst:1290 - Hierarchical block <w_reg2_> is unconnected in block <control>.
    It will be removed from the design.
-WARNING:Xst:1293 - FF/Latch <cause_27> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <cause_30> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <cause_29> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <cause_28> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <cause_26> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <cause_25> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <cause_27> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <cause_26> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <cause_22> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <cause_24> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <cause_23> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <cause_22> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <cause_21> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <cause_18> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <cause_20> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <cause_19> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <cause_17> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <cause_21> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <cause_20> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <cause_16> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <cause_18> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <cause_17> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <cause_7> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <cause_9> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <cause_8> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <cause_7> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <cause_1> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <cause_0> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <sr_31> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <cause_14> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <cause_15> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <cause_13> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <cause_12> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <sr_28> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <sr_30> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <sr_29> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <sr_28> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <sr_25> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <sr_27> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <sr_26> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <sr_25> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <sr_22> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <sr_24> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <sr_23> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <sr_19> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <sr_21> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <sr_20> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <sr_19> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <sr_16> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <sr_18> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <sr_17> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <sr_16> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <sr_7> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <sr_9> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <sr_8> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <sr_6> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <sr_5> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <sr_2> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <sr_4> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <sr_3> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <sr_2> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <cause_30> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <cause_28> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 
 Synthesizing (advanced) Unit <control>.
-INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n0592> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n0629> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
     -----------------------------------------------------------------------
     | ram_type           | Distributed                         |          |
     -----------------------------------------------------------------------
@@ -1028,7 +1157,7 @@ INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n0592> will be implemented on LUTs 
     |     diA            | connected to signal <GND>           |          |
     |     doA            | connected to internal node          |          |
     -----------------------------------------------------------------------
-INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n0595> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n0632> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
     -----------------------------------------------------------------------
     | ram_type           | Distributed                         |          |
     -----------------------------------------------------------------------
@@ -1039,7 +1168,7 @@ INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n0595> will be implemented on LUTs 
     |     diA            | connected to signal <GND>           |          |
     |     doA            | connected to internal node          |          |
     -----------------------------------------------------------------------
-INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n0598> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n0635> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
     -----------------------------------------------------------------------
     | ram_type           | Distributed                         |          |
     -----------------------------------------------------------------------
@@ -1086,18 +1215,21 @@ Macro Statistics
  3-bit down counter                                    : 1
  32-bit down counter                                   : 1
  4-bit down counter                                    : 1
-# Registers                                            : 1978
- Flip-Flops                                            : 1978
-# Comparators                                          : 48
+# Registers                                            : 2491
+ Flip-Flops                                            : 2491
+# Comparators                                          : 77
  1-bit comparator not equal                            : 1
+ 19-bit comparator equal                               : 12
  3-bit comparator greater                              : 5
  32-bit comparator equal                               : 1
  32-bit comparator greater                             : 10
- 32-bit comparator lessequal                           : 15
+ 32-bit comparator lessequal                           : 19
  5-bit comparator equal                                : 16
-# Multiplexers                                         : 761
+ 8-bit comparator equal                                : 12
+ 8-bit comparator not equal                            : 1
+# Multiplexers                                         : 809
  1-bit 17-to-1 multiplexer                             : 1
- 1-bit 2-to-1 multiplexer                              : 316
+ 1-bit 2-to-1 multiplexer                              : 286
  1-bit 21-to-1 multiplexer                             : 2
  1-bit 22-to-1 multiplexer                             : 2
  1-bit 24-to-1 multiplexer                             : 2
@@ -1106,20 +1238,21 @@ Macro Statistics
  1-bit 29-to-1 multiplexer                             : 2
  1-bit 31-to-1 multiplexer                             : 2
  1-bit 32-to-1 multiplexer                             : 1
- 10-bit 2-to-1 multiplexer                             : 188
+ 10-bit 2-to-1 multiplexer                             : 200
  2-bit 2-to-1 multiplexer                              : 5
- 3-bit 2-to-1 multiplexer                              : 26
+ 20-bit 2-to-1 multiplexer                             : 16
+ 3-bit 2-to-1 multiplexer                              : 29
  3-bit 7-to-1 multiplexer                              : 1
- 32-bit 2-to-1 multiplexer                             : 93
+ 32-bit 2-to-1 multiplexer                             : 119
  32-bit 31-to-1 multiplexer                            : 2
  32-bit 32-to-1 multiplexer                            : 2
- 32-bit 4-to-1 multiplexer                             : 5
+ 32-bit 4-to-1 multiplexer                             : 8
  32-bit 7-to-1 multiplexer                             : 4
  32-bit 8-to-1 multiplexer                             : 1
- 33-bit 2-to-1 multiplexer                             : 19
+ 33-bit 2-to-1 multiplexer                             : 29
  39-bit 7-to-1 multiplexer                             : 1
- 4-bit 2-to-1 multiplexer                              : 56
- 5-bit 2-to-1 multiplexer                              : 24
+ 4-bit 2-to-1 multiplexer                              : 61
+ 5-bit 2-to-1 multiplexer                              : 27
  7-bit 2-to-1 multiplexer                              : 2
 # FSMs                                                 : 2
 # Xors                                                 : 1
@@ -1130,50 +1263,50 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-WARNING:Xst:1293 - FF/Latch <sr_2> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_30> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_27> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_29> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <sr_3> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_28> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_26> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_30> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_29> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_25> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_27> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_26> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_22> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_24> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_23> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_22> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_21> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_18> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_20> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_19> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_17> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_21> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_20> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_16> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_18> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_17> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_7> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_9> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_8> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_7> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_1> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <cause_0> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_31> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_28> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_30> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_29> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_28> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_25> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_27> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_26> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_25> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_22> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_24> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_23> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_19> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_21> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_20> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_19> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_16> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_18> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_17> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_16> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_7> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_9> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_8> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_6> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_5> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_2> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_4> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <sr_3> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 Analyzing FSM <MFsm> for best encoding.
 Optimizing FSM <timer/FSM_0> on signal <state[1:2]> with sequential encoding.
 -------------------
@@ -1202,6 +1335,98 @@ WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <d_exc_/data_4> has 
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <d_exc_/data_3> has a constant value of 0 in block <control>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <d_exc_/data_1> has a constant value of 0 in block <control>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <d_exc_/data_0> has a constant value of 0 in block <control>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <entrylo1_0_124> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_123> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_122> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_101> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_100> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_99> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_95> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_94> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_93> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_92> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_91> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_90> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_69> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_68> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_67> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_63> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_62> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_61> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_60> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_59> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_58> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_37> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_36> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_0_127> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_0_126> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_0_125> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_0_124> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_0_123> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_0_95> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_0_94> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_0_93> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_0_92> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_0_91> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_0_63> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_0_62> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_0_61> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_0_60> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_0_59> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_0_31> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_0_30> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_0_29> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_0_28> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_0_27> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_127> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_126> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_125> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_91> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_90> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_69> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_68> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_67> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_63> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_62> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_61> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_60> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_59> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_58> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_37> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_36> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_35> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_31> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_30> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_29> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_28> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_27> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_26> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_5> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_4> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_3> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_35> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_31> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_30> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_29> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_28> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_27> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_26> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_5> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_4> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_0_3> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_127> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_126> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_125> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_124> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_123> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_122> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_101> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_100> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_99> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_95> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_94> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_93> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_0_92> has a constant value of 0 in block <mmu>. This FF/Latch will be trimmed during the optimization process.
 INFO:Xst:1901 - Instance clk_ipcore/pll_base_inst in unit clk_ipcore/pll_base_inst of type PLL_BASE has been replaced by PLL_ADV
 INFO:Xst:2261 - The FF/Latch <e_exc_/data_3> in Unit <control> is equivalent to the following FF/Latch, which will be removed : <e_exc_/data_1> 
 WARNING:Xst:3002 - This design contains one or more registers/latches that are directly
@@ -1254,6 +1479,58 @@ Optimizing unit <bridge> ...
 Optimizing unit <cpu> ...
 
 Optimizing unit <cp0> ...
+WARNING:Xst:1293 - FF/Latch <index_5> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_6> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_7> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_8> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_9> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_10> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_11> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_12> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_13> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_14> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_15> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_16> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_17> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_18> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_19> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_20> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_21> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_22> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_23> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_24> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_25> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_26> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_27> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_28> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_29> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_30> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_27> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_28> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_29> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_30> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entryhi_31> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_3> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_4> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_5> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_26> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_27> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_28> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_29> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_30> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo0_31> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_3> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_4> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_5> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_26> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_27> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_28> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_29> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_30> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <entrylo1_31> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_2> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_3> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <index_4> has a constant value of 0 in block <cp0>. This FF/Latch will be trimmed during the optimization process.
 
 Optimizing unit <control> ...
 
@@ -1262,6 +1539,10 @@ Optimizing unit <kind> ...
 Optimizing unit <forward> ...
 
 Optimizing unit <hazard> ...
+
+Optimizing unit <mmu> ...
+
+Optimizing unit <tlb_hit_checker> ...
 
 Optimizing unit <rf> ...
 
@@ -1283,7 +1564,6 @@ Optimizing unit <nixie> ...
 WARNING:Xst:1293 - FF/Latch <cpu/cp0/cause_6> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <cpu/cp0/cause_12> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <cpu/cp0/cause_13> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <cpu/cp0/cause_15> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <cpu/cp0/cause_14> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <cpu/control/m_reg1_/data_0> of sequential type is unconnected in block <mips>.
 WARNING:Xst:2677 - Node <cpu/control/m_reg1_/data_1> of sequential type is unconnected in block <mips>.
@@ -1317,51 +1597,64 @@ WARNING:Xst:1293 - FF/Latch <nixie/ctr_28> has a constant value of 0 in block <m
 WARNING:Xst:1293 - FF/Latch <nixie/ctr_29> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <nixie/ctr_30> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <nixie/ctr_31> has a constant value of 0 in block <mips>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <cpu/mmu/entrylo1_0_0> in Unit <mips> is equivalent to the following FF/Latch, which will be removed : <cpu/mmu/entrylo0_0_0> 
+INFO:Xst:2261 - The FF/Latch <cpu/mmu/entrylo1_0_32> in Unit <mips> is equivalent to the following FF/Latch, which will be removed : <cpu/mmu/entrylo0_0_32> 
+INFO:Xst:2261 - The FF/Latch <cpu/mmu/entrylo1_0_64> in Unit <mips> is equivalent to the following FF/Latch, which will be removed : <cpu/mmu/entrylo0_0_64> 
+INFO:Xst:2261 - The FF/Latch <cpu/mmu/entrylo1_0_96> in Unit <mips> is equivalent to the following FF/Latch, which will be removed : <cpu/mmu/entrylo0_0_96> 
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block mips, actual ratio is 9.
+Found area constraint ratio of 100 (+ 5) on block mips, actual ratio is 11.
 WARNING:Xst:1426 - The value init of the FF/Latch uart_shim/uart/U_TX_UNIT/U_CTRL_SHFT/cnt_tx_3_LD hinder the constant cleaning in the block mips.
    You should achieve better results by setting this init to 1.
-FlipFlop cpu/d_im/data_0 has been replicated 2 time(s)
-FlipFlop cpu/d_im/data_1 has been replicated 3 time(s)
+FlipFlop cpu/d_im/data_0 has been replicated 1 time(s)
+FlipFlop cpu/d_im/data_1 has been replicated 2 time(s)
 FlipFlop cpu/d_im/data_15 has been replicated 1 time(s)
-FlipFlop cpu/d_im/data_16 has been replicated 2 time(s)
-FlipFlop cpu/d_im/data_17 has been replicated 2 time(s)
-FlipFlop cpu/d_im/data_18 has been replicated 1 time(s)
+FlipFlop cpu/d_im/data_16 has been replicated 1 time(s)
+FlipFlop cpu/d_im/data_17 has been replicated 1 time(s)
 FlipFlop cpu/d_im/data_19 has been replicated 1 time(s)
-FlipFlop cpu/d_im/data_2 has been replicated 4 time(s)
+FlipFlop cpu/d_im/data_2 has been replicated 1 time(s)
 FlipFlop cpu/d_im/data_20 has been replicated 1 time(s)
-FlipFlop cpu/d_im/data_26 has been replicated 4 time(s)
+FlipFlop cpu/d_im/data_26 has been replicated 2 time(s)
 FlipFlop cpu/d_im/data_27 has been replicated 2 time(s)
 FlipFlop cpu/d_im/data_28 has been replicated 2 time(s)
 FlipFlop cpu/d_im/data_29 has been replicated 2 time(s)
-FlipFlop cpu/d_im/data_3 has been replicated 4 time(s)
-FlipFlop cpu/d_im/data_30 has been replicated 4 time(s)
-FlipFlop cpu/d_im/data_31 has been replicated 3 time(s)
-FlipFlop cpu/d_im/data_4 has been replicated 5 time(s)
-FlipFlop cpu/d_im/data_5 has been replicated 3 time(s)
+FlipFlop cpu/d_im/data_3 has been replicated 1 time(s)
+FlipFlop cpu/d_im/data_30 has been replicated 2 time(s)
+FlipFlop cpu/d_im/data_31 has been replicated 1 time(s)
+FlipFlop cpu/d_im/data_4 has been replicated 1 time(s)
+FlipFlop cpu/d_im/data_5 has been replicated 1 time(s)
+FlipFlop cpu/e_im/data_0 has been replicated 1 time(s)
+FlipFlop cpu/e_im/data_1 has been replicated 1 time(s)
 FlipFlop cpu/e_im/data_26 has been replicated 1 time(s)
 FlipFlop cpu/e_im/data_27 has been replicated 1 time(s)
 FlipFlop cpu/e_im/data_28 has been replicated 1 time(s)
 FlipFlop cpu/e_im/data_29 has been replicated 1 time(s)
+FlipFlop cpu/e_im/data_3 has been replicated 1 time(s)
 FlipFlop cpu/e_im/data_30 has been replicated 1 time(s)
 FlipFlop cpu/e_im/data_31 has been replicated 1 time(s)
+FlipFlop cpu/e_im/data_4 has been replicated 1 time(s)
+FlipFlop cpu/e_im/data_5 has been replicated 1 time(s)
 FlipFlop cpu/e_im/data_6 has been replicated 1 time(s)
 FlipFlop cpu/e_im/data_7 has been replicated 1 time(s)
-FlipFlop cpu/m_alu/data_3 has been replicated 1 time(s)
+FlipFlop cpu/e_im/data_8 has been replicated 1 time(s)
+FlipFlop cpu/m_im/data_0 has been replicated 4 time(s)
+FlipFlop cpu/m_im/data_1 has been replicated 3 time(s)
+FlipFlop cpu/m_im/data_11 has been replicated 1 time(s)
+FlipFlop cpu/m_im/data_12 has been replicated 1 time(s)
+FlipFlop cpu/m_im/data_13 has been replicated 1 time(s)
+FlipFlop cpu/m_im/data_14 has been replicated 1 time(s)
+FlipFlop cpu/m_im/data_15 has been replicated 1 time(s)
+FlipFlop cpu/m_im/data_2 has been replicated 1 time(s)
 FlipFlop cpu/m_im/data_26 has been replicated 2 time(s)
-FlipFlop cpu/m_im/data_27 has been replicated 1 time(s)
-FlipFlop cpu/m_im/data_28 has been replicated 1 time(s)
-FlipFlop cpu/m_im/data_29 has been replicated 2 time(s)
-FlipFlop cpu/m_im/data_30 has been replicated 1 time(s)
-FlipFlop cpu/m_im/data_31 has been replicated 1 time(s)
-FlipFlop cpu/w_im/data_26 has been replicated 1 time(s)
-FlipFlop cpu/w_im/data_27 has been replicated 2 time(s)
-FlipFlop cpu/w_im/data_28 has been replicated 1 time(s)
-FlipFlop cpu/w_im/data_29 has been replicated 1 time(s)
-FlipFlop cpu/w_im/data_30 has been replicated 1 time(s)
-FlipFlop cpu/w_im/data_31 has been replicated 2 time(s)
+FlipFlop cpu/m_im/data_27 has been replicated 3 time(s)
+FlipFlop cpu/m_im/data_28 has been replicated 3 time(s)
+FlipFlop cpu/m_im/data_29 has been replicated 3 time(s)
+FlipFlop cpu/m_im/data_3 has been replicated 2 time(s)
+FlipFlop cpu/m_im/data_30 has been replicated 4 time(s)
+FlipFlop cpu/m_im/data_31 has been replicated 3 time(s)
+FlipFlop cpu/m_im/data_4 has been replicated 1 time(s)
+FlipFlop cpu/m_im/data_5 has been replicated 2 time(s)
 
 Final Macro Processing ...
 
@@ -1369,8 +1662,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 2039
- Flip-Flops                                            : 2039
+# Registers                                            : 2407
+ Flip-Flops                                            : 2407
 
 =========================================================================
 
@@ -1393,29 +1686,29 @@ Top Level Output File Name         : mips.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 6791
+# BELS                             : 8733
 #      GND                         : 3
-#      INV                         : 190
-#      LUT1                        : 121
-#      LUT2                        : 158
-#      LUT3                        : 1373
-#      LUT4                        : 481
-#      LUT5                        : 953
-#      LUT6                        : 2469
-#      MUXCY                       : 522
-#      MUXF7                       : 191
+#      INV                         : 187
+#      LUT1                        : 120
+#      LUT2                        : 173
+#      LUT3                        : 1390
+#      LUT4                        : 1314
+#      LUT5                        : 1033
+#      LUT6                        : 3405
+#      MUXCY                       : 628
+#      MUXF7                       : 151
 #      VCC                         : 3
-#      XORCY                       : 327
-# FlipFlops/Latches                : 2044
-#      FD                          : 97
+#      XORCY                       : 326
+# FlipFlops/Latches                : 2412
+#      FD                          : 635
 #      FDC                         : 35
 #      FDCE                        : 51
 #      FDE                         : 6
 #      FDPE                        : 21
-#      FDR                         : 86
-#      FDRE                        : 1741
+#      FDR                         : 120
+#      FDRE                        : 1528
 #      FDS                         : 4
-#      FDSE                        : 2
+#      FDSE                        : 11
 #      LD                          : 1
 # RAMS                             : 32
 #      RAMB16BWER                  : 32
@@ -1435,16 +1728,16 @@ Selected Device : 6slx100fgg676-2
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:            2044  out of  126576     1%  
- Number of Slice LUTs:                 5745  out of  63288     9%  
-    Number used as Logic:              5745  out of  63288     9%  
+ Number of Slice Registers:            2412  out of  126576     1%  
+ Number of Slice LUTs:                 7622  out of  63288    12%  
+    Number used as Logic:              7622  out of  63288    12%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   6208
-   Number with an unused Flip Flop:    4164  out of   6208    67%  
-   Number with an unused LUT:           463  out of   6208     7%  
-   Number of fully used LUT-FF pairs:  1581  out of   6208    25%  
-   Number of unique control sets:        34
+ Number of LUT Flip Flop pairs used:   7779
+   Number with an unused Flip Flop:    5367  out of   7779    68%  
+   Number with an unused LUT:           157  out of   7779     2%  
+   Number of fully used LUT-FF pairs:  2255  out of   7779    28%  
+   Number of unique control sets:        26
 
 IO Utilization: 
  Number of IOs:                         141
@@ -1477,7 +1770,7 @@ Clock Information:
 ----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+-------+
 Clock Signal                            | Clock buffer(FF name)                                                                                                                        | Load  |
 ----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------+-------+
-clk_ipcore/pll_base_inst/CLKOUT0        | BUFG                                                                                                                                         | 2038  |
+clk_ipcore/pll_base_inst/CLKOUT0        | BUFG                                                                                                                                         | 2406  |
 uart_shim/uart/U_RX_UNIT/clk_rf_av      | NONE(uart_shim/uart/U_RX_UNIT/rf_av)                                                                                                         | 1     |
 clk_ipcore/pll_base_inst/CLKOUT1        | BUFG                                                                                                                                         | 36    |
 cpu/im/im_ipcore/N1                     | NONE(cpu/im/im_ipcore/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram)  | 16    |
@@ -1494,9 +1787,9 @@ Timing Summary:
 ---------------
 Speed Grade: -2
 
-   Minimum period: 22.022ns (Maximum Frequency: 45.410MHz)
-   Minimum input arrival time before clock: 6.314ns
-   Maximum output required time after clock: 8.291ns
+   Minimum period: 23.439ns (Maximum Frequency: 42.664MHz)
+   Minimum input arrival time before clock: 7.092ns
+   Maximum output required time after clock: 8.315ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -1505,63 +1798,50 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_ipcore/pll_base_inst/CLKOUT0'
-  Clock period: 22.022ns (frequency: 45.410MHz)
-  Total number of paths / destination ports: 32449715053 / 3831
+  Clock period: 23.439ns (frequency: 42.664MHz)
+  Total number of paths / destination ports: 123363800486 / 3954
 -------------------------------------------------------------------------
-Delay:               22.022ns (Levels of Logic = 32)
-  Source:            cpu/d_im/data_10 (FF)
+Delay:               23.439ns (Levels of Logic = 19)
+  Source:            cpu/m_im/data_23 (FF)
   Destination:       cpu/pc/saved_pc_31 (FF)
   Source Clock:      clk_ipcore/pll_base_inst/CLKOUT0 rising
   Destination Clock: clk_ipcore/pll_base_inst/CLKOUT0 rising
 
-  Data Path: cpu/d_im/data_10 to cpu/pc/saved_pc_31
+  Data Path: cpu/m_im/data_23 to cpu/pc/saved_pc_31
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               8   0.525   1.374  cpu/d_im/data_10 (cpu/d_im/data_10)
-     LUT5:I0->O           16   0.254   1.182  cpu/control/_dkind/cop0_instr[31]_AND_62_o11 (cpu/control/_dkind/cop0_instr[31]_AND_62_o1)
-     LUT6:I5->O            2   0.254   0.954  cpu/control/_dkind/cop0_instr[31]_AND_62_o3 (cpu/control/_dkind/cop0_instr[31]_AND_62_o)
-     LUT3:I0->O            3   0.235   0.766  cpu/control/_dkind/cop0_instr[10]_AND_59_o11 (cpu/control/_dkind/cop0_instr[10]_AND_59_o_mmx_out)
-     LUT6:I5->O            8   0.254   0.944  cpu/control/_dkind/Mmux_result87_SW0 (N148)
-     LUT6:I5->O            9   0.254   0.976  cpu/control/_dkind/Mmux_result88_1 (cpu/control/_dkind/Mmux_result88)
-     LUT5:I4->O            2   0.254   0.834  cpu/control/Mmux_d_reg2111_SW4 (N863)
-     LUT6:I4->O            6   0.250   0.984  cpu/control/forward/d_reg2[4]_GND_10_o_AND_92_o2 (cpu/control/forward/d_reg2[4]_GND_10_o_AND_92_o3)
-     LUT6:I4->O           17   0.250   1.209  cpu/control/forward/d_reg2[4]_GND_10_o_AND_92_o4_1 (cpu/control/forward/d_reg2[4]_GND_10_o_AND_92_o41)
-     LUT6:I5->O            7   0.254   0.910  cpu/control/forward/Mmux_cw_fm_d212 (cpu/control/forward/Mmux_cw_fm_d211)
-     LUT5:I4->O           17   0.254   1.209  cpu/control/forward/Mmux_cw_fm_d214_3 (cpu/control/forward/Mmux_cw_fm_d2142)
-     LUT6:I5->O            1   0.254   0.790  cpu/Mmux_d_rf_read_result221 (cpu/Mmux_d_rf_read_result22)
-     LUT6:I4->O           11   0.250   1.315  cpu/Mmux_d_rf_read_result224 (cpu/d_rf_read_result2<0>)
-     LUT4:I0->O            1   0.254   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_lut<0> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_lut<0>)
-     MUXCY:S->O            1   0.215   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<0> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<0>)
-     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<1> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<1>)
-     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<2> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<2>)
-     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<3> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<3>)
-     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<4> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<4>)
-     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<5> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<5>)
-     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<6> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<6>)
-     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<7> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<7>)
-     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<8> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<8>)
-     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<9> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<9>)
-     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<10> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<10>)
-     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<11> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<11>)
-     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<12> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<12>)
-     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<13> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<13>)
-     MUXCY:CI->O           1   0.023   0.000  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<14> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<14>)
-     MUXCY:CI->O           2   0.235   0.834  cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<15> (cpu/cmp/Mcompar_reg2[31]_reg1[31]_LessThan_6_o_cy<15>)
-     LUT6:I4->O           15   0.250   1.155  cpu/npc/Mmux_next_pc10011_1 (cpu/npc/Mmux_next_pc10011)
-     LUT6:I5->O           16   0.254   1.182  cpu/npc/Mmux_next_pc10231 (cpu/npc/Mmux_next_pc1023)
-     LUT4:I3->O            1   0.254   0.000  cpu/npc/Mmux_next_pc984 (cpu/f_npc_next_pc<31>)
-     FDRE:D                    0.074          cpu/pc/saved_pc_31
+     FD:C->Q               5   0.525   1.271  cpu/m_im/data_23 (cpu/m_im/data_23)
+     LUT5:I0->O            8   0.254   1.052  cpu/control/_mkind/rs_zero<25>1 (cpu/control/_mkind/rs_zero)
+     LUT6:I4->O            7   0.250   1.138  cpu/control/_mkind/r_rs_zero_AND_10_o11 (cpu/control/_mkind/r_rs_zero_AND_10_o1)
+     LUT6:I3->O            3   0.235   0.766  cpu/control/_mkind/Mmux_result1023_SW0 (N354)
+     LUT6:I5->O            6   0.254   0.876  cpu/control/_mkind/Mmux_result1023 (cpu/control/_mkind/Mmux_result102)
+     LUT6:I5->O            8   0.254   1.172  cpu/control/_mkind/Mmux_result91_1 (cpu/control/_mkind/Mmux_result91)
+     LUT6:I3->O           18   0.235   1.343  cpu/mmu/tlb_hit_checker_dm2/is_hit3_1 (cpu/mmu/tlb_hit_checker_dm2/is_hit3)
+     LUT6:I4->O            2   0.250   0.726  cpu/mmu/Mmux_n0063374 (cpu/mmu/Mmux_n0063373)
+     LUT6:I5->O           18   0.254   1.665  cpu/mmu/Mmux_n0063375 (cpu_addr<22>)
+     LUT5:I0->O            1   0.254   0.000  bridge/Mcompar_addr[31]_GND_30_o_LessThan_2_o_lut<4> (bridge/Mcompar_addr[31]_GND_30_o_LessThan_2_o_lut<4>)
+     MUXCY:S->O            1   0.215   0.000  bridge/Mcompar_addr[31]_GND_30_o_LessThan_2_o_cy<4> (bridge/Mcompar_addr[31]_GND_30_o_LessThan_2_o_cy<4>)
+     MUXCY:CI->O          42   0.235   1.687  bridge/Mcompar_addr[31]_GND_30_o_LessThan_2_o_cy<5> (bridge/addr[31]_GND_30_o_LessThan_2_o)
+     LUT2:I1->O            4   0.254   0.804  bridge/GND_30_o_addr[31]_AND_297_o1_1 (bridge/GND_30_o_addr[31]_AND_297_o1)
+     LUT6:I5->O            1   0.254   0.958  bridge/Mmux_curr_dev11_1 (bridge/Mmux_curr_dev11)
+     LUT6:I2->O            9   0.254   0.976  bridge/valid1 (bridge/valid)
+     LUT6:I5->O            3   0.254   0.874  cpu/control/Mmux_m_exc_final31_2 (cpu/control/Mmux_m_exc_final31_1)
+     LUT6:I4->O           17   0.250   1.437  cpu/control/handler/Mmux_cw_f_npc_jump_mode3 (cpu/cw_f_npc_jump_mode<2>)
+     LUT6:I3->O            1   0.235   0.000  cpu/npc/Mmux_next_pc10214_F (N2460)
+     MUXF7:I0->O          30   0.163   1.487  cpu/npc/Mmux_next_pc10214 (cpu/npc/Mmux_next_pc1021)
+     LUT6:I5->O            1   0.254   0.000  cpu/npc/Mmux_next_pc944 (cpu/f_npc_next_pc<30>)
+     FDRE:D                    0.074          cpu/pc/saved_pc_30
     ----------------------------------------
-    Total                     22.022ns (5.404ns logic, 16.618ns route)
-                                       (24.5% logic, 75.5% route)
+    Total                     23.439ns (5.207ns logic, 18.232ns route)
+                                       (22.2% logic, 77.8% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'uart_shim/uart/U_RX_UNIT/clk_rf_av'
-  Clock period: 7.867ns (frequency: 127.118MHz)
+  Clock period: 7.628ns (frequency: 131.094MHz)
   Total number of paths / destination ports: 1 / 1
 -------------------------------------------------------------------------
-Delay:               7.867ns (Levels of Logic = 4)
+Delay:               7.628ns (Levels of Logic = 4)
   Source:            uart_shim/uart/U_RX_UNIT/rf_av (FF)
   Destination:       uart_shim/uart/U_RX_UNIT/rf_av (FF)
   Source Clock:      uart_shim/uart/U_RX_UNIT/clk_rf_av rising
@@ -1571,41 +1851,43 @@ Delay:               7.867ns (Levels of Logic = 4)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDC:C->Q              3   0.525   0.874  uart_shim/uart/U_RX_UNIT/rf_av (uart_shim/uart/U_RX_UNIT/rf_av)
-     LUT6:I4->O            9   0.250   1.204  cpu/cp0/have_irq1 (cpu/cp0/have_irq)
-     LUT5:I2->O           97   0.235   2.186  cpu/cp0/_n0334_inv11 (cpu/m_cp0_have2handle)
-     LUT6:I5->O            5   0.254   0.949  bridge/uart_write_enable1 (uart_write_enable)
-     LUT2:I0->O            1   0.250   0.681  uart_shim/uart/U_RX_UNIT/rst_over_read_OR_299_o1 (uart_shim/uart/U_RX_UNIT/rst_over_read_OR_299_o)
+     FDC:C->Q              3   0.525   0.766  uart_shim/uart/U_RX_UNIT/rf_av (uart_shim/uart/U_RX_UNIT/rf_av)
+     LUT5:I4->O            4   0.254   0.804  cpu/cp0/have_irq_SW1 (N2724)
+     LUT5:I4->O           46   0.254   1.982  cpu/cp0/have_irq (cpu/cp0/have_irq)
+     LUT6:I3->O           21   0.235   1.418  cpu/cp0/have2handle1 (cpu/m_cp0_have2handle)
+     LUT5:I3->O            1   0.250   0.681  uart_shim/uart/U_RX_UNIT/rst_over_read_OR_335_o1 (uart_shim/uart/U_RX_UNIT/rst_over_read_OR_335_o)
      FDC:CLR                   0.459          uart_shim/uart/U_RX_UNIT/rf_av
     ----------------------------------------
-    Total                      7.867ns (1.973ns logic, 5.894ns route)
-                                       (25.1% logic, 74.9% route)
+    Total                      7.628ns (1.977ns logic, 5.651ns route)
+                                       (25.9% logic, 74.1% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_ipcore/pll_base_inst/CLKOUT0'
-  Total number of paths / destination ports: 2107 / 2107
+  Total number of paths / destination ports: 2523 / 2476
 -------------------------------------------------------------------------
-Offset:              6.314ns (Levels of Logic = 2)
+Offset:              7.092ns (Levels of Logic = 4)
   Source:            sys_rstn (PAD)
-  Destination:       cpu/control/m_in_bds_/data_0 (FF)
+  Destination:       cpu/d_im/data_31 (FF)
   Destination Clock: clk_ipcore/pll_base_inst/CLKOUT0 rising
 
-  Data Path: sys_rstn to cpu/control/m_in_bds_/data_0
+  Data Path: sys_rstn to cpu/d_im/data_31
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            24   1.328   1.835  sys_rstn_IBUF (sys_rstn_IBUF)
-     LUT6:I0->O          325   0.254   2.438  cpu/control/cw_m_pff_rst1 (cpu/cw_m_pff_rst)
-     FDRE:R                    0.459          cpu/control/m_exc_/data_0
+     IBUF:I->O            39   1.328   2.092  sys_rstn_IBUF (sys_rstn_IBUF)
+     LUT6:I0->O            1   0.254   0.910  cpu/cp0/have2handle1_SW6 (N2234)
+     LUT6:I3->O           66   0.235   1.945  cpu/rst_cw_d_pff_rst_OR_221_o1 (cpu/rst_cw_d_pff_rst_OR_221_o)
+     LUT6:I5->O            2   0.254   0.000  cpu/d_im/data_31_rstpot (cpu/d_im/data_31_rstpot)
+     FD:D                      0.074          cpu/d_im/data_31
     ----------------------------------------
-    Total                      6.314ns (2.041ns logic, 4.273ns route)
-                                       (32.3% logic, 67.7% route)
+    Total                      7.092ns (2.145ns logic, 4.947ns route)
+                                       (30.2% logic, 69.8% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'uart_shim/uart/U_RX_UNIT/clk_rf_av'
   Total number of paths / destination ports: 1 / 1
 -------------------------------------------------------------------------
-Offset:              4.102ns (Levels of Logic = 2)
+Offset:              4.359ns (Levels of Logic = 2)
   Source:            sys_rstn (PAD)
   Destination:       uart_shim/uart/U_RX_UNIT/rf_av (FF)
   Destination Clock: uart_shim/uart/U_RX_UNIT/clk_rf_av rising
@@ -1614,18 +1896,18 @@ Offset:              4.102ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            24   1.328   1.380  sys_rstn_IBUF (sys_rstn_IBUF)
-     LUT2:I1->O            1   0.254   0.681  uart_shim/uart/U_RX_UNIT/rst_over_read_OR_299_o1 (uart_shim/uart/U_RX_UNIT/rst_over_read_OR_299_o)
+     IBUF:I->O            39   1.328   1.637  sys_rstn_IBUF (sys_rstn_IBUF)
+     LUT5:I4->O            1   0.254   0.681  uart_shim/uart/U_RX_UNIT/rst_over_read_OR_335_o1 (uart_shim/uart/U_RX_UNIT/rst_over_read_OR_335_o)
      FDC:CLR                   0.459          uart_shim/uart/U_RX_UNIT/rf_av
     ----------------------------------------
-    Total                      4.102ns (2.041ns logic, 2.061ns route)
-                                       (49.8% logic, 50.2% route)
+    Total                      4.359ns (2.041ns logic, 2.318ns route)
+                                       (46.8% logic, 53.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_ipcore/pll_base_inst/CLKOUT0'
   Total number of paths / destination ports: 629 / 62
 -------------------------------------------------------------------------
-Offset:              8.291ns (Levels of Logic = 4)
+Offset:              8.315ns (Levels of Logic = 4)
   Source:            nixie/phase_FSM_FFd4 (FF)
   Destination:       digital_tube0<6> (PAD)
   Source Clock:      clk_ipcore/pll_base_inst/CLKOUT0 rising
@@ -1634,14 +1916,14 @@ Offset:              8.291ns (Levels of Logic = 4)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDS:C->Q             22   0.525   1.562  nixie/phase_FSM_FFd4 (nixie/phase_FSM_FFd4)
+     FDS:C->Q             23   0.525   1.586  nixie/phase_FSM_FFd4 (nixie/phase_FSM_FFd4)
      LUT6:I3->O            1   0.235   0.682  nixie/mux2111 (nixie/mux211)
      LUT5:I4->O            7   0.254   1.186  nixie/mux2112 (nixie/data0<2>)
      LUT4:I0->O            1   0.254   0.681  nixie/decoder0/out<5>1 (digital_tube0_5_OBUF)
      OBUF:I->O                 2.912          digital_tube0_5_OBUF (digital_tube0<5>)
     ----------------------------------------
-    Total                      8.291ns (4.180ns logic, 4.111ns route)
-                                       (50.4% logic, 49.6% route)
+    Total                      8.315ns (4.180ns logic, 4.135ns route)
+                                       (50.3% logic, 49.7% route)
 
 =========================================================================
 
@@ -1653,9 +1935,9 @@ Clock to Setup on destination clock clk_ipcore/pll_base_inst/CLKOUT0
                                         | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock                            |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ----------------------------------------+---------+---------+---------+---------+
-clk_ipcore/pll_base_inst/CLKOUT0        |   22.022|         |         |         |
-clk_ipcore/pll_base_inst/CLKOUT1        |    7.489|         |         |         |
-uart_shim/uart/U_RX_UNIT/clk_rf_av      |    9.199|         |         |         |
+clk_ipcore/pll_base_inst/CLKOUT0        |   23.439|         |         |         |
+clk_ipcore/pll_base_inst/CLKOUT1        |   10.128|         |         |         |
+uart_shim/uart/U_RX_UNIT/clk_rf_av      |   10.888|         |         |         |
 uart_shim/uart/U_TX_UNIT/U_CTRL_SHFT/fsm|    4.080|         |         |         |
 ----------------------------------------+---------+---------+---------+---------+
 
@@ -1664,8 +1946,8 @@ Clock to Setup on destination clock clk_ipcore/pll_base_inst/CLKOUT1
                                   | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock                      |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ----------------------------------+---------+---------+---------+---------+
-clk_ipcore/pll_base_inst/CLKOUT0  |   20.437|         |         |         |
-uart_shim/uart/U_RX_UNIT/clk_rf_av|    8.803|         |         |         |
+clk_ipcore/pll_base_inst/CLKOUT0  |   25.611|         |         |         |
+uart_shim/uart/U_RX_UNIT/clk_rf_av|    9.659|         |         |         |
 ----------------------------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock uart_shim/uart/U_RX_UNIT/clk_rf_av
@@ -1673,22 +1955,22 @@ Clock to Setup on destination clock uart_shim/uart/U_RX_UNIT/clk_rf_av
                                   | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock                      |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ----------------------------------+---------+---------+---------+---------+
-clk_ipcore/pll_base_inst/CLKOUT0  |   19.501|         |         |         |
-uart_shim/uart/U_RX_UNIT/clk_rf_av|    7.867|         |         |         |
+clk_ipcore/pll_base_inst/CLKOUT0  |   23.580|         |         |         |
+uart_shim/uart/U_RX_UNIT/clk_rf_av|    7.628|         |         |         |
 ----------------------------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 63.00 secs
-Total CPU time to Xst completion: 63.34 secs
+Total REAL time to Xst completion: 65.00 secs
+Total CPU time to Xst completion: 65.35 secs
  
 --> 
 
 
-Total memory usage is 427448 kilobytes
+Total memory usage is 424712 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  208 (   0 filtered)
-Number of infos    :   17 (   0 filtered)
+Number of warnings :  377 (   0 filtered)
+Number of infos    :   23 (   0 filtered)
 
