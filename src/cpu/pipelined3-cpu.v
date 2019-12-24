@@ -34,6 +34,7 @@ wire [4:0] cw_e_alu_op;
 wire [2:0] cw_m_dm_mode;
 wire [4:0] cw_m_cp0_exc;
 wire [31:0] cw_m_cp0_curr_pc;
+wire [31:0] cw_m_cp0_badvaddr;
 wire [3:0] cw_m_cp0_op;
 
 wire [2:0] cw_w_m_regdata;
@@ -56,7 +57,8 @@ wire cw_w_rf_write_enable;
 wire [31:0] mmu_im_paddr, mmu_dm_paddr;
 wire [31:0] mmu_entryhi, mmu_entrylo0, mmu_entrylo1;
 wire [`TLB_ADDR_WIDTH - 1:0] mmu_hit_cp0_index;
-wire mmu_hit_cp0;
+wire mmu_hit_im, mmu_hit_dm, mmu_hit_cp0;
+wire mmu_mod_im, mmu_mod_dm;
 
 /* F */
 
@@ -131,6 +133,10 @@ control control(
 	/* read_addr and write_addr are the same as m_alu_result */
 	.m_dm_addr(m_alu_result), 
 
+	.mmu_hit_im(mmu_hit_im), 
+	.mmu_hit_dm(mmu_hit_dm), 
+	.mmu_mod_im(mmu_mod_im), 
+	.mmu_mod_dm(mmu_mod_dm), 
 	.f_im_valid(f_im_valid), 
 	.e_alu_sig_overflow(e_alu_sig_overflow), 
 	.m_dm_valid(m_dm_valid), 
@@ -175,6 +181,7 @@ control control(
 	.cw_m_cp0_in_bds(cw_m_cp0_in_bds), 
 	.cw_m_cp0_exc(cw_m_cp0_exc), 
 	.cw_m_cp0_curr_pc(cw_m_cp0_curr_pc), 
+	.cw_m_cp0_badvaddr(cw_m_cp0_badvaddr), 
 
 	.cw_w_rf_write_enable(cw_w_rf_write_enable), 
 	.cw_w_m_regdata(cw_w_m_regdata), 
@@ -201,10 +208,10 @@ mmu mmu(
 	.dm_write_enable(cw_m_dm_write_enable), 
 	.im_paddr(mmu_im_paddr), 
 	.dm_paddr(mmu_dm_paddr), 
-	/* unused */
-	.mmu_hit_im(), 
-	/* unused */
-	.mmu_hit_dm(), 
+	.mmu_hit_im(mmu_hit_im), 
+	.mmu_hit_dm(mmu_hit_dm), 
+	.mmu_mod_im(mmu_mod_im), 
+	.mmu_mod_dm(mmu_mod_dm), 
 
 	.write_enable(cw_mmu_write_enable), 
 	.cp0_tlb_index(m_cp0_tlb_index), 
@@ -524,6 +531,7 @@ cp0 cp0(
 	.hwirq(hwirq[7:2]), 
 	.exc(cw_m_cp0_exc), 
 	.curr_pc(cw_m_cp0_curr_pc), 
+	.badvaddr(cw_m_cp0_badvaddr), 
 	.epc(m_cp0_epc_orig), 
 	.have2handle(m_cp0_have2handle), 
 

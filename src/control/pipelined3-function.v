@@ -118,6 +118,10 @@ module control(
 	input e_md_busy, 
 	input [31:0] m_dm_addr, 
 
+	input mmu_hit_im, 
+	input mmu_hit_dm, 
+	input mmu_mod_im, 
+	input mmu_mod_dm, 
 	input f_im_valid, 
 	input e_alu_sig_overflow, 
 	input m_dm_valid, 
@@ -156,6 +160,7 @@ module control(
 	output cw_m_cp0_in_bds, 
 	output [4:0] cw_m_cp0_exc, 
 	output [31:0] cw_m_cp0_curr_pc, 
+	output [31:0] cw_m_cp0_badvaddr, 
 
 	output cw_w_rf_write_enable, 
 	output [2:0] cw_w_m_regdata, 
@@ -598,11 +603,16 @@ pff #(.BIT_WIDTH(1)) m_in_bds_(
 
 /* Remember the precedence! */
 
+/* NOTE: Mod should be detected before TLBL or TLBS, since when Mod happens
+* mmu_hit_dm == 1'b0. */
+
 pff #(.BIT_WIDTH(5)) d_exc_(
 	.clk(clk), 
 	.enable(cw_d_pff_enable), 
 	.rst(rst | cw_d_pff_rst), 
 	.i(
+		(mmu_mod_im == 1'b1) ? `EXC_MOD : 
+		(mmu_hit_im == 1'b0) ? `EXC_TLBL : 
 		(ddptype == `JUMP_C0) ? `EXC_NONE : 
 		(f_im_valid == 1'b0) ? `EXC_ADEL : 
 		`EXC_NONE
@@ -636,8 +646,21 @@ pff #(.BIT_WIDTH(5)) m_exc_(
 	.o(m_exc)
 );
 
+/* NOTE: TLB errors should be processed first, since without a sensible
+ * address dm and bridge could not produce sensible result. And if the
+ * instruction has triggered a TLBL in level F, it would be preserved here and
+ * get fed to cp0. Mod should be detected before TLBL or TLBS, since when Mod
+ * happens mmu_hit_dm == 1'b0. */
+/* TODO: Precedence of exceptions? */
+
 assign m_exc_final = 
+	/* Remember the precedence! */
 	(m_exc != `EXC_NONE) ? m_exc : 
+	(mmu_mod_dm == 1'b1) ? `EXC_MOD : 
+	(cw_m_dm_mode != `DM_NONE && mmu_hit_dm == 1'b0) ? (
+		(cw_m_dm_write_enable == 1'b0) ? `EXC_TLBL : 
+		`EXC_TLBS
+	) : 
 	(m_dm_valid == 1'b0 && m_bridge_valid == 1'b0) ? (
 		/* DM_NONEs are always valid */
 		(cw_m_dm_write_enable == 1'b0) ? `EXC_ADEL : 
@@ -677,6 +700,17 @@ assign cw_m_cp0_curr_pc =
 	(m_pc_curr_pc != 32'b0) ? {m_pc_curr_pc[31:2], 2'b0} : 
 	(e_pc_curr_pc != 32'b0) ? {e_pc_curr_pc[31:2], 2'b0} : 
 	{d_pc_curr_pc[31:2], 2'b0};
+
+/* NOTE: If the instruction in level M is 32'b0 and its exception code is
+ * TLBL, then its pc (i.e. im_vaddr) must be bad. Typically 32'b0 means nop,
+ * and nop won't raise any exception. However, when im_vaddr doesn't hit TLB,
+ * im_paddr would be 32'b0, landing in an invalid region within im. Then im
+ * would spit out another 32'b0 as an instruction to serve as a reminder that it 
+ * could not fetch the instruction at the corresponding physical address
+ * im_paddr. */
+assign cw_m_cp0_badvaddr = 
+	(m_instr == 32'b0 && m_exc == `EXC_TLBL) ? m_pc_curr_pc : 
+	m_dm_addr;
 
 /* About to go into ISR, so interrupts are considered. */
 /* NOTE: There may be bubbles between the instruction in the branch delay slot 

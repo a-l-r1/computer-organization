@@ -15,6 +15,7 @@ module cp0(
 	input [5:0] hwirq, 
 	input [4:0] exc, 
 	input [31:0] curr_pc, 
+	input [31:0] badvaddr, 
 	output [31:0] epc, 
 	output have2handle, 
 
@@ -45,6 +46,8 @@ module cp0(
 /* epc already declared */
 reg [31:0] sr, cause, epc_i;
 reg [31:0] entryhi, entrylo0, entrylo1, index;
+reg [31:0] badvaddr_i;
+reg [31:0] random, wired;
 wire [31:0] prid;
 
 wire have_irq, have_exc;
@@ -55,8 +58,11 @@ assign prid = `CP0_PRID;
 
 assign read_result = 
 	(addr == 5'd0) ? index : 
+	(addr == 5'd1) ? random : 
 	(addr == 5'd2) ? entrylo0 : 
 	(addr == 5'd3) ? entrylo1 : 
+	(addr == 5'd6) ? wired : 
+	(addr == 5'd8) ? badvaddr_i : 
 	(addr == 5'd10) ? entryhi : 
 	(addr == 5'd12) ? sr : 
 	(addr == 5'd13) ? cause : 
@@ -71,6 +77,7 @@ assign cp0_tlb_index = index[`TLB_ADDR_WIDTH - 1:0];
 
 assign have_irq = ((hwirq & `allow_hwirq) != 0 && `g_allow_hwirq == 1'b1 && `exl == 1'b0);
 assign have_exc = ((exc != `EXC_NONE) && (`exl == 1'b0));
+assign have_exc_tlb = ((exc == `EXC_TLBL || exc == `EXC_TLBS || exc == `EXC_MOD) && (`exl == 1'b0));
 
 assign have2handle = (have_irq || have_exc);
 
@@ -85,6 +92,9 @@ initial begin
 	entrylo0 <= 0;
 	entrylo1 <= 0;
 	index <= 0;
+	badvaddr_i <= 0;
+	random <= {0, `TLB_ADDR_WIDTH'b1};
+	wired <= 0;
 `else /* MARS_COMPAT */
 	sr <= 0;
 	cause <= 0;
@@ -93,6 +103,9 @@ initial begin
 	entrylo0 <= 0;
 	entrylo1 <= 0;
 	index <= 0;
+	badvaddr_i <= 0;
+	random <= {0, `TLB_ADDR_WIDTH'b1};
+	wired <= 0;
 `endif /* MARS_COMPAT */
 end
 
@@ -106,6 +119,9 @@ always @(posedge clk) begin
 		entrylo0 <= 0;
 		entrylo1 <= 0;
 		index <= 0;
+		badvaddr_i <= 0;
+		random <= {0, `TLB_ADDR_WIDTH'b1};
+		wired <= 0;
 `else
 		sr <= 0;
 		cause <= 0;
@@ -114,6 +130,9 @@ always @(posedge clk) begin
 		entrylo0 <= 0;
 		entrylo1 <= 0;
 		index <= 0;
+		badvaddr_i <= 0;
+		random <= {0, `TLB_ADDR_WIDTH'b1};
+		wired <= 0;
 `endif
 	end else begin
 
@@ -128,6 +147,11 @@ always @(posedge clk) begin
 			end else begin
 				if (have_exc == 1'b1) begin
 					`exc_i <= exc;
+
+					if (have_exc_tlb == 1'b1) begin
+						badvaddr_i <= badvaddr;
+						entryhi[26:8] <= badvaddr[31:13];
+					end
 				end
 			end
 `ifdef MARS_COMPAT
@@ -140,8 +164,11 @@ always @(posedge clk) begin
 					case (addr)
 `ifdef MARS_COMPAT
 						5'd0: index <= write_data;
+						5'd1: random <= write_data;
 						5'd2: entrylo0 <= write_data;
 						5'd3: entrylo1 <= write_data;
+						5'd6: wired <= write_data;
+						5'd8: badvaddr_i <= write_data;
 						5'd10: entryhi <= write_data;
 						5'd12: sr <= write_data;
 						5'd13: cause <= write_data;
@@ -150,9 +177,11 @@ always @(posedge clk) begin
 
 						5'd0: index <= {
 							write_data[31], /* p */
-							{(32 - 1 - `TLB_ADDR_WIDTH){1'b0}}, 
+							{(32 - `TLB_ADDR_WIDTH){1'b0}}, 
 							write_data[`TLB_ADDR_WIDTH - 1:0]
 						};
+
+						/* random is not writable */
 
 						5'd2: entrylo0 <= {
 							5'b0, 
@@ -170,6 +199,11 @@ always @(posedge clk) begin
 							write_data[2], /* d */
 							write_data[1], /* v */
 							write_data[0] /* g */
+						};
+
+						5'd6: wired <= {
+							{(31 - `TLB_ADDR_WIDTH){1'b0}}, 
+							write_data[`TLB_ADDR_WIDTH - 1:0]
 						};
 
 						5'd10: entryhi <= {
@@ -248,10 +282,16 @@ always @(posedge clk) begin
 			endcase
 		end
 
-		/* MARS doesn't even update it's hardware IRQ related bits */
 `ifndef MARS_COMPAT
+		/* MARS doesn't even update it's hardware IRQ related bits */
 		if (~(have2handle == 1'b0 && write_valid == 1'b1 && addr == 5'd13)) begin
 			`hwirq_i <= hwirq;
+		end
+
+		if ($unsigned(random) >= $unsigned(wired) - $unsigned(1) || $unsigned(wired) == $unsigned(0)) begin
+			random[`TLB_ADDR_WIDTH - 1:0] <= $unsigned(random[`TLB_ADDR_WIDTH - 1:0]) - $unsigned(1);
+		end else begin
+			random[`TLB_ADDR_WIDTH - 1:0] <= {`TLB_ADDR_WIDTH{1'b1}};
 		end
 `endif /* MARS_COMPAT */
 	end

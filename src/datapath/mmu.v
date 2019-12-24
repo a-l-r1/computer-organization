@@ -7,10 +7,13 @@ module tlb_hit_checker(
 	input [31:0] entryhi, 
 	input [31:0] entrylo1, 
 	input [31:0] entrylo0, 
-	output is_hit
+	output is_hit, 
+	output is_mod
 );
 
-assign is_hit = (
+wire is_hit_orig, is_writable;
+
+assign is_hit_orig = (
 	/* virtual page hit: page indexes match and access permissions match */
 	(vaddr[31:13] == entryhi[26:8]) && /* vaddr */
 	(
@@ -23,13 +26,19 @@ assign is_hit = (
 	(
 		(vaddr[12] == 1'b0 && entrylo0[1] == 1'b1) || /* v */
 		(vaddr[12] == 1'b1 && entrylo1[1] == 1'b1)
-	) && 
+	)
+);
+
+assign is_writable = (
 	(
 		((mem_write_enable) == 1'b0) || 
 		((mem_write_enable) == 1'b1 && vaddr[12] == 1'b0 && entrylo0[2] == 1'b1) || /* d */
 		((mem_write_enable) == 1'b1 && vaddr[12] == 1'b1 && entrylo1[2] == 1'b1)
 	)
 );
+
+assign is_hit = (is_hit_orig == 1'b1 && is_writable == 1'b1);
+assign is_mod = (is_hit_orig == 1'b1 && is_writable == 1'b0);
 
 endmodule
 
@@ -75,6 +84,8 @@ module mmu(
 	output [31:0] dm_paddr, 
 	output mmu_hit_im, 
 	output mmu_hit_dm, 
+	output mmu_mod_im, 
+	output mmu_mod_dm, 
 
 	input write_enable, 
 	input [`TLB_ADDR_WIDTH - 1:0] cp0_tlb_index, 
@@ -95,9 +106,11 @@ reg [31:0] entrylo1 [`TLB_COUNT - 1:0];
 
 wire [31:0] im_paddr0, im_paddr1, im_paddr2, im_paddr3;
 wire is_hit_im0, is_hit_im1, is_hit_im2, is_hit_im3;
+wire is_mod_im0, is_mod_im1, is_mod_im2, is_mod_im3;
 
 wire [31:0] dm_paddr0, dm_paddr1, dm_paddr2, dm_paddr3;
 wire is_hit_dm0, is_hit_dm1, is_hit_dm2, is_hit_dm3;
+wire is_mod_dm0, is_mod_dm1, is_mod_dm2, is_mod_dm3;
 
 wire is_hit_cp0_0, is_hit_cp0_1, is_hit_cp0_2, is_hit_cp0_3;
 
@@ -161,7 +174,8 @@ tlb_hit_checker tlb_hit_checker_im0(
 	.entryhi(entryhi[0]), 
 	.entrylo1(entrylo1[0]), 
 	.entrylo0(entrylo0[0]), 
-	.is_hit(is_hit_im0)
+	.is_hit(is_hit_im0), 
+	.is_mod(is_mod_im0)
 );
 
 tlb_hit_checker tlb_hit_checker_im1(
@@ -171,7 +185,8 @@ tlb_hit_checker tlb_hit_checker_im1(
 	.entryhi(entryhi[1]), 
 	.entrylo1(entrylo1[1]), 
 	.entrylo0(entrylo0[1]), 
-	.is_hit(is_hit_im1)
+	.is_hit(is_hit_im1), 
+	.is_mod(is_mod_im1)
 );
 
 tlb_hit_checker tlb_hit_checker_im2(
@@ -181,7 +196,8 @@ tlb_hit_checker tlb_hit_checker_im2(
 	.entryhi(entryhi[2]), 
 	.entrylo1(entrylo1[2]), 
 	.entrylo0(entrylo0[2]), 
-	.is_hit(is_hit_im2)
+	.is_hit(is_hit_im2), 
+	.is_mod(is_mod_im2)
 );
 
 tlb_hit_checker tlb_hit_checker_im3(
@@ -191,7 +207,8 @@ tlb_hit_checker tlb_hit_checker_im3(
 	.entryhi(entryhi[3]), 
 	.entrylo1(entrylo1[3]), 
 	.entrylo0(entrylo0[3]), 
-	.is_hit(is_hit_im3)
+	.is_hit(is_hit_im3), 
+	.is_mod(is_mod_im3)
 );
 
 tlb_hit_checker tlb_hit_checker_dm0(
@@ -201,7 +218,8 @@ tlb_hit_checker tlb_hit_checker_dm0(
 	.entryhi(entryhi[0]), 
 	.entrylo1(entrylo1[0]), 
 	.entrylo0(entrylo0[0]), 
-	.is_hit(is_hit_dm0)
+	.is_hit(is_hit_dm0), 
+	.is_mod(is_mod_dm0)
 );
 
 tlb_hit_checker tlb_hit_checker_dm1(
@@ -211,7 +229,8 @@ tlb_hit_checker tlb_hit_checker_dm1(
 	.entryhi(entryhi[1]), 
 	.entrylo1(entrylo1[1]), 
 	.entrylo0(entrylo0[1]), 
-	.is_hit(is_hit_dm1)
+	.is_hit(is_hit_dm1), 
+	.is_mod(is_mod_dm1)
 );
 
 tlb_hit_checker tlb_hit_checker_dm2(
@@ -221,7 +240,8 @@ tlb_hit_checker tlb_hit_checker_dm2(
 	.entryhi(entryhi[2]), 
 	.entrylo1(entrylo1[2]), 
 	.entrylo0(entrylo0[2]), 
-	.is_hit(is_hit_dm2)
+	.is_hit(is_hit_dm2), 
+	.is_mod(is_mod_dm2)
 );
 
 tlb_hit_checker tlb_hit_checker_dm3(
@@ -231,7 +251,8 @@ tlb_hit_checker tlb_hit_checker_dm3(
 	.entryhi(entryhi[3]), 
 	.entrylo1(entrylo1[3]), 
 	.entrylo0(entrylo0[3]), 
-	.is_hit(is_hit_dm3)
+	.is_hit(is_hit_dm3), 
+	.is_mod(is_mod_dm3)
 );
 
 paddr_translator paddr_translator_im0(
@@ -311,6 +332,12 @@ assign {mmu_hit_im, im_paddr} =
 	/* TODO: TLB exceptions */
 	{1'b0, 32'b0};
 
+assign mmu_mod_im = 
+	(is_mod_im0 == 1'b1) || 
+	(is_mod_im1 == 1'b1) || 
+	(is_mod_im2 == 1'b1) || 
+	(is_mod_im3 == 1'b1);
+
 assign {mmu_hit_dm, dm_paddr} = 
 	(
 		($unsigned(dm_vaddr) >= $unsigned(`MMU_NOMMU_LB)) && 
@@ -323,6 +350,12 @@ assign {mmu_hit_dm, dm_paddr} =
 	(is_hit_dm3 == 1'b1) ? {1'b1, dm_paddr3} : 
 	/* TODO: TLB exceptions */
 	{1'b0, 32'b0};
+
+assign mmu_mod_dm = 
+	(is_mod_dm0 == 1'b1) || 
+	(is_mod_dm1 == 1'b1) || 
+	(is_mod_dm2 == 1'b1) || 
+	(is_mod_dm3 == 1'b1);
 
 tlb_hit_cp0_checker tlb_hit_cp0_checker0(
 	.cp0_entryhi(cp0_entryhi), 

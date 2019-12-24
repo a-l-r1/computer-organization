@@ -3,6 +3,9 @@
 
 `define EXC_NONE 5'd0
 `define EXC_INT 5'd0
+`define EXC_MOD 5'd1
+`define EXC_TLBL 5'd2
+`define EXC_TLBS 5'd3
 `define EXC_ADEL 5'd4
 `define EXC_ADES 5'd5
 `define EXC_RI 5'd10
