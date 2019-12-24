@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2019-12-23T22:06:32</DateModified>
+  <DateModified>2019-12-24T02:37:34</DateModified>
   <ModuleName>mips</ModuleName>
   <SummaryTimeStamp>2019-12-23T22:06:17</SummaryTimeStamp>
   <SavedFilePath>/home/a-l-r/co/src/project/iseconfig/mips.xreport</SavedFilePath>
@@ -17,9 +17,9 @@
     <toc-item title="Performance Summary" target="Performance Summary" />
     <toc-item title="Failing Constraints" target="Failing Constraints" />
     <toc-item title="Detailed Reports" target="Detailed Reports" />
-    <table-item tableKey="DeviceUtilizationSummary" tableState="CollapsedTable" />
-    <table-item tableKey="DeviceUtilizationSummary" tableState="CollapsedTable" />
-    <table-item tableKey="SecondaryReports" tableState="CollapsedTable" />
+    <table-item tableState="CollapsedTable" tableKey="DeviceUtilizationSummary" />
+    <table-item tableState="CollapsedTable" tableKey="DeviceUtilizationSummary" />
+    <table-item tableState="CollapsedTable" tableKey="SecondaryReports" />
    </view>
    <view inputState="Unknown" program="implementation" contextTags="FPGA_ONLY" hidden="true" type="HTML" file="mips_envsettings.html" label="System Settings" />
    <view inputState="Translated" program="map" locator="MAP_IOB_TABLE" contextTags="FPGA_ONLY" type="IOBProperties" file="mips_map.xrpt" showConstraints="0" label="IOB Properties" />

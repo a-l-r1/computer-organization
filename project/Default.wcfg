@@ -192,6 +192,7 @@
       <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/control/d_pc_curr_pc" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">d_pc_curr_pc[31:0]</obj_property>
          <obj_property name="ObjectShortName">d_pc_curr_pc[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/control/e_pc_curr_pc" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">e_pc_curr_pc[31:0]</obj_property>
@@ -284,6 +285,10 @@
       <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/control/cw_m_cp0_exc" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">cw_m_cp0_exc[4:0]</obj_property>
          <obj_property name="ObjectShortName">cw_m_cp0_exc[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/control/m_exc_final" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">m_exc_final[4:0]</obj_property>
+         <obj_property name="ObjectShortName">m_exc_final[4:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/control/cw_m_cp0_curr_pc" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">cw_m_cp0_curr_pc[31:0]</obj_property>
@@ -378,7 +383,7 @@
          <obj_property name="ObjectShortName">f_pc_curr_pc[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
-         <obj_property name="CustomSignalColor">#00ff00</obj_property>
+         <obj_property name="CustomSignalColor">#ff557f</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/f_npc_next_pc" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">f_npc_next_pc[31:0]</obj_property>
@@ -868,6 +873,18 @@
          <obj_property name="UseCustomSignalColor">true</obj_property>
          <obj_property name="CustomSignalColor">#ffa500</obj_property>
       </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/mmu/mmu_mod_im" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">mmu_mod_im</obj_property>
+         <obj_property name="ObjectShortName">mmu_mod_im</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#ffa500</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/mmu/mmu_mod_dm" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">mmu_mod_dm</obj_property>
+         <obj_property name="ObjectShortName">mmu_mod_dm</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#ffa500</obj_property>
+      </wvobject>
       <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/mmu/write_enable" type="logic" db_ref_id="1">
          <obj_property name="ElementShortName">write_enable</obj_property>
          <obj_property name="ObjectShortName">write_enable</obj_property>
@@ -1205,11 +1222,13 @@
          <obj_property name="ElementShortName">rst</obj_property>
          <obj_property name="ObjectShortName">rst</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
-         <obj_property name="CustomSignalColor">#ffa500</obj_property>
+         <obj_property name="CustomSignalColor">#00ff00</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/cp0/have2handle" type="logic" db_ref_id="1">
          <obj_property name="ElementShortName">have2handle</obj_property>
          <obj_property name="ObjectShortName">have2handle</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#ffa500</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/cp0/op" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">op[3:0]</obj_property>
@@ -1230,10 +1249,15 @@
       <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/cp0/read_result" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">read_result[31:0]</obj_property>
          <obj_property name="ObjectShortName">read_result[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/cp0/in_bds" type="logic" db_ref_id="1">
          <obj_property name="ElementShortName">in_bds</obj_property>
          <obj_property name="ObjectShortName">in_bds</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/cp0/curr_pc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">curr_pc[31:0]</obj_property>
+         <obj_property name="ObjectShortName">curr_pc[31:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/cp0/hwirq" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">hwirq[5:0]</obj_property>
@@ -1242,6 +1266,7 @@
       <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/cp0/exc" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">exc[4:0]</obj_property>
          <obj_property name="ObjectShortName">exc[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/cp0/curr_pc" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">curr_pc[31:0]</obj_property>
@@ -1279,6 +1304,28 @@
       <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/cp0/index" type="array" db_ref_id="1">
          <obj_property name="ElementShortName">index[31:0]</obj_property>
          <obj_property name="ObjectShortName">index[31:0]</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#00aaff</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/cp0/random" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">random[31:0]</obj_property>
+         <obj_property name="ObjectShortName">random[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#00aaff</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/cp0/badvaddr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">badvaddr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">badvaddr[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/cp0/random" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">random[31:0]</obj_property>
+         <obj_property name="ObjectShortName">random[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/pipelined3_p8_tb/uut/cpu/cp0/badvaddr_i" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">badvaddr_i[31:0]</obj_property>
+         <obj_property name="ObjectShortName">badvaddr_i[31:0]</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
          <obj_property name="CustomSignalColor">#00aaff</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>

@@ -5,5 +5,17 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
+<msg type="warning" file="HDLCompiler" num="327" delta="unknown" >"/home/a-l-r/co/src/project/../src/datapath/cp0.v" Line 107: Concatenation with unsized literal; will interpret as 32 bits
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="327" delta="unknown" >"/home/a-l-r/co/src/project/../src/datapath/cp0.v" Line 134: Concatenation with unsized literal; will interpret as 32 bits
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="327" delta="unknown" >"/home/a-l-r/co/src/project/../src/datapath/cp0.v" Line 107: Concatenation with unsized literal; will interpret as 32 bits
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="327" delta="unknown" >"/home/a-l-r/co/src/project/../src/datapath/cp0.v" Line 134: Concatenation with unsized literal; will interpret as 32 bits
+</msg>
+
 </messages>
 

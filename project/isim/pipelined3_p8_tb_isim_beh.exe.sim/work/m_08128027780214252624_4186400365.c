@@ -25,7 +25,7 @@ static const char *ng0 = "/home/a-l-r/co/src/src/datapath/mmu.v";
 
 
 
-static void Cont_59_0(char *t0)
+static void Cont_68_0(char *t0)
 {
     char t3[8];
     char t12[8];
@@ -174,7 +174,7 @@ LAB0:    t1 = (t0 + 2520U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(59, ng0);
+LAB2:    xsi_set_current_line(68, ng0);
     t2 = (t0 + 1048U);
     t4 = *((char **)t2);
     memset(t3, 0, 8);
@@ -416,7 +416,7 @@ LAB23:    t106 = *((unsigned int *)t94);
 
 extern void work_m_08128027780214252624_4186400365_init()
 {
-	static char *pe[] = {(void *)Cont_59_0};
+	static char *pe[] = {(void *)Cont_68_0};
 	xsi_register_didat("work_m_08128027780214252624_4186400365", "isim/pipelined3_p8_tb_isim_beh.exe.sim/work/m_08128027780214252624_4186400365.didat");
 	xsi_register_executes(pe);
 }
