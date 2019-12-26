@@ -1,7 +1,7 @@
 Release 14.7 par P.20131013 (lin64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Alr-Ubuntu::  Thu Dec 26 18:35:24 2019
+Alr-Ubuntu::  Thu Dec 26 22:42:41 2019
 
 par -w -intstyle ise -ol high -mt off mips_map.ncd mips.ncd mips.pcf 
 
@@ -95,27 +95,27 @@ Starting Router
 
 Phase  1  : 31675 unrouted;      REAL time: 9 secs 
 
-Phase  2  : 26914 unrouted;      REAL time: 12 secs 
+Phase  2  : 26914 unrouted;      REAL time: 11 secs 
 
 Phase  3  : 14704 unrouted;      REAL time: 34 secs 
 
-Phase  4  : 14704 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 37 secs 
+Phase  4  : 14704 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 36 secs 
 
 Updating file: mips.ncd with current fully routed design.
 
-Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 20 secs 
+Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 21 secs 
 
-Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 20 secs 
+Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 21 secs 
 
-Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 20 secs 
+Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 21 secs 
 
-Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 20 secs 
+Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 21 secs 
 
-Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 20 secs 
+Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 21 secs 
 
-Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 22 secs 
-Total REAL time to Router completion: 1 mins 22 secs 
-Total CPU time to Router completion: 1 mins 23 secs 
+Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 23 secs 
+Total REAL time to Router completion: 1 mins 23 secs 
+Total CPU time to Router completion: 1 mins 24 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -206,7 +206,7 @@ Generating Pad Report.
 All signals are completely routed.
 
 Total REAL time to PAR completion: 1 mins 28 secs 
-Total CPU time to PAR completion: 1 mins 29 secs 
+Total CPU time to PAR completion: 1 mins 30 secs 
 
 Peak Memory Usage:  886 MB
 
