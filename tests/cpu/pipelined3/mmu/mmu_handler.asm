@@ -154,19 +154,20 @@ tlbl:
 	# NOTE: AdEL would be triggered after ISR if fetching instructions. 
 
 	# simply map to dm globally
+	# TODO: match ASIDs?
 
 	# read TLB entry with matching vpn and asid if any
 	tlbp
-	
+
 	mfc0 $t0, $0 # index
 	srl $t0, $t0, 31 # p
-	
+
 	bne $t0, $0, no_replace
 	nop
 
 		mfc0 $t0, $1
 		mtc0 $t0, $0 # random -> index
-	
+
 	no_replace:
 
 	# entryhi is automatically initialized
@@ -183,14 +184,14 @@ tlbl:
 	srl $t0, $t0, 13 # get vpn
 	bne $t0, $0, not_null_twin
 	nop
-	
+
 		# NOTE: Have to pay attention to accessing the second page 
 		# in the address space. Make sure that the first page in 
 		# the address space is still unmapped. 
 		lui $t0, 0x0000
 		ori $t0, 0x0001 # d = 0, v = 0, g = 1
 		mtc0 $t0, $2 # entrylo0
-	
+
 	not_null_twin:
 
 	tlbwi
@@ -200,7 +201,7 @@ nop
 
 mod:
 
-	# simply enable d bit
+	# simply enable d bit (i.e. marking dirty page)
 
 	# search the whole TLB
 	tlbp
