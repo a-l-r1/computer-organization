@@ -211,7 +211,7 @@ nop
 li $t0, 30000000
 sw $t0, 4($s0)
 
-li $t0, 0x000b # allow_irq = 1, mode = 2'b01, enable = 1
+li $t0, 0x0009 # allow_irq = 1, mode = 2'b00, enable = 1
 sw $t0, 0($s0)
 
 beq $0, $0, loop_b
@@ -230,7 +230,7 @@ nop
 li $t0, 60000000
 sw $t0, 4($s0)
 
-li $t0, 0x000b # allow_irq = 1, mode = 2'b10, enable = 1
+li $t0, 0x0009 # allow_irq = 1, mode = 2'b00, enable = 1
 sw $t0, 0($s0)
 
 beq $0, $0, loop_b
@@ -382,16 +382,6 @@ lui $t8, 0xbfc0
 ori $t8, 0x7f40 # buttons
 sw $0, 0($t8)
 
-# disable timer
-lui $t8, 0xbfc0
-ori $t8, 0x7f00 # timer
-sw $0, 0($t8)
-
-# wait for disabling
-nop
-nop
-nop
-
 # clear nixie
 lui $t8, 0xbfc0
 ori $t8, 0x7f38 # nixie
@@ -408,6 +398,16 @@ nop
 
 	# handling timer
 	handle_timer:
+
+	# disable timer
+	lui $t8, 0xbfc0
+	ori $t8, 0x7f00 # timer
+	sw $0, 0($t8)
+
+	# wait for disabling
+	nop
+	nop
+	nop
 
 	# load nixie
 	lui $t8, 0xbfc0
@@ -431,6 +431,16 @@ nop
 	eret
 
 handle_buttons:
+
+# disable timer
+lui $t8, 0xbfc0
+ori $t8, 0x7f00 # timer
+sw $0, 0($t8)
+
+# wait for disabling
+nop
+nop
+nop
 
 # read buttons
 lui $t8, 0xbfc0
