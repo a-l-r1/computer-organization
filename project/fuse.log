@@ -1,4 +1,4 @@
-Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -i /home/a-l-r/co/src/src/include -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o /home/a-l-r/co/src/project/pipelined3_p8_tb_isim_beh.exe -prj /home/a-l-r/co/src/project/pipelined3_p8_tb_beh.prj work.pipelined3_p8_tb work.glbl 
+Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -i /home/a-l-r/co/src/src/include -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o /home/a-l-r/co/src/project/pipelined3_p8_tb_isim_beh.exe -prj /home/a-l-r/co/src/project/pipelined3_p8_tb_beh.prj pipelined3_p8_tb work.glbl 
 ISim P.20131013 (signature 0xfbc00daa)
 Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
@@ -39,8 +39,8 @@ Analyzing Verilog file "/home/a-l-r/co/src/project/pipelined3_p8_tb.v" into libr
 Analyzing Verilog file "/opt/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
 Starting static elaboration
 Completed static elaboration
-Fuse Memory Usage: 87972 KB
-Fuse CPU Usage: 1150 ms
+Fuse Memory Usage: 88004 KB
+Fuse CPU Usage: 990 ms
 Compiling module IBUFG
 Compiling module PLL_ADV(BANDWIDTH="OPTIMIZED",CL...
 Compiling module PLL_BASE(CLKFBOUT_MULT=16,CLKIN_...
@@ -95,9 +95,9 @@ Compiling module mips
 Compiling module pipelined3_p8_tb
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 21 sub-compilation(s) to finish...
+Waiting for 16 sub-compilation(s) to finish...
 Compiled 53 Verilog Units
 Built simulation executable /home/a-l-r/co/src/project/pipelined3_p8_tb_isim_beh.exe
 Fuse Memory Usage: 1184636 KB
-Fuse CPU Usage: 1700 ms
-GCC CPU Usage: 15190 ms
+Fuse CPU Usage: 1570 ms
+GCC CPU Usage: 17020 ms

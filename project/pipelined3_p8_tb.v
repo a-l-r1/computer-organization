@@ -93,17 +93,9 @@ module pipelined3_p8_tb;
 		#300;
 		sys_rstn = 1;
 		
-		#700;
-		user_key = 8'hfe;
+		#1000;
+		user_key = 8'hfd;
 		
-		#100;
-		user_key = 8'hff;
-		
-		#500;
-		user_key = 8'hfe;
-		
-		#100;
-		user_key = 8'hff;
 	end
 	
 	always #5 clk_in = ~clk_in;

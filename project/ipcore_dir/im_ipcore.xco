@@ -1,7 +1,7 @@
 ##############################################################
 #
 # Xilinx Core Generator version 14.7
-# Date: Mon Dec 23 20:58:38 2019
+# Date: Fri Dec 27 00:03:29 2019
 #
 ##############################################################
 #
@@ -46,7 +46,7 @@ CSET axi_id_width=4
 CSET axi_slave_type=Memory_Slave
 CSET axi_type=AXI4_Full
 CSET byte_size=8
-CSET coe_file=/home/a-l-r/co/src/project/coe/multi_programming.coe
+CSET coe_file=/home/a-l-r/co/src/project/coe/three_function.coe
 CSET collision_warnings=ALL
 CSET component_name=im_ipcore
 CSET disable_collision_warnings=false
@@ -105,4 +105,4 @@ CSET write_width_b=32
 MISC pkg_timestamp=2012-11-19T16:22:25Z
 # END Extra information
 GENERATE
-# CRC: 28c397bf
+# CRC: 85842f56
